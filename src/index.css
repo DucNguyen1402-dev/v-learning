@@ -2,7 +2,114 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+:root {
+  --scrollbar-track: #f1f5f9;
+  --scrollbar-thumb: #cbd5e1;
+  --scrollbar-thumb-hover: #94a3b8;
+
+  --primary: theme(colors.blue.600);
+  --primary-hover: theme(colors.blue.700);
+  --primary-active: theme(colors.blue.800);
+  --primary-foreground: white;
+
+  --secondary: white;
+  --secondary-foreground: theme(colors.zinc.900);
+  --secondary-border: theme(colors.zinc.300);
+
+  --destructive: theme(colors.red.600);
+  --destructive-foreground: white;
+
+  --success: theme(colors.emerald.600);
+  --warning: theme(colors.amber.500);
+  --info: theme(colors.sky.500);
+}
+
+.dark {
+  --scrollbar-track: #18181b;
+  --scrollbar-thumb: #52525b;
+  --scrollbar-thumb-hover: #71717a;
+  --primary: theme(colors.blue.500);
+  --primary-hover: theme(colors.blue.400);
+  --primary-active: theme(colors.blue.300);
+
+  --secondary: theme(colors.zinc.900);
+  --secondary-foreground: theme(colors.zinc.100);
+  --secondary-border: theme(colors.zinc.700);
+
+  --destructive: theme(colors.red.500);
+
+  --success: theme(colors.emerald.500);
+  --warning: theme(colors.amber.400);
+  --info: theme(colors.sky.400);
+}
+
+@theme {
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 9999px;
+  border: 2px solid var(--scrollbar-track);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
 html,
 body {
   @apply bg-slate-50 text-slate-900 dark:bg-zinc-900 dark:text-zinc-100;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-gutter: stable;
+}
+
+@theme {
+  --breakpoint-3xl: 120rem;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+:root {
+  --autofill-bg: #ffffff;
+  --autofill-text: #18181b;
+}
+
+.dark {
+  --autofill-bg: #18181b;
+  --autofill-text: #f4f4f5;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--autofill-text);
+  -webkit-box-shadow: 0 0 0 1000px var(--autofill-bg) inset;
+  box-shadow: 0 0 0 1000px var(--autofill-bg) inset;
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+@utility flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
