@@ -1,13 +1,10 @@
+import { FormLabel, Input } from "@shared/fields";
+
 const LoginForm = () => {
   return (
     <form className="space-y-4" noValidate>
-      <div>
-        <label
-          htmlFor="email"
-          className="mb-1.5 block text-xs font-semibold tracking-wider text-stone-600 uppercase"
-        >
-          Email hoặc tài khoản
-        </label>
+      <div className="flex flex-col gap-3">
+        <FormLabel htmlFor="email">TÀI KHOẢN</FormLabel>
         <input
           type="email"
           id="email"
@@ -19,12 +16,7 @@ const LoginForm = () => {
 
       <div>
         <div className="mb-1.5 flex items-center justify-between">
-          <label
-            htmlFor="password"
-            className="block text-xs font-semibold tracking-wider text-stone-600 uppercase"
-          >
-            Mật khẩu
-          </label>
+          <FormLabel htmlFor="password">MẬT KHẨU</FormLabel>
           <a
             href="#"
             className="text-xs text-stone-500 transition-colors hover:text-stone-900"
