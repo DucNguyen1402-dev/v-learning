@@ -8,7 +8,7 @@ import {
 
 const LoginPage = () => {
   return (
-    <div className="relative flex-center min-h-screen bg-slate-100 p-4">
+    <div className="relative flex-center min-h-screen p-4">
       <div className="absolute top-3 left-3">
         <BackButton />
       </div>

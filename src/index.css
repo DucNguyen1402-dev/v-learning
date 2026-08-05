@@ -2,105 +2,43 @@
 
 @custom-variant dark (&:where(.dark .dark *));
 
-:root {
-  /* Brand */
-  --primary: theme(colors.blue.600);
-  --primary-hover: theme(colors.blue.700);
-  --primary-active: theme(colors.blue.800);
-  --primary-foreground: white;
 
-  --secondary: white;
-  --secondary-foreground: theme(colors.zinc.900);
-  --secondary-border: theme(colors.zinc.300);
-
-  --destructive: theme(colors.red.600);
-  --destructive-foreground: white;
-
-  /* Text */
-  --text-primary: theme(colors.slate.900);
-
-  --text-secondary: theme(colors.slate.600);
-  --text-size-secondary: var(--font-size-sm);
-  --text-secondary-hover: theme(colors.slate.700);
-
-  --text-tertiary: theme(colors.slate.400);
-  --text-size-tertiary: var(--font-size-xs);
-  --text-tertiary-hover: theme(colors.slate.500);
-
-  --text-disabled: theme(colors.slate.400);
-  --text-warning: theme(colors.red.600);
-
-  /* Link */
-  --link-primary: theme(colors.blue.600);
-  --link-size-primary: var(--font-size-sm);
-  --link-primary-hover: theme(colors.blue.700);
-
-  --link-secondary: theme(colors.blue.500);
-  --link-size-secondary: var(--font-size-xs);
-  --link-secondary-hover: theme(colors.blue.600);
-
-  /* Semantic */
-  --success: theme(colors.emerald.600);
-  --warning: theme(colors.amber.500);
-  --info: theme(colors.sky.500);
-
-  /*custom */
-  --scrollbar-track: #f1f5f9;
-  --scrollbar-thumb: #cbd5e1;
-  --scrollbar-thumb-hover: #94a3b8;
-}
-
-.dark {
-  /* Brand */
-  --primary: theme(colors.blue.500);
-  --primary-hover: theme(colors.blue.400);
-  --primary-active: theme(colors.blue.300);
-
-  --secondary: theme(colors.zinc.900);
-  --secondary-foreground: theme(colors.zinc.100);
-  --secondary-border: theme(colors.zinc.700);
-
-  --destructive: theme(colors.red.500);
-
-  /* Text */
-  --text-primary: theme(colors.slate.50);
-
-  --text-secondary: theme(colors.slate.200);
-  --text-secondary-hover: theme(colors.slate.100);
-
-  --text-tertiary: theme(colors.slate.300);
-  --text-tertiary-hover: theme(colors.slate.200);
-
-  --text-disabled: theme(colors.slate.500);
-
-  --text-warning-primary: theme(colors.red.500);
-  --text-warning-secondary: theme(colors.red.500);
-
-  /* Link */
-
-  --link-primary: theme(colors.blue.400);
-  --link-primary-hover: theme(colors.blue.300);
-
-  --link-secondary: theme(colors.blue.500);
-  --link-secondary-hover: theme(colors.blue.400);
-
-  /* Semantic */
-  --success: theme(colors.emerald.500);
-  --warning: theme(colors.amber.400);
-  --info: theme(colors.sky.400);
-
-  /*custom */
-  --scrollbar-track: #18181b;
-  --scrollbar-thumb: #52525b;
-  --scrollbar-thumb-hover: #71717a;
-}
+/* ==========================================================================
+           1. VARIABLES & THEMING (CSS Custom Properties)
+   ========================================================================== */
 
 @theme {
-  /* Brand */
+
+  /* ------------------------------------------------------------------------
+     1.1 STATIC DESIGN TOKENS (Giá trị cố định, không đổi theo Theme)
+     -> Khai báo token mới & tự động phát sinh Utility Classes
+     ------------------------------------------------------------------------ */
+
+  /*  -------- Font sizes  --------  */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+
+  /*  -------- Media query   --------  */
+  --breakpoint-3xl: 120rem;
+
+
+  /* ------------------------------------------------------------------------
+     1.2 DYNAMIC DESIGN TOKENS (Giá trị động, phụ thuộc Light/Dark)
+     -> Đóng gói CSS Variables từ :root & .dark thành Utility Classes
+     ------------------------------------------------------------------------ */
+
+
+  /*  -------- Brand   -------- */
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
 
-  /* Text */
+  /*   --------  Font family  -------- */
+
+  --font-sans: "Be Vietnam Pro", sans-serif;
+
+  /*   --------  Text  --------  */
   --color-text-primary: var(--text-primary);
 
   --color-text-secondary: var(--text-secondary);
@@ -111,21 +49,275 @@
   --color-text-disabled: var(--text-disabled);
   --color-text-warning: var(--text-warning);
 
-  /* Border */
+  /*  --------  Border   -------- */
   --color-border-secondary: var(--secondary-border);
 
-  /* Link */
+  /*  --------  Link  -------- */
 
   --color-link: var(--link-primary);
   --color-link-hover: var(--link-primary-hover);
 
-  /* Font sizes */
-  --font-size-xs: 0.75rem;
-  --font-size-sm: 0.875rem;
-  --font-size-base: 1rem;
-  --font-size-lg: 1.125rem;
+
+
 }
 
+:root {
+
+
+
+  /* ======================= Brand ======================= */
+  --primary: var(--color-blue-600);
+  --primary-hover: var(--color-blue-700);
+  --primary-active: var(--color-blue-800);
+  --primary-foreground: white;
+
+
+  --secondary: var(--color-zinc-100);
+  --secondary-hover: var(--color-zinc-200);
+  --secondary-active: var(--color-zinc-300);
+  --secondary-foreground: var(--color-zinc-900);
+
+
+  --destructive: var(--color-red-600);
+  --destructive-foreground: white;
+
+
+  /* ======================= Background  =======================*/
+
+  --bg-color: var(--color-slate-50);
+
+  /*  ======================= Text  =======================*/
+
+  --text-color: var(--color-slate-900);
+  --text-primary: var(--color-slate-900);
+
+  --text-secondary: var(--color-slate-600);
+  --text-size-secondary: var(--font-size-sm);
+  --text-secondary-hover: var(--color-slate-700);
+
+  --text-tertiary: var(--color-slate-400);
+  --text-size-tertiary: var(--font-size-xs);
+  --text-tertiary-hover: var(--color-slate-500);
+
+  --text-disabled: var(--color-slate-400);
+  --text-warning: var(--color-red-600);
+
+  /*  ======================= Link ======================= */
+  --link-primary: var(--color-blue-600);
+  --link-size-primary: var(--font-size-sm);
+  --link-primary-hover: var(--color-blue-700);
+
+  --link-secondary: var(--color-blue-500);
+  --link-size-secondary: var(--font-size-xs);
+  --link-secondary-hover: var(--color-blue-600);
+
+  /* ======================= Semantic =======================*/
+  --success: var(--color-emerald-600);
+  --warning: var(--color-amber-500);
+  --info: var(--color-sky-500);
+
+  /* ======================= custom scrollbar ======================= */
+  --scrollbar-track: #f1f5f9;
+  --scrollbar-thumb: #cbd5e1;
+  --scrollbar-thumb-hover: #94a3b8;
+
+
+  /*  ======================= custom autofill ======================= */
+  --autofill-bg: #ffffff;
+  --autofill-text: #18181b;
+
+}
+
+.dark {
+  /*  ======================= Brand  ======================= */
+  --primary: var(--color-blue-500);
+  --primary-hover: var(--color-blue-400);
+  --primary-active: var(--color-blue-300);
+
+
+  --secondary: var(--color-zinc-900);
+  --secondary-foreground: var(--color-zinc-100);
+  --secondary-border: var(--color-zinc-700);
+
+
+  --destructive: var(--color-red-500);
+
+
+
+
+  /*  ======================= Background ======================= */
+
+  --bg-color: var(--color-zinc-900);
+
+  /*  ======================= Text  ======================= */
+
+  --text-color: var(--color-zinc-100);
+
+  --text-primary: var(--color-slate-50);
+
+  --text-secondary: var(--color-slate-200);
+  --text-secondary-hover: var(--color-slate-100);
+
+  --text-tertiary: var(--color-slate-300);
+  --text-tertiary-hover: var(--color-slate-200);
+
+  --text-disabled: var(--color-slate-500);
+
+  --text-warning-primary: var(--color-red-500);
+  --text-warning-secondary: var(--color-red-500);
+
+  /*  ======================= Link  ======================= */
+
+  --link-primary: var(--color-blue-400);
+  --link-primary-hover: var(--color-blue-300);
+
+  --link-secondary: var(--color-blue-500);
+  --link-secondary-hover: var(--color-blue-400);
+
+  /*  ======================= Semantic  ======================= */
+  --success: var(--color-emerald-500);
+  --warning: var(--color-amber-400);
+  --info: var(--color-sky-400);
+
+  /*  ======================= custom  ======================= */
+  --scrollbar-track: #18181b;
+  --scrollbar-thumb: #52525b;
+  --scrollbar-thumb-hover: #71717a;
+
+  /*  ======================= custom autofill ======================= */
+  --autofill-bg: #18181b;
+  --autofill-text: #f4f4f5;
+
+
+}
+
+
+
+
+/* ==========================================================================
+   2. RESET & BASE STYLES
+   ========================================================================== */
+
+
+@layer base {
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scrollbar-gutter: stable;
+  }
+
+  html,
+  body {
+    @apply text-slate-900 dark:text-zinc-100;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    font-family: var(--font-sans);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.5;
+  }
+}
+
+
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+/* Custom autofill styles */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--autofill-text);
+  -webkit-box-shadow: 0 0 0 1000px var(--autofill-bg) inset;
+  box-shadow: 0 0 0 1000px var(--autofill-bg) inset;
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+
+
+
+
+/* ==========================================================================
+   3. TYPOGRAPHY
+   ========================================================================== */
+
+
+
+
+
+
+/* ==========================================================================
+   4. LAYOUT & GRID
+   ========================================================================== */
+
+
+
+
+
+
+/* ==========================================================================
+   5. COMPONENTS (Buttons, Cards, Forms, etc.)
+   ========================================================================== */
+@layer components {
+
+  /* Input */
+  .input {
+    @apply w-full rounded-md border px-3 py-2 text-sm transition-colors duration-200 outline-none;
+  }
+
+  .input-default {
+    @apply border-slate-300 bg-slate-100/50 placeholder:text-slate-400 hover:border-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-600/20 dark:border-zinc-700 dark:bg-zinc-900 dark:text-slate-100 dark:placeholder:text-zinc-500 dark:hover:border-zinc-600 dark:focus:border-blue-500 dark:focus:ring-blue-500/20;
+  }
+
+  .input-disabled {
+    @apply cursor-not-allowed border-slate-200 bg-slate-100 text-slate-500 opacity-70 placeholder:text-slate-400 dark:border-zinc-800 dark:bg-zinc-900/60 dark:text-zinc-500 dark:placeholder:text-zinc-600;
+  }
+
+  .input-error {
+    @apply border-red-500 text-red-900 placeholder:text-red-300 hover:border-red-600 focus:border-red-600 focus:ring-2 focus:ring-red-500/20 dark:border-red-500 dark:text-red-100 dark:placeholder:text-red-400 dark:hover:border-red-400 dark:focus:border-red-400 dark:focus:ring-red-400/20;
+  }
+
+  .checkbox {
+    @apply flex cursor-pointer items-center justify-center rounded-sm border border-slate-500 bg-slate-100 transition-colors duration-200 outline-none hover:bg-blue-500 focus-visible:border-blue-500 focus-visible:ring-2 focus-visible:ring-blue-500/20 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:border-blue-600 data-[state=checked]:bg-blue-600 dark:bg-slate-900/40;
+  }
+
+  .back-button {
+    @apply flex-center size-8 cursor-pointer rounded-full text-text-secondary transition-colors duration-300 border-secondary hover:bg-sky-500 hover:text-slate-100 dark:hover:bg-sky-600 dark:hover:text-slate-50;
+  }
+
+  .error-message {
+    @apply z-20 w-full rounded-sm border-l-5 border-red-300 bg-red-50 px-2 py-2 text-xs text-red-700 dark:border-red-600 dark:bg-red-950/40 dark:text-red-300;
+  }
+
+  .button-primary {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+
+    &:hover {
+      background-color: var(--primary-hover)
+    }
+  }
+}
+
+
+
+
+
+/* ==========================================================================
+   6. UTILITIES / HELPERS
+   ========================================================================== */
 @utility text-secondary {
   color: var(--text-secondary);
 
@@ -173,98 +365,40 @@
   border: 1px solid var(--secondary-border);
 }
 
-.custom-scrollbar::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-.custom-scrollbar::-webkit-scrollbar-track {
-  background: var(--scrollbar-track);
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb {
-  background: var(--scrollbar-thumb);
-  border-radius: 9999px;
-  border: 2px solid var(--scrollbar-track);
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: var(--scrollbar-thumb-hover);
-}
-
-html body {
-  @apply bg-slate-50 text-slate-900 dark:bg-zinc-900 dark:text-zinc-100;
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-}
-
-html {
-  scroll-behavior: smooth;
-  scrollbar-gutter: stable;
-}
-
-@theme {
-  --breakpoint-3xl: 120rem;
-}
-
-input[type="number"]::-webkit-outer-spin-button
-  input[type="number"]::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-:root {
-  --autofill-bg: #ffffff;
-  --autofill-text: #18181b;
-}
-
-.dark {
-  --autofill-bg: #18181b;
-  --autofill-text: #f4f4f5;
-}
-
-input:-webkit-autofill
-  input:-webkit-autofill:hover
-  input:-webkit-autofill:focus {
-  -webkit-text-fill-color: var(--autofill-text);
-  -webkit-box-shadow: 0 0 0 1000px var(--autofill-bg) inset;
-  box-shadow: 0 0 0 1000px var(--autofill-bg) inset;
-  transition: background-color 9999s ease-in-out 0s;
-}
-
 @utility flex-center {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-@layer components {
-  /* Input */
-  .input {
-    @apply w-full rounded-md border px-3 py-2 text-sm transition-colors duration-200 outline-none;
+
+
+@layer utilities {
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
   }
 
-  .input-default {
-    @apply border-slate-300 bg-slate-100/50 placeholder:text-slate-400 hover:border-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-600/20 dark:border-zinc-700 dark:bg-zinc-900 dark:text-slate-100 dark:placeholder:text-zinc-500 dark:hover:border-zinc-600 dark:focus:border-blue-500 dark:focus:ring-blue-500/20;
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
   }
 
-  .input-disabled {
-    @apply cursor-not-allowed border-slate-200 bg-slate-100 text-slate-500 opacity-70 placeholder:text-slate-400 dark:border-zinc-800 dark:bg-zinc-900/60 dark:text-zinc-500 dark:placeholder:text-zinc-600;
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: 9999px;
+    border: 2px solid var(--scrollbar-track);
   }
 
-  .input-error {
-    @apply border-red-500 text-red-900 placeholder:text-red-300 hover:border-red-600 focus:border-red-600 focus:ring-2 focus:ring-red-500/20 dark:border-red-500 dark:text-red-100 dark:placeholder:text-red-400 dark:hover:border-red-400 dark:focus:border-red-400 dark:focus:ring-red-400/20;
-  }
-
-  .checkbox {
-    @apply flex cursor-pointer items-center justify-center rounded-sm border border-slate-500 bg-slate-100 transition-colors duration-200 outline-none hover:bg-blue-500 focus-visible:border-blue-500 focus-visible:ring-2 focus-visible:ring-blue-500/20 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:border-blue-600 data-[state=checked]:bg-blue-600 dark:bg-slate-900/40;
-  }
-
-  .back-button {
-    @apply flex-center size-8 cursor-pointer rounded-full text-text-secondary transition-colors duration-300 border-secondary hover:bg-sky-500 hover:text-slate-100 dark:hover:bg-sky-600 dark:hover:text-slate-50;
-  }
-
-  .error-message {
-    @apply z-20 w-full rounded-sm border-l-5 border-red-300 bg-red-50 px-2 py-2 text-xs text-red-700 dark:border-red-600 dark:bg-red-950/40 dark:text-red-300;
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-thumb-hover);
   }
 }
+
+
+
+
+
+
+/* ==========================================================================
+   7. MEDIA QUERIES & RESPONSIVE DESIGN
+   ========================================================================== */

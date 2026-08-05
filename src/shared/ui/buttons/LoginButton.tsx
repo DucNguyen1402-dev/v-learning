@@ -9,14 +9,7 @@ type LoginButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 };
 const LoginButton = ({ children, className, ...props }: LoginButtonProps) => {
   return (
-    <Button
-      className={cn(
-        "text-slate-50",
-        "bg-primary hover:bg-primary/90",
-        className,
-      )}
-      {...props}
-    >
+    <Button className={cn("button-primary", className)} {...props}>
       {children}
     </Button>
   );
