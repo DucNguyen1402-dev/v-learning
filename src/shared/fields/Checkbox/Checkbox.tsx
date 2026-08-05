@@ -9,6 +9,23 @@ import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
 import { cn } from "@shared/utils";
 import { Check } from "lucide-react";
 
+const checkboxSizeClasses = {
+  sm: {
+    container: " w-4 h-4",
+    indicator: "w-3 h-3",
+  },
+  md: {
+    container: " w-5 h-5",
+    indicator: "w-4 h-4",
+  },
+  lg: {
+    container: " w-6 h-6",
+    indicator: "w-5 h-5",
+  },
+};
+
+type CheckboxSize = "sm" | "md" | "lg";
+
 export type CheckboxProps = Omit<
   ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>,
   "children"
@@ -16,6 +33,7 @@ export type CheckboxProps = Omit<
   children?: ReactNode;
   checkboxClassName?: string;
   labelClassName?: string;
+  size?: CheckboxSize;
 };
 
 const Checkbox = forwardRef<
@@ -31,12 +49,13 @@ const Checkbox = forwardRef<
       checkboxClassName,
       labelClassName,
       id,
+      size = "md",
       ...props
     },
     ref,
   ) => {
     return (
-      <label className="inline-flex cursor-pointer items-center select-none">
+      <label className="flex cursor-pointer items-center gap-2 select-none">
         <CheckboxPrimitive.Root
           ref={ref}
           checked={checked}
@@ -44,28 +63,25 @@ const Checkbox = forwardRef<
           disabled={disabled}
           onCheckedChange={onCheckedChange}
           className={cn(
-            "flex h-5 w-5 items-center justify-center rounded-sm",
-            "border border-slate-500 bg-slate-100 dark:bg-slate-900/40",
-            "cursor-pointer disabled:cursor-not-allowed disabled:opacity-50",
-            "transition-colors duration-200",
-            "hover:bg-indigo-500",
-            "data-[state=checked]:border-indigo-600 data-[state=checked]:bg-indigo-600",
-            "focus-visible:ring-2",
-            "focus-visible:ring-indigo-500/20",
-            "focus-visible:border-indigo-500",
-            "focus-visible:outline-none",
+            "checkbox",
             checkboxClassName,
+            checkboxSizeClasses[size].container,
           )}
           {...props}
         >
           <CheckboxPrimitive.Indicator>
-            <Check className="h-4 w-4 text-white" />
+            <Check
+              className={cn(
+                "text-slate-50",
+                checkboxSizeClasses[size].indicator,
+              )}
+            />
           </CheckboxPrimitive.Indicator>
         </CheckboxPrimitive.Root>
         {children && (
           <span
             className={cn(
-              "ml-2 inline-flex items-center select-none",
+              "text-secondary select-none",
               disabled ? "cursor-not-allowed opacity-50" : "cursor-pointer",
               labelClassName,
             )}

@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant dark (&:where(.dark .dark *));
 
 :root {
   /* Brand */
@@ -18,10 +18,30 @@
 
   /* Text */
   --text-primary: theme(colors.slate.900);
+
   --text-secondary: theme(colors.slate.600);
-  --text-tertiary: theme(colors.slate.500);
+  --text-size-secondary: var(--font-size-sm);
+  --text-secondary-hover: theme(colors.slate.700);
+
+  --text-tertiary: theme(colors.slate.400);
+  --text-size-tertiary: var(--font-size-xs);
+  --text-tertiary-hover: theme(colors.slate.500);
+
   --text-disabled: theme(colors.slate.400);
   --text-warning: theme(colors.red.600);
+
+
+  /* Link */
+  --link-primary: theme(colors.blue.600);
+  --link-size-primary: var(--font-size-sm);
+  --link-primary-hover: theme(colors.blue.700);
+
+
+  --link-secondary: theme(colors.blue.500);
+  --link-size-secondary: var(--font-size-xs);
+  --link-secondary-hover: theme(colors.blue.600);
+
+
 
   /* Semantic */
   --success: theme(colors.emerald.600);
@@ -47,12 +67,27 @@
   --destructive: theme(colors.red.500);
 
   /* Text */
-  --text-primary: theme(colors.slate.100);
-  --text-secondary: theme(colors.slate.300);
-  --text-tertiary: theme(colors.slate.400);
+  --text-primary: theme(colors.slate.50);
+
+  --text-secondary: theme(colors.slate.200);
+  --text-secondary-hover: theme(colors.slate.100);
+
+  --text-tertiary: theme(colors.slate.300);
+  --text-tertiary-hover: theme(colors.slate.200);
+
   --text-disabled: theme(colors.slate.500);
+
   --text-warning-primary: theme(colors.red.500);
   --text-warning-secondary: theme(colors.red.500);
+
+  /* Link */
+
+
+  --link-primary: theme(colors.blue.400);
+  --link-primary-hover: theme(colors.blue.300);
+
+  --link-secondary: theme(colors.blue.500);
+  --link-secondary-hover: theme(colors.blue.400);
 
   /* Semantic */
   --success: theme(colors.emerald.500);
@@ -65,6 +100,8 @@
   --scrollbar-thumb-hover: #71717a;
 }
 
+
+
 @theme {
   /* Brand */
   --color-primary: var(--primary);
@@ -72,10 +109,77 @@
 
   /* Text */
   --color-text-primary: var(--text-primary);
+
   --color-text-secondary: var(--text-secondary);
+  --color-text-secondary-hover: var(--text-secondary-hover);
+
   --color-text-tertiary: var(--text-tertiary);
+
+
   --color-text-disabled: var(--text-disabled);
   --color-text-warning: var(--text-warning);
+
+
+  /* Link */
+
+  --color-link: var(--link-primary);
+  --color-link-hover: var(--link-primary-hover);
+
+  /* Font sizes */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+}
+
+
+@utility text-secondary {
+  color: var(--text-secondary);
+
+  font-size: var(--text-size-secondary);
+
+  &:hover {
+    color: var(--text-secondary-hover);
+  }
+
+}
+
+@utility text-tertiary {
+  color: var(--text-tertiary);
+  font-size: var(--text-size-tertiary);
+
+  &:hover {
+    color: var(--text-tertiary-hover);
+  }
+
+  transition: color 200ms;
+
+}
+
+
+@utility link-primary {
+  color: var(--link-primary);
+  font-size: var(--link-size-primary);
+  font-weight: 600;
+
+  &:hover {
+    color: var(--link-primary-hover);
+    text-decoration: underline;
+
+  }
+}
+
+
+@utility link-secondary {
+  color: var(--link-secondary);
+  font-size: var(--link-size-secondary);
+  font-weight: 600;
+
+  &:hover {
+    color: var(--link-secondary-hover);
+    text-decoration: underline;
+
+  }
 }
 
 .custom-scrollbar::-webkit-scrollbar {
@@ -97,8 +201,7 @@
   background: var(--scrollbar-thumb-hover);
 }
 
-html,
-body {
+html body {
   @apply bg-slate-50 text-slate-900 dark:bg-zinc-900 dark:text-zinc-100;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
@@ -113,8 +216,7 @@ html {
   --breakpoint-3xl: 120rem;
 }
 
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
+input[type=number]::-webkit-outer-spin-button input[type=number]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
@@ -129,9 +231,7 @@ input[type="number"]::-webkit-inner-spin-button {
   --autofill-text: #f4f4f5;
 }
 
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus {
+input:-webkit-autofill input:-webkit-autofill:hover input:-webkit-autofill:focus {
   -webkit-text-fill-color: var(--autofill-text);
   -webkit-box-shadow: 0 0 0 1000px var(--autofill-bg) inset;
   box-shadow: 0 0 0 1000px var(--autofill-bg) inset;
@@ -142,4 +242,29 @@ input:-webkit-autofill:focus {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+@layer components {
+
+  /* Input */
+  .input {
+    @apply w-full rounded-md border px-3 py-2 text-sm transition-colors duration-200 outline-none;
+  }
+
+  .input-default {
+    @apply border-slate-300 bg-slate-100/50 placeholder:text-slate-400 hover:border-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-600/20 dark:border-zinc-700 dark:bg-zinc-900 dark:text-slate-100 dark:placeholder:text-zinc-500 dark:hover:border-zinc-600 dark:focus:border-blue-500 dark:focus:ring-blue-500/20;
+  }
+
+  .input-disabled {
+    @apply border-slate-200 bg-slate-100 text-slate-500 placeholder:text-slate-400 cursor-not-allowed opacity-70 dark:border-zinc-800 dark:bg-zinc-900/60 dark:text-zinc-500 dark:placeholder:text-zinc-600;
+  }
+
+  .input-error {
+    @apply border-red-500 text-red-900 placeholder:text-red-300 hover:border-red-600 focus:border-red-600 focus:ring-2 focus:ring-red-500/20 dark:border-red-500 dark:text-red-100 dark:placeholder:text-red-400 dark:hover:border-red-400 dark:focus:border-red-400 dark:focus:ring-red-400/20;
+  }
+
+  .checkbox {
+    @apply flex items-center justify-center outline-none rounded-sm border border-slate-500 bg-slate-100 dark:bg-slate-900/40 cursor-pointer disabled:cursor-not-allowed disabled:opacity-50 transition-colors duration-200 hover:bg-blue-500 data-[state=checked]:border-blue-600 data-[state=checked]:bg-blue-600 focus-visible:ring-2 focus-visible:ring-blue-500/20 focus-visible:border-blue-500;
+  }
+
 }
