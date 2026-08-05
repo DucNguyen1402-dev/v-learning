@@ -1,13 +1,17 @@
 import {
+  BackButton,
   LoginActions,
   LoginFooter,
   LoginForm,
   LoginHeader,
 } from "@modules/login/components";
 
-const Login = () => {
+const LoginPage = () => {
   return (
-    <div className="flex-center min-h-screen bg-slate-100 p-4">
+    <div className="relative flex-center min-h-screen bg-slate-100 p-4">
+      <div className="absolute top-3 left-3">
+        <BackButton />
+      </div>
       <div className="flex w-full max-w-md flex-col gap-6 rounded-xl border border-slate-300 bg-slate-50 p-8 shadow-sm">
         <LoginHeader />
 
@@ -27,4 +31,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginPage;

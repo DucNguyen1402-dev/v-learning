@@ -1,6 +1,6 @@
 // import { Navigate, Route, Routes } from "react-router-dom";
-import { Login } from "@modules/login";
+import { LoginRoute } from "@modules/login";
 
-const App = () => <Login />;
+const App = () => <LoginRoute />;
 
 export default App;
