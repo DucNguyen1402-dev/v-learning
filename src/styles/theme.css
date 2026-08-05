@@ -1,0 +1,205 @@
+@theme {
+  /*  -------- Brand   -------- */
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  /*   --------  Text  --------  */
+  --color-text-primary: var(--text-primary);
+
+  --color-text-secondary: var(--text-secondary);
+
+  --color-text-tertiary: var(--text-tertiary);
+
+  --color-text-disabled: var(--text-disabled);
+  --color-text-warning: var(--text-warning);
+
+  /*  --------  Border   -------- */
+
+  --color-border-primary-warning: var(--border-primary-warning);
+
+  --color-border-secondary: var(--secondary-border);
+
+  /*  --------  Link  -------- */
+  --color-link: var(--link-primary);
+  --color-link-hover: var(--link-primary-hover);
+
+  /*  --------  semantci  -------- */
+
+  --color-required: var(--danger);
+}
+
+:root {
+  /* ==========================================================
+   * Typography
+   * ========================================================== */
+
+  /* Font family */
+  --font-sans: "Be Vietnam Pro", sans-serif;
+
+  /* Font size */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+
+  /* ==========================================================
+   * Breakpoints
+   * ========================================================== */
+
+  --breakpoint-3xl: 120rem;
+
+  /* ==========================================================
+   * Brand Colors
+   * ========================================================== */
+
+  --primary: var(--color-blue-600);
+  --primary-hover: var(--color-blue-700);
+  --primary-foreground: white;
+
+  --secondary: var(--color-zinc-100);
+  --secondary-hover: var(--color-zinc-200);
+  --secondary-foreground: var(--color-zinc-900);
+
+  --destructive: var(--color-red-600);
+  --destructive-foreground: white;
+
+  /* ==========================================================
+   * Background
+   * ========================================================== */
+
+  --bg-primary: var(--color-slate-50);
+  --bg-primary-warning: var(--color-red-50);
+
+  /* ==========================================================
+ * Border
+ * ========================================================== */
+
+  --border-primary-warning: var(--color-red-700);
+
+  /* ==========================================================
+   * Text
+   * ========================================================== */
+
+  --text-primary: var(--color-slate-900);
+  --text-secondary: var(--color-slate-600);
+  --text-tertiary: var(--color-slate-400);
+
+  --text-primary-size: var(--font-size-base);
+  --text-secondary-size: var(--font-size-sm);
+  --text-tertiary-size: var(--font-size-xs);
+
+  --text-secondary-hover: var(--color-slate-700);
+  --text-tertiary-hover: var(--color-slate-500);
+
+  --text-disabled: var(--color-slate-400);
+
+  --text-warning-primary: var(--color-red-700);
+  --text-warning-secondary: var(--color-red-600);
+
+  /* ==========================================================
+   * Links
+   * ========================================================== */
+
+  --link-primary: var(--color-blue-600);
+  --link-primary-hover: var(--color-blue-700);
+  --link-primary-size: var(--font-size-sm);
+
+  --link-secondary: var(--color-blue-500);
+  --link-secondary-hover: var(--color-blue-600);
+  --link-secondary-size: var(--font-size-xs);
+
+  /* ==========================================================
+   * Semantic
+   * ========================================================== */
+  --danger: var(--color-red-600);
+
+  /* ==========================================================
+   * Scrollbar
+   * ========================================================== */
+
+  --scrollbar-track: #f1f5f9;
+  --scrollbar-thumb: #cbd5e1;
+  --scrollbar-thumb-hover: #94a3b8;
+
+  /* ==========================================================
+   * Autofill
+   * ========================================================== */
+
+  --autofill-bg: #ffffff;
+  --autofill-text: #18181b;
+}
+
+.dark {
+  /* ==========================================================
+   * Brand Colors
+   * ========================================================== */
+
+  --primary: var(--color-blue-500);
+  --primary-hover: var(--color-blue-400);
+  --primary-active: var(--color-blue-300);
+
+  --secondary: var(--color-zinc-900);
+  --secondary-foreground: var(--color-zinc-100);
+  --secondary-border: var(--color-zinc-700);
+
+  --destructive: var(--color-red-500);
+
+  /* ==========================================================
+  * Background
+   * ========================================================== */
+
+  --bg-primary: var(--color-zinc-900);
+  --bg-primary-warning: --alpha(var(--color-red-950) / 40%);
+
+  /* ==========================================================
+  *   Border
+  * ========================================================== */
+
+  --border-primary-warning: var(--color-red-300);
+
+  /* ==========================================================
+   * Text
+   * ========================================================== */
+
+  --text-primary: var(--color-slate-100);
+  --text-secondary: var(--color-slate-200);
+  --text-tertiary: var(--color-slate-300);
+
+  --text-secondary-hover: var(--color-slate-100);
+  --text-tertiary-hover: var(--color-slate-200);
+
+  --text-disabled: var(--color-slate-500);
+
+  --text-warning-primary: var(--color-red-300);
+  --text-warning-secondary: var(--color-red-400);
+
+  /* ==========================================================
+   * Links
+   * ========================================================== */
+
+  --link-primary: var(--color-blue-400);
+  --link-primary-hover: var(--color-blue-300);
+
+  --link-secondary: var(--color-blue-500);
+  --link-secondary-hover: var(--color-blue-400);
+
+  /* ==========================================================
+   * Semantic
+   * ========================================================== */
+  --danger: var(--color-red-500);
+
+  /* ==========================================================
+   * Scrollbar
+   * ========================================================== */
+
+  --scrollbar-track: #18181b;
+  --scrollbar-thumb: #52525b;
+  --scrollbar-thumb-hover: #71717a;
+
+  /* ==========================================================
+   * Autofill
+   * ========================================================== */
+
+  --autofill-bg: #18181b;
+  --autofill-text: #f4f4f5;
+}

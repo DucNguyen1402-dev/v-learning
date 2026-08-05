@@ -24,7 +24,7 @@ const FormLabel = ({
       )}
     >
       {children}
-      {required && <span className="ml-1.5 text-text-warning">*</span>}
+      {required && <span className="ml-1.5 text-required">*</span>}
     </label>
   );
 };

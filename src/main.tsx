@@ -7,9 +7,9 @@ import { QueryClient } from "@tanstack/react-query";
 
 import App from "./App.jsx";
 
-export const queryClient = new QueryClient();
+import "@styles/index.css";
 
-import "./index.css";
+export const queryClient = new QueryClient();
 
 createRoot(document.getElementById("root")!).render(
   <BrowserRouter>
