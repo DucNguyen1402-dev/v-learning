@@ -15,7 +15,8 @@
       "@routes/*": ["src/routes/*"],
       "@providers/*": ["src/providers/*"],
       "@shared/*": ["src/shared/*"],
-      "@styles/*": ["src/styles/*"]
+      "@styles/*": ["src/styles/*"],
+      "@layouts/*": ["src/layouts/*"]
     },
 
     /* Bundler mode */

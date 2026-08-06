@@ -11,10 +11,10 @@ export default defineConfig({
       "@assets": fileURLToPath(new URL("./src/assets", import.meta.url)),
       "@modules": fileURLToPath(new URL("./src/modules", import.meta.url)),
       "@providers": fileURLToPath(new URL("./src/providers", import.meta.url)),
+      "@layouts": fileURLToPath(new URL("./src/layouts", import.meta.url)),
       "@routes": fileURLToPath(new URL("./src/routes", import.meta.url)),
       "@shared": fileURLToPath(new URL("./src/shared", import.meta.url)),
       "@styles": fileURLToPath(new URL("./src/styles", import.meta.url)),
-      
     },
   },
 });
