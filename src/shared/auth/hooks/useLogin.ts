@@ -1,7 +1,7 @@
-import { saveAccessToken, saveCurrentUser } from "@shared/utils";
+import { saveAccessToken, saveCurrentUser } from "@shared/auth/utils";
 import { useMutation } from "@tanstack/react-query";
 
-import { login } from "./api/login";
+import { login } from "../api/login";
 
 type LoginPayload = {
   taiKhoan: string;
@@ -14,7 +14,7 @@ type LoginMutationVariables = {
 };
 
 export const useLogin = () => {
-  return useMutation({
+  const mutation = useMutation({
     mutationFn: ({ payload }: LoginMutationVariables) => login(payload),
     onSuccess: (data, variable) => {
       const user = {
@@ -27,4 +27,10 @@ export const useLogin = () => {
       saveCurrentUser(user, variable.remember);
     },
   });
+
+  return {
+    login: mutation.mutateAsync,
+    isPending: mutation.isPending,
+    error: mutation.error,
+  };
 };

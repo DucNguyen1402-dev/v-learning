@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
 import type { CurrentUser } from "@shared/auth";
-import { clearAuthSession, getCurrentUser } from "@shared/utils";
+import { clearAuthSession, getCurrentUser } from "@shared/auth";
 import { CircleUser } from "lucide-react";
 
 interface Course {

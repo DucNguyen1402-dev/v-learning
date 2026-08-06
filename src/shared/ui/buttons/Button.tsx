@@ -5,6 +5,7 @@ import type {
   SVGProps,
 } from "react";
 
+import { Spinner } from "@shared/overlays";
 import { cn } from "@shared/utils";
 
 const sizes = {
@@ -47,7 +48,7 @@ const Button = ({
   children,
   icon: Icon,
   size = "md",
-  loading = false,
+  loading = true,
   fullWidth = false,
   className = "",
   ...props
@@ -70,6 +71,7 @@ const Button = ({
       {...props}
     >
       {Icon && !loading && <Icon className={currentSize.icon} />}
+      {loading && <Spinner className={currentSize.icon} />}
 
       <span>{children}</span>
     </button>

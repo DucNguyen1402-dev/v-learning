@@ -1,16 +1,15 @@
 import type { UseFormHandleSubmit } from "react-hook-form";
 
 import type { LoginFormValues } from "@modules/login/type";
+import { Login } from "@shared/auth";
 import { useRouteBack } from "@shared/hooks";
-
-import { useLogin } from "./useLogin";
 
 type UseLoginActionsParams = {
   handleSubmit: UseFormHandleSubmit<LoginFormValues>;
 };
 
 export const useLoginActions = ({ handleSubmit }: UseLoginActionsParams) => {
-  const { mutateAsync } = useLogin();
+  const { login } = Login.use();
   const routeBack = useRouteBack();
 
   type onValidParam = {
@@ -25,7 +24,7 @@ export const useLoginActions = ({ handleSubmit }: UseLoginActionsParams) => {
       matKhau: data.matKhau,
     };
     try {
-      await mutateAsync({ payload, remember: data.remember });
+      await login({ payload, remember: data.remember });
       routeBack();
     } catch (error) {
       console.log(error);
