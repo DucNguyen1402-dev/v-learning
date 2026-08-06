@@ -1,7 +1,13 @@
+import type { ReactNode } from "react";
+
 import { useToastActions, useToastEffect, useToastState } from "./hooks";
 import { ToastContext } from "./ToastContext";
+import type { ToastContextValues } from "./ToastContextValues";
+interface ToastProviderProps {
+  children: ReactNode;
+}
 
-const ToastProvider = ({ children }) => {
+const ToastProvider = ({ children }: ToastProviderProps) => {
   const { isOpen, variant, message, toastRef, autoHideTimeoutRef, setToast } =
     useToastState();
 
@@ -16,7 +22,7 @@ const ToastProvider = ({ children }) => {
     autoHideTimeoutRef,
   });
 
-  const value = {
+  const value: ToastContextValues = {
     state: {
       ref: toastRef,
       message,

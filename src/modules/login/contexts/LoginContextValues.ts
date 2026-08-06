@@ -13,9 +13,10 @@ type HookFormProps<T extends FieldValues> = {
   control: Control<T>;
 };
 
-export type LoginContextValue = {
+export type LoginContextValues = {
   hookForm: HookFormProps<LoginFormValues>;
   actions: {
     onLoginClick: () => void;
   };
+  loading: boolean;
 };

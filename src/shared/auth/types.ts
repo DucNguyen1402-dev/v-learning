@@ -12,3 +12,11 @@ export type LoginResponse = {
   maNhom: string;
   maLoaiNguoiDung: string;
 };
+
+export type LoginFn = ({
+  payload,
+  remember,
+}: {
+  payload: LoginPayload;
+  remember: boolean;
+}) => Promise<LoginResponse>;

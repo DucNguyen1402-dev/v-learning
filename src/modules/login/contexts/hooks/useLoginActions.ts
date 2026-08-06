@@ -1,15 +1,18 @@
 import type { UseFormHandleSubmit } from "react-hook-form";
 
 import type { LoginFormValues } from "@modules/login/type";
-import { Login } from "@shared/auth";
+import type { LoginFn } from "@shared/auth";
 import { useRouteBack } from "@shared/hooks";
 
 type UseLoginActionsParams = {
   handleSubmit: UseFormHandleSubmit<LoginFormValues>;
+  login: LoginFn;
 };
 
-export const useLoginActions = ({ handleSubmit }: UseLoginActionsParams) => {
-  const { login } = Login.use();
+export const useLoginActions = ({
+  handleSubmit,
+  login,
+}: UseLoginActionsParams) => {
   const routeBack = useRouteBack();
 
   type onValidParam = {

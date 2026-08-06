@@ -3,6 +3,9 @@ export const dualSpinnerSizeClasses = {
   md: "w-10 h-10",
   lg: "w-12 h-12",
 } as const;
+
+export type DualSpinnerSize = keyof typeof dualSpinnerSizeClasses;
+
 export const dualSpinnerColorClasses = {
   primary: {
     outer: "border-t-blue-500 border-l-blue-500",
@@ -25,3 +28,5 @@ export const dualSpinnerColorClasses = {
     inner: "border-r-current border-b-current opacity-60",
   },
 } as const;
+
+export type DualSpinnerColor = keyof typeof dualSpinnerColorClasses;

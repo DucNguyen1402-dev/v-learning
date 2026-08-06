@@ -1,5 +1,7 @@
+import type { ModalType } from "@shared/overlays/modal/constants";
+
 export type ModalContextValues = {
-  open: () => void;
+  open: (modalState: ModalState) => void;
   close: () => void;
   internal: {
     state: {
@@ -15,7 +17,7 @@ export type ModalContextValues = {
 
 export type ModalState = {
   isOpen: boolean;
-  type: string | null;
+  type: ModalType | null;
   title: string;
   subtitle: string;
   onConfirm: (() => void) | null;

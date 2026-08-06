@@ -1,9 +1,24 @@
 import { useEffect } from "react";
+import type { RefObject } from "react";
 
-export function useToastEffect({ toastRef, hideToast, autoHideTimeoutRef }) {
+interface UseToastEffectProps {
+  toastRef: RefObject<HTMLDivElement | null>;
+  hideToast: () => void;
+  autoHideTimeoutRef: RefObject<ReturnType<typeof setTimeout> | null>;
+}
+
+export function useToastEffect({
+  toastRef,
+  hideToast,
+  autoHideTimeoutRef,
+}: UseToastEffectProps) {
   useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (toastRef.current && !toastRef.current.contains(e.target)) {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (
+        toastRef &&
+        toastRef.current &&
+        !toastRef.current.contains(e.target as Node)
+      ) {
         hideToast();
       }
     };

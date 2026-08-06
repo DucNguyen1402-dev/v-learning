@@ -1,20 +1,25 @@
 import type { ReactNode } from "react";
 
+import { Login } from "@shared/auth";
+
 import { useLoginActions, useLoginForm } from "./hooks";
 import { LoginContext } from "./LoginContext";
-import type { LoginContextValue } from "./LoginContextValue";
+import type { LoginContextValues } from "./LoginContextValues";
 
 type LoginProviderProps = {
   children: ReactNode;
 };
 const LoginProvider = ({ children }: LoginProviderProps) => {
-  const { register, errors, isDirty, handleSubmit, control } = useLoginForm();
+  const { login, isPending } = Login.use();
 
-  const { onLoginClick } = useLoginActions({ handleSubmit });
+  const { register, errors, handleSubmit, control } = useLoginForm();
 
-  const value: LoginContextValue = {
-    hookForm: { register, errors, isDirty, control },
+  const { onLoginClick } = useLoginActions({ handleSubmit, login });
+
+  const value: LoginContextValues = {
+    hookForm: { register, errors, control },
     actions: { onLoginClick },
+    loading: isPending,
   };
 
   return (

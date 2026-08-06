@@ -1,6 +1,8 @@
+import type { Entity } from "@shared/domain";
+
 import { ENTITY_LABELS, MODAL_TYPES } from "./index";
 
-export const createDeleteModal = (entity, name) => {
+export const createDeleteModal = (entity: Entity, name?: string) => {
   const entityLabel = ENTITY_LABELS[entity];
   const target = name ? `${entityLabel} "${name}"` : entityLabel;
 

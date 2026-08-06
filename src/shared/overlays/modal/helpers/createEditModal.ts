@@ -1,6 +1,8 @@
+import type { Entity } from "@shared/domain";
+
 import { ENTITY_LABELS, MODAL_TYPES } from "./index";
 
-export const createEditModal = (entity) => {
+export const createEditModal = (entity: Entity) => {
   const entityLabel = ENTITY_LABELS[entity];
 
   return {

@@ -48,7 +48,7 @@ const Button = ({
   children,
   icon: Icon,
   size = "md",
-  loading = true,
+  loading = false,
   fullWidth = false,
   className = "",
   ...props
@@ -71,7 +71,7 @@ const Button = ({
       {...props}
     >
       {Icon && !loading && <Icon className={currentSize.icon} />}
-      {loading && <Spinner className={currentSize.icon} />}
+      {loading && <Spinner className={currentSize.icon} color="brand" />}
 
       <span>{children}</span>
     </button>

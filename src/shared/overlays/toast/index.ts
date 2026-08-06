@@ -1,3 +1,2 @@
-export { Toast } from "./components";
-export { ToastProvider } from "./contexts";
-export { default as toast } from "./toast";
+export { ToastView } from "./components";
+export { default as Toast } from "./Toast";

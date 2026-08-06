@@ -26,13 +26,17 @@ const Spinner = ({
       <div
         className={cn(
           "absolute rounded-full blur-sm",
-          { ...colorClass },
+          colorClass.glow,
           sizeClass.outer,
           className,
         )}
       />
       <div
-        className={cn("animate-spin rounded-full", colorClass, sizeClass.inner)}
+        className={cn(
+          "animate-spin rounded-full [animation-duration:2s]",
+          colorClass.ring,
+          sizeClass.inner,
+        )}
       />
     </div>
   );

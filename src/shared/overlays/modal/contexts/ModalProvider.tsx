@@ -21,7 +21,7 @@ const ModalProvider = ({ children }: ModalProviderProps) => {
   const startLoading = useCallback(() => setIsLoading(true), []);
 
   const open = useCallback(
-    ({ type, onConfirm, title, subtitle, onCancel }) =>
+    ({ type, onConfirm, title, subtitle, onCancel }: ModalState) =>
       setModalState({
         type,
         onConfirm,

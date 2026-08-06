@@ -1,4 +1,4 @@
 import { createContext } from "react";
 
-import type { LoginContextValue } from "./LoginContextValue";
-export const LoginContext = createContext<LoginContextValue | null>(null);
+import type { LoginContextValues } from "./LoginContextValues";
+export const LoginContext = createContext<LoginContextValues | null>(null);

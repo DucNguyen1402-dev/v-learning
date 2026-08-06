@@ -1,12 +1,8 @@
+import type { LoginFn, LoginPayload } from "@shared/auth/types";
 import { saveAccessToken, saveCurrentUser } from "@shared/auth/utils";
 import { useMutation } from "@tanstack/react-query";
 
 import { login } from "../api/login";
-
-type LoginPayload = {
-  taiKhoan: string;
-  matKhau: string;
-};
 
 type LoginMutationVariables = {
   payload: LoginPayload;
@@ -29,7 +25,7 @@ export const useLogin = () => {
   });
 
   return {
-    login: mutation.mutateAsync,
+    login: mutation.mutateAsync as LoginFn,
     isPending: mutation.isPending,
     error: mutation.error,
   };

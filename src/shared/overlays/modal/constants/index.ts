@@ -1,1 +1,1 @@
-export { MODAL_TYPES } from "./modalTypes";
+export * from "./modalTypes";

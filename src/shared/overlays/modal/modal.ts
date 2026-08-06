@@ -1,4 +1,4 @@
-import { useModalContext } from "./contexts";
+import { ModalProvider, useModalContext } from "./contexts";
 import {
   createAddModal,
   createChangePasswordModal,
@@ -9,7 +9,7 @@ import {
   createUnsavedPasswordChangesModal,
 } from "./helpers";
 
-export const modal = {
+export const Modal = {
   use: useModalContext,
 
   config: {
@@ -21,5 +21,6 @@ export const modal = {
     unsavedPasswordChange: createUnsavedPasswordChangesModal,
     unsavedChanges: createUnsavedChangesModal,
   },
+  Provider: ModalProvider,
 };
-export default modal;
+export default Modal;

@@ -6,6 +6,7 @@ const LoginActions = () => {
   const {
     hookForm: { control },
     actions: { onLoginClick },
+    loading,
   } = Login.use();
   return (
     <div className="flex flex-col gap-8">
@@ -18,7 +19,7 @@ const LoginActions = () => {
           size="sm"
         />
       </div>
-      <LoginButton type="button" onClick={onLoginClick}>
+      <LoginButton type="button" onClick={onLoginClick} loading={loading}>
         ĐĂNG NHẬP
       </LoginButton>
     </div>

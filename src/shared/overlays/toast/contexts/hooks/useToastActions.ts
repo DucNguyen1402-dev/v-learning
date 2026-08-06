@@ -1,16 +1,32 @@
 import { useCallback, useMemo } from "react";
+import type { RefObject } from "react";
 
-export function useToastActions({ autoHideTimeoutRef, setToast }) {
+import type { ToastState } from "./types";
+
+type UseToastActionsProps = {
+  autoHideTimeoutRef: RefObject<ReturnType<typeof setTimeout> | null>;
+  setToast: React.Dispatch<React.SetStateAction<ToastState>>;
+};
+export function useToastActions({
+  autoHideTimeoutRef,
+  setToast,
+}: UseToastActionsProps) {
   const show = useCallback(
-    ({ variant, message }) => {
+    ({
+      variant,
+      message,
+    }: {
+      variant: ToastState["variant"];
+      message: ToastState["message"];
+    }) => {
       setToast({ isOpen: true, variant, message });
 
-      clearTimeout(autoHideTimeoutRef.current);
+      clearTimeout(autoHideTimeoutRef.current as ReturnType<typeof setTimeout>);
 
       autoHideTimeoutRef.current = setTimeout(() => {
         setToast({
           isOpen: false,
-          message: null,
+          message: "",
           variant: null,
         });
       }, 2500);
@@ -22,7 +38,7 @@ export function useToastActions({ autoHideTimeoutRef, setToast }) {
     () =>
       setToast({
         isOpen: false,
-        message: null,
+        message: "",
         variant: null,
       }),
     [setToast],

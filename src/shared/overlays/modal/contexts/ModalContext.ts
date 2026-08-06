@@ -1,3 +1,5 @@
 import { createContext } from "react";
 
-export const ModalContext = createContext(null);
+import type { ModalContextValues } from "./types";
+
+export const ModalContext = createContext<ModalContextValues | null>(null);
