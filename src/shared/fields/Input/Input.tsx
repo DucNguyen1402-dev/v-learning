@@ -64,6 +64,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             className={cn(
               "input",
               disabled ? "input-disabled" : "input-default",
+              error ? "input-error" : "",
               inputClassName,
               disabled && disabledClassName,
               LeftIcon && "pl-7",

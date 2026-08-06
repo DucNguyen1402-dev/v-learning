@@ -1,11 +1,22 @@
 @layer components {
   .back-button {
-    @apply flex-center size-8 cursor-pointer rounded-full text-text-secondary transition-colors duration-300 border-secondary hover:bg-sky-500 hover:text-slate-100 dark:hover:bg-sky-600 dark:hover:text-slate-50;
+    @apply flex-center size-8 cursor-pointer rounded-full;
+
+    border: 1px solid var(--border-primary);
+    color: var(--text-secondary);
+    font-size: var(--text-secondary-size);
+    transition: color var(--duration-slow) var(--ease-default);
+
+    &:hover {
+      background-color: --alpha(var(--primary) / 80%);
+      color: var(--primary-foreground);
+    }
   }
 
   .button-primary {
     background-color: var(--primary);
     color: var(--primary-foreground);
+    transition: color var(--duration-normal) var(--ease-default);
 
     &:hover {
       background-color: var(--primary-hover);

@@ -1,29 +1,31 @@
 @theme {
-  /*  -------- Brand   -------- */
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
 
-  /*   --------  Text  --------  */
-  --color-text-primary: var(--text-primary);
+
+  /* ==========================================================
+   * Background
+   * ========================================================== */
+
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-bg-tertiary: var(--bg-tertiary);
+
+  /* ==========================================================
+   * Border
+   * ========================================================== */
+
+  --color-border-secondary: var(--border-secondary);
+
+  /* ==========================================================
+   * Text Colors
+   * ========================================================== */
 
   --color-text-secondary: var(--text-secondary);
 
-  --color-text-tertiary: var(--text-tertiary);
 
-  --color-text-disabled: var(--text-disabled);
-  --color-text-warning: var(--text-warning);
+  /* ==========================================================
+   * Semantic
+   * ========================================================== */
 
-  /*  --------  Border   -------- */
-
-  --color-border-primary-warning: var(--border-primary-warning);
-
-  --color-border-secondary: var(--secondary-border);
-
-  /*  --------  Link  -------- */
-  --color-link: var(--link-primary);
-  --color-link-hover: var(--link-primary-hover);
-
-  /*  --------  semantci  -------- */
 
   --color-required: var(--danger);
 }
@@ -49,52 +51,102 @@
   --breakpoint-3xl: 120rem;
 
   /* ==========================================================
+   * Animation
+   * ========================================================== */
+  --duration-fast: 150ms;
+  --duration-normal: 200ms;
+  --duration-slow: 300ms;
+
+  --ease-default: ease-in-out;
+
+  /* ==========================================================
    * Brand Colors
    * ========================================================== */
 
   --primary: var(--color-blue-600);
   --primary-hover: var(--color-blue-700);
-  --primary-foreground: white;
+  --primary-foreground: var(--color-zinc-100);
 
   --secondary: var(--color-zinc-100);
   --secondary-hover: var(--color-zinc-200);
   --secondary-foreground: var(--color-zinc-900);
+  --secondary-border: var(--color-zinc-300);
 
   --destructive: var(--color-red-600);
-  --destructive-foreground: white;
+  --destrcutive-hover: var(--color-red-700);
+  --destructive-foreground: var(--color-zinc-100);
 
   /* ==========================================================
    * Background
    * ========================================================== */
 
-  --bg-primary: var(--color-slate-50);
+  --bg-primary: var(--color-zinc-50);
   --bg-primary-warning: var(--color-red-50);
+
+  --bg-secondary: var(--color-zinc-100);
+  --bg-secondary-hover: var(--color-blue-500);
+
+  --bg-tertiary: var(--color-zinc-200);
+  --bg-tertiary-disabled: var(--color-zinc-100);
 
   /* ==========================================================
  * Border
  * ========================================================== */
+  --border-primary: var(--color-zinc-300);
+  --border-primary-hover: var(--color-zinc-400);
+  --border-primary-focus: var(--color-blue-600);
 
   --border-primary-warning: var(--color-red-700);
+
+
+  --border-secondary: var(--color-zinc-200);
+  --border-secondary-hover: var(--color-zinc-300);
+  --border-secondary-checked: var(--color-blue-500);
+  --border-secondary-disabled: var(--color-zinc-100);
+
+
+
+  --border-secondary-warning: var(--color-red-600);
+  --border-secondary-warning-focus: var(--color-red-700);
+
+
+
+
+  /* ==========================================================
+ * Focus
+ * ========================================================== */
+
+  --focus-ring-primary: --alpha(var(--color-blue-600) / 20%);
+  --focus-ring-warning: --alpha(var(--color-red-600) / 20%);
+
+
 
   /* ==========================================================
    * Text
    * ========================================================== */
 
-  --text-primary: var(--color-slate-900);
-  --text-secondary: var(--color-slate-600);
-  --text-tertiary: var(--color-slate-400);
+  --text-primary: var(--color-zinc-900);
+  --text-secondary: var(--color-zinc-600);
+  --text-tertiary: var(--color-zinc-400);
 
   --text-primary-size: var(--font-size-base);
   --text-secondary-size: var(--font-size-sm);
   --text-tertiary-size: var(--font-size-xs);
 
-  --text-secondary-hover: var(--color-slate-700);
-  --text-tertiary-hover: var(--color-slate-500);
+  --text-secondary-hover: var(--color-zinc-800);
+  --text-tertiary-hover: var(--color-zinc-500);
 
-  --text-disabled: var(--color-slate-400);
+  --text-secondary-disabled: var(--color-zinc-500);
 
-  --text-warning-primary: var(--color-red-700);
-  --text-warning-secondary: var(--color-red-600);
+  --text-primary-warning: var(--color-red-600);
+  --text-primary-warning-hover: var(--color-red-700);
+
+
+  /* ==========================================================
+   * Placeholder
+   * ========================================================== */
+
+  --text-placeholder: var(--color-zinc-400);
 
   /* ==========================================================
    * Links
@@ -135,14 +187,17 @@
    * ========================================================== */
 
   --primary: var(--color-blue-500);
-  --primary-hover: var(--color-blue-400);
-  --primary-active: var(--color-blue-300);
+  --primary-hover: var(--color-blue-600);
+  --primary-foreground: var(--color-zinc-700);
 
   --secondary: var(--color-zinc-900);
+  --secondary-hover: var(--color-zinc-800);
   --secondary-foreground: var(--color-zinc-100);
   --secondary-border: var(--color-zinc-700);
 
   --destructive: var(--color-red-500);
+  --destrcutive-hover: var(--color-red-600);
+
 
   /* ==========================================================
   * Background
@@ -151,27 +206,64 @@
   --bg-primary: var(--color-zinc-900);
   --bg-primary-warning: --alpha(var(--color-red-950) / 40%);
 
+  --bg-secondary: var(--color-zinc-800);
+  --bg-secondary-hover: var(--color-blue-400);
+
+
+  --bg-tertiary: var(--color-zinc-800);
+
   /* ==========================================================
   *   Border
   * ========================================================== */
 
+  --border-primary: var(--color-zinc-600);
+  --border-primary-hover: var(--color-zinc-600);
+  --border-primary-focus: var(--color-blue-500);
+
+  --border-secondary: var(--color-zinc-700);
+  --border-secondary-hover: var(--color-zinc-600);
+  --border-secondary-checked: var(--color-blue-500);
+  --border-secondary-disabled: var(--color-zinc-800);
+
   --border-primary-warning: var(--color-red-300);
+
+  --border-secondary-warning: var(--color-red-400);
+  --border-secondary-warning-focus: var(--color-red-300);
+
+
+
+
+
+  /* ==========================================================
+ * Focus
+ * ========================================================== */
+
+  --focus-ring-primary: --alpha(var(--color-blue-500) / 20%);
+  --focus-ring-warning: --alpha(var(--color-red-500) / 20%);
+
 
   /* ==========================================================
    * Text
    * ========================================================== */
 
-  --text-primary: var(--color-slate-100);
-  --text-secondary: var(--color-slate-200);
-  --text-tertiary: var(--color-slate-300);
+  --text-primary: var(--color-zinc-100);
+  --text-secondary: var(--color-zinc-200);
+  --text-tertiary: var(--color-zinc-300);
 
-  --text-secondary-hover: var(--color-slate-100);
-  --text-tertiary-hover: var(--color-slate-200);
+  --text-secondary-hover: var(--color-zinc-100);
 
-  --text-disabled: var(--color-slate-500);
 
-  --text-warning-primary: var(--color-red-300);
-  --text-warning-secondary: var(--color-red-400);
+  --text-secondary-disabled: var(--color-zinc-300);
+
+
+  --text-primary-warning: var(--color-red-400);
+  --text-primary-warning-hover: var(--color-red-300);
+
+  /* ==========================================================
+   * placeholder
+   * ========================================================== */
+
+  --text-placeholder: var(--color-zinc-600);
 
   /* ==========================================================
    * Links

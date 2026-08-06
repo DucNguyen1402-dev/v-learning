@@ -18,10 +18,7 @@ const FormLabel = ({
   return (
     <label
       htmlFor={htmlFor}
-      className={cn(
-        "block w-fit cursor-pointer text-sm tracking-wide text-text-secondary",
-        className,
-      )}
+      className={cn("block w-fit cursor-pointer text-secondary", className)}
     >
       {children}
       {required && <span className="ml-1.5 text-required">*</span>}
