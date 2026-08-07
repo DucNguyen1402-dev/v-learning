@@ -4,6 +4,6 @@
 @import "./base.css";
 @import "./utilities.css";
 @import "./components/index.css";
-
+@import "./overlays.css";
 
 @custom-variant dark (&:where(.dark .dark *));

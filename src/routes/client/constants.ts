@@ -1,7 +1,8 @@
 export const CLIENT_ROUTES = {
-  home: "/client/home",
+  home: "/client",
   login: "/client/login",
   about: "/client/about",
+  register: "/client/register",
   findKey: (path: string) => {
     const key = Object.keys(CLIENT_ROUTES).find(
       (key) => CLIENT_ROUTES[key as keyof typeof CLIENT_ROUTES] === path,

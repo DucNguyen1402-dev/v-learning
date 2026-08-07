@@ -1,23 +1,22 @@
-import { useNavigate } from "react-router-dom";
-
-import { CLIENT_ROUTES } from "@routes/client";
+import { CLIENT_ROUTES_KEYS } from "@routes/client";
 import type { CurrentUser } from "@shared/auth";
 import { clearAuthSession, getCurrentUser } from "@shared/auth";
+import { useRouteNavigation } from "@shared/navigation";
 import { CircleUser } from "lucide-react";
 
 import HeaderLogo from "./HeaderLogo";
 import HeaderNav from "./HeaderNav";
 
 const Header = () => {
-  const navigate = useNavigate();
+  const { forward } = useRouteNavigation();
   const currentUser: null | CurrentUser = getCurrentUser();
 
   const onLogoutCLick = () => {
     clearAuthSession();
-    navigate(CLIENT_ROUTES.login);
+    forward(CLIENT_ROUTES_KEYS.login);
   };
 
-  const onLoginClick = () => navigate(CLIENT_ROUTES.login);
+  const onLoginClick = () => forward(CLIENT_ROUTES_KEYS.login);
   return (
     <header className="sticky top-0 z-50 border-b backdrop-blur">
       <div className="mx-auto flex h-26 max-w-7xl items-center justify-between">

@@ -6,6 +6,10 @@ interface Course {
   duration: string;
   level: string;
 }
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+
+import { Toast } from "@shared/overlays";
 
 const FEATURED_COURSES: Course[] = [
   {
@@ -35,6 +39,15 @@ const FEATURED_COURSES: Course[] = [
 ];
 
 const HomePage = () => {
+  const location = useLocation();
+  const { show: showToast } = Toast.use();
+
+  useEffect(() => {
+    const toastState = location.state?.payload;
+    if (!toastState) return;
+    showToast(toastState);
+  }, [location.state, showToast]);
+
   return (
     <div className="min-h-screen w-full font-sans text-neutral-100 selection:text-white">
       {/* Hero Section */}

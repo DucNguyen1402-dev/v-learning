@@ -7,10 +7,6 @@ type RouteState = {
   history?: string[];
 };
 
-type routeBackParams = {
-  payload?: unknown;
-};
-
 export const useRouteNavigation = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -26,14 +22,14 @@ export const useRouteNavigation = () => {
   }, [location.pathname, location.state?.currentKey]);
 
   const back = useCallback(
-    (payload?: routeBackParams) => {
+    (payload?: unknown) => {
       const previousKey = routeHistory.at(-1) as RouteKey | undefined;
 
       if (previousKey) {
         navigate(CLIENT_ROUTES[previousKey], {
           state: {
             history: routeHistory.slice(0, -1),
-            ...(payload !== undefined && { payload }),
+            payload: payload ?? null,
           },
         });
       } else {
@@ -44,11 +40,12 @@ export const useRouteNavigation = () => {
   );
 
   const forward = useCallback(
-    (routeKey: RouteKey) => {
+    (routeKey: RouteKey, payload?: unknown) => {
       navigate(CLIENT_ROUTES[routeKey], {
         state: {
           history: [...routeHistory, currentRouteKey],
           currentKey: routeKey,
+          payload: payload ?? null,
         },
       });
     },
