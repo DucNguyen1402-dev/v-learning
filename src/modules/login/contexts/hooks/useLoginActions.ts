@@ -16,7 +16,7 @@ export const useLoginActions = ({
   handleSubmit,
   login,
 }: UseLoginActionsParams) => {
-  const { forward } = useRouteNavigation();
+  const { go } = useRouteNavigation();
   const toast = Toast.use();
 
   type onValidParam = {
@@ -32,7 +32,7 @@ export const useLoginActions = ({
     };
     try {
       await login({ payload, remember: data.remember });
-      forward(CLIENT_ROUTES_KEYS.home, Toast.config.success.login());
+      go(CLIENT_ROUTES_KEYS.home, Toast.config.success.login());
     } catch (error) {
       const message = getErrorMessage(error);
 

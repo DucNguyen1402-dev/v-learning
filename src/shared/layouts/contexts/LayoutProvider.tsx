@@ -11,7 +11,6 @@ const LayoutProvider = ({ children }: LayoutProviderProps) => {
   const location = useLocation();
 
   const historyRoute = location.state?.history ?? [];
-  console.log(location.state);
   const value = useMemo(
     () => ({
       shouldShowBackButton: historyRoute.length > 0,

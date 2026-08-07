@@ -23,17 +23,17 @@
     }
   }
 
-  .nav-button {
-    @apply cursor-pointer text-sm font-medium;
+  .nav-link {
+    @apply cursor-pointer text-sm font-medium lg:text-[15px];
     color: var(--text-secondary);
     transition: color var(--duration-fast) var(--ease-default);
 
     &:hover {
-      color: var(--link-secondary-hover);
+      color: var(--link-primary-hover);
     }
   }
 
-  .nav-button-active {
-    color: var(--link-secondary-hover);
+  .nav-link-active {
+    color: var(--link-primary-active);
   }
 }

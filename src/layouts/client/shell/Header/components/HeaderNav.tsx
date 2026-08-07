@@ -5,7 +5,7 @@ import { CLIENT_ROUTES } from "@routes/client";
 const HeaderNav = () => {
   const navLinks = [
     { label: "Home", routeKey: CLIENT_ROUTES.home },
-    { label: "Lộ trình", routeKey: CLIENT_ROUTES.login },
+    { label: "Khóa học", routeKey: CLIENT_ROUTES.register },
     { label: "Giới thiệu", routeKey: CLIENT_ROUTES.about },
   ];
 
@@ -17,7 +17,7 @@ const HeaderNav = () => {
             key={link.routeKey}
             to={link.routeKey}
             className={({ isActive }) =>
-              `nav-button ${isActive ? "nav-button-active" : ""}`
+              `nav-link ${isActive ? "nav-link-active" : ""}`
             }
           >
             {link.label}

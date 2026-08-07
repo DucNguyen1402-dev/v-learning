@@ -1,0 +1,14 @@
+import { Link } from "react-router-dom";
+
+import { CLIENT_ROUTES } from "@routes/client";
+
+const LoginButton = () => (
+  <Link
+    to={CLIENT_ROUTES.login}
+    className="button-primary rounded-md px-3 py-2 text-sm font-medium"
+  >
+    Đăng nhập
+  </Link>
+);
+
+export default LoginButton;
