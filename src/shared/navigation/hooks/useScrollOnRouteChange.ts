@@ -10,17 +10,20 @@ export const useScrollOnRouteChange = ({
   enabled = true,
 }: UseScrollOnRouteChangeProps) => {
   const { pathname } = useLocation();
+  const isHome = pathname === "/client";
 
   useEffect(() => {
     if (!enabled) return;
+
+    if (isHome || !ref?.current) {
+      window.scrollTo(0, 0);
+    }
 
     if (ref?.current) {
       ref.current.scrollIntoView({
         behavior: "auto",
         block: "start",
       });
-    } else {
-      window.scrollTo(0, 0);
     }
-  }, [pathname, enabled, ref]);
+  }, [pathname, enabled, ref, isHome]);
 };

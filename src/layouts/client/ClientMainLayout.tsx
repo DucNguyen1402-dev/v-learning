@@ -1,24 +1,31 @@
 import { useRef } from "react";
 import { Outlet } from "react-router-dom";
 
+import { Layout } from "@shared/layouts";
 import { useScrollOnRouteChange } from "@shared/navigation";
 import { GlobalUI } from "@shared/overlays";
 
+import { BackButton } from "./components";
 import { Footer, Header } from "./shell";
 
 const ClientMainLayout = () => {
   const mainRef = useRef<HTMLElement>(null);
+
   useScrollOnRouteChange({ ref: mainRef });
+  const { shouldShowBackButton } = Layout.use();
 
   return (
-    <div className="min-h-screen overflow-hidden">
-      <Header />
-      <main ref={mainRef} className="mx-auto max-w-7xl p-6 pb-12">
-        <Outlet />
-      </main>
-      <Footer />
+    <>
+      <div className="flex min-h-screen flex-col bg-bg-tertiary">
+        <Header />
+        <main ref={mainRef} className="mx-auto max-w-7xl flex-1 p-6 pb-12">
+          {shouldShowBackButton && <BackButton />}
+          <Outlet />
+        </main>
+        <Footer />
+      </div>
       <GlobalUI />
-    </div>
+    </>
   );
 };
 

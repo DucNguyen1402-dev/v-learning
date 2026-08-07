@@ -49,18 +49,18 @@ const HomePage = () => {
   }, [location.state, showToast]);
 
   return (
-    <div className="min-h-screen w-full font-sans text-neutral-100 selection:text-white">
+    <div className="min-h-screen w-full font-sans">
       {/* Hero Section */}
       <section className="px-6 pt-24 pb-20 text-center md:text-left">
         <div className="max-w-3xl">
-          <span className="mb-6 inline-block rounded-full border border-neutral-800 px-3 py-1 text-xs font-semibold tracking-wider text-neutral-400 uppercase">
+          <span className="mb-6 inline-block rounded-full border border-neutral-800 px-3 py-1 text-xs font-semibold tracking-wider text-neutral-700 uppercase">
             Học lập trình theo tư duy hệ thống
           </span>
-          <h1 className="mb-6 text-4xl leading-tight font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
+          <h1 className="mb-6 text-4xl leading-tight font-bold tracking-tight sm:text-5xl lg:text-6xl">
             Nắm vững bản chất. <br />
             Xây dựng ứng dụng thực tế.
           </h1>
-          <p className="mb-8 max-w-2xl text-lg leading-relaxed text-neutral-400">
+          <p className="mb-8 max-w-2xl text-lg leading-relaxed text-neutral-700">
             Nền tảng học tập tập trung vào First Principles, giúp bạn đi sâu vào
             cơ chế cốt lõi của công nghệ thay vì chỉ học thuộc cú pháp.
           </p>
@@ -73,7 +73,7 @@ const HomePage = () => {
             </a>
             <a
               href="#roadmap"
-              className="inline-flex items-center justify-center rounded-md border border-neutral-800 px-6 py-3 text-sm font-medium text-neutral-300 transition-colors hover:bg-neutral-900 hover:text-white"
+              className="hover: inline-flex items-center justify-center rounded-md border border-neutral-800 px-6 py-3 text-sm font-medium text-neutral-300 transition-colors hover:bg-neutral-900"
             >
               Xem lộ trình
             </a>
@@ -85,20 +85,20 @@ const HomePage = () => {
       <section className="border-y border-neutral-800/80 bg-neutral-900/30">
         <div className="mx-auto grid max-w-6xl grid-cols-2 gap-8 px-6 py-12 md:grid-cols-4">
           <div>
-            <div className="mb-1 text-3xl font-bold text-white">100%</div>
-            <div className="text-xs text-neutral-400">Thực hành thực tế</div>
+            <div className="mb-1 text-3xl font-bold">100%</div>
+            <div className="text-xs text-neutral-700">Thực hành thực tế</div>
           </div>
           <div>
-            <div className="mb-1 text-3xl font-bold text-white">50+</div>
-            <div className="text-xs text-neutral-400">Bài học chuyên sâu</div>
+            <div className="mb-1 text-3xl font-bold">50+</div>
+            <div className="text-xs text-neutral-700">Bài học chuyên sâu</div>
           </div>
           <div>
-            <div className="mb-1 text-3xl font-bold text-white">24/7</div>
-            <div className="text-xs text-neutral-400">Hỗ trợ cộng đồng</div>
+            <div className="mb-1 text-3xl font-bold">24/7</div>
+            <div className="text-xs text-neutral-700">Hỗ trợ cộng đồng</div>
           </div>
           <div>
-            <div className="mb-1 text-3xl font-bold text-white">Clean</div>
-            <div className="text-xs text-neutral-400">Code & Architecture</div>
+            <div className="mb-1 text-3xl font-bold">Clean</div>
+            <div className="text-xs text-neutral-700">Code & Architecture</div>
           </div>
         </div>
       </section>
@@ -107,16 +107,16 @@ const HomePage = () => {
       <section id="courses" className="mx-auto max-w-6xl px-6 py-20">
         <div className="mb-12 flex flex-col justify-between md:flex-row md:items-end">
           <div>
-            <h2 className="mb-2 text-2xl font-bold tracking-tight text-white">
+            <h2 className="mb-2 text-2xl font-bold tracking-tight">
               Khóa học tiêu biểu
             </h2>
-            <p className="text-sm text-neutral-400">
+            <p className="text-sm text-neutral-700">
               Được thiết kế tinh gọn, tập trung vào bản chất vấn đề.
             </p>
           </div>
           <a
             href="#"
-            className="mt-4 text-sm font-medium text-neutral-400 transition-colors hover:text-white md:mt-0"
+            className="hover: mt-4 text-sm font-medium text-neutral-700 transition-colors md:mt-0"
           >
             Xem tất cả &rarr;
           </a>
@@ -129,18 +129,18 @@ const HomePage = () => {
               className="group flex flex-col justify-between rounded-lg border border-neutral-800 bg-neutral-900/40 p-6 transition-all hover:border-neutral-700"
             >
               <div>
-                <div className="mb-4 flex items-center justify-between text-xs text-neutral-400">
+                <div className="mb-4 flex items-center justify-between text-xs text-neutral-700">
                   <span className="rounded bg-neutral-800 px-2 py-0.5 font-mono text-neutral-300">
                     {course.category}
                   </span>
                   <span>{course.level}</span>
                 </div>
-                <h3 className="mb-3 text-lg font-semibold text-white group-hover:text-neutral-200">
+                <h3 className="mb-3 text-lg font-semibold group-hover:text-neutral-200">
                   {course.title}
                 </h3>
               </div>
 
-              <div className="mt-6 flex items-center justify-between border-t border-neutral-800/60 pt-6 text-xs text-neutral-400">
+              <div className="mt-6 flex items-center justify-between border-t border-neutral-800/60 pt-6 text-xs text-neutral-700">
                 <span>{course.lessons} bài học</span>
                 <span>{course.duration}</span>
               </div>

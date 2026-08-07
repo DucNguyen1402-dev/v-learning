@@ -18,8 +18,8 @@ const Header = () => {
 
   const onLoginClick = () => forward(CLIENT_ROUTES_KEYS.login);
   return (
-    <header className="sticky top-0 z-50 border-b backdrop-blur">
-      <div className="mx-auto flex h-26 max-w-7xl items-center justify-between">
+    <header className="sticky top-0 z-50 border-b bg-zinc-50/60 backdrop-blur">
+      <div className="mx-auto flex h-28 max-w-7xl items-center justify-between">
         <HeaderLogo />
         <HeaderNav />
         <div className="flex items-center gap-4">

@@ -15,7 +15,6 @@ export const useRouteNavigation = () => {
   const routeHistory = useMemo(() => state?.history ?? [], [state?.history]);
   const currentRouteKey = useMemo(() => {
     const key = location.state?.currentKey as RouteKey | undefined;
-
     if (key) return key;
 
     return CLIENT_ROUTES.findKey(location.pathname);
@@ -40,16 +39,14 @@ export const useRouteNavigation = () => {
   );
 
   const forward = useCallback(
-    (routeKey: RouteKey, payload?: unknown) => {
+    (routeKey: RouteKey, payload?: unknown) =>
       navigate(CLIENT_ROUTES[routeKey], {
         state: {
           history: [...routeHistory, currentRouteKey],
           currentKey: routeKey,
           payload: payload ?? null,
         },
-      });
-    },
-
+      }),
     [navigate, routeHistory, currentRouteKey],
   );
 

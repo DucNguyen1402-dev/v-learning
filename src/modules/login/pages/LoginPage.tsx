@@ -1,5 +1,4 @@
 import {
-  BackButton,
   LoginActions,
   LoginFooter,
   LoginForm,
@@ -8,10 +7,7 @@ import {
 
 const LoginPage = () => {
   return (
-    <div className="relative flex-center min-h-screen bg-bg-tertiary p-4">
-      <div className="absolute top-3 left-3">
-        <BackButton />
-      </div>
+    <div className="relative flex-center min-h-screen p-4">
       <div className="flex w-full max-w-md flex-col gap-6 rounded-xl border border-border-secondary bg-bg-secondary p-8 shadow-sm">
         <LoginHeader />
 

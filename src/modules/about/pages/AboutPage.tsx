@@ -1,6 +1,6 @@
 const AboutPage = () => {
   return (
-    <div className="min-h-screen bg-neutral-950 font-sans text-neutral-100">
+    <div className="min-h-screen font-sans text-neutral-100">
       {/* 2. Hero Section */}
       <section className="mx-auto max-w-6xl px-6 py-20">
         <div className="max-w-2xl">
