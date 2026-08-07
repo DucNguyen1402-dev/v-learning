@@ -2,7 +2,7 @@ import type { UseFormHandleSubmit } from "react-hook-form";
 
 import type { LoginFormValues } from "@modules/login/type";
 import type { LoginFn } from "@shared/auth";
-import { useRouteBack } from "@shared/hooks";
+import { useRouteNavigation } from "@shared/navigation";
 
 type UseLoginActionsParams = {
   handleSubmit: UseFormHandleSubmit<LoginFormValues>;
@@ -13,7 +13,7 @@ export const useLoginActions = ({
   handleSubmit,
   login,
 }: UseLoginActionsParams) => {
-  const routeBack = useRouteBack();
+  const { back } = useRouteNavigation();
 
   type onValidParam = {
     taiKhoan: string;
@@ -28,7 +28,7 @@ export const useLoginActions = ({
     };
     try {
       await login({ payload, remember: data.remember });
-      routeBack();
+      back();
     } catch (error) {
       console.log(error);
     }

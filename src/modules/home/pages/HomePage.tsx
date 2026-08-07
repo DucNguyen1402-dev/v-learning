@@ -1,9 +1,3 @@
-import { useNavigate } from "react-router-dom";
-
-import type { CurrentUser } from "@shared/auth";
-import { clearAuthSession, getCurrentUser } from "@shared/auth";
-import { CircleUser } from "lucide-react";
-
 interface Course {
   id: string;
   title: string;
@@ -41,67 +35,10 @@ const FEATURED_COURSES: Course[] = [
 ];
 
 const HomePage = () => {
-  const navigate = useNavigate();
-  const currentUser: null | CurrentUser = getCurrentUser();
-
-  const onLogoutCLick = () => {
-    clearAuthSession();
-    navigate("/client/login");
-  };
-
-  const onLoginClick = () => navigate("/client/login");
-
   return (
-    <div className="min-h-screen bg-neutral-950 font-sans text-neutral-100 selection:bg-neutral-800 selection:text-white">
-      {/* Header */}
-      <header className="sticky top-0 z-50 border-b border-neutral-800 bg-neutral-950/80 backdrop-blur">
-        <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
-          <a href="#" className="text-xl font-bold tracking-tight text-white">
-            V-learning<span className="text-neutral-500">.</span>
-          </a>
-
-          <nav className="hidden items-center gap-8 text-sm font-medium text-neutral-400 md:flex">
-            <a href="#courses" className="transition-colors hover:text-white">
-              Khóa học
-            </a>
-            <a href="#roadmap" className="transition-colors hover:text-white">
-              Lộ trình
-            </a>
-            <a href="#about" className="transition-colors hover:text-white">
-              Giới thiệu
-            </a>
-          </nav>
-
-          <div className="flex items-center gap-4">
-            {currentUser ? (
-              <div className="flex items-center gap-2">
-                <div className="flex cursor-pointer items-center gap-2.5 rounded-lg px-2 py-1 transition hover:bg-gray-100">
-                  <CircleUser />
-                  <span className="text-sm font-medium text-gray-700">
-                    {currentUser.taiKhoan}
-                  </span>
-                </div>
-                <button
-                  onClick={onLogoutCLick}
-                  className="rounded-md bg-neutral-100 px-4 py-1.5 text-sm font-medium text-neutral-900 transition-colors hover:bg-neutral-200"
-                >
-                  Đăng Xuất
-                </button>
-              </div>
-            ) : (
-              <button
-                onClick={onLoginClick}
-                className="px-3 py-1.5 text-sm font-medium text-neutral-300 transition-colors hover:text-white"
-              >
-                Đăng nhập
-              </button>
-            )}
-          </div>
-        </div>
-      </header>
-
+    <div className="min-h-screen w-full font-sans text-neutral-100 selection:text-white">
       {/* Hero Section */}
-      <section className="mx-auto max-w-6xl px-6 pt-24 pb-20 text-center md:text-left">
+      <section className="px-6 pt-24 pb-20 text-center md:text-left">
         <div className="max-w-3xl">
           <span className="mb-6 inline-block rounded-full border border-neutral-800 px-3 py-1 text-xs font-semibold tracking-wider text-neutral-400 uppercase">
             Học lập trình theo tư duy hệ thống
@@ -198,27 +135,6 @@ const HomePage = () => {
           ))}
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="border-t border-neutral-800 bg-neutral-950 py-12">
-        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-6 text-xs text-neutral-500 md:flex-row">
-          <div>
-            &copy; {new Date().getFullYear()} V-learning. Mọi quyền được bảo
-            lưu.
-          </div>
-          <div className="flex gap-6">
-            <a href="#" className="transition-colors hover:text-neutral-400">
-              Điều khoản
-            </a>
-            <a href="#" className="transition-colors hover:text-neutral-400">
-              Bảo mật
-            </a>
-            <a href="#" className="transition-colors hover:text-neutral-400">
-              Liên hệ
-            </a>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 };

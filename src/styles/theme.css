@@ -159,6 +159,7 @@
   --link-secondary: var(--color-blue-500);
   --link-secondary-hover: var(--color-blue-600);
   --link-secondary-size: var(--font-size-xs);
+  --link-secondary-active: var(--color-blue-700);
 
   /* ==========================================================
    * Semantic

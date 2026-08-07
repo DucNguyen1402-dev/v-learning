@@ -22,4 +22,18 @@
       background-color: var(--primary-hover);
     }
   }
+
+  .nav-button {
+    @apply cursor-pointer text-sm font-medium;
+    color: var(--text-secondary);
+    transition: color var(--duration-fast) var(--ease-default);
+
+    &:hover {
+      color: var(--link-secondary-hover);
+    }
+
+    &[data-active="true"] {
+      color: var(--link-secondary-active);
+    }
+  }
 }

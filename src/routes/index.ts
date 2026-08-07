@@ -1,1 +1,2 @@
-export { default as ClientRoutes } from "./client/ClientRoutes";
+export * from "./client";
+export type { RouteKey } from "./RouteKey";

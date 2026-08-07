@@ -12,6 +12,7 @@
       "@/*": ["src/*"],
       "@assets/*": ["src/assets/*"],
       "@modules/*": ["src/modules/*"],
+      "@routes": ["src/routes/index.ts"],
       "@routes/*": ["src/routes/*"],
       "@providers/*": ["src/providers/*"],
       "@shared/*": ["src/shared/*"],

@@ -1,10 +1,10 @@
-import { useRouteBack } from "@shared/hooks";
+import { useRouteNavigation } from "@shared/navigation";
 import { ArrowLeft } from "lucide-react";
 const BackButton = () => {
-  const routeBack = useRouteBack();
+  const { back } = useRouteNavigation();
 
   return (
-    <button className="back-button" onClick={() => routeBack()}>
+    <button className="back-button" onClick={() => back()}>
       <ArrowLeft className="size-5" />
     </button>
   );
