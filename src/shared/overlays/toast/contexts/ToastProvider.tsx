@@ -7,7 +7,7 @@ interface ToastProviderProps {
   children: ReactNode;
 }
 
-const ToastProvider = ({ children }: ToastProviderProps) => {
+export const ToastProvider = ({ children }: ToastProviderProps) => {
   const { isOpen, variant, message, toastRef, autoHideTimeoutRef, setToast } =
     useToastState();
 
@@ -37,5 +37,3 @@ const ToastProvider = ({ children }: ToastProviderProps) => {
     <ToastContext.Provider value={value}>{children}</ToastContext.Provider>
   );
 };
-
-export default ToastProvider;

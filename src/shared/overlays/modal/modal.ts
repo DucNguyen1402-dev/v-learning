@@ -23,4 +23,3 @@ export const Modal = {
   },
   Provider: ModalProvider,
 };
-export default Modal;

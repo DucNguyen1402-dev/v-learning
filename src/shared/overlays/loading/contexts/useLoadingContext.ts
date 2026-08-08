@@ -2,7 +2,7 @@ import { useContext } from "react";
 
 import { LoadingContext } from "./LoadingContext";
 
-const useLoadingContext = () => {
+export const useLoadingContext = () => {
   const context = useContext(LoadingContext);
 
   if (!context) {
@@ -11,5 +11,3 @@ const useLoadingContext = () => {
 
   return context;
 };
-
-export default useLoadingContext;

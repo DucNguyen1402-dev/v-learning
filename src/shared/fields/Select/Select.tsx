@@ -1,7 +1,7 @@
 import { ErrorMessage } from "@shared/fields";
 import { cn } from "@shared/utils";
 
-const Select = ({
+export const Select = ({
   value,
   options,
   onChange,
@@ -65,5 +65,3 @@ const Select = ({
     {error && <ErrorMessage surface="dark">{error}</ErrorMessage>}
   </div>
 );
-
-export default Select;

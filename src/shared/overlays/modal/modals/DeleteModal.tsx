@@ -1,7 +1,13 @@
 import { Modal } from "@shared/overlays/modal/components";
 import { CancelButton, ConfirmButton } from "@shared/ui";
 
-const DeleteModal = ({ onCancel, onConfirm, title, subtitle, loading }) => {
+export const DeleteModal = ({
+  onCancel,
+  onConfirm,
+  title,
+  subtitle,
+  loading,
+}) => {
   return (
     <Modal>
       <Modal.Header title={title} subtitle={subtitle} titleSize="sm" />
@@ -18,5 +24,3 @@ const DeleteModal = ({ onCancel, onConfirm, title, subtitle, loading }) => {
     </Modal>
   );
 };
-
-export default DeleteModal;

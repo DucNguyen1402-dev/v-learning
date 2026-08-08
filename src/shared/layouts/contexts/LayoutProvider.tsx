@@ -7,7 +7,7 @@ import { LayoutContext } from "./LayoutContext";
 type LayoutProviderProps = {
   children: ReactNode;
 };
-const LayoutProvider = ({ children }: LayoutProviderProps) => {
+export const LayoutProvider = ({ children }: LayoutProviderProps) => {
   const location = useLocation();
 
   const historyRoute = location.state?.history ?? [];
@@ -22,5 +22,3 @@ const LayoutProvider = ({ children }: LayoutProviderProps) => {
     <LayoutContext.Provider value={value}>{children}</LayoutContext.Provider>
   );
 };
-
-export default LayoutProvider;

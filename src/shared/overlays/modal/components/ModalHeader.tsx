@@ -12,7 +12,7 @@ interface ModalHeaderProps {
   titleSize?: "sm" | "md" | "lg";
 }
 
-const ModalHeader = ({
+export const ModalHeader = ({
   title,
   subtitle,
   titleSize = "md",
@@ -31,5 +31,3 @@ const ModalHeader = ({
     {subtitle && <p className="mt-3.5 text-sm text-slate-200">{subtitle}</p>}
   </div>
 );
-
-export default ModalHeader;

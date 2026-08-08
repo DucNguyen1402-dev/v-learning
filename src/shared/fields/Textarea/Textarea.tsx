@@ -3,7 +3,7 @@ import { forwardRef, useLayoutEffect, useMemo, useRef } from "react";
 import { ErrorMessage } from "@shared/fields";
 import { mergeRefs } from "@shared/utils";
 import { cn } from "@shared/utils";
-const Textarea = forwardRef(
+export const Textarea = forwardRef(
   (
     {
       name,
@@ -70,4 +70,3 @@ const Textarea = forwardRef(
   },
 );
 Textarea.displayName = "Textarea";
-export default Textarea;

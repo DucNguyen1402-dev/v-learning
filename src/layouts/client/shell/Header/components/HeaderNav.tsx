@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 
 import { CLIENT_ROUTES } from "@routes/client";
 
-const HeaderNav = () => {
+export const HeaderNav = () => {
   const navLinks = [
     { label: "Home", routeKey: CLIENT_ROUTES.home },
     { label: "Khóa học", routeKey: CLIENT_ROUTES.register },
@@ -27,5 +27,3 @@ const HeaderNav = () => {
     </nav>
   );
 };
-
-export default HeaderNav;

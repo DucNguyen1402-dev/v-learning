@@ -1,9 +1,9 @@
 import { Toast } from "@shared/overlays/toast";
 import { AnimatePresence, motion } from "motion/react";
 
-import ToastContainer from "./ToastContainer";
+import { ToastContainer } from "./ToastContainer";
 
-const ToastView = () => {
+export const ToastView = () => {
   const {
     state: { isOpen, message, variant, ref },
   } = Toast.use();
@@ -12,7 +12,7 @@ const ToastView = () => {
       {isOpen && (
         <motion.div
           key="notification"
-          className="pointer-events-none fixed inset-0 z-80 flex w-full max-w-md items-start justify-center px-4 pt-10 lg:max-w-full"
+          className="pointer-events-none fixed inset-0 z-toast flex w-full max-w-md items-start justify-center px-4 pt-10 lg:max-w-full"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -24,5 +24,3 @@ const ToastView = () => {
     </AnimatePresence>
   );
 };
-
-export default ToastView;

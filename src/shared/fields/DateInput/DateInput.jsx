@@ -5,9 +5,9 @@ import { cn } from "@shared/utils";
 import { format } from "date-fns";
 import { Calendar } from "lucide-react";
 
-import DatePicker from "./DatePicker";
+import { DatePicker } from "./DatePicker";
 
-const DateInput = ({
+export const DateInput = ({
   control,
   value,
   disabled = false,
@@ -71,5 +71,3 @@ const DateInput = ({
     </div>
   );
 };
-
-export default DateInput;

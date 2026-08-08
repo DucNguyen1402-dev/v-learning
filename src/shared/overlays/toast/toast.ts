@@ -1,7 +1,7 @@
 import { ToastProvider, useToastContext } from "./contexts";
 import { errorToast, successToast, warningToast } from "./helpers";
 
-const Toast = {
+export const Toast = {
   use: useToastContext,
   config: {
     success: successToast,
@@ -10,5 +10,3 @@ const Toast = {
   },
   Provider: ToastProvider,
 };
-
-export default Toast;

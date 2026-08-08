@@ -1,1 +1,1 @@
-export { default as ClientMainLayout } from "./client/ClientMainLayout";
+export { ClientMainLayout } from "./client/ClientMainLayout";

@@ -1,9 +1,10 @@
 @layer components {
-    .login-logo {
-        @apply flex-center rounded-full bg-linear-to-br;
-        color: var(--primary-foreground);
-        background: linear-gradient(to bottom right,
-                var(--primary-hover),
-                var(--primary));
-    }
+  .login-logo {
+    color: var(--primary-foreground);
+    background: linear-gradient(
+      to bottom right,
+      var(--primary),
+      --alpha(var(--primary) / 60%)
+    );
+  }
 }

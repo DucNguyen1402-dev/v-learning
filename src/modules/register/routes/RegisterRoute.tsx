@@ -1,5 +1,3 @@
-import RegisterPage from "../pages/RegisterPage";
+import { RegisterPage } from "../pages/RegisterPage";
 
-const RegisterRoute = () => <RegisterPage />;
-
-export default RegisterRoute;
+export const RegisterRoute = () => <RegisterPage />;

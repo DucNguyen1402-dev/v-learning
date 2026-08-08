@@ -7,7 +7,7 @@ import { Theme } from "@shared/theme";
 type ClientProvidersProps = {
   children: ReactNode;
 };
-const ClientProvider = ({ children }: ClientProvidersProps) => (
+export const ClientProvider = ({ children }: ClientProvidersProps) => (
   <Layout.Provider>
     <Loading.Provider>
       <Modal.Provider>
@@ -18,5 +18,3 @@ const ClientProvider = ({ children }: ClientProvidersProps) => (
     </Loading.Provider>
   </Layout.Provider>
 );
-
-export default ClientProvider;

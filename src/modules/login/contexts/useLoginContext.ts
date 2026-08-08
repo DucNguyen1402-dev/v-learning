@@ -2,7 +2,7 @@ import { useContext } from "react";
 
 import { LoginContext } from "./LoginContext";
 
-const useLoginContext = () => {
+export const useLoginContext = () => {
   const context = useContext(LoginContext);
 
   if (!context) {
@@ -11,5 +11,3 @@ const useLoginContext = () => {
 
   return context;
 };
-
-export default useLoginContext;

@@ -5,7 +5,12 @@ const DEFAULT_SUBTITLE = "Những thay đổi chưa lưu sẽ bị mất.";
 
 import { Modal } from "@shared/overlays/modal/components";
 
-const UnsavedChangesModal = ({ onCancel, onConfirm, title, subtitle }) => {
+export const UnsavedChangesModal = ({
+  onCancel,
+  onConfirm,
+  title,
+  subtitle,
+}) => {
   return (
     <Modal>
       <Modal.Header
@@ -25,5 +30,3 @@ const UnsavedChangesModal = ({ onCancel, onConfirm, title, subtitle }) => {
     </Modal>
   );
 };
-
-export default UnsavedChangesModal;

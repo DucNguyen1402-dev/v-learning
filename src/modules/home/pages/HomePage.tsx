@@ -39,7 +39,7 @@ const FEATURED_COURSES: Course[] = [
   },
 ];
 
-const HomePage = () => {
+export const HomePage = () => {
   const location = useLocation();
   const { show: showToast } = Toast.use();
 
@@ -153,5 +153,3 @@ const HomePage = () => {
     </div>
   );
 };
-
-export default HomePage;

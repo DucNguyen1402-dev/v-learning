@@ -7,7 +7,7 @@ import type { ModalContextValues, ModalState } from "./types";
 type ModalProviderProps = {
   children: ReactNode;
 };
-const ModalProvider = ({ children }: ModalProviderProps) => {
+export const ModalProvider = ({ children }: ModalProviderProps) => {
   const [modalState, setModalState] = useState<ModalState>({
     isOpen: false,
     type: null,
@@ -67,5 +67,3 @@ const ModalProvider = ({ children }: ModalProviderProps) => {
     <ModalContext.Provider value={value}>{children}</ModalContext.Provider>
   );
 };
-
-export default ModalProvider;

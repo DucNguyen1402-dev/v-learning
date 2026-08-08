@@ -9,7 +9,7 @@ type LoginMutationVariables = {
   remember: boolean;
 };
 
-export const useLogin = () => {
+export const useLoginMutation = () => {
   const mutation = useMutation({
     mutationFn: ({ payload }: LoginMutationVariables) => login(payload),
     onSuccess: (data, variable) => {

@@ -1,5 +1,3 @@
-import AboutPage from "@modules/about/pages/AboutPage";
+import { AboutPage } from "@modules/about/pages/AboutPage";
 
-const AboutRoute = () => <AboutPage />;
-
-export default AboutRoute;
+export const AboutRoute = () => <AboutPage />;

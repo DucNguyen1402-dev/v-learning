@@ -2,7 +2,7 @@ import { Modal, type ModalContextValues } from "@shared/overlays/modal";
 import { MODAL_TYPE_CONFIG } from "@shared/overlays/modal/config";
 import type { ModalType } from "@shared/overlays/modal/constants";
 
-const ModalContainer = () => {
+export const ModalContainer = () => {
   const {
     internal: {
       state: { modalState, isLoading },
@@ -59,5 +59,3 @@ const ModalContainer = () => {
     />
   );
 };
-
-export default ModalContainer;

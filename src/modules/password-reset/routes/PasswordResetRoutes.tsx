@@ -1,5 +1,3 @@
-import PasswordResetPage from "../pages/PasswordResetPage";
+import { PasswordResetPage } from "../pages/PasswordResetPage";
 
-const PasswordResetRoute = () => <PasswordResetPage />;
-
-export default PasswordResetRoute;
+export const PasswordResetRoute = () => <PasswordResetPage />;

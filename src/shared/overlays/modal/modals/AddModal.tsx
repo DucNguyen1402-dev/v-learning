@@ -1,7 +1,7 @@
 import { Modal } from "@shared/overlays/modal/components";
 import { CancelButton, ConfirmButton } from "@shared/ui";
 
-const AddModal = ({ onCancel, onConfirm, title, subtitle }) => {
+export const AddModal = ({ onCancel, onConfirm, title, subtitle }) => {
   return (
     <Modal>
       <Modal.Header title={title} subtitle={subtitle} />
@@ -18,5 +18,3 @@ const AddModal = ({ onCancel, onConfirm, title, subtitle }) => {
     </Modal>
   );
 };
-
-export default AddModal;

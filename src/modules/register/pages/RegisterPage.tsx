@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import { useScrollOnRouteChange } from "@shared/navigation";
 
-const RegisterPage = () => {
+export const RegisterPage = () => {
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -12,10 +12,7 @@ const RegisterPage = () => {
     agreeTerms: false,
   });
 
-  const { scrollRef } = useScrollOnRouteChange({
-    block: "center",
-    behavior: "smooth",
-  });
+  const { scrollRef } = useScrollOnRouteChange();
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, checked } = e.target;
     setFormData((prev) => ({
@@ -51,10 +48,7 @@ const RegisterPage = () => {
       </header>
 
       {/* 2. Main Content - Split Layout / Centered Card */}
-      <main
-        ref={scrollRef}
-        className="flex flex-1 scroll-target items-center justify-center px-6 py-12"
-      >
+      <main className="flex flex-1 items-center justify-center px-6 py-12">
         <div className="grid w-full max-w-4xl items-center gap-8 md:grid-cols-2">
           {/* Left Column: Brand Value / Info */}
           <div className="hidden pr-6 md:block">
@@ -86,7 +80,10 @@ const RegisterPage = () => {
           </div>
 
           {/* Right Column: Register Form */}
-          <div className="rounded-xl border border-neutral-800 bg-neutral-900/40 p-6 backdrop-blur-sm sm:p-8">
+          <div
+            ref={scrollRef}
+            className="scroll-target rounded-xl border border-neutral-800 bg-neutral-900/40 p-6 backdrop-blur-sm sm:p-8"
+          >
             <div className="mb-6">
               <h2 className="text-xl font-bold tracking-tight text-white">
                 Tạo tài khoản mới
@@ -252,5 +249,3 @@ const RegisterPage = () => {
     </div>
   );
 };
-
-export default RegisterPage;

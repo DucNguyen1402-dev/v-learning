@@ -15,7 +15,7 @@ type ToastContainerProps = {
   size?: keyof typeof toastSizeClasses;
 };
 
-const ToastContainer = ({
+export const ToastContainer = ({
   message = "something went wrong",
   variant,
   toastRef,
@@ -49,4 +49,3 @@ const ToastContainer = ({
   );
 };
 ToastContainer.displayName = "ToastContainer";
-export default ToastContainer;

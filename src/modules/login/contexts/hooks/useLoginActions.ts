@@ -4,7 +4,7 @@ import type { LoginFormValues } from "@modules/login/type";
 import { CLIENT_ROUTES_KEYS } from "@routes/client";
 import type { LoginFn, LoginResponse } from "@shared/auth";
 import { getErrorMessage } from "@shared/error";
-import * as execution from "@shared/execution";
+import { execution } from "@shared/execution";
 import { createPayload } from "@shared/form-utils";
 import { useRouteNavigation } from "@shared/navigation";
 import { Toast } from "@shared/overlays";

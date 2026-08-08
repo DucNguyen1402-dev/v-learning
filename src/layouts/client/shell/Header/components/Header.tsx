@@ -6,13 +6,15 @@ import { getCurrentUser } from "@shared/auth";
 import { CircleUser } from "lucide-react";
 
 import { loginButtonHiddenRoutes } from "../loginButtonHiddenRoutes";
-import HeaderLogo from "./HeaderLogo";
-import HeaderNav from "./HeaderNav";
-import LoginButton from "./LoginButton";
-import ProfileMenu from "./ProfileMenu";
-import ThemeModeButton from "./ThemeModeButton";
+import {
+  HeaderLogo,
+  HeaderNav,
+  LoginButton,
+  ProfileMenu,
+  ThemeModeButton,
+} from ".";
 
-const Header = () => {
+export const Header = () => {
   const currentUser: null | CurrentUser = getCurrentUser();
   const { pathname } = useLocation();
   const routeKey = findRouteKey(pathname);
@@ -50,5 +52,3 @@ const Header = () => {
     </header>
   );
 };
-
-export default Header;

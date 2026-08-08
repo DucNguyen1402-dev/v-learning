@@ -8,7 +8,7 @@ import { PasswordResetRoute } from "@modules/password-reset";
 import { RegisterRoute } from "@modules/register";
 import { ClientProvider } from "@providers/client";
 
-const ClientRoutes = () => (
+export const ClientRoutes = () => (
   <Routes>
     <Route path="/" element={<Navigate to="/client" replace />} />
     <Route
@@ -28,5 +28,3 @@ const ClientRoutes = () => (
     </Route>
   </Routes>
 );
-
-export default ClientRoutes;

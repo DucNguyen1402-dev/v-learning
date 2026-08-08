@@ -3,7 +3,7 @@ import { type ReactNode, useCallback, useMemo, useState } from "react";
 import { LoadingContext } from "./LoadingContext";
 import type { LoadingContextValues } from "./LoadingContextValues";
 
-const LoadingProvider = ({ children }: { children: ReactNode }) => {
+export const LoadingProvider = ({ children }: { children: ReactNode }) => {
   const [isVisible, setIsVisible] = useState(false);
 
   const show = useCallback(() => setIsVisible(true), []);
@@ -24,5 +24,3 @@ const LoadingProvider = ({ children }: { children: ReactNode }) => {
     <LoadingContext.Provider value={value}>{children}</LoadingContext.Provider>
   );
 };
-
-export default LoadingProvider;

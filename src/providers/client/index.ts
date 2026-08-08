@@ -1,1 +1,1 @@
-export { default as ClientProvider } from "./ClientProvider";
+export { ClientProvider } from "./ClientProvider";

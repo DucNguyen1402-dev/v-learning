@@ -1,2 +1,2 @@
-export { default as LayoutProvider } from "./LayoutProvider";
-export { default as useLayoutContext } from "./useLayoutContext";
+export { LayoutProvider } from "./LayoutProvider";
+export { useLayoutContext } from "./useLayoutContext";

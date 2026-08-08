@@ -7,14 +7,12 @@ const logoMapping = {
   light: lightLogo,
 } satisfies ThemeAssets;
 
-const HeaderLogo = () => {
+export const HeaderLogo = () => {
   const { theme } = Theme.use();
 
   return (
     <div className="flex items-center">
-      <img src={logoMapping[theme]} alt="V-learning Logo" className="w-64" />
+      <img src={logoMapping[theme]} alt="V-learning Logo" className="w-60" />
     </div>
   );
 };
-
-export default HeaderLogo;

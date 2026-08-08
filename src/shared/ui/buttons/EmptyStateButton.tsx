@@ -1,14 +1,14 @@
 import clsx from "clsx";
 import { Trash } from "lucide-react";
 
-import Button from "./Button";
+import { Button } from "./Button";
 
 const surfaceStyles = {
   light: "bg-amber-500 hover:bg-amber-600",
   dark: "bg-amber-600 hover:bg-amber-500",
 };
 
-const EmptyStateButton = ({
+export const EmptyStateButton = ({
   children,
   Icon = Trash,
   surface = "light",
@@ -27,4 +27,3 @@ const EmptyStateButton = ({
     </Button>
   );
 };
-export default EmptyStateButton;

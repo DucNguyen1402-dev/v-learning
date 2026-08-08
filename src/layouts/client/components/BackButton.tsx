@@ -1,6 +1,6 @@
 import { useRouteNavigation } from "@shared/navigation";
 import { ArrowLeft } from "lucide-react";
-const BackButton = () => {
+export const BackButton = () => {
   const { back } = useRouteNavigation();
 
   return (
@@ -9,5 +9,3 @@ const BackButton = () => {
     </button>
   );
 };
-
-export default BackButton;

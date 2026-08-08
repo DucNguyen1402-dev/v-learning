@@ -1,10 +1,7 @@
 import { useScrollOnRouteChange } from "@shared/navigation";
 
-const PasswordResetPage = () => {
-  const { scrollRef } = useScrollOnRouteChange({
-    behavior: "smooth",
-    block: "center",
-  });
+export const PasswordResetPage = () => {
+  const { scrollRef } = useScrollOnRouteChange();
   return (
     <div className="flex min-h-screen flex-col justify-between bg-neutral-50 font-sans text-neutral-900 selection:bg-neutral-200 selection:text-neutral-900">
       {/* 2. Main Content - Centered Card */}
@@ -76,5 +73,3 @@ const PasswordResetPage = () => {
     </div>
   );
 };
-
-export default PasswordResetPage;

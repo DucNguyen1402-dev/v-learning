@@ -1,1 +1,1 @@
-export { default as runAsyncTask } from "./runAsyncTask";
+export { runAsyncTask } from "./runAsyncTask";

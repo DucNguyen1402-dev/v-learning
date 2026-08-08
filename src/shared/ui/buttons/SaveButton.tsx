@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { Save } from "lucide-react";
 
-import Button from "./Button";
+import { Button } from "./Button";
 
 const surfaceStyles = {
   light: "bg-blue-500 hover:bg-blue-600",
@@ -9,7 +9,12 @@ const surfaceStyles = {
   deepDark: "bg-blue-600 hover:bg-blue-600/80",
 };
 
-const SaveButton = ({ children, Icon = Save, surface = "light", ...props }) => {
+export const SaveButton = ({
+  children,
+  Icon = Save,
+  surface = "light",
+  ...props
+}) => {
   return (
     <Button
       icon={Icon}
@@ -23,5 +28,3 @@ const SaveButton = ({ children, Icon = Save, surface = "light", ...props }) => {
     </Button>
   );
 };
-
-export default SaveButton;

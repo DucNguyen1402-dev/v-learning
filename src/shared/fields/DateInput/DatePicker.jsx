@@ -18,7 +18,7 @@ const CustomComponents = {
   },
 };
 
-const DatePicker = ({
+export const DatePicker = ({
   calendarRef,
   isDatePickerOpen = false,
   control,
@@ -52,5 +52,3 @@ const DatePicker = ({
     />
   );
 };
-
-export default DatePicker;

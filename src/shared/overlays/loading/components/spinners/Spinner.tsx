@@ -13,7 +13,7 @@ type SpinnerProps = {
   className?: string;
 };
 
-const Spinner = ({
+export const Spinner = ({
   size = "md",
   color = "brand",
   className = "",
@@ -41,4 +41,3 @@ const Spinner = ({
     </div>
   );
 };
-export default Spinner;

@@ -6,7 +6,7 @@ import {
   type Path,
 } from "react-hook-form";
 
-import Checkbox from "./Checkbox";
+import { Checkbox } from "./Checkbox";
 
 type CheckboxFieldProps<TFieldValues extends FieldValues> = {
   control: Control<TFieldValues>;
@@ -17,7 +17,7 @@ type CheckboxFieldProps<TFieldValues extends FieldValues> = {
   "checked" | "onCheckedChange"
 >;
 
-const CheckboxField = <TFieldValues extends FieldValues>({
+export const CheckboxField = <TFieldValues extends FieldValues>({
   control,
   name,
   label,
@@ -43,4 +43,3 @@ const CheckboxField = <TFieldValues extends FieldValues>({
 };
 
 CheckboxField.displayName = "CheckboxField";
-export default CheckboxField;

@@ -1,8 +1,8 @@
-import { Login } from "@modules/login/contexts";
+import { Login } from "@modules/login";
 import { CheckboxField } from "@shared/fields";
 import { LoginButton } from "@shared/ui";
 
-const LoginActions = () => {
+export const LoginActions = () => {
   const {
     hookForm: { control },
     actions: { onLoginClick },
@@ -25,5 +25,3 @@ const LoginActions = () => {
     </div>
   );
 };
-
-export default LoginActions;

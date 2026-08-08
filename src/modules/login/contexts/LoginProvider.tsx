@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-import { Login } from "@shared/auth";
+import { useLoginMutation } from "@shared/auth";
 
 import { useLoginActions, useLoginForm } from "./hooks";
 import { LoginContext } from "./LoginContext";
@@ -9,8 +9,8 @@ import type { LoginContextValues } from "./LoginContextValues";
 type LoginProviderProps = {
   children: ReactNode;
 };
-const LoginProvider = ({ children }: LoginProviderProps) => {
-  const { login, isPending } = Login.use();
+export const LoginProvider = ({ children }: LoginProviderProps) => {
+  const { login, isPending } = useLoginMutation();
 
   const { register, errors, handleSubmit, control } = useLoginForm();
 
@@ -26,5 +26,3 @@ const LoginProvider = ({ children }: LoginProviderProps) => {
     <LoginContext.Provider value={value}>{children}</LoginContext.Provider>
   );
 };
-
-export default LoginProvider;

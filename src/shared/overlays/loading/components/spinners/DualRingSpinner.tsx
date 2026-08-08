@@ -11,7 +11,7 @@ type DualRingSpinnerProps = {
   color?: DualSpinnerColor;
 };
 
-const DualRingSpinner = ({
+export const DualRingSpinner = ({
   size = "md",
   color = "primary",
 }: DualRingSpinnerProps) => {
@@ -35,5 +35,3 @@ const DualRingSpinner = ({
     </div>
   );
 };
-
-export default DualRingSpinner;

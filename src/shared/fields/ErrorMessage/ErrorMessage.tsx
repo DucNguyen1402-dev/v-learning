@@ -8,11 +8,13 @@ type ErrorMessageProps = {
   className: string | undefined;
 };
 
-const ErrorMessage = ({ error, children, className }: ErrorMessageProps) => {
+export const ErrorMessage = ({
+  error,
+  children,
+  className,
+}: ErrorMessageProps) => {
   const content = error ?? children;
   if (!content) return null;
 
   return <p className={cn("error-message", className)}>{content}</p>;
 };
-
-export default ErrorMessage;

@@ -1,2 +1,2 @@
-export { default as ToastContainer } from "./ToastContainer";
-export { default as ToastView } from "./ToastView";
+export { ToastContainer } from "./ToastContainer";
+export { ToastView } from "./ToastView";

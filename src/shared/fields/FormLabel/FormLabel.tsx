@@ -9,7 +9,7 @@ type FormLabelProps = {
   className?: string;
 };
 
-const FormLabel = ({
+export const FormLabel = ({
   htmlFor,
   children,
   required = false,
@@ -18,12 +18,10 @@ const FormLabel = ({
   return (
     <label
       htmlFor={htmlFor}
-      className={cn("block w-fit cursor-pointer text-secondary", className)}
+      className={cn("text-primary block w-fit cursor-pointer", className)}
     >
       {children}
       {required && <span className="ml-1.5 text-required">*</span>}
     </label>
   );
 };
-
-export default FormLabel;

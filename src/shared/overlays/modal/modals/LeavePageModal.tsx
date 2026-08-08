@@ -1,7 +1,7 @@
 import { Modal } from "@shared/overlays/modal/components";
 import { CancelButton, ConfirmButton } from "@shared/ui";
 
-const LeavePageModal = ({ onCancel, onConfirm }) => {
+export const LeavePageModal = ({ onCancel, onConfirm }) => {
   return (
     <Modal>
       <Modal.Header
@@ -21,5 +21,3 @@ const LeavePageModal = ({ onCancel, onConfirm }) => {
     </Modal>
   );
 };
-
-export default LeavePageModal;

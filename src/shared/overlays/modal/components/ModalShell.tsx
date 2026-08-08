@@ -4,7 +4,7 @@ import { ModalContainer } from "@shared/overlays/modal/containers";
 import { useModalContext } from "@shared/overlays/modal/contexts";
 import { AnimatePresence, motion } from "motion/react";
 
-const ModalShell = () => {
+export const ModalShell = () => {
   const {
     internal: {
       state: { modalState },
@@ -31,5 +31,3 @@ const ModalShell = () => {
     </AnimatePresence>
   );
 };
-
-export default ModalShell;

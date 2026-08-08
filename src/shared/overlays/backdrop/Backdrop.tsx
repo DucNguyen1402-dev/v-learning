@@ -18,7 +18,7 @@ type BackdropProps = {
   children?: ReactNode;
 } & React.HTMLAttributes<HTMLDivElement>;
 
-const Backdrop = ({
+export const Backdrop = ({
   surface = DEFAULT_SURFACE,
   className = "",
   children,
@@ -37,5 +37,3 @@ const Backdrop = ({
     </div>
   );
 };
-
-export default Backdrop;

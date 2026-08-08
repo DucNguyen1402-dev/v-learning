@@ -1,1 +1,1 @@
-export { default as RegisterRoute } from "./routes/RegisterRoute";
+export { RegisterRoute } from "./routes/RegisterRoute";

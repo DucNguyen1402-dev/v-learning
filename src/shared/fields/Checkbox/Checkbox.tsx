@@ -36,7 +36,7 @@ export type CheckboxProps = Omit<
   size?: CheckboxSize;
 };
 
-const Checkbox = forwardRef<
+export const Checkbox = forwardRef<
   ComponentRef<typeof CheckboxPrimitive.Root>,
   CheckboxProps
 >(
@@ -95,4 +95,3 @@ const Checkbox = forwardRef<
 );
 
 Checkbox.displayName = "Checkbox";
-export default Checkbox;

@@ -3,7 +3,7 @@ import type { Loader } from "@shared/overlays/loading";
 import { waitForMinimumDuration } from "./utils";
 type AsyncTask<T = void> = () => Promise<T>;
 
-const runAsyncTask = async <T>(
+export const runAsyncTask = async <T>(
   AsyncTask: AsyncTask<T>,
   loader?: Loader,
   minimumLoadingTime: number = 800,
@@ -17,5 +17,3 @@ const runAsyncTask = async <T>(
     loader?.hide();
   }
 };
-
-export default runAsyncTask;

@@ -7,7 +7,7 @@ import { Theme } from "@shared/theme";
 import { Button } from "@shared/ui";
 import { LogOut, MoonStar, Settings, Sun, User } from "lucide-react";
 
-const ProfileMenu = () => {
+export const ProfileMenu = () => {
   const { toggleTheme, theme } = Theme.use();
   const { go } = useRouteNavigation();
 
@@ -47,5 +47,3 @@ const ProfileMenu = () => {
     </ul>
   );
 };
-
-export default ProfileMenu;

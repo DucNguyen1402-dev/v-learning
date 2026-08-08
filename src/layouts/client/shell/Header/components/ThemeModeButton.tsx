@@ -1,7 +1,7 @@
 import { Theme } from "@shared/theme";
 import { Button } from "@shared/ui";
 import { MoonStar, Sun } from "lucide-react";
-const ThemeModeButton = () => {
+export const ThemeModeButton = () => {
   const { theme, toggleTheme } = Theme.use();
 
   const isDarkMode = theme === "dark";
@@ -13,4 +13,3 @@ const ThemeModeButton = () => {
 
   return <Button onClick={toggleTheme}>{icon}</Button>;
 };
-export default ThemeModeButton;

@@ -44,7 +44,7 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   className?: string;
 };
 
-const Button = ({
+export const Button = ({
   children,
   icon: Icon,
   size = "md",
@@ -77,4 +77,3 @@ const Button = ({
     </button>
   );
 };
-export default Button;

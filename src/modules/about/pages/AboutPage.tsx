@@ -1,6 +1,6 @@
 import { useScrollOnRouteChange } from "@shared/navigation";
 
-const AboutPage = () => {
+export const AboutPage = () => {
   useScrollOnRouteChange();
   return (
     <div className="min-h-screen font-sans text-neutral-100">
@@ -145,5 +145,3 @@ const AboutPage = () => {
     </div>
   );
 };
-
-export default AboutPage;

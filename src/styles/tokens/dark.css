@@ -59,6 +59,7 @@
   --text-secondary: var(--color-zinc-100);
   --text-tertiary: var(--color-zinc-200);
 
+  --text-primary-hover: var(--color-zinc-100);
   --text-secondary-hover: var(--color-zinc-100);
 
   --text-secondary-disabled: var(--color-zinc-300);

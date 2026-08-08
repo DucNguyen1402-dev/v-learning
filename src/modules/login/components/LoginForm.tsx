@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 
-import { Login } from "@modules/login/contexts";
+import { Login } from "@modules/login";
 import { FormLabel, Input, PasswordField } from "@shared/fields";
 import { accountValidationRules } from "@shared/validation";
-const LoginForm = () => {
+export const LoginForm = () => {
   const {
     hookForm: { register, errors },
   } = Login.use();
@@ -35,5 +35,3 @@ const LoginForm = () => {
     </form>
   );
 };
-
-export default LoginForm;

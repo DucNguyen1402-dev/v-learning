@@ -1,1 +1,1 @@
-export { default as PasswordResetRoute } from "./routes/PasswordResetRoutes";
+export { PasswordResetRoute } from "./routes/PasswordResetRoutes";

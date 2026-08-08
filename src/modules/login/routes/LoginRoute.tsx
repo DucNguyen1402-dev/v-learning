@@ -1,10 +1,8 @@
-import { Login } from "@modules/login/contexts";
-import { default as LoginPage } from "@modules/login/pages/LoginPage";
+import { Login } from "@modules/login";
+import { LoginPage } from "@modules/login/pages/LoginPage";
 
-const LoginRoute = () => (
+export const LoginRoute = () => (
   <Login.Provider>
     <LoginPage />
   </Login.Provider>
 );
-
-export default LoginRoute;

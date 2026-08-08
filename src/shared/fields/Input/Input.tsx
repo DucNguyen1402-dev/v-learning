@@ -20,7 +20,7 @@ type InputProps = ComponentPropsWithoutRef<"input"> & {
   rightSlot?: React.ReactNode;
 };
 
-const Input = forwardRef<HTMLInputElement, InputProps>(
+export const Input = forwardRef<HTMLInputElement, InputProps>(
   (
     {
       disabled = false,
@@ -61,6 +61,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             id={id ?? props.name}
             type={type}
             disabled={disabled}
+
             className={cn(
               "input",
               disabled ? "input-disabled" : "input-default",
@@ -92,4 +93,3 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
 );
 
 Input.displayName = "Input";
-export default Input;

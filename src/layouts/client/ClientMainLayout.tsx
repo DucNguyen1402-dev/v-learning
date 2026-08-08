@@ -6,7 +6,7 @@ import { GlobalUI } from "@shared/overlays";
 import { BackButton } from "./components";
 import { Footer, Header } from "./shell";
 
-const ClientMainLayout = () => {
+export const ClientMainLayout = () => {
   const { shouldShowBackButton } = Layout.use();
 
   return (
@@ -23,5 +23,3 @@ const ClientMainLayout = () => {
     </>
   );
 };
-
-export default ClientMainLayout;

@@ -1,1 +1,1 @@
-export { default as AboutRoute } from "./routes/AboutRoute";
+export { AboutRoute } from "./routes/AboutRoute";
