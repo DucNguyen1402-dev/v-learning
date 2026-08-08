@@ -121,3 +121,7 @@
     --tw-ring-color: var(--focus-ring-warning);
   }
 }
+
+@utility scroll-target {
+  @apply scroll-mt-36 xl:scroll-mt-16;
+}

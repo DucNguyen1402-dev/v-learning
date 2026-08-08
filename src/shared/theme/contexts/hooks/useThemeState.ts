@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-import type { Theme } from "../types";
+import type { Theme } from "@shared/theme/types";
 
-export const useTheme = () => {
+export const useThemeState = () => {
   const [currentTheme, setCurrentTheme] = useState<Theme>("light");
 
   const toggleTheme = () => {

@@ -1,4 +1,4 @@
-import { type ThemeAssets, useTheme } from "@shared/theme";
+import { Theme, type ThemeAssets } from "@shared/theme";
 
 import { darkLogo, lightLogo } from "@assets/logo/client";
 
@@ -8,15 +8,11 @@ const logoMapping = {
 } satisfies ThemeAssets;
 
 const HeaderLogo = () => {
-  const { currentTheme } = useTheme();
+  const { theme } = Theme.use();
 
   return (
     <div className="flex items-center">
-      <img
-        src={logoMapping[currentTheme]}
-        alt="V-learning Logo"
-        className="w-64"
-      />
+      <img src={logoMapping[theme]} alt="V-learning Logo" className="w-64" />
     </div>
   );
 };

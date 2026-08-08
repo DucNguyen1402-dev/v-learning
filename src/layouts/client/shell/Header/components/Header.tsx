@@ -20,20 +20,20 @@ const Header = () => {
     routeKey && loginButtonHiddenRoutes.has(routeKey);
 
   return (
-    <header className="sticky top-0 z-50">
-      <div className="header mx-auto flex h-28 max-w-7xl items-center justify-between">
+    <header className="header sticky top-0 z-sticky">
+      <div className="flex items-center justify-between">
         <HeaderLogo />
         <HeaderNav />
 
         <div className="flex items-center gap-4">
           {currentUser ? (
-            <div className="group relative flex cursor-pointer items-center gap-2.5 rounded-lg px-2 py-1 transition">
+            <div className="group relative flex cursor-pointer items-center gap-2.5 rounded-lg p-2">
               <CircleUser className="text-text-secondary" />
               <span className="text-sm font-medium">
                 {currentUser.taiKhoan}
               </span>
 
-              <div className="pointer-events-none absolute top-full left-0 z-50 rounded-lg border border-zinc-300 bg-surface-2 opacity-0 shadow-md transition-opacity duration-300 group-hover:pointer-events-auto group-hover:opacity-100">
+              <div className="absolute top-full left-0 z-popover -translate-y-4 opacity-0 transition-all duration-300 group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100">
                 <ProfileMenu />
               </div>
             </div>

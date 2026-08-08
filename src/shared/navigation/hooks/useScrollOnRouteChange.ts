@@ -29,6 +29,5 @@ export const useScrollOnRouteChange = ({
 
   return {
     scrollRef: ref,
-    scrollMarginTop: "scroll-mt-36",
   };
 };

@@ -7,15 +7,12 @@ import {
 import { useScrollOnRouteChange } from "@shared/navigation";
 
 const LoginPage = () => {
-  const { scrollRef, scrollMarginTop } = useScrollOnRouteChange({
+  const { scrollRef } = useScrollOnRouteChange({
     block: "center",
     behavior: "smooth",
   });
   return (
-    <div
-      className={`flex-center min-h-screen p-4 ${scrollMarginTop}`}
-      ref={scrollRef}
-    >
+    <div className="flex-center min-h-screen scroll-target p-4" ref={scrollRef}>
       <div className="flex w-full max-w-md flex-col gap-6 rounded-xl border border-border-secondary bg-surface-1 p-8 shadow-sm">
         <LoginHeader />
 

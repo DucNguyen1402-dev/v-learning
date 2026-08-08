@@ -9,6 +9,7 @@ interface Course {
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
+import { useScrollOnRouteChange } from "@shared/navigation";
 import { Toast } from "@shared/overlays";
 
 const FEATURED_COURSES: Course[] = [
@@ -42,6 +43,7 @@ const HomePage = () => {
   const location = useLocation();
   const { show: showToast } = Toast.use();
 
+  useScrollOnRouteChange();
   useEffect(() => {
     const toastState = location.state?.payload;
     if (!toastState) return;

@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+
+import { useScrollOnRouteChange } from "@shared/navigation";
+
 const RegisterPage = () => {
   const [formData, setFormData] = useState({
     fullName: "",
@@ -9,6 +12,10 @@ const RegisterPage = () => {
     agreeTerms: false,
   });
 
+  const { scrollRef } = useScrollOnRouteChange({
+    block: "center",
+    behavior: "smooth",
+  });
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, checked } = e.target;
     setFormData((prev) => ({
@@ -44,7 +51,10 @@ const RegisterPage = () => {
       </header>
 
       {/* 2. Main Content - Split Layout / Centered Card */}
-      <main className="flex flex-1 items-center justify-center px-6 py-12">
+      <main
+        ref={scrollRef}
+        className="flex flex-1 scroll-target items-center justify-center px-6 py-12"
+      >
         <div className="grid w-full max-w-4xl items-center gap-8 md:grid-cols-2">
           {/* Left Column: Brand Value / Info */}
           <div className="hidden pr-6 md:block">

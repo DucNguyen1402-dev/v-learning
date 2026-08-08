@@ -1,10 +1,10 @@
-import { useTheme } from "@shared/theme";
+import { Theme } from "@shared/theme";
 import { Button } from "@shared/ui";
 import { MoonStar, Sun } from "lucide-react";
 const ThemeModeButton = () => {
-  const { currentTheme, toggleTheme } = useTheme();
+  const { theme, toggleTheme } = Theme.use();
 
-  const isDarkMode = currentTheme === "dark";
+  const isDarkMode = theme === "dark";
   const icon = isDarkMode ? (
     <Sun className="size-7 text-yellow-500" />
   ) : (

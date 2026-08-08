@@ -1,26 +1,17 @@
+import { useScrollOnRouteChange } from "@shared/navigation";
+
 const PasswordResetPage = () => {
+  const { scrollRef } = useScrollOnRouteChange({
+    behavior: "smooth",
+    block: "center",
+  });
   return (
     <div className="flex min-h-screen flex-col justify-between bg-neutral-50 font-sans text-neutral-900 selection:bg-neutral-200 selection:text-neutral-900">
-      {/* 1. Header Navigation */}
-      <header className="sticky top-0 z-50 border-b border-neutral-200/80 bg-white/80 px-6 py-4 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl items-center justify-between">
-          <a
-            href="/"
-            className="text-xl font-bold tracking-tight text-neutral-900"
-          >
-            V-learning<span className="text-neutral-400">.</span>
-          </a>
-          <a
-            href="#login"
-            className="text-xs font-medium text-neutral-600 transition-colors hover:text-neutral-900"
-          >
-            Quay lại Đăng nhập
-          </a>
-        </div>
-      </header>
-
       {/* 2. Main Content - Centered Card */}
-      <main className="flex flex-1 items-center justify-center px-6 py-12">
+      <main
+        ref={scrollRef}
+        className="flex flex-1 scroll-target items-center justify-center px-6 py-12"
+      >
         <div className="w-full max-w-md rounded-xl border border-neutral-200 bg-white p-6 shadow-xs sm:p-8">
           <div className="mb-6 text-center">
             <div className="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-full border border-neutral-200 bg-neutral-100 text-neutral-600">

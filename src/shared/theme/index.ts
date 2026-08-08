@@ -1,2 +1,2 @@
-export * from "./hooks";
+export { Theme } from "./Theme";
 export { type ThemeAssets } from "./types";
