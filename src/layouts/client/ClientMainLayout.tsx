@@ -16,9 +16,12 @@ const ClientMainLayout = () => {
 
   return (
     <>
-      <div className="flex min-h-screen flex-col bg-bg-tertiary">
+      <div className="flex min-h-screen flex-col">
         <Header />
-        <main ref={mainRef} className="mx-auto max-w-7xl flex-1 p-6 pb-12">
+        <main
+          ref={mainRef}
+          className="mx-auto max-w-7xl flex-1 bg-bg-tertiary p-6 pb-12"
+        >
           {shouldShowBackButton && <BackButton />}
           <Outlet />
         </main>

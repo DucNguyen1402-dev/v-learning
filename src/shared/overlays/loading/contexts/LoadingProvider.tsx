@@ -12,8 +12,10 @@ const LoadingProvider = ({ children }: { children: ReactNode }) => {
   const value: LoadingContextValues = useMemo(
     () => ({
       isVisible,
-      show,
-      hide,
+      loader: {
+        show,
+        hide,
+      },
     }),
     [isVisible, show, hide],
   );

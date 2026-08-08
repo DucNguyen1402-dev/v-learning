@@ -36,4 +36,15 @@
   .nav-link-active {
     color: var(--link-primary-active);
   }
+
+  .menu-button {
+
+    color: var(--text-secondary);
+
+    &:hover {
+      background-color: var(--bg-secondary-hover);
+      color: var(--secondary-foreground);
+
+    }
+  }
 }

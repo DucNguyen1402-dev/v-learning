@@ -20,6 +20,11 @@ export const useRouteNavigation = () => {
     return findRouteKey(location.pathname);
   }, [location.pathname, location.state?.currentKey]);
 
+  const previousRouteKey = useMemo(() => {
+    const previousKey = routeHistory.at(-1) as RouteKey | undefined;
+    if (previousKey) return previousKey;
+  }, [routeHistory]);
+
   const back = useCallback(() => {
     const previousKey = routeHistory.at(-1) as RouteKey | undefined;
     if (previousKey) {
@@ -58,5 +63,6 @@ export const useRouteNavigation = () => {
     back,
     forward,
     go,
+    previousRouteKey,
   };
 };

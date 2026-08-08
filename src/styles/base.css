@@ -1,10 +1,18 @@
 @layer base {
+
   *,
   *::before,
   *::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+  }
+
+  ul,
+  li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
   }
 
   html {
@@ -27,12 +35,40 @@
     margin: 0;
   }
 
+
+
+
   input:-webkit-autofill,
   input:-webkit-autofill:hover,
-  input:-webkit-autofill:focus {
-    -webkit-text-fill-color: var(--autofill-text);
-    -webkit-box-shadow: 0 0 0 1000px var(--autofill-bg) inset;
-    box-shadow: 0 0 0 1000px var(--autofill-bg) inset;
-    transition: background-color 9999s ease-in-out 0s;
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 1000px #f4f4f5 inset !important;
+    box-shadow: 0 0 0 1000px #f4f4f5 inset !important;
+
+    -webkit-text-fill-color: #18181b !important;
+    caret-color: #18181b !important;
+
+    border-color: #d4d4d8 !important;
   }
+
+  .dark input:-webkit-autofill,
+  .dark input:-webkit-autofill:hover,
+  .dark input:-webkit-autofill:focus,
+  .dark input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 1000px #3f3f46 inset !important;
+    /* zinc-800 */
+    box-shadow: 0 0 0 1000px #3f3f46 inset !important;
+
+    -webkit-text-fill-color: #fafafa !important;
+    /* zinc-50 */
+    caret-color: #fafafa !important;
+
+    border-color: #52525b !important;
+    /* zinc-600 */
+  }
+
+
+
+
+
 }

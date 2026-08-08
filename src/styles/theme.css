@@ -7,6 +7,8 @@
   --color-bg-secondary: var(--bg-secondary);
   --color-bg-tertiary: var(--bg-tertiary);
 
+  --color-bg-secondary-hover: var(--bg-secondary-hover);
+
   /* ==========================================================
    * Border
    * ========================================================== */
@@ -18,6 +20,7 @@
    * ========================================================== */
 
   --color-text-secondary: var(--text-secondary);
+  --color-text-tertiary: var(--text-tertiary);
 
   /* ==========================================================
    * Semantic
@@ -61,7 +64,7 @@
 
   --primary: var(--color-blue-600);
   --primary-hover: var(--color-blue-700);
-  --primary-foreground: var(--color-zinc-100);
+  --primary-foreground: var(--color-zinc-50);
 
   --secondary: var(--color-zinc-100);
   --secondary-hover: var(--color-zinc-200);
@@ -80,7 +83,7 @@
   --bg-primary-warning: var(--color-red-50);
 
   --bg-secondary: var(--color-zinc-100);
-  --bg-secondary-hover: var(--color-blue-500);
+  --bg-secondary-hover: var(--color-zinc-200);
 
   --bg-tertiary: var(--color-zinc-200);
   --bg-tertiary-disabled: var(--color-zinc-100);
@@ -162,12 +165,7 @@
   --scrollbar-thumb: #cbd5e1;
   --scrollbar-thumb-hover: #94a3b8;
 
-  /* ==========================================================
-   * Autofill
-   * ========================================================== */
 
-  --autofill-bg: #ffffff;
-  --autofill-text: #18181b;
 }
 
 .dark {
@@ -177,7 +175,9 @@
 
   --primary: var(--color-blue-500);
   --primary-hover: var(--color-blue-600);
-  --primary-foreground: var(--color-zinc-700);
+  --primary-checked: var(--color-blue-700);
+  --primary-foreground: var(--color-zinc-100);
+
 
   --secondary: var(--color-zinc-900);
   --secondary-hover: var(--color-zinc-800);
@@ -185,7 +185,7 @@
   --secondary-border: var(--color-zinc-700);
 
   --destructive: var(--color-red-500);
-  --destrcutive-hover: var(--color-red-600);
+  --destructive-hover: var(--color-red-600);
 
   /* ==========================================================
   * Background
@@ -193,9 +193,8 @@
 
   --bg-primary: var(--color-zinc-900);
   --bg-primary-warning: --alpha(var(--color-red-950) / 40%);
-
   --bg-secondary: var(--color-zinc-800);
-  --bg-secondary-hover: var(--color-blue-400);
+  --bg-secondary-hover: var(--color-zinc-700);
 
   --bg-tertiary: var(--color-zinc-800);
 
@@ -228,9 +227,9 @@
    * Text
    * ========================================================== */
 
-  --text-primary: var(--color-zinc-100);
-  --text-secondary: var(--color-zinc-200);
-  --text-tertiary: var(--color-zinc-300);
+  --text-primary: var(--color-zinc-50);
+  --text-secondary: var(--color-zinc-100);
+  --text-tertiary: var(--color-zinc-200);
 
   --text-secondary-hover: var(--color-zinc-100);
 
@@ -270,10 +269,4 @@
   --scrollbar-thumb: #52525b;
   --scrollbar-thumb-hover: #71717a;
 
-  /* ==========================================================
-   * Autofill
-   * ========================================================== */
-
-  --autofill-bg: #18181b;
-  --autofill-text: #f4f4f5;
 }

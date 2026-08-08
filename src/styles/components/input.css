@@ -53,17 +53,15 @@
     background-color: var(--bg-secondary);
 
     &:hover {
-      background-color: var(--bg-secondary-hover);
+      background-color: var(--primary-hover);
     }
 
     &[data-state="checked"] {
-      background-color: var(--bg-secondary-hover);
+      background-color: var(--primary);
       border-color: var(--border-secondary-checked);
     }
 
   }
-
-
 
   .error-message {
     @apply z-20 w-full rounded-sm px-2 py-2;
