@@ -5,10 +5,10 @@ import { clearAuthSession } from "@shared/auth";
 import { useRouteNavigation } from "@shared/navigation";
 import { useTheme } from "@shared/theme";
 import { Button } from "@shared/ui";
-import { LogOut, Settings, Sun } from "lucide-react";
+import { LogOut, MoonStar, Settings, Sun, User } from "lucide-react";
 
 const ProfileMenu = () => {
-  const { toggleTheme } = useTheme();
+  const { toggleTheme, currentTheme } = useTheme();
   const { go } = useRouteNavigation();
 
   const onLogoutClick = useCallback(() => {
@@ -18,11 +18,16 @@ const ProfileMenu = () => {
 
   const menuItems = useMemo(() => {
     return [
-      { label: "Chế độ tối", onClick: toggleTheme, icon: Sun },
+      {
+        label: `Chế độ ${currentTheme === "dark" ? "sáng" : "tối"}`,
+        onClick: toggleTheme,
+        icon: currentTheme === "dark" ? Sun : MoonStar,
+      },
+      { label: "Profile", onClick: () => {}, icon: User },
       { label: "Cài đặt", onClick: () => {}, icon: Settings },
       { label: "Đăng xuất", onClick: onLogoutClick, icon: LogOut },
     ];
-  }, [toggleTheme, onLogoutClick]);
+  }, [toggleTheme, onLogoutClick, currentTheme]);
 
   return (
     <ul className="w-40 cursor-pointer gap-4 space-y-3 rounded-lg pt-2 pb-3 pl-2">

@@ -1,5 +1,4 @@
 @layer base {
-
   *,
   *::before,
   *::after {
@@ -35,9 +34,6 @@
     margin: 0;
   }
 
-
-
-
   input:-webkit-autofill,
   input:-webkit-autofill:hover,
   input:-webkit-autofill:focus,
@@ -66,9 +62,4 @@
     border-color: #52525b !important;
     /* zinc-600 */
   }
-
-
-
-
-
 }

@@ -1,0 +1,107 @@
+.dark {
+  /* ==========================================================
+   * Brand Colors
+   * ========================================================== */
+
+  --primary: var(--color-blue-500);
+  --primary-hover: var(--color-blue-600);
+  --primary-checked: var(--color-blue-700);
+  --primary-foreground: var(--color-zinc-100);
+
+  --secondary: var(--color-zinc-900);
+  --secondary-hover: var(--color-zinc-800);
+  --secondary-foreground: var(--color-zinc-100);
+  --secondary-border: var(--color-zinc-700);
+
+  --destructive: var(--color-red-500);
+  --destructive-hover: var(--color-red-600);
+
+  /* ==========================================================
+  * Background
+   * ========================================================== */
+
+  --surface-0: var(--color-zinc-900);
+  --surface-1: var(--color-zinc-800);
+  --surface-1-hover: var(--color-zinc-700);
+
+  --surface-2: var(--color-zinc-800);
+
+  /* ==========================================================
+  *   Border
+  * ========================================================== */
+
+  --border-primary: var(--color-zinc-600);
+  --border-primary-hover: var(--color-zinc-600);
+  --border-primary-focus: var(--color-blue-500);
+
+  --border-secondary: var(--color-zinc-700);
+  --border-secondary-hover: var(--color-zinc-600);
+  --border-secondary-checked: var(--color-blue-500);
+  --border-secondary-disabled: var(--color-zinc-800);
+
+  --border-primary-warning: var(--color-red-300);
+
+  --border-secondary-warning: var(--color-red-400);
+  --border-secondary-warning-focus: var(--color-red-300);
+
+  /* ==========================================================
+ * Focus
+ * ========================================================== */
+
+  --focus-ring-primary: --alpha(var(--color-blue-500) / 20%);
+  --focus-ring-warning: --alpha(var(--color-red-500) / 20%);
+
+  /* ==========================================================
+   * Text
+   * ========================================================== */
+
+  --text-primary: var(--color-zinc-50);
+  --text-secondary: var(--color-zinc-100);
+  --text-tertiary: var(--color-zinc-200);
+
+  --text-secondary-hover: var(--color-zinc-100);
+
+  --text-secondary-disabled: var(--color-zinc-300);
+
+  --text-primary-warning: var(--color-red-400);
+  --text-primary-warning-hover: var(--color-red-300);
+
+  /* ==========================================================
+   * placeholder
+   * ========================================================== */
+
+  --text-placeholder: var(--color-zinc-600);
+
+  /* ==========================================================
+   * Nav-link
+   * ========================================================== */
+
+  --nav-link-primary: var(--color-zinc-100);
+  --nav-link-primary-hover: var(--color-blue-600);
+  --nav-link-primary-active: var(--color-blue-500);
+
+  /* ==========================================================
+   * Links
+   * ========================================================== */
+
+  --link-primary: var(--color-blue-400);
+  --link-primary-hover: var(--color-blue-300);
+  --link-primary-active: var(--color-blue-500);
+
+  --link-secondary: var(--color-blue-500);
+  --link-secondary-hover: var(--color-blue-400);
+  --link-secondary-active: var(--color-blue-600);
+
+  /* ==========================================================
+   * Semantic
+   * ========================================================== */
+  --danger: var(--color-red-500);
+
+  /* ==========================================================
+   * Scrollbar
+   * ========================================================== */
+
+  --scrollbar-track: #18181b;
+  --scrollbar-thumb: #52525b;
+  --scrollbar-thumb-hover: #71717a;
+}

@@ -2,7 +2,7 @@ const AboutPage = () => {
   return (
     <div className="min-h-screen font-sans text-neutral-100">
       {/* 2. Hero Section */}
-      <section className="mx-auto max-w-6xl px-6 py-20">
+      <section className="mx-auto px-6 py-20">
         <div className="max-w-2xl">
           <span className="font-mono text-xs tracking-widest text-neutral-500 uppercase">
             Về V-learning

@@ -3,7 +3,6 @@
     @apply w-full rounded-md px-3 py-2 outline-none;
     font-size: var(--font-size-sm);
     transition: color var(--duration-fast) var(--ease-default);
-
   }
 
   .input-default {
@@ -11,7 +10,7 @@
     color: var(--text-primary);
     border: 1px solid var(--border-primary);
 
-    background-color: var(--bg-primary);
+    background-color: --alpha(var(--bg-primary) / 40%);
 
     &:hover {
       border-color: var(--border-primary-hover);
@@ -19,13 +18,11 @@
 
     &:focus {
       border-color: var(--border-primary-focus);
-
     }
 
     &::placeholder {
-      color: var(--text-placeholder)
+      color: var(--text-placeholder);
     }
-
   }
 
   .input-disabled {
@@ -33,7 +30,6 @@
     color: var(--text-secondary-disabled);
     background-color: var(--bg-tertiary-disabled);
     border: 1px solid var(--border-secondary-disabled);
-
   }
 
   .input-error {
@@ -60,7 +56,6 @@
       background-color: var(--primary);
       border-color: var(--border-secondary-checked);
     }
-
   }
 
   .error-message {

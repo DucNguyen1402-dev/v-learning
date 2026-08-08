@@ -1,0 +1,7 @@
+@layer components {
+  .header {
+    background-color: --aplpha(var(--color-surface-1) / 80%);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-primary);
+  }
+}

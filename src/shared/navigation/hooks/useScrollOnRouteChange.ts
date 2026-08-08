@@ -1,29 +1,34 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 
-import { CLIENT_ROUTES } from "@routes/client";
-
 type UseScrollOnRouteChangeProps = {
-  ref?: React.RefObject<HTMLElement | null>;
   enabled?: boolean;
+  behavior?: ScrollBehavior;
+  block?: ScrollLogicalPosition;
 };
 export const useScrollOnRouteChange = ({
-  ref,
   enabled = true,
-}: UseScrollOnRouteChangeProps) => {
+  behavior = "auto",
+  block = "start",
+}: UseScrollOnRouteChangeProps = {}) => {
   const { pathname } = useLocation();
-  const isHome = pathname === CLIENT_ROUTES.home;
+  const ref = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (!enabled) return;
 
-    if (isHome || !ref?.current) {
-      window.scrollTo(0, 0);
-    } else {
+    if (ref?.current) {
       ref.current.scrollIntoView({
-        behavior: "auto",
-        block: "start",
+        behavior,
+        block,
       });
+      return;
     }
-  }, [pathname, enabled, ref, isHome]);
+    window.scrollTo(0, 0);
+  }, [pathname, enabled, ref, behavior, block]);
+
+  return {
+    scrollRef: ref,
+    scrollMarginTop: "scroll-mt-36",
+  };
 };

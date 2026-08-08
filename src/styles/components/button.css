@@ -16,7 +16,7 @@
   .button-primary {
     background-color: var(--primary);
     color: var(--primary-foreground);
-    transition: color var(--duration-normal) var(--ease-default);
+    transition: color var(--duration-fast) var(--ease-default);
 
     &:hover {
       background-color: var(--primary-hover);
@@ -25,26 +25,21 @@
 
   .nav-link {
     @apply cursor-pointer text-sm font-medium lg:text-[15px];
-    color: var(--text-secondary);
     transition: color var(--duration-fast) var(--ease-default);
-
+    color: var(--nav-link-primary);
     &:hover {
-      color: var(--link-primary-hover);
+      color: var(--nav-link-primary-hover);
     }
   }
 
   .nav-link-active {
-    color: var(--link-primary-active);
+    color: var(--nav-link-primary-active);
   }
 
   .menu-button {
-
-    color: var(--text-secondary);
-
     &:hover {
-      background-color: var(--bg-secondary-hover);
-      color: var(--secondary-foreground);
-
+      background-color: var(--surface-2-hover);
+      color: var(--text-primary-hover);
     }
   }
 }

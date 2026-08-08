@@ -10,7 +10,7 @@ const HeaderNav = () => {
   ];
 
   return (
-    <nav className="hidden items-center gap-6 md:flex lg:gap-8">
+    <nav className="hidden items-center gap-6 md:flex lg:gap-10">
       {navLinks.map((link) => {
         return (
           <NavLink
