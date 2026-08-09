@@ -3,80 +3,84 @@
    * Brand Colors
    * ========================================================== */
 
+  /* brand primary */
   --brand-primary: var(--color-blue-500);
-  --brand-secondary: var(--color-zinc-900);
-  --brand-destructive: var(--color-red-500);
-
   --brand-primary-foreground: var(--color-zinc-100);
-  --brand-secondary-foreground: var(--color-zinc-100);
-  --brand-destructive-foreground: var(--color-zinc-100);
-
   --brand-primary-hover: var(--color-blue-600);
+
+  /* brand secondary */
+  --brand-secondary: var(--color-zinc-900);
+  --brand-secondary-foreground: var(--color-zinc-100);
   --brand-secondary-hover: var(--color-zinc-800);
+
+  /* brand destructive */
+  --brand-destructive: var(--color-red-500);
+  --brand-destructive-foreground: var(--color-zinc-100);
   --brand-destructive-hover: var(--color-red-600);
 
+  /* brand error */
   --brand-error: var(--color-red-500);
-  --brand-danger: var(--color-red-500);
+
 
   /* ==========================================================
-     Semantic Colors
+   * Semantic 
    * ========================================================== */
 
+  /* ================= Color Roles ================= */
+
+  /* primary color */
   --primary: var(--brand-primary);
-  --secondary: var(--brand-secondary);
-  --destructive: var(--brand-destructive);
-
   --primary-foreground: var(--brand-primary-foreground);
-  --secondary-foreground: var(--brand-secondary-foreground);
-
   --primary-hover: var(--brand-primary-hover);
+
+
+  /* secondary color */
+  --secondary: var(--brand-secondary);
+  --secondary-foreground: var(--brand-secondary-foreground);
   --secondary-hover: var(--brand-secondary-hover);
+
+
+  /* destructive color */
+  --destructive: var(--brand-destructive);
+  --destructive-foreground: var(--brand-destructive-foreground);
   --destructive-hover: var(--brand-destructive-hover);
 
+
+  /* error color */
   --error: var(--brand-error);
-  --danger: var(--brand-danger);
 
-  /* ==========================================================
-  * surface 
-   * ========================================================== */
 
+  /* ================= UI Roles ================= */
+
+
+
+  /* Text */
+  --text-primary: var(--color-zinc-100);
+  --text-secondary: var(--color-zinc-200);
+  --text-tertiary: var(--color-zinc-300);
+
+
+  /* Surface */
   --surface-0: var(--color-zinc-900);
   --surface-1: var(--color-zinc-800);
   --surface-2: var(--color-zinc-700);
   --surface-3: var(--color-zinc-600);
 
-  --error-surface: --alpha(var(--color-red-950) / 20%);
-  --error-surface-foreground: var(--color-red-300);
-  /* ==========================================================
-  *   Border
-  * ========================================================== */
+  --error-surface: --alpha(var(--color-red-500) / 20%);
+  --error-surface-foreground: var(--color-red-200);
 
+
+  /* Border */
   --border-primary: var(--color-zinc-700);
   --border-secondary: var(--color-zinc-600);
 
   /* ==========================================================
-   * Text
+   * Browser UI
    * ========================================================== */
 
-  --text-primary: var(--color-zinc-100);
-  --text-secondary: var(--color-zinc-200);
-  --text-tertiary: var(--color-zinc-300);
+  /* Scrollbar */
 
-  /* ==========================================================
-   * Text
-   * ========================================================== */
-
-  --link-primary: var(--brand-primary);
-  --link-secondary: --alpha(var(--brand-primary) / 80%);
-
-  --link-primary-hover: var(--brand-primary-hover);
-  --link-secondary-hover: --alpha(var(--brand-primary) / 90%);
-
-  /* ==========================================================
-   * Scrollbar
-   * ========================================================== */
-
-  --scrollbar-track: #18181b;
-  --scrollbar-thumb: #52525b;
-  --scrollbar-thumb-hover: #71717a;
+  --scrollbar-track: var(--color-zinc-900);
+  --scrollbar-thumb: var(--color-zinc-600);
+  --scrollbar-thumb-hover: var(--color-zinc-500);
 }

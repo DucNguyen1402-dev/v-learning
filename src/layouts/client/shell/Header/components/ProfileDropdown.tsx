@@ -23,7 +23,7 @@ export const ProfileDropdown = () => {
         onClick: toggleTheme,
         icon: theme === "dark" ? Sun : MoonStar,
       },
-      { label: "Profile", onClick: () => {}, icon: User },
+      { label: "Hồ sơ", onClick: () => {}, icon: User },
       { label: "Cài đặt", onClick: () => {}, icon: Settings },
       { label: "Đăng xuất", onClick: onLogoutClick, icon: LogOut },
     ];

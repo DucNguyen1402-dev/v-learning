@@ -30,7 +30,7 @@ export const Header = () => {
         <div className="flex items-center gap-4">
           {currentUser ? (
             <div className="group relative flex cursor-pointer items-center gap-2.5 rounded-lg p-2">
-              <CircleUser className="-secondary" />
+              <CircleUser className="text-text-secondary" />
               <span className="text-sm font-medium">
                 {currentUser.taiKhoan}
               </span>

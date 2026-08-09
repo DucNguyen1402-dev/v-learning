@@ -1,0 +1,22 @@
+@utility link-primary {
+    @apply font-semibold;
+    color: var(--primary);
+    transition: color var(--duration-fast) var(--ease-default);
+
+    &:hover {
+        color: var(--primary-hover);
+        @apply underline;
+    }
+}
+
+@utility link-secondary {
+    @apply text-sm font-medium;
+    color: --alpha(var(--primary) / 80%);
+
+    transition: color var(--duration-fast) var(--ease-default);
+
+    &:hover {
+        color: --alpha(var(--primary) / 90%);
+        @apply underline;
+    }
+}

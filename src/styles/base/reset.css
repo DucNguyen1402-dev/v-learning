@@ -1,0 +1,61 @@
+@layer base {
+
+    /* 1. Reset Box Model & basic Spacing */
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* 2. Base Document Configurations */
+    html,
+    body {
+        height: 100%;
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+        /* Smoother font rendering on macOS/WebKit */
+    }
+
+    /* 3. Media Elements: Prevent overflow and remove inline space gaps */
+    img,
+    picture,
+    video,
+    canvas,
+    svg {
+        display: block;
+        max-width: 100%;
+    }
+
+    /* 4. Form Controls: Inherit typography from parent (overrides browser defaults) */
+    input,
+    button,
+    textarea,
+    select {
+        font: inherit;
+    }
+
+    /* 5. Text & Headings: Prevent overflow from long words */
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        overflow-wrap: break-word;
+    }
+
+    /* 6. List Resets */
+    ul,
+    ol {
+        list-style: none;
+    }
+
+    /* 7. Link Resets: Inherit text color and remove default underline */
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+}
