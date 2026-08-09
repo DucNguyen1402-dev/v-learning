@@ -2,28 +2,34 @@
 
 ### Purpose
 
-Provide the user interface for user authentication.
+Provides a user interface for user authentication and other related services: registration and password reset.
 
 ### Responsibilities
 
-- Render the login page.
-- Collect user credentials.
-- Validate form input.
-- Submit the login request.
-- Display loading and error states.
-- Redirect authenticated users to home after a successful login.
+- Render login-related forms: Login, Register, and Password Reset.
+- **Login Feature:**
+  - Collect user credentials.
+  - Validate form inputs.
+  - Submit authentication requests.
+  - Manage loading and error states.
+  - **On Success:** Redirect the authenticated user to the Home page.
+  - **On Failure:** Display a toast notification with the error message.
+- Provide navigation links to corresponding service pages (Register, Password Reset).
 
 ### Dependencies
 
-- `routes/client`
-- `react-hook-form`
-- `react-router`
-- `shared/auth`
-- `shared/overlays`
-- `shared/error`
-- `shared/navigation`
-- `shared/ui`
-- `shared/fields`
+- React ecosystem (`react`, `react-router`, `react-hook-form`)
+- Authentication (`shared/auth`)
+- UI (`shared/ui`, `shared/overlays`, `shared/fields`)
+- Execution (`shared/execution`)
+- Navigation (`shared/navigation`, `shared/routes`, `routes/client`)
+
+### Design Principles
+
+- UI concerns belong to the Login module.
+- Authentication concerns belong to the Authentication module.
+- Storage details are hidden from feature modules.
+- Feature modules interact with the Authentication module only through its public API.
 
 ### Flow
 
@@ -31,19 +37,18 @@ User
 ↓
 Login Form
 ↓
-Form Validation
+Enter credentials
 ↓
-Login.use()
+Form validation
 ↓
-shared/auth -> error -> toast.show(...)
+Login mutation
 ↓
-success
+shared/auth
+├─ Success
+│ ↓
+│ Save authentication state
+│ ↓
+│ Redirect to Home
+└─ Error
 ↓
-forward(home)
-
-### Design Principles
-
-- UI concerns belong to the Login module.
-- Authentication logic belongs to the Authentication module.
-- Storage implementation is hidden from feature modules.
-- Feature modules interact with authentication only through public APIs.
+Show error toast
