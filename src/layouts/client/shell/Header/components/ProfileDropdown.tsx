@@ -7,7 +7,7 @@ import { Theme } from "@shared/theme";
 import { Button } from "@shared/ui";
 import { LogOut, MoonStar, Settings, Sun, User } from "lucide-react";
 
-export const ProfileMenu = () => {
+export const ProfileDropdown = () => {
   const { toggleTheme, theme } = Theme.use();
   const { go } = useRouteNavigation();
 
@@ -23,14 +23,14 @@ export const ProfileMenu = () => {
         onClick: toggleTheme,
         icon: theme === "dark" ? Sun : MoonStar,
       },
-      { label: "Profile", onClick: () => {}, icon: User },
+      { label: "Hồ sơ", onClick: () => {}, icon: User },
       { label: "Cài đặt", onClick: () => {}, icon: Settings },
       { label: "Đăng xuất", onClick: onLogoutClick, icon: LogOut },
     ];
   }, [toggleTheme, onLogoutClick, theme]);
 
   return (
-    <ul className="w-40 cursor-pointer gap-4 space-y-3 rounded-lg border border-zinc-300 bg-surface-2 pt-2 pb-3 pl-2 shadow-md">
+    <ul className="profile-dropdown">
       {menuItems.map((item, index) => (
         <li key={index}>
           <Button

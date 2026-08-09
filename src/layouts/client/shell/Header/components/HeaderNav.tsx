@@ -6,6 +6,7 @@ export const HeaderNav = () => {
   const navLinks = [
     { label: "Home", routeKey: CLIENT_ROUTES.home },
     { label: "Khóa học", routeKey: CLIENT_ROUTES.register },
+    { label: "Blog", routeKey: CLIENT_ROUTES.blog },
     { label: "Giới thiệu", routeKey: CLIENT_ROUTES.about },
   ];
 
@@ -17,7 +18,7 @@ export const HeaderNav = () => {
             key={link.routeKey}
             to={link.routeKey}
             className={({ isActive }) =>
-              `nav-link ${isActive ? "nav-link-active" : ""}`
+              `nav-link ${isActive ? "nav-link-active" : "nav-link-default"}`
             }
           >
             {link.label}

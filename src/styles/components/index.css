@@ -1,5 +1,5 @@
-@import "./button.css";
-@import "./input.css";
-@import "./login.css";
-@import "./header.css";
-@import "./container.css";
+@import "./actions/index.css";
+@import "./fields/index.css";
+@import "./logo/index.css";
+@import "./layouts/index.css";
+@import "./navigation/index.css";

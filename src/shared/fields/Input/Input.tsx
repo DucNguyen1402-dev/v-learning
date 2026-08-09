@@ -47,12 +47,12 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         <div className="relative">
           {LeftAddon && (
             <div className="absolute top-1/2 left-2 -translate-y-1/2">
-              <LeftAddon className="size-4 text-slate-400" />
+              <LeftAddon className="size-4 text-text-tertiary" />
             </div>
           )}
           {LeftIcon && (
             <div className="absolute top-1/2 left-2 -translate-y-1/2">
-              <LeftIcon className="size-4 text-slate-400" />
+              <LeftIcon className="size-4 text-text-tertiary" />
             </div>
           )}
 
@@ -64,8 +64,11 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 
             className={cn(
               "input",
-              disabled ? "input-disabled" : "input-default",
-              error ? "input-error" : "",
+              disabled
+                ? "input-disabled"
+                : error
+                  ? "input-error"
+                  : "input-default",
               inputClassName,
               disabled && disabledClassName,
               LeftIcon && "pl-7",
@@ -80,7 +83,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 
           {Icon && (
             <div className="absolute top-1/2 right-2 -translate-y-1/2">
-              <Icon className="size-4 text-slate-400" />
+              <Icon className="size-4 text-text-tertiary" />
             </div>
           )}
         </div>

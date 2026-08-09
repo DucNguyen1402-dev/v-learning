@@ -5,7 +5,7 @@ import { CLIENT_ROUTES } from "@routes/client";
 export const LoginButton = () => (
   <Link
     to={CLIENT_ROUTES.login}
-    className="button-primary rounded-md px-4 py-2 text-sm font-medium"
+    className="button-primary button px-4 py-2 text-sm"
   >
     Đăng nhập
   </Link>

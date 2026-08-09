@@ -59,11 +59,7 @@ export const Button = ({
     <button
       disabled={loading || props.disabled}
       className={cn(
-        "inline-flex items-center justify-center gap-2",
-        "transition-colors duration-300",
-        "rounded-md",
-        "select-none",
-        "cursor-pointer",
+        "button",
         currentSize.button,
         fullWidth ? "w-full" : "",
         className,
@@ -73,7 +69,7 @@ export const Button = ({
       {Icon && !loading && <Icon className={currentSize.icon} />}
       {loading && <Spinner className={currentSize.icon} color="brand" />}
 
-      <span>{children}</span>
+      {children}
     </button>
   );
 };

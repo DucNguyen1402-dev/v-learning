@@ -1,15 +1,41 @@
 @theme {
   /* ==========================================================
-   * z-index
+   * Semantic 
    * ========================================================== */
-  --z-index-deep: -1;
-  --z-index-base: 0;
-  --z-index-raised: 10;
+
+
+
+  /* ================= Text Colors ================= */
+
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-tertiary: var(--text-tertiary);
+
+
+
+  /* ================= Surface Colors ================= */
+
+  --color-surface-0: var(--surface-0);
+  --color-surface-1: var(--surface-1);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+
+
+  /* ================= Border Colors ================= */
+
+  --color-border-secondary: var(--border-secondary);
+
+
+  /* ================= State Colors ================= */
+
+  --color-required: var(--error);
+
+  /* ================= Z-Index Layers ================= */
 
   /* Layout Layers */
   --z-index-sticky: 100;
 
-  /* Floating UI (Dropdown, Tooltip, Select menu) */
+  /* Floating UI */
   --z-index-popover: 200;
 
   /* Overlays & Dialogs */
@@ -19,36 +45,7 @@
   /* Global Notifications */
   --z-index-toast: 500;
   --z-index-max: 9999;
-  /* ==========================================================
-   * Background
-   * ========================================================== */
-  --color-surface-0: var(--surface-0);
-  --color-surface-1: var(--surface-1);
 
-  --color-surface-2: var(--surface-2);
 
-  --color-surface-3: var(--surface-3);
 
-  /* ==========================================================
-   * Border
-   * ========================================================== */
-
-  --color-border-secondary: var(--border-secondary);
-
-  /* ==========================================================
-   * Text Colors
-   * ========================================================== */
-
-  --color-text-secondary: var(--text-secondary);
-  --color-text-tertiary: var(--text-tertiary);
-
-  /* ==========================================================
-   * Semantic
-   * ========================================================== */
-
-  --color-required: var(--danger);
-
-  /* ==========================================================
-   * Z-Index
-   * ========================================================== */
 }

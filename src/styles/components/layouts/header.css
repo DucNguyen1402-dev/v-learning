@@ -1,0 +1,29 @@
+@layer components {
+  .header {
+    @apply backdrop-blur;
+    background-color: --alpha(var(--color-surface-1) / 80%);
+    border-bottom: 1px solid var(--border-primary);
+  }
+
+  .header-content {
+    @apply mx-auto;
+    max-width: var(--max-width-container);
+    width: 100%;
+  }
+
+  .nav-link {
+    @apply text-sm font-medium transition-colors duration-200 ease-in-out lg:text-[15px];
+  }
+
+  .nav-link-default {
+    @apply cursor-pointer;
+    &:hover {
+      color: var(--primary-hover);
+    }
+  }
+
+  .nav-link-active {
+    @apply cursor-default;
+    color: var(--primary);
+  }
+}

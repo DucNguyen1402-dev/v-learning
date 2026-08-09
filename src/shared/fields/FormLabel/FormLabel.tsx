@@ -16,10 +16,7 @@ export const FormLabel = ({
   className = "",
 }: FormLabelProps) => {
   return (
-    <label
-      htmlFor={htmlFor}
-      className={cn("text-primary block w-fit cursor-pointer", className)}
-    >
+    <label htmlFor={htmlFor} className={cn("label", className)}>
       {children}
       {required && <span className="ml-1.5 text-required">*</span>}
     </label>
