@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-import { useThemeState } from "./hooks";
+import { useAuthTheme, useThemeState } from "./hooks";
 import { ThemeContext } from "./ThemeContext";
 import type { ThemeContextValues } from "./ThemeContextValues";
 
@@ -10,9 +10,10 @@ type ThemeProviderProps = {
 
 export const ThemeProvider = ({ children }: ThemeProviderProps) => {
   const { currentTheme, toggleTheme } = useThemeState();
+  const { theme } = useAuthTheme({ currentTheme });
 
   const value: ThemeContextValues = {
-    theme: currentTheme,
+    theme: theme,
     toggleTheme: toggleTheme,
   };
   return (

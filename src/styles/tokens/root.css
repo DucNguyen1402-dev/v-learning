@@ -1,5 +1,4 @@
 :root {
-
   /* ==========================================================
    *  Layout
    * ========================================================== */
@@ -7,12 +6,9 @@
   /* Responsive breakpoints */
   --breakpoint-3xl: 120rem;
 
-
   /* Common layout widths */
 
   --max-width-container: 80rem;
-
-
 
   /* ==========================================================
    *  Typography
@@ -36,25 +32,26 @@
   --brand-secondary-foreground: var(--color-zinc-900);
   --brand-secondary-hover: var(--color-zinc-200);
 
-
   /* brand destructive */
 
   --brand-destructive: var(--color-red-600);
   --brand-destructive-foreground: var(--color-zinc-50);
   --brand-destructive-hover: var(--color-red-700);
 
-
-
   /* brand error */
 
   --brand-error: var(--color-red-600);
+  --brand-error-foreground: var(--color-zinc-100);
 
+  --brand-warning: var(--color-amber-600);
+  --brand-warning-foreground: var(--color-zinc-100);
 
+  --brand-success: var(--color-emerald-600);
+  --brand-success-foreground: var(--color-zinc-100);
 
   /* ==========================================================
    *  Semantic 
    * ========================================================== */
-
 
   /* ================= Color Roles ================= */
 
@@ -68,14 +65,18 @@
   --secondary-foreground: var(--brand-secondary-foreground);
   --secondary-hover: var(--brand-secondary-hover);
 
-
   /* destructive color */
   --destructive: var(--brand-destructive);
   --destructive-foreground: var(--brand-destructive-foreground);
   --destructive-hover: var(--brand-destructive-hover);
 
   /* error color */
+  --warning: var(--brand-warning);
+  --warning-foreground: var(--brand-warning-foreground);
   --error: var(--brand-error);
+  --error-foreground: var(--brand-error-foreground);
+  --success: var(--brand-success);
+  --success-foreground: var(--brand-success-foreground);
 
   /* ================= UI Roles ================= */
 
@@ -90,9 +91,12 @@
   --surface-2: var(--color-zinc-200);
   --surface-3: var(--color-zinc-300);
 
-  --error-surface: --alpha(var(--color-red-600) / 20%);
-  --error-surface-foreground: var(--color-red-700);
-
+  --success-surface: --alpha(var(--success) / 50%);
+  --success-surface-foreground: var(--success-foreground);
+  --error-surface: --alpha(var(--error) / 50%);
+  --error-surface-foreground: var(--error-foreground);
+  --warning-surface: --alpha(var(--warning) / 50%);
+  --warning-surface-foreground: var(--warning-foreground);
 
   /* Border */
   --border-primary: var(--color-zinc-400);

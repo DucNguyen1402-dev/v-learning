@@ -24,10 +24,10 @@ export const ToastContainer = ({
   if (!variant) {
     if (import.meta.env.DEV) {
       console.warn(
-        `Toast variant is null or undefined. Defaulting to "system".`,
+        `Toast variant is null or undefined. Defaulting to "default".`,
       );
     }
-    variant = "system";
+    variant = "default";
   }
 
   if (import.meta.env.DEV && !(variant in toastTypeClasses)) {
@@ -35,14 +35,14 @@ export const ToastContainer = ({
   }
 
   const toastSize = toastSizeClasses[size];
-  const typeClass = toastTypeClasses[variant] ?? toastTypeClasses.system;
+  const typeClass = toastTypeClasses[variant] ?? toastTypeClasses.default;
 
   const Icon = toastIconTypes[variant];
   const iconSize = toastIconSizes[size];
   const messageSize = messageClasses[size];
   return (
     <div ref={toastRef} className={cn("toast", typeClass, toastSize)}>
-      <Icon className={cn("text-white", iconSize)} />
+      <Icon className={iconSize} />
 
       <p className={cn("flex-1 font-medium", messageSize)}>{message}</p>
     </div>

@@ -1,0 +1,41 @@
+@layer components {
+  .toast {
+    @apply pointer-events-auto flex items-center gap-3 rounded-md border-l-6 shadow-xl backdrop-blur-lg;
+  }
+
+  .toast-success {
+    background-color: var(--success-surface);
+    color: var(--success-surface-foreground);
+    border-color: var(--success);
+  }
+
+  .toast-error {
+    background-color: var(--error-surface);
+    color: var(--error-surface-foreground);
+    border-color: var(--error);
+  }
+
+  .toast-warning {
+    background-color: var(--warning-surface);
+    color: var(--warning-surface-foreground);
+    border-color: var(--warning);
+  }
+
+  .toast-default {
+    @apply border-zinc-700 bg-zinc-950/50 text-zinc-100;
+
+    .dark & {
+      @apply border-zinc-600 bg-zinc-950/70 text-zinc-100;
+    }
+  }
+
+  .toast-size-sm {
+    @apply max-w-96 min-w-72 gap-2.5 rounded-md border-l-4 px-4 py-3;
+  }
+  .toast-size-md {
+    @apply max-w-100 min-w-80 gap-3 rounded-md border-l-6 px-5 py-4;
+  }
+  .toast-size-lg {
+    @apply max-w-120 min-w-96 gap-4 rounded-lg border-l-6 px-6 py-5;
+  }
+}

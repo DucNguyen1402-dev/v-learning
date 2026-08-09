@@ -18,33 +18,39 @@ export const Header = () => {
   const currentUser: null | CurrentUser = getCurrentUser();
   const { pathname } = useLocation();
   const routeKey = findRouteKey(pathname);
-  const shouldShowLoginButton =
+  const shouldHideLoginButton =
     routeKey && loginButtonHiddenRoutes.has(routeKey);
 
   return (
-    <header className="header sticky top-0 z-sticky h-28 px-1 lg:px-8">
-      <div className="header-content flex items-center justify-between">
+    <header className="header sticky top-0 z-sticky h-24 px-1 md:h-28">
+      <div className="header-content flex items-center justify-between px-1 md:px-2 lg:px-6">
         <HeaderLogo />
         <HeaderNav />
 
         <div className="flex items-center gap-4">
           {currentUser ? (
-            <div className="group relative flex cursor-pointer items-center gap-2.5 rounded-lg p-2">
-              <CircleUser className="text-text-secondary" />
-              <span className="text-sm font-medium">
+            <div className="group relative flex items-center gap-2.5 rounded-lg p-2">
+              <CircleUser className="size-8 text-text-secondary lg:size-6" />
+              <span className="hidden text-sm font-medium lg:block">
                 {currentUser.taiKhoan}
               </span>
 
-              <div className="absolute top-full left-0 z-popover -translate-y-4 opacity-0 transition-all duration-300 group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100">
+              <div className="absolute top-full left-0 z-popover hidden -translate-y-4 opacity-0 transition-all duration-300 group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100 lg:block">
                 <ProfileDropdown />
               </div>
             </div>
           ) : (
-            <div className="flex items-center gap-4">
-              <ThemeModeButton />
-              <div className={`${shouldShowLoginButton ? "invisible" : ""}`}>
-                <LoginButton />
+            <div
+              className={`flex items-center justify-center gap-4 ${shouldHideLoginButton ? "w-32" : ""}`}
+            >
+              <div className="hidden lg:block">
+                <ThemeModeButton />
               </div>
+              {!shouldHideLoginButton && (
+                <div>
+                  <LoginButton />
+                </div>
+              )}
             </div>
           )}
         </div>
