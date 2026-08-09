@@ -1,9 +1,8 @@
 @layer components {
   .back-button {
-    @apply flex-center size-8 cursor-pointer rounded-full;
+    @apply flex-center size-8 cursor-pointer rounded-full transition-colors duration-200 ease-in-out outline-none;
     border: 1px solid var(--border-primary);
     color: var(--text-secondary);
-    transition: color var(--duration-slow) var(--ease-default);
 
     &:hover {
       background-color: --alpha(var(--primary) / 80%);
@@ -11,34 +10,16 @@
     }
   }
 
+  .button {
+    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-md select-none;
+  }
+
   .button-primary {
+    @apply transition-colors duration-200 ease-in-out;
     background-color: var(--primary);
     color: var(--primary-foreground);
-    transition: color var(--duration-fast) var(--ease-default);
-
     &:hover {
       background-color: var(--primary-hover);
-    }
-  }
-
-  .nav-link {
-    @apply cursor-pointer text-sm font-medium lg:text-[15px];
-    transition: color var(--duration-fast) var(--ease-default);
-    color: var(--nav-link-primary);
-
-    &:hover {
-      color: var(--nav-link-primary-hover);
-    }
-  }
-
-  .nav-link-active {
-    color: var(--nav-link-primary-active);
-  }
-
-  .menu-button {
-    &:hover {
-      background-color: var(--surface-2-hover);
-      color: var(--text-primary-hover);
     }
   }
 }

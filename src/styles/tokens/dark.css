@@ -3,55 +3,56 @@
    * Brand Colors
    * ========================================================== */
 
-  --primary: var(--color-blue-500);
-  --primary-hover: var(--color-blue-600);
-  --primary-checked: var(--color-blue-700);
-  --primary-foreground: var(--color-zinc-100);
+  --brand-primary: var(--color-blue-500);
+  --brand-secondary: var(--color-zinc-900);
+  --brand-destructive: var(--color-red-500);
 
-  --secondary: var(--color-zinc-900);
-  --secondary-hover: var(--color-zinc-800);
-  --secondary-foreground: var(--color-zinc-100);
-  --secondary-border: var(--color-zinc-700);
+  --brand-primary-foreground: var(--color-zinc-100);
+  --brand-secondary-foreground: var(--color-zinc-100);
+  --brand-destructive-foreground: var(--color-zinc-100);
 
-  --destructive: var(--color-red-500);
-  --destructive-hover: var(--color-red-600);
+  --brand-primary-hover: var(--color-blue-600);
+  --brand-secondary-hover: var(--color-zinc-800);
+  --brand-destructive-hover: var(--color-red-600);
 
-  --warning: --alpha(var(--color-red-950) / 20%);
-
+  --brand-error: var(--color-red-500);
+  --brand-danger: var(--color-red-500);
 
   /* ==========================================================
-  * Background
+     Semantic Colors
+   * ========================================================== */
+
+  --primary: var(--brand-primary);
+  --secondary: var(--brand-secondary);
+  --destructive: var(--brand-destructive);
+
+  --primary-foreground: var(--brand-primary-foreground);
+  --secondary-foreground: var(--brand-secondary-foreground);
+
+  --primary-hover: var(--brand-primary-hover);
+  --secondary-hover: var(--brand-secondary-hover);
+  --destructive-hover: var(--brand-destructive-hover);
+
+  --error: var(--brand-error);
+  --danger: var(--brand-danger);
+
+  /* ==========================================================
+  * surface 
    * ========================================================== */
 
   --surface-0: var(--color-zinc-900);
   --surface-1: var(--color-zinc-800);
-  --surface-1-hover: var(--color-zinc-700);
+  --surface-2: var(--color-zinc-700);
+  --surface-3: var(--color-zinc-600);
 
-  --surface-2: var(--color-zinc-800);
-
+  --error-surface: --alpha(var(--color-red-950) / 20%);
+  --error-surface-foreground: var(--color-red-300);
   /* ==========================================================
   *   Border
   * ========================================================== */
 
-  --border-primary: var(--color-zinc-600);
-  --border-primary-hover: var(--color-zinc-600);
-  --border-primary-focus: var(--color-blue-500);
-
-  --border-secondary: var(--color-zinc-700);
-  --border-secondary-hover: var(--color-zinc-600);
-  --border-secondary-checked: var(--color-blue-500);
-  --border-secondary-disabled: var(--color-zinc-800);
-
-  --border-primary-warning: var(--color-red-600);
-  --border-secondary-warning: var(--color-red-500);
-  --border-secondary-warning-focus: var(--color-red-300);
-
-  /* ==========================================================
- * Focus
- * ========================================================== */
-
-  --focus-ring-primary: --alpha(var(--color-blue-600) / 20%);
-  --focus-ring-warning: --alpha(var(--color-red-600) / 20%);
+  --border-primary: var(--color-zinc-700);
+  --border-secondary: var(--color-zinc-600);
 
   /* ==========================================================
    * Text
@@ -60,48 +61,16 @@
   --text-primary: var(--color-zinc-100);
   --text-secondary: var(--color-zinc-200);
   --text-tertiary: var(--color-zinc-300);
-  --text-tertiary-hover: var(--color-zinc-200);
-
-
-  --text-primary-hover: var(--color-zinc-100);
-  --text-secondary-hover: var(--color-zinc-100);
-
-  --text-secondary-disabled: var(--color-zinc-300);
-
-  --text-primary-warning: var(--color-red-400);
-  --text-secondary-warning: var(--color-red-300);
-  --text-primary-warning-hover: var(--color-red-300);
 
   /* ==========================================================
-   * placeholder
+   * Text
    * ========================================================== */
 
-  --text-placeholder: var(--color-zinc-600);
+  --link-primary: var(--brand-primary);
+  --link-secondary: --alpha(var(--brand-primary) / 80%);
 
-  /* ==========================================================
-   * Nav-link
-   * ========================================================== */
-
-  --nav-link-primary: var(--color-zinc-100);
-  --nav-link-primary-hover: var(--color-blue-600);
-  --nav-link-primary-active: var(--color-blue-500);
-
-  /* ==========================================================
-   * Links
-   * ========================================================== */
-
-  --link-primary: var(--color-blue-400);
-  --link-primary-hover: var(--color-blue-300);
-  --link-primary-active: var(--color-blue-500);
-
-  --link-secondary: var(--color-blue-500);
-  --link-secondary-hover: var(--color-blue-400);
-  --link-secondary-active: var(--color-blue-600);
-
-  /* ==========================================================
-   * Semantic
-   * ========================================================== */
-  --danger: var(--color-red-500);
+  --link-primary-hover: var(--brand-primary-hover);
+  --link-secondary-hover: --alpha(var(--brand-primary) / 90%);
 
   /* ==========================================================
    * Scrollbar

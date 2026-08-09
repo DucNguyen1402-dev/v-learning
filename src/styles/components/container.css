@@ -1,9 +1,6 @@
 @layer components {
   .client-container {
-    width: 100%;
+    @apply mx-auto w-full scroll-mt-28 p-6 pb-12 lg:px-8;
     max-width: var(--max-width-container);
-    margin-inline: auto;
-    padding: var(--spacing-6) var(--spacing-6) var(--spacing-12);
-    scroll-margin-top: 7rem;
   }
 }

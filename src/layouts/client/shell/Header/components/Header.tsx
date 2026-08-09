@@ -10,7 +10,7 @@ import {
   HeaderLogo,
   HeaderNav,
   LoginButton,
-  ProfileMenu,
+  ProfileDropdown,
   ThemeModeButton,
 } from ".";
 
@@ -22,8 +22,8 @@ export const Header = () => {
     routeKey && loginButtonHiddenRoutes.has(routeKey);
 
   return (
-    <header className="header sticky top-0 z-sticky h-28 px-1 lg:px-4">
-      <div className="flex items-center justify-between">
+    <header className="header sticky top-0 z-sticky h-28 px-1 lg:px-8">
+      <div className="header-content flex items-center justify-between">
         <HeaderLogo />
         <HeaderNav />
 
@@ -36,16 +36,16 @@ export const Header = () => {
               </span>
 
               <div className="absolute top-full left-0 z-popover -translate-y-4 opacity-0 transition-all duration-300 group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100">
-                <ProfileMenu />
+                <ProfileDropdown />
               </div>
             </div>
           ) : (
-            <>
+            <div className="flex items-center gap-4">
               <ThemeModeButton />
               <div className={`${shouldShowLoginButton ? "invisible" : ""}`}>
                 <LoginButton />
               </div>
-            </>
+            </div>
           )}
         </div>
       </div>

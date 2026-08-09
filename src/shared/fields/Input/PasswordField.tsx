@@ -19,6 +19,7 @@ export const PasswordField = forwardRef<
   const [showPassword, setShowPassword] = useState(false);
 
   const shouldShowRightIcon = !disabled;
+  const Icon = showPassword ? Eye : EyeOff;
   return (
     <Input
       ref={ref}
@@ -31,12 +32,9 @@ export const PasswordField = forwardRef<
           aria-label={showPassword ? "Ẩn mật khẩu" : "Hiện mật khẩu"}
           onClick={() => setShowPassword((prev) => !prev)}
         >
-          {shouldShowRightIcon &&
-            (showPassword ? (
-              <Eye className="size-4.5 text-tertiary" />
-            ) : (
-              <EyeOff className="size-4.5 text-tertiary" />
-            ))}
+          {shouldShowRightIcon && (
+            <Icon className="size-4.5 text-text-tertiary transition-colors duration-150 ease-in-out hover:text-text-primary" />
+          )}
         </Button>
       }
       type={showPassword ? "text" : "password"}

@@ -24,9 +24,7 @@
    * ========================================================== */
   --color-surface-0: var(--surface-0);
   --color-surface-1: var(--surface-1);
-
   --color-surface-2: var(--surface-2);
-
   --color-surface-3: var(--surface-3);
 
   /* ==========================================================
@@ -39,15 +37,9 @@
    * Text Colors
    * ========================================================== */
 
-
   --color-text-primary: var(--text-primary);
   --color-text-secondary: var(--text-secondary);
   --color-text-tertiary: var(--text-tertiary);
-
-  --color-text-primary-hover: var(--text-primary-hover);
-  --color-text-secondary-hover: var(--text-secondary-hover);
-  --color-text-tertiary-hover: var(--text-tertiary-hover);
-
 
   /* ==========================================================
    * Semantic
@@ -56,18 +48,6 @@
   --color-required: var(--danger);
 
   /* ==========================================================
-   * transition
-   * ========================================================== */
-
-  /* ==========================================================
    * Animation
    * ========================================================== */
-  --duration-fast: 150ms;
-  --duration-normal: 200ms;
-  --duration-slow: 300ms;
-
-  --ease-default: ease-in-out;
-
-
-
 }

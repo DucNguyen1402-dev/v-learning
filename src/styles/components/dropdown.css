@@ -1,11 +1,14 @@
 @layer components {
-    .dropdown {
-        @apply relative;
-    }
+  .profile-dropdown {
+    @apply w-40 cursor-pointer gap-4 space-y-3 rounded-lg px-2 pt-2 pb-3 shadow-md transition-colors duration-200 ease-in-out;
+    background-color: var(--surface-2);
+    border: 1px solid var(--border-secondary);
+  }
 
-    .dropdown-menu {
-        @apply absolute top-full left-0 opacity-0 group-hover:pointer-events-auto group-hover:opacity-100 -translate-y-4 group-hover:translate-y-0 transition-all duration-300;
-        z-index: var(--z-dropdown);
-
+  .menu-button {
+    &:hover {
+      background-color: var(--surface-3);
+      color: var(--text-primary-hover);
     }
+  }
 }

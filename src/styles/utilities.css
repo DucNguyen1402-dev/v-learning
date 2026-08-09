@@ -3,33 +3,32 @@
 * ========================================================== */
 
 @utility link-primary {
-  @apply font-semibold text-text-primary;
-  transition: color var(--duration-fast) var(--ease-default);
+  @apply font-semibold;
   color: var(--link-primary);
+  transition: color var(--duration-fast) var(--ease-default);
 
   &:hover {
-    @apply underline;
     color: var(--link-primary-hover);
+    @apply underline;
   }
 }
 
 @utility link-secondary {
+  @apply text-sm font-medium;
   color: var(--link-secondary);
 
-
+  transition: color var(--duration-fast) var(--ease-default);
   &:hover {
     color: var(--link-secondary-hover);
-    text-decoration: underline;
+    @apply underline;
   }
-
-  @apply text-sm font-semibold transition-colors ease-default hover:underline;
 }
 
 /* ==========================================================
 * Border
 * ========================================================== */
 @utility border-secondary {
-  border: 1px solid var(--secondary-border);
+  border: 1px solid var(--border-secondary);
 }
 
 /* ==========================================================
@@ -68,24 +67,8 @@
 }
 
 /* ==========================================================
-*  Focus
+*  scroll-target
 * ========================================================== */
-
-@utility focus-ring-primary {
-  @apply focus:ring-2;
-
-  &:focus {
-    --tw-ring-color: var(--focus-ring-primary);
-  }
-}
-
-@utility focus-ring-warning {
-  @apply focus:ring-2;
-
-  &:focus {
-    --tw-ring-color: var(--focus-ring-warning);
-  }
-}
 
 @utility scroll-target {
   @apply scroll-mt-30;

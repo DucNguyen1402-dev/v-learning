@@ -11,7 +11,7 @@ export const LoginPage = () => {
   return (
     <div className="flex-center min-h-screen p-4">
       <div
-        className="flex w-full max-w-md scroll-target flex-col gap-6 rounded-xl border border-border-secondary bg-surface-1 p-8 shadow-sm"
+        className="flex w-full max-w-md scroll-target flex-col gap-6 rounded-xl bg-surface-1 p-8 shadow-sm border-secondary"
         ref={scrollRef}
       >
         <LoginHeader />

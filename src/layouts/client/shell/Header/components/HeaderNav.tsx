@@ -18,7 +18,7 @@ export const HeaderNav = () => {
             key={link.routeKey}
             to={link.routeKey}
             className={({ isActive }) =>
-              `nav-link ${isActive ? "nav-link-active" : ""}`
+              `nav-link ${isActive ? "nav-link-active" : "nav-link-default"}`
             }
           >
             {link.label}
