@@ -1,7 +1,11 @@
 @layer components {
+
+  .label {
+    @apply block w-fit cursor-pointer text-sm font-medium text-text-secondary hover:text-text-secondary-hover;
+  }
+
   .input {
-    @apply w-full rounded-md px-3 py-2 outline-none;
-    font-size: var(--font-size-sm);
+    @apply w-full rounded-md px-3 py-2 outline-none text-[15px];
     transition: color var(--duration-fast) var(--ease-default);
   }
 
@@ -34,19 +38,33 @@
 
   .input-error {
     @apply focus-ring-warning;
-    border: 1px solid var(--border-secondary-warning);
+    border: 1px solid var(--border-primary-warning);
     color: var(--text-primary-warning);
 
     &:focus {
-      border-color: var(--border-secondary-warning-focus);
+      border-color: var(--border-primary-warning);
+      color: var(--text-primary-warning);
     }
   }
 
+  .error-message {
+    @apply z-20 w-full rounded-sm px-2 py-2 text-sm;
+    background-color: var(--warning);
+    color: var(--text-secondary-warning);
+    border-left: 5px solid var(--border-secondary-warning);
+  }
+
+
   .checkbox {
-    @apply flex-center cursor-pointer rounded-sm outline-none;
+    @apply flex-center rounded-sm outline-none cursor-pointer;
     border: 1px solid var(--border-secondary);
     transition: color var(--duration-fast) var(--ease-default);
     background-color: var(--bg-secondary);
+
+  }
+
+  .checkbox-default {
+    @apply cursor-pointer;
 
     &:hover {
       background-color: var(--primary-hover);
@@ -58,11 +76,30 @@
     }
   }
 
-  .error-message {
-    @apply z-20 w-full rounded-sm px-2 py-2;
-    font-size: var(--font-size-xs);
-    background-color: var(--bg-primary-warning);
-    color: var(--text-primary-warning);
-    border-left: 5px solid var(--border-primary-warning);
+  .checkbox-disabled {
+    @apply cursor-not-allowed opacity-50;
   }
+
+
+  .checkbox-indicator {
+    color: var(--primary-foreground);
+  }
+
+  .checkbox-label {
+    @apply text-sm text-text-secondary
+  }
+
+  .checkbox-label-default {
+    @apply cursor-pointer;
+
+    &:hover {
+      color: var(--text-secondary-hover);
+    }
+  }
+
+  .checkbox-label-disabled {
+    @apply cursor-not-allowed opacity-50;
+  }
+
+
 }

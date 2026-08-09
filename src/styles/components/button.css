@@ -1,10 +1,8 @@
 @layer components {
   .back-button {
     @apply flex-center size-8 cursor-pointer rounded-full;
-
     border: 1px solid var(--border-primary);
     color: var(--text-secondary);
-    font-size: var(--text-secondary-size);
     transition: color var(--duration-slow) var(--ease-default);
 
     &:hover {
@@ -27,6 +25,7 @@
     @apply cursor-pointer text-sm font-medium lg:text-[15px];
     transition: color var(--duration-fast) var(--ease-default);
     color: var(--nav-link-primary);
+
     &:hover {
       color: var(--nav-link-primary-hover);
     }

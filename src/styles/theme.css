@@ -39,8 +39,15 @@
    * Text Colors
    * ========================================================== */
 
+
+  --color-text-primary: var(--text-primary);
   --color-text-secondary: var(--text-secondary);
   --color-text-tertiary: var(--text-tertiary);
+
+  --color-text-primary-hover: var(--text-primary-hover);
+  --color-text-secondary-hover: var(--text-secondary-hover);
+  --color-text-tertiary-hover: var(--text-tertiary-hover);
+
 
   /* ==========================================================
    * Semantic
@@ -49,6 +56,18 @@
   --color-required: var(--danger);
 
   /* ==========================================================
-   * Z-Index
+   * transition
    * ========================================================== */
+
+  /* ==========================================================
+   * Animation
+   * ========================================================== */
+  --duration-fast: 150ms;
+  --duration-normal: 200ms;
+  --duration-slow: 300ms;
+
+  --ease-default: ease-in-out;
+
+
+
 }

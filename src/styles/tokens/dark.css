@@ -16,6 +16,9 @@
   --destructive: var(--color-red-500);
   --destructive-hover: var(--color-red-600);
 
+  --warning: --alpha(var(--color-red-950) / 20%);
+
+
   /* ==========================================================
   * Background
    * ========================================================== */
@@ -39,25 +42,26 @@
   --border-secondary-checked: var(--color-blue-500);
   --border-secondary-disabled: var(--color-zinc-800);
 
-  --border-primary-warning: var(--color-red-300);
-
-  --border-secondary-warning: var(--color-red-400);
+  --border-primary-warning: var(--color-red-600);
+  --border-secondary-warning: var(--color-red-500);
   --border-secondary-warning-focus: var(--color-red-300);
 
   /* ==========================================================
  * Focus
  * ========================================================== */
 
-  --focus-ring-primary: --alpha(var(--color-blue-500) / 20%);
-  --focus-ring-warning: --alpha(var(--color-red-500) / 20%);
+  --focus-ring-primary: --alpha(var(--color-blue-600) / 20%);
+  --focus-ring-warning: --alpha(var(--color-red-600) / 20%);
 
   /* ==========================================================
    * Text
    * ========================================================== */
 
-  --text-primary: var(--color-zinc-50);
-  --text-secondary: var(--color-zinc-100);
-  --text-tertiary: var(--color-zinc-200);
+  --text-primary: var(--color-zinc-100);
+  --text-secondary: var(--color-zinc-200);
+  --text-tertiary: var(--color-zinc-300);
+  --text-tertiary-hover: var(--color-zinc-200);
+
 
   --text-primary-hover: var(--color-zinc-100);
   --text-secondary-hover: var(--color-zinc-100);
@@ -65,6 +69,7 @@
   --text-secondary-disabled: var(--color-zinc-300);
 
   --text-primary-warning: var(--color-red-400);
+  --text-secondary-warning: var(--color-red-300);
   --text-primary-warning-hover: var(--color-red-300);
 
   /* ==========================================================

@@ -22,7 +22,7 @@ export const Header = () => {
     routeKey && loginButtonHiddenRoutes.has(routeKey);
 
   return (
-    <header className="header sticky top-0 z-sticky">
+    <header className="header sticky top-0 z-sticky h-28 px-1 lg:px-4">
       <div className="flex items-center justify-between">
         <HeaderLogo />
         <HeaderNav />
@@ -30,7 +30,7 @@ export const Header = () => {
         <div className="flex items-center gap-4">
           {currentUser ? (
             <div className="group relative flex cursor-pointer items-center gap-2.5 rounded-lg p-2">
-              <CircleUser className="text-text-secondary" />
+              <CircleUser className="-secondary" />
               <span className="text-sm font-medium">
                 {currentUser.taiKhoan}
               </span>

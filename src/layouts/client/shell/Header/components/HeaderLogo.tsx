@@ -12,7 +12,11 @@ export const HeaderLogo = () => {
 
   return (
     <div className="flex items-center">
-      <img src={logoMapping[theme]} alt="V-learning Logo" className="w-60" />
+      <img
+        src={logoMapping[theme]}
+        alt="V-learning Logo"
+        className="w-56 lg:w-60"
+      />
     </div>
   );
 };

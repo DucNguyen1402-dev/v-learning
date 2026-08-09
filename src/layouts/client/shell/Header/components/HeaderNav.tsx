@@ -6,6 +6,7 @@ export const HeaderNav = () => {
   const navLinks = [
     { label: "Home", routeKey: CLIENT_ROUTES.home },
     { label: "Khóa học", routeKey: CLIENT_ROUTES.register },
+    { label: "Blog", routeKey: CLIENT_ROUTES.blog },
     { label: "Giới thiệu", routeKey: CLIENT_ROUTES.about },
   ];
 

@@ -55,7 +55,7 @@ export const Checkbox = forwardRef<
     ref,
   ) => {
     return (
-      <label className="flex cursor-pointer items-center gap-2 select-none">
+      <label className="flex-center gap-2 select-none">
         <CheckboxPrimitive.Root
           ref={ref}
           checked={checked}
@@ -64,6 +64,7 @@ export const Checkbox = forwardRef<
           onCheckedChange={onCheckedChange}
           className={cn(
             "checkbox",
+            disabled ? "checkbox-disabled" : "checkbox-default",
             checkboxClassName,
             checkboxSizeClasses[size].container,
           )}
@@ -72,7 +73,7 @@ export const Checkbox = forwardRef<
           <CheckboxPrimitive.Indicator>
             <Check
               className={cn(
-                "text-slate-50",
+                "checkbox-indicator",
                 checkboxSizeClasses[size].indicator,
               )}
             />
@@ -81,8 +82,8 @@ export const Checkbox = forwardRef<
         {children && (
           <span
             className={cn(
-              "text-secondary select-none",
-              disabled ? "cursor-not-allowed opacity-50" : "cursor-pointer",
+              "checkbox-label",
+              disabled ? "checkbox-label-disabled" : "checkbox-label-default",
               labelClassName,
             )}
           >
