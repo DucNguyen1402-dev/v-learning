@@ -2,24 +2,26 @@ import type { ButtonHTMLAttributes, ReactNode } from "react";
 
 import { cn } from "@shared/utils";
 
-import Button from "./Button";
+import { Button } from "./Button";
 
 type LoginButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   children: ReactNode;
+  className?: string;
+  loading: boolean;
 };
-const LoginButton = ({ children, className, ...props }: LoginButtonProps) => {
+export const LoginButton = ({
+  children,
+  className,
+  loading,
+  ...props
+}: LoginButtonProps) => {
   return (
     <Button
-      className={cn(
-        "text-slate-50",
-        "bg-primary hover:bg-primary/90",
-        className,
-      )}
+      className={cn("button-primary", className)}
+      loading={loading}
       {...props}
     >
       {children}
     </Button>
   );
 };
-
-export default LoginButton;

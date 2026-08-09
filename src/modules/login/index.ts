@@ -1,1 +1,2 @@
-export { default as Login } from "./pages/Login";
+export { Login } from "./Login";
+export { LoginRoute } from "./routes/LoginRoute";

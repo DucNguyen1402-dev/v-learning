@@ -5,6 +5,7 @@ import type {
   SVGProps,
 } from "react";
 
+import { Spinner } from "@shared/overlays";
 import { cn } from "@shared/utils";
 
 const sizes = {
@@ -43,7 +44,7 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   className?: string;
 };
 
-const Button = ({
+export const Button = ({
   children,
   icon: Icon,
   size = "md",
@@ -70,9 +71,9 @@ const Button = ({
       {...props}
     >
       {Icon && !loading && <Icon className={currentSize.icon} />}
+      {loading && <Spinner className={currentSize.icon} color="brand" />}
 
       <span>{children}</span>
     </button>
   );
 };
-export default Button;

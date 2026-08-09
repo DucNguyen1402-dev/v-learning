@@ -1,0 +1,10 @@
+@layer components {
+  .login-logo {
+    color: var(--primary-foreground);
+    background: linear-gradient(
+      to bottom right,
+      var(--primary),
+      --alpha(var(--primary) / 60%)
+    );
+  }
+}

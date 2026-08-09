@@ -1,0 +1,17 @@
+@layer components {
+  .backdrop {
+    @apply fixed inset-0 z-50 flex items-center justify-center backdrop-blur-[2px] transition-opacity duration-200;
+  }
+  .backdrop-light {
+    @apply bg-slate-950/10;
+  }
+  .backdrop-normal {
+    @apply bg-slate-950/40;
+  }
+  .backdrop-dark {
+    @apply bg-slate-950/80;
+  }
+  .toast {
+    @apply pointer-events-auto flex items-center gap-3 rounded-md border-l-6 shadow-xl backdrop-blur;
+  }
+}

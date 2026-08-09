@@ -1,10 +1,13 @@
-import { useForm } from "react-hook-form";
-
+import { Login } from "@modules/login";
 import { CheckboxField } from "@shared/fields";
 import { LoginButton } from "@shared/ui";
 
-const LoginActions = () => {
-  const { control } = useForm();
+export const LoginActions = () => {
+  const {
+    hookForm: { control },
+    actions: { onLoginClick },
+    loading,
+  } = Login.use();
   return (
     <div className="flex flex-col gap-8">
       <div className="self-start">
@@ -16,9 +19,9 @@ const LoginActions = () => {
           size="sm"
         />
       </div>
-      <LoginButton type="button">ĐĂNG NHẬP</LoginButton>
+      <LoginButton type="button" onClick={onLoginClick} loading={loading}>
+        ĐĂNG NHẬP
+      </LoginButton>
     </div>
   );
 };
-
-export default LoginActions;

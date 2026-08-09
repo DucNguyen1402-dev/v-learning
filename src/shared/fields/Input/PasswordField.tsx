@@ -12,7 +12,7 @@ import { Input } from ".";
 
 type PasswordFieldProps = ComponentPropsWithoutRef<typeof Input>;
 
-const PasswordField = forwardRef<
+export const PasswordField = forwardRef<
   ComponentRef<typeof Input>,
   PasswordFieldProps
 >(({ disabled, ...props }, ref) => {
@@ -43,5 +43,3 @@ const PasswordField = forwardRef<
     />
   );
 });
-
-export default PasswordField;

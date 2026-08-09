@@ -1,6 +1,6 @@
 import clsx from "clsx";
 
-import Button from "./Button";
+import { Button } from "./Button";
 
 const surfaceSlyles = {
   light:
@@ -10,7 +10,7 @@ const surfaceSlyles = {
     "bg-slate-800/80 text-slate-300 border border-slate-700 hover:bg-slate-800/40",
 };
 
-const CancelButton = ({ children, surface = "light", ...props }) => {
+export const CancelButton = ({ children, surface = "light", ...props }) => {
   return (
     <Button
       className={clsx(surfaceSlyles[surface] ?? surfaceSlyles.light)}
@@ -20,4 +20,3 @@ const CancelButton = ({ children, surface = "light", ...props }) => {
     </Button>
   );
 };
-export default CancelButton;

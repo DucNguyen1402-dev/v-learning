@@ -1,4 +1,4 @@
-import Button from "./Button";
+import { Button } from "./Button";
 const confirmClasses = {
   add: "bg-emerald-600 text-white hover:bg-emerald-500 active:bg-emerald-700",
   edit: "bg-blue-600 text-white hover:bg-blue-500 active:bg-blue-700",
@@ -10,12 +10,10 @@ const confirmClasses = {
   leavePage: "bg-amber-600 text-white hover:bg-amber-500 active:bg-amber-700",
 };
 
-const ConfirmButton = ({ children, type = "light", ...props }) => {
+export const ConfirmButton = ({ children, type = "light", ...props }) => {
   return (
     <Button className={`${confirmClasses[type]}`} {...props}>
       {children}
     </Button>
   );
 };
-
-export default ConfirmButton;
