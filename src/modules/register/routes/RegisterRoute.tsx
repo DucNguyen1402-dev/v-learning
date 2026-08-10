@@ -1,9 +1,9 @@
-import type { AppRoute } from "@routes/client";
-import { CLIENT_ROUTES_KEYS } from "@routes/client";
+import type { AppRoute } from "@routes";
+import { AppRoutes } from "@routes";
 
 import { RegisterPage } from "../pages/RegisterPage";
 
 export const RegisterRoute: AppRoute = {
-  path: CLIENT_ROUTES_KEYS.register,
+  path: AppRoutes.client.paths.REGISTER,
   element: <RegisterPage />,
 };

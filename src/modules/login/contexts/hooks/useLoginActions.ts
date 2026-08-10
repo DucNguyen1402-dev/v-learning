@@ -1,7 +1,7 @@
 import type { SubmitHandler, UseFormHandleSubmit } from "react-hook-form";
 
 import type { LoginFormValues } from "@modules/login/type";
-import { CLIENT_ROUTES_KEYS } from "@routes/client";
+import { AppRoutes } from "@routes";
 import type { LoginFn, LoginResponse } from "@shared/auth";
 import { getErrorMessage } from "@shared/error";
 import { execution } from "@shared/execution";
@@ -29,7 +29,7 @@ export const useLoginActions = ({
 
     try {
       await execution.runAsyncTask(loginTask);
-      go(CLIENT_ROUTES_KEYS.home, Toast.config.success.login());
+      go(AppRoutes.client.keys.HOME, Toast.config.success.login());
     } catch (error) {
       const message = getErrorMessage(error);
       toast.show({

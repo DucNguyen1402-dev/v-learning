@@ -1,6 +1,6 @@
 import { useLocation } from "react-router-dom";
 
-import { findRouteKey } from "@routes/client";
+import { AppRoutes } from "@routes";
 import type { CurrentUser } from "@shared/auth";
 import { getCurrentUser } from "@shared/auth";
 import { CircleUser } from "lucide-react";
@@ -17,7 +17,7 @@ import {
 export const Header = () => {
   const currentUser: null | CurrentUser = getCurrentUser();
   const { pathname } = useLocation();
-  const routeKey = findRouteKey(pathname);
+  const routeKey = AppRoutes.client.findKey(pathname);
   const shouldHideLoginButton =
     routeKey && loginButtonHiddenRoutes.has(routeKey);
 

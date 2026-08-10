@@ -1,13 +1,13 @@
 import { NavLink } from "react-router-dom";
 
-import { CLIENT_ROUTES } from "@routes/client";
+import { AppRoutes } from "@routes";
 
 export const HeaderNav = () => {
   const navLinks = [
-    { label: "Home", routeKey: CLIENT_ROUTES.home },
-    { label: "Khóa học", routeKey: CLIENT_ROUTES.courses },
-    { label: "Blogs", routeKey: CLIENT_ROUTES.blogs },
-    { label: "Giới thiệu", routeKey: CLIENT_ROUTES.about },
+    { label: "Home", routeKey: AppRoutes.client.paths.HOME },
+    { label: "Khóa học", routeKey: AppRoutes.client.paths.COURSES },
+    { label: "Blogs", routeKey: AppRoutes.client.paths.BLOGS },
+    { label: "Giới thiệu", routeKey: AppRoutes.client.paths.ABOUT },
   ];
 
   return (

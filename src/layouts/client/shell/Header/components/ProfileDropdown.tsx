@@ -1,6 +1,6 @@
 import { useCallback, useMemo } from "react";
 
-import { CLIENT_ROUTES_KEYS, isRouteActive } from "@routes/client";
+import { AppRoutes } from "@routes";
 import { Auth } from "@shared/auth";
 import { Navigation } from "@shared/navigation";
 import { Theme } from "@shared/theme";
@@ -13,11 +13,11 @@ export const ProfileDropdown = () => {
 
   const onLogoutClick = useCallback(() => {
     Auth.logout();
-    go(CLIENT_ROUTES_KEYS.home);
+    go(AppRoutes.client.keys.HOME);
   }, [go]);
 
   const onProfileClick = useCallback(() => {
-    go(CLIENT_ROUTES_KEYS.profile);
+    go(AppRoutes.client.keys.PROFILE);
   }, [go]);
 
   const menuItems = useMemo(() => {
@@ -32,7 +32,7 @@ export const ProfileDropdown = () => {
         label: "Hồ sơ",
         onClick: onProfileClick,
         icon: User,
-        routeKey: CLIENT_ROUTES_KEYS.profile,
+        routeKey: AppRoutes.client.keys.PROFILE,
       },
       {
         label: "Đăng xuất",
@@ -48,7 +48,7 @@ export const ProfileDropdown = () => {
   return (
     <ul className="profile-dropdown">
       {menuItems.map((item, index) => {
-        const isActive = isRouteActive(pathname, item.routeKey);
+        const isActive = AppRoutes.client.isActive(pathname, item.routeKey);
         return (
           <li key={index}>
             <Button

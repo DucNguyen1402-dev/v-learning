@@ -1,9 +1,9 @@
-import type { AppRoute } from "@routes/client";
-import { CLIENT_ROUTES_KEYS } from "@routes/client";
+import type { AppRoute } from "@routes";
+import { AppRoutes } from "@routes";
 
 import { AboutPage } from "../pages/AboutPage";
 
 export const AboutRoute: AppRoute = {
-  path: CLIENT_ROUTES_KEYS.about,
+  path: AppRoutes.client.paths.ABOUT,
   element: <AboutPage />,
 };

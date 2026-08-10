@@ -1,4 +1,4 @@
-import type { AppRoute } from "@routes/client";
+import type { AppRoute } from "@routes";
 
 import { AboutRoute } from "./about";
 import { BlogsRoute } from "./blogs";

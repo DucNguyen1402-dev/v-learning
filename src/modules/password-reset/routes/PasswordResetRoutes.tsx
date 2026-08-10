@@ -1,9 +1,9 @@
-import type { AppRoute } from "@routes/client";
-import { CLIENT_ROUTES_KEYS } from "@routes/client";
+import type { AppRoute } from "@routes";
+import { AppRoutes } from "@routes";
 
 import { PasswordResetPage } from "../pages/PasswordResetPage";
 
 export const PasswordResetRoute: AppRoute = {
-  path: CLIENT_ROUTES_KEYS.passwordReset,
+  path: AppRoutes.client.paths.PASSWORD_RESET,
   element: <PasswordResetPage />,
 };

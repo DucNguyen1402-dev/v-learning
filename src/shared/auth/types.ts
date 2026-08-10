@@ -1,3 +1,4 @@
+import type { AvatarIndex } from "@shared/avatar";
 import type { ThemeValue } from "@shared/theme";
 
 export type LoginPayload = {
@@ -29,4 +30,5 @@ export type CurrentUser = {
   hoTen: string;
   soDT: string;
   theme?: ThemeValue;
+  avatarIndex?: AvatarIndex;
 };
