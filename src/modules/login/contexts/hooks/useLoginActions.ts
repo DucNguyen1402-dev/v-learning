@@ -1,12 +1,12 @@
 import type { SubmitHandler, UseFormHandleSubmit } from "react-hook-form";
 
 import type { LoginFormValues } from "@modules/login/type";
-import { CLIENT_ROUTES_KEYS } from "@routes/client";
+import { AppRoutes } from "@routes";
 import type { LoginFn, LoginResponse } from "@shared/auth";
 import { getErrorMessage } from "@shared/error";
 import { execution } from "@shared/execution";
 import { createPayload } from "@shared/form-utils";
-import { useRouteNavigation } from "@shared/navigation";
+import { Navigation } from "@shared/navigation";
 import { Toast } from "@shared/overlays";
 
 type UseLoginActionsParams = {
@@ -18,7 +18,7 @@ export const useLoginActions = ({
   handleSubmit,
   login,
 }: UseLoginActionsParams) => {
-  const { go } = useRouteNavigation();
+  const { go } = Navigation.useNavigate();
   const toast = Toast.use();
 
   const onValid: SubmitHandler<LoginFormValues> = async (data) => {
@@ -29,7 +29,7 @@ export const useLoginActions = ({
 
     try {
       await execution.runAsyncTask(loginTask);
-      go(CLIENT_ROUTES_KEYS.home, Toast.config.success.login());
+      go(AppRoutes.client.keys.HOME, Toast.config.success.login());
     } catch (error) {
       const message = getErrorMessage(error);
       toast.show({

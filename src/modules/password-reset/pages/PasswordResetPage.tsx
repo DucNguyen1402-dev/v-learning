@@ -1,7 +1,7 @@
-import { useScrollOnRouteChange } from "@shared/navigation";
+import { Navigation } from "@shared/navigation";
 
 export const PasswordResetPage = () => {
-  const { scrollRef } = useScrollOnRouteChange();
+  const { scrollRef } = Navigation.useScrollOnRouteChange();
   return (
     <div className="flex min-h-screen flex-col justify-between bg-neutral-50 font-sans text-neutral-900 selection:bg-neutral-200 selection:text-neutral-900">
       {/* 2. Main Content - Centered Card */}

@@ -1,4 +1,10 @@
-// import { Navigate, Route, Routes } from "react-router-dom";
-import { ClientRoutes } from "@/routes";
+import { Navigate, Route, Routes } from "react-router-dom";
 
-export const App = () => <ClientRoutes />;
+import { ClientRouteTree } from "@routes";
+
+export const App = () => (
+  <Routes>
+    <Route path="/" element={<Navigate to="/client" replace />} />
+    {ClientRouteTree}
+  </Routes>
+);

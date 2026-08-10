@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-import { useLoginMutation } from "@shared/auth";
+import { Auth } from "@shared/auth";
 
 import { useLoginActions, useLoginForm } from "./hooks";
 import { LoginContext } from "./LoginContext";
@@ -10,7 +10,7 @@ type LoginProviderProps = {
   children: ReactNode;
 };
 export const LoginProvider = ({ children }: LoginProviderProps) => {
-  const { login, isPending } = useLoginMutation();
+  const { login, isLoggingIn } = Auth.login();
 
   const { register, errors, handleSubmit, control } = useLoginForm();
 
@@ -19,7 +19,7 @@ export const LoginProvider = ({ children }: LoginProviderProps) => {
   const value: LoginContextValues = {
     hookForm: { register, errors, control },
     actions: { onLoginClick },
-    loading: isPending,
+    loading: isLoggingIn,
   };
 
   return (

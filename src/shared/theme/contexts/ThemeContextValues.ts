@@ -1,5 +1,5 @@
-import { type Theme } from "@shared/theme/types";
+import { type ThemeValue } from "@shared/theme/types";
 export type ThemeContextValues = {
-  theme: Theme;
+  theme: ThemeValue;
   toggleTheme: () => void;
 };

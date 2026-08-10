@@ -1,14 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-import type { Theme } from "@shared/theme/types";
+import type { ThemeValue } from "@shared/theme/types";
 
-export const useThemeState = () => {
-  const [currentTheme, setCurrentTheme] = useState<Theme>("light");
+export const useThemeState = (theme: ThemeValue) => {
+  const [currentTheme, setCurrentTheme] = useState<ThemeValue>(theme);
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", currentTheme === "dark");
+  }, [currentTheme]);
 
   const toggleTheme = () => {
-    const newTheme = currentTheme === "light" ? "dark" : "light";
-    setCurrentTheme(newTheme);
-    document.documentElement.classList.toggle("dark", newTheme === "dark");
+    setCurrentTheme((prev) => (prev === "light" ? "dark" : "light"));
   };
-  return { currentTheme, toggleTheme };
+
+  return { currentTheme, setCurrentTheme, toggleTheme };
 };

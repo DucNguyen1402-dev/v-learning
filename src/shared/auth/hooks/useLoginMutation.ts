@@ -26,7 +26,7 @@ export const useLoginMutation = () => {
 
   return {
     login: mutation.mutateAsync as LoginFn,
-    isPending: mutation.isPending,
+    isLoggingIn: mutation.isPending,
     error: mutation.error,
   };
 };

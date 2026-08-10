@@ -15,7 +15,7 @@ export const HeaderLogo = () => {
       <img
         src={logoMapping[theme]}
         alt="V-learning Logo"
-        className="w-56 lg:w-60"
+        className="w-48 md:w-56 lg:w-60"
       />
     </div>
   );

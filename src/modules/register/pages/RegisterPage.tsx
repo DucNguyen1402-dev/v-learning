@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-import { useScrollOnRouteChange } from "@shared/navigation";
+import { Navigation } from "@shared/navigation";
 
 export const RegisterPage = () => {
   const [formData, setFormData] = useState({
@@ -12,7 +12,7 @@ export const RegisterPage = () => {
     agreeTerms: false,
   });
 
-  const { scrollRef } = useScrollOnRouteChange();
+  const { scrollRef } = Navigation.useScrollOnRouteChange();
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, checked } = e.target;
     setFormData((prev) => ({

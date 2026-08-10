@@ -1,7 +1,7 @@
 import { useCallback, useMemo } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
-import { CLIENT_ROUTES, findRouteKey, type RouteKey } from "@routes";
+import { AppRoutes,type RouteKey } from "@routes";
 
 type RouteState = {
   history?: string[];
@@ -17,7 +17,7 @@ export const useRouteNavigation = () => {
     const key = location.state?.currentKey as RouteKey | undefined;
     if (key) return key;
 
-    return findRouteKey(location.pathname);
+    return AppRoutes.client.findKey(location.pathname);
   }, [location.pathname, location.state?.currentKey]);
 
   const previousRouteKey = useMemo(() => {
@@ -28,7 +28,7 @@ export const useRouteNavigation = () => {
   const back = useCallback(() => {
     const previousKey = routeHistory.at(-1) as RouteKey | undefined;
     if (previousKey) {
-      navigate(CLIENT_ROUTES[previousKey], {
+      navigate(AppRoutes.client.urls[previousKey], {
         state: {
           history: routeHistory.slice(0, -1),
         },
@@ -40,7 +40,7 @@ export const useRouteNavigation = () => {
 
   const forward = useCallback(
     (routeKey: RouteKey, payload?: unknown) =>
-      navigate(CLIENT_ROUTES[routeKey], {
+      navigate(AppRoutes.client.urls[routeKey], {
         state: {
           history: [...routeHistory, currentRouteKey],
           payload: payload ?? null,
@@ -51,7 +51,7 @@ export const useRouteNavigation = () => {
 
   const go = useCallback(
     (routeKey: RouteKey, payload?: unknown) =>
-      navigate(CLIENT_ROUTES[routeKey], {
+      navigate(AppRoutes.client.urls[routeKey], {
         state: {
           payload: payload ?? null,
         },

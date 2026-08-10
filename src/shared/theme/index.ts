@@ -1,2 +1,2 @@
 export { Theme } from "./Theme";
-export { type ThemeAssets } from "./types";
+export { type ThemeAssets, type ThemeValue } from "./types";

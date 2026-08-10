@@ -1,8 +1,14 @@
-import { Login } from "@modules/login";
-import { LoginPage } from "@modules/login/pages/LoginPage";
+import type { AppRoute } from "@routes";
+import { AppRoutes } from "@routes";
 
-export const LoginRoute = () => (
-  <Login.Provider>
-    <LoginPage />
-  </Login.Provider>
-);
+import { Login } from "../Login";
+import { LoginPage } from "../pages/LoginPage";
+
+export const LoginRoute: AppRoute = {
+  path: AppRoutes.client.paths.LOGIN,
+  element: (
+    <Login.Provider>
+      <LoginPage />
+    </Login.Provider>
+  ),
+};

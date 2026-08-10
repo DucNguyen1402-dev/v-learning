@@ -1,4 +1,5 @@
-import { type CurrentUser, STORAGE_KEYS } from "@shared/auth";
+import { STORAGE_KEYS } from "@shared/auth/constants";
+import type { CurrentUser } from "@shared/auth/types";
 
 const storages = [localStorage, sessionStorage];
 
@@ -6,6 +7,22 @@ export const getCurrentUser = () => {
   for (const storage of storages) {
     const item = storage.getItem(STORAGE_KEYS.USER);
     if (item) return JSON.parse(item);
+  }
+  return null;
+};
+
+export const findCurrentUserStorage = () =>
+  storages.find((storage) => storage.getItem(STORAGE_KEYS.USER)) ?? null;
+
+export const getCurrentUserProperty = <K extends keyof CurrentUser>(
+  property: K,
+): CurrentUser[K] | null => {
+  for (const storage of storages) {
+    const item = storage.getItem(STORAGE_KEYS.USER);
+    if (item) {
+      const user: CurrentUser = JSON.parse(item);
+      if (user?.[property] !== undefined) return user[property];
+    }
   }
   return null;
 };

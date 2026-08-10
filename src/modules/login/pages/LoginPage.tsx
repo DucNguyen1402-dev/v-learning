@@ -4,10 +4,10 @@ import {
   LoginForm,
   LoginHeader,
 } from "@modules/login/components";
-import { useScrollOnRouteChange } from "@shared/navigation";
+import { Navigation } from "@shared/navigation";
 
 export const LoginPage = () => {
-  const { scrollRef } = useScrollOnRouteChange();
+  const { scrollRef } = Navigation.useScrollOnRouteChange();
   return (
     <div className="flex-center min-h-screen p-4">
       <div

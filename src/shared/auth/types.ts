@@ -1,3 +1,6 @@
+import type { AvatarIndex } from "@shared/avatar";
+import type { ThemeValue } from "@shared/theme";
+
 export type LoginPayload = {
   taiKhoan: string;
   matKhau: string;
@@ -20,3 +23,12 @@ export type LoginFn = ({
   payload: LoginPayload;
   remember: boolean;
 }) => Promise<LoginResponse>;
+
+export type CurrentUser = {
+  taiKhoan: string;
+  email: string;
+  hoTen: string;
+  soDT: string;
+  theme?: ThemeValue;
+  avatarIndex?: AvatarIndex;
+};

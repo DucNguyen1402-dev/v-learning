@@ -1,2 +1,3 @@
 // export { default as FaviconManager } from "./FaviconManager";
-export * from "./hooks";
+
+export { Navigation } from "./Navigation";
