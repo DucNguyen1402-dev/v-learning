@@ -4,4 +4,5 @@
 @import "./theme.css";
 @import "./base/index.css";
 @import "./utils/index.css";
+@import "./layouts/index.css";
 @import "./components/index.css";

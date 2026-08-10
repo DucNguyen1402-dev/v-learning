@@ -101,6 +101,8 @@
   /* Border */
   --border-primary: var(--color-zinc-400);
   --border-secondary: var(--color-zinc-300);
+  --border-tertiary: var(--color-zinc-200);
+
 
   /* ==========================================================
    * Browser UI

@@ -1,0 +1,14 @@
+@layer layout {
+
+    .footer-wrapper {
+        border-top: 1px solid var(--border-secondary);
+    }
+
+    /* .footer-top {} */
+
+    .footer-bottom {
+        @apply flex flex-col gap-3 text-xs px-6 py-4;
+        border-top: 1px solid var(--border-tertiary);
+        color: var(--text-tertiary);
+    }
+}

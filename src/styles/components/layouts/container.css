@@ -1,6 +1,0 @@
-@layer components {
-  .client-container {
-    @apply mx-auto w-full scroll-mt-28 p-6 pb-12 lg:px-8;
-    max-width: var(--max-width-container);
-  }
-}

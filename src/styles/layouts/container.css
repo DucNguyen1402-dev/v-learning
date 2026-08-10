@@ -1,0 +1,6 @@
+@layer components {
+  .client-container {
+    @apply scroll-mt-28 p-6 pb-12 lg:px-8 layout-container;
+
+  }
+}
