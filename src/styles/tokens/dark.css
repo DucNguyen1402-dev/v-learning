@@ -59,6 +59,8 @@
   --warning: var(--brand-warning);
   --warning-foreground: var(--brand-warning-foreground);
 
+  --color-muted-foreground: var(--color-zinc-400);
+
   /* ================= UI Roles ================= */
 
   /* Text */

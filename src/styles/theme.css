@@ -3,15 +3,13 @@
    * Semantic 
    * ========================================================== */
 
-
-
   /* ================= Text Colors ================= */
 
   --color-text-primary: var(--text-primary);
   --color-text-secondary: var(--text-secondary);
   --color-text-tertiary: var(--text-tertiary);
 
-
+  --color-muted-foreground: var(--color-muted-foreground);
 
   /* ================= Surface Colors ================= */
 
@@ -19,7 +17,6 @@
   --color-surface-1: var(--surface-1);
   --color-surface-2: var(--surface-2);
   --color-surface-3: var(--surface-3);
-
 
   /* ================= Border Colors ================= */
 
@@ -45,7 +42,4 @@
   /* Global Notifications */
   --z-index-toast: 500;
   --z-index-max: 9999;
-
-
-
 }
