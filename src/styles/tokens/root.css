@@ -78,6 +78,7 @@
   --success: var(--brand-success);
   --success-foreground: var(--brand-success-foreground);
 
+  --color-muted-foreground: var(--color-zinc-500);
   /* ================= UI Roles ================= */
 
   /* Text */
@@ -101,6 +102,7 @@
   /* Border */
   --border-primary: var(--color-zinc-400);
   --border-secondary: var(--color-zinc-300);
+  --border-tertiary: var(--color-zinc-200);
 
   /* ==========================================================
    * Browser UI

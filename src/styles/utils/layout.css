@@ -8,3 +8,8 @@
 @utility scroll-target {
     @apply scroll-mt-30;
 }
+
+@utility layout-container {
+    @apply mx-auto w-full;
+    max-width: var(--max-width-container);
+}

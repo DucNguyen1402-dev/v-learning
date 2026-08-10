@@ -1,14 +1,9 @@
-@layer components {
+@layer layout {
+
   .header {
-    @apply backdrop-blur;
+    @apply backdrop-blur sticky top-0 z-sticky h-24 px-1 md:h-28;
     background-color: --alpha(var(--color-surface-1) / 80%);
     border-bottom: 1px solid var(--border-primary);
-  }
-
-  .header-content {
-    @apply mx-auto;
-    max-width: var(--max-width-container);
-    width: 100%;
   }
 
   .nav-link {
@@ -17,6 +12,7 @@
 
   .nav-link-default {
     @apply cursor-pointer;
+
     &:hover {
       color: var(--primary-hover);
     }

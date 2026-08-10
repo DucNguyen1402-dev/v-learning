@@ -22,8 +22,8 @@ export const Header = () => {
     routeKey && loginButtonHiddenRoutes.has(routeKey);
 
   return (
-    <header className="header sticky top-0 z-sticky h-24 px-1 md:h-28">
-      <div className="header-content flex items-center justify-between px-1 md:px-2 lg:px-6">
+    <header className="header">
+      <div className="layout-container flex items-center justify-between px-1 md:px-2 lg:px-6">
         <HeaderLogo />
         <HeaderNav />
 

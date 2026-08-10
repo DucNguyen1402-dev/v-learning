@@ -59,6 +59,8 @@
   --warning: var(--brand-warning);
   --warning-foreground: var(--brand-warning-foreground);
 
+  --color-muted-foreground: var(--color-zinc-400);
+
   /* ================= UI Roles ================= */
 
   /* Text */
@@ -84,6 +86,7 @@
   /* Border */
   --border-primary: var(--color-zinc-700);
   --border-secondary: var(--color-zinc-600);
+  --border-tertiary: var(--color-zinc-500);
 
   /* ==========================================================
    * Browser UI
