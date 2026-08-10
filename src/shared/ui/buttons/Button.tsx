@@ -13,30 +13,27 @@ const sizes = {
     button: "",
     icon: "",
   },
-  xs: {
-    button: "px-1.5 py-0.75 text-xs",
-    icon: "size-2",
-  },
+
   sm: {
-    button: "px-3 py-2 text-sm",
+    button: "button-sm",
     icon: "size-4",
   },
   md: {
-    button: "px-5 py-2.5 text-sm",
+    button: "button-md",
     icon: "size-5",
   },
   lg: {
-    button: "px-6 py-3 text-base",
+    button: "button-lg",
     icon: "size-6",
   },
 };
 
-type ButtonSize = "none" | "xs" | "sm" | "md" | "lg";
+type ButtonSize = "none" | "sm" | "md" | "lg";
 
 type ButtonIcon = ComponentType<SVGProps<SVGSVGElement>>;
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
-  children: ReactNode;
+  children?: ReactNode;
   icon?: ButtonIcon;
   size?: ButtonSize;
   loading?: boolean;

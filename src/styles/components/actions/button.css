@@ -1,9 +1,19 @@
 @layer components {
-  .back-button {
-    @apply flex-center size-8 cursor-pointer rounded-full transition-colors duration-200 ease-in-out outline-none;
-    border: 1px solid var(--border-primary);
-    color: var(--text-secondary);
+  .button-sm {
+    @apply px-3 py-2 text-sm;
+  }
 
+  .button-md {
+    @apply px-4 py-2.5 text-sm;
+  }
+
+  .button-lg {
+    @apply px-5 py-3 text-base;
+  }
+
+  .back-button {
+    @apply rounded-full transition-colors duration-300 ease-in-out;
+    border: 1px solid var(--border-primary);
     &:hover {
       background-color: --alpha(var(--primary) / 80%);
       color: var(--primary-foreground);
@@ -11,11 +21,11 @@
   }
 
   .button {
-    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-md select-none;
+    @apply inline-flex cursor-pointer items-center justify-center gap-2 outline-none select-none;
   }
 
   .button-primary {
-    @apply transition-colors duration-200 ease-in-out;
+    @apply rounded-md transition-colors duration-200 ease-in-out;
     background-color: var(--primary);
     color: var(--primary-foreground);
     &:hover {
