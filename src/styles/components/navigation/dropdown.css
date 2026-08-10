@@ -5,10 +5,16 @@
     border: 1px solid var(--border-secondary);
   }
 
-  .menu-button {
+  .menu-button-default {
     &:hover {
       background-color: var(--surface-3);
       color: var(--text-primary-hover);
     }
+  }
+
+  .menu-button-active {
+    @apply cursor-default;
+    background-color: var(--surface-3);
+    color: var(--text-primary-hover);
   }
 }

@@ -6,7 +6,7 @@ import type { LoginFn, LoginResponse } from "@shared/auth";
 import { getErrorMessage } from "@shared/error";
 import { execution } from "@shared/execution";
 import { createPayload } from "@shared/form-utils";
-import { useRouteNavigation } from "@shared/navigation";
+import { Navigation } from "@shared/navigation";
 import { Toast } from "@shared/overlays";
 
 type UseLoginActionsParams = {
@@ -18,7 +18,7 @@ export const useLoginActions = ({
   handleSubmit,
   login,
 }: UseLoginActionsParams) => {
-  const { go } = useRouteNavigation();
+  const { go } = Navigation.useNavigate();
   const toast = Toast.use();
 
   const onValid: SubmitHandler<LoginFormValues> = async (data) => {

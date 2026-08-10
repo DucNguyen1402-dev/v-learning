@@ -5,8 +5,8 @@ import { CLIENT_ROUTES } from "@routes/client";
 export const HeaderNav = () => {
   const navLinks = [
     { label: "Home", routeKey: CLIENT_ROUTES.home },
-    { label: "Khóa học", routeKey: CLIENT_ROUTES.register },
-    { label: "Blog", routeKey: CLIENT_ROUTES.blog },
+    { label: "Khóa học", routeKey: CLIENT_ROUTES.courses },
+    { label: "Blogs", routeKey: CLIENT_ROUTES.blogs },
     { label: "Giới thiệu", routeKey: CLIENT_ROUTES.about },
   ];
 

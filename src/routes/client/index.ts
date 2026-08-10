@@ -3,4 +3,5 @@ export {
   CLIENT_ROUTES_KEYS,
   type ClientRouteKey,
 } from "./constants";
-export { findRouteKey } from "./utils";
+export type { AppRoute } from "./types";
+export { findRouteKey, isRouteActive } from "./utils";

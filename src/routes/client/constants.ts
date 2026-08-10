@@ -4,7 +4,9 @@ export const CLIENT_ROUTES_KEYS = {
   about: "about",
   register: "register",
   passwordReset: "passwordReset",
-  blog: "blog",
+  blogs: "blogs",
+  profile: "profile",
+  courses: "courses",
 } as const;
 
 export const CLIENT_ROUTES = {
@@ -13,7 +15,9 @@ export const CLIENT_ROUTES = {
   about: "/client/about",
   register: "/client/register",
   passwordReset: "/client/password-reset",
-  blog: "/client/blog",
+  profile: "/client/profile",
+  blogs: "/client/blogs",
+  courses: "/client/courses",
 } as const;
 
 export type ClientRouteKey = keyof typeof CLIENT_ROUTES_KEYS;

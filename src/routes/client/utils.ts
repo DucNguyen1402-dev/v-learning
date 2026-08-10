@@ -6,3 +6,8 @@ export const findRouteKey = (path: string) => {
   );
   return key as keyof typeof CLIENT_ROUTES | undefined;
 };
+
+export const isRouteActive = (
+  path: string,
+  key: keyof typeof CLIENT_ROUTES | null,
+) => key !== null && CLIENT_ROUTES[key] === path;

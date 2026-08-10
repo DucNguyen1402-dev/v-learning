@@ -1,7 +1,7 @@
-import { useRouteNavigation } from "@shared/navigation";
+import { Navigation } from "@shared/navigation";
 import { ArrowLeft } from "lucide-react";
 export const BackButton = () => {
-  const { back } = useRouteNavigation();
+  const { back } = Navigation.useNavigate();
 
   return (
     <button className="back-button" onClick={() => back()}>

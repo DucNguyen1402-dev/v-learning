@@ -7,11 +7,10 @@ interface Course {
   level: string;
 }
 import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
 
-import { useScrollOnRouteChange } from "@shared/navigation";
+import { Navigation } from "@shared/navigation";
 import { Toast } from "@shared/overlays";
-
+import { State } from "@shared/state";
 const FEATURED_COURSES: Course[] = [
   {
     id: "1",
@@ -40,15 +39,20 @@ const FEATURED_COURSES: Course[] = [
 ];
 
 export const HomePage = () => {
-  const location = useLocation();
-  const { show: showToast } = Toast.use();
+  //1. Scroll to top on route change
+  Navigation.useScrollOnRouteChange();
 
-  useScrollOnRouteChange();
+  //2. Show toast message if there's a payload in the location state
+  const { show: showToast } = Toast.use();
+  const [toastState] = State.useTemporary(Navigation.usePayload());
+  const consumePayload = Navigation.useConsumePayload();
+
   useEffect(() => {
-    const toastState = location.state?.payload;
     if (!toastState) return;
     showToast(toastState);
-  }, [location.state, showToast]);
+    //3. Consume the location state to prevent showing the toast again on re-render
+    consumePayload();
+  }, [toastState, showToast, consumePayload]);
 
   return (
     <div className="min-h-screen w-full font-sans">
