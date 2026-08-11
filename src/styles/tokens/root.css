@@ -32,7 +32,6 @@
   --brand-secondary-foreground: var(--color-zinc-700);
   --brand-secondary-hover: var(--color-zinc-200);
 
-
   /* brand secondary */
 
   --brand-tertiary: transparent;
@@ -71,7 +70,6 @@
   --secondary-foreground: var(--brand-secondary-foreground);
   --secondary-hover: var(--brand-secondary-hover);
 
-
   /* tertiary color */
   --tertiary: var(--brand-tertiary);
   --tertiary-foreground: var(--brand-tertiary-foreground);
@@ -91,6 +89,7 @@
   --success-foreground: var(--brand-success-foreground);
 
   --color-muted-foreground: var(--color-zinc-500);
+
   /* ================= UI Roles ================= */
 
   /* Text */

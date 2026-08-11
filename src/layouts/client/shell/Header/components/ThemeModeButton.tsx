@@ -13,7 +13,7 @@ export const ThemeModeButton = () => {
   return (
     <Button
       onClick={toggleTheme}
-      className="relative rounded-full"
+      className="relative"
       variant="tertiary"
       size="lg"
     >

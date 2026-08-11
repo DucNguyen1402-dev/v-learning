@@ -1,0 +1,100 @@
+:root {
+  /* ==========================================================
+   * Brand 
+   * ========================================================== */
+
+  /* primitive */
+  --brand-primary: var(--color-blue-600);
+  --brand-primary-hover: var(--color-blue-700);
+  --brand-primary-foreground: var(--color-zinc-50);
+
+  /* brand secondary */
+  --brand-secondary: var(--color-zinc-100);
+  --brand-secondary-foreground: var(--color-zinc-700);
+  --brand-secondary-hover: var(--color-zinc-200);
+
+  /* brand secondary */
+  --brand-tertiary: transparent;
+  --brand-tertiary-foreground: var(--color-zinc-700);
+  --brand-tertiary-hover: var(--color-zinc-100);
+
+  /* brand destructive */
+  --brand-destructive: var(--color-red-600);
+  --brand-destructive-foreground: var(--color-zinc-50);
+  --brand-destructive-hover: var(--color-red-700);
+
+  /* brand error */
+  --brand-error: var(--color-red-600);
+  --brand-error-foreground: var(--color-zinc-100);
+
+  /* brand warning */
+  --brand-warning: var(--color-amber-600);
+  --brand-warning-foreground: var(--color-zinc-100);
+
+  /* brand success */
+  --brand-success: var(--color-emerald-600);
+  --brand-success-foreground: var(--color-zinc-100);
+
+  /* ==========================================================
+   * Semantic 
+   * ========================================================== */
+
+  /* border */
+
+  --border-secondary: var(--color-zinc-300);
+  --border-tertiary: var(--color-zinc-200);
+
+  /* Text */
+  --text-primary: var(--color-zinc-700);
+  --text-secondary: var(--color-zinc-600);
+  --text-tertiary: var(--color-zinc-500);
+  --text-tertiary-hover: var(--color-zinc-400);
+
+  /* ==========================================================
+   * Appearance 
+   * ========================================================== */
+  /* solid */
+  --color-primary-solid-bg: var(--brand-primary);
+  --color-primary-solid-fg: var(--brand-primary-foreground);
+  --color-primary-solid-border: transparent;
+  --color-primary-solid-hover-bg: var(--brand-primary-hover);
+
+  --color-secondary-solid-bg: var(--brand-secondary);
+  --color-secondary-solid-fg: var(--brand-secondary-foreground);
+  --color-secondary-solid-border: var(--border-secondary);
+  --color-secondary-solid-hover-bg: var(--brand-secondary-hover);
+  /* 
+  --color-tertiary-solid-bg: var(--brand-tertiary);
+  --color-tertiary-solid-fg: var(--brand-tertiary-foreground);
+  --color-tertiary-solid-border: var(--border-tertiary);
+  --color-tertiary-solid-hover-bg: var(--brand-tertiary-hover);
+
+  --color-destructive-solid-bg: var(--brand-destructive);
+  --color-destructive-solid-fg: var(--brand-destructive-foreground);
+  --color-destructive-solid-border: transparent;
+  --color-destructive-solid-hover-bg: var(--brand-destructive-hover);
+
+  --color-warning-solid-bg: var(--brand-warning);
+  --color-warning-solid-fg: var(--brand-warning-foreground);
+  --color-warning-solid-border: transparent;
+
+  --color-error-solid-bg: var(--brand-error);
+  --color-error-solid-fg: var(--brand-error-foreground);
+  --color-error-solid-border: transparent; */
+
+  /* ghost */
+  /* Ghost Tokens */
+  --color-tertiary-ghost-bg: transparent;
+  --color-tertiary-ghost-fg: var(--text-tertiary);
+  --color-tertiary-ghost-hover-fg: var(--text-tertiary-hover);
+}
+
+.button-tertiary.ghost {
+  background-color: var(--color-tertiary-ghost-bg);
+  color: var(--color-tertiary-ghost-fg);
+  border: none;
+
+  &:hover {
+    color: var(--color-tertiary-ghost-hover-fg);
+  }
+}

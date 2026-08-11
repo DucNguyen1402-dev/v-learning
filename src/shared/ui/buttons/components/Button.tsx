@@ -5,23 +5,30 @@ import type {
   SVGProps,
 } from "react";
 
-import { Spinner } from "@shared/overlays";
+// import { Spinner } from "@shared/overlays";
 import { cn } from "@shared/utils";
+import { type VariantProps } from "class-variance-authority";
 
-import { type ButtonSize, sizes, variants } from "../config";
-import { BUTTON_VARIANTS, type ButtonVariant } from "../constants";
+import { type ButtonSize, buttonVariants, sizes } from "../config";
+import {
+  BUTTON_APPEARANCES,
+  BUTTON_INTENTS,
+  type ButtonAppearance,
+  type ButtonIntent,
+} from "../constants";
 
 type ButtonIcon = ComponentType<SVGProps<SVGSVGElement>>;
 
-type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
-  children?: ReactNode;
-  icon?: ButtonIcon;
-  size?: ButtonSize;
-  loading?: boolean;
-  fullWidth?: boolean;
-  className?: string;
-  variant?: ButtonVariant;
-};
+type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> &
+  VariantProps<typeof buttonVariants> & {
+    children?: ReactNode;
+    icon?: ButtonIcon;
+    size?: ButtonSize;
+    loading?: boolean;
+    fullWidth?: boolean;
+    intent?: ButtonIntent;
+    appearance?: ButtonAppearance;
+  };
 
 export const Button = ({
   children,
@@ -29,8 +36,8 @@ export const Button = ({
   size = "md",
   loading = false,
   fullWidth = false,
-  className = "",
-  variant = BUTTON_VARIANTS.PRIMARY,
+  intent = BUTTON_INTENTS.PRIMARY,
+  appearance = BUTTON_APPEARANCES.SOLID,
   type = "button",
   ...props
 }: ButtonProps) => {
@@ -40,17 +47,15 @@ export const Button = ({
     <button
       disabled={loading || props.disabled}
       className={cn(
-        "button",
         currentSize.button,
         fullWidth ? "w-full" : "",
-        variants[variant],
-        className,
+        buttonVariants({ intent, appearance }),
       )}
       type={type}
       {...props}
     >
       {Icon && !loading && <Icon className={currentSize.icon} />}
-      {loading && <Spinner className={currentSize.icon} color="brand" />}
+      {/* {loading && <Spinner className={currentSize.icon} color="brand" />} */}
 
       {children}
     </button>

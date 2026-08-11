@@ -23,46 +23,37 @@
     @apply size-6;
   }
 
-  .button {
-    @apply inline-flex cursor-pointer items-center justify-center gap-1 outline-none select-none transition-colors duration-200 ease-in-out rounded-md;
+  .button-base {
+    @apply inline-flex cursor-pointer items-center justify-center gap-1 rounded-md transition-colors duration-200 ease-in-out outline-none select-none;
   }
 
-  .button-primary {
-    background-color: var(--primary);
-    color: var(--primary-foreground);
+  .button-primary.solid {
+    background-color: var(--color-primary-solid-bg);
+    color: var(--color-primary-solid-fg);
+    border: 1px solid var(--color-primary-solid-border);
 
     &:hover {
-      background-color: var(--primary-hover);
+      background-color: var(--color-primary-solid-hover-bg);
     }
   }
 
-  .button-secondary {
-
-    background-color: var(--secondary);
-    color: var(--secondary-foreground);
-    border: 1px solid var(--border-secondary);
+  .button-secondary.solid {
+    background-color: var(--color-secondary-solid-bg);
+    color: var(--color-secondary-solid-fg);
+    border: 1px solid var(--color-secondary-solid-border);
 
     &:hover {
-      background-color: var(--secondary-hover);
+      background-color: var(--color-secondary-solid-hover-bg);
     }
   }
 
-  .button-tertiary {
-    background-color: var(--tertiary);
-    color: var(--tertiary-foreground);
+  .button-tertiary.ghost {
+    background-color: var(--color-tertiary-solid-bg);
+    color: var(--color-tertiary-solid-fg);
+    border: 1px solid var(--color-tertiary-solid-border);
 
     &:hover {
-      background-color: var(--tertiary-hover);
+      background-color: var(--color-tertiary-solid-hover-bg);
     }
   }
-
-  .button-destructive {
-    background-color: var(--destructive);
-    color: var(--destructive-foreground);
-
-    &:hover {
-      background-color: var(--destructive-hover);
-    }
-  }
-
 }
