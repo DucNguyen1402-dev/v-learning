@@ -1,25 +1,68 @@
 @layer components {
-  .back-button {
-    @apply flex-center size-8 cursor-pointer rounded-full transition-colors duration-200 ease-in-out outline-none;
-    border: 1px solid var(--border-primary);
-    color: var(--text-secondary);
+  .button-sm {
+    @apply px-3 py-2 text-sm;
+  }
 
-    &:hover {
-      background-color: --alpha(var(--primary) / 80%);
-      color: var(--primary-foreground);
-    }
+  .icon-button-sm {
+    @apply size-4;
+  }
+
+  .button-md {
+    @apply px-4 py-2.5 text-sm;
+  }
+
+  .icon-button-md {
+    @apply size-5;
+  }
+
+  .button-lg {
+    @apply px-5 py-3 text-base;
+  }
+
+  .icon-button-lg {
+    @apply size-6;
   }
 
   .button {
-    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-md select-none;
+    @apply inline-flex cursor-pointer items-center justify-center gap-1 outline-none select-none transition-colors duration-200 ease-in-out rounded-md;
   }
 
   .button-primary {
-    @apply transition-colors duration-200 ease-in-out;
     background-color: var(--primary);
     color: var(--primary-foreground);
+
     &:hover {
       background-color: var(--primary-hover);
     }
   }
+
+  .button-secondary {
+
+    background-color: var(--secondary);
+    color: var(--secondary-foreground);
+    border: 1px solid var(--border-secondary);
+
+    &:hover {
+      background-color: var(--secondary-hover);
+    }
+  }
+
+  .button-tertiary {
+    background-color: var(--tertiary);
+    color: var(--tertiary-foreground);
+
+    &:hover {
+      background-color: var(--tertiary-hover);
+    }
+  }
+
+  .button-destructive {
+    background-color: var(--destructive);
+    color: var(--destructive-foreground);
+
+    &:hover {
+      background-color: var(--destructive-hover);
+    }
+  }
+
 }

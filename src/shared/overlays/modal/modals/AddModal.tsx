@@ -1,5 +1,5 @@
 import { Modal } from "@shared/overlays/modal/components";
-import { CancelButton, ConfirmButton } from "@shared/ui";
+import { Button, BUTTON_VARIANTS } from "@shared/ui";
 
 export const AddModal = ({ onCancel, onConfirm, title, subtitle }) => {
   return (
@@ -7,13 +7,13 @@ export const AddModal = ({ onCancel, onConfirm, title, subtitle }) => {
       <Modal.Header title={title} subtitle={subtitle} />
 
       <Modal.Footer>
-        <CancelButton onClick={onCancel} surface="dark">
+        <Button variant={BUTTON_VARIANTS.SECONDARY} onClick={onCancel}>
           Hủy
-        </CancelButton>
+        </Button>
 
-        <ConfirmButton type="add" onClick={onConfirm}>
+        <Button variant={BUTTON_VARIANTS.PRIMARY} onClick={onConfirm}>
           Xác nhận
-        </ConfirmButton>
+        </Button>
       </Modal.Footer>
     </Modal>
   );

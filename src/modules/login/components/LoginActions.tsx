@@ -1,6 +1,6 @@
 import { Login } from "@modules/login";
 import { CheckboxField } from "@shared/fields";
-import { LoginButton } from "@shared/ui";
+import { Button } from "@shared/ui";
 
 export const LoginActions = () => {
   const {
@@ -19,9 +19,9 @@ export const LoginActions = () => {
           size="sm"
         />
       </div>
-      <LoginButton type="button" onClick={onLoginClick} loading={loading}>
+      <Button type="button" onClick={onLoginClick} loading={loading}>
         ĐĂNG NHẬP
-      </LoginButton>
+      </Button>
     </div>
   );
 };

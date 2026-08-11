@@ -1,5 +1,5 @@
 import { Modal } from "@shared/overlays/modal/components";
-import { CancelButton, ConfirmButton } from "@shared/ui";
+import { Button, BUTTON_VARIANTS } from "@shared/ui";
 
 export const PasswordChangeModal = ({
   onCancel,
@@ -12,13 +12,13 @@ export const PasswordChangeModal = ({
       <Modal.Header title={title} subtitle={subtitle} titleSize="sm" />
 
       <Modal.Footer>
-        <CancelButton onClick={onCancel} surface="dark">
+        <Button variant={BUTTON_VARIANTS.SECONDARY} onClick={onCancel}>
           Hủy
-        </CancelButton>
+        </Button>
 
-        <ConfirmButton type="changePassword" onClick={onConfirm}>
+        <Button variant={BUTTON_VARIANTS.PRIMARY} onClick={onConfirm}>
           Xác nhận
-        </ConfirmButton>
+        </Button>
       </Modal.Footer>
     </Modal>
   );

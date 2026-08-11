@@ -21,6 +21,8 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
 
   const value: ThemeContextValues = {
     theme: currentTheme,
+    isDarkMode: currentTheme === "dark",
+    isLightMode: currentTheme === "light",
     toggleTheme: toggleTheme,
   };
   return (
