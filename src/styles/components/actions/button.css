@@ -48,12 +48,22 @@
   }
 
   .button-tertiary.ghost {
-    background-color: var(--color-tertiary-solid-bg);
-    color: var(--color-tertiary-solid-fg);
-    border: 1px solid var(--color-tertiary-solid-border);
+    background-color: var(--color-tertiary-ghost-bg);
+    color: var(--color-tertiary-ghost-fg);
+    border: none;
 
     &:hover {
-      background-color: var(--color-tertiary-solid-hover-bg);
+      color: var(--color-tertiary-ghost-hover-fg);
+    }
+  }
+
+  .button-destructive.solid {
+    background-color: var(--color-destructive-solid-bg);
+    color: var(--color-destructive-solid-fg);
+    border: 1px solid var(--color-destructive-solid-border);
+
+    &:hover {
+      background-color: var(--color-destructive-solid-hover-bg);
     }
   }
 }

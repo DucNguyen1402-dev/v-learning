@@ -1,0 +1,63 @@
+:root {
+
+
+    /* color */
+
+
+
+    --color-bg-neutral-muted: var(--color-zinc-200);
+    --color-bg-neutral-subtle: var(--color-zinc-100);
+
+    --color-bg-neutral-hover: var(--color-zinc-300);
+
+    --color-fg-neutral: var(--color-zinc-700);
+    --color-fg-neutral-muted: var(--color-zinc-600);
+
+
+    /* --- Semantic Text Tokens--- */
+    --text-default: var(--color-zinc-900);
+    /* Mặc định: Đậm nhất, độ tương phản cao nhất (Heading, Body chính) */
+    --text-default-hover: var(--color-zinc-700);
+
+    --text-muted: var(--color-zinc-600);
+    /* Muted: Dịu lại (Subtitle, Label, Description, Icon phụ) */
+    --text-muted-hover: var(--color-zinc-500);
+
+    --text-subtle: var(--color-zinc-400);
+    /* Subtle: Mờ/chìm nhất (Placeholder, Timestamp, Caption, Helper text) */
+    --text-subtle-hover: var(--color-zinc-300);
+
+
+    /* --- Semantic Surface Tokens (Light Mode) --- */
+    --surface-base: var(--color-zinc-50);
+    /* Canvas / Nền gốc toàn trang */
+    --surface-default: var(--color-white);
+    /* Surface mặc định đè lên Base (Card, Sheet, Table) */
+    --surface-subtle: var(--color-zinc-100);
+    /* Surface phụ nhẹ (Sidebar, Header, Nested Card) */
+    --surface-muted: var(--color-zinc-200);
+    /* Surface độ chú ý vừa (Dropdown, Tooltip, Hover state) */
+    --surface-elevated: var(--color-white);
+    /* Surface nổi có Shadow (Modal, Popover, Dialog) */
+
+
+
+
+    /* --- Semantic Border Tokens (Light Mode) --- */
+    --border-default: var(--color-zinc-300);
+    /* Border rõ nhất (Input, Checkbox, Card chính, Active border) */
+    --border-muted: var(--color-zinc-200);
+    /* Border dịu (Divider giữa các section, Table row border) */
+    --border-subtle: var(--color-zinc-100);
+    /* Border rất mờ (Phân cách nhẹ trong List, Inner border) */
+
+    --border-interactive: var(--brand);
+    /* Border cho trạng thái Focus / Active */
+    --border-error: var(--color-red-600);
+    /* Border cho trạng thái Validation Error */
+
+
+
+
+
+}
