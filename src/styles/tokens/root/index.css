@@ -1,4 +1,6 @@
-@import './brand.css';
-@import "./semantic.css";
+@import "./foundation/index.css";
+
+@import "./brand.css";
+@import "./semantic/index.css";
+
 @import "./appearance.css";
-@import "./typography.css";

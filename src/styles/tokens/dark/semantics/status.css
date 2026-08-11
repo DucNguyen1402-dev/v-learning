@@ -1,0 +1,9 @@
+.dark {
+  --surface-text: var(--color-white);
+
+  --surface-success: --alpha(--color-emerald-500/ 50%);
+  --surface-error: --alpha(--color-red-500 / 50%);
+  --surface-warning: --alpha(--color-amber-500 / 50%);
+  --surface-danger: var(--color-red-500);
+  --surface-danger-hover: var(--color-red-600);
+}

@@ -1,22 +1,22 @@
 @utility link-primary {
-    @apply font-semibold;
-    color: var(--primary);
-    transition: color var(--duration-fast) var(--ease-default);
+  @apply font-semibold;
+  color: var(--text-link);
+  transition: color var(--duration-fast) var(--ease-default);
 
-    &:hover {
-        color: var(--primary-hover);
-        @apply underline;
-    }
+  &:hover {
+    color: var(--text-link-hover);
+    @apply underline;
+  }
 }
 
 @utility link-secondary {
-    @apply text-sm font-medium;
-    color: --alpha(var(--primary) / 80%);
+  @apply text-sm font-medium;
+  color: var(--text-link);
 
-    transition: color var(--duration-fast) var(--ease-default);
+  transition: color var(--duration-fast) var(--ease-default);
 
-    &:hover {
-        color: --alpha(var(--primary) / 90%);
-        @apply underline;
-    }
+  &:hover {
+    color: var(--text-link-hover);
+    @apply underline;
+  }
 }

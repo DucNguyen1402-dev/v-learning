@@ -1,0 +1,19 @@
+:root {
+  /* =================================================
+    * Text
+    *================================================== */
+  /* --- Semantic Text Tokens--- */
+  --text-default: var(--color-zinc-900);
+  /* Mặc định: Đậm nhất, độ tương phản cao nhất (Heading, Body chính) */
+  --text-default-hover: var(--color-zinc-700);
+
+  --text-muted: var(--color-zinc-600);
+  /* Muted: Dịu lại (Subtitle, Label, Description, Icon phụ) */
+  --text-muted-hover: var(--color-zinc-500);
+
+  --text-subtle: var(--color-zinc-400);
+  /* Subtle: Mờ/chìm nhất (Placeholder, Timestamp, Caption, Helper text) */
+  --text-subtle-hover: var(--color-zinc-300);
+
+
+}

@@ -1,0 +1,19 @@
+:root {
+
+
+  /* =================================================
+    *   Border
+    *================================================== */
+  /* --- Semantic Border Tokens (Light Mode) --- */
+  --border-default: var(--color-zinc-300);
+  /* Border rõ nhất (Input, Checkbox, Card chính, Active border) */
+  --border-muted: var(--color-zinc-200);
+  /* Border dịu (Divider giữa các section, Table row border) */
+  --border-subtle: var(--color-zinc-100);
+  /* Border rất mờ (Phân cách nhẹ trong List, Inner border) */
+
+  /* Border cho trạng thái Focus / Active */
+  --border-error: var(--color-red-600);
+  /* Border cho trạng thái Validation Error */
+
+}

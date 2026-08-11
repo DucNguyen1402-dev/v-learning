@@ -1,0 +1,64 @@
+.dark {
+  /* =================================================
+    * Text
+    *================================================== */
+  /* Text chính: mặc định hơi dịu, hover sáng tối đa */
+  --text-default: var(--color-zinc-100);
+  --text-default-hover: var(--color-zinc-50);
+
+  /* Text phụ (Muted): độ tương phản vừa phải */
+  --text-muted: var(--color-zinc-400);
+  --text-muted-hover: var(--color-zinc-200);
+
+  /* Text mờ (Subtle): cho placeholder, disable, thông tin cực phụ */
+  --text-subtle: var(--color-zinc-500);
+  --text-subtle-hover: var(--color-zinc-400);
+
+  /* =================================================
+    *  Surface
+    *================================================== */
+
+  /* Nền trang web (App Canvas) */
+  --surface-base: var(--color-zinc-950);
+
+  /* Nền element chính (Card, Section container) */
+  --surface-default: var(--color-zinc-900);
+
+  /* Nền phụ/nhẹ (Input background, Item hover state, Badge nhẹ) */
+  --surface-subtle: var(--color-zinc-800/50); /* hoặc var(--color-zinc-8/900) */
+  --surface-subtle-hover: var(--color-zinc-800);
+
+  /* Nền nhô hơn một chút (Selected item, Muted container) */
+  --surface-muted: var(--color-zinc-800);
+  --surface-muted-hover: var(--color-zinc-700);
+
+  /* Nền nổi cao nhất (Modal, Popover, Floating Menu, Tooltip) */
+  --surface-elevated: var(--color-zinc-800);
+  /* Hoặc zinc-800 kết hợp với border/shadow nhẹ để tách lớp */
+
+  /* =================================================
+    *   Border
+    *================================================== */
+
+  /* Border chính (Card, Divider, Input outline chuẩn) */
+  --border-default: var(--color-zinc-800);
+
+  /* Border mờ/nhẹ hơn (Divider phụ, Bảng dữ liệu, Section phân cách) */
+  --border-subtle: var(--color-zinc-800/60); /* hoặc var(--color-zinc-900) */
+
+  /* Border đằm hơn (Hover state của Card/Input, Container đậm) */
+  --border-muted: var(--color-zinc-700);
+
+  /* Trạng thái tương tác (Focus ring, Active Input) */
+  --border-interactive: var(--brand);
+
+  /* Trạng thái lỗi */
+  --border-error: var(--color-red-500);
+
+  /* =================================================
+    *   Scrollbar
+    *================================================== */
+  --scrollbar-track: var(--surface-subtle);
+  --scrollbar-thumb: var(--border-default);
+  --scrollbar-thumb-hover: var(--text-subtle);
+}

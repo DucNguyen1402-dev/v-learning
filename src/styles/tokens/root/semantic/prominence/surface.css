@@ -1,0 +1,19 @@
+:root {
+
+
+  /* =================================================
+    *  Surface
+    *================================================== */
+  /* --- Semantic Surface Tokens (Light Mode) --- */
+  --surface-base: var(--color-zinc-50);
+  /* Canvas / Nền gốc toàn trang */
+  --surface-default: var(--color-white);
+  /* Surface mặc định đè lên Base (Card, Sheet, Table) */
+  --surface-subtle: var(--color-zinc-100);
+  --surface-subtle-hover: var(--color-zinc-200);
+  /* Surface phụ nhẹ (Sidebar, Header, Nested Card) */
+  --surface-muted: var(--color-zinc-200);
+  --surface-muted-hover: var(--color-zinc-300);
+  /* Surface độ chú ý vừa (Dropdown, Tooltip, Hover state) */
+
+}
