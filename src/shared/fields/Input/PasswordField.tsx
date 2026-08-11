@@ -6,6 +6,7 @@ import {
 } from "react";
 
 import { Button } from "@shared/ui";
+import { BUTTON_VARIANTS } from "@shared/ui";
 import { Eye, EyeOff } from "lucide-react";
 
 import { Input } from ".";
@@ -27,8 +28,8 @@ export const PasswordField = forwardRef<
       disabled={disabled}
       rightSlot={
         <Button
-          type="button"
           size="none"
+          variant={BUTTON_VARIANTS.TERTIARY}
           aria-label={showPassword ? "Ẩn mật khẩu" : "Hiện mật khẩu"}
           onClick={() => setShowPassword((prev) => !prev)}
         >

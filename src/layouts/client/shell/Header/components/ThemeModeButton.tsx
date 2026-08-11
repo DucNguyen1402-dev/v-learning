@@ -4,15 +4,19 @@ import { cn } from "@shared/utils";
 import { MoonStar, Sun } from "lucide-react";
 
 export const ThemeModeButton = () => {
-  const { theme, toggleTheme } = Theme.use();
+  const { isDarkMode, toggleTheme } = Theme.use();
 
-  const isDarkMode = theme === "dark";
-  const iconClass = "absolute size-6 transition-all duration-300 ease-in-out";
+  const iconClass = "absolute transition-all duration-300 ease-in-out";
   const visible = "scale-100 rotate-0 opacity-100";
   const hidden = "scale-0 -rotate-90 opacity-0";
 
   return (
-    <Button onClick={toggleTheme} className="relative">
+    <Button
+      onClick={toggleTheme}
+      className="relative rounded-full"
+      variant="tertiary"
+      size="lg"
+    >
       <MoonStar
         className={cn(
           iconClass + " text-zinc-500",

@@ -1,5 +1,5 @@
 import { Modal } from "@shared/overlays/modal/components";
-import { CancelButton, ConfirmButton } from "@shared/ui";
+import { Button, BUTTON_VARIANTS } from "@shared/ui";
 
 export const DeleteModal = ({
   onCancel,
@@ -13,13 +13,17 @@ export const DeleteModal = ({
       <Modal.Header title={title} subtitle={subtitle} titleSize="sm" />
 
       <Modal.Footer>
-        <CancelButton onClick={onCancel} surface="dark">
+        <Button variant={BUTTON_VARIANTS.SECONDARY} onClick={onCancel}>
           Hủy
-        </CancelButton>
+        </Button>
 
-        <ConfirmButton type="delete" onClick={onConfirm} loading={loading}>
+        <Button
+          variant={BUTTON_VARIANTS.DESTRUCTIVE}
+          onClick={onConfirm}
+          loading={loading}
+        >
           Xác nhận
-        </ConfirmButton>
+        </Button>
       </Modal.Footer>
     </Modal>
   );

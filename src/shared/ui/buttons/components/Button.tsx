@@ -8,27 +8,8 @@ import type {
 import { Spinner } from "@shared/overlays";
 import { cn } from "@shared/utils";
 
-const sizes = {
-  none: {
-    button: "",
-    icon: "",
-  },
-
-  sm: {
-    button: "button-sm",
-    icon: "size-4",
-  },
-  md: {
-    button: "button-md",
-    icon: "size-5",
-  },
-  lg: {
-    button: "button-lg",
-    icon: "size-6",
-  },
-};
-
-type ButtonSize = "none" | "sm" | "md" | "lg";
+import { type ButtonSize, sizes, variants } from "../config";
+import { BUTTON_VARIANTS, type ButtonVariant } from "../constants";
 
 type ButtonIcon = ComponentType<SVGProps<SVGSVGElement>>;
 
@@ -39,6 +20,7 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   loading?: boolean;
   fullWidth?: boolean;
   className?: string;
+  variant?: ButtonVariant;
 };
 
 export const Button = ({
@@ -48,6 +30,8 @@ export const Button = ({
   loading = false,
   fullWidth = false,
   className = "",
+  variant = BUTTON_VARIANTS.PRIMARY,
+  type = "button",
   ...props
 }: ButtonProps) => {
   const currentSize = sizes[size];
@@ -59,8 +43,10 @@ export const Button = ({
         "button",
         currentSize.button,
         fullWidth ? "w-full" : "",
+        variants[variant],
         className,
       )}
+      type={type}
       {...props}
     >
       {Icon && !loading && <Icon className={currentSize.icon} />}

@@ -1,4 +1,4 @@
-import { CancelButton, ConfirmButton } from "@shared/ui";
+import { Button, BUTTON_VARIANTS } from "@shared/ui";
 
 const DEFAULT_TITLE = "Bạn có chắc muốn rời trang?";
 const DEFAULT_SUBTITLE = "Những thay đổi chưa lưu sẽ bị mất.";
@@ -19,13 +19,13 @@ export const UnsavedChangesModal = ({
       />
 
       <Modal.Footer>
-        <CancelButton onClick={onCancel} surface="dark">
+        <Button variant={BUTTON_VARIANTS.SECONDARY} onClick={onCancel}>
           Hủy
-        </CancelButton>
+        </Button>
 
-        <ConfirmButton type="unsavedChanges" onClick={onConfirm}>
+        <Button variant={BUTTON_VARIANTS.PRIMARY} onClick={onConfirm}>
           Xác nhận
-        </ConfirmButton>
+        </Button>
       </Modal.Footer>
     </Modal>
   );

@@ -29,9 +29,15 @@
   /* brand secondary */
 
   --brand-secondary: var(--color-zinc-100);
-  --brand-secondary-foreground: var(--color-zinc-900);
+  --brand-secondary-foreground: var(--color-zinc-700);
   --brand-secondary-hover: var(--color-zinc-200);
 
+
+  /* brand secondary */
+
+  --brand-tertiary: transparent;
+  --brand-tertiary-foreground: var(--color-zinc-700);
+  --brand-tertiary-hover: var(--color-zinc-100);
   /* brand destructive */
 
   --brand-destructive: var(--color-red-600);
@@ -64,6 +70,12 @@
   --secondary: var(--brand-secondary);
   --secondary-foreground: var(--brand-secondary-foreground);
   --secondary-hover: var(--brand-secondary-hover);
+
+
+  /* tertiary color */
+  --tertiary: var(--brand-tertiary);
+  --tertiary-foreground: var(--brand-tertiary-foreground);
+  --tertiary-hover: var(--brand-tertiary-hover);
 
   /* destructive color */
   --destructive: var(--brand-destructive);
