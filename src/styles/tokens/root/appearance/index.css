@@ -4,7 +4,7 @@
   --color-bg-primary-solid: var(--color-bg-brand);
   --color-fg-on-primary-solid: var(--color-fg-on-brand);
   --color-border-primary-solid: transparent;
-  --color-bg-primary-solid-hover: var(--color-bg-interactive-hover);
+  --color-bg-primary-solid-hover: var(--color-bg-interactive-brand-hover);
 
   --color-bg-secondary-solid: var(--color-bg-muted);
   --color-fg-on-secondary-solid: var(--color-fg-default);

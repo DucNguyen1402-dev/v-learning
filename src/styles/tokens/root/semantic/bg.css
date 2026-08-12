@@ -27,6 +27,7 @@
   --color-bg-interactive-muted-hover: var(--color-zinc-300);
   --color-bg-interactive-subtle-hover: var(--color-zinc-200);
   --color-bg-interactive-danger-hover: var(--color-red-700);
+  --color-bg-interactive-brand-hover: var(--color-brand-hover);
 
   /* =================================================
     *  Elevation dimensions

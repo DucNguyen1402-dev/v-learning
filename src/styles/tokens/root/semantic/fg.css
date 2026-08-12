@@ -1,15 +1,16 @@
 :root {
+
   /* =================================================
     *  brand
     *================================================== */
   --color-fg-brand: var(--color-brand);
-  --color-fg-on-brand: var(--color-fg-on-brand);
+  --color-fg-on-brand: var(--color-white);
 
   /* =================================================
     *  Selected dimensions
     *================================================== */
 
-  --color-fg-on-selected: var(--color-fg-on-accent);
+  --color-fg-on-selected: var(--color-white);
 
   /* =================================================
     *  Prominence dimensions

@@ -1,4 +1,5 @@
-@import "./foundation/index.css";
 @import "./palette/index.css";
+@import "./foundation/index.css";
+
 @import "./semantic/index.css";
 @import "./appearance/index.css";

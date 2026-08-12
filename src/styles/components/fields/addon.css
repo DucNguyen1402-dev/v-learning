@@ -1,0 +1,10 @@
+@layer components {
+    .password-visibility-toggle {
+        @apply size-4.5 transition-colors duration-150 ease-in-out;
+        color: var(--color-fg-tertiary);
+
+        &:hover {
+            color: var(--color-fg-tertiary-hover);
+        }
+    }
+}

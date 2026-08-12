@@ -1,5 +1,7 @@
 export const BUTTON_APPEARANCES = {
   SOLID: "solid",
+  OUTLINE: "outline",
+  GHOST: "ghost",
 } as const;
 
 export type ButtonAppearance =

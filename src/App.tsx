@@ -9,10 +9,18 @@
 //   </Routes>
 // );
 
-import { Button } from "@shared/ui";
+import { Input } from "@shared/fields";
 
-export const App = () => (
-  <Button intent="primary" appearance="solid">
-    Click me
-  </Button>
-);
+export const App = () => {
+  return (
+    <div className="flex min-h-screen items-center justify-center gap-2">
+      <Input.Root>
+        <Input.Field />
+
+        <Input.RightAddon>
+          <Input.PasswordVisibilityToggle />
+        </Input.RightAddon>
+      </Input.Root>
+    </div>
+  );
+};
