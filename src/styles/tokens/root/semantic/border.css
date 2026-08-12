@@ -1,0 +1,35 @@
+:root {
+
+
+
+  /* =================================================
+    *  Brand
+    *================================================== */
+  --color-border-brand: var(--brand);
+
+  /* =================================================
+    *  Section dimensions
+    *================================================== */
+
+  --color-bg-selected: var(--color-blue-50);
+
+
+
+  /* =================================================
+    *  Prominence
+    *================================================== */
+  --color-border-default: var(--color-zinc-300);
+  --color-border-muted: var(--color-zinc-200);
+  --color-border-subtle: var(--color-zinc-100);
+
+  /* =================================================
+    *  Interaction
+    *================================================== */
+
+
+  --color-border-interactive-subtle-hover: var(--color-zinc-200);
+  --color-border-interactive-default-hover: var(--color-zinc-400);
+  --color-border-interactive-muted-hover: var(--color-zinc-300);
+
+
+}

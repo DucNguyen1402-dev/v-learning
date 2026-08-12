@@ -1,0 +1,15 @@
+:root {
+
+  /* brand */
+  --color-brand: var(--color-blue-600);
+  --color-fg-on-brand: var(--color-zinc-100);
+  --color-brand-hover: var(--color-blue-700);
+
+
+  /* accent */
+
+  --color-accent: var(--color-blue-600);
+  --color-accent-hover: var(--color-blue-700);
+  --color-accent-active: var(--color-blue-800);
+
+}

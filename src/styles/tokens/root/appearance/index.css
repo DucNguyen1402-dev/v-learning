@@ -1,0 +1,27 @@
+:root {
+  /* --- Component/Intent Tokens --- */
+
+  --bg-primary-solid: var(--color-bg-brand);
+  --fg-on-primary-solid: var(--color-fg-on-brand);
+  --border-primary-solid: transparent;
+  --bg-primary-solid-hover: var(--color-bg-interactive-hover);
+
+  --bg-secondary-solid: var(--color-bg-muted);
+  --fg-on-secondary-solid: var(--color-fg-default);
+  --border-secondary-solid: var(--border-secondary);
+  --bg-secondary-solid-hover: var(--color-bg-interactive-muted-hover);
+
+  --bg-tertiary-solid: var(--color-bg-subtle);
+  --fg-on-tertiary-solid: var(--color-fg-muted);
+  --border-tertiary-solid: transparent;
+  --bg-tertiary-solid-hover: var(--color-bg-interactive-subtle-hover);
+
+  --bg-destructive-solid: var(--color-bg-interactive-danger);
+  --fg-on-destructive-solid: var(--color-fg-on-interactive);
+  --border-destructive-solid: transparent;
+  --bg-destructive-solid-hover: var(--color-bg-interactive-danger-hover);
+
+  --bg-tertiary-ghost: transparent;
+  --fg-on-tertiary-ghost: var(--color-fg-muted);
+  --fg-on-tertiary-ghost-hover: var(--color-fg-interactive-muted-hover);
+}

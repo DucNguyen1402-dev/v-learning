@@ -1,22 +1,20 @@
 @utility link-primary {
-  @apply font-semibold;
-  color: var(--text-link);
+  @apply font-semibold transition-colors duration-150 ease-in-out;
+  color: var(--color-fg-interactive);
   transition: color var(--duration-fast) var(--ease-default);
 
   &:hover {
-    color: var(--text-link-hover);
+    color: var(--color-fg-interactive-hover);
     @apply underline;
   }
 }
 
 @utility link-secondary {
-  @apply text-sm font-medium;
-  color: var(--text-link);
-
-  transition: color var(--duration-fast) var(--ease-default);
+  @apply text-sm font-medium transition-colors duration-150 ease-in-out;
+  color: --alpha(var(--color-fg-interactive) / 80%);
 
   &:hover {
-    color: var(--text-link-hover);
+    color: var(--color-fg-interactive);
     @apply underline;
   }
 }

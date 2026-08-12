@@ -3,6 +3,10 @@
     @apply block w-fit cursor-pointer text-sm font-medium text-text-secondary;
   }
 
+  .label-required {
+    color: var(--color-fg-red);
+  }
+
   .input {
     @apply w-full rounded-md px-3 py-2 text-[15px] transition-colors duration-200 ease-in-out outline-none;
   }

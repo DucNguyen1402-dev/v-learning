@@ -1,6 +1,0 @@
-:root {
-
-  --scrollbar-track: var(--surface-subtle);
-  --scrollbar-thumb: var(--border-default);
-  --scrollbar-thumb-hover: var(--text-subtle);
-}

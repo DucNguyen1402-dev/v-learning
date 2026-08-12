@@ -1,9 +1,0 @@
-:root {
-  --surface-text: var(--color-white);
-
-  --surface-success: --alpha(--color-emerald-600/ 50%);
-  --surface-error: --alpha(--color-red-600 / 50%);
-  --surface-warning: --alpha(--color-amber-600 / 50%);
-  --surface-danger: var(--color-red-600);
-  --surface-danger-hover: var(--color-red-700);
-}

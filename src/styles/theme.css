@@ -5,27 +5,26 @@
 
   /* ================= Text Colors ================= */
 
-  --color-text-primary: var(--text-primary);
-  --color-text-secondary: var(--text-secondary);
-  --color-text-tertiary: var(--text-tertiary);
+  --color-text-primary: var(--color-fg-default);
+  --color-text-secondary: var(--color-fg-muted);
+  --color-text-tertiary: var(--color-fg-subtle);
 
-  --color-muted-foreground: var(--color-muted-foreground);
+  --color-muted-foreground: var(--color-fg-muted);
 
   /* ================= Surface Colors ================= */
 
-  --color-surface-0: var(--surface-0);
-  --color-surface-1: var(--surface-1);
-  --color-surface-2: var(--surface-2);
-  --color-surface-3: var(--surface-3);
+  --color-surface-base: var(--color-bg-base);
+  --color-surface-default: var(--color-bg-default);
+  --color-surface-muted: var(--color-bg-muted);
+  --color-surface-subtle: var(--color-bg-subtle);
 
   /* ================= Border Colors ================= */
 
-  --color-border-secondary: var(--border-secondary);
-  --color-border-tertiary: var(--border-tertiary);
 
-  /* ================= State Colors ================= */
+  --color-border-primary: var(--color-border-default);
+  --color-border-secondary: var(--color-border-muted);
+  --color-border-tertiary: var(--color-border-subtle);
 
-  --color-required: var(--error);
 
   /* ================= Z-Index Layers ================= */
 

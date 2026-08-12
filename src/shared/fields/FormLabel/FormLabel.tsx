@@ -18,7 +18,7 @@ export const FormLabel = ({
   return (
     <label htmlFor={htmlFor} className={cn("label", className)}>
       {children}
-      {required && <span className="ml-1.5 text-required">*</span>}
+      {required && <span className="ml-1.5 label-required">*</span>}
     </label>
   );
 };

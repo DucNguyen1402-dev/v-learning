@@ -1,7 +1,0 @@
-:root {
-      --text-link-primary: var(--brand);
-  --text-link-primary-hover: var(--brand-hover);
-
-  --text-link-secondary: --alpha(var(--brand)/80%);
-  --text-link-secondary-hover: var(--brand);
-}
