@@ -4,7 +4,7 @@
   }
 
   .label-required {
-    color: var(--color-fg-red);
+    color: var(--color-fg-required);
   }
 
   .input {
@@ -13,66 +13,66 @@
 
   .input-default {
     @apply focus:ring-2;
-    color: var(--text-primary);
-    border: 1px solid var(--border-primary);
+    color: var(--color-fg-default);
+    border: 1px solid var(--color-border-default);
 
-    background-color: var(--surface-2);
+    background-color: var(--color-bg-muted);
 
     &:hover {
-      border-color: var(--primary-hover);
+      border-color: var(--color-border-interactive-default-hover);
     }
 
     &:focus {
-      border-color: var(--primary);
-      --tw-ring-color: --alpha(var(--primary)/20%);
+      border-color: var(--color-border-interactive);
+      --tw-ring-color: --alpha(var(--color-ring-interactive)/20%);
     }
 
     &::placeholder {
-      color: var(--text-tertiary);
+      color: var(--color-fg-subtle);
     }
   }
 
   .input-disabled {
     @apply cursor-not-allowed opacity-70;
-    color: var(--text-secondary-disabled);
-    background-color: var(--bg-tertiary-disabled);
-    border: 1px solid var(--border-secondary-disabled);
+    color: var(--color-fg-muted);
+    background-color: var(--color-bg-muted);
+    border: 1px solid var(--color-border-muted);
   }
 
   .input-error {
     @apply focus:ring-2;
-    border: 1px solid var(--error);
-    color: var(--error);
+    border: 1px solid var(--color-border-feedback-error);
+    color: var(--color-fg-feedback-error);
 
     &:focus {
-      color: var(--error);
-      --tw-ring-color: --alpha(var(--error)/20%);
+      color: var(--color-fg-feedback-error);
+      --tw-ring-color: --alpha(var(--color-ring-feedback-error)/20%);
     }
   }
 
   .error-message {
     @apply z-20 w-full rounded-sm px-2 py-2 text-sm;
-    background-color: var(--error-surface);
-    color: var(--error-surface-foreground);
-    border-left: 5px solid var(--error);
+    background-color: --alpha(var(--color-bg-feedback-error) / 20%);
+    color: var(--color-fg-feedback-error);
+    border-left: 5px solid var(--color-border-feedback-error);
   }
 
   .checkbox {
     @apply flex-center cursor-pointer rounded-sm transition-colors duration-200 ease-in-out outline-none;
-    border: 1px solid var(--border-primary);
-    background-color: var(--bg-secondary);
+    border: 1px solid var(--color-border-default);
+    background-color: var(--color-bg-muted);
   }
 
   .checkbox-default {
     @apply cursor-pointer;
 
     &:hover {
-      background-color: var(--primary-hover);
+      background-color: var(--color-bg-interactive-muted-hover);
     }
 
     &[data-state="checked"] {
-      background-color: var(--primary);
-      border-color: var(--primary);
+      background-color: var(--color-bg-selected);
+      border-color: var(--color-border-selected);
     }
   }
 
@@ -81,7 +81,7 @@
   }
 
   .checkbox-indicator {
-    color: var(--primary-foreground);
+    color: var(--color-fg-on-selected);
   }
 
   .checkbox-label {

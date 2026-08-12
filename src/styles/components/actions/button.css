@@ -28,42 +28,42 @@
   }
 
   .button-primary.solid {
-    background-color: var(--color-primary-solid-bg);
-    color: var(--color-primary-solid-fg);
-    border: 1px solid var(--color-primary-solid-border);
+    background-color: var(--color-bg-primary-solid);
+    color: var(--color-fg-on-primary-solid);
+    border: 1px solid var(--color-border-primary-solid);
 
     &:hover {
-      background-color: var(--color-primary-solid-hover-bg);
+      background-color: var(--color-bg-primary-solid-hover);
     }
   }
 
   .button-secondary.solid {
-    background-color: var(--color-secondary-solid-bg);
-    color: var(--color-secondary-solid-fg);
-    border: 1px solid var(--color-secondary-solid-border);
+    background-color: var(--color-bg-secondary-solid);
+    color: var(--color-fg-on-secondary-solid);
+    border: 1px solid var(--color-border-secondary-solid);
 
     &:hover {
-      background-color: var(--color-secondary-solid-hover-bg);
+      background-color: var(--color-bg-secondary-solid-hover);
     }
   }
 
   .button-tertiary.ghost {
-    background-color: var(--color-tertiary-ghost-bg);
-    color: var(--color-tertiary-ghost-fg);
+    background-color: var(--color-bg-tertiary-ghost);
+    color: var(--color-fg-on-tertiary-ghost);
     border: none;
 
     &:hover {
-      color: var(--color-tertiary-ghost-hover-fg);
+      color: var(--color-fg-on-tertiary-ghost-hover);
     }
   }
 
   .button-destructive.solid {
-    background-color: var(--color-destructive-solid-bg);
-    color: var(--color-destructive-solid-fg);
-    border: 1px solid var(--color-destructive-solid-border);
+    background-color: var(--color-bg-destructive-solid);
+    color: var(--color-fg-on-destructive-solid);
+    border: 1px solid var(--color-border-destructive-solid);
 
     &:hover {
-      background-color: var(--color-destructive-solid-hover-bg);
+      background-color: var(--color-bg-destructive-solid-hover);
     }
   }
 }

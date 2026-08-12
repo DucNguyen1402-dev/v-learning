@@ -21,21 +21,14 @@ export const ToastContainer = ({
   toastRef,
   size = "md",
 }: ToastContainerProps) => {
-  if (!variant) {
-    if (import.meta.env.DEV) {
-      console.warn(
-        `Toast variant is null or undefined. Defaulting to "default".`,
-      );
-    }
-    variant = "default";
-  }
+  if (!variant) return;
 
   if (import.meta.env.DEV && !(variant in toastTypeClasses)) {
     console.warn(`Unknown toast variant: "${variant}"`);
   }
 
   const toastSize = toastSizeClasses[size];
-  const typeClass = toastTypeClasses[variant] ?? toastTypeClasses.default;
+  const typeClass = toastTypeClasses[variant];
 
   const Icon = toastIconTypes[variant];
   const iconSize = toastIconSizes[size];

@@ -1,26 +1,23 @@
 :root {
-
-
-    /* =================================================
-    *  Section dimensions
-    *================================================== */
-
-    --color-bg-selected: var(--color-blue-300);
-    /* =================================================
+  /* =================================================
     *  Prominence
     *================================================== */
-    --color-border-default: var(--color-zinc-800);
-    --color-border-muted: var(--color-zinc-700);
-    --color-border-subtle: var(--color-zinc-600);
+  --color-border-default: var(--color-zinc-800);
+  --color-border-muted: var(--color-zinc-700);
+  --color-border-subtle: var(--color-zinc-600);
 
-
-    /* =================================================
+  /* =================================================
     *  Interaction
     *================================================== */
 
-    --color-border-interactive-default-hover: var(--color-zinc-700);
-    --color-border-interactive-muted-hover: var(--color-zinc-600);
-    --color-border-interactive-subtle-hover: var(--color-zinc-500);
+  --color-border-interactive-default-hover: var(--color-zinc-700);
+  --color-border-interactive-muted-hover: var(--color-zinc-600);
+  --color-border-interactive-subtle-hover: var(--color-zinc-500);
 
-
+  /* =================================================
+    *  Feedback dimensions
+    *================================================== */
+  --color-border-feedback-error: var(--color-red-500);
+  --color-border-feedback-success: var(--color-emerald-500);
+  --color-border-feedback-warning: var(--color-amber-500);
 }

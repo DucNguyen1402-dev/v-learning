@@ -22,14 +22,14 @@
       "Segoe UI",
       Roboto,
       sans-serif;
-    background-color: var(--bg-primary);
-    color: var(--text-primary);
+    background-color: var(--color-bg-default);
+    color: var(--color-fg-default);
     text-rendering: optimizeLegibility;
   }
 
   /* Custom Selection Highlight */
   ::selection {
-    background-color: var(--accent-primary, --alpha(var(--primary) / 80%));
-    color: var(--accent-contrast, #ffffff);
+    background-color: var(var(--color-bg-selected));
+    color: var(--color-fg-on-selected);
   }
 }

@@ -1,17 +1,10 @@
-import {
-  BellRing,
-  CheckCircle,
-  Info,
-  TriangleAlert,
-  XCircle,
-} from "lucide-react";
+import { CheckCircle, Info, TriangleAlert, XCircle } from "lucide-react";
 
 export const toastIconTypes = {
   success: CheckCircle,
   error: XCircle,
   warning: TriangleAlert,
   info: Info,
-  default: BellRing,
 } as const;
 
 export const toastIconSizes = {

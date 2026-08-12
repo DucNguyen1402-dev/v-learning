@@ -1,9 +1,8 @@
 @layer layout {
-
   .header {
-    @apply backdrop-blur sticky top-0 z-sticky h-24 px-1 md:h-28;
-    background-color: --alpha(var(--color-surface-1) / 80%);
-    border-bottom: 1px solid var(--border-primary);
+    @apply sticky top-0 z-sticky h-24 px-1 backdrop-blur md:h-28;
+    background-color: --alpha(var(--surface-default) / 80%);
+    border-bottom: 1px solid var(--color-border-default);
   }
 
   .nav-link {
@@ -12,14 +11,14 @@
 
   .nav-link-default {
     @apply cursor-pointer;
-
+    color: var(--color-fg-default);
     &:hover {
-      color: var(--primary-hover);
+      color: var(--color-fg-brand);
     }
   }
 
   .nav-link-active {
     @apply cursor-default;
-    color: var(--primary);
+    color: var(--color-fg-interactive-brand-hover);
   }
 }
