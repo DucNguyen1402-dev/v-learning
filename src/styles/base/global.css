@@ -29,7 +29,7 @@
 
   /* Custom Selection Highlight */
   ::selection {
-    background-color: var(var(--color-bg-selected));
+    background-color: var(--color-bg-selected);
     color: var(--color-fg-on-selected);
   }
 }

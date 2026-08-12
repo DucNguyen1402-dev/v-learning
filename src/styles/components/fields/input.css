@@ -1,16 +1,7 @@
 @layer components {
-  .label {
-    @apply block w-fit cursor-pointer text-sm font-medium text-text-secondary;
-  }
-
-  .label-required {
-    color: var(--color-fg-required);
-  }
-
   .input-base {
     @apply w-full rounded-md px-3 py-2 text-[15px] transition-colors duration-200 ease-in-out outline-none;
   }
-
 
   .input-default {
     @apply focus:ring-2;
@@ -51,20 +42,12 @@
     }
   }
 
-
   .input-with-left-addon {
-    @apply pl-2.5;
+    @apply pl-6.5;
   }
 
   .input-with-right-addon {
-    @apply pr-2.5;
-  }
-
-  .error-message {
-    @apply z-20 w-full rounded-sm px-2 py-2 text-sm;
-    background-color: --alpha(var(--color-bg-feedback-error) / 20%);
-    color: var(--color-fg-feedback-error);
-    border-left: 5px solid var(--color-border-feedback-error);
+    @apply pr-6.5;
   }
 
   .checkbox {

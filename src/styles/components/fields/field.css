@@ -1,0 +1,5 @@
+@layer components {
+  .field-root {
+    @apply flex w-full max-w-sm flex-col;
+  }
+}

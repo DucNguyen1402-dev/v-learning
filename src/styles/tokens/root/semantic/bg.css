@@ -9,7 +9,7 @@
     *  Selected dimensions
     *================================================== */
 
-  --color-bg-selected: var(--color-accent);
+  --color-bg-selected: --alpha(var(--color-accent)/80%);
 
   /* =================================================
     *  Prominence dimensions
@@ -40,8 +40,8 @@
     *  Feedback dimensions
     *================================================== */
 
-  --color-bg-feedback-success: --alpha(--color-emerald-600/ 50%);
-  --color-bg-feedback-error: --alpha(--color-red-600 / 50%);
-  --color-bg-feedback-warning: --alpha(--color-amber-600 / 50%);
+  --color-bg-feedback-success: --alpha(var(--color-emerald-600)/20%);
+  --color-bg-feedback-error: --alpha(var(--color-red-600)/20%);
+  --color-bg-feedback-warning: --alpha(var(--color-amber-600)/20%);
   --color-bg-feedback-danger: var(--color-red-600);
 }

@@ -4,5 +4,5 @@ type InputRightAddonProps = {
   children: ReactNode;
 };
 export const InputRightAddon = ({ children }: InputRightAddonProps) => (
-  <div className="input-addon-right">{children}</div>
+  <div className="addon-position">{children}</div>
 );

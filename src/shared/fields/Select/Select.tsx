@@ -1,17 +1,30 @@
-import { ErrorMessage } from "@shared/fields";
 import { cn } from "@shared/utils";
 
+type SelectProps = {
+  value: string;
+  options: Array<
+    | { value: string; label: string }
+    | { label: string; options: Array<{ value: string; label: string }> }
+  >;
+  onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+  isError?: boolean;
+  defaultOptionLabel?: string;
+  disabled?: boolean;
+  disabledDefaultOption?: boolean;
+  error?: string;
+  className?: string;
+} & React.SelectHTMLAttributes<HTMLSelectElement>;
 export const Select = ({
   value,
   options,
   onChange,
-  className,
+  isError = false,
   defaultOptionLabel,
   disabled,
   disabledDefaultOption = false,
-  error,
+  className,
   ...props
-}) => (
+}: SelectProps) => (
   <div className="flex flex-col gap-2">
     <select
       value={value}
@@ -26,7 +39,6 @@ export const Select = ({
       {defaultOptionLabel && (
         <option
           value=""
-          defaultValue
           className="bg-slate-800 text-white"
           disabled={disabledDefaultOption}
         >
@@ -55,13 +67,16 @@ export const Select = ({
           <option
             key={item.value}
             value={item.value}
-            className="bg-slate-800 text-white"
+            className={cn("input-base", {
+              "input-disabled": disabled,
+              "input-error": isError,
+              "input-default": !isError && !disabled,
+            })}
           >
             {item.label}
           </option>
         );
       })}
     </select>
-    {error && <ErrorMessage surface="dark">{error}</ErrorMessage>}
   </div>
 );

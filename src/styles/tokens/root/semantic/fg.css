@@ -1,5 +1,4 @@
 :root {
-
   /* =================================================
     *  brand
     *================================================== */
@@ -25,8 +24,8 @@
 
   --color-fg-interactive-brand-hover: var(--color-brand-hover);
   --color-fg-interactive-default-hover: var(--color-zinc-700);
-  --color-fg-interactive-muted-hover: var(--color-zinc-500);
-  --color-fg-interactive-subtle-hover: var(--color-zinc-300);
+  --color-fg-interactive-muted-hover: var(--color-zinc-700);
+  --color-fg-interactive-subtle-hover: var(--color-zinc-500);
 
   /* =================================================
     *  Feedback dimensions
