@@ -23,46 +23,47 @@
     @apply size-6;
   }
 
-  .button {
-    @apply inline-flex cursor-pointer items-center justify-center gap-1 outline-none select-none transition-colors duration-200 ease-in-out rounded-md;
+  .button-base {
+    @apply inline-flex cursor-pointer items-center justify-center gap-1 rounded-md transition-colors duration-200 ease-in-out outline-none select-none;
   }
 
-  .button-primary {
-    background-color: var(--primary);
-    color: var(--primary-foreground);
+  .button-primary.solid {
+    background-color: var(--color-bg-primary-solid);
+    color: var(--color-fg-on-primary-solid);
+    border: 1px solid var(--color-border-primary-solid);
 
     &:hover {
-      background-color: var(--primary-hover);
+      background-color: var(--color-bg-primary-solid-hover);
     }
   }
 
-  .button-secondary {
-
-    background-color: var(--secondary);
-    color: var(--secondary-foreground);
-    border: 1px solid var(--border-secondary);
+  .button-secondary.solid {
+    background-color: var(--color-bg-secondary-solid);
+    color: var(--color-fg-on-secondary-solid);
+    border: 1px solid var(--color-border-secondary-solid);
 
     &:hover {
-      background-color: var(--secondary-hover);
+      background-color: var(--color-bg-secondary-solid-hover);
     }
   }
 
-  .button-tertiary {
-    background-color: var(--tertiary);
-    color: var(--tertiary-foreground);
+  .button-tertiary.ghost {
+    background-color: var(--color-bg-tertiary-ghost);
+    color: var(--color-fg-on-tertiary-ghost);
+    border: none;
 
     &:hover {
-      background-color: var(--tertiary-hover);
+      color: var(--color-fg-on-tertiary-ghost-hover);
     }
   }
 
-  .button-destructive {
-    background-color: var(--destructive);
-    color: var(--destructive-foreground);
+  .button-destructive.solid {
+    background-color: var(--color-bg-destructive-solid);
+    color: var(--color-fg-on-destructive-solid);
+    border: 1px solid var(--color-border-destructive-solid);
 
     &:hover {
-      background-color: var(--destructive-hover);
+      background-color: var(--color-bg-destructive-solid-hover);
     }
   }
-
 }

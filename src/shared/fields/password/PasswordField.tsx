@@ -5,11 +5,10 @@ import {
   useState,
 } from "react";
 
+import { Input } from "@shared/fields";
 import { Button } from "@shared/ui";
 import { BUTTON_VARIANTS } from "@shared/ui";
 import { Eye, EyeOff } from "lucide-react";
-
-import { Input } from ".";
 
 type PasswordFieldProps = ComponentPropsWithoutRef<typeof Input>;
 

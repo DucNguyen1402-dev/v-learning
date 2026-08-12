@@ -1,0 +1,34 @@
+:root {
+  /* =================================================
+    *  Brand dimensions
+    *================================================== */
+  --color-border-brand: var(--brand);
+
+  /* =================================================
+    *  Selected dimensions
+    *================================================== */
+
+  --color-border-selected: var(--color-accent);
+
+  /* =================================================
+    *  Prominence dimensions
+    *================================================== */
+  --color-border-default: var(--color-zinc-300);
+  --color-border-muted: var(--color-zinc-200);
+  --color-border-subtle: var(--color-zinc-100);
+
+  /* =================================================
+    *  Interaction dimensions
+    *================================================== */
+
+  --color-border-interactive-subtle-hover: var(--color-zinc-200);
+  --color-border-interactive-default-hover: var(--color-zinc-400);
+  --color-border-interactive-muted-hover: var(--color-zinc-300);
+
+  --color-border-interactive: var(--color-focus);
+
+  /* =================================================
+    *  Feedback dimensions
+    *================================================== */
+  --color-border-feedback-error: var(--color-red-600);
+}

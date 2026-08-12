@@ -1,0 +1,9 @@
+:root {
+    /* Responsive breakpoints */
+    --breakpoint-3xl: 120rem;
+
+
+    /* Common layout widths */
+    --max-width-container: 80rem;
+
+}

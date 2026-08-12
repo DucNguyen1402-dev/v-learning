@@ -1,7 +1,7 @@
 @layer layout {
   .footer-wrapper {
-    border-top: 1px solid var(--border-secondary);
-    background-color: var(--bg-secondary);
+    border-top: 1px solid var(--color-border-default);
+    background-color: var(--color-bg-default);
   }
 
   .footer-top {
@@ -17,14 +17,14 @@
 
   .footer-bottom {
     @apply flex flex-col gap-3 px-6 py-4 text-xs;
-    border-top: 1px solid var(--border-tertiary);
-    color: var(--text-tertiary);
+    border-top: 1px solid var(--color-border-muted);
+    color: var(--color-fg-subtle);
   }
   .footer-link {
     @apply cursor-pointer transition-colors duration-200 ease-in-out;
-    color: var(--text-secondary);
+    color: var(--color-fg-muted);
     &:hover {
-      color: var(--primary);
+      color: var(--color-fg-brand);
     }
   }
 }

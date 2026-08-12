@@ -1,20 +1,19 @@
 @layer components {
   .profile-dropdown {
     @apply w-40 cursor-pointer gap-4 space-y-3 rounded-lg px-2 pt-2 pb-3 shadow-md transition-colors duration-200 ease-in-out;
-    background-color: var(--surface-2);
-    border: 1px solid var(--border-secondary);
+    color: var(--color-fg-default);
+    background-color: var(--color-bg-elevated);
+    border: 1px solid var(--color-border-default);
   }
 
   .menu-button-default {
     &:hover {
-      background-color: var(--surface-3);
-      color: var(--text-primary-hover);
+      background-color: var(--color-bg-muted);
     }
   }
 
   .menu-button-active {
     @apply cursor-default;
-    background-color: var(--surface-3);
-    color: var(--text-primary-hover);
+    background-color: var(--color-bg-interactive-muted-hover);
   }
 }

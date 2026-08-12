@@ -1,5 +1,5 @@
 import { Modal } from "@shared/overlays/modal/components";
-import { Button, BUTTON_VARIANTS } from "@shared/ui";
+import { Button, BUTTON_APPEARANCES, BUTTON_INTENTS } from "@shared/ui";
 
 export const DeleteModal = ({
   onCancel,

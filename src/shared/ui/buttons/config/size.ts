@@ -16,6 +16,10 @@ export const sizes = {
     button: "button-lg",
     icon: "icon-button-lg",
   },
+  icon: {
+    button: "button-icon",
+    icon: "icon-button-icon",
+  },
 };
 
 export type ButtonSize = keyof typeof sizes;

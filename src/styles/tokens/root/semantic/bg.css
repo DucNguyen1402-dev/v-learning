@@ -1,0 +1,46 @@
+:root {
+  /* =================================================
+    *  Brand dimensions
+    *================================================== */
+
+  --color-bg-brand: var(--color-brand);
+
+  /* =================================================
+    *  Selected dimensions
+    *================================================== */
+
+  --color-bg-selected: var(--color-accent);
+
+  /* =================================================
+    *  Prominence dimensions
+    *================================================== */
+
+  --color-bg-base: var(--color-zinc-50);
+  --color-bg-default: var(--color-white);
+  --color-bg-subtle: var(--color-zinc-100);
+  --color-bg-muted: var(--color-zinc-200);
+
+  /* =================================================
+    *  Interaction dimensions
+    *================================================== */
+  --color-bg-interactive-brand-hover: var(--color-brand-hover);
+  --color-bg-interactive-muted-hover: var(--color-zinc-300);
+  --color-bg-interactive-subtle-hover: var(--color-zinc-200);
+  --color-bg-interactive-danger-hover: var(--color-red-700);
+
+  /* =================================================
+    *  Elevation dimensions
+    *================================================== */
+
+  --color-bg-elevated: var(--color-white);
+  --color-bg-overlay: var(--color-overlay);
+
+  /* =================================================
+    *  Feedback dimensions
+    *================================================== */
+
+  --color-bg-feedback-success: --alpha(--color-emerald-600/ 50%);
+  --color-bg-feedback-error: --alpha(--color-red-600 / 50%);
+  --color-bg-feedback-warning: --alpha(--color-amber-600 / 50%);
+  --color-bg-feedback-danger: var(--color-red-600);
+}
