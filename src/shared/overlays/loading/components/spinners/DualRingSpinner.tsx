@@ -19,19 +19,9 @@ export const DualRingSpinner = ({
   const { outer, inner } =
     dualSpinnerColorClasses[color] ?? dualSpinnerColorClasses.primary;
   return (
-    <div className={cn("relative", sizeClass)}>
-      <div
-        className={cn(
-          "absolute inset-0 animate-spin rounded-full border-2 border-transparent",
-          outer,
-        )}
-      ></div>
-      <div
-        className={cn(
-          "absolute inset-1 animate-[spin_1.5s_linear_infinite_reverse] rounded-full border-2 border-transparent",
-          inner,
-        )}
-      ></div>
+    <div className={cn("dual-ring-container", sizeClass)}>
+      <div className={cn("dual-ring-outer", outer)}></div>
+      <div className={cn("dual-ring-inner", inner)}></div>
     </div>
   );
 };

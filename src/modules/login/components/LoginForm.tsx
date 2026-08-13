@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 import { Login } from "@modules/login";
-import { FormLabel, Input, PasswordField } from "@shared/fields";
+import { Field, Input } from "@shared/fields";
 import { accountValidationRules } from "@shared/validation";
 export const LoginForm = () => {
   const {
@@ -9,29 +9,37 @@ export const LoginForm = () => {
   } = Login.use();
 
   return (
-    <form className="space-y-4" noValidate>
-      <div className="flex flex-col gap-3">
-        <FormLabel htmlFor="taiKhoan">TÀI KHOẢN</FormLabel>
-        <Input
-          id="taiKhoan"
-          {...register("taiKhoan", accountValidationRules.taiKhoan)}
-          error={errors.taiKhoan?.message}
-        />
-      </div>
+    <form className="space-y-6" noValidate>
+      <Field.Root>
+        <Field.Label for="taiKhoan" label="TÀI KHOẢN" />
+        <Input.Root>
+          <Input.Field
+            id="taiKhoan"
+            {...register("taiKhoan", accountValidationRules.taiKhoan)}
+          />
+          <Field.ErrorMessage message={errors.taiKhoan?.message} />
+        </Input.Root>
+      </Field.Root>
 
-      <div className="mb-1.5 flex flex-col gap-3">
-        <FormLabel htmlFor="matKhau">MẬT KHẨU</FormLabel>
+      <Field.Root>
+        <Field.Label for="matKhau" label="MẬT KHẨU" />
+        <Input.Root>
+          <Input.Field
+            id="matKhau"
+            type="password"
+            {...register("matKhau", accountValidationRules.matKhau)}
+          />
+          <Input.PasswordVisibilityToggle />
+          <Field.ErrorMessage message={errors.matKhau?.message} />
+        </Input.Root>
 
-        <PasswordField
-          id="matKhau"
-          {...register("matKhau", accountValidationRules.matKhau)}
-          error={errors.matKhau?.message}
-        />
-
-        <Link to="/client/password-reset" className="self-end link-secondary">
+        <Link
+          to="/client/password-reset"
+          className="mt-1 self-end link-secondary"
+        >
           Quên mật khẩu?
         </Link>
-      </div>
+      </Field.Root>
     </form>
   );
 };

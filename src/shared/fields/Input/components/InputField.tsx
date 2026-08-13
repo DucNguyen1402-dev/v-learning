@@ -14,7 +14,7 @@ export const InputField = forwardRef<HTMLInputElement, InputFieldProps>(
   (
     {
       disabled = false,
-      type = "password",
+      type = "text",
       isError = false,
       hasLeftAddon = false,
       hasRightAddon = false,

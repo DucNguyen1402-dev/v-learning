@@ -1,25 +1,20 @@
-export const sizes = {
-  none: {
+import { BUTTON_SIZES } from "../constants";
+export const buttonSizes = {
+  [BUTTON_SIZES.NONE]: {
     button: "",
     icon: "",
   },
 
-  sm: {
+  [BUTTON_SIZES.SMALL]: {
     button: "button-sm",
     icon: "icon-button-sm",
   },
-  md: {
+  [BUTTON_SIZES.MEDIUM]: {
     button: "button-md",
     icon: "icon-button-md",
   },
-  lg: {
+  [BUTTON_SIZES.LARGE]: {
     button: "button-lg",
     icon: "icon-button-lg",
   },
-  icon: {
-    button: "button-icon",
-    icon: "icon-button-icon",
-  },
 };
-
-export type ButtonSize = keyof typeof sizes;

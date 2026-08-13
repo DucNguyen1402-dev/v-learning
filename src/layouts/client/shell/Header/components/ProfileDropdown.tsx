@@ -4,7 +4,7 @@ import { AppRoutes } from "@routes";
 import { Auth } from "@shared/auth";
 import { Navigation } from "@shared/navigation";
 import { Theme } from "@shared/theme";
-import { Button } from "@shared/ui";
+import { Button, BUTTON_LAYOUTS, BUTTON_SIZES } from "@shared/ui";
 import { LogOut, MoonStar, Sun, User } from "lucide-react";
 
 export const ProfileDropdown = () => {
@@ -50,14 +50,17 @@ export const ProfileDropdown = () => {
       {menuItems.map((item, index) => {
         const isActive = AppRoutes.client.isActive(pathname, item.routeKey);
         return (
-          <li key={index}>
+          <li
+            key={index}
+            className={`menu-button ${isActive ? "menu-button-active" : "menu-button-default"}`}
+          >
             <Button
               onClick={item.onClick}
               icon={item.icon}
-              className={`justify-start ${isActive ? "menu-button-active" : "menu-button-default"}`}
               fullWidth={true}
-              size="sm"
+              size={BUTTON_SIZES.SMALL}
               disabled={isActive}
+              layout={BUTTON_LAYOUTS.START}
             >
               {item.label}
             </Button>

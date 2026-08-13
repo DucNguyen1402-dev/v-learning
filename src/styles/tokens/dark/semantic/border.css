@@ -1,4 +1,4 @@
-:root {
+.dark {
   /* =================================================
     *  Prominence
     *================================================== */
@@ -10,7 +10,7 @@
     *  Interaction
     *================================================== */
 
-  --color-borderdefault-hover: var(--color-zinc-700);
+  --color-border-default-hover: var(--color-zinc-700);
   --color-border-muted-hover: var(--color-zinc-600);
   --color-border-subtle-hover: var(--color-zinc-500);
 

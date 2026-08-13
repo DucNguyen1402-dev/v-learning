@@ -1,4 +1,6 @@
-:root {
+.dark {
+
+
   /* =================================================
     *  Prominence dimensions
     *================================================== */
@@ -25,8 +27,8 @@
     *  Feedback dimensions
     *================================================== */
 
-  --color-bg-success: --alpha(--color-emerald-500/ 50%);
-  --color-bg-error: --alpha(--color-red-500 / 50%);
-  --color-bg-warning: --alpha(--color-amber-500 / 50%);
+  --color-bg-success: --alpha(--color-emerald-500/ 20%);
+  --color-bg-error: --alpha(--color-red-500 / 20%);
+  --color-bg-warning: --alpha(--color-amber-500 / 20%);
   --color-bg-danger: var(--color-red-500);
 }

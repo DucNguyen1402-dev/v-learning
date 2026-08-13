@@ -20,10 +20,9 @@
   /* =================================================
     *  Interaction dimensions
     *================================================== */
-
-  --color-border-subtle-hover: var(--color-zinc-200);
   --color-border-default-hover: var(--color-zinc-400);
   --color-border-muted-hover: var(--color-zinc-300);
+  --color-border-subtle-hover: var(--color-zinc-200);
 
   --color-border-focus: var(--color-focus);
 
@@ -31,4 +30,6 @@
     *  Feedback dimensions
     *================================================== */
   --color-border-error: var(--color-red-600);
+  --color-border-success: var(--color-emerald-600);
+  --color-border-warning: var(--color-amber-600);
 }

@@ -1,5 +1,5 @@
 import { Theme } from "@shared/theme";
-import { Button } from "@shared/ui";
+import { Button, BUTTON_APPEARANCES, BUTTON_INTENTS } from "@shared/ui";
 import { cn } from "@shared/utils";
 import { MoonStar, Sun } from "lucide-react";
 
@@ -11,25 +11,27 @@ export const ThemeModeButton = () => {
   const hidden = "scale-0 -rotate-90 opacity-0";
 
   return (
-    <Button
-      onClick={toggleTheme}
-      className="relative"
-      variant="tertiary"
-      size="lg"
-    >
-      <MoonStar
-        className={cn(
-          iconClass + " text-zinc-500",
-          isDarkMode ? hidden : visible,
-        )}
-      />
+    <div className="relative">
+      <Button
+        onClick={toggleTheme}
+        appearance={BUTTON_APPEARANCES.GHOST}
+        intent={BUTTON_INTENTS.TERTIARY}
+        size="lg"
+      >
+        <MoonStar
+          className={cn(
+            iconClass + " text-zinc-500",
+            isDarkMode ? hidden : visible,
+          )}
+        />
 
-      <Sun
-        className={cn(
-          iconClass + " text-yellow-500",
-          isDarkMode ? visible : hidden,
-        )}
-      />
-    </Button>
+        <Sun
+          className={cn(
+            iconClass + " text-yellow-500",
+            isDarkMode ? visible : hidden,
+          )}
+        />
+      </Button>
+    </div>
   );
 };

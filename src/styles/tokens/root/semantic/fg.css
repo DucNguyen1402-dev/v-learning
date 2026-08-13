@@ -26,8 +26,8 @@
   --color-fg-brand-hover: var(--color-brand-hover);
 
   --color-fg-disabled: var(--color-zinc-400);
-  --color-fg-muted-hover: var(--color-zinc-700);
-  --color-fg-subtle-hover: var(--color-zinc-500);
+  --color-fg-muted-hover: var(--color-zinc-800);
+  --color-fg-subtle-hover: var(--color-zinc-700);
 
   /* =================================================
     *  Feedback dimensions

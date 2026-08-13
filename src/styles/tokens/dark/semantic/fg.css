@@ -1,4 +1,4 @@
-:root {
+.dark {
   /* =================================================
     *  Prominence dimensions
     *================================================== */
@@ -9,12 +9,10 @@
   /* =================================================
     *  Interaction dimensions
     *================================================== */
-  --color-fg-interactive: var(--color-brand);
-  --color-fg-on-interactive: var(--color-fg-on-brand);
 
   --color-fg-disabled: var(--color-zinc-600);
   --color-fg-muted-hover: var(--color-zinc-200);
-  --color-fg-subtle-hover: var(--color-zinc-400);
+  --color-fg-subtle-hover: var(--color-zinc-300);
 
   /* =================================================
     *  Feedback dimensions

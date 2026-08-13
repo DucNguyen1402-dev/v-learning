@@ -13,12 +13,12 @@ export const DeleteModal = ({
       <Modal.Header title={title} subtitle={subtitle} titleSize="sm" />
 
       <Modal.Footer>
-        <Button variant={BUTTON_VARIANTS.SECONDARY} onClick={onCancel}>
+        <Button variant={BUTTON_APPEARANCES.OUTLINE} onClick={onCancel}>
           Hủy
         </Button>
 
         <Button
-          variant={BUTTON_VARIANTS.DESTRUCTIVE}
+          variant={BUTTON_APPEARANCES.SOLID}
           onClick={onConfirm}
           loading={loading}
         >

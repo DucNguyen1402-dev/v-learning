@@ -9,12 +9,16 @@ import type {
 import { cn } from "@shared/utils";
 import { type VariantProps } from "class-variance-authority";
 
-import { type ButtonSize, buttonVariants, sizes } from "../config";
+import { buttonLayouts, buttonSizes, buttonVariants } from "../config";
 import {
   BUTTON_APPEARANCES,
   BUTTON_INTENTS,
+  BUTTON_LAYOUTS,
+  BUTTON_SIZES,
   type ButtonAppearance,
   type ButtonIntent,
+  type ButtonLayout,
+  type ButtonSize,
 } from "../constants";
 
 type ButtonIcon = ComponentType<SVGProps<SVGSVGElement>>;
@@ -27,21 +31,23 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> &
     loading?: boolean;
     fullWidth?: boolean;
     intent?: ButtonIntent;
+    layout?: ButtonLayout;
     appearance?: ButtonAppearance;
   };
 
 export const Button = ({
   children,
   icon: Icon,
-  size = "md",
+  size = BUTTON_SIZES.MEDIUM,
   loading = false,
   fullWidth = false,
-  intent = BUTTON_INTENTS.PRIMARY,
-  appearance = BUTTON_APPEARANCES.SOLID,
+  intent = BUTTON_INTENTS.NONE,
+  appearance = BUTTON_APPEARANCES.NONE,
+  layout = BUTTON_LAYOUTS.CENTER,
   type = "button",
   ...props
 }: ButtonProps) => {
-  const currentSize = sizes[size];
+  const currentSize = buttonSizes[size];
 
   return (
     <button
@@ -50,6 +56,7 @@ export const Button = ({
         currentSize.button,
         fullWidth ? "w-full" : "",
         buttonVariants({ intent, appearance }),
+        buttonLayouts[layout],
       )}
       type={type}
       {...props}

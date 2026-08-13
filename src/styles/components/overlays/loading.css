@@ -1,0 +1,14 @@
+@layer components {
+    .dual-ring-container {
+        @apply relative;
+    }
+
+    .dual-ring-outer {
+        @apply absolute inset-0 animate-spin rounded-full border-t-blue-500 border-l-blue-500;
+
+    }
+
+    .dual-ring-inner {
+        @apply absolute inset-1 animate-[spin_1.5s_linear_infinite_reverse] rounded-full border-2 border-transparent;
+    }
+}
