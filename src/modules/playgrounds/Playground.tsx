@@ -27,3 +27,41 @@ export const Playground = () => (
     </Field.Root>
   </div>
 );
+
+// import { useForm, useWatch } from "react-hook-form";
+
+// import { DateInput, Field } from "@shared/fields";
+
+//  <div className="relative flex min-h-screen items-center justify-center gap-2">
+//       <Field.Root>
+//         <Field.Label
+//           htmlFor="date-input-field"
+//           required={true}
+//           label="Ngày sinh"
+//         />
+//         <DateInput.Root>
+//           <DateInput.Button
+//             id="date-input-field"
+//             labels={{
+//               placeholder: "Chọn ngày",
+//               disabled: "Disabled",
+//               required: "Required",
+//             }}
+//             value={value}
+//           />
+//           <Field.Controller
+//             name="date-input-field"
+//             control={control}
+//             rules={{ required: true }}
+//           >
+//             {({ field }) => (
+//               <DateInput.Picker
+//                 {...field}
+//                 onChange={(date) => field.onChange(date)}
+//                 value={field.value}
+//               />
+//             )}
+//           </Field.Controller>
+//         </DateInput.Root>
+//       </Field.Root>
+//     </div>

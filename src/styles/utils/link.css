@@ -4,7 +4,7 @@
   transition: color var(--duration-fast) var(--ease-default);
 
   &:hover {
-    color: var(--color-fg-interactive-brand-hover);
+    color: var(--color-fg-brand-hover);
     @apply underline;
   }
 }

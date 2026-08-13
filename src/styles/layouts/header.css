@@ -19,6 +19,6 @@
 
   .nav-link-active {
     @apply cursor-default;
-    color: var(--color-fg-interactive-brand-hover);
+    color: var(--color-fg-brand-hover);
   }
 }

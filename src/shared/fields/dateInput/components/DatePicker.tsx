@@ -1,5 +1,8 @@
 import { useMemo } from "react";
-import { type ChevronProps, DayPicker } from "react-day-picker";
+import {
+  type ChevronProps,
+  DayPicker as ReactDayPicker,
+} from "react-day-picker";
 
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -19,7 +22,7 @@ type DatePickerProps = {
   onChange: (date: Date | undefined) => void;
 };
 
-export const PickerContent = ({ value, onChange }: DatePickerProps) => {
+export const DayPicker = ({ value, onChange }: DatePickerProps) => {
   const { isDatePickerOpen, datePickerRef } = useDatePickerContext();
 
   const today = useMemo(() => new Date(), []);
@@ -31,7 +34,7 @@ export const PickerContent = ({ value, onChange }: DatePickerProps) => {
       )}
       ref={datePickerRef}
     >
-      <DayPicker
+      <ReactDayPicker
         mode="single"
         selected={value}
         onSelect={onChange}

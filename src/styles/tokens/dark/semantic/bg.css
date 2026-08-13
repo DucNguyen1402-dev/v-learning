@@ -1,39 +1,32 @@
 :root {
-
-
-
-    /* =================================================
+  /* =================================================
     *  Prominence dimensions
     *================================================== */
 
-    --color-bg-base: var(--color-zinc-950);
-    --color-bg-default: var(--color-zinc-900);
-    --color-bg-subtle: var(--color-zinc-800);
-    --color-bg-muted: var(--color-zinc-700);
+  --color-bg-base: var(--color-zinc-950);
+  --color-bg-default: var(--color-zinc-900);
+  --color-bg-subtle: var(--color-zinc-800);
+  --color-bg-muted: var(--color-zinc-700);
 
-
-
-    /* =================================================
+  /* =================================================
     *  Interaction dimensions
     *================================================== */
-    --color-bg-interactive-subtle-hover: var(--color-zinc-700);
-    --color-bg-interactive-muted-hover: var(--color-zinc-600);
-    --color-bg-interactive-danger-hover: var(--color-red-600);
+  --color-bg-subtle-hover: var(--color-zinc-700);
+  --color-bg-muted-hover: var(--color-zinc-600);
+  --color-bg-danger-hover: var(--color-red-600);
 
-    /* =================================================
+  /* =================================================
     *  Elevation dimensions
     *================================================== */
 
-    --color-bg-elevated: var(--color-zinc-800);
+  --color-bg-elevated: var(--color-zinc-800);
 
-    /* =================================================
+  /* =================================================
     *  Feedback dimensions
     *================================================== */
 
-
-    --color-bg-feedback-success: --alpha(--color-emerald-500/ 50%);
-    --color-bg-feedback-error: --alpha(--color-red-500 / 50%);
-    --color-bg-feedback-warning: --alpha(--color-amber-500 / 50%);
-    --color-bg-feedback-danger: var(--color-red-500);
-
+  --color-bg-success: --alpha(--color-emerald-500/ 50%);
+  --color-bg-error: --alpha(--color-red-500 / 50%);
+  --color-bg-warning: --alpha(--color-amber-500 / 50%);
+  --color-bg-danger: var(--color-red-500);
 }

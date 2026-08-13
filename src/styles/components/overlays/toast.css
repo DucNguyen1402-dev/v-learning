@@ -5,18 +5,18 @@
   }
 
   .toast-success {
-    background-color: var(--color-bg-feedback-success);
-    border-color: var(--color-border-feedback-success);
+    background-color: var(--color-bg-success);
+    border-color: var(--color-border-success);
   }
 
   .toast-error {
-    background-color: var(--color-bg-feedback-error);
-    border-color: var(--color-border-feedback-error);
+    background-color: var(--color-bg-error);
+    border-color: var(--color-border-error);
   }
 
   .toast-warning {
-    background-color: var(--color-bg-feedback-warning);
-    border-color: var(--color-border-feedback-warning);
+    background-color: var(--color-bg-warning);
+    border-color: var(--color-border-warning);
   }
 
   .toast-size-sm {

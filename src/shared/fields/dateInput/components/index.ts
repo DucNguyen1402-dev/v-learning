@@ -1,1 +1,1 @@
-export { PickerContent } from "./PickerContent";
+export { DayPicker } from "./DatePicker";

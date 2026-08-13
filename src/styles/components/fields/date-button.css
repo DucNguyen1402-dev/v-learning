@@ -1,0 +1,15 @@
+@layer components {
+  .date-button-container {
+    @apply flex items-center gap-1;
+  }
+
+  .data-button-inactive {
+    color: var(--color-fg-subtle);
+  }
+  .data-button-active {
+    color: var(--color-fg-muted);
+  }
+  .data-button-selected {
+    color: var(--color-fg-default);
+  }
+}

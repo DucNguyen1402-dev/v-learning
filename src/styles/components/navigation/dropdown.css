@@ -14,6 +14,6 @@
 
   .menu-button-active {
     @apply cursor-default;
-    background-color: var(--color-bg-interactive-muted-hover);
+    background-color: var(--color-bg-muted-hover);
   }
 }

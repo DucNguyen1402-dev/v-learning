@@ -7,7 +7,7 @@
     color: var(--color-fg-required);
   }
 
-  .label-spacing {
+  .label-vertical-spacing {
     margin-bottom: var(--spacing-field-label);
   }
 }

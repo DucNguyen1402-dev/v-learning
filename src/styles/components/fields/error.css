@@ -1,9 +1,9 @@
 @layer components {
   .error-message {
     @apply w-full rounded-sm px-2 py-2 text-sm;
-    background-color: var(--color-bg-feedback-error);
-    color: var(--color-fg-feedback-error);
-    border-left: 5px solid var(--color-border-feedback-error);
+    background-color: var(--color-bg-error);
+    color: var(--color-fg-error);
+    border-left: 5px solid var(--color-border-error);
   }
 
   .error-message-spacing {

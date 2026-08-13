@@ -3,10 +3,10 @@
     *  Interaction dimensions
     *================================================== */
 
-  --color-ring-interactive: var(--color-focus);
+  --color-ring-focus: var(--color-focus);
 
   /* =================================================
     *  Feedback dimensions
     *================================================== */
-  --color-ring-feedback-error: var(--color-red-600);
+  --color-ring-error: var(--color-red-600);
 }

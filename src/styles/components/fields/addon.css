@@ -4,7 +4,7 @@
     color: var(--color-fg-muted);
 
     &:hover {
-      color: var(--color-fg-interactive-muted-hover);
+      color: var(--color-fg-muted-hover);
     }
   }
   .addon-position {

@@ -21,14 +21,14 @@
     *  Interaction dimensions
     *================================================== */
 
-  --color-border-interactive-subtle-hover: var(--color-zinc-200);
-  --color-border-interactive-default-hover: var(--color-zinc-400);
-  --color-border-interactive-muted-hover: var(--color-zinc-300);
+  --color-border-subtle-hover: var(--color-zinc-200);
+  --color-border-default-hover: var(--color-zinc-400);
+  --color-border-muted-hover: var(--color-zinc-300);
 
-  --color-border-interactive: var(--color-focus);
+  --color-border-focus: var(--color-focus);
 
   /* =================================================
     *  Feedback dimensions
     *================================================== */
-  --color-border-feedback-error: var(--color-red-600);
+  --color-border-error: var(--color-red-600);
 }
