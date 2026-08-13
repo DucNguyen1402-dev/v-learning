@@ -34,13 +34,13 @@ export const InputField = forwardRef<HTMLInputElement, InputFieldProps>(
         disabled={disabled}
 
         className={cn(
-          "input-base",
+          "field-base",
           {
-            "input-disabled": disabled,
-            "input-error": !disabled && isError,
-            "input-default": !disabled && !isError,
-            "input-with-left-addon": hasLeftAddon,
-            "input-with-right-addon": hasRightAddon,
+            "field-disabled": disabled,
+            "field-error": !disabled && isError,
+            "field-default": !disabled && !isError,
+            "field-with-left-addon": hasLeftAddon,
+            "field-with-right-addon": hasRightAddon,
           },
           props.className,
         )}

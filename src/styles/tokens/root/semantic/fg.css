@@ -10,6 +10,7 @@
     *================================================== */
 
   --color-fg-on-selected: var(--color-white);
+  --color-fg-selected: var(--color-accent);
 
   /* =================================================
     *  Prominence dimensions
@@ -23,20 +24,28 @@
     *================================================== */
 
   --color-fg-interactive-brand-hover: var(--color-brand-hover);
-  --color-fg-interactive-default-hover: var(--color-zinc-700);
+
+  --color-fg-interactive-default-hover: var(--color-zinc-800);
+  --color-fg-interactive-default-disabled: var(--color-zinc-700);
   --color-fg-interactive-muted-hover: var(--color-zinc-700);
   --color-fg-interactive-subtle-hover: var(--color-zinc-500);
+  --color-fg-interactive-disabled: var(--color-zinc-400);
+
+
+
 
   /* =================================================
     *  Feedback dimensions
     *================================================== */
 
   --color-fg-feedback-error: var(--color-red-700);
+
   --color-fg-on-feedback: var(--color-white);
 
   /* =================================================
-    *  Special dimensions
+    *  Domain
     *================================================== */
 
   --color-fg-required: var(--color-red-600);
+  --color-fg-disabled: var(--color-zinc-400);
 }

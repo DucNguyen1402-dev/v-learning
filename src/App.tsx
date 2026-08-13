@@ -9,33 +9,44 @@
 //   </Routes>
 // );
 
-import { Field, Select } from "@shared/fields";
+import { Controller, useForm } from "react-hook-form";
+
+import { DateInput, Field } from "@shared/fields";
 
 export const App = () => {
+  const { control, getValues } = useForm();
+
+  const value = getValues("date-input-field");
   return (
-    <div className="flex min-h-screen items-center justify-center gap-2">
+    <div className="relative flex min-h-screen items-center justify-center gap-2">
       <Field.Root>
         <Field.Label
-          htmlFor="select-field"
+          htmlFor="date-input-field"
           required={true}
-          label="Select Field"
+          label="Ngày sinh"
         />
-        <Select
-          id="select-field"
-          value=""
-          options={[
-            { value: "option1", label: "Option 1" },
-            { value: "option2", label: "Option 2" },
-            {
-              label: "Group 1",
-              options: [
-                { value: "option3", label: "Option 3" },
-                { value: "option4", label: "Option 4" },
-              ],
-            },
-          ]}
-          onChange={() => {}}
-        />
+        <DateInput.Root>
+          <DateInput.Button
+            id="date-input-field"
+            labels={{
+              placeholder: "Chọn ngày",
+              disabled: "Disabled",
+              required: "Required",
+            }}
+            value={value}
+          />
+          <Controller
+            name="date-input-field"
+            control={control}
+            render={({ field }) => (
+              <DateInput.Content
+                {...field}
+                onChange={(date) => field.onChange(date)}
+                value={field.value}
+              />
+            )}
+          />
+        </DateInput.Root>
       </Field.Root>
     </div>
   );

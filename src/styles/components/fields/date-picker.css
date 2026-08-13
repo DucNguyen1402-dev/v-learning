@@ -1,0 +1,84 @@
+@layer components {
+
+    .picker-container {
+        @apply absolute top-[105%] left-0 z-30 transition-opacity duration-200;
+    }
+
+    .picker-container-open {
+        @apply pointer-events-auto cursor-pointer opacity-100;
+    }
+
+    .picker-container-closed {
+        @apply pointer-events-none opacity-0;
+    }
+
+    .rdp-nav {
+        @apply flex items-center justify-between mb-4;
+    }
+
+    .chevron-icon {
+        @apply flex size-6 cursor-pointer items-center justify-center rounded transition-colors duration-200 hover:text-blue-400;
+    }
+
+    .rdp-root {
+        @apply w-fit rounded-md p-4;
+        background-color: var(--color-bg-elevated);
+        border: 1px solid var(--color-border-default);
+
+    }
+
+    .rdp-month {
+        @apply space-y-4;
+    }
+
+    .rdp-month_caption {
+        @apply flex items-center;
+    }
+
+    .rdp-caption_label {
+        @apply text-sm font-semibold;
+    }
+
+    .rdp-button_previous {
+        @apply mr-2;
+    }
+
+    .rdp-weekdays {
+        @apply flex;
+    }
+
+    .rdp-weekday {
+        @apply flex-1 text-center text-xs font-medium uppercase;
+        color: var(--color-fg-muted);
+    }
+
+    .rdp-week {
+        @apply flex;
+    }
+
+    .rdp-day {
+        @apply h-8.5 w-8.5 p-0;
+    }
+
+    .rdp-day_button {
+        @apply size-8.5 cursor-pointer flex items-center justify-center rounded-full text-sm;
+    }
+
+    .rdp-today {
+        @apply font-bold;
+    }
+
+    .rdp-selected .rdp-day_button {
+        @apply rounded-full transition-colors duration-200;
+        background-color: var(--color-bg-selected);
+        color: var(--color-fg-on-selected);
+    }
+
+    .rdp-disabled {
+        color: var(--color-fg-interactive-default-disabled);
+    }
+
+    .rdp-outside {
+        @apply text-slate-300;
+    }
+}

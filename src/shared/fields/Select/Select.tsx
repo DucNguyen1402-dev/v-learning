@@ -1,4 +1,5 @@
 import { cn } from "@shared/utils";
+import { ChevronDown } from "lucide-react";
 
 type SelectProps = {
   value: string;
@@ -11,8 +12,6 @@ type SelectProps = {
   defaultOptionLabel?: string;
   disabled?: boolean;
   disabledDefaultOption?: boolean;
-  error?: string;
-  className?: string;
 } & React.SelectHTMLAttributes<HTMLSelectElement>;
 export const Select = ({
   value,
@@ -22,24 +21,24 @@ export const Select = ({
   defaultOptionLabel,
   disabled,
   disabledDefaultOption = false,
-  className,
   ...props
 }: SelectProps) => (
-  <div className="flex flex-col gap-2">
+  <div className="relative">
     <select
       value={value}
       disabled={disabled}
       onChange={onChange}
-      className={cn(
-        "form-focus rounded-sm bg-slate-900/40 px-4 py-1.5 text-slate-100 transition-colors duration-300",
-        className,
-      )}
+      className={cn("field-base select", {
+        "field-disabled": disabled,
+        "field-error": isError,
+        "field-default": !isError && !disabled,
+      })}
       {...props}
     >
       {defaultOptionLabel && (
         <option
           value=""
-          className="bg-slate-800 text-white"
+
           disabled={disabledDefaultOption}
         >
           {defaultOptionLabel}
@@ -49,11 +48,7 @@ export const Select = ({
       {options.map((item) => {
         if ("options" in item) {
           return (
-            <optgroup
-              key={item.label}
-              label={item.label}
-              className="bg-slate-800 text-sm text-white"
-            >
+            <optgroup key={item.label} label={item.label}>
               {item.options.map((option) => (
                 <option key={option.value} value={option.value}>
                   {option.label}
@@ -64,19 +59,14 @@ export const Select = ({
         }
 
         return (
-          <option
-            key={item.value}
-            value={item.value}
-            className={cn("input-base", {
-              "input-disabled": disabled,
-              "input-error": isError,
-              "input-default": !isError && !disabled,
-            })}
-          >
+          <option key={item.value} value={item.value}>
             {item.label}
           </option>
         );
       })}
     </select>
+    <div className="select-icon-wrapper">
+      <ChevronDown className="select-icon" />
+    </div>
   </div>
 );

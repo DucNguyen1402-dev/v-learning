@@ -1,9 +1,9 @@
 @layer components {
-  .input-base {
+  .field-base {
     @apply w-full rounded-md px-3 py-2 text-[15px] transition-colors duration-200 ease-in-out outline-none;
   }
 
-  .input-default {
+  .field-default {
     @apply focus:ring-2;
     color: var(--color-fg-default);
     border: 1px solid var(--color-border-default);
@@ -24,14 +24,14 @@
     }
   }
 
-  .input-disabled {
+  .field-disabled {
     @apply cursor-not-allowed opacity-70;
     color: var(--color-fg-muted);
     background-color: var(--color-bg-muted);
     border: 1px solid var(--color-border-muted);
   }
 
-  .input-error {
+  .field-error {
     @apply focus:ring-2;
     border: 1px solid var(--color-border-feedback-error);
     color: var(--color-fg-feedback-error);
@@ -42,11 +42,11 @@
     }
   }
 
-  .input-with-left-addon {
+  .field-with-left-addon {
     @apply pl-6.5;
   }
 
-  .input-with-right-addon {
+  .field-with-right-addon {
     @apply pr-6.5;
   }
 

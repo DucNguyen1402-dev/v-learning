@@ -39,10 +39,10 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
         disabled={disabled}
         id={id ?? props.name}
         {...props}
-        className={cn("input-base textarea", {
-          "input-disabled": disabled,
-          "input-error": !disabled && isError,
-          "input-default": !disabled,
+        className={cn("field-base textarea", {
+          "field-disabled": disabled,
+          "field-error": !disabled && isError,
+          "field-default": !disabled,
         })}
       />
     );
