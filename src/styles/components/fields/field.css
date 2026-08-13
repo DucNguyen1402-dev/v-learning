@@ -1,12 +1,52 @@
 @layer components {
-  .field-root {
-    @apply w-full max-w-sm;
-  }
-  .field-root-vertical {
-    @apply flex flex-col gap-1;
+  .field-base {
+    @apply w-full rounded-md px-3 py-2 text-[15px] transition-colors duration-200 ease-in-out outline-none;
   }
 
-  .field-root-horizontal {
-    @apply flex items-center gap-2;
+  .field-default {
+    @apply focus:ring-2;
+    color: var(--color-fg-default);
+    border: 1px solid var(--color-border-default);
+
+    background-color: var(--color-bg-muted);
+
+    &:hover {
+      border-color: var(--color-border-default-hover);
+    }
+
+    &:focus {
+      border-color: var(--color-border-focus);
+      --tw-ring-color: --alpha(var(--color-ring-focus)/20%);
+    }
+
+    &::placeholder {
+      color: var(--color-fg-subtle);
+    }
+  }
+
+  .field-disabled {
+    @apply cursor-not-allowed opacity-70;
+    color: var(--color-fg-muted);
+    background-color: var(--color-bg-muted);
+    border: 1px solid var(--color-border-muted);
+  }
+
+  .field-error {
+    @apply focus:ring-2;
+    border: 1px solid var(--color-border-error);
+    color: var(--color-fg-error);
+
+    &:focus {
+      color: var(--color-fg-error);
+      --tw-ring-color: --alpha(var(--color-ring-error)/20%);
+    }
+  }
+
+  .field-with-left-addon {
+    @apply pl-6.5;
+  }
+
+  .field-with-right-addon {
+    @apply pr-6.5;
   }
 }

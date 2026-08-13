@@ -28,7 +28,6 @@
   --color-bg-subtle-hover: var(--color-zinc-200);
   --color-bg-danger-hover: var(--color-red-700);
 
-
   /* =================================================
     *  Elevation dimensions
     *================================================== */
@@ -40,8 +39,8 @@
     *  Feedback dimensions
     *================================================== */
 
-  --color-bg-success: --alpha(var(--color-emerald-600)/20%);
-  --color-bg-error: --alpha(var(--color-red-600)/20%);
-  --color-bg-warning: --alpha(var(--color-amber-600)/20%);
+  --color-bg-success: var(--color-emerald-600);
+  --color-bg-error: var(--color-red-600);
+  --color-bg-warning: var(--color-amber-600);
   --color-bg-danger: var(--color-red-600);
 }

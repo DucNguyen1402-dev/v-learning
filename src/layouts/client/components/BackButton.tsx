@@ -1,15 +1,21 @@
 import { Navigation } from "@shared/navigation";
-import { Button } from "@shared/ui";
-import { ArrowLeft } from "lucide-react";
+import {
+  Button,
+  BUTTON_APPEARANCES,
+  BUTTON_INTENTS,
+  BUTTON_SIZES,
+} from "@shared/ui";
+import { MoveLeft } from "lucide-react";
 
 export const BackButton = () => {
   const { back } = Navigation.useNavigate();
 
   return (
     <Button
-      className="button-secondary"
-      size="sm"
-      icon={ArrowLeft}
+      appearance={BUTTON_APPEARANCES.GHOST}
+      intent={BUTTON_INTENTS.SECONDARY}
+      size={BUTTON_SIZES.SMALL}
+      icon={MoveLeft}
       onClick={() => back()}
     />
   );

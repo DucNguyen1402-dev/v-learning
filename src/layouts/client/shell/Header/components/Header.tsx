@@ -41,7 +41,7 @@ export const Header = () => {
             </div>
           ) : (
             <div
-              className={`flex items-center justify-center gap-4 ${shouldHideLoginButton ? "w-32" : ""}`}
+              className={`flex items-center justify-center gap-8 ${shouldHideLoginButton ? "w-32" : ""}`}
             >
               <div className="hidden lg:block">
                 <ThemeModeButton />

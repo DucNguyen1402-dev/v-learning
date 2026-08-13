@@ -6,11 +6,7 @@
   }
 
   .nav-link {
-    @apply text-sm font-medium transition-colors duration-200 ease-in-out lg:text-[15px];
-  }
-
-  .nav-link-default {
-    @apply cursor-pointer;
+    @apply cursor-pointer text-sm font-medium transition-colors duration-200 ease-in-out lg:text-[15px];
     color: var(--color-fg-default);
     &:hover {
       color: var(--color-fg-brand);

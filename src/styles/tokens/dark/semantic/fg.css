@@ -18,5 +18,5 @@
     *  Feedback dimensions
     *================================================== */
 
-  --color-fg-error: var(--color-red-600);
+  --color-fg-error: var(--color-red-400);
 }

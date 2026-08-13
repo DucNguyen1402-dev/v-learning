@@ -1,6 +1,6 @@
-@import "./input.css";
-@import "./addon.css";
 @import "./field.css";
+@import "./addon.css";
+@import "./field-wrapper.css";
 @import "./label.css";
 @import "./error.css";
 @import "./textarea.css";

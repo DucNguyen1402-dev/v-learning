@@ -1,6 +1,11 @@
 import { Login } from "@modules/login";
 import { Checkbox, CHECKBOX_SIZE, Field, FIELD_LAYOUT } from "@shared/fields";
-import { Button, BUTTON_APPEARANCES, BUTTON_INTENTS } from "@shared/ui";
+import {
+  ACTION_LABELS,
+  Button,
+  BUTTON_APPEARANCES,
+  BUTTON_INTENTS,
+} from "@shared/ui";
 
 export const LoginActions = () => {
   const {
@@ -22,7 +27,7 @@ export const LoginActions = () => {
               />
             )}
           </Field.Controller>
-          <Field.Label for="remember" label="Ghi nhớ đăng nhập" />
+          <Field.Label target="remember" text="Ghi nhớ đăng nhập" />
         </Field.Root>
       </div>
       <Button
@@ -31,7 +36,7 @@ export const LoginActions = () => {
         appearance={BUTTON_APPEARANCES.SOLID}
         intent={BUTTON_INTENTS.PRIMARY}
       >
-        ĐĂNG NHẬP
+        <span className="uppercase">{ACTION_LABELS.LOGIN}</span>
       </Button>
     </div>
   );

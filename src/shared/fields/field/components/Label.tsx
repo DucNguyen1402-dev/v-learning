@@ -1,16 +1,12 @@
 import { FIELD_LAYOUT, useFieldContext } from "@shared/fields";
 
 type LabelProps = {
-  for: string;
+  target: string;
   required?: boolean;
-  label: string;
+  text: string;
 };
 
-export const Label = ({
-  for: htmlFor,
-  required = false,
-  label,
-}: LabelProps) => {
+export const Label = ({ target, required = false, text }: LabelProps) => {
   const { layout } = useFieldContext();
 
   return (
@@ -19,8 +15,8 @@ export const Label = ({
         layout === FIELD_LAYOUT.VERTICAL ? "label-vertical-spacing" : ""
       }
     >
-      <label htmlFor={htmlFor} className="label">
-        {label}
+      <label htmlFor={target} className="label">
+        {text}
         {required && <span className="label-required ml-1.5">*</span>}
       </label>
     </div>

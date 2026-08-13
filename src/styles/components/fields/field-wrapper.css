@@ -1,0 +1,12 @@
+@layer components {
+  .field-root {
+    @apply w-full max-w-sm;
+  }
+  .field-root-vertical {
+    @apply flex flex-col gap-1;
+  }
+
+  .field-root-horizontal {
+    @apply flex items-center gap-2;
+  }
+}

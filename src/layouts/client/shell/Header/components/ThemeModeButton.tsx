@@ -1,5 +1,10 @@
 import { Theme } from "@shared/theme";
-import { Button, BUTTON_APPEARANCES, BUTTON_INTENTS } from "@shared/ui";
+import {
+  Button,
+  BUTTON_APPEARANCES,
+  BUTTON_INTENTS,
+  BUTTON_SIZES,
+} from "@shared/ui";
 import { cn } from "@shared/utils";
 import { MoonStar, Sun } from "lucide-react";
 
@@ -11,12 +16,12 @@ export const ThemeModeButton = () => {
   const hidden = "scale-0 -rotate-90 opacity-0";
 
   return (
-    <div className="relative">
+    <div className="relative flex-center">
       <Button
         onClick={toggleTheme}
         appearance={BUTTON_APPEARANCES.GHOST}
         intent={BUTTON_INTENTS.TERTIARY}
-        size="lg"
+        size={BUTTON_SIZES.LARGE}
       >
         <MoonStar
           className={cn(

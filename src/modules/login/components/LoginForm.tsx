@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom";
-
 import { Login } from "@modules/login";
 import { Field, Input } from "@shared/fields";
 import { accountValidationRules } from "@shared/validation";
@@ -11,7 +9,7 @@ export const LoginForm = () => {
   return (
     <form className="space-y-6" noValidate>
       <Field.Root>
-        <Field.Label for="taiKhoan" label="TÀI KHOẢN" />
+        <Field.Label target="taiKhoan" text="TÀI KHOẢN" />
         <Input.Root>
           <Input.Field
             id="taiKhoan"
@@ -22,7 +20,7 @@ export const LoginForm = () => {
       </Field.Root>
 
       <Field.Root>
-        <Field.Label for="matKhau" label="MẬT KHẨU" />
+        <Field.Label target="matKhau" text="MẬT KHẨU" />
         <Input.Root>
           <Input.Field
             id="matKhau"
@@ -30,15 +28,8 @@ export const LoginForm = () => {
             {...register("matKhau", accountValidationRules.matKhau)}
           />
           <Input.PasswordVisibilityToggle />
-          <Field.ErrorMessage message={errors.matKhau?.message} />
         </Input.Root>
-
-        <Link
-          to="/client/password-reset"
-          className="mt-1 self-end link-secondary"
-        >
-          Quên mật khẩu?
-        </Link>
+        <Field.ErrorMessage message={errors.matKhau?.message} />
       </Field.Root>
     </form>
   );

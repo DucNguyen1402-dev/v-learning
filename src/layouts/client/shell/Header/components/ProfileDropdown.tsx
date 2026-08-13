@@ -5,6 +5,7 @@ import { Auth } from "@shared/auth";
 import { Navigation } from "@shared/navigation";
 import { Theme } from "@shared/theme";
 import { Button, BUTTON_LAYOUTS, BUTTON_SIZES } from "@shared/ui";
+import { cn } from "@shared/utils";
 import { LogOut, MoonStar, Sun, User } from "lucide-react";
 
 export const ProfileDropdown = () => {
@@ -23,18 +24,21 @@ export const ProfileDropdown = () => {
   const menuItems = useMemo(() => {
     return [
       {
+        id: "theme-toggle",
         label: `Chế độ ${theme === "dark" ? "sáng" : "tối"}`,
         onClick: toggleTheme,
         icon: theme === "dark" ? Sun : MoonStar,
         routeKey: null,
       },
       {
+        id: "profile",
         label: "Hồ sơ",
         onClick: onProfileClick,
         icon: User,
         routeKey: AppRoutes.client.keys.PROFILE,
       },
       {
+        id: "logout",
         label: "Đăng xuất",
         onClick: onLogoutClick,
         icon: LogOut,
@@ -47,12 +51,16 @@ export const ProfileDropdown = () => {
 
   return (
     <ul className="profile-dropdown">
-      {menuItems.map((item, index) => {
+      {menuItems.map((item) => {
         const isActive = AppRoutes.client.isActive(pathname, item.routeKey);
+        const isLogout = item.id === "logout";
         return (
           <li
-            key={index}
-            className={`menu-button ${isActive ? "menu-button-active" : "menu-button-default"}`}
+            key={item.id}
+            className={cn("menu-button", {
+              "menu-button-danger": isLogout,
+              "menu-button-active": isActive,
+            })}
           >
             <Button
               onClick={item.onClick}
