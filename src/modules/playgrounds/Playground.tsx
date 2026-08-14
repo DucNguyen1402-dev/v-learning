@@ -12,7 +12,7 @@ export const Playground = () => {
       className="button-primary solid button-base"
       onClick={() =>
         open({
-          ...Modal.config.delete(ENTITIES.USER),
+          ...Modal.config.add(ENTITIES.COURSE),
           onConfirm,
         })
       }

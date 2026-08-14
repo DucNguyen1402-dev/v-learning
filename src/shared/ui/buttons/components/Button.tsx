@@ -5,7 +5,7 @@ import type {
   SVGProps,
 } from "react";
 
-// import { Spinner } from "@shared/overlays";
+import { Spinner } from "@shared/overlays";
 import { cn } from "@shared/utils";
 import { type VariantProps } from "class-variance-authority";
 
@@ -65,7 +65,7 @@ export const Button = ({
       {...props}
     >
       {Icon && !loading && <Icon className={currentSize.icon} />}
-      {/* {loading && <Spinner className={currentSize.icon} color="brand" />} */}
+      {loading && <Spinner />}
 
       {children}
     </button>

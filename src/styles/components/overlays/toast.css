@@ -48,4 +48,9 @@
   .toast-size-lg {
     @apply max-w-120 min-w-96 gap-4 rounded-lg border-l-10 px-6 py-5;
   }
+
+
+  .toast-view {
+    @apply pointer-events-none fixed inset-0 z-toast flex w-full max-w-md items-start justify-center px-4 pt-10 md:max-w-full
+  }
 }

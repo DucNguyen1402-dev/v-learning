@@ -12,7 +12,7 @@ export const ToastView = () => {
       {isOpen && (
         <motion.div
           key="notification"
-          className="pointer-events-none fixed inset-0 z-toast flex w-full max-w-md items-start justify-center px-4 pt-10 lg:max-w-full"
+          className="toast-view"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}

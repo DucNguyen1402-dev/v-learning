@@ -1,14 +1,42 @@
 @layer components {
+
+    .spinner-container {
+        @apply relative size-4.5
+    }
+
+
+    .spinner-outer {
+        @apply absolute inset-0 rounded-full border-3 border-current/20 bg-current/20;
+
+    }
+
+    .spinner-inner {
+        @apply animate-spin absolute inset-0 rounded-full [animation-duration:1s] border border-transparent;
+        border-top: 3px solid CurrentColor;
+
+    }
+
     .dual-ring-container {
-        @apply relative;
+        @apply relative size-9 lg:size-10 select-none;
+    }
+
+    .dual-ring {
+        @apply absolute rounded-full;
+        border: 2px solid transparent;
+
     }
 
     .dual-ring-outer {
-        @apply absolute inset-0 animate-spin rounded-full border-t-blue-500 border-l-blue-500;
+        @apply inset-0 animate-spin;
+        border-top-color: --alpha(var(--color-fg-brand) /80%);
+        border-left-color: --alpha(var(--color-fg-brand) /80%);
 
     }
 
     .dual-ring-inner {
-        @apply absolute inset-1 animate-[spin_1.5s_linear_infinite_reverse] rounded-full border-2 border-transparent;
+        @apply inset-1 animate-[spin_1.5s_linear_infinite_reverse];
+        border-right-color: color-mix(in srgb, var(--color-fg-brand) 15%, white);
+        border-bottom-color: color-mix(in srgb, var(--color-fg-brand) 15%, white);
     }
+
 }

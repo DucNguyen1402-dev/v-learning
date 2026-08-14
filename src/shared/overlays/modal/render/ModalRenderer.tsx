@@ -12,20 +12,21 @@ export const ModalRenderer = () => {
   } = useModalContext();
 
   useLockBodyScroll(modalState.isOpen);
-  if (!modalState.isOpen) return null;
 
   return (
     <AnimatePresence>
-      <Backdrop>
-        <motion.div
-          initial={{ y: 12, scale: 0.98, opacity: 0 }}
-          animate={{ y: 0, scale: 1, opacity: 1 }}
-          exit={{ y: 12, scale: 0.98, opacity: 0 }}
-          transition={{ duration: 0.2 }}
-        >
-          <ModalContainer />
-        </motion.div>
-      </Backdrop>
+      {modalState.isOpen && (
+        <Backdrop>
+          <motion.div
+            initial={{ scale: 0.95, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.5, opacity: 0 }}
+            transition={{ duration: 0.15, ease: "easeInOut" }}
+          >
+            <ModalContainer />
+          </motion.div>
+        </Backdrop>
+      )}
     </AnimatePresence>
   );
 };
