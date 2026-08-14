@@ -6,10 +6,10 @@ import { Navigation } from "@shared/navigation";
 import { Theme } from "@shared/theme";
 import { Button, BUTTON_LAYOUTS, BUTTON_SIZES } from "@shared/ui";
 import { cn } from "@shared/utils";
-import { LogOut, MoonStar, Sun, User } from "lucide-react";
+import { LogOut, User } from "lucide-react";
 
 export const ProfileDropdown = () => {
-  const { toggleTheme, theme } = Theme.use();
+  const { toggleTheme, assets } = Theme.use();
   const { go } = Navigation.useNavigate();
 
   const onLogoutClick = useCallback(() => {
@@ -25,9 +25,9 @@ export const ProfileDropdown = () => {
     return [
       {
         id: "theme-toggle",
-        label: `Chế độ ${theme === "dark" ? "sáng" : "tối"}`,
+        label: `Chế độ ${assets.label}`,
         onClick: toggleTheme,
-        icon: theme === "dark" ? Sun : MoonStar,
+        icon: assets.icon,
         routeKey: null,
       },
       {
@@ -45,7 +45,7 @@ export const ProfileDropdown = () => {
         routeKey: null,
       },
     ];
-  }, [toggleTheme, onLogoutClick, onProfileClick, theme]);
+  }, [toggleTheme, onLogoutClick, onProfileClick, assets]);
 
   const pathname = Navigation.usePathname();
 

@@ -1,19 +1,19 @@
 @layer base {
 
-  /* Document & Scroll Behavior */
+
   html {
     scroll-behavior: smooth;
     scrollbar-gutter: stable;
   }
 
-  /* Accessibility */
+
   @media (prefers-reduced-motion: reduce) {
     html {
       scroll-behavior: auto;
     }
   }
 
-  /* Typography & Core Theme Setup */
+
   body {
     font-family:
       var(--font-sans),
@@ -23,12 +23,12 @@
       "Segoe UI",
       Roboto,
       sans-serif;
-    background-color: var(--color-bg-default);
+    background-color: var(--color-bg-base);
     color: var(--color-fg-default);
     text-rendering: optimizeLegibility;
   }
 
-  /* Custom Selection Highlight */
+
   ::selection {
     background-color: var(--color-bg-selected);
     color: var(--color-fg-on-selected);

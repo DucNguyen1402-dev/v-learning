@@ -1,18 +1,29 @@
 import { Modal } from "@shared/overlays/modal/components";
-import { Button, BUTTON_APPEARANCES, BUTTON_INTENTS } from "@shared/ui";
+import {
+  ACTION_LABELS,
+  Button,
+  BUTTON_APPEARANCES,
+  BUTTON_INTENTS,
+} from "@shared/ui";
 
-export const AddModal = ({ onCancel, onConfirm, title, subtitle }) => {
+import type { ModalProps } from "./types";
+export const AddModal = ({
+  onCancel,
+  onConfirm,
+  title,
+  subtitle,
+}: ModalProps) => {
   return (
     <Modal>
       <Modal.Header title={title} subtitle={subtitle} />
 
       <Modal.Footer>
         <Button
-          intent={BUTTON_INTENTS.PRIMARY}
+          intent={BUTTON_INTENTS.SECONDARY}
           appearance={BUTTON_APPEARANCES.SOLID}
           onClick={onCancel}
         >
-          Hủy
+          {ACTION_LABELS.CANCEL}
         </Button>
 
         <Button
@@ -20,7 +31,7 @@ export const AddModal = ({ onCancel, onConfirm, title, subtitle }) => {
           appearance={BUTTON_APPEARANCES.SOLID}
           onClick={onConfirm}
         >
-          Xác nhận
+          {ACTION_LABELS.CONFIRM}
         </Button>
       </Modal.Footer>
     </Modal>

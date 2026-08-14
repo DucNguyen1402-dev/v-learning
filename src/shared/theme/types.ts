@@ -1,3 +1,1 @@
-export type ThemeValue = "light" | "dark";
-
-export type ThemeAssets = Record<ThemeValue, string>;
+export type ThemeValue = "dark" | "light";

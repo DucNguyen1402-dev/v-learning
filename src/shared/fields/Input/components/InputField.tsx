@@ -5,7 +5,7 @@ import { cn } from "@shared/utils";
 import { useInputContext } from "../contexts";
 
 type InputFieldProps = InputHTMLAttributes<HTMLInputElement> & {
-  isError?: boolean;
+  invalid?: boolean;
   hasLeftAddon?: boolean;
   hasRightAddon?: boolean;
 };
@@ -15,7 +15,7 @@ export const InputField = forwardRef<HTMLInputElement, InputFieldProps>(
     {
       disabled = false,
       type = "text",
-      isError = false,
+      invalid = false,
       hasLeftAddon = false,
       hasRightAddon = false,
       id,
@@ -37,8 +37,7 @@ export const InputField = forwardRef<HTMLInputElement, InputFieldProps>(
           "field-base",
           {
             "field-disabled": disabled,
-            "field-error": !disabled && isError,
-            "field-default": !disabled && !isError,
+            "field-invalid": !disabled && invalid,
             "field-with-left-addon": hasLeftAddon,
             "field-with-right-addon": hasRightAddon,
           },

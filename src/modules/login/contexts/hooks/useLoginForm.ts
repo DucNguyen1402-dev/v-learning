@@ -1,12 +1,13 @@
 import { useForm } from "react-hook-form";
 
-import type { LoginFormValues } from "@modules/login/type";
+import type { LoginFormValues } from "./constants";
 
 export const useLoginForm = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
+    getFieldState,
     control,
   } = useForm<LoginFormValues>({
     defaultValues: {
@@ -21,5 +22,6 @@ export const useLoginForm = () => {
     errors,
     handleSubmit,
     control,
+    getFieldState,
   };
 };

@@ -35,6 +35,9 @@
     *================================================== */
 
   --color-fg-error: var(--color-red-700);
+  --color-fg-success: var(--color-green-700);
+  --color-fg-warning: var(--color-yellow-700);
+
 
   --color-fg-on-feedback: var(--color-white);
 

@@ -1,31 +1,51 @@
 @layer components {
   .toast {
-    @apply pointer-events-auto flex items-center gap-3 rounded-md border-l-6 shadow-xl backdrop-blur-lg;
+    @apply pointer-events-auto flex items-center gap-3 rounded-md shadow-xl backdrop-blur-lg;
     color: var(--color-fg-on-feedback);
   }
 
   .toast-success {
-    background-color: var(--color-bg-success);
+    background-color: --alpha(var(--color-bg-success) / 80%);
     border-color: var(--color-border-success);
+
+    .dark & {
+      color: var(--color-fg-success);
+      background-color: --alpha(var(--color-bg-success) / 30%);
+      border-color: --alpha(var(--color-bg-success) / 50%);
+    }
   }
 
   .toast-error {
-    background-color: var(--color-bg-error);
+    background-color: --alpha(var(--color-bg-error) / 80%);
     border-color: var(--color-border-error);
+
+    .dark & {
+      color: var(--color-fg-error);
+      background-color: --alpha(var(--color-bg-error) / 30%);
+      border-color: --alpha(var(--color-bg-error) / 50%);
+    }
   }
 
   .toast-warning {
-    background-color: var(--color-bg-warning);
+    background-color: --alpha(var(--color-bg-warning) / 80%);
     border-color: var(--color-border-warning);
+
+    .dark & {
+      color: var(--color-fg-warning);
+      background-color: --alpha(var(--color-bg-warning) / 30%);
+      border-color: --alpha(var(--color-bg-warning) / 50%);
+    }
   }
 
   .toast-size-sm {
-    @apply max-w-96 min-w-72 gap-2.5 rounded-md border-l-4 px-4 py-3;
+    @apply max-w-96 min-w-72 gap-2.5 rounded-md border-l-6 px-4 py-3;
   }
+
   .toast-size-md {
-    @apply max-w-100 min-w-80 gap-3 rounded-md border-l-6 px-5 py-4;
+    @apply max-w-100 min-w-80 gap-3 rounded-md border-l-8 px-5 py-4;
   }
+
   .toast-size-lg {
-    @apply max-w-120 min-w-96 gap-4 rounded-lg border-l-6 px-6 py-5;
+    @apply max-w-120 min-w-96 gap-4 rounded-lg border-l-10 px-6 py-5;
   }
 }

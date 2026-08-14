@@ -1,4 +1,2 @@
-// export * from "./components";
-// export type { ModalContextValues } from "./contexts";
-// export { ModalProvider } from "./contexts";
-// export { Modal } from "./modal";
+export type { ModalContextValues } from "./contexts";
+export { ModalRenderer } from "./render";

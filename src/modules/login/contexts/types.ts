@@ -2,10 +2,11 @@ import type {
   Control,
   FieldErrors,
   FieldValues,
+  UseFormGetFieldState,
   UseFormRegister,
 } from "react-hook-form";
 
-import type { LoginFormValues } from "@modules/login/type";
+import type { LoginFormFieldNames, LoginFormValues } from "./hooks";
 
 type HookFormProps<T extends FieldValues> = {
   register: UseFormRegister<T>;
@@ -14,9 +15,12 @@ type HookFormProps<T extends FieldValues> = {
 };
 
 export type LoginContextValues = {
-  hookForm: HookFormProps<LoginFormValues>;
+  hookForm: HookFormProps<LoginFormValues> & {
+    getFieldState: UseFormGetFieldState<LoginFormValues>;
+  };
   actions: {
     onLoginClick: () => void;
   };
   loading: boolean;
+  LOGIN_FORM_FIELD_NAMES: LoginFormFieldNames;
 };

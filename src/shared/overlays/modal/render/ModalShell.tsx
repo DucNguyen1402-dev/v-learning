@@ -4,7 +4,7 @@ import { ModalContainer } from "@shared/overlays/modal/containers";
 import { useModalContext } from "@shared/overlays/modal/contexts";
 import { AnimatePresence, motion } from "motion/react";
 
-export const ModalShell = () => {
+export const ModalRenderer = () => {
   const {
     internal: {
       state: { modalState },

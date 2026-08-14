@@ -1,4 +1,4 @@
-import { Login } from "@modules/login";
+import { useLoginContext } from "@modules/login/contexts";
 import { Checkbox, CHECKBOX_SIZE, Field, FIELD_LAYOUT } from "@shared/fields";
 import {
   ACTION_LABELS,
@@ -12,7 +12,7 @@ export const LoginActions = () => {
     hookForm: { control },
     actions: { onLoginClick },
     loading,
-  } = Login.use();
+  } = useLoginContext();
   return (
     <div className="flex flex-col gap-8">
       <div className="self-start">

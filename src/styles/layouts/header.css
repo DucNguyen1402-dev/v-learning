@@ -1,13 +1,14 @@
 @layer layout {
   .header {
     @apply sticky top-0 z-sticky h-24 px-1 backdrop-blur md:h-28;
-    background-color: --alpha(var(--surface-default) / 80%);
+    background-color: --alpha(var(--color-bg-default) / 80%);
     border-bottom: 1px solid var(--color-border-default);
   }
 
   .nav-link {
     @apply cursor-pointer text-sm font-medium transition-colors duration-200 ease-in-out lg:text-[15px];
     color: var(--color-fg-default);
+
     &:hover {
       color: var(--color-fg-brand);
     }

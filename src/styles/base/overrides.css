@@ -10,7 +10,7 @@
         margin: 0;
     }
 
-    /* Autofill styles */
+    /* Autofill styles (light & dark) */
 
     input:-webkit-autofill,
     input:-webkit-autofill:hover,
@@ -18,25 +18,19 @@
     input:-webkit-autofill:active {
         -webkit-box-shadow: 0 0 0 1000px #f4f4f5 inset !important;
         box-shadow: 0 0 0 1000px #f4f4f5 inset !important;
-
         -webkit-text-fill-color: #18181b !important;
         caret-color: #18181b !important;
-
         border-color: #d4d4d8 !important;
     }
-
 
     .dark input:-webkit-autofill,
     .dark input:-webkit-autofill:hover,
     .dark input:-webkit-autofill:focus,
     .dark input:-webkit-autofill:active {
         -webkit-box-shadow: 0 0 0 1000px #3f3f46 inset !important;
-
         box-shadow: 0 0 0 1000px #3f3f46 inset !important;
-
         -webkit-text-fill-color: #fafafa !important;
         caret-color: #fafafa !important;
-
         border-color: #52525b !important;
     }
 }

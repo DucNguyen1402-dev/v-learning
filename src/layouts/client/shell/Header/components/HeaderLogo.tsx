@@ -1,12 +1,12 @@
-import { Theme, themeLogos } from "@shared/theme";
+import { Theme } from "@shared/theme";
 
 export const HeaderLogo = () => {
-  const { theme } = Theme.use();
+  const { assets } = Theme.use();
 
   return (
     <div className="flex items-center">
       <img
-        src={themeLogos[theme]}
+        src={assets.logo}
         alt="V-learning Logo"
         className="w-48 md:w-56 lg:w-60"
       />

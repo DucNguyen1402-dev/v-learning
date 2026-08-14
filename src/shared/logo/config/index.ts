@@ -1,0 +1,1 @@
+export { logoSize } from "./size";

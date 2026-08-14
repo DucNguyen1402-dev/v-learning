@@ -27,3 +27,6 @@ export const accountValidationRules = {
     },
   },
 } as const;
+
+export type AccountValidationRules =
+  (typeof accountValidationRules)[keyof typeof accountValidationRules];

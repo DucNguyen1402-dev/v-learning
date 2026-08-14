@@ -1,5 +1,12 @@
-import { Modal } from "@shared/overlays/modal/components";
-import { Button, BUTTON_APPEARANCES, BUTTON_INTENTS } from "@shared/ui";
+import { Modal, MODAL_HEADER_SIZES } from "@shared/overlays/modal/components";
+import {
+  ACTION_LABELS,
+  Button,
+  BUTTON_APPEARANCES,
+  BUTTON_INTENTS,
+} from "@shared/ui";
+
+import type { ModalProps } from "./types";
 
 export const DeleteModal = ({
   onCancel,
@@ -7,22 +14,26 @@ export const DeleteModal = ({
   title,
   subtitle,
   loading,
-}) => {
+}: ModalProps & { loading?: boolean }) => {
   return (
     <Modal>
-      <Modal.Header title={title} subtitle={subtitle} titleSize="sm" />
+      <Modal.Header
+        title={title}
+        subtitle={subtitle}
+        titleSize={MODAL_HEADER_SIZES.SMALL}
+      />
 
       <Modal.Footer>
-        <Button variant={BUTTON_APPEARANCES.OUTLINE} onClick={onCancel}>
-          Hủy
+        <Button appearance={BUTTON_APPEARANCES.OUTLINE} onClick={onCancel}>
+          {ACTION_LABELS.CANCEL}
         </Button>
 
         <Button
-          variant={BUTTON_APPEARANCES.SOLID}
+          appearance={BUTTON_APPEARANCES.SOLID}
           onClick={onConfirm}
           loading={loading}
         >
-          Xác nhận
+          {ACTION_LABELS.CONFIRM}
         </Button>
       </Modal.Footer>
     </Modal>

@@ -8,7 +8,7 @@ import { cn } from "@shared/utils";
 
 import { useTextArea } from "./useTextArea";
 type TextareaProps = Omit<ComponentPropsWithoutRef<"textarea">, "onInput"> & {
-  isError?: boolean;
+  invalid?: boolean;
   resizeKey?: string;
   inputRef?: React.Ref<HTMLTextAreaElement>;
   onInput?: (e: SyntheticEvent<HTMLTextAreaElement>) => void;
@@ -16,7 +16,7 @@ type TextareaProps = Omit<ComponentPropsWithoutRef<"textarea">, "onInput"> & {
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
   (
     {
-      isError = false,
+      invalid = false,
       id = null,
       resizeKey,
       inputRef,
@@ -41,8 +41,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
         {...props}
         className={cn("field-base textarea", {
           "field-disabled": disabled,
-          "field-error": !disabled && isError,
-          "field-default": !disabled,
+          "field-invalid": !disabled && invalid,
         })}
       />
     );

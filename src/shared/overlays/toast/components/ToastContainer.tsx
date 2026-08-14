@@ -1,5 +1,5 @@
 import {
-  messageClasses,
+  messageFontSizes,
   toastIconSizes,
   toastIconTypes,
   toastSizeClasses,
@@ -32,7 +32,7 @@ export const ToastContainer = ({
 
   const Icon = toastIconTypes[variant];
   const iconSize = toastIconSizes[size];
-  const messageSize = messageClasses[size];
+  const messageSize = messageFontSizes[size];
   return (
     <div ref={toastRef} className={cn("toast", typeClass, toastSize)}>
       <Icon className={iconSize} />
