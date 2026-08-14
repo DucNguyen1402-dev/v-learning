@@ -1,6 +1,6 @@
 @layer components {
   .button-sm {
-    @apply px-2 py-1 text-sm;
+    @apply px-2 py-1.5 text-sm;
   }
 
   .icon-button-sm {
@@ -8,7 +8,7 @@
   }
 
   .button-md {
-    @apply px-3 py-1.5 text-sm;
+    @apply px-3 py-2 text-sm;
   }
 
   .icon-button-md {
@@ -16,7 +16,7 @@
   }
 
   .button-lg {
-    @apply px-4 py-2 text-base;
+    @apply px-4 py-2.5 text-base;
   }
 
   .icon-button-lg {
@@ -48,6 +48,16 @@
 
     &:hover {
       background-color: var(--color-bg-secondary-solid-hover);
+    }
+  }
+
+  .button-secondary.outline {
+    background-color: var(--color-bg-secondary-outline);
+    color: var(--color-fg-on-secondary-outline);
+    border: var(--color-border-secondary-outline);
+
+    &:hover {
+      background-color: var(--color-bg-secondary-outline-hover);
     }
   }
 

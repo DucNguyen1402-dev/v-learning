@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 
 import { Layout } from "@shared/layouts";
-import { Loading, Toast } from "@shared/overlays";
+import { Loading, Modal, Toast } from "@shared/overlays";
 import { Theme } from "@shared/theme";
 
 type ClientProvidersProps = {
@@ -10,11 +10,11 @@ type ClientProvidersProps = {
 export const ClientProvider = ({ children }: ClientProvidersProps) => (
   <Layout.Provider>
     <Loading.Provider>
-      {/* <Modal.Provider> */}
-      <Toast.Provider>
-        <Theme.Provider>{children}</Theme.Provider>
-      </Toast.Provider>
-      {/* </Modal.Provider> */}
+      <Modal.Provider>
+        <Toast.Provider>
+          <Theme.Provider>{children}</Theme.Provider>
+        </Toast.Provider>
+      </Modal.Provider>
     </Loading.Provider>
   </Layout.Provider>
 );

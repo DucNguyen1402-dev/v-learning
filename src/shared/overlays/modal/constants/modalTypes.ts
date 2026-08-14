@@ -1,6 +1,6 @@
 export const MODAL_TYPES = {
   ADD: "add",
-  EDIT: "edit",
+  UPDATE: "update",
   DELETE: "delete",
   UNSAVED_CHANGES: "unsavedChanges",
   LEAVE_PAGE: "leavePage",

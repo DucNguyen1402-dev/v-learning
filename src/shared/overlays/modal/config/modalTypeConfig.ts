@@ -1,12 +1,12 @@
-import { MODAL_TYPES } from "@shared/overlays/modal/constants";
+import { MODAL_TYPES } from "../constants";
 import {
   AddModal,
   DeleteModal,
-  EditModal,
   LeavePageModal,
   PasswordChangeModal,
   UnsavedChangesModal,
-} from "@shared/overlays/modal/modals";
+  UpdateModal,
+} from "../modals";
 
 export const MODAL_TYPE_CONFIG = {
   [MODAL_TYPES.ADD]: {
@@ -17,8 +17,8 @@ export const MODAL_TYPE_CONFIG = {
     ModalComponent: DeleteModal,
     loading: true,
   },
-  [MODAL_TYPES.EDIT]: {
-    ModalComponent: EditModal,
+  [MODAL_TYPES.UPDATE]: {
+    ModalComponent: UpdateModal,
     loading: false,
   },
   [MODAL_TYPES.UNSAVED_CHANGES]: {

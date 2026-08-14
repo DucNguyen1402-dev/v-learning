@@ -1,2 +1,2 @@
-export type { ModalContextValues } from "./contexts";
+export { Modal } from "./Modal";
 export { ModalRenderer } from "./render";

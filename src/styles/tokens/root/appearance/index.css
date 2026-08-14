@@ -1,5 +1,9 @@
 :root {
-  /* --- Component/Intent Tokens --- */
+  /* =================================================
+    *   Component/Intent Tokens
+    *================================================== */
+
+  /* --- Solid --- */
 
   --color-bg-primary-solid: var(--color-bg-brand);
   --color-fg-on-primary-solid: var(--color-fg-on-brand);
@@ -20,6 +24,15 @@
   --color-fg-on-destructive-solid: var(--color-fg-on-danger);
   --color-border-destructive-solid: transparent;
   --color-bg-destructive-solid-hover: var(--color-bg-danger-hover);
+
+  /* --- Outline --- */
+
+  --color-bg-secondary-outline: transparent;
+  --color-fg-on-secondary-outline: var(--color-fg-muted);
+  --color-border-secondary-outline: 1px solid var(--color-border-muted);
+  --color-bg-secondary-outline-hover: var(--color-bg-muted-hover);
+
+  /* --- Ghost --- */
 
   --color-bg-secondary-ghost: transparent;
   --color-fg-on-secondary-ghost: var(--color-fg-muted);

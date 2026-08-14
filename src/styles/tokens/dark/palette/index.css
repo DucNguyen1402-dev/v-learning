@@ -7,10 +7,9 @@
 
   --color-accent: var(--color-blue-500);
 
-
   /*focus*/
   --color-focus: var(--color-blue-500);
 
   /*overlay*/
-  --color-overlay: --alpha(var(--color-black)/40%);
+  --color-overlay: --alpha(var(--color-black)/50%);
 }

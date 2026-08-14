@@ -12,7 +12,7 @@ interface ModalHeaderProps {
 export const ModalHeader = ({
   title,
   subtitle,
-  titleSize = MODAL_HEADER_SIZES.MEDIUM,
+  titleSize = MODAL_HEADER_SIZES.LARGE,
 }: ModalHeaderProps) => (
   <div className="modal-header-container">
     {title && (

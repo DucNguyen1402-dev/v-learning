@@ -12,7 +12,7 @@ export const BackButton = () => {
 
   return (
     <Button
-      appearance={BUTTON_APPEARANCES.GHOST}
+      appearance={BUTTON_APPEARANCES.OUTLINE}
       intent={BUTTON_INTENTS.SECONDARY}
       size={BUTTON_SIZES.SMALL}
       icon={MoveLeft}

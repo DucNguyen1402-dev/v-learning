@@ -11,5 +11,5 @@
   --color-focus: var(--color-blue-600);
 
   /* overlay */
-  --color-overlay: --alpha(var(--color-black) / 48%);
+  --color-overlay: --alpha(var(--color-black) / 60%);
 }

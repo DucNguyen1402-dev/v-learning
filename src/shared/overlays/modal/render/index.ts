@@ -1,1 +1,1 @@
-export { ModalRenderer } from "./ModalShell";
+export { ModalRenderer } from "./ModalRenderer";

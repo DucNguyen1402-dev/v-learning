@@ -33,6 +33,7 @@
     *================================================== */
 
   --color-bg-elevated: var(--color-white);
+  --color-bg-overlay: var(--color-overlay);
 
   /* =================================================
     *  Feedback dimensions

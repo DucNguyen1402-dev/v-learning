@@ -5,9 +5,10 @@ import {
   BUTTON_INTENTS,
 } from "@shared/ui";
 
-import { Modal, MODAL_HEADER_SIZES } from "../foundation";
+import { Modal } from "../foundation";
 import type { ModalProps } from "./types";
-export const PasswordChangeModal = ({
+
+export const UpdateModal = ({
   onCancel,
   onConfirm,
   title,
@@ -15,11 +16,7 @@ export const PasswordChangeModal = ({
 }: ModalProps) => {
   return (
     <Modal>
-      <Modal.Header
-        title={title}
-        subtitle={subtitle}
-        titleSize={MODAL_HEADER_SIZES.MEDIUM}
-      />
+      <Modal.Header title={title} subtitle={subtitle} />
 
       <Modal.Footer>
         <Button

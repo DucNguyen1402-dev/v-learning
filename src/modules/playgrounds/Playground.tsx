@@ -1,12 +1,23 @@
-import { Field, Textarea } from "@shared/fields";
+import { ENTITIES } from "@shared/domain";
+import { Modal } from "@shared/overlays";
 
 export const Playground = () => {
+  const { open } = Modal.use();
+
+  const onConfirm = () => {
+    console.log("Confirmed");
+  };
   return (
-    <div className="relative flex min-h-screen items-center justify-center gap-2">
-      <Field.Root>
-        <Field.Label target="date-input-field" required text="Ngày sinh" />
-        <Textarea />
-      </Field.Root>
-    </div>
+    <button
+      className="button-primary solid button-base"
+      onClick={() =>
+        open({
+          ...Modal.config.delete(ENTITIES.USER),
+          onConfirm,
+        })
+      }
+    >
+      Open Modal
+    </button>
   );
 };

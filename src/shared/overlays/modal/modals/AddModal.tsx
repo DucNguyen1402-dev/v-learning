@@ -1,4 +1,3 @@
-import { Modal } from "@shared/overlays/modal/components";
 import {
   ACTION_LABELS,
   Button,
@@ -6,6 +5,7 @@ import {
   BUTTON_INTENTS,
 } from "@shared/ui";
 
+import { Modal } from "../foundation";
 import type { ModalProps } from "./types";
 export const AddModal = ({
   onCancel,
@@ -20,7 +20,7 @@ export const AddModal = ({
       <Modal.Footer>
         <Button
           intent={BUTTON_INTENTS.SECONDARY}
-          appearance={BUTTON_APPEARANCES.SOLID}
+          appearance={BUTTON_APPEARANCES.OUTLINE}
           onClick={onCancel}
         >
           {ACTION_LABELS.CANCEL}
