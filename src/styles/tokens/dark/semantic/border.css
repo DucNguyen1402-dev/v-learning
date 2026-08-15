@@ -3,16 +3,16 @@
     *  Prominence
     *================================================== */
   --color-border-default: var(--color-zinc-800);
-  --color-border-muted: var(--color-zinc-700);
-  --color-border-subtle: var(--color-zinc-600);
+  --color-border-subtle: var(--color-zinc-700);
+  --color-border-muted: var(--color-zinc-600);
 
   /* =================================================
     *  Interaction
     *================================================== */
 
   --color-border-default-hover: var(--color-zinc-700);
-  --color-border-muted-hover: var(--color-zinc-600);
-  --color-border-subtle-hover: var(--color-zinc-500);
+  --color-border-subtle-hover: var(--color-zinc-600);
+  --color-border-muted-hover: var(--color-zinc-500);
 
   /* =================================================
     *  Feedback dimensions

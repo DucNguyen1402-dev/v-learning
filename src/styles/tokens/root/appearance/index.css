@@ -10,15 +10,15 @@
   --color-border-primary-solid: transparent;
   --color-bg-primary-solid-hover: var(--color-bg-brand-hover);
 
-  --color-bg-secondary-solid: var(--color-bg-muted);
+  --color-bg-secondary-solid: var(--color-bg-subtle);
   --color-fg-on-secondary-solid: var(--color-fg-default);
-  --color-border-secondary-solid: var(--color-border-muted);
-  --color-bg-secondary-solid-hover: var(--color-bg-muted-hover);
+  --color-border-secondary-solid: var(--color-border-subtle);
+  --color-bg-secondary-solid-hover: var(--color-bg-subtle-hover);
 
-  --color-bg-tertiary-solid: var(--color-bg-subtle);
+  --color-bg-tertiary-solid: var(--color-bg-muted);
   --color-fg-on-tertiary-solid: var(--color-fg-muted);
   --color-border-tertiary-solid: transparent;
-  --color-bg-tertiary-solid-hover: var(--color-bg-subtle-hover);
+  --color-bg-tertiary-solid-hover: var(--color-bg-muted-hover);
 
   --color-bg-destructive-solid: var(--color-bg-danger);
   --color-fg-on-destructive-solid: var(--color-fg-on-danger);
@@ -28,16 +28,16 @@
   /* --- Outline --- */
 
   --color-bg-secondary-outline: transparent;
-  --color-fg-on-secondary-outline: var(--color-fg-muted);
-  --color-border-secondary-outline: 1px solid var(--color-border-muted);
-  --color-bg-secondary-outline-hover: var(--color-bg-muted-hover);
+  --color-fg-on-secondary-outline: var(--color-fg-subtle);
+  --color-border-secondary-outline: 1px solid var(--color-border-subtle);
+  --color-bg-secondary-outline-hover: var(--color-bg-subtle-hover);
 
   /* --- Ghost --- */
 
   --color-bg-secondary-ghost: transparent;
-  --color-fg-on-secondary-ghost: var(--color-fg-muted);
-  --color-border-secondary-ghost: 1px solid var(--color-border-muted);
-  --color-bg-secondary-ghost-hover: var(--color-bg-muted-hover);
+  --color-fg-on-secondary-ghost: var(--color-fg-subtle);
+  --color-border-secondary-ghost: 1px solid var(--color-border-subtle);
+  --color-bg-secondary-ghost-hover: var(--color-bg-subtle-hover);
 
   --color-bg-tertiary-ghost: transparent;
   --color-fg-on-tertiary-ghost: var(--color-fg-muted);

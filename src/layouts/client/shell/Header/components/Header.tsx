@@ -30,7 +30,7 @@ export const Header = () => {
         <div className="flex items-center gap-4">
           {currentUser ? (
             <div className="group relative flex items-center gap-2.5 rounded-lg p-2">
-              <CircleUser className="size-8 text-text-secondary lg:size-6" />
+              <CircleUser className="size-8 text-text-subtle lg:size-6" />
               <span className="hidden text-sm font-medium lg:block">
                 {currentUser.taiKhoan}
               </span>
@@ -41,11 +41,9 @@ export const Header = () => {
             </div>
           ) : (
             <div
-              className={`flex items-center justify-center gap-8 ${shouldHideLoginButton ? "w-32" : ""}`}
+              className={`flex items-center justify-center gap-4 lg:gap-8 ${shouldHideLoginButton ? "w-32" : ""}`}
             >
-              <div className="hidden lg:block">
-                <ThemeModeButton />
-              </div>
+              <ThemeModeButton />
               {!shouldHideLoginButton && (
                 <div>
                   <LoginButton />

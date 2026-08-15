@@ -11,10 +11,10 @@
   }
 
   .select-icon {
-    color: var(--color-fg-muted);
+    color: var(--color-fg-subtle);
 
     &:hover {
-      color: var(--color-fg-muted-hover);
+      color: var(--color-fg-subtle-hover);
     }
   }
 }

@@ -17,9 +17,9 @@
 
   .chevron-icon {
     @apply flex size-6 cursor-pointer items-center justify-center rounded transition-colors duration-200;
-    color: var(--color-fg-muted);
+    color: var(--color-fg-subtle);
     &:hover {
-      color: var(--color-red-muted-hover);
+      color: var(--color-red-subtle-hover);
     }
   }
 
@@ -38,7 +38,7 @@
   }
 
   .rdp-caption_label {
-    @apply text-sm font-semibold;
+    @apply text-[13px] font-semibold md:text-sm;
   }
 
   .rdp-button_previous {
@@ -51,7 +51,7 @@
 
   .rdp-weekday {
     @apply flex-1 text-center text-xs font-medium uppercase;
-    color: var(--color-fg-muted);
+    color: var(--color-fg-subtle);
   }
 
   .rdp-week {
@@ -59,11 +59,11 @@
   }
 
   .rdp-day {
-    @apply h-8.5 w-8.5 p-0;
+    @apply size-8 p-0 md:size-8.5;
   }
 
   .rdp-day_button {
-    @apply flex size-8.5 cursor-pointer items-center justify-center rounded-full text-sm;
+    @apply flex size-8 cursor-pointer items-center justify-center rounded-full text-[13px] md:size-8.5 md:text-sm;
   }
 
   .rdp-today {

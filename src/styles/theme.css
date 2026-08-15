@@ -5,9 +5,9 @@
 
   /* ================= Text Colors ================= */
 
-  --color-text-primary: var(--color-fg-default);
-  --color-text-secondary: var(--color-fg-muted);
-  --color-text-tertiary: var(--color-fg-subtle);
+  --color-text-default: var(--color-fg-default);
+  --color-text-muted: var(--color-fg-muted);
+  --color-text-subtle: var(--color-fg-subtle);
 
   --color-muted-foreground: var(--color-fg-muted);
 
@@ -20,27 +20,18 @@
 
   /* ================= Border Colors ================= */
 
-  --color-border-primary: var(--color-border-default);
-  --color-border-secondary: var(--color-border-muted);
-  --color-border-tertiary: var(--color-border-subtle);
+  --color-border-default: var(--color-border-default);
+  --color-border-muted: var(--color-border-muted);
+  --color-border-subtle: var(--color-border-subtle);
 
   /* ================= Z-Index Layers ================= */
 
   --z-index-behind: -1;
-
   --z-index-base: 0;
-
-  /* Layout Layers */
   --z-index-sticky: 100;
-
-  /* Floating UI */
   --z-index-popover: 200;
-
-  /* Overlays & Dialogs */
   --z-index-overlay: 300;
   --z-index-modal: 400;
-
-  /* Global Notifications */
   --z-index-toast: 500;
   --z-index-max: 9999;
 }

@@ -3,16 +3,16 @@
     *  Prominence dimensions
     *================================================== */
   --color-fg-default: var(--color-zinc-50);
-  --color-fg-muted: var(--color-zinc-300);
-  --color-fg-subtle: var(--color-zinc-400);
+  --color-fg-subtle: var(--color-zinc-300);
+  --color-fg-muted: var(--color-zinc-400);
 
   /* =================================================
     *  Interaction dimensions
     *================================================== */
 
   --color-fg-disabled: var(--color-zinc-600);
-  --color-fg-muted-hover: var(--color-zinc-200);
-  --color-fg-subtle-hover: var(--color-zinc-300);
+  --color-fg-muted-hover: var(--color-zinc-300);
+  --color-fg-subtle-hover: var(--color-zinc-200);
 
   /* =================================================
     *  Feedback dimensions

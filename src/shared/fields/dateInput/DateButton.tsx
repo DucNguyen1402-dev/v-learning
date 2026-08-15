@@ -47,9 +47,9 @@ export const DateButton = ({
         "field-disabled": disabled,
         "field-error": isError && !disabled,
         "field-default": !isError && !disabled,
-        "data-button-inactive": !isDatePickerOpen && !value,
-        "data-button-active": isDatePickerOpen,
-        "data-button-selected": !!value,
+        "date-button-inactive": !isDatePickerOpen && !value,
+        "date-button-active": isDatePickerOpen,
+        "date-button-selected": !!value,
       })}
       aria-expanded={isDatePickerOpen}
       aria-haspopup="dialog"

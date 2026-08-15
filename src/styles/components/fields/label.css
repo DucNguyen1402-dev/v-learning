@@ -1,6 +1,7 @@
 @layer components {
   .label {
-    @apply block w-fit cursor-pointer text-sm font-medium text-text-secondary;
+    @apply block w-fit cursor-pointer text-sm font-medium;
+    color: var(--color-fg-subtle);
   }
 
   .label-required {

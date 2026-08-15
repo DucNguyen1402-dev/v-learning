@@ -2,7 +2,7 @@
   .checkbox {
     @apply flex-center cursor-pointer rounded-sm transition-colors duration-200 ease-in-out outline-none;
     border: 1px solid var(--color-border-default);
-    background-color: var(--color-bg-muted);
+    background-color: var(--color-bg-subtle);
   }
 
   .checkbox-sm {
@@ -30,7 +30,7 @@
     @apply cursor-pointer;
 
     &:hover {
-      background-color: var(--color-bg-muted-hover);
+      background-color: var(--color-bg-subtle-hover);
     }
 
     &[data-state="checked"] {
@@ -48,7 +48,7 @@
   }
 
   .checkbox-label {
-    @apply text-sm text-text-secondary;
+    @apply text-sm text-text-subtle;
   }
 
   .checkbox-label-default {

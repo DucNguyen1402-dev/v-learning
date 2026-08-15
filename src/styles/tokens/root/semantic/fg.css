@@ -16,8 +16,8 @@
     *  Prominence dimensions
     *================================================== */
   --color-fg-default: var(--color-zinc-900);
-  --color-fg-muted: var(--color-zinc-700);
-  --color-fg-subtle: var(--color-zinc-600);
+  --color-fg-subtle: var(--color-zinc-700);
+  --color-fg-muted: var(--color-zinc-600);
 
   /* =================================================
     *  Interaction dimensions
@@ -37,7 +37,6 @@
   --color-fg-error: var(--color-red-700);
   --color-fg-success: var(--color-green-700);
   --color-fg-warning: var(--color-yellow-700);
-
 
   --color-fg-on-feedback: var(--color-white);
 

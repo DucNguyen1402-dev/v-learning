@@ -3,13 +3,13 @@
     @apply flex items-center gap-1;
   }
 
-  .data-button-inactive {
+  .date-button-inactive {
     color: var(--color-fg-subtle);
   }
-  .data-button-active {
+  .date-button-active {
     color: var(--color-fg-muted);
   }
-  .data-button-selected {
+  .date-button-selected {
     color: var(--color-fg-default);
   }
 }
