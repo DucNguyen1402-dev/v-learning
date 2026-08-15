@@ -2,38 +2,58 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 import { AppRoutes } from "@routes";
+import { CLIENT_ROUTE_TITLES } from "@routes/client";
 
-import { adminFavicon, clientFavicon } from "@assets/favicon";
+import { clientFavicon } from "@assets/favicon";
+function getRouteMetadata(pathname: string) {
+  const mappings = [
+    {
+      routes: AppRoutes.client,
+      titles: CLIENT_ROUTE_TITLES,
+      favicon: clientFavicon,
+    },
+    // {
+    //   routes: AppRoutes.admin,
+    //   titles: ADMIN_ROUTE_TITLES,
+    //   favicon: adminFavicon,
+    // },
+  ];
 
-const titles = {
-  [AppRoutes.client.keys.HOME]: "V-learning | Home",
-  [AppRoutes.client.keys.LOGIN]: "V-learning | Login",
-  [AppRoutes.client.keys.REGISTER]: "V-learning | Register",
-  [AppRoutes.client.keys.PROFILE]: "V-learning | Profile",
-  [AppRoutes.client.keys.COURSES]: "V-learning | Courses",
-  [AppRoutes.client.keys.BLOGS]: "V-learning | Blogs",
-  [AppRoutes.client.keys.ABOUT]: "V-learning | About",
-};
+  for (const { routes, titles, favicon } of mappings) {
+    const routeKey = routes.findKey(pathname);
+
+    if (routeKey) {
+      return {
+        title: `V-learning | ${titles[routeKey]}`,
+        favicon,
+      };
+    }
+  }
+
+  return {
+    title: "V-learning",
+    favicon: clientFavicon,
+  };
+}
 
 export const FaviconManager = () => {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    const favicon = document.createElement("link");
-    console.log(pathname);
-    const routeKey = AppRoutes.client.findKey(pathname);
-    if (!routeKey) return;
+    const { title, favicon } = getRouteMetadata(pathname);
 
-    const title = titles[routeKey];
+    document.title = title;
 
-    document.title = pathname.startsWith("/client") ? title : "admin";
+    const faviconElement =
+      document.querySelector<HTMLLinkElement>('link[rel="icon"]') ??
+      document.createElement("link");
 
-    favicon.rel = "icon";
-    favicon.href = pathname.startsWith("/client")
-      ? clientFavicon
-      : adminFavicon;
+    faviconElement.rel = "icon";
+    faviconElement.href = favicon;
 
-    document.head.appendChild(favicon);
+    if (!faviconElement.parentNode) {
+      document.head.appendChild(faviconElement);
+    }
   }, [pathname]);
 
   return null;

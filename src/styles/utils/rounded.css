@@ -1,0 +1,19 @@
+/* Controls: button, input, select, textarea, checkbox, radio */
+@utility rounded-control {
+  border-radius: var(--radius-control);
+}
+
+/* Surfaces: card, table, list item, panel, dropdown */
+@utility rounded-surface {
+  border-radius: var(--radius-surface);
+}
+
+/* Overlays: modal, dialog, drawer, popover, tooltip */
+@utility rounded-overlay {
+  border-radius: var(--radius-overlay);
+}
+
+/* Fully rounded: badge, chip, avatar, pill button */
+@utility rounded-pill {
+  border-radius: var(--radius-pill);
+}

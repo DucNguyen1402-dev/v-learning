@@ -13,10 +13,10 @@
 
   /* ================= Surface Colors ================= */
 
-  --color-surface-base: var(--color-bg-base);
-  --color-surface-default: var(--color-bg-default);
-  --color-surface-muted: var(--color-bg-muted);
-  --color-surface-subtle: var(--color-bg-subtle);
+  --color-bg-base: var(--color-bg-base);
+  --color-bg-default: var(--color-bg-default);
+  --color-bg-muted: var(--color-bg-muted);
+  --color-bg-subtle: var(--color-bg-subtle);
 
   /* ================= Border Colors ================= */
 
@@ -34,4 +34,10 @@
   --z-index-modal: 400;
   --z-index-toast: 500;
   --z-index-max: 9999;
+
+  /* ================= Radius ================= */
+  --radius-control: var(--app-radius-3);
+  --radius-surface: var(--app-radius-4);
+  --radius-overlay: var(--app-radius-5);
+  --radius-pill: var(--app-radius-full);
 }

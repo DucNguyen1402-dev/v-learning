@@ -1,28 +1,43 @@
 import { Field, Input } from "@shared/fields";
 
-export const Playground = () => {
+export const RegisterFields = () => {
   const fields = [
     {
       label: "Tài khoản",
       name: "taiKhoan",
       type: "text",
+      invalid: "",
+      errorMessage: "",
     },
     {
       label: "Mật khẩu",
       name: "matKhau",
       type: "password",
+      invalid: "",
+      errorMessage: "",
     },
     {
       label: "Họ và tên",
       name: "hoTen",
       type: "text",
+      invalid: "",
+      errorMessage: "",
     },
     {
       label: "Số điện thoại",
       name: "soDT",
       type: "number",
+      invalid: "",
+      errorMessage: "",
     },
-    { label: "Email", name: "email", type: "email", placeholder: "" },
+    {
+      label: "Email",
+      name: "email",
+      type: "email",
+      placeholder: "",
+      invalid: "",
+      errorMessage: "",
+    },
   ];
 
   return (

@@ -5,4 +5,5 @@ export const ACTION_LABELS = {
   LOGIN: "Đăng nhập",
   SAVE: "Lưu",
   RESET: "Đặt lại",
+  SIGNUP: "Đăng ký",
 } as const;

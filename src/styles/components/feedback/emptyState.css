@@ -1,31 +1,34 @@
 @layer components {
+  .empty-state-container {
+    @apply flex-center flex-col gap-8 py-24;
+    border-top: 1px solid var(--color-border-subtle);
+  }
 
-    .empty-state-container {
-        @apply flex-center flex-col gap-8 py-24;
-        border-top: 1px solid var(--color-border-subtle);
-    }
+  .empty-state-icon-wrapper {
+    @apply flex-center size-18 rounded-pill;
+    background-color: var(--color-bg-muted);
+  }
 
-    .empty-state-icon-wrapper {
-        @apply flex-center size-18 rounded-full;
-        background-color: var(--color-bg-muted);
-    }
+  .empty-state-icon {
+    @apply size-[70%];
+    color: color-mix(
+      in srgb,
+      var(--color-fg-muted) 70%,
+      var(--color-bg-default) 30%
+    );
+  }
 
-    .empty-state-icon {
-        @apply size-[70%];
-        color: color-mix(in srgb, var(--color-fg-muted) 70%, var(--color-bg-default) 30%);
-    }
+  .empty-state-content {
+    @apply flex-center flex-col gap-3 text-center;
+  }
 
-    .empty-state-content {
-        @apply flex-center flex-col gap-3 text-center;
-    }
+  .empty-state-content-title {
+    @apply text-2xl font-semibold;
+    color: var(--color-fg-default);
+  }
 
-    .empty-state-content-title {
-        @apply text-2xl font-semibold;
-        color: var(--color-fg-default);
-    }
-
-    .empty-state-content-description {
-        @apply max-w-md text-sm leading-6;
-        color: var(--color-fg-subtle);
-    }
+  .empty-state-content-description {
+    @apply max-w-md text-sm leading-6;
+    color: var(--color-fg-subtle);
+  }
 }

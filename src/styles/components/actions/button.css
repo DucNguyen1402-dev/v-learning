@@ -24,7 +24,7 @@
   }
 
   .button-base {
-    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-md transition-colors duration-200 ease-in-out outline-none select-none;
+    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-control transition-colors duration-200 ease-in-out outline-none select-none;
   }
 
   .button-disabled {

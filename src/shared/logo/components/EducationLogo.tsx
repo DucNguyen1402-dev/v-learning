@@ -10,7 +10,7 @@ export const EducationLogo = ({
   size = LOGO_SIZES.MEDIUM,
 }: EducationLogoProps) => (
   <div
-    className={`login-logo flex-center ${logoSize[size].wrapper} rounded-full`}
+    className={`login-logo flex-center ${logoSize[size].wrapper} rounded-pill`}
   >
     <GraduationCap className={logoSize[size].icon} />
   </div>

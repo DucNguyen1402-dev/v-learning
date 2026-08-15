@@ -1,6 +1,6 @@
 @layer components {
   .error-message {
-    @apply w-full rounded-sm px-2 py-2 text-sm;
+    @apply w-full rounded-control px-2 py-2 text-sm;
     background-color: --alpha(var(--color-bg-error) / 20%);
     color: var(--color-fg-error);
     border-left: 5px solid var(--color-border-error);
