@@ -12,17 +12,23 @@ type SkeletonProps = {
   width?: SkeletonWidth;
   height?: SkeletonHeight;
   radius?: SkeletonRadius;
+  size?: {
+    width?: string;
+    height?: string;
+  };
 };
 
 export function Skeleton({
   width = SKELETON_WIDTHS.MD,
   height = SKELETON_HEIGHTS.MD,
   radius = SKELETON_RADIUS.MD,
+  size,
 }: SkeletonProps) {
   const skeletonStyle = {
     width: skeletonWidths[width],
-    height: skeletonHeights[height],
+    height: height ? skeletonHeights[height] : skeletonWidths[width],
     borderRadius: skeletonRadius[radius],
+    ...size,
   };
 
   return <div className="skeleton" style={skeletonStyle} />;

@@ -1,20 +1,66 @@
 @layer components {
-  .select {
-    @apply transition-colors duration-300 ease-in-out;
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
+
+
+  .select-root-container {
+    @apply relative inline-block w-full max-w-70;
   }
 
-  .select-icon-wrapper {
-    @apply pointer-events-auto absolute inset-y-0 right-0 flex items-center pr-3;
+
+  .select-button-container {
+    @apply flex items-center gap-2;
   }
 
-  .select-icon {
+  .trigger-icon {
+    @apply size-4.5;
+    color: var(--color-fg-muted);
+  }
+
+  .select-button-inactive {
     color: var(--color-fg-subtle);
+  }
+
+  .select-button-active {
+    color: var(--color-fg-muted);
+  }
+
+  .select-button-selected {
+    color: var(--color-fg-default);
+  }
+
+
+
+  .select-dropdown-menu-container {
+    @apply absolute z-popover mt-1 w-full rounded-md shadow-lg;
+    color: var(--color-bg-elevated);
+    border: 1px solid var(--color-border-default);
+
+  }
+
+  .select-dropdown-menu-list {
+    @apply max-h-60 overflow-auto py-1 px-2;
+  }
+
+  .select-dropdown-menu-group {
+    @apply px-2 py-1;
+  }
+
+  .select-dropdown-menu-group-label {
+    @apply text-sm font-semibold uppercase tracking-wider px-2 py-1;
+    color: var(--color-fg-subtle);
+  }
+
+  .select-dropdown-menu-group-list {
+    @apply relative cursor-pointer select-none py-2 pl-3;
+  }
+
+  .select-dropdown-menu-list-item {
+    @apply relative cursor-pointer select-none py-2 pl-3 transition-colors duration-200 ease-in-out rounded-sm;
+    border-bottom: 1px solid var(--color-border-subtle);
+    color: var(--color-fg-default);
 
     &:hover {
-      color: var(--color-fg-subtle-hover);
+      color: var(--color-fg-on-brand);
+      background-color: var(--color-bg-brand);
     }
   }
 }

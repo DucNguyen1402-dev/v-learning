@@ -2,9 +2,9 @@
   /* =================================================
     *  Prominence
     *================================================== */
-  --color-border-default: var(--color-zinc-800);
+  --color-border-default: var(--color-zinc-600);
   --color-border-subtle: var(--color-zinc-700);
-  --color-border-muted: var(--color-zinc-600);
+  --color-border-muted: var(--color-zinc-800);
 
   /* =================================================
     *  Interaction

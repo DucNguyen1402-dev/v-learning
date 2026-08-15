@@ -1,37 +1,38 @@
-import {
-  SKELETON_HEIGHTS,
-  SKELETON_RADIUS,
-  SKELETON_WIDTHS,
-  TableSkeleton,
-} from "@shared/ui";
-import { createArray } from "@shared/utils";
+import { Select } from "@shared/fields";
 
 export const Playground = () => {
   return (
     <div className="flex-center min-h-screen w-full border-2 border-red-500">
-      <table className="w-full border-2 border-blue-500">
-        <thead>
-          <tr>
-            <th className="border-2 border-green-500">Header 1</th>
-            <th className="border-2 border-green-500">Header 2</th>
-            <th className="border-2 border-green-500">Header 3</th>
-            <th className="border-2 border-green-500">Header 4</th>
-          </tr>
-        </thead>
-        <tbody>
-          {[
-            ...createArray(5).map((_, index) => (
-              <TableSkeleton
-                key={index}
-                colSpan={4}
-                width={SKELETON_WIDTHS.LG}
-                height={SKELETON_HEIGHTS.LG}
-                radius={SKELETON_RADIUS.MD}
-              />
-            )),
+      <Select.Root>
+        <Select.Trigger
+          id="select"
+          labels={{
+            placeholder: "Select an option",
+            disabled: "Disabled",
+            required: "Required",
+          }}
+          value={null}
+        />
+
+        <Select.Content
+          options={[
+            {
+              label: "Group 1",
+              options: [
+                { label: "100", value: 100 },
+                { label: "200", value: 200 },
+              ],
+            },
+            {
+              label: "Group 2",
+              options: [
+                { label: "300", value: 300 },
+                { label: "400", value: 400 },
+              ],
+            },
           ]}
-        </tbody>
-      </table>
+        />
+      </Select.Root>
     </div>
   );
 };

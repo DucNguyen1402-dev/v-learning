@@ -1,0 +1,5 @@
+@layer components {
+    .pagination-select-container {
+        @apply w-full max-w-50;
+    }
+}
