@@ -28,7 +28,13 @@
   }
 
   .button-disabled {
-    @apply cursor-default;
+    @apply pointer-events-none cursor-default opacity-80;
+  }
+
+  .button-selected {
+    color: var(--color-fg-on-brand);
+    border: 1px solid var(--color-border-brand);
+    background-color: var(--color-bg-brand);
   }
 
   .button-primary.solid {

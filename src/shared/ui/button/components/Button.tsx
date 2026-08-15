@@ -34,6 +34,7 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> &
     layout?: ButtonLayout;
     appearance?: ButtonAppearance;
     disabled?: boolean;
+    selected?: boolean;
   };
 
 export const Button = ({
@@ -47,6 +48,7 @@ export const Button = ({
   layout = BUTTON_LAYOUTS.CENTER,
   type = "button",
   disabled = false,
+  selected = false,
   ...props
 }: ButtonProps) => {
   const currentSize = buttonSizes[size];
@@ -55,11 +57,15 @@ export const Button = ({
     <button
       disabled={loading || disabled}
       className={cn(
+        "button-base",
         currentSize.button,
-        fullWidth ? "w-full" : "",
-        buttonVariants({ intent, appearance }),
         buttonLayouts[layout],
-        disabled && "button-disabled",
+        fullWidth ? "w-full" : "",
+        {
+          "button-disabled": disabled,
+          "button-selected": selected,
+          [buttonVariants({ intent, appearance })]: !selected,
+        },
       )}
       type={type}
       {...props}

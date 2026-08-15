@@ -6,7 +6,7 @@ export const displayState = ({
 }: {
   disabled: boolean;
   selecting: boolean;
-  selected: number | null;
+  selected: number | null | string;
 }): DisplayState => {
   return disabled
     ? "disabled"

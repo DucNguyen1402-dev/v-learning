@@ -1,6 +1,17 @@
-import { useEffect } from "react";
+import { type RefObject, useEffect } from "react";
 
-export function usePaginationEffect({
+type UsePaginationEffectProps<T extends object> = {
+  skipNextPageResetRef: RefObject<boolean>;
+  setSkipNextPageResetRef: (value: boolean) => void;
+  enabled?: boolean;
+  setPagination: React.Dispatch<
+    React.SetStateAction<{ page: number; size: number }>
+  >;
+  resetDeps?: readonly unknown[];
+  pagination: { page: number; size: number };
+  items: readonly T[];
+};
+export function usePaginationEffect<T extends object>({
   skipNextPageResetRef,
   setSkipNextPageResetRef,
   enabled,
@@ -8,7 +19,7 @@ export function usePaginationEffect({
   resetDeps,
   pagination,
   items,
-}) {
+}: UsePaginationEffectProps<T>) {
   useEffect(() => {
     if (skipNextPageResetRef.current) {
       setSkipNextPageResetRef(false);
@@ -21,7 +32,7 @@ export function usePaginationEffect({
       page: 1,
     }));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [...resetDeps, setPagination, enabled]);
+  }, [...(resetDeps ?? []), setPagination, enabled]);
 
   useEffect(() => {
     const totalPages = Math.max(1, Math.ceil(items.length / pagination.size));

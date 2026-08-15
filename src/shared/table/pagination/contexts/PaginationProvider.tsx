@@ -1,11 +1,30 @@
-import { useMemo } from "react";
+import { type ReactNode, useMemo } from "react";
 
-import { usePaginationActions } from "./usePaginationActions";
-import { usePaginationDerived } from "./usePaginationDerived";
-import { usePaginationEffect } from "./usePaginationEffect";
-import { usePaginationState } from "./usePaginationState";
+import {
+  usePaginationActions,
+  usePaginationDerived,
+  usePaginationEffect,
+  usePaginationState,
+} from "./hooks";
+import { PaginationContext } from "./PaginationContext";
+import type { PaginationContextValues } from "./PaginationContextValues";
 
-export function usePagination({ items, resetDeps, enabled, pageSize }) {
+type PaginationProviderProps<T extends object> = {
+  children: ReactNode;
+  enabled?: boolean;
+  pageSize?: number;
+  items: readonly T[];
+  resetDeps?: readonly unknown[];
+  entityName?: string;
+};
+export const PaginationProvider = <T extends object>({
+  children,
+  enabled,
+  pageSize = 10,
+  items,
+  resetDeps,
+  entityName = "items",
+}: PaginationProviderProps<T>) => {
   const {
     pagination,
     setPagination,
@@ -29,25 +48,25 @@ export function usePagination({ items, resetDeps, enabled, pageSize }) {
   usePaginationEffect({
     skipNextPageResetRef,
     setSkipNextPageResetRef,
-    enabled,
-    setPagination,
-    resetDeps,
-    pagination,
     items,
+    enabled,
+    resetDeps,
+    setPagination,
+    pagination,
   });
 
   const {
-    list,
+    paginatedList,
     displayStart,
     totalItems,
     displayEnd,
-    pages,
+    pageNumbers,
     isPrevDisabled,
     isNextDisabled,
     pageOffset,
   } = usePaginationDerived({ pagination, items });
 
-  const values = useMemo(
+  const value: PaginationContextValues<T> = useMemo(
     () => ({
       actions: {
         onPrevClick,
@@ -58,14 +77,15 @@ export function usePagination({ items, resetDeps, enabled, pageSize }) {
         preventNextResetPage,
       },
       state: {
+        entityName,
         currentPage: pagination.page,
         totalItems,
         isPrevDisabled,
         isNextDisabled,
-        pages,
+        pageNumbers,
         displayStart,
         displayEnd,
-        list,
+        paginatedList,
         pageOffset,
         currentSize: pagination.size,
       },
@@ -77,18 +97,23 @@ export function usePagination({ items, resetDeps, enabled, pageSize }) {
       setSize,
       setPage,
       preventNextResetPage,
+      entityName,
       pagination.page,
       pagination.size,
       totalItems,
       isPrevDisabled,
       isNextDisabled,
-      pages,
+      pageNumbers,
       displayStart,
       displayEnd,
-      list,
+      paginatedList,
       pageOffset,
     ],
   );
 
-  return values;
-}
+  return (
+    <PaginationContext.Provider value={value}>
+      {children}
+    </PaginationContext.Provider>
+  );
+};

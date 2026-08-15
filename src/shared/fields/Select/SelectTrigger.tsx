@@ -8,22 +8,25 @@ type SelectTriggerProps = {
   disabled?: boolean;
   invalid?: boolean;
   id: string;
-  value: number | null;
   labels: {
     placeholder: string;
     disabled: string;
     required: string;
+    selected: string;
   };
+  icon?: React.ComponentType<{ className: string }>;
+  animateIcon?: boolean;
 };
 
 export const SelectTrigger = ({
   disabled = false,
   id,
   labels,
-  value = null,
   invalid,
+  icon: Icon = MousePointer2,
+  animateIcon = true,
 }: SelectTriggerProps) => {
-  const { isOpen, toggle } = useSelectContext();
+  const { isOpen, toggle, value } = useSelectContext();
   const state = displayState({
     disabled,
     selecting: isOpen,
@@ -36,6 +39,11 @@ export const SelectTrigger = ({
     selected: value!,
     placeholder: labels.placeholder,
   }[state];
+
+  const hasValue = value != null;
+
+  const displayContent =
+    hasValue && !isOpen ? `${labels.selected}${content}` : content;
 
   return (
     <button
@@ -53,8 +61,12 @@ export const SelectTrigger = ({
       aria-haspopup="dialog"
       disabled={disabled}
     >
-      <MousePointer2 className="trigger-icon" />
-      <span>{content}</span>
+      <Icon
+        className={cn("trigger-icon", {
+          "triger-icon-active": isOpen && animateIcon,
+        })}
+      />
+      <span>{displayContent}</span>
     </button>
   );
 };

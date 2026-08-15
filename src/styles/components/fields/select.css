@@ -1,18 +1,19 @@
 @layer components {
-
-
   .select-root-container {
     @apply relative inline-block w-full max-w-70;
   }
-
 
   .select-button-container {
     @apply flex items-center gap-2;
   }
 
   .trigger-icon {
-    @apply size-4.5;
+    @apply size-4.5 transition-transform duration-150 ease-in-out;
     color: var(--color-fg-muted);
+  }
+
+  .triger-icon-active {
+    @apply rotate-180;
   }
 
   .select-button-inactive {
@@ -27,17 +28,14 @@
     color: var(--color-fg-default);
   }
 
-
-
   .select-dropdown-menu-container {
     @apply absolute z-popover mt-1 w-full rounded-md shadow-lg;
     color: var(--color-bg-elevated);
     border: 1px solid var(--color-border-default);
-
   }
 
   .select-dropdown-menu-list {
-    @apply max-h-60 overflow-auto py-1 px-2;
+    @apply max-h-60 overflow-auto px-2 py-1;
   }
 
   .select-dropdown-menu-group {
@@ -45,22 +43,32 @@
   }
 
   .select-dropdown-menu-group-label {
-    @apply text-sm font-semibold uppercase tracking-wider px-2 py-1;
+    @apply px-2 py-1 text-sm font-semibold tracking-wider uppercase;
     color: var(--color-fg-subtle);
   }
 
   .select-dropdown-menu-group-list {
-    @apply relative cursor-pointer select-none py-2 pl-3;
+    @apply relative cursor-pointer py-2 pl-3 select-none;
   }
 
   .select-dropdown-menu-list-item {
-    @apply relative cursor-pointer select-none py-2 pl-3 transition-colors duration-200 ease-in-out rounded-sm;
+    @apply relative cursor-pointer rounded-sm py-2 pl-3 transition-colors duration-150 ease-in-out select-none;
     border-bottom: 1px solid var(--color-border-subtle);
     color: var(--color-fg-default);
 
     &:hover {
       color: var(--color-fg-on-brand);
-      background-color: var(--color-bg-brand);
+      background-color: color-mix(
+        in srgb,
+        var(--color-bg-brand) 70%,
+        var(--color-bg-elevated) 30%
+      );
     }
+  }
+
+  .select-dropdown-menu-list-item-selected {
+    @apply font-semibold;
+    color: var(--color-fg-on-brand);
+    background-color: var(--color-bg-brand);
   }
 }

@@ -9,12 +9,14 @@ type SelectProviderProps = {
 };
 
 export const SelectProvider = ({ children }: SelectProviderProps) => {
-  const { isOpen, toggle, close } = useSelect();
+  const { isOpen, toggle, close, value: selectValue, setValue } = useSelect();
 
   const value: SelectContextValues = {
     isOpen,
     toggle,
     close,
+    value: selectValue,
+    setValue,
   };
 
   return (

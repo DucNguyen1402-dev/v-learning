@@ -1,18 +1,29 @@
 import { useCallback } from "react";
 
+type UsePaginationActionsProps = {
+  setPagination: React.Dispatch<
+    React.SetStateAction<{
+      page: number;
+      size: number;
+    }>
+  >;
+  pagination: { page: number; size: number };
+  setSkipNextPageResetRef: (value: boolean) => void;
+};
+
 export function usePaginationActions({
   setPagination,
   pagination,
   setSkipNextPageResetRef,
-}) {
+}: UsePaginationActionsProps) {
   const setSize = useCallback(
-    (value) =>
-      setPagination((prev) => ({ ...prev, size: Number(value), page: 1 })),
+    (value: number) =>
+      setPagination((prev) => ({ ...prev, size: value, page: 1 })),
     [setPagination],
   );
 
   const setPage = useCallback(
-    (value) => setPagination((prev) => ({ ...prev, page: Number(value) })),
+    (value: number) => setPagination((prev) => ({ ...prev, page: value })),
     [setPagination],
   );
 
@@ -22,11 +33,11 @@ export function usePaginationActions({
 
   const onNextClick = useCallback(() => {
     setPage(pagination.page + 1);
-  }, [pagination, setPage]);
+  }, [pagination.page, setPage]);
 
   const onPageClick = useCallback(
-    (page) => {
-      setPage(Number(page));
+    (page: number) => {
+      setPage(page);
     },
     [setPage],
   );

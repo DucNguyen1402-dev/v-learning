@@ -1,6 +1,6 @@
 import { cva } from "class-variance-authority";
 
-export const buttonVariants = cva("button-base", {
+export const buttonVariants = cva("", {
   variants: {
     intent: {
       primary: "button-primary",

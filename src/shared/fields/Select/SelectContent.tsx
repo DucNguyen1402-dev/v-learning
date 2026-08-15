@@ -1,3 +1,4 @@
+import { SelectGroupItem, SelectItem } from "./components";
 import { useSelectContext } from "./contexts";
 
 type DropdownMenuProps = {
@@ -8,42 +9,44 @@ type DropdownMenuProps = {
         options: Array<{ value: string | number; label: string }>;
       }
   >;
+  value: string | number | null;
+  onChange: (value: string | number) => void;
 };
-export const SelectContent = ({ options }: DropdownMenuProps) => {
-  const { isOpen, close } = useSelectContext();
+export const SelectContent = ({
+  options,
+  value,
+  onChange,
+}: DropdownMenuProps) => {
+  const { isOpen, close, setValue } = useSelectContext();
 
+  const onItemClick = (value: string | number) => {
+    onChange(value);
+    close();
+    setValue(value);
+  };
   return isOpen ? (
     <div className="select-dropdown-menu-container">
       <ul className="select-dropdown-menu-list scrollbar">
         {options.map((item) => {
           if ("options" in item) {
             return (
-              <li key={item.label} className="select-dropdown-menu-group">
-                <span className="select-dropdown-menu-group-label">
-                  {item.label}
-                </span>
-                <ul className="select-dropdown-menu-group-list">
-                  {item.options.map((option) => (
-                    <li
-                      key={option.value}
-                      className="select-dropdown-menu-list-item"
-                      onClick={close}
-                    >
-                      {option.label}
-                    </li>
-                  ))}
-                </ul>
-              </li>
+              <SelectGroupItem
+                value={value}
+                key={item.label}
+                label={item.label}
+                options={item.options}
+                onChange={onChange}
+              />
             );
           }
           return (
-            <li
+            <SelectItem
+              selected={value === item.value}
               key={item.value}
-              className="select-dropdown-menu-list-item"
-              onClick={close}
-            >
-              {item.label}
-            </li>
+              value={item.value}
+              onClick={() => onItemClick(item.value)}
+              label={item.label}
+            />
           );
         })}
       </ul>
