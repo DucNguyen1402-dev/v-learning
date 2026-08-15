@@ -26,11 +26,11 @@ export const PaginationPageNumbers = ({
             key={page}
             appearance={BUTTON_APPEARANCES.OUTLINE}
             intent={BUTTON_INTENTS.SECONDARY}
-            size={BUTTON_SIZES.MEDIUM}
+            size={BUTTON_SIZES.NONE}
             selected={isCurrentPage}
             onClick={() => onPageClick(page)}
           >
-            {page}
+            <span className="pagination-page-number">{page}</span>
           </Button>
         );
       })}

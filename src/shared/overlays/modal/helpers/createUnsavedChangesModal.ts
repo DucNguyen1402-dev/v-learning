@@ -1,6 +1,6 @@
-import { type Entity, ENTITY_LABELS, MODAL_TYPES } from ".";
+import { ENTITY_LABELS, type EntityType, MODAL_TYPES } from ".";
 
-export const createUnsavedChangesModal = (entity: Entity) => {
+export const createUnsavedChangesModal = (entity: EntityType) => {
   const entityLabel = ENTITY_LABELS[entity];
 
   return {

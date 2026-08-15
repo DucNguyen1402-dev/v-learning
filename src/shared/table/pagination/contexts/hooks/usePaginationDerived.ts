@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 
+import { createArray } from "@shared/utils";
 type UsePaginationDerivedProps<T extends object> = {
   pagination: { page: number; size: number };
   items: readonly T[] | undefined;
@@ -23,14 +24,6 @@ export const usePaginationDerived = <T extends object>({
 
     const totalPages = Math.ceil(totalItems / pagination.size);
 
-    const pageNumbers = Array.from(
-      { length: totalPages },
-      (_, index) => index + 1,
-    );
-
-    const isPrevDisabled = pagination.page === 1;
-    const isNextDisabled = pagination.page >= totalPages;
-
     const pageOffset = (pagination.page - 1) * pagination.size;
 
     return {
@@ -38,9 +31,9 @@ export const usePaginationDerived = <T extends object>({
       displayStart,
       totalItems,
       displayEnd,
-      pageNumbers,
-      isPrevDisabled,
-      isNextDisabled,
+      pageNumbers: createArray(totalPages, (_, index) => index + 1),
+      isPrevDisabled: pagination.page === 1,
+      isNextDisabled: pagination.page >= totalPages,
       pageOffset,
     };
   }, [pagination, items]);

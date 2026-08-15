@@ -1,6 +1,6 @@
-import { type Entity, ENTITY_LABELS, MODAL_TYPES } from ".";
+import { ENTITY_LABELS, type EntityType, MODAL_TYPES } from ".";
 
-export const createUpdateModal = (entity: Entity) => {
+export const createUpdateModal = (entity: EntityType) => {
   const entityLabel = ENTITY_LABELS[entity];
 
   return {

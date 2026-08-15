@@ -1,3 +1,2 @@
-// export { default as FaviconManager } from "./FaviconManager";
-
+export * from "./components";
 export { Navigation } from "./Navigation";

@@ -33,7 +33,7 @@
 
   .button-selected {
     color: var(--color-fg-on-brand);
-    border: 1px solid var(--color-border-brand);
+    border-color: var(--color-border-brand);
     background-color: var(--color-bg-brand);
   }
 

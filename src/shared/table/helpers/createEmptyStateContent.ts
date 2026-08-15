@@ -1,6 +1,13 @@
-import { ENTITY_LABELS } from "@features/admin";
+import { ENTITY_LABELS, type EntityType } from "@shared/domain";
 
-export const createEmptyStateContent = (entity, keyword) => {
+type createEmptyStateContentProps = {
+  entity: EntityType;
+  keyword: string;
+};
+export const createEmptyStateContent = ({
+  entity,
+  keyword,
+}: createEmptyStateContentProps) => {
   const entityLabel = ENTITY_LABELS[entity];
 
   return {

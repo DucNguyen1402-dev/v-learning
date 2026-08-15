@@ -1,4 +1,4 @@
-import { type Entity, ENTITY_LABELS } from "@shared/domain";
+import { ENTITY_LABELS, type EntityType } from "@shared/domain";
 import { TOAST_VARIANT } from "@shared/overlays/toast/constants";
 
 const success = (message: string) => ({
@@ -7,11 +7,11 @@ const success = (message: string) => ({
 });
 
 export const successToast = {
-  add: (entity: Entity) =>
+  add: (entity: EntityType) =>
     success(`Thêm ${ENTITY_LABELS[entity]} vào hệ thống thành công.`),
-  update: (entity: Entity) =>
+  update: (entity: EntityType) =>
     success(`Cập nhật ${ENTITY_LABELS[entity]} thành công.`),
-  delete: (entity: Entity) =>
+  delete: (entity: EntityType) =>
     success(`Xóa ${ENTITY_LABELS[entity]} thành công.`),
   changePassword: () => success("Đổi mật khẩu thành công."),
   login: () => success("Đăng nhập thành công!"),

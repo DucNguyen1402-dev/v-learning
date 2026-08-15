@@ -7,7 +7,7 @@ import { useSelectContext } from "./contexts";
 type SelectTriggerProps = {
   disabled?: boolean;
   invalid?: boolean;
-  id: string;
+  id?: string;
   labels: {
     placeholder: string;
     disabled: string;

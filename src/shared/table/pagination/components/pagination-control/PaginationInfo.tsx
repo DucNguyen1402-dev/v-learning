@@ -11,10 +11,12 @@ export const PaginationInfo = ({
   label,
 }: PaginationInfoProps) => (
   <p className="pagination-control-info-wrapper">
-    Hiển thị{" "}
+    {`Hiển thị `}
     <span className="font-medium">
       {displayStart}-{displayEnd}
-    </span>{" "}
-    trên <span className="font-medium">{totalItems}</span> {label}
+    </span>
+    {` / `}
+    <span className="font-medium">{totalItems}</span>
+    {` ${label}`}
   </p>
 );
