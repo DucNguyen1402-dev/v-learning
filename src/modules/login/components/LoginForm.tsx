@@ -1,37 +1,61 @@
-import { Link } from "react-router-dom";
-
-import { Login } from "@modules/login";
-import { FormLabel, Input, PasswordField } from "@shared/fields";
-import { accountValidationRules } from "@shared/validation";
+import { useLoginContext } from "@modules/login/contexts";
+import { Field, Input } from "@shared/fields";
+import {
+  type AccountValidationRules,
+  accountValidationRules,
+} from "@shared/validation";
 export const LoginForm = () => {
   const {
-    hookForm: { register, errors },
-  } = Login.use();
+    hookForm: { register, getFieldState },
+    LOGIN_FORM_FIELD_NAMES,
+  } = useLoginContext();
+
+  const taiKhoan = getFieldState(LOGIN_FORM_FIELD_NAMES.TAI_KHOAN);
+  const matKhau = getFieldState(LOGIN_FORM_FIELD_NAMES.MAT_KHAU);
+
+  const loginFields: {
+    name: (typeof LOGIN_FORM_FIELD_NAMES)[keyof typeof LOGIN_FORM_FIELD_NAMES];
+    label: string;
+    validation: AccountValidationRules;
+    type: string;
+    errorMessage?: string;
+    invalid: boolean;
+  }[] = [
+    {
+      name: LOGIN_FORM_FIELD_NAMES.TAI_KHOAN,
+      label: "TÀI KHOẢN",
+      type: "text",
+      validation: accountValidationRules.taiKhoan,
+      errorMessage: taiKhoan.error?.message,
+      invalid: taiKhoan.invalid,
+    },
+    {
+      name: LOGIN_FORM_FIELD_NAMES.MAT_KHAU,
+      label: "MẬT KHẨU",
+      type: "password",
+      validation: accountValidationRules.matKhau,
+      errorMessage: matKhau.error?.message,
+      invalid: matKhau.invalid,
+    },
+  ];
 
   return (
-    <form className="space-y-4" noValidate>
-      <div className="flex flex-col gap-3">
-        <FormLabel htmlFor="taiKhoan">TÀI KHOẢN</FormLabel>
-        <Input
-          id="taiKhoan"
-          {...register("taiKhoan", accountValidationRules.taiKhoan)}
-          error={errors.taiKhoan?.message}
-        />
-      </div>
-
-      <div className="mb-1.5 flex flex-col gap-3">
-        <FormLabel htmlFor="matKhau">MẬT KHẨU</FormLabel>
-
-        <PasswordField
-          id="matKhau"
-          {...register("matKhau", accountValidationRules.matKhau)}
-          error={errors.matKhau?.message}
-        />
-
-        <Link to="/client/password-reset" className="self-end link-secondary">
-          Quên mật khẩu?
-        </Link>
-      </div>
+    <form className="space-form-md" noValidate>
+      {loginFields.map((field) => (
+        <Field.Root key={field.name}>
+          <Field.Label target={field.name} text={field.label} />
+          <Input.Root>
+            <Input.Field
+              id={field.name}
+              type={field.type}
+              invalid={field.invalid}
+              {...register(field.name, field.validation)}
+            />
+            {field.type === "password" && <Input.PasswordVisibilityToggle />}
+          </Input.Root>
+          <Field.ErrorMessage message={field.errorMessage} />
+        </Field.Root>
+      ))}
     </form>
   );
 };

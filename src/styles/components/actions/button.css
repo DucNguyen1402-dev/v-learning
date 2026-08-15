@@ -1,6 +1,6 @@
 @layer components {
   .button-sm {
-    @apply px-3 py-2 text-sm;
+    @apply px-2 py-1.5 text-sm;
   }
 
   .icon-button-sm {
@@ -8,15 +8,15 @@
   }
 
   .button-md {
-    @apply px-4 py-2.5 text-sm;
+    @apply px-3 py-2 text-sm;
   }
 
   .icon-button-md {
-    @apply size-5;
+    @apply size-8;
   }
 
   .button-lg {
-    @apply px-5 py-3 text-base;
+    @apply px-4 py-2.5 text-base;
   }
 
   .icon-button-lg {
@@ -24,7 +24,17 @@
   }
 
   .button-base {
-    @apply inline-flex cursor-pointer items-center justify-center gap-1 rounded-md transition-colors duration-200 ease-in-out outline-none select-none;
+    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-control transition-colors duration-200 ease-in-out outline-none select-none;
+  }
+
+  .button-disabled {
+    @apply pointer-events-none cursor-default opacity-80;
+  }
+
+  .button-selected {
+    color: var(--color-fg-on-brand);
+    border-color: var(--color-border-brand);
+    background-color: var(--color-bg-brand);
   }
 
   .button-primary.solid {
@@ -44,6 +54,26 @@
 
     &:hover {
       background-color: var(--color-bg-secondary-solid-hover);
+    }
+  }
+
+  .button-secondary.outline {
+    background-color: var(--color-bg-secondary-outline);
+    color: var(--color-fg-on-secondary-outline);
+    border: var(--color-border-secondary-outline);
+
+    &:hover {
+      background-color: var(--color-bg-secondary-outline-hover);
+    }
+  }
+
+  .button-secondary.ghost {
+    background-color: var(--color-bg-secondary-ghost);
+    color: var(--color-fg-on-secondary-ghost);
+    border: 1px solid var(--color-border-secondary-ghost);
+
+    &:hover {
+      background-color: var(--color-bg-secondary-ghost-hover);
     }
   }
 

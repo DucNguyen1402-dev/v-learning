@@ -1,21 +1,37 @@
-import { Modal } from "@shared/overlays/modal/components";
-import { Button, BUTTON_VARIANTS } from "@shared/ui";
+import {
+  ACTION_LABELS,
+  Button,
+  BUTTON_APPEARANCES,
+  BUTTON_INTENTS,
+} from "@shared/ui";
 
-export const LeavePageModal = ({ onCancel, onConfirm }) => {
+import { Modal } from "../foundation";
+import type { ModalProps } from "./types";
+export const LeavePageModal = ({
+  onCancel,
+  onConfirm,
+  title,
+  subtitle,
+}: ModalProps) => {
   return (
     <Modal>
-      <Modal.Header
-        title="Rời khỏi trang?"
-        subtitle="Các thay đổi chưa được lưu sẽ bị mất."
-      />
+      <Modal.Header title={title} subtitle={subtitle} />
 
       <Modal.Footer>
-        <Button variant={BUTTON_VARIANTS.SECONDARY} onClick={onCancel}>
-          Hủy
+        <Button
+          appearance={BUTTON_APPEARANCES.OUTLINE}
+          intent={BUTTON_INTENTS.SECONDARY}
+          onClick={onCancel}
+        >
+          {ACTION_LABELS.CANCEL}
         </Button>
 
-        <Button variant={BUTTON_VARIANTS.PRIMARY} onClick={onConfirm}>
-          Xác nhận
+        <Button
+          appearance={BUTTON_APPEARANCES.SOLID}
+          intent={BUTTON_INTENTS.DESTRUCTIVE}
+          onClick={onConfirm}
+        >
+          {ACTION_LABELS.CONFIRM}
         </Button>
       </Modal.Footer>
     </Modal>

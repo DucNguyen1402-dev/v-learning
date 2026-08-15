@@ -1,0 +1,26 @@
+@layer components {
+  .pagination-select-container {
+    @apply w-full max-w-80;
+  }
+
+  .pagination-control-container {
+    @apply flex items-center justify-between px-4 text-sm;
+  }
+
+  .pagination-control-info-wrapper {
+    @apply text-sm;
+    color: var(--color-text-muted);
+  }
+
+  .pagination-control-action-container {
+    @apply flex gap-2;
+  }
+
+  .pagination-control-action-icon {
+    @apply size-5;
+  }
+
+  .pagination-page-number {
+    @apply size-8 flex items-center justify-center;
+  }
+}

@@ -1,3 +1,3 @@
-export { themeLogos } from "./constants";
+export { type ThemeAsset, themeAssets } from "./constants";
 export { Theme } from "./Theme";
-export { type ThemeAssets, type ThemeValue } from "./types";
+export { type ThemeValue } from "./types";

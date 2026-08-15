@@ -3,10 +3,10 @@ import {
   createAddModal,
   createChangePasswordModal,
   createDeleteModal,
-  createEditModal,
   createLeavePageModal,
   createUnsavedChangesModal,
   createUnsavedPasswordChangesModal,
+  createUpdateModal,
 } from "./helpers";
 
 export const Modal = {
@@ -15,7 +15,7 @@ export const Modal = {
   config: {
     add: createAddModal,
     delete: createDeleteModal,
-    edit: createEditModal,
+    update: createUpdateModal,
     leavePage: createLeavePageModal,
     passwordChange: createChangePasswordModal,
     unsavedPasswordChange: createUnsavedPasswordChangesModal,

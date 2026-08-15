@@ -34,7 +34,7 @@ export const FooterTopRight = () => {
       {links.map((link, index) => (
         <div key={index} className="space-y-4">
           <h3 className="text-lg font-semibold">{link.title}</h3>
-          <ul className="space-y-3 text-sm text-text-primary">
+          <ul className="space-y-3 text-sm text-text-default">
             {link.list?.map((item, idx) => (
               <li key={idx}>
                 <Link className="footer-link" to={item.path}>

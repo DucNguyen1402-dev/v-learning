@@ -11,9 +11,9 @@ export const ClientMainLayout = () => {
 
   return (
     <>
-      <div className="flex min-h-screen flex-col bg-surface-0">
+      <div className="flex min-h-screen flex-col bg-bg-base">
         <Header />
-        <main className="client-container flex-1 bg-surface-1">
+        <main className="client-container flex-1 bg-bg-default">
           {shouldShowBackButton && <BackButton />}
           <Outlet />
         </main>

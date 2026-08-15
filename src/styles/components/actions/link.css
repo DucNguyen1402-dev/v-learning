@@ -1,0 +1,21 @@
+@layer components {
+  .link {
+    @apply text-sm font-medium transition-colors duration-150 ease-in-out;
+  }
+  .link-primary {
+    color: var(--color-fg-brand);
+    &:hover {
+      color: var(--color-fg-brand-hover);
+      @apply underline;
+    }
+  }
+
+  .link-secondary {
+    color: --alpha(var(--color-fg-brand) / 80%);
+
+    &:hover {
+      color: var(--color-fg-brand);
+      @apply underline;
+    }
+  }
+}

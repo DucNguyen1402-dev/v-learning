@@ -1,10 +1,14 @@
-import { DualRingLoading, ModalShell, ToastView } from "@shared/overlays";
+import {
+  DualRingLoadingRender,
+  ModalRenderer,
+  ToastView,
+} from "@shared/overlays";
 
 export const GlobalUI = () => {
   return (
     <>
-      <DualRingLoading />
-      <ModalShell />
+      <DualRingLoadingRender />
+      <ModalRenderer />
 
       <ToastView />
     </>

@@ -1,0 +1,14 @@
+@layer components {
+  .label {
+    @apply block w-fit cursor-pointer text-sm font-medium;
+    color: var(--color-fg-subtle);
+  }
+
+  .label-required {
+    color: var(--color-fg-required);
+  }
+
+  .label-vertical-spacing {
+    margin-bottom: var(--spacing-field-label);
+  }
+}

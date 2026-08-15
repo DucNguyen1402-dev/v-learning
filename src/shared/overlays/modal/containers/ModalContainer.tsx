@@ -1,6 +1,6 @@
-import { Modal, type ModalContextValues } from "@shared/overlays/modal";
-import { MODAL_TYPE_CONFIG } from "@shared/overlays/modal/config";
-import type { ModalType } from "@shared/overlays/modal/constants";
+import { MODAL_TYPE_CONFIG } from "../config";
+import type { ModalType } from "../constants";
+import { useModalContext } from "../contexts";
 
 export const ModalContainer = () => {
   const {
@@ -8,7 +8,7 @@ export const ModalContainer = () => {
       state: { modalState, isLoading },
       actions: { startLoading, closeModal },
     },
-  }: ModalContextValues = Modal.use();
+  } = useModalContext();
 
   if (!modalState.isOpen) return;
 

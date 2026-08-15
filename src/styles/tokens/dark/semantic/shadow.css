@@ -1,6 +1,6 @@
-:root {
+.dark {
   /* =================================================
     *  Feedback dimensions
     *================================================== */
-  --color-ring-feedback-error: var(--color-red-600);
+  --color-ring-error: var(--color-red-600);
 }

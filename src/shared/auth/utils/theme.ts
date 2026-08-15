@@ -5,7 +5,7 @@ import {
   getCurrentUser,
   getCurrentUserProperty,
 } from "@shared/auth/utils";
-import type { ThemeValue } from "@shared/theme/types";
+import type { ThemeValue } from "@shared/theme";
 
 export const getCurrentUserTheme = () => getCurrentUserProperty("theme");
 

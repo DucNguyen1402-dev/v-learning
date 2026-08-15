@@ -1,0 +1,52 @@
+@layer components {
+  .field-base {
+    @apply w-full rounded-control px-3 py-1.5 text-[15px] transition-colors duration-200 ease-in-out outline-none focus:ring-2 md:py-2;
+    color: var(--color-fg-default);
+    border: 1px solid var(--color-border-default);
+
+    background-color: var(--color-bg-subtle);
+
+    &:hover {
+      border-color: var(--color-border-default-hover);
+    }
+
+    &:focus {
+      border-color: var(--color-border-focus);
+      --tw-ring-color: --alpha(var(--color-ring-focus)/20%);
+    }
+
+    &::placeholder {
+      color: var(--color-fg-subtle);
+    }
+  }
+
+  .field-disabled {
+    @apply cursor-not-allowed opacity-70;
+    color: var(--color-fg-muted);
+    background-color: var(--color-bg-muted);
+    border: 1px solid var(--color-border-muted);
+  }
+
+  .field-invalid {
+    @apply focus:ring-2;
+    border: 1px solid var(--color-border-error);
+    color: var(--color-fg-error);
+
+    &:focus {
+      color: var(--color-fg-error);
+      --tw-ring-color: --alpha(var(--color-ring-error)/20%);
+    }
+
+    &:focus {
+      border: 1px solid var(--color-border-error);
+    }
+  }
+
+  .field-with-left-addon {
+    @apply pl-6.5;
+  }
+
+  .field-with-right-addon {
+    @apply pr-6.5;
+  }
+}

@@ -1,6 +1,5 @@
 import type { SubmitHandler, UseFormHandleSubmit } from "react-hook-form";
 
-import type { LoginFormValues } from "@modules/login/type";
 import { AppRoutes } from "@routes";
 import type { LoginFn, LoginResponse } from "@shared/auth";
 import { getErrorMessage } from "@shared/error";
@@ -8,6 +7,8 @@ import { execution } from "@shared/execution";
 import { createPayload } from "@shared/form-utils";
 import { Navigation } from "@shared/navigation";
 import { Toast } from "@shared/overlays";
+
+import type { LoginFormValues } from "./constants";
 
 type UseLoginActionsParams = {
   handleSubmit: UseFormHandleSubmit<LoginFormValues>;

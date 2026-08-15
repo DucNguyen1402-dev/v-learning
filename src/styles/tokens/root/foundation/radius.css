@@ -1,0 +1,10 @@
+:root {
+  --app-radius-0: 0px;
+  --app-radius-1: 2px;
+  --app-radius-2: 4px;
+  --app-radius-3: 6px;
+  --app-radius-4: 8px;
+  --app-radius-5: 12px;
+  --app-radius-6: 16px;
+  --app-radius-full: 9999px;
+}

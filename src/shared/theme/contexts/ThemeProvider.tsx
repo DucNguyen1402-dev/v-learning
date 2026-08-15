@@ -1,6 +1,7 @@
 import { type ReactNode, useEffect } from "react";
 
 import { Auth } from "@shared/auth";
+import { themeAssets } from "@shared/theme/constants";
 
 import { useThemeState } from "./hooks";
 import { ThemeContext } from "./ThemeContext";
@@ -24,6 +25,7 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
     isDarkMode: currentTheme === "dark",
     isLightMode: currentTheme === "light",
     toggleTheme: toggleTheme,
+    assets: themeAssets[currentTheme],
   };
   return (
     <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>

@@ -3,40 +3,46 @@
     *  brand
     *================================================== */
   --color-fg-brand: var(--color-brand);
-  --color-fg-on-brand: var(--color-fg-on-brand);
+  --color-fg-on-brand: var(--color-white);
 
   /* =================================================
     *  Selected dimensions
     *================================================== */
 
-  --color-fg-on-selected: var(--color-fg-on-accent);
+  --color-fg-on-selected: var(--color-white);
+  --color-fg-selected: var(--color-accent);
 
   /* =================================================
     *  Prominence dimensions
     *================================================== */
   --color-fg-default: var(--color-zinc-900);
+  --color-fg-subtle: var(--color-zinc-700);
   --color-fg-muted: var(--color-zinc-600);
-  --color-fg-subtle: var(--color-zinc-400);
 
   /* =================================================
     *  Interaction dimensions
     *================================================== */
 
-  --color-fg-interactive-brand-hover: var(--color-brand-hover);
-  --color-fg-interactive-default-hover: var(--color-zinc-700);
-  --color-fg-interactive-muted-hover: var(--color-zinc-500);
-  --color-fg-interactive-subtle-hover: var(--color-zinc-300);
+  --color-fg-brand-hover: var(--color-brand-hover);
+
+  --color-fg-disabled: var(--color-zinc-400);
+  --color-fg-muted-hover: var(--color-zinc-800);
+  --color-fg-subtle-hover: var(--color-zinc-700);
+  --color-fg-on-danger: var(--color-white);
 
   /* =================================================
     *  Feedback dimensions
     *================================================== */
 
-  --color-fg-feedback-error: var(--color-red-700);
+  --color-fg-error: var(--color-red-700);
+  --color-fg-success: var(--color-green-700);
+  --color-fg-warning: var(--color-yellow-700);
+
   --color-fg-on-feedback: var(--color-white);
 
   /* =================================================
-    *  Special dimensions
+    *  Domain
     *================================================== */
 
-  --color-fg-required: var(--color-red-600);
+  --color-fg-required: var(--color-red-700);
 }

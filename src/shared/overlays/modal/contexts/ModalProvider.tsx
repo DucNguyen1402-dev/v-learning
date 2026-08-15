@@ -1,50 +1,15 @@
-import { useCallback, useMemo, useState } from "react";
+import { useMemo } from "react";
 import type { ReactNode } from "react";
 
+import { useModal } from "./hooks";
 import { ModalContext } from "./ModalContext";
-import type { ModalContextValues, ModalState } from "./types";
+import type { ModalContextValues } from "./types";
 
 type ModalProviderProps = {
   children: ReactNode;
 };
 export const ModalProvider = ({ children }: ModalProviderProps) => {
-  const [modalState, setModalState] = useState<ModalState>({
-    isOpen: false,
-    type: null,
-    title: "",
-    subtitle: "",
-    onConfirm: null,
-    onCancel: null,
-  });
-  const [isLoading, setIsLoading] = useState(false);
-
-  const startLoading = useCallback(() => setIsLoading(true), []);
-
-  const open = useCallback(
-    ({ type, onConfirm, title, subtitle, onCancel }: ModalState) =>
-      setModalState({
-        type,
-        onConfirm,
-        title,
-        subtitle,
-        onCancel,
-        isOpen: true,
-      }),
-    [],
-  );
-
-  const closeModal = useCallback(() => {
-    setModalState({
-      type: null,
-      onConfirm: null,
-      title: "",
-      subtitle: "",
-      onCancel: null,
-      isOpen: false,
-    });
-    setIsLoading(false);
-  }, []);
-
+  const { modalState, isLoading, open, closeModal, startLoading } = useModal();
   const value: ModalContextValues = useMemo(
     () => ({
       open,

@@ -1,27 +1,45 @@
 :root {
-  /* --- Component/Intent Tokens --- */
+  /* =================================================
+    *   Component/Intent Tokens
+    *================================================== */
+
+  /* --- Solid --- */
 
   --color-bg-primary-solid: var(--color-bg-brand);
   --color-fg-on-primary-solid: var(--color-fg-on-brand);
   --color-border-primary-solid: transparent;
-  --color-bg-primary-solid-hover: var(--color-bg-interactive-hover);
+  --color-bg-primary-solid-hover: var(--color-bg-brand-hover);
 
-  --color-bg-secondary-solid: var(--color-bg-muted);
+  --color-bg-secondary-solid: var(--color-bg-subtle);
   --color-fg-on-secondary-solid: var(--color-fg-default);
-  --color-border-secondary-solid: var(--color-border-secondary);
-  --color-bg-secondary-solid-hover: var(--color-bg-interactive-muted-hover);
+  --color-border-secondary-solid: var(--color-border-subtle);
+  --color-bg-secondary-solid-hover: var(--color-bg-subtle-hover);
 
-  --color-bg-tertiary-solid: var(--color-bg-subtle);
+  --color-bg-tertiary-solid: var(--color-bg-muted);
   --color-fg-on-tertiary-solid: var(--color-fg-muted);
   --color-border-tertiary-solid: transparent;
-  --color-bg-tertiary-solid-hover: var(--color-bg-interactive-subtle-hover);
+  --color-bg-tertiary-solid-hover: var(--color-bg-muted-hover);
 
-  --color-bg-destructive-solid: var(--color-bg-interactive-danger);
-  --color-fg-on-destructive-solid: var(--color-fg-on-interactive);
+  --color-bg-destructive-solid: var(--color-bg-danger);
+  --color-fg-on-destructive-solid: var(--color-fg-on-danger);
   --color-border-destructive-solid: transparent;
-  --color-bg-destructive-solid-hover: var(--color-bg-interactive-danger-hover);
+  --color-bg-destructive-solid-hover: var(--color-bg-danger-hover);
+
+  /* --- Outline --- */
+
+  --color-bg-secondary-outline: transparent;
+  --color-fg-on-secondary-outline: var(--color-fg-subtle);
+  --color-border-secondary-outline: 1px solid var(--color-border-subtle);
+  --color-bg-secondary-outline-hover: var(--color-bg-subtle-hover);
+
+  /* --- Ghost --- */
+
+  --color-bg-secondary-ghost: transparent;
+  --color-fg-on-secondary-ghost: var(--color-fg-subtle);
+  --color-border-secondary-ghost: 1px solid var(--color-border-subtle);
+  --color-bg-secondary-ghost-hover: var(--color-bg-subtle-hover);
 
   --color-bg-tertiary-ghost: transparent;
   --color-fg-on-tertiary-ghost: var(--color-fg-muted);
-  --color-fg-on-tertiary-ghost-hover: var(--color-fg-interactive-muted-hover);
+  --color-fg-on-tertiary-ghost-hover: var(--color-fg-muted-hover);
 }

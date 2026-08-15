@@ -1,9 +1,11 @@
 export const ENTITIES = {
-  user: "user",
-};
+  USER: "user",
+  COURSE: "course",
+} as const;
 
 export const ENTITY_LABELS = {
-  [ENTITIES.user]: "người dùng",
-};
+  [ENTITIES.USER]: "người dùng",
+  [ENTITIES.COURSE]: "khóa học",
+} as const;
 
-export type Entity = keyof typeof ENTITIES;
+export type EntityType = (typeof ENTITIES)[keyof typeof ENTITIES];

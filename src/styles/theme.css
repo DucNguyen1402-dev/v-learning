@@ -5,40 +5,39 @@
 
   /* ================= Text Colors ================= */
 
-  --color-text-primary: var(--color-fg-default);
-  --color-text-secondary: var(--color-fg-muted);
-  --color-text-tertiary: var(--color-fg-subtle);
+  --color-text-default: var(--color-fg-default);
+  --color-text-muted: var(--color-fg-muted);
+  --color-text-subtle: var(--color-fg-subtle);
 
   --color-muted-foreground: var(--color-fg-muted);
 
   /* ================= Surface Colors ================= */
 
-  --color-surface-base: var(--color-bg-base);
-  --color-surface-default: var(--color-bg-default);
-  --color-surface-muted: var(--color-bg-muted);
-  --color-surface-subtle: var(--color-bg-subtle);
+  --color-bg-base: var(--color-bg-base);
+  --color-bg-default: var(--color-bg-default);
+  --color-bg-muted: var(--color-bg-muted);
+  --color-bg-subtle: var(--color-bg-subtle);
 
   /* ================= Border Colors ================= */
 
-
-  --color-border-primary: var(--color-border-default);
-  --color-border-secondary: var(--color-border-muted);
-  --color-border-tertiary: var(--color-border-subtle);
-
+  --color-border-default: var(--color-border-default);
+  --color-border-muted: var(--color-border-muted);
+  --color-border-subtle: var(--color-border-subtle);
 
   /* ================= Z-Index Layers ================= */
 
-  /* Layout Layers */
+  --z-index-behind: -1;
+  --z-index-base: 0;
   --z-index-sticky: 100;
-
-  /* Floating UI */
   --z-index-popover: 200;
-
-  /* Overlays & Dialogs */
   --z-index-overlay: 300;
   --z-index-modal: 400;
-
-  /* Global Notifications */
   --z-index-toast: 500;
   --z-index-max: 9999;
+
+  /* ================= Radius ================= */
+  --radius-control: var(--app-radius-3);
+  --radius-surface: var(--app-radius-4);
+  --radius-overlay: var(--app-radius-5);
+  --radius-pill: var(--app-radius-full);
 }

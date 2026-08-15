@@ -1,6 +1,6 @@
 @layer components {
   .backdrop {
-    @apply fixed inset-0 z-50 flex items-center justify-center backdrop-blur-[2px] transition-opacity duration-200;
+    @apply fixed inset-0 z-overlay flex items-center justify-center backdrop-blur-[2px] transition-opacity duration-200;
     background-color: var(--color-bg-overlay);
   }
 }

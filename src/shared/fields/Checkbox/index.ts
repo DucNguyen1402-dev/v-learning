@@ -1,2 +1,2 @@
 export { Checkbox } from "./Checkbox";
-export { CheckboxField } from "./CheckboxField";
+export { CHECKBOX_SIZE } from "./constants";

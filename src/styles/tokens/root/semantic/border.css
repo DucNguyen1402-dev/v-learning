@@ -14,21 +14,22 @@
     *  Prominence dimensions
     *================================================== */
   --color-border-default: var(--color-zinc-300);
-  --color-border-muted: var(--color-zinc-200);
-  --color-border-subtle: var(--color-zinc-100);
+  --color-border-subtle: var(--color-zinc-200);
+  --color-border-muted: var(--color-zinc-100);
 
   /* =================================================
     *  Interaction dimensions
     *================================================== */
+  --color-border-default-hover: var(--color-zinc-400);
+  --color-border-subtle-hover: var(--color-zinc-300);
+  --color-border-muted-hover: var(--color-zinc-200);
 
-  --color-border-interactive-subtle-hover: var(--color-zinc-200);
-  --color-border-interactive-default-hover: var(--color-zinc-400);
-  --color-border-interactive-muted-hover: var(--color-zinc-300);
-
-  --color-border-interactive: var(--color-focus);
+  --color-border-focus: var(--color-focus);
 
   /* =================================================
     *  Feedback dimensions
     *================================================== */
-  --color-border-feedback-error: var(--color-red-600);
+  --color-border-error: var(--color-red-600);
+  --color-border-success: var(--color-emerald-600);
+  --color-border-warning: var(--color-amber-600);
 }

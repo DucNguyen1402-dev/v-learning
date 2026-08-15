@@ -1,7 +1,6 @@
-export * from "./Checkbox";
-// export { default as DateInput } from "./DateInput/DateInput";
-export { ErrorMessage } from "./ErrorMessage/ErrorMessage";
-export { FormLabel } from "./FormLabel/FormLabel";
+export * from "./checkbox";
+export * from "./dateInput";
+export * from "./field";
 export * from "./Input";
-// export * from "./Select";
-// export * from "./Textarea";
+export * from "./select";
+export * from "./textarea";

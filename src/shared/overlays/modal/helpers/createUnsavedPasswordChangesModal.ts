@@ -1,4 +1,4 @@
-import { MODAL_TYPES } from "./index";
+import { MODAL_TYPES } from ".";
 
 export const createUnsavedPasswordChangesModal = () => {
   return {

@@ -1,17 +1,17 @@
-:root {
+.dark {
   /*brands*/
   --color-brand: var(--color-blue-500);
-  --color-fg-on-brand: var(--color-zinc-50);
   --color-brand-hover: var(--color-blue-600);
+
+
 
   /*accent*/
 
   --color-accent: var(--color-blue-500);
-  --color-fg-on-accent: var(--color-zinc-50);
 
   /*focus*/
   --color-focus: var(--color-blue-500);
 
   /*overlay*/
-  --color-overlay: --alpha(var(--color-black)/40%);
+  --color-overlay: --alpha(var(--color-black)/50%);
 }

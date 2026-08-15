@@ -1,7 +1,6 @@
 :root {
   /* brand */
   --color-brand: var(--color-blue-600);
-  --color-fg-on-brand: var(--color-zinc-100);
   --color-brand-hover: var(--color-blue-700);
 
   /* accent */
@@ -12,5 +11,5 @@
   --color-focus: var(--color-blue-600);
 
   /* overlay */
-  --color-overlay: --alpha(var(--color-black)/48%);
+  --color-overlay: --alpha(var(--color-black) / 60%);
 }
