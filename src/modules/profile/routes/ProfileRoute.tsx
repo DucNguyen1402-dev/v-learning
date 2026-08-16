@@ -1,9 +1,9 @@
 import type { AppRoute } from "@routes";
-import { AppRoutes } from "@routes";
+import { Navigation } from "@shared/navigation";
 
 import { ProfilePage } from "../pages/ProfilePage";
 
 export const ProfileRoute: AppRoute = {
-  path: AppRoutes.client.paths.PROFILE,
+  path: Navigation.client.paths.PROFILE,
   element: <ProfilePage />,
 };

@@ -1,28 +1,13 @@
 import type { ReactNode } from "react";
 
-import { Auth } from "@shared/auth";
-
-import { LOGIN_FORM_FIELD_NAMES, useLoginActions, useLoginForm } from "./hooks";
+import { useLogin, type UseLoginReturn } from "./hooks";
 import { LoginContext } from "./LoginContext";
-import type { LoginContextValues } from "./types";
 
 type LoginProviderProps = {
   children: ReactNode;
 };
 export const LoginProvider = ({ children }: LoginProviderProps) => {
-  const { login, isLoggingIn } = Auth.login();
-
-  const { register, handleSubmit, control, registerFieldState } =
-    useLoginForm();
-
-  const { onLoginClick } = useLoginActions({ handleSubmit, login });
-
-  const value: LoginContextValues = {
-    hookForm: { register, control, registerFieldState },
-    actions: { onLoginClick },
-    loading: isLoggingIn,
-    LOGIN_FORM_FIELD_NAMES,
-  };
+  const value: UseLoginReturn = useLogin();
 
   return (
     <LoginContext.Provider value={value}>{children}</LoginContext.Provider>

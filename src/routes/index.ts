@@ -1,2 +1,1 @@
-export { AppRoutes } from "./AppRoutes";
-export type { AppRoute, RouteKey } from "./types";
+export type { AppRoute } from "./types";

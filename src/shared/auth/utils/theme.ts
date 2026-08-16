@@ -1,5 +1,5 @@
 import { STORAGE_KEYS } from "@shared/auth/constants";
-import type { CurrentUser } from "@/shared/auth/types/types";
+import type { CurrentUser } from "@shared/auth/types";
 import {
   findCurrentUserStorage,
   getCurrentUser,

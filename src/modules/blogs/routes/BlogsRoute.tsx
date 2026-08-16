@@ -1,8 +1,8 @@
 import type { AppRoute } from "@routes";
-import { AppRoutes } from "@routes";
+import { Navigation } from "@shared/navigation";
 
 import { BlogsPage } from "../pages/BlogsPage";
 export const BlogsRoute: AppRoute = {
-  path: AppRoutes.client.paths.BLOGS,
+  path: Navigation.client.paths.BLOGS,
   element: <BlogsPage />,
 };

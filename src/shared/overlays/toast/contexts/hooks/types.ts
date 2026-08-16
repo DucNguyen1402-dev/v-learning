@@ -5,3 +5,8 @@ export type ToastState = {
   message: string;
   variant: ToastVariant | null;
 };
+
+export type ToastShowOptions = {
+  message: ToastState["message"];
+  variant: NonNullable<ToastState["variant"]>;
+};

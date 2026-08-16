@@ -1,7 +1,7 @@
-import { AppRoutes } from "@routes";
 import type { ClientRouteKey } from "@routes/client";
+import { Navigation } from "@shared/navigation";
 
 export const loginButtonHiddenRoutes = new Set<ClientRouteKey>([
-  AppRoutes.client.keys.REGISTER,
-  AppRoutes.client.keys.LOGIN,
+  Navigation.client.keys.REGISTER,
+  Navigation.client.keys.LOGIN,
 ]);

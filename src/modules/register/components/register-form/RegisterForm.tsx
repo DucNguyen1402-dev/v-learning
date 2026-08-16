@@ -1,6 +1,7 @@
 import type { RefObject } from "react";
 
 import { RegisterFields } from "./RegisterFields";
+import { RegisterFooter } from "./RegisterFooter";
 import { RegisterFormActions } from "./RegisterFormActions";
 import { RegisterFormHeader } from "./RegisterFormHeader";
 
@@ -11,7 +12,7 @@ export const RegisterForm = ({ scrollRef }: RegisterFormProps) => {
   return (
     <div
       ref={scrollRef}
-      className="flex w-full max-w-md scroll-target flex-col gap-6 overflow-hidden rounded-surface border border-border-subtle bg-bg-default"
+      className="flex w-full max-w-md scroll-target flex-col gap-6 overflow-hidden rounded-surface border border-border-subtle bg-bg-default pb-4"
     >
       <RegisterFormHeader />
 
@@ -19,6 +20,7 @@ export const RegisterForm = ({ scrollRef }: RegisterFormProps) => {
         <RegisterFields />
         <RegisterFormActions />
       </div>
+      <RegisterFooter />
     </div>
   );
 };

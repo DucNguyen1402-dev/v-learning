@@ -1,18 +1,17 @@
 import { useForm } from "react-hook-form";
 
-import type { LoginFormValues } from "./constants";
+import type { LoginData } from "@modules/login/types";
 
 export const useLoginForm = () => {
-  const { register, handleSubmit, getFieldState, control, formState } =
-    useForm<LoginFormValues>({
+  const { register, handleSubmit, getFieldState, formState } =
+    useForm<LoginData>({
       defaultValues: {
         taiKhoan: "",
         matKhau: "",
-        remember: false,
       },
     });
 
-  const registerFieldState = (name: keyof LoginFormValues) => {
+  const registerFieldState = (name: keyof LoginData) => {
     const fieldState = getFieldState(name, formState);
     return {
       invalid: fieldState.invalid,
@@ -22,7 +21,6 @@ export const useLoginForm = () => {
   return {
     register,
     handleSubmit,
-    control,
     registerFieldState,
   };
 };

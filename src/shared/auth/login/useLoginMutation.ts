@@ -1,11 +1,12 @@
+import type { LoginData } from "@modules/login";
 import { saveAccessToken, saveCurrentUser } from "@shared/auth/utils";
 import { useMutation } from "@tanstack/react-query";
 
-import { login } from "../api";
-import type { LoginFn, LoginPayload } from "../types";
+import { login } from "./api";
+import type { LoginFn } from "./types";
 
 type LoginMutationVariables = {
-  payload: LoginPayload;
+  payload: LoginData;
   remember: boolean;
 };
 

@@ -1,27 +1,21 @@
+import { loginFields } from "@modules/login/config";
 import { useLoginContext } from "@modules/login/contexts";
-import { loginValidationRules } from "@shared/auth";
-import { Field, Input } from "@shared/fields";
+import { LoginAuth } from "@shared/auth/login";
+import {
+  Checkbox,
+  CHECKBOX_SIZE,
+  Field,
+  FIELD_LAYOUT,
+  Input,
+} from "@shared/fields";
 export const LoginForm = () => {
   const {
-    hookForm: { register, registerFieldState },
-    LOGIN_FORM_FIELD_NAMES,
+    form: { register, registerFieldState },
+    state: { remember, toggleRemember },
   } = useLoginContext();
 
-  const loginFields = [
-    {
-      name: LOGIN_FORM_FIELD_NAMES.TAI_KHOAN,
-      label: "TÀI KHOẢN",
-      type: "text",
-    },
-    {
-      name: LOGIN_FORM_FIELD_NAMES.MAT_KHAU,
-      label: "MẬT KHẨU",
-      type: "password",
-    },
-  ];
-
   return (
-    <form className="space-form-md" noValidate>
+    <form className="space-form-lg" noValidate>
       {loginFields.map((field) => (
         <Field.Root key={field.name}>
           <Field.Label target={field.name} text={field.label} />
@@ -30,7 +24,7 @@ export const LoginForm = () => {
               id={field.name}
               type={field.type}
               invalid={registerFieldState(field.name).invalid}
-              {...register(field.name, loginValidationRules[field.name])}
+              {...register(field.name, LoginAuth.validation[field.name])}
             />
             {field.type === "password" && <Input.PasswordVisibilityToggle />}
           </Input.Root>
@@ -39,6 +33,17 @@ export const LoginForm = () => {
           />
         </Field.Root>
       ))}
+
+      <Field.Root layout={FIELD_LAYOUT.HORIZONTAL}>
+        <Checkbox
+          id="remember"
+          checked={remember}
+          onCheckedChange={toggleRemember}
+          size={CHECKBOX_SIZE.SMALL}
+        />
+
+        <Field.Label target="remember" text="Ghi nhớ đăng nhập" />
+      </Field.Root>
     </form>
   );
 };

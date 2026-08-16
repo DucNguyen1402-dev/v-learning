@@ -1,7 +1,7 @@
 import { useCallback, useMemo } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
-import { AppRoutes,type RouteKey } from "@routes";
+import { ClientNavigation, type ClientRouteKey } from "../client";
 
 type RouteState = {
   history?: string[];
@@ -14,21 +14,21 @@ export const useRouteNavigation = () => {
   const state = location.state as RouteState | null;
   const routeHistory = useMemo(() => state?.history ?? [], [state?.history]);
   const currentRouteKey = useMemo(() => {
-    const key = location.state?.currentKey as RouteKey | undefined;
+    const key = location.state?.currentKey as ClientRouteKey | undefined;
     if (key) return key;
 
-    return AppRoutes.client.findKey(location.pathname);
+    return ClientNavigation.findKey(location.pathname);
   }, [location.pathname, location.state?.currentKey]);
 
   const previousRouteKey = useMemo(() => {
-    const previousKey = routeHistory.at(-1) as RouteKey | undefined;
+    const previousKey = routeHistory.at(-1) as ClientRouteKey | undefined;
     if (previousKey) return previousKey;
   }, [routeHistory]);
 
   const back = useCallback(() => {
-    const previousKey = routeHistory.at(-1) as RouteKey | undefined;
+    const previousKey = routeHistory.at(-1) as ClientRouteKey | undefined;
     if (previousKey) {
-      navigate(AppRoutes.client.urls[previousKey], {
+      navigate(ClientNavigation.urls[previousKey], {
         state: {
           history: routeHistory.slice(0, -1),
         },
@@ -39,8 +39,8 @@ export const useRouteNavigation = () => {
   }, [navigate, routeHistory]);
 
   const forward = useCallback(
-    (routeKey: RouteKey, payload?: unknown) =>
-      navigate(AppRoutes.client.urls[routeKey], {
+    (routeKey: ClientRouteKey, payload?: unknown) =>
+      navigate(ClientNavigation.urls[routeKey], {
         state: {
           history: [...routeHistory, currentRouteKey],
           payload: payload ?? null,
@@ -50,8 +50,8 @@ export const useRouteNavigation = () => {
   );
 
   const go = useCallback(
-    (routeKey: RouteKey, payload?: unknown) =>
-      navigate(AppRoutes.client.urls[routeKey], {
+    (routeKey: ClientRouteKey, payload?: unknown) =>
+      navigate(ClientNavigation.urls[routeKey], {
         state: {
           payload: payload ?? null,
         },

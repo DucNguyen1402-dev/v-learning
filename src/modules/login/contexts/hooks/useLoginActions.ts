@@ -1,36 +1,34 @@
 import type { SubmitHandler, UseFormHandleSubmit } from "react-hook-form";
 
-import { AppRoutes } from "@routes";
-import type { LoginFn, LoginResponse } from "@shared/auth";
+import { LoginFieldNamesValues } from "@modules/login/constants";
+import type { LoginData } from "@modules/login/types";
+import { LoginAuth } from "@shared/auth/login";
 import { getErrorMessage } from "@shared/error";
 import { execution } from "@shared/execution";
 import { createPayload } from "@shared/form-utils";
 import { Navigation } from "@shared/navigation";
 import { Toast } from "@shared/overlays";
 
-import type { LoginFormValues } from "./constants";
-
 type UseLoginActionsParams = {
-  handleSubmit: UseFormHandleSubmit<LoginFormValues>;
-  login: LoginFn;
+  handleSubmit: UseFormHandleSubmit<LoginData>;
+  remember: boolean;
 };
 
 export const useLoginActions = ({
   handleSubmit,
-  login,
+  remember,
 }: UseLoginActionsParams) => {
-  const { go } = Navigation.useNavigate();
+  const { login, isLoggingIn } = LoginAuth.useMutation();
+  const { go } = Navigation.hooks.useNavigate();
   const toast = Toast.use();
 
-  const onValid: SubmitHandler<LoginFormValues> = async (data) => {
-    const payload = createPayload(data, ["taiKhoan", "matKhau"]);
+  const onValid: SubmitHandler<LoginData> = async (data) => {
+    const payload = createPayload(data, LoginFieldNamesValues);
 
-    const loginTask = async (): Promise<LoginResponse> =>
-      await login({ payload, remember: data.remember });
-
+    const loginTask = () => login({ payload, remember });
     try {
       await execution.runAsyncTask(loginTask);
-      go(AppRoutes.client.keys.HOME, Toast.config.success.login());
+      go(Navigation.client.keys.HOME, Toast.config.success.login());
     } catch (error) {
       const message = getErrorMessage(error);
       toast.show(Toast.config.error(message));
@@ -43,5 +41,6 @@ export const useLoginActions = ({
 
   return {
     onLoginClick,
+    isLoggingIn,
   };
 };

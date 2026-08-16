@@ -18,7 +18,7 @@ export const useRegisterActions = ({
   handleSubmit,
 }: UseRegisterActionsProps) => {
   const { register, isRegistering } = RegisterAuth.mutation();
-  const { go } = Navigation.useNavigate();
+  const { go } = Navigation.hooks.useNavigate();
   const toast = Toast.use();
   const onValid = (data: RegisterData) => {
     const payload = createPayload(data, REGISTER_FIELD_NAME_VALUES);
@@ -27,7 +27,7 @@ export const useRegisterActions = ({
       execution.runAsyncTask(() => register(payload));
       go(CLIENT_ROUTE_KEYS.LOGIN, {
         toast: Toast.config.success.register(),
-        previousKey: CLIENT_ROUTE_KEYS.REGISTER,
+        isRegistrationSuccessful: true,
       });
     } catch (error) {
       const errorMessage = getErrorMessage(error);

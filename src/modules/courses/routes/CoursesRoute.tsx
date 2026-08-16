@@ -1,9 +1,9 @@
 import type { AppRoute } from "@routes";
-import { AppRoutes } from "@routes";
+import { Navigation } from "@shared/navigation";
 
 import { CoursesPage } from "../pages/CoursesPage";
 
 export const CoursesRoute: AppRoute = {
-  path: AppRoutes.client.paths.COURSES,
+  path: Navigation.client.paths.COURSES,
   element: <CoursesPage />,
 };
