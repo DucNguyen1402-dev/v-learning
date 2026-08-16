@@ -40,7 +40,7 @@ const FEATURED_COURSES: Course[] = [
 
 export const HomePage = () => {
   //1. Scroll to top on route change
-  // Navigation.useScrollOnRouteChange();
+  Navigation.useScrollOnRouteChange();
 
   //2. Show toast message if there's a payload in the location state
   const { show: showToast } = Toast.use();

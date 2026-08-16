@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-import { useRegister, type UseRegisterReturnValues } from "./hooks";
+import { useRegister, type UseRegisterReturn } from "./hooks";
 import { RegisterContext } from "./RegisterContext";
 
 type RegisterProviderProps = {
@@ -8,7 +8,7 @@ type RegisterProviderProps = {
 };
 
 export const RegisterProvider = ({ children }: RegisterProviderProps) => {
-  const value: UseRegisterReturnValues = useRegister();
+  const value: UseRegisterReturn = useRegister();
 
   return (
     <RegisterContext.Provider value={value}>

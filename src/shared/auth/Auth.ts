@@ -1,4 +1,4 @@
-import { useLoginMutation, useRegisterMutation } from "./hooks";
+import { useLoginMutation } from "./hooks";
 import {
   clearAuthSession,
   getCurrentUser,
@@ -8,7 +8,6 @@ import {
 
 export const Auth = {
   login: useLoginMutation,
-  register: useRegisterMutation,
   logout: clearAuthSession,
   getCurrentUser,
   getCurrentUserTheme,

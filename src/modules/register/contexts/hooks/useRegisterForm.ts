@@ -23,5 +23,3 @@ export const useRegisterForm = () => {
     registerFieldState,
   };
 };
-
-export type UseRegisterFormReturnValues = ReturnType<typeof useRegisterForm>;

@@ -1,1 +1,1 @@
-export { useRegister, type UseRegisterReturnValues } from "./useRegister";
+export { useRegister, type UseRegisterReturn } from "./useRegister";

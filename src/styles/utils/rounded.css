@@ -1,4 +1,9 @@
 /* Controls: button, input, select, textarea, checkbox, radio */
+
+@utility rounded-control-sm {
+  border-radius: var(--radius-control-sm);
+}
+
 @utility rounded-control {
   border-radius: var(--radius-control);
 }

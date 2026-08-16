@@ -1,7 +1,5 @@
 import { createContext } from "react";
 
-import type { UseRegisterReturnValues } from "./hooks";
+import type { UseRegisterReturn } from "./hooks";
 
-export const RegisterContext = createContext<UseRegisterReturnValues | null>(
-  null,
-);
+export const RegisterContext = createContext<UseRegisterReturn | null>(null);

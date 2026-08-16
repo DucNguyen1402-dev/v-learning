@@ -6,3 +6,4 @@ export type RegisterData = {
   soDT?: string;
   maNhom: string;
 };
+export type RegisterFieldNames = Record<string, keyof RegisterData>;

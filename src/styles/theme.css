@@ -18,6 +18,7 @@
 
 
   /* ================= Radius ================= */
+  --radius-control-sm: var(--app-radius-2);
   --radius-control: var(--app-radius-3);
   --radius-surface: var(--app-radius-4);
   --radius-overlay: var(--app-radius-5);
