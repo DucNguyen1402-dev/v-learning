@@ -1,9 +1,6 @@
 import { useLoginContext } from "@modules/login/contexts";
+import { type LoginValidationRules, loginValidationRules } from "@shared/auth";
 import { Field, Input } from "@shared/fields";
-import {
-  type AccountValidationRules,
-  accountValidationRules,
-} from "@shared/validation";
 export const LoginForm = () => {
   const {
     hookForm: { register, getFieldState },
@@ -16,7 +13,7 @@ export const LoginForm = () => {
   const loginFields: {
     name: (typeof LOGIN_FORM_FIELD_NAMES)[keyof typeof LOGIN_FORM_FIELD_NAMES];
     label: string;
-    validation: AccountValidationRules;
+    validation: LoginValidationRules;
     type: string;
     errorMessage?: string;
     invalid: boolean;
@@ -25,7 +22,7 @@ export const LoginForm = () => {
       name: LOGIN_FORM_FIELD_NAMES.TAI_KHOAN,
       label: "TÀI KHOẢN",
       type: "text",
-      validation: accountValidationRules.taiKhoan,
+      validation: loginValidationRules.taiKhoan,
       errorMessage: taiKhoan.error?.message,
       invalid: taiKhoan.invalid,
     },
@@ -33,7 +30,7 @@ export const LoginForm = () => {
       name: LOGIN_FORM_FIELD_NAMES.MAT_KHAU,
       label: "MẬT KHẨU",
       type: "password",
-      validation: accountValidationRules.matKhau,
+      validation: loginValidationRules.matKhau,
       errorMessage: matKhau.error?.message,
       invalid: matKhau.invalid,
     },

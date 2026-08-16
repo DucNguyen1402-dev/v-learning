@@ -1,8 +1,8 @@
-import type { LoginFn, LoginPayload } from "@shared/auth/types";
 import { saveAccessToken, saveCurrentUser } from "@shared/auth/utils";
 import { useMutation } from "@tanstack/react-query";
 
-import { login } from "../api/login";
+import { login } from "../api";
+import type { LoginFn, LoginPayload } from "../types";
 
 type LoginMutationVariables = {
   payload: LoginPayload;

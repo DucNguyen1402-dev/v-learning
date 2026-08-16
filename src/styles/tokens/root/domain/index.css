@@ -1,0 +1,8 @@
+:root {
+    /* =================================================
+    *  Foreground colors
+    *================================================== */
+
+    --color-fg-required: var(--color-red-700);
+    --color-fg-available: var(--color-green-700);
+}

@@ -12,13 +12,12 @@ type LoginProviderProps = {
 export const LoginProvider = ({ children }: LoginProviderProps) => {
   const { login, isLoggingIn } = Auth.login();
 
-  const { register, errors, handleSubmit, control, getFieldState } =
-    useLoginForm();
+  const { register, handleSubmit, control, getFieldState } = useLoginForm();
 
   const { onLoginClick } = useLoginActions({ handleSubmit, login });
 
   const value: LoginContextValues = {
-    hookForm: { register, errors, control, getFieldState },
+    hookForm: { register, control, getFieldState },
     actions: { onLoginClick },
     loading: isLoggingIn,
     LOGIN_FORM_FIELD_NAMES,

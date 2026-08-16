@@ -33,9 +33,7 @@ export const useLoginActions = ({
       go(AppRoutes.client.keys.HOME, Toast.config.success.login());
     } catch (error) {
       const message = getErrorMessage(error);
-      toast.show({
-        ...Toast.config.error(message),
-      });
+      toast.show(Toast.config.error(message));
     }
   };
 

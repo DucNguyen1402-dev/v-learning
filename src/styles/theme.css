@@ -1,28 +1,9 @@
 @theme {
+
   /* ==========================================================
-   * Semantic 
+   * Foundation Semantic
    * ========================================================== */
 
-  /* ================= Text Colors ================= */
-
-  --color-text-default: var(--color-fg-default);
-  --color-text-muted: var(--color-fg-muted);
-  --color-text-subtle: var(--color-fg-subtle);
-
-  --color-muted-foreground: var(--color-fg-muted);
-
-  /* ================= Surface Colors ================= */
-
-  --color-bg-base: var(--color-bg-base);
-  --color-bg-default: var(--color-bg-default);
-  --color-bg-muted: var(--color-bg-muted);
-  --color-bg-subtle: var(--color-bg-subtle);
-
-  /* ================= Border Colors ================= */
-
-  --color-border-default: var(--color-border-default);
-  --color-border-muted: var(--color-border-muted);
-  --color-border-subtle: var(--color-border-subtle);
 
   /* ================= Z-Index Layers ================= */
 
@@ -35,9 +16,53 @@
   --z-index-toast: 500;
   --z-index-max: 9999;
 
+
   /* ================= Radius ================= */
   --radius-control: var(--app-radius-3);
   --radius-surface: var(--app-radius-4);
   --radius-overlay: var(--app-radius-5);
   --radius-pill: var(--app-radius-full);
+
+
+
+  /* ==========================================================
+   * UI Semantic 
+   * ========================================================== */
+
+  /* ================= Colors ================= */
+
+
+  /* Text Colors */
+  --color-text-default: var(--color-fg-default);
+  --color-text-muted: var(--color-fg-muted);
+  --color-text-subtle: var(--color-fg-subtle);
+  --color-text-on-brand: var(--color-fg-on-brand);
+
+
+
+  /* Background Colors */
+  --color-bg-base: var(--color-bg-base);
+  --color-bg-default: var(--color-bg-default);
+  --color-bg-muted: var(--color-bg-muted);
+  --color-bg-subtle: var(--color-bg-subtle);
+  --color-bg-brand: var(--color-bg-brand);
+
+
+  /* Border Colors */
+  --color-border-default: var(--color-border-default);
+  --color-border-muted: var(--color-border-muted);
+  --color-border-subtle: var(--color-border-subtle);
+  --color-border-brand: var(--color-border-brand);
+
+
+
+  /* ==========================================================
+   * Domain Semantic 
+   * ========================================================== */
+
+
+  --color-text-required: var(--color-fg-required);
+  --color-text-available: var(--color-fg-available);
+
+
 }

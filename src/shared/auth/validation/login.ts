@@ -1,4 +1,4 @@
-export const accountValidationRules = {
+export const loginValidationRules = {
   taiKhoan: {
     required: "Vui lòng nhập tài khoản.",
     minLength: {
@@ -28,5 +28,5 @@ export const accountValidationRules = {
   },
 } as const;
 
-export type AccountValidationRules =
-  (typeof accountValidationRules)[keyof typeof accountValidationRules];
+export type LoginValidationRules =
+  (typeof loginValidationRules)[keyof typeof loginValidationRules];
