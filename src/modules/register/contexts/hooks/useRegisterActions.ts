@@ -1,5 +1,6 @@
 import type { UseFormHandleSubmit } from "react-hook-form";
 
+import type { RegisterData } from "@modules/register/types";
 import { CLIENT_ROUTE_KEYS } from "@routes/client";
 import { Auth, type RegisterPayload } from "@shared/auth";
 import { getErrorMessage } from "@shared/error";
@@ -8,11 +9,10 @@ import { createPayload } from "@shared/form-utils";
 import { Navigation } from "@shared/navigation";
 import { Toast } from "@shared/overlays";
 
-import { REGISTER_FIELD_KEYS } from "./constants";
-import type { RegisterFormData } from "./types";
+import { REGISTER_FIELD_NAME_VALUES } from "./constants";
 
 type UseRegisterActionsProps = {
-  handleSubmit: UseFormHandleSubmit<RegisterFormData>;
+  handleSubmit: UseFormHandleSubmit<RegisterData>;
 };
 
 export const useRegisterActions = ({
@@ -21,10 +21,12 @@ export const useRegisterActions = ({
   const { register, isRegistering } = Auth.register();
   const { go } = Navigation.useNavigate();
   const toast = Toast.use();
-  const onValid = (data: RegisterFormData) => {
-    const payload: RegisterPayload = createPayload(data, REGISTER_FIELD_KEYS);
+  const onValid = (data: RegisterData) => {
+    const payload: RegisterPayload = createPayload(
+      data,
+      REGISTER_FIELD_NAME_VALUES,
+    );
 
-    console.log(payload);
     const registerTask = async (): Promise<unknown> => await register(payload);
 
     try {

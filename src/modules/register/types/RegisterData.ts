@@ -1,4 +1,4 @@
-export type RegisterFormData = {
+export type RegisterData = {
   taiKhoan: string;
   matKhau: string;
   hoTen: string;

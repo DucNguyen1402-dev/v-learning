@@ -1,15 +1,19 @@
-import { REGISTER_FIELD_NAMES } from "./constants";
-import type { UseRegisterActionsReturnValues } from "./useRegisterActions";
-import { useRegisterActions } from "./useRegisterActions";
-import type { UseRegisterFormReturnValues } from "./useRegisterForm";
-import { useRegisterForm } from "./useRegisterForm";
+import { REGISTER_FIELD_NAMES, type RegisterFieldNames } from "./constants";
+import {
+  useRegisterActions,
+  type UseRegisterActionsReturnValues,
+} from "./useRegisterActions";
+import {
+  useRegisterForm,
+  type UseRegisterFormReturnValues,
+} from "./useRegisterForm";
 
 export const useRegister = () => {
-  const { handleSubmit, register, getFieldState } = useRegisterForm();
+  const { handleSubmit, register, registerFieldState } = useRegisterForm();
 
   const actions = useRegisterActions({ handleSubmit });
   return {
-    form: { register, getFieldState },
+    form: { register, registerFieldState },
     actions,
     constants: {
       REGISTER_FIELD_NAMES,
@@ -25,6 +29,6 @@ export type UseRegisterReturnValues = {
   form: RegisterFormWithoutHandleSubmit;
   actions: UseRegisterActionsReturnValues;
   constants: {
-    REGISTER_FIELD_NAMES: typeof REGISTER_FIELD_NAMES;
+    REGISTER_FIELD_NAMES: RegisterFieldNames;
   };
 };
