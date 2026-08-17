@@ -1,1 +1,1 @@
-export { useSelect } from "./useSelect";
+export { useSelect, type UseSelectReturnType } from "./useSelect";
