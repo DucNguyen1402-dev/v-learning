@@ -1,4 +1,5 @@
 import { createContext } from "react";
 
-import type { SelectContextValues } from "./SelectContextValues";
-export const SelectContext = createContext<SelectContextValues | null>(null);
+import type { UseSelectReturnType } from "./hooks";
+
+export const SelectContext = createContext<UseSelectReturnType | null>(null);

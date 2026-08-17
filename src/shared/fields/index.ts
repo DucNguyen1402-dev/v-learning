@@ -1,6 +1,6 @@
 export * from "./checkbox";
 export * from "./dateInput";
 export * from "./field";
-export * from "./Input";
+export * from "./input";
 export * from "./select";
 export * from "./textarea";

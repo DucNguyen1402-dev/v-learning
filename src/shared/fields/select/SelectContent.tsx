@@ -17,7 +17,7 @@ export const SelectContent = ({
   value,
   onChange,
 }: DropdownMenuProps) => {
-  const { isOpen, close, setValue } = useSelectContext();
+  const { isOpen, close, setValue, selectRef } = useSelectContext();
 
   const onItemClick = (value: string | number) => {
     onChange(value);
@@ -25,7 +25,7 @@ export const SelectContent = ({
     setValue(value);
   };
   return isOpen ? (
-    <div className="select-dropdown-menu-container">
+    <div className="select-dropdown-menu-container" ref={selectRef}>
       <ul className="select-dropdown-menu-list scrollbar">
         {options.map((item) => {
           if ("options" in item) {
