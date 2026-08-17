@@ -96,4 +96,14 @@
       background-color: var(--color-bg-destructive-solid-hover);
     }
   }
+
+  .button-destructive.ghost {
+    background-color: var(--color-bg-destructive-ghost);
+    color: var(--color-fg-on-destructive-ghost);
+    border: none;
+
+    &:hover {
+      color: var(--color-fg-on-destructive-ghost-hover);
+    }
+  }
 }

@@ -11,7 +11,7 @@ export const getUserAvatar = (): Avatar => {
   }
   const fullName = currentUser?.hoTen;
 
-  if (!fullName?.trim())
+  if (!fullName)
     return {
       type: "initials",
       value: "U",
@@ -19,6 +19,6 @@ export const getUserAvatar = (): Avatar => {
 
   return {
     type: "initials",
-    value: fullName.trim().split(/\s+/).at(-1)?.charAt(0).toUpperCase() ?? "U",
+    value: fullName.trim().split(/\s+/).at(-1)!.charAt(0).toUpperCase(),
   };
 };

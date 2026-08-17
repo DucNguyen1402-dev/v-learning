@@ -29,6 +29,7 @@
   --color-fg-muted-hover: var(--color-zinc-800);
   --color-fg-subtle-hover: var(--color-zinc-700);
   --color-fg-on-danger: var(--color-white);
+  --color-fg-danger-hover: var(--color-red-700);
 
   /* =================================================
     *  Feedback dimensions
@@ -40,4 +41,9 @@
 
   --color-fg-on-feedback: var(--color-white);
 
+  /* =================================================
+    *  Domain
+    *================================================== */
+
+  --color-fg-danger: var(--color-red-600);
 }

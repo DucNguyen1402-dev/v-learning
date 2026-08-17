@@ -1,1 +1,1 @@
-export { getCurrentUserProfile } from "./getCurrentUserProfile";
+export { tryGetUserAccount } from "./tryGetUserAccount";

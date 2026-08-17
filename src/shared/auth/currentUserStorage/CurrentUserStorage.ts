@@ -1,4 +1,5 @@
 import {
+  getCurrentUser,
   getCurrentUserProperty,
   getCurrentUserStorage,
   saveCurrentUser,
@@ -12,4 +13,5 @@ export const CurrentUserStorage = {
   update: updateCurrentUser,
   getStorage: getCurrentUserStorage,
   getProperty: getCurrentUserProperty,
+  get: getCurrentUser,
 };

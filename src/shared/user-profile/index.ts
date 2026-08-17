@@ -1,1 +1,2 @@
-export { type UserProfileReturnType, useUserProfile } from "./useUserProfile";
+export { UserProfile } from "./UserProfile";
+export * from "./utils";

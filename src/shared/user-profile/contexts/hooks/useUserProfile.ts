@@ -1,17 +1,15 @@
 import { useState } from "react";
 
 import type { UserProfile } from "./types";
-import { getCurrentUserProfile } from "./utils";
+import { getUserProfile } from "./utils";
 
 export const useUserProfile = () => {
-  const currentProfile = getCurrentUserProfile();
-  const [profile, setProfile] = useState<UserProfile | undefined>(
-    currentProfile,
-  );
+  const currentProfile = getUserProfile();
+  const [profile, setProfile] = useState<UserProfile>(currentProfile);
 
   const refreshProfile = () => {
-    const currentProfile = getCurrentUserProfile();
-    setProfile(currentProfile ?? undefined);
+    const currentProfile = getUserProfile();
+    setProfile(currentProfile);
   };
 
   return {
