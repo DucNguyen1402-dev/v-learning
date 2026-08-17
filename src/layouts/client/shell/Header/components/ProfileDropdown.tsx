@@ -1,6 +1,6 @@
 import { useCallback, useMemo } from "react";
 
-import { Auth } from "@shared/auth";
+import { AuthSession } from "@shared/auth";
 import { Navigation } from "@shared/navigation";
 import { Theme } from "@shared/theme";
 import { Button, BUTTON_LAYOUTS, BUTTON_SIZES } from "@shared/ui";
@@ -12,7 +12,7 @@ export const ProfileDropdown = () => {
   const { go } = Navigation.hooks.useNavigate();
 
   const onLogoutClick = useCallback(() => {
-    Auth.logout();
+    AuthSession.logout();
     go(Navigation.client.keys.HOME);
   }, [go]);
 

@@ -1,3 +1,4 @@
+export { iconTypeClasses } from "./iconTypeClasses";
 export { messageFontSizes } from "./messageFontSizes";
 export { toastIconSizes, toastIconTypes } from "./toastIcon";
 export { toastSizeClasses } from "./toastSizeClasses";

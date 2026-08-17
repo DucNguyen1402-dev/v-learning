@@ -2,7 +2,6 @@ import type { UseFormHandleSubmit } from "react-hook-form";
 
 import { REGISTER_FIELD_NAME_VALUES } from "@modules/register/constants";
 import type { RegisterData } from "@modules/register/types";
-import { CLIENT_ROUTE_KEYS } from "@routes/client";
 import { RegisterAuth } from "@shared/auth/register";
 import { getErrorMessage } from "@shared/error";
 import { execution } from "@shared/execution";
@@ -25,7 +24,7 @@ export const useRegisterActions = ({
 
     try {
       execution.runAsyncTask(() => register(payload));
-      go(CLIENT_ROUTE_KEYS.LOGIN, {
+      go(Navigation.client.keys.LOGIN, {
         toast: Toast.config.success.register(),
         isRegistrationSuccessful: true,
       });

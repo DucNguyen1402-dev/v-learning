@@ -1,6 +1,6 @@
 import { type ReactNode, useEffect } from "react";
 
-import { Auth } from "@shared/auth";
+import { CurrentUser } from "@shared/current-user";
 import { themeAssets } from "@shared/theme/constants";
 
 import { useThemeState } from "./hooks";
@@ -13,11 +13,11 @@ type ThemeProviderProps = {
 
 export const ThemeProvider = ({ children }: ThemeProviderProps) => {
   const { currentTheme, toggleTheme } = useThemeState(
-    Auth.getCurrentUserTheme() ?? "light",
+    CurrentUser.theme.get() ?? "light",
   );
 
   useEffect(() => {
-    Auth.updateCurrentUserTheme(currentTheme);
+    CurrentUser.theme.update(currentTheme);
   }, [currentTheme]);
 
   const value: ThemeContextValues = {

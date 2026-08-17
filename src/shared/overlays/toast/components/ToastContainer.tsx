@@ -1,4 +1,5 @@
 import {
+  iconTypeClasses,
   messageFontSizes,
   toastIconSizes,
   toastIconTypes,
@@ -28,14 +29,15 @@ export const ToastContainer = ({
   }
 
   const toastSize = toastSizeClasses[size];
-  const typeClass = toastTypeClasses[variant];
+  const toasttypeClass = toastTypeClasses[variant];
+  const iconTypeClass = iconTypeClasses[variant];
 
   const Icon = toastIconTypes[variant];
   const iconSize = toastIconSizes[size];
   const messageSize = messageFontSizes[size];
   return (
-    <div ref={toastRef} className={cn("toast", typeClass, toastSize)}>
-      <Icon className={iconSize} />
+    <div ref={toastRef} className={cn("toast", toasttypeClass, toastSize)}>
+      <Icon className={cn(iconSize, iconTypeClass)} />
 
       <p className={cn("flex-1 font-medium", messageSize)}>{message}</p>
     </div>

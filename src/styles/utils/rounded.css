@@ -9,8 +9,8 @@
 }
 
 /* Surfaces: card, table, list item, panel, dropdown */
-@utility rounded-surface {
-  border-radius: var(--radius-surface);
+@utility rounded-container {
+  border-radius: var(--radius-container);
 }
 
 /* Overlays: modal, dialog, drawer, popover, tooltip */

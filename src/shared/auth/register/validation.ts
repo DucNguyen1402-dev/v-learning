@@ -29,8 +29,19 @@ export const registerValidationRules = {
       value: 50,
       message: "Họ và tên không được vượt quá 50 ký tự",
     },
-  },
+    pattern: {
+      value: /^[A-Za-zÀ-ỹ]+(?:[ '-][A-Za-zÀ-ỹ]+)*$/u,
+      message: "Họ và tên chỉ được chứa chữ cái, khoảng trắng, dấu ' và -",
+    },
+    validate: {
+      notBlank: (value: string) =>
+        value.trim().length > 0 || "Vui lòng nhập họ và tên",
 
+      noMultipleSpaces: (value: string) =>
+        !/\s{2,}/.test(value) ||
+        "Họ và tên không được chứa nhiều khoảng trắng liên tiếp",
+    },
+  },
   email: {
     required: "Vui lòng nhập email",
     pattern: {

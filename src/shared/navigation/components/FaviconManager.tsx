@@ -2,14 +2,13 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 import { Navigation } from "@shared/navigation";
-import { CLIENT_ROUTE_TITLES } from "@routes/client";
 
 import { clientFavicon } from "@assets/favicon";
 function getRouteMetadata(pathname: string) {
   const mappings = [
     {
       routes: Navigation.client,
-      titles: CLIENT_ROUTE_TITLES,
+      titles: Navigation.client.titles,
       favicon: clientFavicon,
     },
     // {

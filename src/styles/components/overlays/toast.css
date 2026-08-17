@@ -1,52 +1,68 @@
 @layer components {
   .toast {
     @apply pointer-events-auto flex items-center gap-3 rounded-overlay shadow-xl backdrop-blur-lg;
-    color: var(--color-fg-on-feedback);
+    color: var(--color-fg-default);
+
+    .dark & {
+      color: var(--color-fg-on-feedback);
+    }
   }
 
   .toast-success {
-    background-color: --alpha(var(--color-bg-success) / 80%);
+    background-color: color-mix(in srgb, var(--color-bg-success) 30%, var(--color-bg-default) 70%);
     border-color: var(--color-border-success);
 
     .dark & {
-      color: var(--color-fg-success);
-      background-color: --alpha(var(--color-bg-success) / 30%);
-      border-color: --alpha(var(--color-bg-success) / 50%);
+
+      background-color: color-mix(in srgb, var(--color-bg-success) 40%, var(--color-bg-default) 60%);
+      border-color: color-mix(in srgb, var(--color-bg-success) 70%, var(--color-bg-default) 30%);
     }
   }
 
   .toast-error {
-    background-color: --alpha(var(--color-bg-error) / 80%);
+    background-color: color-mix(in srgb, var(--color-bg-error) 30%, var(--color-bg-default) 70%);
     border-color: var(--color-border-error);
 
     .dark & {
-      color: var(--color-fg-error);
-      background-color: --alpha(var(--color-bg-error) / 30%);
-      border-color: --alpha(var(--color-bg-error) / 50%);
+      background-color: color-mix(in srgb, var(--color-bg-error) 40%, var(--color-bg-default) 60%);
+      border-color: color-mix(in srgb, var(--color-bg-error) 70%, var(--color-bg-default) 30%);
     }
   }
 
+
   .toast-warning {
-    background-color: --alpha(var(--color-bg-warning) / 80%);
+    background-color: color-mix(in srgb, var(--color-bg-warning) 30%, var(--color-bg-default) 70%);
     border-color: var(--color-border-warning);
 
     .dark & {
-      color: var(--color-fg-warning);
-      background-color: --alpha(var(--color-bg-warning) / 30%);
-      border-color: --alpha(var(--color-bg-warning) / 50%);
+      background-color: color-mix(in srgb, var(--color-bg-warning) 40%, var(--color-bg-default) 60%);
+      border-color: color-mix(in srgb, var(--color-bg-warning) 70%, var(--color-bg-default) 30%);
     }
   }
 
+
+  .toast-icon-success {
+    color: var(--color-fg-success);
+  }
+
+  .toast-icon-error {
+    color: var(--color-fg-error);
+  }
+
+  .toast-icon-warning {
+    color: var(--color-fg-warning);
+  }
+
   .toast-size-sm {
-    @apply max-w-96 min-w-72 gap-2.5  border-l-6 px-4 py-3;
+    @apply max-w-96 min-w-72 gap-2.5 border-l-4 px-4 py-3;
   }
 
   .toast-size-md {
-    @apply max-w-100 min-w-80 gap-3 border-l-8 px-5 py-4;
+    @apply max-w-100 min-w-80 gap-3 border-l-6 px-5 py-4;
   }
 
   .toast-size-lg {
-    @apply max-w-120 min-w-96 gap-4 border-l-10 px-6 py-5;
+    @apply max-w-120 min-w-96 gap-4 border-l-8 px-6 py-5;
   }
 
 

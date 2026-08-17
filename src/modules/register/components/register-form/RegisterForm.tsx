@@ -12,7 +12,7 @@ export const RegisterForm = ({ scrollRef }: RegisterFormProps) => {
   return (
     <div
       ref={scrollRef}
-      className="flex w-full max-w-md scroll-target flex-col gap-6 overflow-hidden rounded-surface border border-border-subtle bg-bg-default pb-4"
+      className="flex w-full max-w-md scroll-target flex-col gap-6 overflow-hidden rounded-container border border-border-subtle bg-bg-default pb-4"
     >
       <RegisterFormHeader />
 

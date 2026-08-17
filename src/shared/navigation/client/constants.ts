@@ -11,13 +11,13 @@ export const CLIENT_ROUTE_KEYS = {
 export type ClientRouteKey = keyof typeof CLIENT_ROUTE_KEYS;
 
 export const CLIENT_ROUTE_PATHS = {
-  HOME: "home",
-  LOGIN: "login",
-  ABOUT: "about",
-  REGISTER: "register",
-  BLOGS: "blogs",
-  PROFILE: "profile",
-  COURSES: "courses",
+  [CLIENT_ROUTE_KEYS.HOME]: "home",
+  [CLIENT_ROUTE_KEYS.LOGIN]: "login",
+  [CLIENT_ROUTE_KEYS.ABOUT]: "about",
+  [CLIENT_ROUTE_KEYS.REGISTER]: "register",
+  [CLIENT_ROUTE_KEYS.BLOGS]: "blogs",
+  [CLIENT_ROUTE_KEYS.PROFILE]: "profile",
+  [CLIENT_ROUTE_KEYS.COURSES]: "courses",
 } as const;
 
 export const CLIENT_ROUTE_TITLES = {
@@ -29,8 +29,6 @@ export const CLIENT_ROUTE_TITLES = {
   [CLIENT_ROUTE_KEYS.PROFILE]: "Profile",
   [CLIENT_ROUTE_KEYS.COURSES]: "Courses",
 } as const;
-
-export type ClientRouteTitle = (typeof CLIENT_ROUTE_TITLES)[ClientRouteKey];
 
 export const CLIENT_ROUTE_URLS = {
   [CLIENT_ROUTE_KEYS.HOME]: "/client/home",

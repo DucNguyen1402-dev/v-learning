@@ -20,11 +20,16 @@
   /* ================= Radius ================= */
   --radius-control-sm: var(--app-radius-2);
   --radius-control: var(--app-radius-3);
-  --radius-surface: var(--app-radius-4);
-  --radius-overlay: var(--app-radius-5);
+  --radius-container: var(--app-radius-3);
+  --radius-overlay: var(--app-radius-4);
   --radius-pill: var(--app-radius-full);
 
 
+  /* --radius-control-sm: checkbox, radio, badge nhỏ, input...
+--radius-control: button, select, textarea...
+--radius-container: card, panel, table wrapper...
+--radius-overlay: modal, popover, dropdown, toast...
+--radius-pill: chip, tag, avatar label... */
 
   /* ==========================================================
    * UI Semantic 

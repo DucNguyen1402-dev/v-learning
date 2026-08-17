@@ -1,5 +1,5 @@
 import type { LoginData } from "@modules/login";
-import { saveAccessToken, saveCurrentUser } from "@shared/auth/utils";
+import { AccessTokenStorage, CurrentUserStorage } from "@shared/auth";
 import { useMutation } from "@tanstack/react-query";
 
 import { login } from "./api";
@@ -20,8 +20,8 @@ export const useLoginMutation = () => {
         email: data.email,
         soDT: data.soDT,
       };
-      saveAccessToken(data.accessToken, variable.remember);
-      saveCurrentUser(user, variable.remember);
+      AccessTokenStorage.save(data.accessToken, variable.remember);
+      CurrentUserStorage.save(user, variable.remember);
     },
   });
 
