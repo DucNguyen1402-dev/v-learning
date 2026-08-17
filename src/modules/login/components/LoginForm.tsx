@@ -1,46 +1,21 @@
+import { loginFields } from "@modules/login/config";
 import { useLoginContext } from "@modules/login/contexts";
-import { Field, Input } from "@shared/fields";
+import { LoginAuth } from "@shared/auth/login";
 import {
-  type AccountValidationRules,
-  accountValidationRules,
-} from "@shared/validation";
+  Checkbox,
+  CHECKBOX_SIZE,
+  Field,
+  FIELD_LAYOUT,
+  Input,
+} from "@shared/fields";
 export const LoginForm = () => {
   const {
-    hookForm: { register, getFieldState },
-    LOGIN_FORM_FIELD_NAMES,
+    form: { register, registerFieldState },
+    state: { remember, toggleRemember },
   } = useLoginContext();
 
-  const taiKhoan = getFieldState(LOGIN_FORM_FIELD_NAMES.TAI_KHOAN);
-  const matKhau = getFieldState(LOGIN_FORM_FIELD_NAMES.MAT_KHAU);
-
-  const loginFields: {
-    name: (typeof LOGIN_FORM_FIELD_NAMES)[keyof typeof LOGIN_FORM_FIELD_NAMES];
-    label: string;
-    validation: AccountValidationRules;
-    type: string;
-    errorMessage?: string;
-    invalid: boolean;
-  }[] = [
-    {
-      name: LOGIN_FORM_FIELD_NAMES.TAI_KHOAN,
-      label: "TÀI KHOẢN",
-      type: "text",
-      validation: accountValidationRules.taiKhoan,
-      errorMessage: taiKhoan.error?.message,
-      invalid: taiKhoan.invalid,
-    },
-    {
-      name: LOGIN_FORM_FIELD_NAMES.MAT_KHAU,
-      label: "MẬT KHẨU",
-      type: "password",
-      validation: accountValidationRules.matKhau,
-      errorMessage: matKhau.error?.message,
-      invalid: matKhau.invalid,
-    },
-  ];
-
   return (
-    <form className="space-form-md" noValidate>
+    <form className="space-form-lg" noValidate>
       {loginFields.map((field) => (
         <Field.Root key={field.name}>
           <Field.Label target={field.name} text={field.label} />
@@ -48,14 +23,27 @@ export const LoginForm = () => {
             <Input.Field
               id={field.name}
               type={field.type}
-              invalid={field.invalid}
-              {...register(field.name, field.validation)}
+              invalid={registerFieldState(field.name).invalid}
+              {...register(field.name, LoginAuth.validation[field.name])}
             />
             {field.type === "password" && <Input.PasswordVisibilityToggle />}
           </Input.Root>
-          <Field.ErrorMessage message={field.errorMessage} />
+          <Field.ErrorMessage
+            message={registerFieldState(field.name).error?.message}
+          />
         </Field.Root>
       ))}
+
+      <Field.Root layout={FIELD_LAYOUT.HORIZONTAL}>
+        <Checkbox
+          id="remember"
+          checked={remember}
+          onCheckedChange={toggleRemember}
+          size={CHECKBOX_SIZE.SMALL}
+        />
+
+        <Field.Label target="remember" text="Ghi nhớ đăng nhập" />
+      </Field.Root>
     </form>
   );
 };

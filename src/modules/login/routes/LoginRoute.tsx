@@ -1,11 +1,11 @@
 import type { AppRoute } from "@routes";
-import { AppRoutes } from "@routes";
+import { Navigation } from "@shared/navigation";
 
 import { LoginProvider } from "../contexts";
 import { LoginPage } from "../pages/LoginPage";
 
 export const LoginRoute: AppRoute = {
-  path: AppRoutes.client.paths.LOGIN,
+  path: Navigation.client.paths.LOGIN,
   element: (
     <LoginProvider>
       <LoginPage />

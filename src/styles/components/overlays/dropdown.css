@@ -1,0 +1,27 @@
+@layer components {
+  .profile-dropdown {
+    @apply w-40 gap-4 space-y-3 rounded-overlay p-3 shadow-md;
+    border: 1px solid var(--color-border-default);
+    background-color: var(--color-bg-default);
+  }
+
+  .menu-button {
+    @apply rounded-control transition-colors duration-200 ease-in-out;
+    color: var(--color-fg-default);
+
+    &:hover {
+      background-color: var(--color-bg-subtle);
+    }
+  }
+
+  .menu-button-danger {
+    &:hover {
+      background-color: var(--color-bg-danger);
+      color: var(--color-fg-on-feedback);
+    }
+  }
+
+  .menu-button-active {
+    background-color: var(--color-bg-subtle-hover);
+  }
+}

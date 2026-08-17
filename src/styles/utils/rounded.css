@@ -1,11 +1,16 @@
 /* Controls: button, input, select, textarea, checkbox, radio */
+
+@utility rounded-control-sm {
+  border-radius: var(--radius-control-sm);
+}
+
 @utility rounded-control {
   border-radius: var(--radius-control);
 }
 
 /* Surfaces: card, table, list item, panel, dropdown */
-@utility rounded-surface {
-  border-radius: var(--radius-surface);
+@utility rounded-container {
+  border-radius: var(--radius-container);
 }
 
 /* Overlays: modal, dialog, drawer, popover, tooltip */

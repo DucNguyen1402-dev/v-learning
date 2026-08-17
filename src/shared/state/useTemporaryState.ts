@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 
 export function useTemporaryState<T>(initialValue: T, duration = 2000) {
-  const [state, setState] = useState<T | null>(initialValue);
+  const [state, setState] = useState<T | undefined>(initialValue);
 
   useEffect(() => {
-    if (state == null) return;
+    if (state == undefined) return;
 
     const timer = setTimeout(() => {
-      setState(null);
+      setState(undefined);
     }, duration);
 
     return () => clearTimeout(timer);

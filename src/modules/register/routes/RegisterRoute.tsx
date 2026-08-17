@@ -1,9 +1,14 @@
 import type { AppRoute } from "@routes";
-import { AppRoutes } from "@routes";
+import { Navigation } from "@shared/navigation";
 
+import { RegisterProvider } from "../contexts";
 import { RegisterPage } from "../pages/RegisterPage";
 
 export const RegisterRoute: AppRoute = {
-  path: AppRoutes.client.paths.REGISTER,
-  element: <RegisterPage />,
+  path: Navigation.client.paths.REGISTER,
+  element: (
+    <RegisterProvider>
+      <RegisterPage />
+    </RegisterProvider>
+  ),
 };

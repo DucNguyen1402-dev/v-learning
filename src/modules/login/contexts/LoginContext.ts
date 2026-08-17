@@ -1,5 +1,5 @@
 import { createContext } from "react";
 
-import type { LoginContextValues } from "./types";
+import type { UseLoginReturn } from "./hooks";
 
-export const LoginContext = createContext<LoginContextValues | null>(null);
+export const LoginContext = createContext<UseLoginReturn | null>(null);

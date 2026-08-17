@@ -4,6 +4,7 @@
     *================================================== */
 
   --color-bg-brand: var(--color-brand);
+  --color-bg-brand-gradient: linear-gradient(to bottom right, var(--color-bg-brand), --alpha(var(--color-bg-brand) / 80%));
 
   /* =================================================
     *  Selected dimensions

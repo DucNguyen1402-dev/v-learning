@@ -1,7 +1,7 @@
 import { Navigation } from "@shared/navigation";
 
 export const AboutPage = () => {
-  Navigation.useScrollOnRouteChange();
+  Navigation.hooks.useScrollOnRouteChange();
   return (
     <div className="min-h-screen font-sans text-neutral-100">
       {/* 2. Hero Section */}

@@ -8,7 +8,7 @@ import {
 import { MoveLeft } from "lucide-react";
 
 export const BackButton = () => {
-  const { back } = Navigation.useNavigate();
+  const { back } = Navigation.hooks.useNavigate();
 
   return (
     <Button

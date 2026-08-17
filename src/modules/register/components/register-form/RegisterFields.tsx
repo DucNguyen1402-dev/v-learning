@@ -1,57 +1,32 @@
+import { registerFields } from "@modules/register/config";
+import { useRegisterContext } from "@modules/register/contexts";
+import { RegisterAuth } from "@shared/auth/register";
 import { Field, Input } from "@shared/fields";
 
 export const RegisterFields = () => {
-  const fields = [
-    {
-      label: "Tài khoản",
-      name: "taiKhoan",
-      type: "text",
-      invalid: "",
-      errorMessage: "",
-    },
-    {
-      label: "Mật khẩu",
-      name: "matKhau",
-      type: "password",
-      invalid: "",
-      errorMessage: "",
-    },
-    {
-      label: "Họ và tên",
-      name: "hoTen",
-      type: "text",
-      invalid: "",
-      errorMessage: "",
-    },
-    {
-      label: "Số điện thoại",
-      name: "soDT",
-      type: "number",
-      invalid: "",
-      errorMessage: "",
-    },
-    {
-      label: "Email",
-      name: "email",
-      type: "email",
-      placeholder: "",
-      invalid: "",
-      errorMessage: "",
-    },
-  ];
+  const {
+    form: { register, registerFieldState },
+  } = useRegisterContext();
 
   return (
-    <form>
-      {fields.map((field) => (
-        <Field.Root>
-          <Field.Label target={field.name} text={field.label} />
+    <div className="flex flex-col gap-5">
+      {registerFields.map(({ name, required, label, type }) => (
+        <Field.Root key={name}>
+          <Field.Label target={name} text={label} required={required} />
           <Input.Root>
-            <Input.Field id={field.name} name={field.name} type={field.type} />
-            {field.type === "password" && <Input.PasswordVisibilityToggle />}
+            <Input.Field
+              id={name}
+              type={type}
+              invalid={registerFieldState(name).invalid}
+              {...register(name, RegisterAuth.validation[name])}
+            />
+            {type === "password" && <Input.PasswordVisibilityToggle />}
           </Input.Root>
-          <Field.ErrorMessage message={undefined} />
+          <Field.ErrorMessage
+            message={registerFieldState(name).error?.message}
+          />
         </Field.Root>
       ))}
-    </form>
+    </div>
   );
 };

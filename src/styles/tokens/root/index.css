@@ -2,4 +2,5 @@
 @import "./foundation/index.css";
 
 @import "./semantic/index.css";
+@import "./domain/index.css";
 @import "./appearance/index.css";
