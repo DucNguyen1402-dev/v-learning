@@ -1,7 +1,7 @@
 import { useLocation } from "react-router-dom";
 
-import { CurrentUser } from "@shared/current-user";
 import { Navigation } from "@shared/navigation";
+import { UserProfile } from "@shared/user-profile";
 import { CircleUser } from "lucide-react";
 
 import { loginButtonHiddenRoutes } from "../loginButtonHiddenRoutes";
@@ -14,7 +14,7 @@ import {
 } from ".";
 
 export const Header = () => {
-  const currentUser = CurrentUser.profile.get();
+  const currentUser = UserProfile.get();
   const { pathname } = useLocation();
   const routeKey = Navigation.client.findKey(pathname);
   const shouldHideLoginButton =

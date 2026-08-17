@@ -1,1 +1,2 @@
-export { getAvatarInitial } from "./getAvatarInitial";
+export { getUserAvatar } from "./getUserAvatar";
+export { updateUserAvatar } from "./updateUserAvatar";

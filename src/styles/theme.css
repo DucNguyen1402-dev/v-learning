@@ -1,9 +1,7 @@
 @theme {
-
   /* ==========================================================
    * Foundation Semantic
    * ========================================================== */
-
 
   /* ================= Z-Index Layers ================= */
 
@@ -16,14 +14,12 @@
   --z-index-toast: 500;
   --z-index-max: 9999;
 
-
   /* ================= Radius ================= */
   --radius-control-sm: var(--app-radius-2);
   --radius-control: var(--app-radius-3);
   --radius-container: var(--app-radius-3);
   --radius-overlay: var(--app-radius-4);
   --radius-pill: var(--app-radius-full);
-
 
   /* --radius-control-sm: checkbox, radio, badge nhỏ, input...
 --radius-control: button, select, textarea...
@@ -37,14 +33,11 @@
 
   /* ================= Colors ================= */
 
-
   /* Text Colors */
   --color-text-default: var(--color-fg-default);
   --color-text-muted: var(--color-fg-muted);
   --color-text-subtle: var(--color-fg-subtle);
   --color-text-on-brand: var(--color-fg-on-brand);
-
-
 
   /* Background Colors */
   --color-bg-base: var(--color-bg-base);
@@ -53,22 +46,18 @@
   --color-bg-subtle: var(--color-bg-subtle);
   --color-bg-brand: var(--color-bg-brand);
 
-
   /* Border Colors */
   --color-border-default: var(--color-border-default);
   --color-border-muted: var(--color-border-muted);
   --color-border-subtle: var(--color-border-subtle);
   --color-border-brand: var(--color-border-brand);
 
-
-
   /* ==========================================================
    * Domain Semantic 
    * ========================================================== */
 
+  /* Text Colors */
 
   --color-text-required: var(--color-fg-required);
   --color-text-available: var(--color-fg-available);
-
-
 }

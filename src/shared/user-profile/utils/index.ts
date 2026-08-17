@@ -1,0 +1,1 @@
+export { getCurrentUserProfile } from "./getCurrentUserProfile";

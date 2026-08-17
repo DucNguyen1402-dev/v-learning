@@ -7,7 +7,7 @@ export const updateCurrentUser = (patch: Partial<CurrentUser>) => {
   const user = getCurrentUser();
   const storage = getCurrentUserStorage();
 
-  if (!user || !storage) return;
+  if (!user || !storage) return undefined;
 
   storage.setItem(
     USER_STORAGE_KEY,

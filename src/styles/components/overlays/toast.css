@@ -1,6 +1,6 @@
 @layer components {
   .toast {
-    @apply pointer-events-auto flex items-center gap-3 rounded-overlay shadow-xl backdrop-blur-lg;
+    @apply pointer-events-auto flex items-center gap-3 rounded-overlay shadow-popover backdrop-blur-lg;
     color: var(--color-fg-default);
 
     .dark & {
@@ -9,37 +9,70 @@
   }
 
   .toast-success {
-    background-color: color-mix(in srgb, var(--color-bg-success) 30%, var(--color-bg-default) 70%);
+    background-color: color-mix(
+      in srgb,
+      var(--color-bg-success) 30%,
+      var(--color-bg-default) 70%
+    );
     border-color: var(--color-border-success);
 
     .dark & {
-
-      background-color: color-mix(in srgb, var(--color-bg-success) 40%, var(--color-bg-default) 60%);
-      border-color: color-mix(in srgb, var(--color-bg-success) 70%, var(--color-bg-default) 30%);
+      background-color: color-mix(
+        in srgb,
+        var(--color-bg-success) 40%,
+        var(--color-bg-default) 60%
+      );
+      border-color: color-mix(
+        in srgb,
+        var(--color-bg-success) 70%,
+        var(--color-bg-default) 30%
+      );
     }
   }
 
   .toast-error {
-    background-color: color-mix(in srgb, var(--color-bg-error) 30%, var(--color-bg-default) 70%);
+    background-color: color-mix(
+      in srgb,
+      var(--color-bg-error) 30%,
+      var(--color-bg-default) 70%
+    );
     border-color: var(--color-border-error);
 
     .dark & {
-      background-color: color-mix(in srgb, var(--color-bg-error) 40%, var(--color-bg-default) 60%);
-      border-color: color-mix(in srgb, var(--color-bg-error) 70%, var(--color-bg-default) 30%);
+      background-color: color-mix(
+        in srgb,
+        var(--color-bg-error) 40%,
+        var(--color-bg-default) 60%
+      );
+      border-color: color-mix(
+        in srgb,
+        var(--color-bg-error) 70%,
+        var(--color-bg-default) 30%
+      );
     }
   }
 
-
   .toast-warning {
-    background-color: color-mix(in srgb, var(--color-bg-warning) 30%, var(--color-bg-default) 70%);
+    background-color: color-mix(
+      in srgb,
+      var(--color-bg-warning) 30%,
+      var(--color-bg-default) 70%
+    );
     border-color: var(--color-border-warning);
 
     .dark & {
-      background-color: color-mix(in srgb, var(--color-bg-warning) 40%, var(--color-bg-default) 60%);
-      border-color: color-mix(in srgb, var(--color-bg-warning) 70%, var(--color-bg-default) 30%);
+      background-color: color-mix(
+        in srgb,
+        var(--color-bg-warning) 40%,
+        var(--color-bg-default) 60%
+      );
+      border-color: color-mix(
+        in srgb,
+        var(--color-bg-warning) 70%,
+        var(--color-bg-default) 30%
+      );
     }
   }
-
 
   .toast-icon-success {
     color: var(--color-fg-success);
@@ -65,8 +98,7 @@
     @apply max-w-120 min-w-96 gap-4 border-l-8 px-6 py-5;
   }
 
-
   .toast-view {
-    @apply pointer-events-none fixed inset-0 z-toast flex w-full max-w-md items-start justify-center px-4 pt-10 md:max-w-full
+    @apply pointer-events-none fixed inset-0 z-toast flex w-full max-w-md items-start justify-center px-4 pt-10 md:max-w-full;
   }
 }

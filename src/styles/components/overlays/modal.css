@@ -1,6 +1,6 @@
 @layer components {
   .modal-container {
-    @apply z-modal flex w-[90vw] mx-auto flex-col gap-6 rounded-overlay p-6 shadow-2xl shadow-black/90 md:w-90;
+    @apply z-modal mx-auto flex w-[90vw] flex-col gap-6 rounded-overlay p-6 shadow-modal shadow-black/90 md:w-90;
     border: 1px solid var(--color-red-500);
     background-color: var(--color-bg-elevated);
   }

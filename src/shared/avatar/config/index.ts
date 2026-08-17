@@ -1,1 +1,1 @@
-export { type AvatarIndex, avatarList } from "./avatarList";
+export { avatarList } from "./avatarList";
