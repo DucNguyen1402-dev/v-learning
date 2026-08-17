@@ -1,4 +1,5 @@
 import { CurrentUserStorage } from "@shared/auth/currentUserStorage";
 
-export const getCurrentUserTheme = () =>
-  CurrentUserStorage.getProperty("theme");
+import type { ThemeValue } from "../types";
+export const getCurrentUserTheme = (): ThemeValue =>
+  CurrentUserStorage.getProperty("theme") ?? "light";

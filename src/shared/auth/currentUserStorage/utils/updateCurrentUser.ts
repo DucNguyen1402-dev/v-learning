@@ -1,10 +1,10 @@
 import { USER_STORAGE_KEY } from "../constants";
 import type { CurrentUser } from "../types";
-import { getCurrentUser } from "./getCurrentUser";
 import { getCurrentUserStorage } from "./getCurrentUserStorage";
+import { tryGetCurrentUserFromStorage } from "./tryGetCurrentUserFromStorage";
 
 export const updateCurrentUser = (patch: Partial<CurrentUser>) => {
-  const user = getCurrentUser();
+  const user = tryGetCurrentUserFromStorage();
   const storage = getCurrentUserStorage();
 
   if (!user || !storage) return undefined;

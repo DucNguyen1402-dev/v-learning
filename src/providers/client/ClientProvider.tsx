@@ -3,7 +3,6 @@ import type { ReactNode } from "react";
 import { Layout } from "@shared/layouts";
 import { Loading, Modal, Toast } from "@shared/overlays";
 import { User } from "@shared/user";
-
 type ClientProvidersProps = {
   children: ReactNode;
 };

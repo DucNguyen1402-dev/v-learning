@@ -5,7 +5,7 @@ import { getUserAvatar, updateUserAvatar } from "../utils";
 
 export const useAvatar = () => {
   const userAvatar = getUserAvatar();
-  const [avatar, setAvatar] = useState<Avatar | undefined>(userAvatar);
+  const [avatar, setAvatar] = useState<Avatar>(userAvatar);
 
   const updateAvatar = (newAvatar: Avatar) => {
     updateUserAvatar(newAvatar);

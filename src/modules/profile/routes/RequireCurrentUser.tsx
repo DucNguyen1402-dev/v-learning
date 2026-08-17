@@ -1,13 +1,13 @@
 import { type ReactNode, useEffect } from "react";
 
-import { tryGetCurrentUserFromStorage } from "@shared/auth";
+import { CurrentUserStorage } from "@shared/auth";
 import { Navigation } from "@shared/navigation";
 
 type RequireCurrentUserProps = {
   children: ReactNode;
 };
 export const RequireCurrentUser = ({ children }: RequireCurrentUserProps) => {
-  const currentUser = tryGetCurrentUserFromStorage();
+  const currentUser = CurrentUserStorage.tryGet();
   const { go } = Navigation.hooks.useNavigate();
 
   useEffect(() => {

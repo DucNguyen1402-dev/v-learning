@@ -1,15 +1,21 @@
 import type { UseAvatarReturnType } from "@shared/avatar";
-import type { useThemeReturnType } from "@shared/theme";
+import type { UseThemeReturnType } from "@shared/theme";
+import type { UserProfileReturnType } from "@shared/user-profile";
+
 export type UserContextValues = {
   avatar: {
     current: UseAvatarReturnType["avatar"];
     update: UseAvatarReturnType["updateAvatar"];
   };
   theme: {
-    current: useThemeReturnType["currentTheme"];
-    toggle: useThemeReturnType["toggleTheme"];
-    isDark: useThemeReturnType["isDarkMode"];
-    isLight: useThemeReturnType["isLightMode"];
-    asset: useThemeReturnType["asset"];
+    current: UseThemeReturnType["currentTheme"];
+    toggle: UseThemeReturnType["toggleTheme"];
+    isDark: UseThemeReturnType["isDarkMode"];
+    isLight: UseThemeReturnType["isLightMode"];
+    asset: UseThemeReturnType["asset"];
+  };
+  profile: {
+    current: UserProfileReturnType["profile"];
+    refresh: UserProfileReturnType["refreshProfile"];
   };
 };

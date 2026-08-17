@@ -6,7 +6,7 @@ import { getCurrentUserTheme, updateCurrentUserTheme } from "../utils";
 
 export const useTheme = () => {
   const [currentTheme, setCurrentTheme] = useState<ThemeValue>(
-    getCurrentUserTheme() ?? "light",
+    getCurrentUserTheme(),
   );
 
   useEffect(() => {
@@ -30,4 +30,4 @@ export const useTheme = () => {
   };
 };
 
-export type useThemeReturnType = ReturnType<typeof useTheme>;
+export type UseThemeReturnType = ReturnType<typeof useTheme>;
