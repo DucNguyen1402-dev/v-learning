@@ -36,4 +36,14 @@ export const updateUserValidation = {
       message: "Số điện thoại không hợp lệ",
     },
   },
+  password: {
+    minLength: {
+      value: 6,
+      message: "Mật khẩu phải có ít nhất 6 ký tự",
+    },
+    maxLength: {
+      value: 32,
+      message: "Mật khẩu không được vượt quá 32 ký tự",
+    },
+  },
 };

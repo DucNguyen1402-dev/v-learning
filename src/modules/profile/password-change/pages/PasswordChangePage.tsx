@@ -2,8 +2,8 @@ import { PasswordChangeForm, PasswordChangeHeader } from "../components";
 
 export const PasswordChangePage = () => {
   return (
-    <div className="mt-10 flex items-center justify-center">
-      <div className="w-full max-w-md space-y-10 rounded-2xl border border-slate-700/50 bg-slate-800 p-8 shadow-2xl">
+    <div className="flex-center py-6">
+      <div className="flex w-full max-w-md flex-col gap-10 rounded-container border border-border-subtle bg-bg-default p-8 shadow-surface">
         <PasswordChangeHeader />
         <PasswordChangeForm />
       </div>

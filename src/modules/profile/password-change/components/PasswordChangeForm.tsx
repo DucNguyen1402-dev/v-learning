@@ -1,3 +1,4 @@
+import { UpdateAuth } from "@shared/auth";
 import { Field, Input } from "@shared/fields";
 import { Navigation } from "@shared/navigation";
 import {
@@ -7,39 +8,42 @@ import {
   BUTTON_INTENTS,
 } from "@shared/ui";
 
-const passwordFieldsConfig = [
-  { label: "Mật khẩu hiện tại", name: "matKhauHienTai" },
-  { label: "Mật khẩu mới", name: "matKhauMoi" },
-  { label: "Xác nhận mật khẩu mới", name: "xacNhanMatKhauMoi" },
-];
+import { passwordChangeFields } from "../config";
+import { usePasswordChange } from "../hooks";
 
 const PasswordChangeForm = () => {
-  const {
-    form: { register, errors, onPasswordSubmitEvent, isDirty },
-    profile: { onCancelPasswordChangeClick },
-  } = useProfileContext();
+  const { form, actions } = usePasswordChange();
+  const { register, isDirty, isValid, getFieldWithFormState } = form;
+  const { onSaveClick, onCancelClick } = actions;
 
+  const { password: passwordRules } = UpdateAuth.validation;
   Navigation.hooks.useSyncLeaveConfirmation(isDirty);
 
   return (
-    <form className="space-y-10" onSubmit={onPasswordSubmitEvent}>
-      {passwordFieldsConfig.map((field) => (
+    <div className="flex flex-col gap-10">
+      {passwordChangeFields.map((field) => (
         <Field.Root key={field.name}>
           <Field.Label required={true} target={field.name} text={field.label} />
           <Input.Root>
             <Input.Field
-              {...register(field.name, passwordRules)}
-              error={errors[field.name]?.message}
+              {...register(field.name, {
+                ...passwordRules,
+                required: field.requiredRules,
+              })}
+              type="password"
+              invalid={getFieldWithFormState(field.name).invalid}
             />
             <Input.PasswordVisibilityToggle />
           </Input.Root>
-          <Field.ErrorMessage message={errors[field.name]?.message} />
+          <Field.ErrorMessage
+            message={getFieldWithFormState(field.name).errorMessage}
+          />
         </Field.Root>
       ))}
 
-      <div className="flex justify-end gap-3 pt-8">
+      <div className="flex justify-end gap-3">
         <Button
-          onClick={onCancelPasswordChangeClick}
+          onClick={onCancelClick}
           appearance={BUTTON_APPEARANCES.OUTLINE}
           intent={BUTTON_INTENTS.SECONDARY}
         >
@@ -47,12 +51,14 @@ const PasswordChangeForm = () => {
         </Button>
         <Button
           appearance={BUTTON_APPEARANCES.SOLID}
+          onClick={onSaveClick}
           intent={BUTTON_INTENTS.PRIMARY}
+          disabled={!isDirty || !isValid}
         >
           {ACTION_LABELS.SAVE}
         </Button>
       </div>
-    </form>
+    </div>
   );
 };
 

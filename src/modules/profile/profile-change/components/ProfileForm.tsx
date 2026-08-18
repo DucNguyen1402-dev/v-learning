@@ -36,6 +36,7 @@ export const ProfileForm = () => {
                 <Input.Field
                   hasLeftAddon={!!LeftAddon}
                   type={type}
+                  invalid={getFieldWithFormState(name).invalid}
                   {...register(name, UpdateAuth.validation[name])}
                 />
               </Input.Root>

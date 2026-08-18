@@ -1,17 +1,20 @@
 import { useForm } from "react-hook-form";
 
-export const usePasswordChangeForm = () => {
-  const { register, formState, handleSubmit, getFieldState } = useForm({
-    defaultValues: {
-      currentPassword: "",
-      newPassword: "",
-      confirmPassword: "",
-    },
-    mode: "onChange",
-  });
+import type { PasswordChangeFormValues } from "../types";
 
-  const getFieldWithFormState = (fieldName: string) => {
-    const fieldState = getFieldState(fieldName);
+export const usePasswordChangeForm = () => {
+  const { register, formState, handleSubmit, getFieldState } =
+    useForm<PasswordChangeFormValues>({
+      defaultValues: {
+        currentPassword: "",
+        newPassword: "",
+        confirmPassword: "",
+      },
+      mode: "onChange",
+    });
+
+  const getFieldWithFormState = (fieldName: keyof PasswordChangeFormValues) => {
+    const fieldState = getFieldState(fieldName, formState);
     return {
       invalid: fieldState.invalid,
       errorMessage: fieldState.error?.message,
@@ -20,8 +23,8 @@ export const usePasswordChangeForm = () => {
 
   return {
     register,
-    errors: formState.errors,
     isDirty: formState.isDirty,
+    isValid: formState.isValid,
     handleSubmit,
     getFieldWithFormState,
   };
