@@ -1,0 +1,18 @@
+@layer components {
+
+    .app-interaction-lock {
+        @apply fixed inset-0 z-max transition-opacity duration-150;
+        background-color: color-mix(in srgb, var(--color-bg-overlay) 30%, transparent);
+        cursor: wait;
+    }
+
+    .app-interaction-lock--hidden {
+        @apply opacity-0 pointer-events-none;
+    }
+
+    .app-interaction-lock--visible {
+        @apply opacity-100 pointer-events-auto;
+    }
+
+
+}

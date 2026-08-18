@@ -13,4 +13,5 @@ export type UserContextValues = {
     isLight: UseThemeReturnType["isLightMode"];
     asset: UseThemeReturnType["asset"];
   };
+  refresh: () => void;
 };

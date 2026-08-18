@@ -1,7 +1,6 @@
-import type { AppRoute } from "@routes";
+import { Route } from "react-router-dom";
 
 import { Playground } from "./Playground";
-export const PlaygroundRoute: AppRoute = {
-  path: "/client/playground",
-  element: <Playground />,
-};
+export const playgroundRoute = (
+  <Route path="playground" element={<Playground />} />
+);

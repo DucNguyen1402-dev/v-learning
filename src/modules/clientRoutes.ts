@@ -1,21 +1,19 @@
-import type { AppRoute } from "@routes";
+import { aboutRoute } from "./about";
+import { blogsRoute } from "./blogs";
+import { coursesRoute } from "./courses";
+import { homeRoute } from "./home";
+import { loginRoute } from "./login";
+import { playgroundRoute } from "./playgrounds";
+import { profileRoutes } from "./profile";
+import { registerRoute } from "./register";
 
-import { AboutRoute } from "./about";
-import { BlogsRoute } from "./blogs";
-import { CoursesRoute } from "./courses";
-import { HomeRoute } from "./home";
-import { LoginRoute } from "./login";
-import { PlaygroundRoute } from "./playgrounds/PlaygroundRoute";
-import { ProfileRoute } from "./profile";
-import { RegisterRoute } from "./register";
-
-export const clientRoutes: AppRoute[] = [
-  AboutRoute,
-  BlogsRoute,
-  CoursesRoute,
-  HomeRoute,
-  LoginRoute,
-  ProfileRoute,
-  PlaygroundRoute,
-  RegisterRoute,
+export const clientRoutes = [
+  aboutRoute,
+  blogsRoute,
+  coursesRoute,
+  homeRoute,
+  loginRoute,
+  profileRoutes,
+  playgroundRoute,
+  registerRoute,
 ];

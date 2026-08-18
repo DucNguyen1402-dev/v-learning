@@ -11,7 +11,7 @@ export const getUserAvatar = (): Avatar => {
   }
   const fullName = currentUser?.hoTen;
 
-  if (!fullName)
+  if (!fullName?.trim())
     return {
       type: "initials",
       value: "U",

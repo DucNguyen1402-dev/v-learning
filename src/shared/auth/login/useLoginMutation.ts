@@ -1,5 +1,6 @@
 import type { LoginData } from "@modules/login";
 import { AccessTokenStorage, CurrentUserStorage } from "@shared/auth";
+import { User } from "@shared/user";
 import { useMutation } from "@tanstack/react-query";
 
 import { login } from "./api";
@@ -11,6 +12,7 @@ type LoginMutationVariables = {
 };
 
 export const useLoginMutation = () => {
+  const { refresh: refreshUser } = User.use();
   const mutation = useMutation({
     mutationFn: ({ payload }: LoginMutationVariables) => login(payload),
     onSuccess: (data, variable) => {
@@ -22,6 +24,7 @@ export const useLoginMutation = () => {
       };
       AccessTokenStorage.save(data.accessToken, variable.remember);
       CurrentUserStorage.save(user, variable.remember);
+      refreshUser();
     },
   });
 

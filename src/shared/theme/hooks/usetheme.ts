@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import { themeAssets } from "../config";
 import type { ThemeValue } from "../types";
@@ -21,12 +21,18 @@ export const useTheme = () => {
     });
   };
 
+  const refreshTheme = useCallback(() => {
+    const userTheme = getCurrentUserTheme();
+    setCurrentTheme(userTheme);
+  }, []);
+
   return {
     currentTheme,
     toggleTheme,
     isDarkMode: currentTheme === "dark",
     isLightMode: currentTheme === "light",
     asset: themeAssets[currentTheme],
+    refreshTheme,
   };
 };
 

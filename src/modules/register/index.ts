@@ -1,2 +1,2 @@
-export { RegisterRoute } from "./routes/RegisterRoute";
+export { registerRoute } from "./routes/RegisterRoute";
 export type { RegisterData } from "./types";

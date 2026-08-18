@@ -1,3 +1,4 @@
+import { ToastView } from "./components";
 import { ToastProvider, useToastContext } from "./contexts";
 import { errorToast, successToast, warningToast } from "./helpers";
 
@@ -9,4 +10,5 @@ export const Toast = {
     warning: warningToast,
   },
   Provider: ToastProvider,
+  Component: ToastView,
 };

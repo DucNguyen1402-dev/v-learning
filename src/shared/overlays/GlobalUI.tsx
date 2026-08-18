@@ -1,16 +1,12 @@
-import {
-  DualRingLoadingRender,
-  ModalRenderer,
-  ToastView,
-} from "@shared/overlays";
+import { AppInteractionLock, Loading, Modal, Toast } from "@shared/overlays";
 
 export const GlobalUI = () => {
   return (
     <>
-      <DualRingLoadingRender />
-      <ModalRenderer />
-
-      <ToastView />
+      <Loading.Component />
+      <Modal.Component />
+      <AppInteractionLock.Component />
+      <Toast.Component />
     </>
   );
 };

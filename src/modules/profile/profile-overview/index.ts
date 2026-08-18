@@ -1,1 +1,1 @@
-export { ProfileOverviewPage } from "./pages/ProfileOverviewPage";
+export { profileOverviewRoute } from "./routes/profileOverviewRoute";

@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { type ReactNode, useEffect, useState } from "react";
 
 import { useAvatar } from "@shared/avatar";
 import { useTheme } from "@shared/theme";
@@ -9,9 +9,25 @@ type UserProviderProps = {
 };
 
 export const UserProvider = ({ children }: UserProviderProps) => {
-  const { avatar, updateAvatar } = useAvatar();
-  const { currentTheme, toggleTheme, isDarkMode, isLightMode, asset } =
-    useTheme();
+  const { avatar, updateAvatar, refreshAvatar } = useAvatar();
+  const {
+    currentTheme,
+    toggleTheme,
+    isDarkMode,
+    isLightMode,
+    asset,
+    refreshTheme,
+  } = useTheme();
+
+  const [refreshed, setRefreshed] = useState(false);
+  const refreshUser = () => {
+    setRefreshed(true);
+  };
+
+  useEffect(() => {
+    refreshAvatar();
+    refreshTheme();
+  }, [refreshed, refreshAvatar, refreshTheme]);
 
   const value = {
     avatar: {
@@ -26,6 +42,7 @@ export const UserProvider = ({ children }: UserProviderProps) => {
       isLight: isLightMode,
       asset,
     },
+    refresh: refreshUser,
   };
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 };
