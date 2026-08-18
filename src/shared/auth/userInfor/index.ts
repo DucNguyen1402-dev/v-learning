@@ -1,0 +1,1 @@
+export { UserInfor } from "./UserInfor";

@@ -1,7 +1,10 @@
 import { useState } from "react";
 
+import { useLockBodyScroll } from "@shared/overlays/hooks";
+
 export function useInteractionLock() {
   const [isLocked, setIsLocked] = useState(false);
+  useLockBodyScroll(isLocked);
 
   const shouldLockInteraction = (enabled: boolean) => setIsLocked(enabled);
   return {

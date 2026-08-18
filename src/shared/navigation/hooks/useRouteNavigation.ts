@@ -60,9 +60,9 @@ export const useRouteNavigation = () => {
   );
 
   return {
-    back,
-    forward,
     go,
+    forward,
+    back,
     previousRouteKey,
   };
 };

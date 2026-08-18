@@ -1,4 +1,6 @@
-import { Navigation } from "@shared/navigation";
+import { useNavigate } from "react-router-dom";
+
+// import { Navigation } from "@shared/navigation";
 import {
   Button,
   BUTTON_APPEARANCES,
@@ -7,10 +9,11 @@ import {
 } from "@shared/ui";
 
 export const ProfileCardActions = () => {
-  const { forward } = Navigation.hooks.useNavigate();
+  // const { forward } = Navigation.hooks.useNavigate();
+  const navigate = useNavigate();
 
-  const onProfileChangeClick = () => forward(Navigation.client.keys.PROFILE);
-  const onPasswordChangeClick = () => forward(Navigation.client.keys.COURSES);
+  const onProfileChangeClick = () => navigate("/client/profile/change");
+  // const onPasswordChangeClick = () => forward(Navigation.client.keys.COURSES);
   return (
     <div className="flex flex-col gap-4">
       <Button
@@ -25,7 +28,7 @@ export const ProfileCardActions = () => {
         appearance={BUTTON_APPEARANCES.GHOST}
         intent={BUTTON_INTENTS.DESTRUCTIVE}
         size={BUTTON_SIZES.SMALL}
-        onClick={onPasswordChangeClick}
+        // onClick={onPasswordChangeClick}
       >
         Đổi mật khẩu
       </Button>

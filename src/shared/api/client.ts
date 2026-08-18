@@ -1,4 +1,4 @@
-import { ACCESS_TOKEN_STORAGE_KEY } from "@shared/auth/accessTokenStorage";
+import { AccessTokenStorage } from "@shared/auth";
 import axios from "axios";
 
 export const api = axios.create({
@@ -9,7 +9,7 @@ export const api = axios.create({
 });
 
 api.interceptors.request.use((config) => {
-  const accessToken = localStorage.getItem(ACCESS_TOKEN_STORAGE_KEY);
+  const accessToken = AccessTokenStorage.get();
 
   if (accessToken) {
     config.headers.Authorization = `Bearer ${accessToken}`;

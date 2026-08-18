@@ -5,5 +5,5 @@ type InputLeftAddonProps = {
 };
 
 export const InputLeftAddon = ({ children }: InputLeftAddonProps) => (
-  <div className="addon-position">{children}</div>
+  <div className="addon left-addon-position">{children}</div>
 );

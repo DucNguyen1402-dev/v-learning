@@ -1,4 +1,6 @@
+import { UpdateAuth } from "@shared/auth";
 import { Field, Input } from "@shared/fields";
+import { Navigation } from "@shared/navigation";
 import {
   ACTION_LABELS,
   Button,
@@ -6,46 +8,57 @@ import {
   BUTTON_INTENTS,
 } from "@shared/ui";
 
-// import { useSyncLeaveConfirmation } from "@features/admin/hooks";
-import { useProfileContext } from "@features/admin/profile/contexts";
-import { userValidationRules } from "@features/admin/shared/config";
+import { profileChangeFields } from "../config";
+import { useProfileChangeActions } from "../hooks";
 
-const ProfileForm = () => {
+export const ProfileForm = () => {
   const {
-    form: { register, errors, isDirty, onSubmitEvent },
-  } = useProfileContext();
-  const profileFields = [
-    { label: "TÀI KHOẢN", name: "taiKhoan", disabled: true, required: false },
-    { label: "HỌ VÀ TÊN", name: "hoTen", required: true },
-    { label: "EMAIL", name: "email", type: "email", required: true },
-    { label: "SỐ ĐT", name: "soDT", type: "number", required: false },
-  ];
+    form: { register, getFieldWithFormState, isDirty },
+    actions: { onSaveClick, onCancelClick },
+  } = useProfileChangeActions();
 
-  //   useSyncLeaveConfirmation(isDirty);
+  Navigation.hooks.useSyncLeaveConfirmation(isDirty);
 
   return (
-    <div onSubmit={onSubmitEvent} className="space-y-10">
-      {profileFields.map(({ required, ...field }) => (
-        <div className="flex flex-col gap-4" key={field.name}>
-          <Field.Label
-            htmlFor={field.name}
-            required={required}
-            className="self-start text-xs"
-          >
-            {field.label}
-          </Field.Label>
-          <Input
-            {...field}
-            {...register(field.name, userValidationRules[field.name])}
-            error={errors[field.name]?.message}
-          />
-        </div>
-      ))}
+    <div className="flex w-full max-w-md flex-col gap-16 rounded-xl border border-border-subtle bg-bg-default p-6">
+      <div className="space-form-lg">
+        {profileChangeFields.map(
+          ({ required, name, label, type, leftAddon: LeftAddon }) => (
+            <Field.Root key={name}>
+              <Field.Label target={name} required={required} text={label} />
 
-      <div className="mt-16 flex justify-end">
+              <Input.Root>
+                {LeftAddon && (
+                  <Input.LeftAddon>
+                    <LeftAddon className="size-4.5 text-text-muted" />
+                  </Input.LeftAddon>
+                )}
+                <Input.Field
+                  hasLeftAddon={!!LeftAddon}
+                  type={type}
+                  {...register(name, UpdateAuth.validation[name])}
+                />
+              </Input.Root>
+              <Field.ErrorMessage
+                message={getFieldWithFormState(name).errorMessage}
+              />
+            </Field.Root>
+          ),
+        )}
+      </div>
+
+      <div className="flex items-center justify-end gap-2">
+        <Button
+          appearance={BUTTON_APPEARANCES.OUTLINE}
+          intent={BUTTON_INTENTS.SECONDARY}
+          onClick={onCancelClick}
+        >
+          {ACTION_LABELS.CANCEL}
+        </Button>
         <Button
           appearance={BUTTON_APPEARANCES.SOLID}
           intent={BUTTON_INTENTS.PRIMARY}
+          onClick={onSaveClick}
         >
           {ACTION_LABELS.SAVE}
         </Button>
@@ -53,5 +66,3 @@ const ProfileForm = () => {
     </div>
   );
 };
-
-export default ProfileForm;

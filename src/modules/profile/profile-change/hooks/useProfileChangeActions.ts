@@ -1,34 +1,86 @@
 import type { ProfileChangeFormValues } from "@modules/profile/profile-change/types";
+import { UserInfor } from "@shared/auth";
 import { UpdateAuth } from "@shared/auth";
+import { ENTITIES } from "@shared/domain";
+import { getErrorMessage } from "@shared/error";
+import { execution } from "@shared/execution";
+import { createPayload } from "@shared/form-utils";
+import { Navigation } from "@shared/navigation";
+import { Loading, Modal, Toast } from "@shared/overlays";
 
 import { useProfileChangeForm } from "./useProfileChangeForm";
+
 export const useProfileChangeActions = () => {
-  const { register, handleSubmit, getFieldState, getFieldWithFormState } =
+  const { infor } = UserInfor.useQuery();
+  const toast = Toast.use();
+  const modal = Modal.use();
+  const { loader } = Loading.use();
+  const { back, go } = Navigation.hooks.useNavigate();
+  const { update } = UpdateAuth.useMutation();
+
+  const { register, handleSubmit, getFieldWithFormState, isDirty, trigger } =
     useProfileChangeForm();
 
-  const { update, isUpdating } = UpdateAuth.useMutation();
+  const onValid = async (data: ProfileChangeFormValues) => {
+    if (!infor) return;
 
-  const onValid = (data: ProfileChangeFormValues) => {
-    console.log("Form data:", data);
-    // Handle form submission logic here
-    update(data);
+    const payload = createPayload(
+      {
+        ...data,
+        matKhau: infor.matKhau,
+        taiKhoan: infor.taiKhoan,
+        maLoaiNguoiDung: infor.maLoaiNguoiDung,
+        maNhom: infor.maNhom,
+      },
+      UpdateAuth.requiredFields,
+    );
+
+    try {
+      await execution.runAsyncTask(() => update(payload), loader);
+      go(
+        Navigation.client.keys.PROFILE,
+        Toast.config.success.update(ENTITIES.USER),
+      );
+    } catch (error) {
+      console.log(error);
+      const message = getErrorMessage(error);
+      toast.show(Toast.config.error(message));
+    }
   };
 
-  const onSaveClick = () => {
-    void handleSubmit(onValid)();
+  const onConfirmSave = handleSubmit(onValid);
+
+  const onSaveClick = async () => {
+    const isValid = await trigger();
+
+    if (!isValid) return;
+    modal.open({
+      ...Modal.config.update(ENTITIES.USER),
+      onConfirm: onConfirmSave,
+    });
   };
 
+  const onCancelClick = () => {
+    if (!isDirty) {
+      back();
+      return;
+    }
+    modal.open({
+      ...Modal.config.unsavedChanges(ENTITIES.USER),
+      onConfirm: () => {
+        back();
+      },
+    });
+  };
   return {
     form: {
       register,
-      getFieldState,
       getFieldWithFormState,
+      isDirty,
     },
     actions: {
       onSaveClick,
-    },
-    state: {
-      isUpdating,
+      onCancelClick,
     },
   };
 };

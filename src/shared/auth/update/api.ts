@@ -1,4 +1,4 @@
-import type { ProfileChangeFormValues } from "@modules/profile/profile-change/types";
+import type { UpdatePayload } from "./types";
 
 import { api } from "@/shared/api";
 
@@ -10,10 +10,14 @@ export type LoginResponse = {
   soDT: string;
   maNhom: string;
   maLoaiNguoiDung: string;
+  biDanh: string | null;
+  maLoaiNguoiDungNavigation: unknown | null;
+  hocVienKhoaHoc: unknown[];
+  khoaHoc: unknown[];
 };
 
 export const updateUser = async (
-  payload: ProfileChangeFormValues,
+  payload: UpdatePayload,
 ): Promise<LoginResponse> =>
   api
     .put("/QuanLyNguoiDung/CapNhatThongTinNguoiDung", payload)

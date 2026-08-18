@@ -6,7 +6,6 @@
 
     background-color: var(--color-bg-subtle);
 
-
     &:not(:disabled):hover {
       border-color: var(--color-border-default-hover);
     }
@@ -26,7 +25,6 @@
     color: var(--color-fg-muted);
     background-color: var(--color-bg-muted);
     border: 1px solid var(--color-border-muted);
-
   }
 
   .field-invalid {
@@ -45,10 +43,10 @@
   }
 
   .field-with-left-addon {
-    @apply pl-6.5;
+    @apply pl-8;
   }
 
   .field-with-right-addon {
-    @apply pr-6.5;
+    @apply pr-8;
   }
 }

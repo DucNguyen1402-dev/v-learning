@@ -1,15 +1,18 @@
-import type { ProfileChangeFormValues } from "@modules/profile/profile-change/types";
-import { AccessTokenStorage, CurrentUserStorage } from "@shared/auth";
+import { CurrentUserStorage } from "@shared/auth";
 import { User } from "@shared/user";
+import { UserProfile } from "@shared/user-profile";
 import { useMutation } from "@tanstack/react-query";
+import { useQueryClient } from "@tanstack/react-query";
 
 import { updateUser } from "./api";
 
 export const useUpdateMutation = () => {
   const { refresh: refreshUser } = User.use();
+  const { refreshProfile } = UserProfile.use();
+  const queryClient = useQueryClient();
 
   const mutation = useMutation({
-    mutationFn: (payload: ProfileChangeFormValues) => updateUser(payload),
+    mutationFn: updateUser,
     onSuccess: (data) => {
       const user = {
         hoTen: data.hoTen,
@@ -18,9 +21,10 @@ export const useUpdateMutation = () => {
         taiKhoan: data.taiKhoan,
       };
       CurrentUserStorage.save(user);
-      AccessTokenStorage.save(data.accessToken);
 
+      queryClient.invalidateQueries({ queryKey: ["userInfor"] });
       refreshUser();
+      refreshProfile();
     },
   });
   return {

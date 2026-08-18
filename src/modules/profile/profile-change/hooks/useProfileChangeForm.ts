@@ -2,9 +2,10 @@ import { useForm } from "react-hook-form";
 
 import type { ProfileChangeFormValues } from "@modules/profile/profile-change/types";
 import { UserProfile } from "@shared/user-profile";
+
 export const useProfileChangeForm = () => {
   const { profile } = UserProfile.use();
-  const { register, handleSubmit, formState, getFieldState } =
+  const { register, handleSubmit, formState, getFieldState, trigger } =
     useForm<ProfileChangeFormValues>({
       defaultValues: {
         hoTen: profile.name,
@@ -16,13 +17,14 @@ export const useProfileChangeForm = () => {
   const getFieldWithFormState = (name: keyof ProfileChangeFormValues) => {
     return {
       invalid: getFieldState(name).invalid,
-      error: formState.errors[name]?.message,
+      errorMessage: formState.errors[name]?.message,
     };
   };
   return {
     register,
     handleSubmit,
-    getFieldState,
     getFieldWithFormState,
+    isDirty: formState.isDirty,
+    trigger,
   };
 };
