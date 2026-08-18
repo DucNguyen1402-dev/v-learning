@@ -18,7 +18,7 @@ export const ProfileCardAvatar = () => {
   return (
     <div className="flex-center flex-col">
       {renderAvatar}
-      <h1 className="mt-3 text-xl font-bold">{profile.name}</h1>
+      <h1 className="mt-3 text-xl font-bold">{profile.hoTen}</h1>
       <p className="mt-1 text-xs text-text-subtle">{profile.email}</p>
     </div>
   );

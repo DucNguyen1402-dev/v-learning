@@ -5,10 +5,10 @@ import { cn } from "@shared/utils";
 
 export const HeaderNav = () => {
   const navLinks = [
-    { label: "Home", routeKey: Navigation.client.paths.HOME },
-    { label: "Khóa học", routeKey: Navigation.client.paths.COURSES },
-    { label: "Blogs", routeKey: Navigation.client.paths.BLOGS },
-    { label: "Giới thiệu", routeKey: Navigation.client.paths.ABOUT },
+    { label: "Home", routeKey: Navigation.client.urls.HOME },
+    { label: "Khóa học", routeKey: Navigation.client.urls.COURSES },
+    { label: "Blogs", routeKey: Navigation.client.urls.BLOGS },
+    { label: "Giới thiệu", routeKey: Navigation.client.urls.ABOUT },
   ];
 
   return (

@@ -13,7 +13,7 @@ import { useProfileChangeActions } from "../hooks";
 
 export const ProfileForm = () => {
   const {
-    form: { register, getFieldWithFormState, isDirty },
+    form: { register, getFieldWithFormState, isDirty, isValid },
     actions: { onSaveClick, onCancelClick },
   } = useProfileChangeActions();
 
@@ -59,6 +59,7 @@ export const ProfileForm = () => {
           appearance={BUTTON_APPEARANCES.SOLID}
           intent={BUTTON_INTENTS.PRIMARY}
           onClick={onSaveClick}
+          disabled={!isDirty || !isValid}
         >
           {ACTION_LABELS.SAVE}
         </Button>

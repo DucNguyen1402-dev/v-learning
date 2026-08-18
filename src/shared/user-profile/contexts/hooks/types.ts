@@ -1,6 +1,6 @@
 export type UserProfile = {
-  name: string;
+  hoTen: string;
   email: string;
-  phone: string;
-  account: string;
+  soDT: string;
+  taiKhoan: string;
 };

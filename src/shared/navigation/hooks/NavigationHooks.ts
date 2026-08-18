@@ -3,6 +3,7 @@ import { useLocationPathname } from "./useLocationPathname";
 import { useLocationPayload } from "./useLocationPayload";
 import { useRouteNavigation } from "./useRouteNavigation";
 import { useScrollOnRouteChange } from "./useScrollOnRouteChange";
+import { useShouldConfirmLeave } from "./useShouldConfirmLeave";
 import { useSyncLeaveConfirmation } from "./useSyncLeaveConfirmation";
 
 export const NavigationHooks = {
@@ -12,4 +13,5 @@ export const NavigationHooks = {
   useSyncLeaveConfirmation,
   usePayload: useLocationPayload,
   usePathname: useLocationPathname,
+  useShouldConfirmLeave,
 };

@@ -5,13 +5,14 @@ import { UserProfile } from "@shared/user-profile";
 
 export const useProfileChangeForm = () => {
   const { profile } = UserProfile.use();
-  const { register, handleSubmit, formState, getFieldState, trigger } =
+  const { register, handleSubmit, formState, getFieldState } =
     useForm<ProfileChangeFormValues>({
       defaultValues: {
-        hoTen: profile.name,
+        hoTen: profile.hoTen,
         email: profile.email,
-        soDT: profile.phone,
+        soDT: profile.soDT,
       },
+      mode: "onChange",
     });
 
   const getFieldWithFormState = (name: keyof ProfileChangeFormValues) => {
@@ -25,6 +26,6 @@ export const useProfileChangeForm = () => {
     handleSubmit,
     getFieldWithFormState,
     isDirty: formState.isDirty,
-    trigger,
+    isValid: formState.isValid,
   };
 };

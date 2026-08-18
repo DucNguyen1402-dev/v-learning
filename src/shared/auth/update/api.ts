@@ -7,7 +7,7 @@ export type LoginResponse = {
   taiKhoan: string;
   hoTen: string;
   email: string;
-  soDT: string;
+  soDt: string;
   maNhom: string;
   maLoaiNguoiDung: string;
   biDanh: string | null;

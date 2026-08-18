@@ -18,7 +18,7 @@ export const useProfileChangeActions = () => {
   const { back, go } = Navigation.hooks.useNavigate();
   const { update } = UpdateAuth.useMutation();
 
-  const { register, handleSubmit, getFieldWithFormState, isDirty, trigger } =
+  const { register, handleSubmit, getFieldWithFormState, isDirty, isValid } =
     useProfileChangeForm();
 
   const onValid = async (data: ProfileChangeFormValues) => {
@@ -41,9 +41,8 @@ export const useProfileChangeActions = () => {
         Navigation.client.keys.PROFILE,
         Toast.config.success.update(ENTITIES.USER),
       );
-    } catch (error) {
-      console.log(error);
-      const message = getErrorMessage(error);
+    } catch (err) {
+      const message = getErrorMessage(err);
       toast.show(Toast.config.error(message));
     }
   };
@@ -51,8 +50,6 @@ export const useProfileChangeActions = () => {
   const onConfirmSave = handleSubmit(onValid);
 
   const onSaveClick = async () => {
-    const isValid = await trigger();
-
     if (!isValid) return;
     modal.open({
       ...Modal.config.update(ENTITIES.USER),
@@ -77,6 +74,7 @@ export const useProfileChangeActions = () => {
       register,
       getFieldWithFormState,
       isDirty,
+      isValid,
     },
     actions: {
       onSaveClick,

@@ -14,13 +14,8 @@ export const useUpdateMutation = () => {
   const mutation = useMutation({
     mutationFn: updateUser,
     onSuccess: (data) => {
-      const user = {
-        hoTen: data.hoTen,
-        email: data.email,
-        soDT: data.soDT,
-        taiKhoan: data.taiKhoan,
-      };
-      CurrentUserStorage.save(user);
+      const { soDt, ...rest } = data;
+      CurrentUserStorage.update({ ...rest, soDT: soDt });
 
       queryClient.invalidateQueries({ queryKey: ["userInfor"] });
       refreshUser();

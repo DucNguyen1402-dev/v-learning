@@ -4,11 +4,10 @@ import type { UserProfile } from "../types";
 export const getUserProfile = (): UserProfile => {
   const currentUser = CurrentUserStorage.get();
   const { hoTen, email, soDT, taiKhoan } = currentUser;
-
   return {
-    name: hoTen,
+    hoTen,
     email,
-    phone: soDT,
-    account: taiKhoan,
+    soDT,
+    taiKhoan,
   };
 };
