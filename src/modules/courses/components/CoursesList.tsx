@@ -1,86 +1,77 @@
-export const CoursesList = () => {
+import { Button, BUTTON_APPEARANCES, BUTTON_INTENTS } from "@shared/ui";
+import { Eye, GraduationCap, Star, Users } from "lucide-react";
+
+import { useCoursesContext } from "../contexts";
+
+export function CoursesList() {
+  const {
+    state: { isPending },
+    courses,
+  } = useCoursesContext();
+
+  if (isPending) return;
   return (
-    <div className="mx-auto w-full max-w-6xl flex-1 space-y-8 border-t border-border-subtle px-6 py-10">
-      {/* Courses Grid (3 Columns) */}
-      <section className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
-        {[
-          {
-            title: "JavaScript Core & First Principles",
-            category: "Frontend",
-            lessons: 24,
-            duration: "12 giờ",
-            level: "Cơ bản",
-            desc: "Đào sâu cơ chế hoạt động cốt lõi của JS Engine, Call Stack và Memory Model.",
-          },
-          {
-            title: "React & TypeScript System Architecture",
-            category: "Architecture",
-            lessons: 32,
-            duration: "18 giờ",
-            level: "Nâng cao",
-            desc: "Thiết kế hệ thống component có khả năng mở rộng và quản lý state phức tạp.",
-          },
-          {
-            title: "Tailwind CSS v4 Workflow & Clean UI",
-            category: "UI/UX",
-            lessons: 16,
-            duration: "8 giờ",
-            level: "Trung cấp",
-            desc: "Làm chủ tư duy dựng layout tối giản, chuẩn hóa hệ thống Design System.",
-          },
-          {
-            title: "Node.js Core & Microservices Baseline",
-            category: "Backend",
-            lessons: 28,
-            duration: "15 giờ",
-            level: "Trung cấp",
-            desc: "Xây dựng RESTful API chuẩn mực, tối ưu I/O performance và bảo mật.",
-          },
-          {
-            title: "Clean Code & Refactoring Practices",
-            category: "Architecture",
-            lessons: 20,
-            duration: "10 giờ",
-            level: "Nâng cao",
-            desc: "Tối ưu hóa mã nguồn sẵn có, áp dụng Design Patterns thực tế.",
-          },
-          {
-            title: "HTML/CSS First Principles for Devs",
-            category: "Frontend",
-            lessons: 18,
-            duration: "9 giờ",
-            level: "Cơ bản",
-            desc: "Nắm vững Box Model, Flexbox, Grid và cơ chế Render của Trình duyệt.",
-          },
-        ].map((course, idx) => (
-          <article
-            key={idx}
-            className="flex flex-col justify-between rounded-xl border border-neutral-200 bg-white p-5 transition-colors hover:border-neutral-300"
-          >
-            <div className="space-y-3">
-              <div className="flex items-center justify-between font-mono text-[11px] text-neutral-500">
-                <span className="rounded border border-neutral-200 bg-neutral-100 px-2 py-0.5 text-neutral-700">
-                  {course.category}
-                </span>
-                <span>{course.level}</span>
-              </div>
+    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {courses?.map((course) => (
+        <article
+          key={course.maKhoaHoc}
+          className="flex h-135 flex-col overflow-hidden rounded-container border border-border-default bg-bg-default shadow-surface"
+        >
+          <img
+            src={course.hinhAnh}
+            alt={course.tenKhoaHoc}
+            className="aspect-video w-full object-cover"
+          />
 
-              <h3 className="cursor-pointer text-base leading-snug font-semibold text-neutral-900 hover:underline">
-                {course.title}
-              </h3>
-
-              <p className="text-xs leading-relaxed text-neutral-600">
-                {course.desc}
+          <div className="flex flex-1 flex-col gap-5 p-4">
+            <div className="flex flex-col gap-2">
+              <p className="text-xs font-medium tracking-wide text-text-subtle uppercase">
+                {course.danhMucKhoaHoc.tenDanhMucKhoaHoc}
               </p>
+
+              <h2 className="line-clamp-2 text-lg font-semibold">
+                {course.tenKhoaHoc}
+              </h2>
             </div>
 
-            <div className="mt-6 flex items-center justify-between border-t border-neutral-100 pt-4 font-mono text-[11px] text-neutral-500">
-              <span>{course.lessons} bài học</span>
-              <span>{course.duration}</span>
+            <p className="line-clamp-2 flex-1 text-sm text-text-subtle">
+              {course.moTa}
+            </p>
+
+            <div className="mt-2 flex flex-wrap gap-6 text-sm text-text-subtle">
+              <div className="flex items-center gap-1">
+                <Star className="size-4" />
+                <span>{course.danhGia}</span>
+              </div>
+              <div className="flex items-center gap-1">
+                <Eye className="size-4" />
+                <span>{course.luotXem}</span>
+              </div>
+              <div className="flex items-center gap-1">
+                <Users className="size-4" />
+                <span>{course.soLuongHocVien}</span>
+              </div>
             </div>
-          </article>
-        ))}
-      </section>
+
+            <div className="flex items-center justify-between gap-1 border-t border-border-subtle pt-4 text-sm">
+              <div className="flex items-center gap-2 text-text-subtle">
+                <GraduationCap className="size-5" />
+                <p>{course.nguoiTao.tenLoaiNguoiDung}</p>
+              </div>
+              <p className="font-medium">{course.nguoiTao.hoTen}</p>
+            </div>
+            <div className="py-2">
+              <Button
+                appearance={BUTTON_APPEARANCES.SOLID}
+                intent={BUTTON_INTENTS.PRIMARY}
+                fullWidth
+              >
+                Xem chi tiết
+              </Button>
+            </div>
+          </div>
+        </article>
+      ))}
     </div>
   );
-};
+}

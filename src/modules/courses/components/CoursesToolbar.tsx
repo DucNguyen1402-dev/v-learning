@@ -1,9 +1,26 @@
+import { useState } from "react";
+
 import { Input } from "@shared/fields";
+import {
+  Button,
+  BUTTON_APPEARANCES,
+  BUTTON_INTENTS,
+  BUTTON_SIZES,
+} from "@shared/ui";
+import { capitalize } from "@shared/utils";
 import { Search } from "lucide-react";
 
+import { categories } from "../config";
+import type { category } from "../types";
+
 export const CoursesToolbar = () => {
+  const [filter, setFilter] = useState<category | null>(null);
+
+  const handleFilterChange = (cat: category) => {
+    setFilter(cat);
+  };
   return (
-    <div className="flex flex-col items-stretch justify-between gap-4 pb-6 sm:flex-row sm:items-center">
+    <div className="flex justify-between">
       <div className="relative min-w-80">
         <Input.Root>
           <Input.LeftAddon>
@@ -13,21 +30,21 @@ export const CoursesToolbar = () => {
         </Input.Root>
       </div>
 
-      <div className="flex gap-2 pb-2 text-xs">
-        {["Tất cả", "Frontend", "Backend", "Architecture", "UI/UX"].map(
-          (cat, idx) => (
-            <button
-              key={idx}
-              className={`rounded-md px-3 py-1.5 font-medium whitespace-nowrap transition-colors ${
-                idx === 0
-                  ? "bg-neutral-900 text-white"
-                  : "border border-neutral-200 bg-white text-neutral-600 hover:text-neutral-900"
-              }`}
+      <div className="flex gap-2">
+        {categories.map((cat, idx) => (
+          <div className="w-26" key={idx}>
+            <Button
+              intent={BUTTON_INTENTS.SECONDARY}
+              appearance={BUTTON_APPEARANCES.OUTLINE}
+              size={BUTTON_SIZES.NONE}
+              fullSize
+              onClick={() => handleFilterChange(cat)}
+              selected={filter === cat}
             >
-              {cat}
-            </button>
-          ),
-        )}
+              <span className="text-xs font-medium">{capitalize(cat)}</span>
+            </Button>
+          </div>
+        ))}
       </div>
     </div>
   );
