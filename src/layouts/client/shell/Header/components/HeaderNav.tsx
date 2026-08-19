@@ -27,7 +27,7 @@ export const HeaderNav = () => {
   ];
 
   return (
-    <nav className="hidden items-center gap-6 md:flex lg:gap-10">
+    <nav className="hidden items-center gap-8 md:flex lg:gap-10">
       {navLinks
         .filter((link) => link.isVisible)
         .map((link) => {

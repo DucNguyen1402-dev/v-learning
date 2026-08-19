@@ -2,8 +2,8 @@ import { useLocation } from "react-router-dom";
 
 import { CurrentUserStorage } from "@shared/auth";
 import { Navigation } from "@shared/navigation";
+import { Button, BUTTON_SIZES } from "@shared/ui";
 import { User } from "@shared/user";
-import { CircleUser } from "lucide-react";
 
 import { loginButtonHiddenRoutes } from "../loginButtonHiddenRoutes";
 import {
@@ -17,20 +17,24 @@ import {
 export const Header = () => {
   const { avatar } = User.use();
   const currentUser = CurrentUserStorage.tryGet();
+  const { forward } = Navigation.hooks.useNavigate();
   const { pathname } = useLocation();
   const routeKey = Navigation.client.findKey(pathname);
   const shouldHideLoginButton =
     routeKey && loginButtonHiddenRoutes.has(routeKey);
 
+  const { type, value } = avatar.current;
   const avatarRender =
-    avatar.current.type === "image" ? (
+    type === "image" ? (
       <img
-        src={avatar.current.value}
+        src={value}
         alt="avatar"
-        className="size-10 rounded-full lg:size-9"
+        className="size-12 rounded-full lg:size-8"
       />
     ) : (
-      <CircleUser className="size-8 text-text-subtle lg:size-6" />
+      <div className="group relative flex-center size-12 overflow-hidden rounded-pill border border-border-subtle bg-bg-subtle font-bold text-text-default lg:size-8">
+        {value}
+      </div>
     );
 
   return (
@@ -41,8 +45,13 @@ export const Header = () => {
 
         <div className="flex items-center gap-4">
           {currentUser ? (
-            <div className="group relative flex items-center gap-2.5 p-2">
-              {avatarRender}
+            <div className="group relative flex items-center gap-2.5 p-2 lg:pointer-events-none">
+              <Button
+                size={BUTTON_SIZES.NONE}
+                onClick={() => forward(Navigation.client.keys.PROFILE)}
+              >
+                {avatarRender}
+              </Button>
               <span className="hidden text-sm font-medium lg:block">
                 {currentUser?.taiKhoan}
               </span>
