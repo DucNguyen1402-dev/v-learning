@@ -1,0 +1,19 @@
+@layer components {
+  .login-logo-container {
+    @apply flex-center rounded-pill;
+  }
+
+  .login-logo-variant--primary {
+    color: var(--color-fg-on-brand);
+    background: linear-gradient(to bottom right,
+        var(--color-bg-brand),
+        --alpha(var(--color-bg-brand) / 60%));
+  }
+
+  .login-logo-variant--secondary {
+    color: var(--color-fg-subtle);
+    background: linear-gradient(to bottom right,
+        var(--color-bg-subtle),
+        --alpha(var(--color-bg-subtle) / 60%));
+  }
+}

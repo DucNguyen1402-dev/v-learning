@@ -1,48 +1,17 @@
 import { UserInfor } from "@shared/auth";
-import { Navigation } from "@shared/navigation";
-import {
-  Button,
-  BUTTON_APPEARANCES,
-  BUTTON_INTENTS,
-  EmptyState,
-} from "@shared/ui";
-import { Frown } from "lucide-react";
 
+import { EmptyCourseState } from "../components";
 export const ProfileCourse = () => {
   const { infor } = UserInfor.useQuery();
 
-  const { go } = Navigation.hooks.useNavigate();
-
   if (!infor) return;
-
-  if (infor.chiTietKhoaHocGhiDanh.length === 0) {
-    return (
-      <div className="flex-center w-full rounded-container border border-border-subtle">
-        <EmptyState
-          title="Bạn chưa ghi danh khóa học nào."
-          action={
-            <Button
-              appearance={BUTTON_APPEARANCES.SOLID}
-              intent={BUTTON_INTENTS.SECONDARY}
-              onClick={() =>
-                go(Navigation.client.keys.COURSES, {
-                  intent: "explore",
-                })
-              }
-            >
-              Khám phá khóa học
-            </Button>
-          }
-          icon={Frown}
-        />
-      </div>
-    );
-  }
 
   const courses = infor.chiTietKhoaHocGhiDanh;
 
+  if (courses.length === 0) return <EmptyCourseState />;
+
   return (
-    <div className="grid gap-6">
+    <div className="grid min-h-screen gap-6">
       {courses.map((course) => (
         <article key={course.maKhoaHoc} className="rounded-lg border p-4">
           <img

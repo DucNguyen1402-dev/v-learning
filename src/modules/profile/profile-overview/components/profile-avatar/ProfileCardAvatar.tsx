@@ -38,8 +38,12 @@ export const ProfileCardAvatar = ({ isPending }: { isPending: boolean }) => {
           >
             {renderAvatar}
           </Button>
-          <div className="pointer-events-none absolute inset-0 flex-center bg-bg-overlay/40 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-          <div className="pointer-events-none absolute right-3 bottom-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+          <div
+            className={`pointer-events-none absolute inset-0 flex-center bg-bg-overlay/40 opacity-0 transition-opacity duration-300 group-hover:opacity-100 ${isAvatarSelectOpen ? "opacity-100" : ""}`}
+          />
+          <div
+            className={`pointer-events-none absolute right-3 bottom-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100 ${isAvatarSelectOpen ? "opacity-100" : ""}`}
+          >
             <Pencil className="size-5 text-text-on-overlay" />
           </div>
         </div>

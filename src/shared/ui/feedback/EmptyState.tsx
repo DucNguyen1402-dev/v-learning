@@ -1,22 +1,31 @@
-import { X } from "lucide-react";
+import type { ComponentType, ReactNode } from "react";
 
+import { X } from "lucide-react";
 type EmptyStateProps = {
-  icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>;
-  action?: React.ReactNode;
+  illustration?: ReactNode;
+  action?: ReactNode;
   title: string;
   description?: string;
+  customIcon?: ReactNode;
+  hiddenIcon?: boolean;
+  icon?: ComponentType<React.SVGProps<SVGSVGElement>>;
 };
 
 export const EmptyState = ({
   icon: Icon = X,
+  illustration,
   action,
   title,
   description,
 }: EmptyStateProps) => (
   <div className="empty-state-container">
-    <div className="empty-state-icon-wrapper">
-      <Icon className="empty-state-icon" />
-    </div>
+    {illustration ? (
+      illustration
+    ) : (
+      <div className="empty-state-icon-wrapper">
+        <Icon className="empty-state-icon" />
+      </div>
+    )}
 
     <div className="empty-state-content">
       <h3 className="empty-state-content-title">{title}</h3>
