@@ -21,7 +21,7 @@ export const ProfileOverviewPage = () => {
   }, [toastState, showToast, consumePayload]);
 
   return (
-    <div className="flex min-h-screen items-start justify-center gap-6 px-4 py-8">
+    <div className="flex min-h-screen items-start justify-center gap-6 py-8 md:px-4">
       <ProfileCard />
     </div>
   );

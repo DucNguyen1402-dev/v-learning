@@ -38,6 +38,7 @@
   --color-text-muted: var(--color-fg-muted);
   --color-text-subtle: var(--color-fg-subtle);
   --color-text-on-brand: var(--color-fg-on-brand);
+  --color-text-on-overlay: var(--color-fg-on-overlay);
 
   /* Background Colors */
   --color-bg-base: var(--color-bg-base);
@@ -45,6 +46,7 @@
   --color-bg-muted: var(--color-bg-muted);
   --color-bg-subtle: var(--color-bg-subtle);
   --color-bg-brand: var(--color-bg-brand);
+  --color-bg-overlay: var(--color-bg-overlay);
 
   /* Border Colors */
   --color-border-default: var(--color-border-default);

@@ -10,13 +10,15 @@ import { LogOut, User as UserIcon } from "lucide-react";
 export const ProfileDropdown = () => {
   const {
     theme: { toggle: toggleTheme, asset: themeAsset },
+    refresh: refreshUser,
   } = User.use();
   const { go } = Navigation.hooks.useNavigate();
 
   const onLogoutClick = useCallback(() => {
     AuthSession.logout();
+    refreshUser();
     go(Navigation.client.keys.HOME);
-  }, [go]);
+  }, [go, refreshUser]);
 
   const onProfileClick = useCallback(() => {
     go(Navigation.client.keys.PROFILE);
