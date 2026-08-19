@@ -1,0 +1,12 @@
+@utility p-container {
+    padding: var(--spacing-container);
+}
+
+
+@utility p-container-md {
+    padding: var(--spacing-container-md);
+}
+
+@utility p-container-lg {
+    padding: var(--spacing-container-lg);
+}

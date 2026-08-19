@@ -45,13 +45,15 @@ export const Header = () => {
 
         <div className="flex items-center gap-4">
           {currentUser ? (
-            <div className="group relative flex items-center gap-2.5 p-2 lg:pointer-events-none">
-              <Button
-                size={BUTTON_SIZES.NONE}
-                onClick={() => forward(Navigation.client.keys.PROFILE)}
-              >
-                {avatarRender}
-              </Button>
+            <div className="group relative flex items-center gap-2.5 p-2">
+              <div className="lg:pointer-events-auto">
+                <Button
+                  size={BUTTON_SIZES.NONE}
+                  onClick={() => forward(Navigation.client.keys.PROFILE)}
+                >
+                  {avatarRender}
+                </Button>
+              </div>
               <span className="hidden text-sm font-medium lg:block">
                 {currentUser?.taiKhoan}
               </span>
