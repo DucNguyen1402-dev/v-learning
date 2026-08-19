@@ -1,6 +1,5 @@
 import { skeletonHeights, skeletonRadius, skeletonWidths } from "../config";
 import {
-  SKELETON_HEIGHTS,
   SKELETON_RADIUS,
   SKELETON_WIDTHS,
   type SkeletonHeight,
@@ -20,7 +19,7 @@ type SkeletonProps = {
 
 export function Skeleton({
   width = SKELETON_WIDTHS.MD,
-  height = SKELETON_HEIGHTS.MD,
+  height,
   radius = SKELETON_RADIUS.MD,
   size,
 }: SkeletonProps) {

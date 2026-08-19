@@ -29,7 +29,7 @@
   }
 
   .select-dropdown-menu-container {
-    @apply absolute z-popover mt-1 w-full rounded-container shadow-lg;
+    @apply absolute z-popover mt-1 w-full rounded-container shadow-popover;
     background-color: var(--color-bg-elevated);
     border: 1px solid var(--color-border-default);
   }
@@ -58,9 +58,11 @@
 
     &:hover {
       color: var(--color-fg-on-brand);
-      background-color: color-mix(in srgb,
-          var(--color-bg-brand) 70%,
-          var(--color-bg-elevated) 30%);
+      background-color: color-mix(
+        in srgb,
+        var(--color-bg-brand) 70%,
+        var(--color-bg-elevated) 30%
+      );
     }
   }
 

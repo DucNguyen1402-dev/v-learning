@@ -1,7 +1,8 @@
 import { useLocation } from "react-router-dom";
 
-import { CurrentUser } from "@shared/current-user";
+import { CurrentUserStorage } from "@shared/auth";
 import { Navigation } from "@shared/navigation";
+import { User } from "@shared/user";
 import { CircleUser } from "lucide-react";
 
 import { loginButtonHiddenRoutes } from "../loginButtonHiddenRoutes";
@@ -14,11 +15,23 @@ import {
 } from ".";
 
 export const Header = () => {
-  const currentUser = CurrentUser.profile.get();
+  const { avatar } = User.use();
+  const currentUser = CurrentUserStorage.tryGet();
   const { pathname } = useLocation();
   const routeKey = Navigation.client.findKey(pathname);
   const shouldHideLoginButton =
     routeKey && loginButtonHiddenRoutes.has(routeKey);
+
+  const avatarRender =
+    avatar.current.type === "image" ? (
+      <img
+        src={avatar.current.value}
+        alt="avatar"
+        className="size-10 rounded-full lg:size-9"
+      />
+    ) : (
+      <CircleUser className="size-8 text-text-subtle lg:size-6" />
+    );
 
   return (
     <header className="header">
@@ -29,11 +42,10 @@ export const Header = () => {
         <div className="flex items-center gap-4">
           {currentUser ? (
             <div className="group relative flex items-center gap-2.5 p-2">
-              <CircleUser className="size-8 text-text-subtle lg:size-6" />
+              {avatarRender}
               <span className="hidden text-sm font-medium lg:block">
-                {currentUser.account}
+                {currentUser?.taiKhoan}
               </span>
-
               <div className="absolute top-full left-0 z-popover hidden -translate-y-4 opacity-0 transition-all duration-300 group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100 lg:block">
                 <ProfileDropdown />
               </div>

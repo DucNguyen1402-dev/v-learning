@@ -32,6 +32,7 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> &
     fullWidth?: boolean;
     intent?: ButtonIntent;
     layout?: ButtonLayout;
+    fullSize?: boolean;
     appearance?: ButtonAppearance;
     disabled?: boolean;
     selected?: boolean;
@@ -43,6 +44,7 @@ export const Button = ({
   size = BUTTON_SIZES.MEDIUM,
   loading = false,
   fullWidth = false,
+  fullSize = false,
   intent = BUTTON_INTENTS.NONE,
   appearance = BUTTON_APPEARANCES.NONE,
   layout = BUTTON_LAYOUTS.CENTER,
@@ -61,6 +63,7 @@ export const Button = ({
         currentSize.button,
         buttonLayouts[layout],
         fullWidth ? "w-full" : "",
+        fullSize ? "size-full" : "",
         {
           "button-disabled": disabled,
           "button-selected": selected,

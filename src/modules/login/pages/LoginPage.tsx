@@ -7,12 +7,16 @@ import {
   LoginHeader,
 } from "@modules/login/components";
 import { Navigation } from "@shared/navigation";
+import { AppInteractionLock } from "@shared/overlays";
 import { Toast } from "@shared/overlays";
 import { State } from "@shared/state";
 
+import { useLoginContext } from "../contexts";
 import type { LoginLocationPayload } from "../types";
 
 export const LoginPage = () => {
+  /* =====================External State ===================== */
+
   //1. Scroll on route change to the login block
   const { scrollRef } = Navigation.hooks.useScrollOnRouteChange();
 
@@ -31,10 +35,23 @@ export const LoginPage = () => {
     consumePayload("toast");
   }, [toast, showToast, consumePayload]);
 
+  /* =====================Internal State ===================== */
+
+  //1. Lock the app interaction when the login process is in progress
+  const {
+    actions: { isLoggingIn },
+  } = useLoginContext();
+
+  const { shouldLockInteraction } = AppInteractionLock.use();
+
+  useEffect(() => {
+    shouldLockInteraction(isLoggingIn);
+  }, [isLoggingIn, shouldLockInteraction]);
+
   return (
     <div className="flex-center min-h-screen md:p-4">
       <div
-        className="flex w-full max-w-md scroll-target flex-col gap-6 rounded-container border border-border-subtle bg-bg-default p-6 shadow-sm md:p-8"
+        className="flex w-full max-w-md scroll-target flex-col gap-6 rounded-container border border-border-subtle bg-bg-default p-6 shadow-surface md:p-8"
         ref={scrollRef}
       >
         <LoginHeader

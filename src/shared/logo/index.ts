@@ -1,2 +1,2 @@
-export { EducationLogo } from "./components/EducationLogo";
-export { LOGO_SIZES } from "./constants";
+export * from "./components";
+export * from "./constants";

@@ -1,0 +1,47 @@
+@layer components {
+  .avatar-select-position {
+    @apply fixed inset-0 z-max flex-center;
+    background-color: var(--color-overlay);
+  }
+
+  .avatar-select-container {
+    @apply relative flex-center h-80 w-150 flex-wrap gap-5 overflow-x-auto rounded-container p-10;
+    background-color: var(--color-bg-elevated);
+  }
+
+  .avatar-option-container {
+    @apply relative transition-transform hover:scale-105;
+  }
+
+  .avatar-option--initial {
+    @apply flex-center size-24 overflow-hidden rounded-pill border border-border-default bg-bg-subtle text-5xl font-bold text-text-default;
+  }
+
+  .avatar-option--image {
+    @apply size-25 overflow-hidden rounded-pill;
+  }
+
+  .avatar-option--selected-container {
+    @apply absolute right-4 bottom-3;
+  }
+
+  .avatar-option-selected-icon-wrapper {
+    @apply flex-center size-5 rounded-pill;
+    background-color: var(--color-bg-selected);
+  }
+  .avatar-option-selected-icon {
+    @apply size-3;
+    color: var(--color-fg-on-selected);
+  }
+
+  .avatar-button-pagination-control {
+    @apply absolute inset-y-0 flex-center px-2;
+  }
+  .avatar-button-pagination-control-left {
+    @apply left-1;
+  }
+
+  .avatar-button-pagination-control-right {
+    @apply right-1;
+  }
+}

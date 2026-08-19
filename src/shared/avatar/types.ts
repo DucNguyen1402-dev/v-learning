@@ -1,1 +1,4 @@
-export type { AvatarIndex } from "./config";
+export type Avatar = {
+  type: "image" | "initials";
+  value: string;
+};

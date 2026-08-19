@@ -14,8 +14,6 @@ export const ClientRouteTree = (
     }
   >
     <Route index element={<Navigate to="/client/home" replace />} />
-    {clientRoutes.map((route) => (
-      <Route key={route.path} {...route} />
-    ))}
+    {clientRoutes}
   </Route>
 );

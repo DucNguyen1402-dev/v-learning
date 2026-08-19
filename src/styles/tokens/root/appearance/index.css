@@ -42,4 +42,8 @@
   --color-bg-tertiary-ghost: transparent;
   --color-fg-on-tertiary-ghost: var(--color-fg-muted);
   --color-fg-on-tertiary-ghost-hover: var(--color-fg-muted-hover);
+
+  --color-bg-destructive-ghost: transparent;
+  --color-fg-on-destructive-ghost: var(--color-fg-danger);
+  --color-fg-on-destructive-ghost-hover: var(--color-fg-danger-hover);
 }

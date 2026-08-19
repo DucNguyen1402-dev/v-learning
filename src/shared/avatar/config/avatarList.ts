@@ -31,7 +31,3 @@ export const avatarList = [
   avatar13,
   avatar14,
 ] as const;
-
-type ToNumber<T> = T extends `${infer N extends number}` ? N : never;
-
-export type AvatarIndex = ToNumber<Exclude<keyof typeof avatarList, keyof []>>;

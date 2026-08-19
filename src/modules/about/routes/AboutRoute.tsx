@@ -1,9 +1,9 @@
-import type { AppRoute } from "@routes";
+import { Route } from "react-router-dom";
+
 import { Navigation } from "@shared/navigation";
 
 import { AboutPage } from "../pages/AboutPage";
 
-export const AboutRoute: AppRoute = {
-  path: Navigation.client.paths.ABOUT,
-  element: <AboutPage />,
-};
+export const aboutRoute = (
+  <Route path={Navigation.client.paths.ABOUT} element={<AboutPage />} />
+);

@@ -1,1 +1,2 @@
-export { logoSize } from "./size";
+export { logoSizes } from "./size";
+export { logoVariants } from "./variants";

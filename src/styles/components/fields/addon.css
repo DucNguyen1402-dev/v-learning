@@ -1,5 +1,5 @@
 @layer components {
-  .password-visibility-toggle {
+  .password-visibility-toggle-icon {
     @apply size-4.5 transition-colors duration-150 ease-in-out;
     color: var(--color-fg-muted);
 
@@ -8,7 +8,20 @@
     }
   }
 
-  .addon-position {
-    @apply pointer-events-auto absolute inset-y-0 right-0 flex items-center px-2;
+  .password-visibility-position {
+    @apply absolute inset-y-0 right-0 flex items-center px-2;
+  }
+
+
+  .addon {
+    @apply pointer-events-none absolute inset-y-0 flex items-center px-2;
+  }
+
+  .addon-right-position {
+    @apply right-0;
+  }
+
+  .addon-left-position {
+    @apply left-0;
   }
 }

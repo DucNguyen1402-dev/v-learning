@@ -9,22 +9,22 @@ import {
 import { PaginationContext } from "./PaginationContext";
 import type { PaginationContextValues } from "./PaginationContextValues";
 
-type PaginationProviderProps<T extends object> = {
+type PaginationProviderProps = {
   children: ReactNode;
   enabled?: boolean;
   pageSize?: number;
-  items: readonly T[];
+  items: readonly unknown[];
   resetDeps?: readonly unknown[];
   entityName?: string;
 };
-export const PaginationProvider = <T extends object>({
+export const PaginationProvider = ({
   children,
   enabled,
   pageSize = 10,
   items,
   resetDeps,
   entityName = "items",
-}: PaginationProviderProps<T>) => {
+}: PaginationProviderProps) => {
   const {
     pagination,
     setPagination,
@@ -66,7 +66,7 @@ export const PaginationProvider = <T extends object>({
     pageOffset,
   } = usePaginationDerived({ pagination, items });
 
-  const value: PaginationContextValues<T> = useMemo(
+  const value: PaginationContextValues = useMemo(
     () => ({
       actions: {
         onPrevClick,

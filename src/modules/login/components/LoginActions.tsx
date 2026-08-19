@@ -10,6 +10,7 @@ export const LoginActions = () => {
   const {
     actions: { onLoginClick, isLoggingIn },
   } = useLoginContext();
+
   return (
     <Button
       onClick={onLoginClick}
@@ -17,6 +18,7 @@ export const LoginActions = () => {
       appearance={BUTTON_APPEARANCES.SOLID}
       intent={BUTTON_INTENTS.PRIMARY}
       fullWidth
+      disabled={isLoggingIn}
     >
       <span className="uppercase">{ACTION_LABELS.LOGIN}</span>
     </Button>

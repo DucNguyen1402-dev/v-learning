@@ -1,4 +1,5 @@
-export const logoSize = {
+import type { LogoSize } from "../constants";
+export const logoSizes = {
   small: {
     wrapper: "size-8",
     icon: "size-6",
@@ -8,7 +9,11 @@ export const logoSize = {
     icon: "size-8",
   },
   large: {
-    wrapper: "size-12",
+    wrapper: "size-14",
     icon: "size-10",
   },
-} as const;
+  xlarge: {
+    wrapper: "size-20",
+    icon: "size-14",
+  },
+} as const satisfies Record<LogoSize, { wrapper: string; icon: string }>;

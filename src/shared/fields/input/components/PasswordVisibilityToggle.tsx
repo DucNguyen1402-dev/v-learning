@@ -10,7 +10,7 @@ export const PasswordVisibilityToggle = () => {
 
   const Icon = showPassword ? Eye : EyeOff;
   return (
-    <div className="addon-position">
+    <div className="password-visibility-position">
       <Button
         size="none"
         intent={BUTTON_INTENTS.TERTIARY}
@@ -18,7 +18,7 @@ export const PasswordVisibilityToggle = () => {
         aria-label={showPassword ? "Ẩn mật khẩu" : "Hiện mật khẩu"}
         onClick={() => togglePasswordVisibility()}
       >
-        <Icon className="password-visibility-toggle" />
+        <Icon className="password-visibility-toggle-icon" />
       </Button>
     </div>
   );

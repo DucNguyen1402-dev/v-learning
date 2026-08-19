@@ -1,9 +1,9 @@
-import type { AppRoute } from "@routes";
+import { Route } from "react-router-dom";
+
 import { Navigation } from "@shared/navigation";
 
 import { CoursesPage } from "../pages/CoursesPage";
 
-export const CoursesRoute: AppRoute = {
-  path: Navigation.client.paths.COURSES,
-  element: <CoursesPage />,
-};
+export const coursesRoute = (
+  <Route path={Navigation.client.paths.COURSES} element={<CoursesPage />} />
+);

@@ -1,31 +1,48 @@
 import { NavLink } from "react-router-dom";
 
+import { CurrentUserStorage } from "@shared/auth";
 import { Navigation } from "@shared/navigation";
 import { cn } from "@shared/utils";
 
 export const HeaderNav = () => {
+  const currentUser = CurrentUserStorage.tryGet();
   const navLinks = [
-    { label: "Home", routeKey: Navigation.client.paths.HOME },
-    { label: "Khóa học", routeKey: Navigation.client.paths.COURSES },
-    { label: "Blogs", routeKey: Navigation.client.paths.BLOGS },
-    { label: "Giới thiệu", routeKey: Navigation.client.paths.ABOUT },
+    { label: "Home", routeKey: Navigation.client.urls.HOME, isVisible: true },
+    {
+      label: "Khóa học",
+      routeKey: Navigation.client.urls.COURSES,
+      isVisible: true,
+    },
+    { label: "Blogs", routeKey: Navigation.client.urls.BLOGS, isVisible: true },
+    {
+      label: "Giới thiệu",
+      routeKey: Navigation.client.urls.ABOUT,
+      isVisible: !currentUser,
+    },
+    {
+      label: "Khóa học của tôi",
+      routeKey: Navigation.client.urls.PERSONAL_COURSE,
+      isVisible: !!currentUser,
+    },
   ];
 
   return (
     <nav className="hidden items-center gap-6 md:flex lg:gap-10">
-      {navLinks.map((link) => {
-        return (
-          <NavLink
-            key={link.routeKey}
-            to={link.routeKey}
-            className={({ isActive }) =>
-              cn("nav-link", isActive && "nav-link-active")
-            }
-          >
-            {link.label}
-          </NavLink>
-        );
-      })}
+      {navLinks
+        .filter((link) => link.isVisible)
+        .map((link) => {
+          return (
+            <NavLink
+              key={link.routeKey}
+              to={link.routeKey}
+              className={({ isActive }) =>
+                cn("nav-link", isActive && "nav-link-active")
+              }
+            >
+              {link.label}
+            </NavLink>
+          );
+        })}
     </nav>
   );
 };

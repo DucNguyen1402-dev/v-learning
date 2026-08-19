@@ -1,5 +1,14 @@
 :root {
   /* =================================================
+    * Domain: Shadow
+    *================================================== */
+  /* Background Colors */
+  --shadow-control: var(--shadow-xs);
+  --shadow-surface: var(--shadow-sm);
+  --shadow-popover: var(--shadow-md);
+  --shadow-modal: var(--shadow-lg);
+  --shadow-floating: var(--shadow-xl);
+  /* =================================================
     *  Interaction dimensions
     *================================================== */
 

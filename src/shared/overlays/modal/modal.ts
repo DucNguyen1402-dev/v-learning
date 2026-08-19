@@ -8,6 +8,7 @@ import {
   createUnsavedPasswordChangesModal,
   createUpdateModal,
 } from "./helpers";
+import { ModalRenderer } from "./render";
 
 export const Modal = {
   use: useModalContext,
@@ -22,4 +23,5 @@ export const Modal = {
     unsavedChanges: createUnsavedChangesModal,
   },
   Provider: ModalProvider,
+  Component: ModalRenderer,
 };

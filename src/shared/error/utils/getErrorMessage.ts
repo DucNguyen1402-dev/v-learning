@@ -27,7 +27,8 @@ export const getErrorMessage = (error: unknown): string => {
       case 404:
         return "Không tìm thấy dữ liệu.";
       case 500:
-        return "Đã xảy ra lỗi máy chủ. Vui lòng thử lại sau.";
+        //API trả về lỗi 500 khi đăng nhập sai, nên đổi thông báo lỗi để người dùng dễ hiểu hơn
+        return "Tài khoản hoặc mật khẩu không chính xác.";
       default:
         return "Có lỗi xảy ra khi kết nối tới máy chủ.";
     }

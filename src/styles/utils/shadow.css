@@ -1,0 +1,30 @@
+/**
+ * Semantic shadow utilities.
+ *
+ * Usage:
+ * - shadow-control  → Buttons, Inputs, Controls
+ * - shadow-surface  → Cards, Panels
+ * - shadow-popover  → Dropdowns, Popovers, Tooltips, Toasts
+ * - shadow-modal    → Modals, Dialogs, Drawers
+ * - shadow-floating → Floating Action Buttons, elevated floating UI
+ */
+
+@utility shadow-control {
+  box-shadow: var(--shadow-control);
+}
+
+@utility shadow-surface {
+  box-shadow: var(--shadow-surface);
+}
+
+@utility shadow-popover {
+  box-shadow: var(--shadow-popover);
+}
+
+@utility shadow-modal {
+  box-shadow: var(--shadow-modal);
+}
+
+@utility shadow-floating {
+  box-shadow: var(--shadow-floating);
+}

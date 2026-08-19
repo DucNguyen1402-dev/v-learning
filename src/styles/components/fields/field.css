@@ -6,7 +6,7 @@
 
     background-color: var(--color-bg-subtle);
 
-    &:hover {
+    &:not(:disabled):hover {
       border-color: var(--color-border-default-hover);
     }
 
@@ -43,10 +43,10 @@
   }
 
   .field-with-left-addon {
-    @apply pl-6.5;
+    @apply pl-8;
   }
 
   .field-with-right-addon {
-    @apply pr-6.5;
+    @apply pr-8;
   }
 }
