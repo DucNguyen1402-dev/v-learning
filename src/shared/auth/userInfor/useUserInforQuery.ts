@@ -11,5 +11,7 @@ export const useUserInforQuery = () => {
 
   return {
     infor: query.data,
+    isPending: query.isPending,
+    isFetching: query.isFetching,
   };
 };

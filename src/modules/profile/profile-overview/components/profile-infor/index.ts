@@ -1,0 +1,1 @@
+export { ProfileCardInfor } from "./ProfileCardInfor";

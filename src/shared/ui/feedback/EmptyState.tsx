@@ -2,14 +2,14 @@ import { X } from "lucide-react";
 
 type EmptyStateProps = {
   icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>;
-  actions?: React.ReactNode;
+  action?: React.ReactNode;
   title: string;
   description?: string;
 };
 
 export const EmptyState = ({
   icon: Icon = X,
-  actions,
+  action,
   title,
   description,
 }: EmptyStateProps) => (
@@ -25,7 +25,7 @@ export const EmptyState = ({
         <p className="empty-state-content-description">{description}</p>
       )}
 
-      <div className="mt-8">{actions}</div>
+      <div className="mt-8">{action}</div>
     </div>
   </div>
 );

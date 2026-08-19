@@ -1,4 +1,4 @@
-export type PaginationContextValues<T> = {
+export type PaginationContextValues = {
   actions: {
     onPrevClick: () => void;
     onNextClick: () => void;
@@ -15,7 +15,7 @@ export type PaginationContextValues<T> = {
     pageNumbers: readonly number[];
     displayStart: number;
     displayEnd: number;
-    paginatedList: readonly T[];
+    paginatedList: readonly unknown[];
     pageOffset: number;
     currentSize: number;
     entityName: string;

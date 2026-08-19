@@ -1,6 +1,6 @@
 import { type RefObject, useEffect } from "react";
 
-type UsePaginationEffectProps<T extends object> = {
+type UsePaginationEffectProps = {
   skipNextPageResetRef: RefObject<boolean>;
   setSkipNextPageResetRef: (value: boolean) => void;
   enabled?: boolean;
@@ -9,9 +9,9 @@ type UsePaginationEffectProps<T extends object> = {
   >;
   resetDeps?: readonly unknown[];
   pagination: { page: number; size: number };
-  items: readonly T[];
+  items: readonly unknown[];
 };
-export function usePaginationEffect<T extends object>({
+export function usePaginationEffect({
   skipNextPageResetRef,
   setSkipNextPageResetRef,
   enabled,
@@ -19,7 +19,7 @@ export function usePaginationEffect<T extends object>({
   resetDeps,
   pagination,
   items,
-}: UsePaginationEffectProps<T>) {
+}: UsePaginationEffectProps) {
   useEffect(() => {
     if (skipNextPageResetRef.current) {
       setSkipNextPageResetRef(false);

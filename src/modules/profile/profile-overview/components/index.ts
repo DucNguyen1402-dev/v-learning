@@ -1,2 +1,1 @@
-export * from "./profile-card";
-export { ProfileContent } from "./ProfileContent";
+export { ProfileCard } from "./ProfileCard";

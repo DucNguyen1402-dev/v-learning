@@ -1,5 +1,16 @@
 import { api } from "@shared/api";
 
+type EnrolledCourse = {
+  maKhoaHoc: string;
+  tenKhoaHoc: string;
+  biDanh: string;
+  moTa: string;
+  luotXem: number;
+  hinhAnh: string;
+  ngayTao: string;
+  danhGia: number;
+};
+
 export type UserInforResponse = {
   hoTen: string;
   email: string;
@@ -7,7 +18,7 @@ export type UserInforResponse = {
   taiKhoan: string;
   maLoaiNguoiDung: string;
   maNhom: string;
-  chiTietKhoaHocGhiDanh: unknown[];
+  chiTietKhoaHocGhiDanh: EnrolledCourse[];
   matKhau: string;
 };
 
