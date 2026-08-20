@@ -20,10 +20,6 @@ export const ProfileDropdown = () => {
     go(Navigation.client.keys.HOME);
   }, [go, refreshUser]);
 
-  const onProfileClick = useCallback(() => {
-    go(Navigation.client.keys.PROFILE);
-  }, [go]);
-
   const menuItems = useMemo(() => {
     return [
       {
@@ -31,31 +27,33 @@ export const ProfileDropdown = () => {
         label: `Chế độ ${themeAsset.label}`,
         onClick: toggleTheme,
         icon: themeAsset.icon,
-        routeKey: null,
+        component: "button",
       },
       {
         id: "profile",
         label: "Hồ sơ",
-        onClick: onProfileClick,
         icon: UserIcon,
         routeKey: Navigation.client.keys.PROFILE,
+        component: "link",
       },
       {
         id: "logout",
         label: "Đăng xuất",
         onClick: onLogoutClick,
         icon: LogOut,
-        routeKey: null,
+        component: "button",
       },
     ];
-  }, [toggleTheme, onLogoutClick, onProfileClick, themeAsset]);
+  }, [toggleTheme, onLogoutClick, themeAsset]);
 
   const pathname = Navigation.hooks.usePathname();
 
   return (
     <ul className="profile-dropdown">
       {menuItems.map((item) => {
-        const isActive = Navigation.client.isActive(pathname, item.routeKey);
+        const isActive = item.routeKey
+          ? Navigation.client.isActive(pathname, item.routeKey)
+          : false;
         const isLogout = item.id === "logout";
         return (
           <li
@@ -65,16 +63,27 @@ export const ProfileDropdown = () => {
               "menu-button-active": isActive,
             })}
           >
-            <Button
-              onClick={item.onClick}
-              icon={item.icon}
-              fullWidth={true}
-              size={BUTTON_SIZES.SMALL}
-              disabled={isActive}
-              layout={BUTTON_LAYOUTS.START}
-            >
-              {item.label}
-            </Button>
+            {item.component === "link" && item.routeKey ? (
+              <Navigation.components.Go
+                routeKey={item.routeKey}
+                className="flex items-center gap-2 py-1.5 pl-1 text-sm"
+                disabled={isActive}
+              >
+                <item.icon className="size-5" />
+                {item.label}
+              </Navigation.components.Go>
+            ) : (
+              <Button
+                onClick={item.onClick}
+                icon={item.icon}
+                fullWidth={true}
+                size={BUTTON_SIZES.SMALL}
+                disabled={isActive}
+                layout={BUTTON_LAYOUTS.START}
+              >
+                {item.label}
+              </Button>
+            )}
           </li>
         );
       })}

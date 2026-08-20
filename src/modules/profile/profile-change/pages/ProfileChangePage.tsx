@@ -5,9 +5,9 @@ import { ProfileForm } from "../components";
 export const ProfileChangePage = () => {
   const { scrollRef } = Navigation.hooks.useScrollOnRouteChange();
   return (
-    <div className="flex-center min-h-screen flex-col gap-8 pt-5 md:px-4">
+    <div className="flex min-h-screen flex-col items-center gap-8 pt-5 md:px-4">
       <div
-        className="flex scroll-target items-start justify-center gap-1 md:items-center md:gap-2"
+        className="flex scroll-target items-start justify-center gap-1 select-none md:items-center md:gap-2"
         ref={scrollRef}
       >
         <PencilLine className="size-4 text-text-muted" />

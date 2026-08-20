@@ -21,7 +21,7 @@ export const CoursesToolbar = () => {
   };
   return (
     <div className="flex justify-between">
-      <div className="relative min-w-80">
+      <div className="relative min-w-80 select-none">
         <Input.Root>
           <Input.LeftAddon>
             <Search className="size-4 text-text-subtle" />
@@ -30,7 +30,7 @@ export const CoursesToolbar = () => {
         </Input.Root>
       </div>
 
-      <div className="flex gap-2">
+      <div className="flex gap-2 select-none">
         {categories.map((cat, idx) => (
           <div className="w-26" key={idx}>
             <Button

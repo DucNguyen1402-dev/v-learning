@@ -2,7 +2,6 @@ import { useLocation } from "react-router-dom";
 
 import { CurrentUserStorage } from "@shared/auth";
 import { Navigation } from "@shared/navigation";
-import { Button, BUTTON_SIZES } from "@shared/ui";
 import { User } from "@shared/user";
 
 import { loginButtonHiddenRoutes } from "../loginButtonHiddenRoutes";
@@ -17,7 +16,6 @@ import {
 export const Header = () => {
   const { avatar } = User.use();
   const currentUser = CurrentUserStorage.tryGet();
-  const { forward } = Navigation.hooks.useNavigate();
   const { pathname } = useLocation();
   const routeKey = Navigation.client.findKey(pathname);
   const shouldHideLoginButton =
@@ -46,13 +44,12 @@ export const Header = () => {
         <div className="flex items-center gap-4">
           {currentUser ? (
             <div className="group relative flex items-center gap-2.5 p-2">
-              <div className="lg:pointer-events-auto">
-                <Button
-                  size={BUTTON_SIZES.NONE}
-                  onClick={() => forward(Navigation.client.keys.PROFILE)}
+              <div className="lg:pointer-events-none lg:cursor-default">
+                <Navigation.components.Forward
+                  routeKey={Navigation.client.keys.PROFILE}
                 >
                   {avatarRender}
-                </Button>
+                </Navigation.components.Forward>
               </div>
               <span className="hidden text-sm font-medium lg:block">
                 {currentUser?.taiKhoan}

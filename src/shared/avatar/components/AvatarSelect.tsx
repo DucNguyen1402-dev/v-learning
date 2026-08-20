@@ -1,5 +1,4 @@
 import { Pagination } from "@shared/table";
-import { User } from "@shared/user";
 
 import { avatarList } from "../config";
 import type { Avatar } from "../types";
@@ -9,15 +8,17 @@ import { PaginationControlButton } from "./PaginationControlButton";
 
 type AvatarSelectProps = {
   onClose: () => void;
+  updateAvatar: (avatar: Avatar) => void;
+  currentAvatar: Avatar;
 };
 
-export const AvatarSelect = ({ onClose }: AvatarSelectProps) => {
-  const { avatar } = User.use();
-
-  const { current: currentAvatar, update: UpdateAvatar } = avatar;
-
+export const AvatarSelect = ({
+  onClose,
+  updateAvatar,
+  currentAvatar,
+}: AvatarSelectProps) => {
   const handleAvatarSelection = (avatar: Avatar) => {
-    UpdateAvatar(avatar);
+    updateAvatar(avatar);
     onClose();
   };
 

@@ -50,7 +50,13 @@ export const ProfileCardAvatar = ({ isPending }: { isPending: boolean }) => {
 
         <h1 className="mt-3 text-xl font-bold">{profile.hoTen}</h1>
       </div>
-      {isAvatarSelectOpen && <AvatarSelect onClose={onCloseAvatarSelect} />}
+      {isAvatarSelectOpen && (
+        <AvatarSelect
+          onClose={onCloseAvatarSelect}
+          currentAvatar={avatar.current}
+          updateAvatar={avatar.update}
+        />
+      )}
     </>
   );
 };

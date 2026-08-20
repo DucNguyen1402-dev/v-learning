@@ -1,11 +1,10 @@
-import { CurrentUserStorage } from "@shared/auth";
+import { CurrentUserStorage } from "@shared/auth/currentUserStorage";
 
 import type { Avatar } from "../types";
+
 export const getUserAvatar = (): Avatar => {
   const currentUser = CurrentUserStorage.tryGet();
-
   const storageAvatar: Avatar | undefined = currentUser?.avatar;
-
   if (storageAvatar) {
     return storageAvatar;
   }

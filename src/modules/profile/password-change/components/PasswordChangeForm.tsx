@@ -20,7 +20,7 @@ const PasswordChangeForm = () => {
   Navigation.hooks.useSyncLeaveConfirmation(isDirty);
 
   return (
-    <div className="flex flex-col gap-10">
+    <div className="flex flex-col gap-10 select-none">
       {passwordChangeFields.map((field) => (
         <Field.Root key={field.name}>
           <Field.Label required={true} target={field.name} text={field.label} />
