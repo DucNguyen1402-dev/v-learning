@@ -23,6 +23,7 @@ export const usePaginationDerived = ({
     const displayEnd = Math.min(pagination.page * pagination.size, totalItems);
 
     const totalPages = Math.ceil(totalItems / pagination.size);
+    const pageNumbers = createArray(totalPages, (_, index) => index + 1);
 
     const pageOffset = (pagination.page - 1) * pagination.size;
 
@@ -31,7 +32,7 @@ export const usePaginationDerived = ({
       displayStart,
       totalItems,
       displayEnd,
-      pageNumbers: createArray(totalPages, (_, index) => index + 1),
+      pageNumbers,
       isPrevDisabled: pagination.page === 1,
       isNextDisabled: pagination.page >= totalPages,
       pageOffset,

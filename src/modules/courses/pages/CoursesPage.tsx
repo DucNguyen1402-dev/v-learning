@@ -23,7 +23,7 @@ export const CoursesPage = () => {
         </div>
         <div className="flex flex-col gap-16">
           <CoursesList />
-          <div className="hidden lg:block">
+          <div className="">
             <Pagination.Control />
           </div>
         </div>

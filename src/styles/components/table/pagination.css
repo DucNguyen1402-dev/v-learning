@@ -4,11 +4,11 @@
   }
 
   .pagination-control-container {
-    @apply flex items-center justify-between px-4 text-sm;
+    @apply flex items-center justify-center px-4 text-sm lg:justify-between;
   }
 
   .pagination-control-info-wrapper {
-    @apply text-sm;
+    @apply hidden text-sm lg:block;
     color: var(--color-text-muted);
   }
 
@@ -21,6 +21,6 @@
   }
 
   .pagination-page-number {
-    @apply size-8 flex items-center justify-center;
+    @apply flex size-8 items-center justify-center;
   }
 }
