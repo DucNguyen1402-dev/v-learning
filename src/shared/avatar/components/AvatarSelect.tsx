@@ -21,11 +21,12 @@ export const AvatarSelect = ({
     updateAvatar(avatar);
     onClose();
   };
+  const isMobile = window.innerWidth < 640;
 
   return (
     <Pagination.Provider
       items={avatarList}
-      pageSize={7}
+      pageSize={isMobile ? 3 : 7}
       resetDeps={[avatarList]}
     >
       <div className="avatar-select-position">

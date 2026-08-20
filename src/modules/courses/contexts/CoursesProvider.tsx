@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 
 import { CoursesContext } from "./CoursesContext";
 import type { CoursesContextValues } from "./CoursesContextValues";
-import { useCourses } from "./hooks";
+import { useCourses, useCoursesParams } from "./hooks";
 
 interface CoursesProviderProps {
   children: ReactNode;
@@ -10,12 +10,22 @@ interface CoursesProviderProps {
 
 export const CoursesProvider = ({ children }: CoursesProviderProps) => {
   const { courses, isPending } = useCourses();
+  const { filteredCourses, handleFilterChange, category, keyword } =
+    useCoursesParams({
+      courses,
+    });
 
   const value: CoursesContextValues = {
     state: {
       isPending,
     },
     courses,
+    filter: {
+      category,
+      keyword,
+      filteredCourses,
+      handleFilterChange,
+    },
   };
 
   return (

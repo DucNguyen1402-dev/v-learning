@@ -12,6 +12,7 @@ import {
   ProfileDropdown,
   ThemeModeButton,
 } from ".";
+import { LogoutButton } from "./LogoutButton";
 
 export const Header = () => {
   const { avatar } = User.use();
@@ -20,6 +21,15 @@ export const Header = () => {
   const routeKey = Navigation.client.findKey(pathname);
   const shouldHideLoginButton =
     routeKey && loginButtonHiddenRoutes.has(routeKey);
+
+  const currentKey = Navigation.client.findKey(pathname);
+
+  const isProfileRoute =
+    currentKey === Navigation.client.keys.PROFILE ||
+    currentKey === Navigation.client.keys.PROFILE_CHANGE ||
+    currentKey === Navigation.client.keys.PROFILE_PASSWORD_CHANGE;
+
+  const shouldRenderLogoutButton = isProfileRoute && window.innerWidth < 640;
 
   const { type, value } = avatar.current;
   const avatarRender =
@@ -37,20 +47,27 @@ export const Header = () => {
 
   return (
     <header className="header">
-      <div className="layout-container flex items-center justify-between px-1 md:px-2 lg:px-6">
+      <div className="layout-container flex items-center justify-between pr-2 md:px-2 lg:px-4">
         <HeaderLogo />
         <HeaderNav />
 
         <div className="flex items-center gap-4">
           {currentUser ? (
-            <div className="group relative flex items-center gap-2.5 p-2">
-              <div className="lg:pointer-events-none lg:cursor-default">
-                <Navigation.components.Forward
-                  routeKey={Navigation.client.keys.PROFILE}
-                >
-                  {avatarRender}
-                </Navigation.components.Forward>
+            <div className="group relative flex items-center gap-3 p-2 lg:gap-2.5">
+              <div className="lg:hidden">
+                <ThemeModeButton />
               </div>
+              {shouldRenderLogoutButton ? (
+                <LogoutButton />
+              ) : (
+                <div className="lg:pointer-events-none lg:cursor-default">
+                  <Navigation.components.Forward
+                    routeKey={Navigation.client.keys.PROFILE}
+                  >
+                    {avatarRender}
+                  </Navigation.components.Forward>
+                </div>
+              )}
               <span className="hidden text-sm font-medium lg:block">
                 {currentUser?.taiKhoan}
               </span>

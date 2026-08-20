@@ -5,7 +5,7 @@
   }
 
   .avatar-select-container {
-    @apply relative flex-center h-80 w-150 flex-wrap gap-5 overflow-x-auto rounded-container p-10;
+    @apply relative mx-2 flex-center h-80 w-full flex-wrap gap-5 overflow-x-auto rounded-container p-10 md:w-150;
     background-color: var(--color-bg-elevated);
   }
 

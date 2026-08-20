@@ -1,2 +1,2 @@
-export type { category } from "./caterory";
-export type { Courses } from "./courses";
+export type { category } from "./category";
+export type { Course, Courses } from "./courses";
