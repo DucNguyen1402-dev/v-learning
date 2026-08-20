@@ -8,7 +8,7 @@ function findOrThrow<T>(value: T | undefined): T {
 }
 
 export const useCourses = () => {
-  const { data: courses = [], isPending } = useCoursesQuery();
+  const { data: courses = [], isPending, isSuccess } = useCoursesQuery();
 
   const upgradeCourses = courses.map((course) => {
     const matchedCourse = findOrThrow(
@@ -29,7 +29,7 @@ export const useCourses = () => {
     return upgradeCourse;
   });
 
-  return { courses: upgradeCourses, isPending };
+  return { courses: upgradeCourses, isPending, isSuccess };
 };
 
 export type UseCoursesReturn = ReturnType<typeof useCourses>;

@@ -4,7 +4,7 @@ import { CurrentUserStorage } from "@shared/auth";
 import { Navigation } from "@shared/navigation";
 import { User } from "@shared/user";
 
-import { loginButtonHiddenRoutes } from "../loginButtonHiddenRoutes";
+import { routesHideLoginButton, routesShowLogoutButton } from "../uiRules";
 import {
   HeaderLogo,
   HeaderNav,
@@ -19,17 +19,9 @@ export const Header = () => {
   const currentUser = CurrentUserStorage.tryGet();
   const { pathname } = useLocation();
   const routeKey = Navigation.client.findKey(pathname);
-  const shouldHideLoginButton =
-    routeKey && loginButtonHiddenRoutes.has(routeKey);
-
-  const currentKey = Navigation.client.findKey(pathname);
-
-  const isProfileRoute =
-    currentKey === Navigation.client.keys.PROFILE ||
-    currentKey === Navigation.client.keys.PROFILE_CHANGE ||
-    currentKey === Navigation.client.keys.PROFILE_PASSWORD_CHANGE;
-
-  const shouldRenderLogoutButton = isProfileRoute && window.innerWidth < 640;
+  const shouldHideLoginButton = routeKey && routesHideLoginButton.has(routeKey);
+  const shouldShowLogoutButton =
+    routeKey && routesShowLogoutButton.has(routeKey) && window.innerWidth < 640;
 
   const { type, value } = avatar.current;
   const avatarRender =
@@ -37,10 +29,10 @@ export const Header = () => {
       <img
         src={value}
         alt="avatar"
-        className="size-12 rounded-full lg:size-8"
+        className="size-10 rounded-full lg:size-8"
       />
     ) : (
-      <div className="group relative flex-center size-12 overflow-hidden rounded-pill border border-border-subtle bg-bg-subtle font-bold text-text-default lg:size-8">
+      <div className="group relative flex-center size-10 overflow-hidden rounded-pill border border-border-subtle bg-bg-subtle font-bold text-text-default lg:size-8">
         {value}
       </div>
     );
@@ -57,7 +49,7 @@ export const Header = () => {
               <div className="lg:hidden">
                 <ThemeModeButton />
               </div>
-              {shouldRenderLogoutButton ? (
+              {shouldShowLogoutButton ? (
                 <LogoutButton />
               ) : (
                 <div className="lg:pointer-events-none lg:cursor-default">

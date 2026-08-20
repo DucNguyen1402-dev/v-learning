@@ -5,6 +5,7 @@
 
   .select-button-container {
     @apply flex items-center gap-2;
+
   }
 
   .trigger-icon {
@@ -15,6 +16,7 @@
   .triger-icon-active {
     @apply rotate-180;
   }
+
 
   .select-button-inactive {
     color: var(--color-fg-subtle);
@@ -58,11 +60,9 @@
 
     &:hover {
       color: var(--color-fg-on-brand);
-      background-color: color-mix(
-        in srgb,
-        var(--color-bg-brand) 70%,
-        var(--color-bg-elevated) 30%
-      );
+      background-color: color-mix(in srgb,
+          var(--color-bg-brand) 70%,
+          var(--color-bg-elevated) 30%);
     }
   }
 

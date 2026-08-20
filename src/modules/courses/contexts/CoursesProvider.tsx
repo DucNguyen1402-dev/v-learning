@@ -9,7 +9,7 @@ interface CoursesProviderProps {
 }
 
 export const CoursesProvider = ({ children }: CoursesProviderProps) => {
-  const { courses, isPending } = useCourses();
+  const { courses, isPending, isSuccess } = useCourses();
   const { filteredCourses, handleFilterChange, category, keyword } =
     useCoursesParams({
       courses,
@@ -18,13 +18,14 @@ export const CoursesProvider = ({ children }: CoursesProviderProps) => {
   const value: CoursesContextValues = {
     state: {
       isPending,
+      isSuccess,
     },
     courses,
     filter: {
       category,
       keyword,
-      filteredCourses,
       handleFilterChange,
+      filteredCourses,
     },
   };
 
