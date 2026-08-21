@@ -4,8 +4,10 @@ import {
   initialPaginationState,
   usePaginationActions,
   usePaginationDerived,
+  usePaginationEffect,
   usePaginationState,
 } from "./pagination";
+import { useCoursesParams } from "./useCoursesParams";
 import { useCoursesQuery } from "./useCoursesQuery";
 function findOrThrow<T>(value: T | undefined): T {
   if (!value) throw new Error("Not found");
@@ -17,11 +19,7 @@ export const useCourses = () => {
 
   const { pagination, setPagination } = usePaginationState(page, pageSize);
 
-  const {
-    data: courses,
-    isPending,
-    isSuccess,
-  } = useCoursesQuery({
+  const { data: courses, isPending } = useCoursesQuery({
     page: pagination.page,
     pageSize: pagination.pageSize,
   });
@@ -62,9 +60,30 @@ export const useCourses = () => {
     return upgradeCourse;
   });
 
+  const { filteredCourses, handleFilterChange, category, keyword } =
+    useCoursesParams({
+      courses: upgradeCourses,
+    });
+
+  usePaginationEffect({
+    setPagination,
+    pagination,
+    totalPages: courses?.totalPages ?? 0,
+    resetDeps: [keyword, category],
+  });
+
   return {
     courses: upgradeCourses,
-    isPending,
+
+    state: {
+      isPending,
+    },
+    filter: {
+      category,
+      keyword,
+      handleFilterChange,
+      filteredCourses,
+    },
     pagination: {
       state: {
         currentPage: pagination.page,
@@ -82,12 +101,6 @@ export const useCourses = () => {
         onPageClick,
         setSize,
         setPage,
-      },
-      effectsProps: {
-        enabled: isSuccess,
-        setPagination,
-        pagination,
-        items: courses?.items ?? [],
       },
     },
   };

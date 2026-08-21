@@ -2,11 +2,11 @@ import { useCallback, useMemo, useState } from "react";
 
 type UseWindowedListProps = {
   items: number[];
-  windowSize?: number;
+  windowSize: number;
 };
 export const useWindowedList = ({
   items,
-  windowSize = 3,
+  windowSize,
 }: UseWindowedListProps) => {
   const [slide, setSlide] = useState(1);
 
@@ -14,9 +14,9 @@ export const useWindowedList = ({
     () => Math.ceil(items.length / windowSize),
     [items.length, windowSize],
   );
-  const windowSlideList = items.slice(
-    (slide - 1) * windowSize,
-    slide * windowSize,
+  const windowSlideList = useMemo(
+    () => items.slice((slide - 1) * windowSize, slide * windowSize),
+    [items, slide, windowSize],
   );
 
   const setSlideTo = useCallback(
@@ -30,7 +30,6 @@ export const useWindowedList = ({
     (item: number) => {
       const index = items.indexOf(item);
       if (index === -1) return;
-
       setSlideTo(Math.floor(index / windowSize) + 1);
     },
     [items, setSlideTo, windowSize],

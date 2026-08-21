@@ -1,7 +1,6 @@
+import type { UpgradeCourse } from "@modules/courses/types";
 import { Button, BUTTON_APPEARANCES, BUTTON_INTENTS } from "@shared/ui";
 import { Eye, GraduationCap, Users } from "lucide-react";
-
-import type { UpgradeCourse } from "./types";
 
 interface CourseCardProps {
   course: UpgradeCourse;

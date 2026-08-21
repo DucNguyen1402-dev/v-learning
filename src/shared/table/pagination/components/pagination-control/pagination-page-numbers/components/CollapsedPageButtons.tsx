@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 
 import { useWindowedList } from "../hooks";
 import { PageButton } from "./PageButton";
@@ -29,9 +29,18 @@ export const CollapsedPageButtons = ({
 }: CollapsedPageButtonsProps) => {
   const edgeCount = getEdgeCount(window.innerWidth);
 
-  const leadingPages = pageNumbers.slice(0, edgeCount.count);
-  const middlePages = pageNumbers.slice(edgeCount.count, -edgeCount.count);
-  const trailingPages = pageNumbers.slice(-edgeCount.count);
+  const leadingPages = useMemo(
+    () => pageNumbers.slice(0, edgeCount.count),
+    [pageNumbers, edgeCount.count],
+  );
+  const middlePages = useMemo(
+    () => pageNumbers.slice(edgeCount.count, -edgeCount.count),
+    [pageNumbers, edgeCount.count],
+  );
+  const trailingPages = useMemo(
+    () => pageNumbers.slice(-edgeCount.count),
+    [pageNumbers, edgeCount.count],
+  );
 
   const { windowSlideList, currentSlide, lastSlide, scrollToItem, setSlideTo } =
     useWindowedList({
@@ -62,6 +71,8 @@ export const CollapsedPageButtons = ({
   const showLeadingEllipsis = currentSlide > 1;
   const showTrailingEllipsis = currentSlide < lastSlide;
 
+  const shouldShowWindow =
+    currentPage >= leadingPages.at(-1)! && currentPage <= trailingPages[0]!;
   return (
     <div className="flex gap-2">
       {leadingPages.map((page) => {
@@ -78,18 +89,19 @@ export const CollapsedPageButtons = ({
       })}
 
       {showLeadingEllipsis && <PaginationEllipsis />}
-      {windowSlideList.map((page) => {
-        const isCurrentPage = page === currentPage;
+      {shouldShowWindow &&
+        windowSlideList.map((page) => {
+          const isCurrentPage = page === currentPage;
 
-        return (
-          <PageButton
-            key={page}
-            page={page}
-            isCurrentPage={isCurrentPage}
-            onPageClick={onPageClick}
-          />
-        );
-      })}
+          return (
+            <PageButton
+              key={page}
+              page={page}
+              isCurrentPage={isCurrentPage}
+              onPageClick={onPageClick}
+            />
+          );
+        })}
 
       {showTrailingEllipsis && <PaginationEllipsis />}
       {trailingPages.map((page) => {

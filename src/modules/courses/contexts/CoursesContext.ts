@@ -1,5 +1,5 @@
 import { createContext } from "react";
 
-import type { CoursesContextValues } from "./CoursesContextValues";
+import type { UseCoursesReturn } from "./hooks";
 
-export const CoursesContext = createContext<CoursesContextValues | null>(null);
+export const CoursesContext = createContext<UseCoursesReturn | null>(null);

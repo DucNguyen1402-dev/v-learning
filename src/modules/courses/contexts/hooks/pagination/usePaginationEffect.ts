@@ -1,40 +1,33 @@
 import { type Dispatch, type SetStateAction, useEffect } from "react";
 
-type UsePaginationEffectProps<T> = {
+type UsePaginationEffectProps = {
   enabled?: boolean;
   setPagination: Dispatch<SetStateAction<{ page: number; pageSize: number }>>;
   resetDeps?: readonly unknown[];
   pagination: { page: number; pageSize: number };
-  items: readonly T[];
+  totalPages: number;
 };
-export const usePaginationEffect = <T>({
-  enabled,
+export const usePaginationEffect = ({
   setPagination,
   resetDeps,
   pagination,
-  items,
-}: UsePaginationEffectProps<T>) => {
+  totalPages,
+}: UsePaginationEffectProps) => {
   useEffect(() => {
-    if (!enabled) return;
-
     setPagination((prev) => ({
       ...prev,
       page: 1,
     }));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [...(resetDeps ?? []), setPagination, enabled]);
+  }, [...(resetDeps ?? []), setPagination]);
 
   useEffect(() => {
-    const totalPages = Math.max(
-      1,
-      Math.ceil(items.length / pagination.pageSize),
-    );
-
+    if (totalPages === 0) return;
     if (pagination.page > totalPages) {
       setPagination((prev) => ({
         ...prev,
         page: totalPages,
       }));
     }
-  }, [items.length, pagination.page, pagination.pageSize, setPagination]);
+  }, [pagination.page, pagination.pageSize, setPagination, totalPages]);
 };
