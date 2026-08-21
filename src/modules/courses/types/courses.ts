@@ -1,4 +1,4 @@
-export type Courses = {
+export interface Courses {
   maKhoaHoc: string;
   biDanh: string;
   tenKhoaHoc: string;
@@ -19,9 +19,9 @@ export type Courses = {
     maDanhMucKhoahoc: string;
     tenDanhMucKhoaHoc: string;
   };
-}[];
+}
 
-export type Course = {
+export interface Course {
   maKhoaHoc: string;
   biDanh: string;
   tenKhoaHoc: string;
@@ -43,4 +43,8 @@ export type Course = {
     maDanhMucKhoahoc: string;
     tenDanhMucKhoaHoc: string;
   };
-};
+}
+
+export interface UpgradeCourse extends Course {
+  tenGiangVien: string;
+}

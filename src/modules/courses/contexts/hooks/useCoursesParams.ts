@@ -1,8 +1,7 @@
 import { useMemo, useState } from "react";
 
 import type { category } from "@modules/courses/types";
-
-import type { UpgradeCourse } from "./types";
+import type { UpgradeCourse } from "@modules/courses/types";
 type CoursesFilter = {
   category: category | "all" | null;
   keyword: string | null;

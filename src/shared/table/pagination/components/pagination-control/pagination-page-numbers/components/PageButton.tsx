@@ -5,16 +5,16 @@ import {
   BUTTON_SIZES,
 } from "@shared/ui";
 
-type PaginationNumberButtonProps = {
+type PageButtonProps = {
   page: number;
   isCurrentPage: boolean;
   onPageClick: (page: number) => void;
 };
-export const PaginationNumberButton = ({
+export const PageButton = ({
   page,
   isCurrentPage,
   onPageClick,
-}: PaginationNumberButtonProps) => {
+}: PageButtonProps) => {
   return (
     <Button
       key={page}

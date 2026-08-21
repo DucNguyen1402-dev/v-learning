@@ -1,5 +1,5 @@
 import { useCoursesContext } from "@modules/courses/contexts";
-import type { Courses } from "@modules/courses/types";
+import type { UpgradeCourse } from "@modules/courses/types";
 import { Pagination } from "@shared/table";
 import { createArray } from "@shared/utils";
 
@@ -13,7 +13,7 @@ export function CoursesList() {
 
   const {
     state: { paginatedList },
-  } = Pagination.use<Courses>();
+  } = Pagination.use<UpgradeCourse>();
 
   return (
     <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
