@@ -8,9 +8,15 @@ function findOrThrow<T>(value: T | undefined): T {
 }
 
 export const useCourses = () => {
-  const { data: courses = [], isPending, isSuccess } = useCoursesQuery();
+  const {
+    data: courses = { items: [] },
+    isPending,
+    isSuccess,
+  } = useCoursesQuery({ page: 1, pageSize: 10 });
 
-  const upgradeCourses = courses.map((course) => {
+  const { currentPage, count, totalPages, totalCount, items } = courses;
+
+  const upgradeCourses = items.map((course) => {
     const matchedCourse = findOrThrow(
       mockCourses.find(
         (c) =>

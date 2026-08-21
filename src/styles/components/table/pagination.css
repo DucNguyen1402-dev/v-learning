@@ -1,6 +1,6 @@
 @layer components {
   .pagination-select-container {
-    @apply w-full min-w-56;
+    @apply w-full min-w-20 lg:min-w-36;
   }
 
   .pagination-control-container {

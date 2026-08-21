@@ -48,3 +48,11 @@ export interface Course {
 export interface UpgradeCourse extends Course {
   tenGiangVien: string;
 }
+
+export interface PaginatedCourses {
+  currentPage: number;
+  count: number;
+  totalPages: number;
+  totalCount: number;
+  items: Courses[];
+}

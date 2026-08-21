@@ -1,3 +1,5 @@
+import { useMemo } from "react";
+
 import { usePaginationActions } from "./usePaginationActions";
 import { usePaginationDerived } from "./usePaginationDerived";
 import { usePaginationEffect } from "./usePaginationEffect";
@@ -82,27 +84,48 @@ export const usePagination = <T>({
     pageOffset,
   } = usePaginationDerived({ pagination, items });
 
-  return {
-    actions: {
-      onPrevClick,
+  return useMemo(
+    () => ({
+      actions: {
+        onPrevClick,
+        onNextClick,
+        onPageClick,
+        setSize,
+        setPage,
+        preventNextResetPage,
+      },
+      state: {
+        entityName,
+        currentPage: pagination.page,
+        totalItems,
+        isPrevDisabled,
+        isNextDisabled,
+        pageNumbers,
+        displayStart,
+        displayEnd,
+        paginatedList,
+        pageOffset,
+        currentSize: pagination.size,
+      },
+    }),
+    [
+      displayEnd,
+      displayStart,
+      entityName,
+      isNextDisabled,
+      isPrevDisabled,
       onNextClick,
       onPageClick,
-      setSize,
-      setPage,
-      preventNextResetPage,
-    },
-    state: {
-      entityName,
-      currentPage: pagination.page,
-      totalItems,
-      isPrevDisabled,
-      isNextDisabled,
+      onPrevClick,
       pageNumbers,
-      displayStart,
-      displayEnd,
-      paginatedList,
       pageOffset,
-      currentSize: pagination.size,
-    },
-  };
+      paginatedList,
+      pagination.page,
+      pagination.size,
+      preventNextResetPage,
+      setPage,
+      setSize,
+      totalItems,
+    ],
+  );
 };

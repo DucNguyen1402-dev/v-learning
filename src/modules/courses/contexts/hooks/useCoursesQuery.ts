@@ -1,9 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 
-import { getCourse } from "./api";
-export const useCoursesQuery = () => {
+import { getPaginatedCourses } from "./api";
+type UseCoursesQueryProps = {
+  page: number;
+  pageSize: number;
+};
+export const useCoursesQuery = ({ page, pageSize }: UseCoursesQueryProps) => {
   return useQuery({
-    queryKey: ["courses"],
-    queryFn: getCourse,
+    queryKey: ["courses", page, pageSize],
+    queryFn: () => getPaginatedCourses({ page, pageSize }),
   });
 };

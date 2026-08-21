@@ -1,37 +1,30 @@
 import { Select } from "@shared/fields";
 
-import { PAGE_SIZE_OPTIONS } from "../config";
+import { pageSizeOptions } from "../config";
 
 type PaginationSelectProps = {
   id?: string;
   value: number | string;
+  hideEntity?: boolean;
   onChange: (value: number) => void;
   options?: { label: string; value: number | string }[];
-  shouldHideIcon?: boolean;
 };
 
 export const PaginationSelect = ({
   value,
+  hideEntity,
   onChange,
-  options = PAGE_SIZE_OPTIONS,
-  shouldHideIcon = false,
 }: PaginationSelectProps) => {
   const onChangeHandler = (value: number | string) => {
     onChange(Number(value));
   };
 
+  const isDesktop = window.innerWidth >= 1024;
+  const options = isDesktop ? pageSizeOptions.desktop : pageSizeOptions.compact;
   return (
     <div className="pagination-select-container">
       <Select.Root>
-        <Select.Trigger
-          labels={{
-            placeholder: "Chọn phân trang",
-            disabled: "Disabled",
-            required: "Required",
-            selected: "Số mục mỗi trang :",
-          }}
-          shouldHideIcon={shouldHideIcon}
-        />
+        <Select.Trigger entity={hideEntity ? undefined : "trang"} />
 
         <Select.Content
           value={value}
