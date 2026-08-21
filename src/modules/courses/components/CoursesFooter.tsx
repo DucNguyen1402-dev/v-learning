@@ -1,14 +1,11 @@
 import { useLayoutEffect, useRef } from "react";
 
-import type { Courses } from "@modules/courses/types";
 import { Pagination } from "@shared/table";
 
-export const CoursesFooter = () => {
-  const {
-    state: { currentSize, currentPage },
-    actions: { setSize },
-  } = Pagination.use<Courses>();
+import { useCoursesContext } from "../contexts";
 
+export const CoursesFooter = () => {
+  const { pagination } = useCoursesContext();
   const footerRef = useRef<HTMLDivElement | null>(null);
 
   useLayoutEffect(() => {
@@ -19,14 +16,21 @@ export const CoursesFooter = () => {
     const targetTop = window.scrollY + rect.top;
 
     window.scrollTo({ top: targetTop, behavior: "instant" });
-  }, [currentSize, currentPage]);
+  }, [pagination.state.currentSize, pagination.state.currentPage]);
 
   return (
     <div className="flex flex-col gap-8 lg:gap-5" ref={footerRef}>
-      <Pagination.Control />
+      <Pagination.ControlApi
+        state={pagination.state}
+        actions={pagination.actions}
+      />
 
       <div className="self-end pr-6 md:pr-26 lg:pr-0">
-        <Pagination.Select value={currentSize} onChange={setSize} hideEntity />
+        <Pagination.Select
+          value={pagination.state.currentSize}
+          onChange={pagination.actions.setSize}
+          hideEntity
+        />
       </div>
     </div>
   );

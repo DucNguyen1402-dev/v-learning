@@ -3,7 +3,6 @@ import type { UseCoursesParamsReturn, UseCoursesReturn } from "./hooks";
 export type CoursesContextValues = {
   state: {
     isPending: boolean;
-    isSuccess: boolean;
   };
   courses: UseCoursesReturn["courses"];
   filter: {
@@ -12,4 +11,5 @@ export type CoursesContextValues = {
     handleFilterChange: UseCoursesParamsReturn["handleFilterChange"];
     filteredCourses: UseCoursesParamsReturn["filteredCourses"];
   };
+  pagination: UseCoursesReturn["pagination"];
 };

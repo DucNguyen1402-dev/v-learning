@@ -8,7 +8,7 @@ type CoursesFilter = {
 };
 
 type UseCoursesFilterProps = {
-  courses: UpgradeCourse[];
+  courses: UpgradeCourse[] | undefined;
 };
 export const useCoursesParams = ({ courses }: UseCoursesFilterProps) => {
   const [params, setParams] = useState<CoursesFilter>({
@@ -25,7 +25,7 @@ export const useCoursesParams = ({ courses }: UseCoursesFilterProps) => {
 
   const filteredCourses = useMemo(() => {
     const keyword = params.keyword?.trim().toLowerCase() || "";
-    const filteredByKeyword = courses.filter(
+    const filteredByKeyword = (courses || []).filter(
       (course) =>
         course.tenKhoaHoc.toLowerCase().includes(keyword) ||
         course.danhMucKhoaHoc.tenDanhMucKhoaHoc.toLowerCase().includes(keyword),

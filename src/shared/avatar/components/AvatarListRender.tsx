@@ -13,7 +13,7 @@ export const AvatarListRender = ({
   handleAvatarSelection,
   currentAvatar,
 }: AvatarListRenderProps) => {
-  const pagination = Pagination.use();
+  const pagination = Pagination.use<Avatar[]>();
 
   const initialAvatar = getUserInitialAvatar();
 
