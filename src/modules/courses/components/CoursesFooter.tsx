@@ -44,6 +44,7 @@ export const CoursesFooter = () => {
           onChange={pagination.actions.setSize}
           hideEntity
           shouldCompactOptions
+          disabled={pagination.status.isEmpty}
         />
       </div>
     </div>

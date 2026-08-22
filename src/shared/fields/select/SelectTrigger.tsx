@@ -36,7 +36,7 @@ export const SelectTrigger = ({
   const isDesktop = window.innerWidth >= 1024;
 
   const content = {
-    disabled: labels?.disabled,
+    disabled: labels?.disabled ?? "",
     selecting: <LabelElipsis />,
     selected: value!,
     placeholder: labels?.placeholder,

@@ -18,6 +18,10 @@ export const PaginationPageNumbers = ({
   const [dynamicWindowSize, setDynamicWindowSize] = useState(1);
   const stopResizeRef = useRef(false);
 
+  if (pageNumbers.length === 0) {
+    return null;
+  }
+
   if (pageNumbers.length <= 5) {
     return (
       <SimplePageButtons

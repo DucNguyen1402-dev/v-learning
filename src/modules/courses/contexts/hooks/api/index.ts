@@ -1,1 +1,2 @@
-export { getPaginatedCourse } from "./api";
+export { getCoursesByCategory } from "./getCoursesByCaterory";
+export { getPaginatedCourse } from "./getPaginatedCourse";

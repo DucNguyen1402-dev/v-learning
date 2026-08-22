@@ -13,7 +13,7 @@ import { useCoursesContext } from "../contexts";
 
 export const CoursesToolbar = () => {
   const {
-    filter: { category, keyword, handleFilterChange },
+    filter: { tenKhoaHoc, onSearchByCoursesName },
   } = useCoursesContext();
 
   return (
@@ -26,8 +26,8 @@ export const CoursesToolbar = () => {
           <Input.Field
             hasLeftAddon
             placeholder="Tìm kiếm khóa học..."
-            value={keyword || ""}
-            onChange={(e) => handleFilterChange({ keyword: e.target.value })}
+            value={tenKhoaHoc || ""}
+            onChange={(e) => onSearchByCoursesName(e.target.value)}
           />
         </Input.Root>
       </div>
@@ -39,8 +39,6 @@ export const CoursesToolbar = () => {
             appearance={BUTTON_APPEARANCES.OUTLINE}
             size={BUTTON_SIZES.NONE}
             fullSize
-            onClick={() => handleFilterChange({ category: "all" })}
-            selected={category === "all"}
           >
             <span className="py-2.5 text-xs font-medium">Tất cả</span>
           </Button>
@@ -52,8 +50,6 @@ export const CoursesToolbar = () => {
               appearance={BUTTON_APPEARANCES.OUTLINE}
               size={BUTTON_SIZES.NONE}
               fullSize
-              onClick={() => handleFilterChange({ category: cat.value })}
-              selected={category === cat.value}
             >
               <span className="py-2.5 text-xs font-medium">
                 {capitalize(cat.label)}
