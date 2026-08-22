@@ -1,11 +1,13 @@
+import { useNavigate } from "react-router-dom";
+
 import type { CourseCardForm } from "@modules/courses/types";
 import { Button, BUTTON_APPEARANCES, BUTTON_INTENTS } from "@shared/ui";
 import { Eye, GraduationCap, Users } from "lucide-react";
-
 interface CourseCardProps {
   course: CourseCardForm;
 }
 export const CourseCard = ({ course }: CourseCardProps) => {
+  const navigate = useNavigate();
   return (
     <article
       key={course.maKhoaHoc}
@@ -55,6 +57,7 @@ export const CourseCard = ({ course }: CourseCardProps) => {
             appearance={BUTTON_APPEARANCES.SOLID}
             intent={BUTTON_INTENTS.PRIMARY}
             fullWidth
+            onClick={() => navigate(`/courses/${course.maKhoaHoc}`)}
           >
             Xem chi tiết
           </Button>

@@ -1,7 +1,8 @@
-export type { Category, CoursesFilter } from "./category";
+export type { Category } from "./category";
 export type {
   Course,
   CourseCardForm,
+  DetailCourse,
   EnrichedCourse,
   PaginatedCourse,
   PaginatedCourseItems,

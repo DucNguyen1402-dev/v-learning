@@ -9,7 +9,7 @@ export const useCoursesQueryByCategory = ({
   category,
 }: UseCoursesQueryByCategoryParams) => {
   return useQuery({
-    queryKey: ["courses", category],
+    queryKey: ["courses-by-category", category],
     queryFn: () => getCoursesByCategory(category),
     enabled: category !== "all",
   });

@@ -13,6 +13,8 @@ export function usePaginationState({ pageSize = 10 }: UsePaginationStateProps) {
     pageSize,
   });
   const skipNextPageResetRef = useRef(true);
+  const isFirstRender = useRef(true);
+  const scrollToTargetRef = useRef<HTMLDivElement | null>(null);
 
   const setSkipNextPageResetRef = (value: boolean) =>
     (skipNextPageResetRef.current = value);
@@ -22,5 +24,7 @@ export function usePaginationState({ pageSize = 10 }: UsePaginationStateProps) {
     setPagination,
     skipNextPageResetRef,
     setSkipNextPageResetRef,
+    isFirstRender,
+    scrollToTargetRef,
   };
 }

@@ -1,4 +1,5 @@
-import type { PaginatedCourse } from "@modules/courses/types";
+import type { Course, PaginatedCourse } from "@modules/courses/types";
+
 export const EMPTY_PAGINATED_COURSE: PaginatedCourse = {
   currentPage: 1,
   count: 0,
@@ -6,3 +7,5 @@ export const EMPTY_PAGINATED_COURSE: PaginatedCourse = {
   totalCount: 0,
   items: [],
 } as const;
+
+export const EMPTY_PAGINATED_COURSE_BY_CATEGORY: Course[] = [];

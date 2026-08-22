@@ -26,6 +26,19 @@ export interface EnrichedCourse extends Course {
   tenGiangVien: string;
 }
 
+export type DetailCourse = Pick<
+  EnrichedCourse,
+  | "maKhoaHoc"
+  | "tenKhoaHoc"
+  | "moTa"
+  | "hinhAnh"
+  | "ngayTao"
+  | "soLuongHocVien"
+  | "tenGiangVien"
+> & {
+  danhMucKhoaHoc: Pick<Course["danhMucKhoaHoc"], "tenDanhMucKhoaHoc">;
+};
+
 export interface PaginatedCourse {
   currentPage: number;
   count: number;

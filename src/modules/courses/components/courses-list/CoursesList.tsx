@@ -1,4 +1,6 @@
 import { useCoursesContext } from "@modules/courses/contexts";
+import type { CourseCardForm } from "@modules/courses/types";
+import { Pagination } from "@shared/table";
 import { createArray } from "@shared/utils";
 
 import { CourseCard } from "./CourseCard";
@@ -8,21 +10,14 @@ import { EmptyCoursesState } from "./EmptyCoursesState";
 export function CoursesList() {
   const {
     pagination: {
-      status: { isLoading, isEmpty },
+      status: { isEmpty },
     },
+    status: { isLoading },
     filter: { tenKhoaHoc, handleClearSearch },
     courses,
+    isSourceByCategory,
   } = useCoursesContext();
-
-  if (isLoading) {
-    return (
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {createArray(10).map((_, index) => (
-          <CoursesListSkeleton key={index} />
-        ))}
-      </div>
-    );
-  }
+  const categoryPagination = Pagination.use<CourseCardForm>();
 
   if (isEmpty) {
     return (
@@ -33,11 +28,17 @@ export function CoursesList() {
     );
   }
 
+  const renderCourses = isSourceByCategory
+    ? categoryPagination.state.paginatedList
+    : courses;
+
   return (
     <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      {courses?.map((course) => {
-        return <CourseCard key={course.maKhoaHoc} course={course} />;
-      })}
+      {isLoading
+        ? createArray(10).map((_, index) => <CoursesListSkeleton key={index} />)
+        : renderCourses?.map((course) => {
+            return <CourseCard key={course.maKhoaHoc} course={course} />;
+          })}
     </div>
   );
 }
