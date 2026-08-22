@@ -1,3 +1,5 @@
+import { useRef, useState } from "react";
+
 import { CollapsedPageButtons, SimplePageButtons } from "./components";
 
 type PaginationPageNumbersProps = {
@@ -13,6 +15,9 @@ export const PaginationPageNumbers = ({
   pageNumbers,
   isLoading,
 }: PaginationPageNumbersProps) => {
+  const [dynamicWindowSize, setDynamicWindowSize] = useState(1);
+  const stopResizeRef = useRef(false);
+
   if (pageNumbers.length <= 5) {
     return (
       <SimplePageButtons
@@ -30,6 +35,9 @@ export const PaginationPageNumbers = ({
       currentPage={currentPage}
       onPageClick={onPageClick}
       isLoading={isLoading}
+      dynamicWindowSize={dynamicWindowSize}
+      setDynamicWindowSize={setDynamicWindowSize}
+      stopResizeRef={stopResizeRef}
     />
   );
 };

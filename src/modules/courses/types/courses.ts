@@ -35,3 +35,5 @@ export interface PaginatedCourse {
 }
 
 export type PaginatedCourseItems = PaginatedCourse["items"];
+
+export type CourseCardForm = EnrichedCourse;

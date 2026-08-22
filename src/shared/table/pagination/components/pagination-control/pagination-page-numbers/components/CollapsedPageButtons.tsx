@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from "react";
+import { useCallback, useEffect, useMemo } from "react";
 
 import { TinyButtonSkeleton } from "@shared/ui";
 import { createArray } from "@shared/utils";
@@ -11,6 +11,9 @@ type CollapsedPageButtonsProps = {
   currentPage: number;
   onPageClick: (page: number) => void;
   isLoading?: boolean;
+  dynamicWindowSize: number;
+  setDynamicWindowSize: React.Dispatch<React.SetStateAction<number>>;
+  stopResizeRef: React.RefObject<boolean>;
 };
 
 const edgeCount = [
@@ -30,6 +33,9 @@ export const CollapsedPageButtons = ({
   onPageClick,
   pageNumbers,
   isLoading,
+  dynamicWindowSize,
+  setDynamicWindowSize,
+  stopResizeRef,
 }: CollapsedPageButtonsProps) => {
   const edgeCount = getEdgeCount(window.innerWidth);
 
@@ -49,7 +55,8 @@ export const CollapsedPageButtons = ({
   const { windowSlideList, currentSlide, lastSlide, scrollToItem, setSlideTo } =
     useWindowedList({
       items: middlePages,
-      windowSize: edgeCount.windowSize,
+      windowSize: dynamicWindowSize,
+      baseWindowSize: edgeCount.windowSize,
     });
 
   useEffect(() => {
@@ -70,6 +77,39 @@ export const CollapsedPageButtons = ({
     trailingPages,
     scrollToItem,
     setSlideTo,
+  ]);
+
+  const handleResizeWindow = useCallback(() => {
+    if (dynamicWindowSize > edgeCount.windowSize) {
+      setDynamicWindowSize((prev) => prev - 1);
+      stopResizeRef.current = true;
+    }
+
+    if (!stopResizeRef.current) {
+      setDynamicWindowSize((prev) => prev + 1);
+    }
+  }, [
+    dynamicWindowSize,
+    edgeCount.windowSize,
+    stopResizeRef,
+    setDynamicWindowSize,
+  ]);
+
+  useEffect(() => {
+    const index = middlePages.indexOf(currentPage);
+    if (index === -1 || dynamicWindowSize !== 3) return;
+    const isLastItemInCurrentWindow = (index + 1) % dynamicWindowSize === 0;
+    if (isLastItemInCurrentWindow) {
+      stopResizeRef.current = false;
+      setDynamicWindowSize((prev) => prev + 1);
+    }
+  }, [
+    currentPage,
+    middlePages,
+    dynamicWindowSize,
+    handleResizeWindow,
+    stopResizeRef,
+    setDynamicWindowSize,
   ]);
 
   const showLeadingEllipsis = currentSlide > 1;
@@ -108,7 +148,10 @@ export const CollapsedPageButtons = ({
               key={page}
               page={page}
               isCurrentPage={isCurrentPage}
-              onPageClick={onPageClick}
+              onPageClick={(page) => {
+                handleResizeWindow();
+                onPageClick(page);
+              }}
             />
           );
         })}

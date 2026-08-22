@@ -7,13 +7,18 @@ import { useCoursesContext } from "../contexts";
 export const CoursesFooter = () => {
   const { pagination } = useCoursesContext();
   const footerRef = useRef<HTMLDivElement | null>(null);
+  const isFirstRender = useRef(true);
 
   useLayoutEffect(() => {
     const footerElement = footerRef.current;
     if (!footerElement) return;
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
 
     const rect = footerElement.getBoundingClientRect();
-    const targetTop = window.scrollY + rect.top;
+    const targetTop = window.scrollY + rect.top - window.innerHeight / 2; // 20% offset for better visibility
 
     window.scrollTo({ top: targetTop, behavior: "instant" });
   }, [pagination.state.pageSize, pagination.state.currentPage]);
