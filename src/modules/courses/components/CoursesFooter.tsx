@@ -16,20 +16,29 @@ export const CoursesFooter = () => {
     const targetTop = window.scrollY + rect.top;
 
     window.scrollTo({ top: targetTop, behavior: "instant" });
-  }, [pagination.state.currentSize, pagination.state.currentPage]);
+  }, [pagination.state.pageSize, pagination.state.currentPage]);
 
   return (
     <div className="flex flex-col gap-8 lg:gap-5" ref={footerRef}>
-      <Pagination.ControlApi
-        state={pagination.state}
-        actions={pagination.actions}
-      />
+      <div className="flex items-center justify-center px-4 text-sm lg:justify-between">
+        <Pagination.components.Info
+          displayStart={pagination.state.displayStart}
+          displayEnd={pagination.state.displayEnd}
+          totalItems={pagination.state.totalItems}
+        />
+        <Pagination.components.Control
+          state={pagination.state}
+          actions={pagination.actions}
+          status={pagination.status}
+        />
+      </div>
 
       <div className="self-end pr-6 md:pr-26 lg:pr-0">
-        <Pagination.Select
-          value={pagination.state.currentSize}
+        <Pagination.components.Select
+          value={pagination.state.pageSize}
           onChange={pagination.actions.setSize}
           hideEntity
+          shouldCompactOptions
         />
       </div>
     </div>

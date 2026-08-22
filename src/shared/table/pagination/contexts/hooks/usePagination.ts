@@ -63,16 +63,6 @@ export const usePagination = <T>({
     setSkipNextPageResetRef,
   });
 
-  usePaginationEffect({
-    skipNextPageResetRef,
-    setSkipNextPageResetRef,
-    items,
-    enabled,
-    resetDeps,
-    setPagination,
-    pagination,
-  });
-
   const {
     paginatedList,
     displayStart,
@@ -81,8 +71,18 @@ export const usePagination = <T>({
     pageNumbers,
     isPrevDisabled,
     isNextDisabled,
-    pageOffset,
+    totalPages,
   } = usePaginationDerived({ pagination, items });
+
+  usePaginationEffect({
+    skipNextPageResetRef,
+    setSkipNextPageResetRef,
+    enabled,
+    resetDeps,
+    setPagination,
+    currentPage: pagination.page,
+    totalPages,
+  });
 
   return useMemo(
     () => ({
@@ -104,8 +104,7 @@ export const usePagination = <T>({
         displayStart,
         displayEnd,
         paginatedList,
-        pageOffset,
-        currentSize: pagination.size,
+        currentSize: pagination.pageSize,
       },
     }),
     [
@@ -118,10 +117,9 @@ export const usePagination = <T>({
       onPageClick,
       onPrevClick,
       pageNumbers,
-      pageOffset,
       paginatedList,
       pagination.page,
-      pagination.size,
+      pagination.pageSize,
       preventNextResetPage,
       setPage,
       setSize,

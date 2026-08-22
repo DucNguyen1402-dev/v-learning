@@ -1,47 +1,50 @@
-import { usePaginationContext } from "@shared/table/pagination/contexts";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 import { PaginationPageNumbers } from "./pagination-page-numbers";
 import { PaginationButtonControl } from "./PaginationButtonControl";
-import { PaginationInfo } from "./PaginationInfo";
-export const PaginationControl = () => {
-  const {
-    state: {
-      currentPage,
-      pageNumbers,
-      displayStart,
-      displayEnd,
-      totalItems,
-      isPrevDisabled,
-      isNextDisabled,
-    },
-    actions: { onPrevClick, onNextClick, onPageClick },
-  } = usePaginationContext();
 
+type PaginationControlProps = {
+  state: {
+    currentPage: number;
+    pageNumbers: number[];
+    isPrevDisabled: boolean;
+    isNextDisabled: boolean;
+  };
+  actions: {
+    onPrevClick: () => void;
+    onNextClick: () => void;
+    onPageClick: (page: number) => void;
+  };
+  status?: {
+    isLoading?: boolean;
+  };
+};
+
+export const PaginationControl = ({
+  state: { currentPage, pageNumbers, isPrevDisabled, isNextDisabled },
+  actions: { onPrevClick, onNextClick, onPageClick },
+  status,
+}: PaginationControlProps) => {
   return (
     <div className="pagination-control-container">
-      <PaginationInfo
-        displayStart={displayStart}
-        displayEnd={displayEnd}
-        totalItems={totalItems}
+      <PaginationButtonControl
+        onClick={onPrevClick}
+        disabled={isPrevDisabled}
+        icon={ChevronLeft}
+        isLoading={status?.isLoading}
       />
-      <div className="pagination-control-action-container">
-        <PaginationButtonControl
-          onClick={onPrevClick}
-          disabled={isPrevDisabled}
-          icon={ChevronLeft}
-        />
-        <PaginationPageNumbers
-          currentPage={currentPage}
-          pageNumbers={pageNumbers}
-          onPageClick={onPageClick}
-        />
-        <PaginationButtonControl
-          onClick={onNextClick}
-          disabled={isNextDisabled}
-          icon={ChevronRight}
-        />
-      </div>
+      <PaginationPageNumbers
+        currentPage={currentPage}
+        pageNumbers={pageNumbers}
+        onPageClick={onPageClick}
+        isLoading={status?.isLoading}
+      />
+      <PaginationButtonControl
+        onClick={onNextClick}
+        disabled={isNextDisabled}
+        icon={ChevronRight}
+        isLoading={status?.isLoading}
+      />
     </div>
   );
 };

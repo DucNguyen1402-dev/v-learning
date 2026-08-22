@@ -6,13 +6,15 @@ import { CoursesListSkeleton } from "./CoursesListSkeleton";
 
 export function CoursesList() {
   const {
-    state: { isPending },
+    pagination: {
+      status: { isLoading },
+    },
     courses,
   } = useCoursesContext();
 
   return (
     <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      {isPending
+      {isLoading
         ? createArray(10).map((_, index) => <CoursesListSkeleton key={index} />)
         : courses?.map((course) => {
             return <CourseCard key={course.maKhoaHoc} course={course} />;

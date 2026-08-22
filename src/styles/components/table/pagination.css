@@ -1,26 +1,32 @@
 @layer components {
   .pagination-select-container {
-    @apply w-full min-w-20 lg:min-w-30;
+    @apply w-full min-w-20 lg:min-w-30 select-none;
   }
 
-  .pagination-control-container {
-    @apply flex items-center justify-center px-4 text-sm lg:justify-between;
+  .pagination-select-container-compact {
+    @apply w-full min-w-20 select-none;
   }
 
   .pagination-control-info-wrapper {
-    @apply hidden text-sm lg:block;
+    @apply hidden text-sm lg:block select-none;
     color: var(--color-text-muted);
   }
 
-  .pagination-control-action-container {
+  .pagination-control-container {
     @apply flex gap-2;
   }
+
 
   .pagination-control-action-icon {
     @apply size-5;
   }
 
-  .pagination-page-number {
+
+  .pagination-page-number-container {
+    @apply flex gap-2;
+  }
+
+  .pagination-page-button {
     @apply flex size-8 items-center justify-center;
   }
 }

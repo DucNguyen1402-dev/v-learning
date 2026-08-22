@@ -1,4 +1,5 @@
 export const SKELETON_WIDTHS = {
+  "2XS": "2xs",
   XS: "xs",
   SM: "sm",
   MD: "md",

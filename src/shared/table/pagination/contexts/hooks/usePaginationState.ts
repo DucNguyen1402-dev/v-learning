@@ -5,9 +5,12 @@ type UsePaginationStateProps = {
 };
 
 export function usePaginationState({ pageSize = 10 }: UsePaginationStateProps) {
-  const [pagination, setPagination] = useState<{ page: number; size: number }>({
+  const [pagination, setPagination] = useState<{
+    page: number;
+    pageSize: number;
+  }>({
     page: 1,
-    size: pageSize,
+    pageSize,
   });
   const skipNextPageResetRef = useRef(true);
 

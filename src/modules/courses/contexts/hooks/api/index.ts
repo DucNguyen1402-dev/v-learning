@@ -1,1 +1,1 @@
-export { getCourse, getPaginatedCourses } from "./api";
+export { getPaginatedCourse } from "./api";

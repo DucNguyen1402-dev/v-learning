@@ -1,7 +1,7 @@
-export type { category } from "./category";
+export type { Category, CoursesFilter } from "./category";
 export type {
   Course,
-  Courses,
-  PaginatedCourses,
-  UpgradeCourse,
+  EnrichedCourse,
+  PaginatedCourse,
+  PaginatedCourseItems,
 } from "./courses";

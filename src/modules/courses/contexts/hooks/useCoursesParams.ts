@@ -1,14 +1,14 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 
-import type { category } from "@modules/courses/types";
-import type { UpgradeCourse } from "@modules/courses/types";
-type CoursesFilter = {
-  category: category | "all" | null;
-  keyword: string | null;
-};
+import type {
+  CoursesFilter,
+  PaginatedCourseItems,
+} from "@modules/courses/types";
+
+import { filterCoursesByCategory } from "./utils";
 
 type UseCoursesFilterProps = {
-  courses: UpgradeCourse[] | undefined;
+  courses: PaginatedCourseItems | undefined;
 };
 export const useCoursesParams = ({ courses }: UseCoursesFilterProps) => {
   const [params, setParams] = useState<CoursesFilter>({
@@ -23,25 +23,12 @@ export const useCoursesParams = ({ courses }: UseCoursesFilterProps) => {
     }));
   };
 
-  const filteredCourses = useMemo(() => {
-    const keyword = params.keyword?.trim().toLowerCase() || "";
-    const filteredByKeyword = (courses || []).filter(
-      (course) =>
-        course.tenKhoaHoc.toLowerCase().includes(keyword) ||
-        course.danhMucKhoaHoc.tenDanhMucKhoaHoc.toLowerCase().includes(keyword),
-    );
+  const filteredCourses = filterCoursesByCategory({
+    courses: courses,
+    keyword: params.keyword,
+    category: params.category,
+  });
 
-    const filteredByCategory = filteredByKeyword.filter((course) => {
-      if (params.category === "all" || !params.category) {
-        return true;
-      }
-      return (
-        course.danhMucKhoaHoc.maDanhMucKhoahoc.toLowerCase() === params.category
-      );
-    });
-
-    return filteredByCategory;
-  }, [params, courses]);
   return {
     filteredCourses,
     handleFilterChange,

@@ -1,22 +1,22 @@
 import { useMemo } from "react";
 
 import { createArray } from "@shared/utils";
+
 type UsePaginationDerivedProps = {
-  pagination: { page: number; pageSize: number };
+  currentPage: number;
+  pageSize: number;
   totalPages: number;
 };
 
 export const usePaginationDerived = ({
   totalPages,
-  pagination,
+  currentPage,
+  pageSize,
 }: UsePaginationDerivedProps) =>
   useMemo(() => {
     const displayStart =
-      totalPages === 0 ? 0 : (pagination.page - 1) * pagination.pageSize + 1;
-    const displayEnd = Math.min(
-      pagination.page * pagination.pageSize,
-      totalPages * pagination.pageSize,
-    );
+      totalPages === 0 ? 0 : (currentPage - 1) * pageSize + 1;
+    const displayEnd = Math.min(currentPage * pageSize, totalPages * pageSize);
 
     const pageNumbers = createArray(totalPages, (_, index) => index + 1);
 
@@ -24,7 +24,7 @@ export const usePaginationDerived = ({
       displayStart,
       displayEnd,
       pageNumbers,
-      isPrevDisabled: pagination.page === 1,
-      isNextDisabled: pagination.page >= totalPages,
+      isPrevDisabled: currentPage === 1,
+      isNextDisabled: currentPage >= totalPages,
     };
-  }, [totalPages, pagination.page, pagination.pageSize]);
+  }, [totalPages, currentPage, pageSize]);

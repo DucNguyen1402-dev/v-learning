@@ -2,6 +2,7 @@ import { Pagination } from "@shared/table";
 
 import { avatarList } from "../config";
 import type { Avatar } from "../types";
+import { toAvatars } from "../utils";
 import { AvatarListRender } from "./AvatarListRender";
 import { AvatarSelectCloseButton } from "./AvatarSelectCloseButton";
 import { PaginationControlButton } from "./PaginationControlButton";
@@ -25,7 +26,7 @@ export const AvatarSelect = ({
 
   return (
     <Pagination.Provider
-      items={avatarList}
+      items={toAvatars(avatarList)}
       pageSize={isMobile ? 3 : 7}
       resetDeps={[avatarList]}
     >

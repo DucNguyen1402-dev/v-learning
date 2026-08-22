@@ -24,7 +24,7 @@ export const PageButton = ({
       selected={isCurrentPage}
       onClick={() => onPageClick(page)}
     >
-      <span className="pagination-page-number">{page}</span>
+      <span className="pagination-page-button">{page}</span>
     </Button>
   );
 };

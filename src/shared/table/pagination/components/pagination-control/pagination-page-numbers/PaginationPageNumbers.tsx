@@ -4,12 +4,14 @@ type PaginationPageNumbersProps = {
   pageNumbers: number[];
   currentPage: number;
   onPageClick: (page: number) => void;
+  isLoading?: boolean;
 };
 
 export const PaginationPageNumbers = ({
   currentPage,
   onPageClick,
   pageNumbers,
+  isLoading,
 }: PaginationPageNumbersProps) => {
   if (pageNumbers.length <= 5) {
     return (
@@ -17,6 +19,7 @@ export const PaginationPageNumbers = ({
         pageNumbers={pageNumbers}
         currentPage={currentPage}
         onPageClick={onPageClick}
+        isLoading={isLoading}
       />
     );
   }
@@ -26,6 +29,7 @@ export const PaginationPageNumbers = ({
       pageNumbers={pageNumbers}
       currentPage={currentPage}
       onPageClick={onPageClick}
+      isLoading={isLoading}
     />
   );
 };

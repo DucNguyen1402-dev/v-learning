@@ -1,13 +1,16 @@
 import { useEffect, useMemo } from "react";
 
+import { TinyButtonSkeleton } from "@shared/ui";
+import { createArray } from "@shared/utils";
+
 import { useWindowedList } from "../hooks";
 import { PageButton } from "./PageButton";
 import { PaginationEllipsis } from "./PaginationEllipsis";
-
 type CollapsedPageButtonsProps = {
   pageNumbers: number[];
   currentPage: number;
   onPageClick: (page: number) => void;
+  isLoading?: boolean;
 };
 
 const edgeCount = [
@@ -26,6 +29,7 @@ export const CollapsedPageButtons = ({
   currentPage,
   onPageClick,
   pageNumbers,
+  isLoading,
 }: CollapsedPageButtonsProps) => {
   const edgeCount = getEdgeCount(window.innerWidth);
 
@@ -73,8 +77,14 @@ export const CollapsedPageButtons = ({
 
   const shouldShowWindow =
     currentPage >= leadingPages.at(-1)! && currentPage <= trailingPages[0]!;
-  return (
-    <div className="flex gap-2">
+
+  const skeletonCount = shouldShowWindow ? 10 : 7;
+  return isLoading ? (
+    createArray(skeletonCount).map((_, index) => (
+      <TinyButtonSkeleton key={index} />
+    ))
+  ) : (
+    <div className="pagination-page-number-container">
       {leadingPages.map((page) => {
         const isCurrentPage = page === currentPage;
 

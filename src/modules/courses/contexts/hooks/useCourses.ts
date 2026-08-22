@@ -1,31 +1,22 @@
-import { mockCourses } from "@modules/courses/mocks";
+import { Pagination } from "@shared/table";
 
-import {
-  initialPaginationState,
-  usePaginationActions,
-  usePaginationDerived,
-  usePaginationEffect,
-  usePaginationState,
-} from "./pagination";
+import { EMPTY_PAGINATED_COURSE } from "./constants";
 import { useCoursesParams } from "./useCoursesParams";
 import { useCoursesQuery } from "./useCoursesQuery";
-function findOrThrow<T>(value: T | undefined): T {
-  if (!value) throw new Error("Not found");
-  return value;
-}
+import { enrichCoursesWithMockData } from "./utils";
 
 export const useCourses = () => {
-  const { page, pageSize } = initialPaginationState;
+  const { pagination, setPagination } = Pagination.hooks.useState();
 
-  const { pagination, setPagination } = usePaginationState(page, pageSize);
-
-  const { data: courses, isPending } = useCoursesQuery({
-    page: pagination.page,
-    pageSize: pagination.pageSize,
-  });
+  const { data: courses = EMPTY_PAGINATED_COURSE, isPending } = useCoursesQuery(
+    {
+      page: pagination.page,
+      pageSize: pagination.pageSize,
+    },
+  );
 
   const { onPrevClick, onNextClick, onPageClick, setSize, setPage } =
-    usePaginationActions({
+    Pagination.hooks.useActions({
       pagination,
       setPagination,
     });
@@ -36,64 +27,45 @@ export const useCourses = () => {
     pageNumbers,
     isPrevDisabled,
     isNextDisabled,
-  } = usePaginationDerived({
-    pagination,
-    totalPages: courses?.totalPages ?? 0,
+  } = Pagination.hooks.useDerived({
+    currentPage: pagination.page,
+    pageSize: pagination.pageSize,
+    totalPages: courses.totalPages,
   });
 
-  const upgradeCourses = courses?.items.map((course) => {
-    const matchedCourse = findOrThrow(
-      mockCourses.find(
-        (c) =>
-          c.maDanhMucKhoahoc ===
-          course.danhMucKhoaHoc.maDanhMucKhoahoc.toLowerCase(),
-      ),
-    );
-
-    const { maDanhMucKhoahoc: _, ...rest } = matchedCourse;
-
-    const upgradeCourse = {
-      ...course,
-      ...rest,
-    };
-
-    return upgradeCourse;
-  });
-
+  const enrichedCourses = enrichCoursesWithMockData(courses.items);
   const { filteredCourses, handleFilterChange, category, keyword } =
     useCoursesParams({
-      courses: upgradeCourses,
+      courses: enrichedCourses,
     });
 
-  usePaginationEffect({
+  Pagination.hooks.useEffect({
     setPagination,
-    pagination,
-    totalPages: courses?.totalPages ?? 0,
+    currentPage: pagination.page,
+    totalPages: courses.totalPages,
     resetDeps: [keyword, category],
   });
 
   return {
-    courses: upgradeCourses,
-
-    state: {
-      isPending,
-    },
+    courses: filteredCourses,
     filter: {
       category,
       keyword,
       handleFilterChange,
-      filteredCourses,
     },
     pagination: {
+      status: {
+        isLoading: isPending,
+      },
       state: {
         currentPage: pagination.page,
-        currentSize: pagination.pageSize,
+        pageSize: pagination.pageSize,
         displayStart,
         displayEnd,
         pageNumbers,
         isPrevDisabled,
         isNextDisabled,
-        totalPages: courses?.totalPages ?? 0,
+        totalItems: courses.totalCount,
       },
       actions: {
         onPrevClick,

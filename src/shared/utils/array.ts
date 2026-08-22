@@ -8,3 +8,8 @@ export function createArray<T = undefined>(
 
   return Array.from({ length }, (_, index) => mapFn(undefined, index));
 }
+
+export function findOrThrow<T>(value: T | undefined): T {
+  if (!value) throw new Error("Not found");
+  return value;
+}
