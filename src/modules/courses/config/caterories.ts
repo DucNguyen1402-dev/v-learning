@@ -1,10 +1,10 @@
-import type { category } from "../types";
+import type { Category } from "../types";
 
 export const categories = [
-  { label: "Frontend", value: "frontend" },
-  { label: "Backend", value: "backend" },
-  { label: "Mobile", value: "didong" },
-  { label: "Fullstack", value: "fullstack" },
-  { label: "Fundamentals", value: "tuduy" },
-  { label: "Web Design", value: "design" },
-] as const satisfies ReadonlyArray<{ label: string; value: category }>;
+  { label: "Frontend", value: "Frontend" },
+  { label: "Backend", value: "Backend" },
+  { label: "Mobile", value: "Didong" },
+  { label: "Fullstack", value: "Fullstack" },
+  { label: "Fundamentals", value: "Tuduy" },
+  { label: "Web Design", value: "Design" },
+] as const satisfies ReadonlyArray<{ label: string; value: Category }>;

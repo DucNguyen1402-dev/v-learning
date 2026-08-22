@@ -1,19 +1,29 @@
 import { Pagination } from "@shared/table";
 
 import { EMPTY_PAGINATED_COURSE } from "./constants";
-import { useCoursesParams } from "./useCoursesParams";
+import { useCoursesByCategory } from "./useCoursesByCaterory";
 import { useCoursesQuery } from "./useCoursesQuery";
+import { useCoursesSearchByName } from "./useCoursesSearchByName";
 import { enrichCoursesWithMockData } from "./utils";
 
 export const useCourses = () => {
   const { pagination, setPagination } = Pagination.hooks.useState();
 
+  const { onSearchByCoursesName, tenKhoaHoc, handleClearSearch } =
+    useCoursesSearchByName();
+
+  const { category, onChangeCategory } = useCoursesByCategory();
+
   const { data: courses = EMPTY_PAGINATED_COURSE, isPending } = useCoursesQuery(
     {
       page: pagination.page,
       pageSize: pagination.pageSize,
+      tenKhoaHoc: tenKhoaHoc,
+      category,
     },
   );
+
+  const isEmpty = !isPending && courses.items.length === 0;
 
   const { onPrevClick, onNextClick, onPageClick, setSize, setPage } =
     Pagination.hooks.useActions({
@@ -34,28 +44,27 @@ export const useCourses = () => {
   });
 
   const enrichedCourses = enrichCoursesWithMockData(courses.items);
-  const { filteredCourses, handleFilterChange, category, keyword } =
-    useCoursesParams({
-      courses: enrichedCourses,
-    });
 
   Pagination.hooks.useEffect({
     setPagination,
     currentPage: pagination.page,
     totalPages: courses.totalPages,
-    resetDeps: [keyword, category],
+    resetDeps: [tenKhoaHoc],
   });
 
   return {
-    courses: filteredCourses,
+    courses: enrichedCourses,
     filter: {
+      tenKhoaHoc,
+      onSearchByCoursesName,
       category,
-      keyword,
-      handleFilterChange,
+      onChangeCategory,
+      handleClearSearch,
     },
     pagination: {
       status: {
         isLoading: isPending,
+        isEmpty,
       },
       state: {
         currentPage: pagination.page,
