@@ -1,6 +1,6 @@
 import { createContext } from "react";
 
-import type { PaginationContextValues } from "./PaginationContextValues";
+import type { PaginationResult } from "./hooks";
 
 export const PaginationContext =
-  createContext<PaginationContextValues<unknown> | null>(null);
+  createContext<PaginationResult<unknown> | null>(null);

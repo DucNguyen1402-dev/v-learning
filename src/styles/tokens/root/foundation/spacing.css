@@ -1,4 +1,9 @@
 :root {
   --spacing-field-label: 0.5rem;
   --spacing-field-error-message: 0.25rem;
+
+
+  --spacing-container: 0.25rem;
+  --spacing-container-md: 0.5rem;
+  --spacing-container-lg: 1rem;
 }

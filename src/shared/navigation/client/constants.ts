@@ -22,7 +22,7 @@ export const CLIENT_ROUTE_PATHS = {
   [CLIENT_ROUTE_KEYS.PROFILE]: "profile",
   [CLIENT_ROUTE_KEYS.PROFILE_CHANGE]: "profile-change",
   [CLIENT_ROUTE_KEYS.PROFILE_PASSWORD_CHANGE]: "password-change",
-  [CLIENT_ROUTE_KEYS.PERSONAL_COURSE]: "profile/course",
+  [CLIENT_ROUTE_KEYS.PERSONAL_COURSE]: "personal-course",
   [CLIENT_ROUTE_KEYS.COURSES]: "courses",
 } as const;
 
@@ -35,7 +35,7 @@ export const CLIENT_ROUTE_TITLES = {
   [CLIENT_ROUTE_KEYS.PROFILE]: "Profile",
   [CLIENT_ROUTE_KEYS.PROFILE_CHANGE]: "Profile Change",
   [CLIENT_ROUTE_KEYS.PROFILE_PASSWORD_CHANGE]: "Password Change",
-  [CLIENT_ROUTE_KEYS.PERSONAL_COURSE]: "Profile Course",
+  [CLIENT_ROUTE_KEYS.PERSONAL_COURSE]: "Personal Course",
   [CLIENT_ROUTE_KEYS.COURSES]: "Courses",
 } as const;
 
@@ -49,6 +49,6 @@ export const CLIENT_ROUTE_URLS = {
   [CLIENT_ROUTE_KEYS.PROFILE_CHANGE]: "/client/profile/change",
   [CLIENT_ROUTE_KEYS.PROFILE_PASSWORD_CHANGE]:
     "/client/profile/password-change",
-  [CLIENT_ROUTE_KEYS.PERSONAL_COURSE]: "/client/profile/course",
+  [CLIENT_ROUTE_KEYS.PERSONAL_COURSE]: "/client/personal-course",
   [CLIENT_ROUTE_KEYS.COURSES]: "/client/courses",
 } as const;

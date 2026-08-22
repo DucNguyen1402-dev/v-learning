@@ -2,21 +2,18 @@ type PaginationInfoProps = {
   displayStart: number;
   displayEnd: number;
   totalItems: number;
-  label: string;
 };
 export const PaginationInfo = ({
   displayStart,
   displayEnd,
   totalItems,
-  label,
 }: PaginationInfoProps) => (
   <p className="pagination-control-info-wrapper">
-    {`Hiển thị `}
-    <span className="font-medium">
-      {displayStart}-{displayEnd}
+    {`Hiển thị: `}
+    <span className="font-medium text-text-subtle">
+      {displayStart} - {displayEnd}
     </span>
-    {` / `}
-    <span className="font-medium">{totalItems}</span>
-    {` ${label}`}
+    {` of `}
+    <span className="font-medium text-text-subtle">{totalItems}</span>
   </p>
 );

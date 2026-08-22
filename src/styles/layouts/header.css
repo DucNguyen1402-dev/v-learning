@@ -1,6 +1,6 @@
 @layer layout {
   .header {
-    @apply sticky top-0 z-sticky h-24 px-1 backdrop-blur md:h-28 select-none;
+    @apply sticky top-0 z-sticky h-24 backdrop-blur select-none md:h-28;
     background-color: --alpha(var(--color-bg-default) / 80%);
     border-bottom: 1px solid var(--color-border-default);
   }

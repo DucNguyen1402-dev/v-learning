@@ -1,1 +1,1 @@
-export { PAGE_SIZE_OPTIONS } from "./pageSizeOptions";
+export { pageSizeOptions } from "./pageSizeOptions";

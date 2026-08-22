@@ -30,4 +30,4 @@ export const avatarList = [
   avatar12,
   avatar13,
   avatar14,
-] as const;
+];

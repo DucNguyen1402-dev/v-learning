@@ -20,7 +20,7 @@ export const ProfileForm = () => {
   Navigation.hooks.useSyncLeaveConfirmation(isDirty);
 
   return (
-    <div className="flex w-full max-w-md flex-col gap-16 rounded-xl border border-border-subtle bg-bg-default p-6">
+    <div className="flex w-full max-w-md flex-col gap-16 rounded-xl border border-border-subtle bg-bg-default p-6 select-none">
       <div className="space-form-lg">
         {profileChangeFields.map(
           ({ required, name, label, type, leftAddon: LeftAddon }) => (

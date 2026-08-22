@@ -13,13 +13,13 @@ export const AvatarListRender = ({
   handleAvatarSelection,
   currentAvatar,
 }: AvatarListRenderProps) => {
-  const pagination = Pagination.use();
+  const pagination = Pagination.use<Avatar>();
 
   const initialAvatar = getUserInitialAvatar();
 
   return (
     <>
-      {pagination.state.page !== 1 && (
+      {pagination.state.currentPage === 1 && (
         <div className="avatar-option-container">
           <Button
             onClick={() => handleAvatarSelection(initialAvatar)}
@@ -32,17 +32,21 @@ export const AvatarListRender = ({
           </Button>
         </div>
       )}
-      {pagination.state.paginatedList.map((avatar: string) => (
+      {pagination.state.paginatedList.map((avatar) => (
         <div className="avatar-option-container">
           <Button
-            key={avatar}
+            key={avatar.value}
             size={BUTTON_SIZES.NONE}
             onClick={() =>
-              handleAvatarSelection({ type: "image", value: avatar })
+              handleAvatarSelection({ type: "image", value: avatar.value })
             }
           >
-            <img src={avatar} alt="avatar" className="avatar-option--image" />
-            {avatar === currentAvatar.value && <AvatarButtonSelected />}
+            <img
+              src={avatar.value}
+              alt="avatar"
+              className="avatar-option--image"
+            />
+            {avatar.value === currentAvatar.value && <AvatarButtonSelected />}
           </Button>
         </div>
       ))}

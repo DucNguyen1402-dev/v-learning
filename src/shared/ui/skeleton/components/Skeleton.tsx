@@ -15,17 +15,20 @@ type SkeletonProps = {
     width?: string;
     height?: string;
   };
+  fullWidth?: boolean;
 };
 
 export function Skeleton({
   width = SKELETON_WIDTHS.MD,
   height,
   radius = SKELETON_RADIUS.MD,
+  fullWidth = false,
   size,
 }: SkeletonProps) {
+  const computedWidth = fullWidth ? "100%" : skeletonWidths[width];
   const skeletonStyle = {
-    width: skeletonWidths[width],
-    height: height ? skeletonHeights[height] : skeletonWidths[width],
+    width: computedWidth,
+    height: height ? skeletonHeights[height] : computedWidth,
     borderRadius: skeletonRadius[radius],
     ...size,
   };

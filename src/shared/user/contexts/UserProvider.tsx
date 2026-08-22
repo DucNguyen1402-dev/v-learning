@@ -1,4 +1,4 @@
-import { type ReactNode, useEffect, useState } from "react";
+import { type ReactNode, useCallback } from "react";
 
 import { useAvatar } from "@shared/avatar";
 import { useTheme } from "@shared/theme";
@@ -19,16 +19,10 @@ export const UserProvider = ({ children }: UserProviderProps) => {
     refreshTheme,
   } = useTheme();
 
-  const [refreshed, setRefreshed] = useState(false);
-  const refreshUser = () => {
-    setRefreshed(true);
-  };
-
-  useEffect(() => {
+  const refreshUser = useCallback(() => {
     refreshAvatar();
     refreshTheme();
-  }, [refreshed, refreshAvatar, refreshTheme]);
-
+  }, [refreshAvatar, refreshTheme]);
   const value = {
     avatar: {
       current: avatar,

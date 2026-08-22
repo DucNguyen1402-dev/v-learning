@@ -1,0 +1,1 @@
+export { getPaginatedCourse } from "./api";

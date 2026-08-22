@@ -1,12 +1,11 @@
-import { Link } from "react-router-dom";
-
 import { Navigation } from "@shared/navigation";
+import { ACTION_LABELS } from "@shared/ui";
 
 export const LoginButton = () => (
-  <Link
-    to={Navigation.client.urls.LOGIN}
-    className="button-primary solid button-base px-4 py-2 text-sm"
+  <Navigation.components.Go
+    routeKey={Navigation.client.keys.LOGIN}
+    className="button-primary solid button-base px-3 py-1.5 text-[13px] md:px-4 md:py-2 md:text-sm"
   >
-    Đăng nhập
-  </Link>
+    {ACTION_LABELS.LOGIN}
+  </Navigation.components.Go>
 );

@@ -1,6 +1,6 @@
 const PasswordChangeHeader = () => {
   return (
-    <div className="flex-center flex-col gap-3 text-center">
+    <div className="flex-center flex-col gap-3 text-center select-none">
       <h2 className="text-2xl font-semibold">Đổi mật khẩu</h2>
       <p className="text-xs text-text-subtle">
         Mật khẩu mới nên có ít nhất 8 ký tự bao gồm chữ cái, chữ số và ký tự đặc

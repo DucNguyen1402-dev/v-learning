@@ -1,4 +1,4 @@
-import { CurrentUserStorage } from "@shared/auth";
+import { CurrentUserStorage } from "@shared/auth/currentUserStorage";
 
 import type { Avatar } from "../types";
 export const getUserInitialAvatar = (): Avatar => {

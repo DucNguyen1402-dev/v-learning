@@ -9,13 +9,13 @@
     @apply rounded-control transition-colors duration-200 ease-in-out;
     color: var(--color-fg-default);
 
-    &:hover {
+    &:not(.menu-button-active):hover {
       background-color: var(--color-bg-subtle);
     }
   }
 
   .menu-button-danger {
-    &:hover {
+    &:not(.menu-button-active):hover {
       background-color: var(--color-bg-danger);
       color: var(--color-fg-on-feedback);
     }

@@ -1,6 +1,7 @@
 import { cn } from "@shared/utils";
-import { MousePointer2 } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 
+import { LabelElipsis } from "./components";
 import { displayState } from "./config";
 import { useSelectContext } from "./contexts";
 
@@ -8,14 +9,14 @@ type SelectTriggerProps = {
   disabled?: boolean;
   invalid?: boolean;
   id?: string;
-  labels: {
-    placeholder: string;
-    disabled: string;
-    required: string;
-    selected: string;
+  labels?: {
+    placeholder?: string;
+    disabled?: string;
+    required?: string;
+    selected?: string;
   };
   icon?: React.ComponentType<{ className: string }>;
-  animateIcon?: boolean;
+  entity?: string;
 };
 
 export const SelectTrigger = ({
@@ -23,8 +24,7 @@ export const SelectTrigger = ({
   id,
   labels,
   invalid,
-  icon: Icon = MousePointer2,
-  animateIcon = true,
+  entity,
 }: SelectTriggerProps) => {
   const { isOpen, toggle, value } = useSelectContext();
   const state = displayState({
@@ -33,17 +33,21 @@ export const SelectTrigger = ({
     selected: value,
   });
 
+  const isDesktop = window.innerWidth >= 1024;
+
   const content = {
-    disabled: labels.disabled,
-    selecting: "Đang chọn...",
+    disabled: labels?.disabled,
+    selecting: <LabelElipsis />,
     selected: value!,
-    placeholder: labels.placeholder,
+    placeholder: labels?.placeholder,
   }[state];
 
   const hasValue = value != null;
 
   const displayContent =
-    hasValue && !isOpen ? `${labels.selected}${content}` : content;
+    hasValue && !isOpen
+      ? `${labels?.selected ?? ""} ${content} ${isDesktop ? `${entity ? `/ ${entity}` : ""}` : ""}`
+      : content;
 
   return (
     <button
@@ -61,11 +65,13 @@ export const SelectTrigger = ({
       aria-haspopup="dialog"
       disabled={disabled}
     >
-      <Icon
-        className={cn("trigger-icon", {
-          "triger-icon-active": isOpen && animateIcon,
-        })}
-      />
+      {
+        <ChevronDown
+          className={cn("trigger-icon", {
+            "triger-icon-active": isOpen,
+          })}
+        />
+      }
       <span>{displayContent}</span>
     </button>
   );

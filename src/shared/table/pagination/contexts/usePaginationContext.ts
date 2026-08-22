@@ -1,14 +1,14 @@
 import { useContext } from "react";
 
+import type { PaginationResult } from "./hooks";
 import { PaginationContext } from "./PaginationContext";
-import type { PaginationContextValues } from "./PaginationContextValues";
 
-export const usePaginationContext = <T extends object>() => {
-  const context = useContext(PaginationContext);
+export const usePaginationContext = <T>() => {
+  const context = useContext(PaginationContext) as PaginationResult<T> | null;
   if (!context) {
     throw new Error(
-      "usePaginationContext must be used within a PaginationProvider",
+      "Pagination.use() must be used within a <PaginationProvider>",
     );
   }
-  return context as PaginationContextValues<T>;
+  return context;
 };

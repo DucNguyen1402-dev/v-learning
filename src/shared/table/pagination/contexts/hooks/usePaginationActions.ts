@@ -4,11 +4,11 @@ type UsePaginationActionsProps = {
   setPagination: React.Dispatch<
     React.SetStateAction<{
       page: number;
-      size: number;
+      pageSize: number;
     }>
   >;
-  pagination: { page: number; size: number };
-  setSkipNextPageResetRef: (value: boolean) => void;
+  pagination: { page: number; pageSize: number };
+  setSkipNextPageResetRef?: (value: boolean) => void;
 };
 
 export function usePaginationActions({
@@ -17,8 +17,7 @@ export function usePaginationActions({
   setSkipNextPageResetRef,
 }: UsePaginationActionsProps) {
   const setSize = useCallback(
-    (value: number) =>
-      setPagination((prev) => ({ ...prev, size: value, page: 1 })),
+    (value: number) => setPagination({ pageSize: value, page: 1 }),
     [setPagination],
   );
 
@@ -43,7 +42,7 @@ export function usePaginationActions({
   );
 
   const preventNextResetPage = useCallback(
-    () => setSkipNextPageResetRef(true),
+    () => setSkipNextPageResetRef?.(true),
     [setSkipNextPageResetRef],
   );
 
