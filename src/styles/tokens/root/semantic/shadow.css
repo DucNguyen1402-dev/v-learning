@@ -5,6 +5,7 @@
   /* Background Colors */
   --shadow-control: var(--shadow-xs);
   --shadow-surface: var(--shadow-sm);
+  --shadow-surface--hover: var(--shadow-md);
   --shadow-popover: var(--shadow-md);
   --shadow-modal: var(--shadow-lg);
   --shadow-floating: var(--shadow-xl);

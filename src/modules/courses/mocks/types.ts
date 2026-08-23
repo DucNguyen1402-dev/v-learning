@@ -5,6 +5,8 @@ export type MockCourse = {
   luotXem: number;
   soLuongHocVien: number;
   ngayTao: string;
-  hinhAnh: string;
+  thumbnail: string;
   tenGiangVien: string;
+  danhGia: number;
+  descriptionImage: string;
 };

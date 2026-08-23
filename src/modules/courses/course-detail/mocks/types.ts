@@ -1,7 +1,12 @@
-import type { MockCourse } from "@modules/courses/mocks";
-export type MockCourseDetail = MockCourse & {
-  price: number;
-  seatRemaining: number;
+export type MockCourseDetail = {
+  price: {
+    originalPrice: number;
+    discountedPrice: number;
+  };
+  seat: {
+    totalSeats: number;
+    remainingSeats: number;
+  };
   deadlineHours: number;
   hasPromotion: boolean;
 };

@@ -11,6 +11,7 @@ type ForwardProps = {
   payload?: unknown;
   className?: string;
   disabled?: boolean;
+  param?: string;
 };
 import { Link } from "react-router-dom";
 
@@ -23,6 +24,7 @@ export const Forward = ({
   routeKey,
   payload,
   className,
+  param,
   disabled,
 }: ForwardProps) => {
   const location = useLocation();
@@ -30,7 +32,7 @@ export const Forward = ({
   const state: RouteState | null = location.state;
   const routeHistory = useMemo(() => state?.history ?? [], [state?.history]);
 
-  const to = ClientNavigation.urls[routeKey];
+  const to = ClientNavigation.urls[routeKey] + param;
   const currentRouteKey = useMemo(() => {
     const key: ClientRouteKey | undefined = location.state?.currentKey;
     if (key) return key;

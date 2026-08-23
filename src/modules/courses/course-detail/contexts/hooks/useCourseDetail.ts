@@ -1,4 +1,7 @@
-import { EMPTY_COURSE_DETAIL } from "./constants";
+import { useMemo } from "react";
+
+import { EMPTY_COURSE } from "@modules/courses/constants";
+
 import { useCourseDetailQuery } from "./useCouseDetailQuery";
 import { enrichCourseDetail } from "./utils";
 
@@ -6,12 +9,16 @@ type UseCourseDetailProps = {
   maKhoaHoc: string;
 };
 export const useCourseDetail = ({ maKhoaHoc }: UseCourseDetailProps) => {
-  const { data: courseDetail = EMPTY_COURSE_DETAIL, isPending } =
+  const { data: courseDetail = EMPTY_COURSE, isPending } =
     useCourseDetailQuery(maKhoaHoc);
 
-  const enrichedCourseDetail = enrichCourseDetail(courseDetail);
+  const enrichedCourseDetail = useMemo(
+    () => enrichCourseDetail(courseDetail),
+    [courseDetail],
+  );
+
   return {
-    enrichedCourseDetail,
+    courseDetail: enrichedCourseDetail,
     isPending,
   };
 };

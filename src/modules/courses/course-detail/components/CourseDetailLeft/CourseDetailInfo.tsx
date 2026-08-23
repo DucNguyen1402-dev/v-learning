@@ -1,31 +1,41 @@
 import { Eye, SquareUser, Star, UsersRound } from "lucide-react";
 
-export const CourseDetailInfo = () => {
+export const CourseDetailInfo = ({
+  tenGiangVien,
+  soLuongHocVien,
+  luotXem,
+  danhGia,
+}: {
+  tenGiangVien: string;
+  soLuongHocVien: number;
+  luotXem: number;
+  danhGia: number;
+}) => {
   const infoItems = [
     {
       label: "Giảng viên",
-      value: "Nguyễn Văn Admin",
+      value: tenGiangVien,
       icon: SquareUser,
     },
     {
       label: "Học viên",
-      value: 230,
+      value: soLuongHocVien,
       icon: UsersRound,
     },
     {
       label: "Lượt xem ",
-      value: 300,
+      value: luotXem,
       icon: Eye,
     },
     {
       label: "Đánh giá",
-      value: 4.8,
+      value: danhGia,
       icon: Star,
     },
   ];
 
   return (
-    <div className="flex items-center justify-between gap-4 rounded-overlay border-border-subtle bg-bg-subtle px-8 py-5 select-none">
+    <div className="flex flex-col justify-between gap-4 rounded-overlay border-border-subtle bg-bg-subtle px-8 py-5 select-none">
       {infoItems.map((item, index) => (
         <div key={index} className="flex flex-col gap-3">
           <div className="flex items-center gap-1">

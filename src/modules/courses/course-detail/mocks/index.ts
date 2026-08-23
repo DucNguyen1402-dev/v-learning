@@ -1,1 +1,2 @@
-export { mockEnrichedCourseDetail } from "./mockEnrichedCourseDetail";
+export { createMockEnrichedCourseDetail } from "./createMockEnrichedCourseDetail";
+export type { MockCourseDetail } from "./types";

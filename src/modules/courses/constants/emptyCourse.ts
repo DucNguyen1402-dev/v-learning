@@ -1,12 +1,13 @@
-import type { CourseDetail } from "@modules/courses/course-detail/types";
-export const EMPTY_COURSE_DETAIL: CourseDetail = {
+import type { Course } from "../types";
+export const EMPTY_COURSE: Course = {
   maKhoaHoc: "",
   biDanh: "",
   tenKhoaHoc: "",
   moTa: "",
-  luotXem: 100,
+  luotXem: 0,
   hinhAnh: "",
   maNhom: "",
+  danhGia: 0,
   ngayTao: "",
   soLuongHocVien: 0,
   nguoiTao: {

@@ -24,6 +24,7 @@ export interface Course {
 
 export interface EnrichedCourse extends Course {
   tenGiangVien: string;
+  thumbnail: string;
 }
 
 export type DetailCourse = Pick<

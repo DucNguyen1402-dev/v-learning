@@ -1,23 +1,38 @@
+import { useCourseDetailContext } from "@modules/courses/course-detail/contexts";
+
 import { CoursePrice } from "./CoursePrice";
 import { PromotionBadge } from "./PromotionBadge";
 import { PromotionCountdown } from "./PromotionCountdown";
 import { PromotionList } from "./PromotionList";
 import { RegistrationCTA } from "./RegistrationCTA";
 import { RemainingSeats } from "./RemainingSeats";
+
 export const CourseDetailRight = () => {
+  const { courseDetail } = useCourseDetailContext();
+  const hasPromotion = courseDetail.hasPromotion;
   return (
     <div className="shadow-container flex flex-col rounded-container border border-border-subtle bg-bg-default p-6 shadow-surface">
-      <div className="self-start">
-        <PromotionBadge />
-      </div>
+      {hasPromotion && (
+        <div className="mb-5 self-start">
+          <PromotionBadge />
+        </div>
+      )}
       <div className="mt-5">
-        <CoursePrice originalPrice={2500000} discountedPrice={1490000} />
+        <CoursePrice
+          originalPrice={courseDetail.price.originalPrice}
+          discountedPrice={courseDetail.price.discountedPrice}
+        />
       </div>
-      <div className="mt-5">
-        <PromotionCountdown deadlineHours={24} />
-      </div>
-      <div className="mt-4">
-        <RemainingSeats totalSeats={30} remainingSeats={5} />
+      {hasPromotion && (
+        <div className="mt-5">
+          <PromotionCountdown deadlineHours={courseDetail.deadlineHours} />
+        </div>
+      )}
+      <div className={hasPromotion ? "mt-5" : "mt-10"}>
+        <RemainingSeats
+          totalSeats={courseDetail.seat.totalSeats}
+          remainingSeats={courseDetail.seat.remainingSeats}
+        />
       </div>
       <div className="mt-10">
         <RegistrationCTA

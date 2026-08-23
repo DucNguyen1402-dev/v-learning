@@ -1,12 +1,22 @@
-import { mockEnrichedCourseDetail } from "@modules/courses/course-detail/mocks";
+import { createMockEnrichedCourseDetail } from "@modules/courses/course-detail/mocks";
+import type { CourseDetail } from "@modules/courses/course-detail/types";
+import { mockCourses } from "@modules/courses/mocks";
 import type { Course } from "@modules/courses/types";
-export const enrichCourseDetail = (courseDetail: Course) => {
-  return {
+
+export const enrichCourseDetail = (courseDetail: Course): CourseDetail => {
+  const matchingCourse = mockCourses.find(
+    (course) =>
+      course.maDanhMucKhoahoc ===
+      courseDetail.danhMucKhoaHoc.maDanhMucKhoahoc.toLowerCase(),
+  )!;
+
+  const { maDanhMucKhoahoc: _, ...enrichedCourse } = matchingCourse ?? {};
+
+  const enrichedCourseDetail = {
     ...courseDetail,
-    ...mockEnrichedCourseDetail.find(
-      (enrichedCourse) =>
-        enrichedCourse.maDanhMucKhoahoc ===
-        courseDetail.danhMucKhoaHoc.maDanhMucKhoahoc.toLowerCase(),
-    )!,
+    ...enrichedCourse,
+    ...createMockEnrichedCourseDetail(),
   };
+
+  return enrichedCourseDetail;
 };
