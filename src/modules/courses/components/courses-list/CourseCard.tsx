@@ -57,7 +57,7 @@ export const CourseCard = ({ course }: CourseCardProps) => {
             appearance={BUTTON_APPEARANCES.SOLID}
             intent={BUTTON_INTENTS.PRIMARY}
             fullWidth
-            onClick={() => navigate(`/courses/${course.maKhoaHoc}`)}
+            onClick={() => navigate(`/client/courses/${course.maKhoaHoc}`)}
           >
             Xem chi tiết
           </Button>
