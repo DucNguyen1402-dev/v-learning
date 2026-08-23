@@ -1,4 +1,4 @@
-export type mockCoursesType = {
+export type MockCourse = {
   maDanhMucKhoahoc: string;
   tenKhoaHoc: string;
   moTa: string;

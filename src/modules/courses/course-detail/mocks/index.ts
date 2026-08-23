@@ -1,0 +1,1 @@
+export { mockEnrichedCourseDetail } from "./mockEnrichedCourseDetail";

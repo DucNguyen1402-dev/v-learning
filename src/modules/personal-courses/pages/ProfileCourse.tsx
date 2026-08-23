@@ -11,7 +11,7 @@ export const ProfileCourse = () => {
   if (courses.length === 0) return <EmptyCourseState />;
 
   return (
-    <div className="grid min-h-screen gap-6">
+    <div className="grid min-h-screen gap-6 bg-bg-default">
       {courses.map((course) => (
         <article key={course.maKhoaHoc} className="rounded-lg border p-4">
           <img

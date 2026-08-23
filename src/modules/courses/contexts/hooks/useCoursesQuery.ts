@@ -1,6 +1,5 @@
+import { getPaginatedCourse } from "@modules/courses/api";
 import { useQuery } from "@tanstack/react-query";
-
-import { getPaginatedCourse } from "./api";
 type UseCoursesQueryProps = {
   page: number;
   pageSize: number;

@@ -1,27 +1,27 @@
-:root {
+.dark {
 
     /* =================================================
     *  background colors
     *================================================== */
 
-    --color-bg-promotion: var(--color-yellow-50);
-    --color-bg-promotion-urgent: var(--color-rose-600);
+    --color-bg-promotion: var(--color-yellow-950);
+    --color-bg-promotion-urgent: var(--color-rose-500);
 
 
     /* =================================================
     *  border colors
     *================================================== */
-    --border-color-promotion: var(--color-yellow-300);
 
-
+    --border-color-promotion: var(--color-yellow-700);
 
     /* =================================================
     *  Foreground colors
     *================================================== */
 
-    --color-fg-required: var(--color-red-700);
-    --color-fg-available: var(--color-green-700);
 
-    --color-fg-promotion: var(--color-yellow-700);
-    --color-fg-promotion-urgent: var(--color-rose-700);
+    --color-fg-required: var(--color-red-400);
+
+    --color-fg-available: var(--color-green-400);
+    --color-fg-promotion: var(--color-yellow-400);
+    --color-fg-promotion-urgent: var(--color-rose-400);
 }

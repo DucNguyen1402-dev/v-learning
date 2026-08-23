@@ -6,8 +6,8 @@ import {
   mindsetImage,
   mobileImage,
 } from "./images";
-import type { mockCoursesType } from "./types";
-export const mockCourses: mockCoursesType[] = [
+import type { MockCourse } from "./types";
+export const mockCourses: MockCourse[] = [
   {
     maDanhMucKhoahoc: "backend",
     tenKhoaHoc: "Lập Trình Backend Chuyên Nghiệp Với Node.js & Express",

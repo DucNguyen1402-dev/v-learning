@@ -11,7 +11,7 @@ export const CourseCard = ({ course }: CourseCardProps) => {
   return (
     <article
       key={course.maKhoaHoc}
-      className="flex h-140 flex-col overflow-hidden rounded-container border border-border-default bg-bg-default shadow-surface select-none"
+      className="flex h-140 flex-col overflow-hidden rounded-container border border-border-subtle bg-bg-default shadow-surface select-none"
     >
       <img
         src={course.hinhAnh}

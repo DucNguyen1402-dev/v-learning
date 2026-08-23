@@ -1,0 +1,1 @@
+export { CourseDetailRight } from "./CourseDetailRight";
