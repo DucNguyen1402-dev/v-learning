@@ -35,9 +35,7 @@ export const CourseDetailRight = () => {
         />
       </div>
       <div className="mt-10">
-        <RegistrationCTA
-          onRegister={() => console.log("Register button clicked")}
-        />
+        <RegistrationCTA maKhoaHoc={courseDetail.maKhoaHoc} />
       </div>
       <div className="mt-5">
         <PromotionList />

@@ -15,5 +15,6 @@ export const successToast = {
     success(`Xóa ${ENTITY_LABELS[entity]} thành công.`),
   changePassword: () => success("Đổi mật khẩu thành công."),
   login: () => success("Đăng nhập thành công!"),
-  register: () => success("Đăng ký thành công!"),
+  register: (entity: EntityType) =>
+    success(`Đăng ký ${ENTITY_LABELS[entity]} thành công!`),
 };

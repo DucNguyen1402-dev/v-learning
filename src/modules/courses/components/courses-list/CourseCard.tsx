@@ -1,6 +1,7 @@
 import type { CourseCardForm } from "@modules/courses/types";
 import { Navigation } from "@shared/navigation";
 import { Eye, GraduationCap, Users } from "lucide-react";
+
 interface CourseCardProps {
   course: CourseCardForm;
 }
@@ -51,10 +52,9 @@ export const CourseCard = ({ course }: CourseCardProps) => {
         </div>
         <div className="py-2">
           <Navigation.components.Forward
-            routeKey={Navigation.client.keys.COURSE_DETAIL}
-            payload={{ maKhoaHoc: course.maKhoaHoc }}
-            className="button-base button-primary solid w-full py-2 text-sm"
+            routeKey={Navigation.client.keys.COURSES}
             param={course.maKhoaHoc}
+            className="button-base button-primary solid w-full py-2 text-sm"
           >
             Xem chi tiết
           </Navigation.components.Forward>

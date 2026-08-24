@@ -1,0 +1,1 @@
+export { CoursePaymentRight } from "./CoursePaymentRight";

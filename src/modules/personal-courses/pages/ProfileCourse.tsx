@@ -1,7 +1,9 @@
 import { UserInfor } from "@shared/auth";
+import { Navigation } from "@shared/navigation";
 
 import { EmptyCourseState } from "../components";
 export const ProfileCourse = () => {
+  Navigation.hooks.useScrollOnRouteChange();
   const { infor } = UserInfor.useQuery();
 
   if (!infor) return;

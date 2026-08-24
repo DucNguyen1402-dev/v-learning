@@ -9,7 +9,7 @@ export const CLIENT_ROUTE_KEYS = {
   PROFILE_PASSWORD_CHANGE: "PROFILE_PASSWORD_CHANGE",
   PERSONAL_COURSE: "PERSONAL_COURSE",
   COURSES: "COURSES",
-  COURSE_DETAIL: "COURSE_DETAIL",
+  COURSES_DETAIL: "COURSES_DETAIL",
 } as const;
 
 export type ClientRouteKey = keyof typeof CLIENT_ROUTE_KEYS;
@@ -25,7 +25,6 @@ export const CLIENT_ROUTE_PATHS = {
   [CLIENT_ROUTE_KEYS.PROFILE_PASSWORD_CHANGE]: "password-change",
   [CLIENT_ROUTE_KEYS.PERSONAL_COURSE]: "personal-course",
   [CLIENT_ROUTE_KEYS.COURSES]: "courses",
-  [CLIENT_ROUTE_KEYS.COURSE_DETAIL]: ":maKhoaHoc",
 } as const;
 
 export const CLIENT_ROUTE_TITLES = {
@@ -39,7 +38,7 @@ export const CLIENT_ROUTE_TITLES = {
   [CLIENT_ROUTE_KEYS.PROFILE_PASSWORD_CHANGE]: "Password Change",
   [CLIENT_ROUTE_KEYS.PERSONAL_COURSE]: "Personal Course",
   [CLIENT_ROUTE_KEYS.COURSES]: "Courses",
-  [CLIENT_ROUTE_KEYS.COURSE_DETAIL]: "Course Detail",
+  [CLIENT_ROUTE_KEYS.COURSES_DETAIL]: "Courses Detail",
 } as const;
 
 export const CLIENT_ROUTE_URLS = {
@@ -54,5 +53,4 @@ export const CLIENT_ROUTE_URLS = {
     "/client/profile/password-change",
   [CLIENT_ROUTE_KEYS.PERSONAL_COURSE]: "/client/personal-course",
   [CLIENT_ROUTE_KEYS.COURSES]: "/client/courses",
-  [CLIENT_ROUTE_KEYS.COURSE_DETAIL]: "/client/courses/",
 } as const;

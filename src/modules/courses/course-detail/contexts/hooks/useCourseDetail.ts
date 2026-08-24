@@ -2,6 +2,7 @@ import { useMemo } from "react";
 
 import { EMPTY_COURSE } from "@modules/courses/constants";
 
+import { useCourseRegister } from "./useCourseRegister";
 import { useCourseDetailQuery } from "./useCouseDetailQuery";
 import { enrichCourseDetail } from "./utils";
 
@@ -12,6 +13,7 @@ export const useCourseDetail = ({ maKhoaHoc }: UseCourseDetailProps) => {
   const { data: courseDetail = EMPTY_COURSE, isPending } =
     useCourseDetailQuery(maKhoaHoc);
 
+  const { handleRegisterCourse, isRegistering } = useCourseRegister();
   const enrichedCourseDetail = useMemo(
     () => enrichCourseDetail(courseDetail),
     [courseDetail],
@@ -20,6 +22,8 @@ export const useCourseDetail = ({ maKhoaHoc }: UseCourseDetailProps) => {
   return {
     courseDetail: enrichedCourseDetail,
     isPending,
+    handleRegisterCourse,
+    isRegistering,
   };
 };
 
