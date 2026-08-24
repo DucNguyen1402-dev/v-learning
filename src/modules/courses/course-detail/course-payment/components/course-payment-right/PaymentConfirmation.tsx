@@ -1,14 +1,22 @@
+import { useCourseDetailContext } from "@modules/courses/course-detail/contexts";
+import { Button, BUTTON_APPEARANCES, BUTTON_INTENTS } from "@shared/ui";
+
 export const PaymentConfirmation = () => {
+  const { handleRegisterCourse, isRegistering } = useCourseDetailContext();
   return (
-    <div>
-      <button
-        type="button"
-        className="mt-6 w-full rounded-xl bg-blue-600 py-3.5 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-700 active:scale-[0.99]"
+    <div className="flex flex-col items-center gap-3">
+      <Button
+        appearance={BUTTON_APPEARANCES.SOLID}
+        intent={BUTTON_INTENTS.PRIMARY}
+
+        fullWidth
+        onClick={handleRegisterCourse}
+        loading={isRegistering}
       >
         Xác nhận thanh toán
-      </button>
+      </Button>
 
-      <p className="mt-3 text-center text-[11px] text-slate-400">
+      <p className="text-center text-[11px] text-text-subtle">
         Bằng việc thanh toán, bạn đồng ý với Điều khoản dịch vụ của chúng tôi.
       </p>
     </div>

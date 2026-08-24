@@ -24,4 +24,6 @@
 
     --color-fg-promotion: var(--color-yellow-700);
     --color-fg-promotion-urgent: var(--color-rose-700);
+
+    --color-fg-discount: var(--color-green-700);
 }

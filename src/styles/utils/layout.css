@@ -13,3 +13,8 @@
     @apply mx-auto w-full;
     max-width: var(--max-width-container);
 }
+
+@utility layout-container-sm {
+    @apply mx-auto w-full;
+    max-width: var(--max-width-container-sm);
+}

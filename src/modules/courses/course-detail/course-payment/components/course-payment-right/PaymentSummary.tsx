@@ -1,41 +1,39 @@
 import { useState } from "react";
 
+import { useCourseDetailContext } from "@modules/courses/course-detail/contexts";
+import { formatVND } from "@shared/utils";
 export const PaymentSummary = () => {
-  const course = {
-    originalPrice: 1000000,
-    discount: 200000,
-    code: "COURSE123",
-  };
+  const { courseDetail } = useCourseDetailContext();
 
   const [appliedCoupon] = useState<boolean>(false);
+
+  const discountAmount =
+    courseDetail.price.originalPrice - courseDetail.price.discountedPrice;
+
   const finalPrice =
-    course.originalPrice - course.discount - (appliedCoupon ? 100000 : 0);
+    courseDetail.price.discountedPrice - (appliedCoupon ? 100000 : 0);
 
   return (
-    <div className="mb-4 space-y-2 border-b border-slate-100 pb-4 text-sm">
-      <div className="flex justify-between text-slate-600">
+    <div className="flex flex-col gap-4 border-b border-border-subtle pb-4 text-sm">
+      <div className="flex justify-between text-text-subtle">
         <span>Giá gốc:</span>
-        <span className="line-through">
-          {course.originalPrice.toLocaleString("vi-VN")} đ
+        <span className="text-text-muted line-through">
+          {formatVND(courseDetail.price.originalPrice)}
         </span>
       </div>
-      <div className="flex justify-between text-slate-600">
+      <div className="flex justify-between text-text-subtle">
         <span>Giảm giá khóa học:</span>
-        <span className="text-emerald-600">
-          -{course.discount.toLocaleString("vi-VN")} đ
-        </span>
+        <span className="text-text-discount">-{formatVND(discountAmount)}</span>
       </div>
       {appliedCoupon && (
-        <div className="flex justify-between text-slate-600">
+        <div className="flex justify-between text-text-subtle">
           <span>Voucher áp dụng:</span>
-          <span className="text-emerald-600">-100.000 đ</span>
+          <span className="text-text-discount">-{formatVND(100000)}</span>
         </div>
       )}
-      <div className="flex justify-between border-t border-slate-100 pt-2 text-base font-bold text-slate-900">
+      <div className="flex justify-between border-t border-border-subtle pt-3 text-base font-bold text-text-default">
         <span>Tổng thanh toán:</span>
-        <span className="text-blue-600">
-          {finalPrice.toLocaleString("vi-VN")} đ
-        </span>
+        <span className="text-text-brand">{formatVND(finalPrice)}</span>
       </div>
     </div>
   );

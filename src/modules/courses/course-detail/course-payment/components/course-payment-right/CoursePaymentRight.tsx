@@ -6,25 +6,16 @@ import { PaymentSummary } from "./PaymentSummary";
 
 export const CoursePaymentRight = () => {
   return (
-    <div className="space-y-6 md:col-span-5">
-      <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
-        <h2 className="mb-4 text-lg font-semibold text-slate-900">
-          Tóm tắt đơn hàng
-        </h2>
+    <div className="flex flex-col gap-4 rounded-container border border-b border-border-subtle bg-bg-default p-6 shadow-surface">
+      <h2 className="text-lg font-semibold">3. Tóm tắt đăng ký</h2>
 
-        {/* Thông tin khóa học */}
-
+      <div className="mt-4">
         <CoursePaymentInfo />
-
-        {/* Mã giảm giá */}
-        <CouponInput />
-        {/* Bảng tính tiền */}
-        <PaymentSummary />
-
-        {/* Khu vực QR / Hướng dẫn thanh toán */}
-
-        <PaymentGateway />
-
+      </div>
+      <CouponInput />
+      <PaymentSummary />
+      <PaymentGateway />
+      <div className="mt-4">
         <PaymentConfirmation />
       </div>
     </div>

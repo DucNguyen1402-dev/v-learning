@@ -1,23 +1,21 @@
+import { useCourseDetailContext } from "@modules/courses/course-detail/contexts";
 export const CoursePaymentInfo = () => {
-  const course = {
-    title: "Lập trình Frontend Chuyên Nghiệp từ Zero đến Hero",
-    instructor: "Nguyễn Văn B",
-    originalPrice: 1200000,
-    discount: 400000,
-    code: "HOCHOC12345",
-  };
-
+  const { courseDetail } = useCourseDetailContext();
   return (
-    <div className="mb-4 flex gap-4 border-b border-slate-100 pb-4">
-      <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-lg bg-slate-200 text-[10px] font-bold text-slate-500">
-        THUMBNAIL
+    <div className="flex gap-4 border-b border-border-subtle pb-4">
+      <div className="h-20 w-32 shrink-0 overflow-hidden rounded-overlay">
+        <img
+          src={courseDetail.thumbnail}
+          alt={courseDetail.tenKhoaHoc}
+          className="h-full w-full object-cover"
+        />
       </div>
-      <div>
-        <h3 className="line-clamp-2 text-sm font-semibold text-slate-800">
-          {course.title}
+      <div className="flex flex-col gap-2">
+        <h3 className="line-clamp-2 text-sm font-semibold">
+          {courseDetail.tenKhoaHoc}
         </h3>
-        <p className="mt-1 text-xs text-slate-500">
-          Giảng viên: {course.instructor}
+        <p className="text-xs text-text-subtle">
+          Giảng viên: {courseDetail.tenGiangVien}
         </p>
       </div>
     </div>

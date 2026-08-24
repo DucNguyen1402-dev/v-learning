@@ -6,4 +6,4 @@ type RegisterCoursePayload = {
 };
 
 export const registerCourse = async (payload: RegisterCoursePayload) =>
-  api.post(`/api/QuanLyKhoaHoc/DangKyKhoaHoc`, payload).then((res) => res.data);
+  api.post(`/QuanLyKhoaHoc/DangKyKhoaHoc`, payload).then((res) => res.data);

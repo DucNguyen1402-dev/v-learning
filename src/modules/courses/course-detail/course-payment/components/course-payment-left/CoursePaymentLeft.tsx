@@ -3,9 +3,11 @@ import { UserPaymentInfo } from "./UserPaymentInfo";
 
 export const CoursePaymentLeft = () => {
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex h-full flex-col gap-2">
       <UserPaymentInfo />
-      <CoursePaymentMethods />
+      <div className="flex-1">
+        <CoursePaymentMethods />
+      </div>
     </div>
   );
 };

@@ -7,7 +7,7 @@ import { Toast } from "@shared/overlays";
 
 import { useCourseDetailMutation } from "./useCourseDetailMutation";
 
-export const useCourseRegister = () => {
+export const useCourseRegister = ({ maKhoaHoc }: { maKhoaHoc: string }) => {
   const { mutateAsync: registerCourse, isPending: isRegistering } =
     useCourseDetailMutation();
 
@@ -15,11 +15,12 @@ export const useCourseRegister = () => {
   const currentUser = CurrentUserStorage.get();
   const toast = Toast.use();
 
-  const handleRegisterCourse = async (maKhoaHoc: string) => {
+  const handleRegisterCourse = async () => {
     const payload = {
       maKhoaHoc,
       taiKhoan: currentUser.taiKhoan,
     };
+    console.log("payload", payload);
     try {
       const registerTask = () => registerCourse(payload);
 

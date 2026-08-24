@@ -10,7 +10,7 @@ export const UserPaymentInfo = () => {
   ];
 
   return (
-    <div className="flex flex-col gap-6 rounded-container border-border-subtle bg-bg-default p-6 shadow-surface">
+    <div className="flex flex-col gap-6 rounded-container border-border-subtle bg-bg-default p-6 py-8 shadow-surface">
       <h2 className="text-lg font-semibold">1. Thông tin tài khoản của bạn</h2>
       <div className="flex flex-col gap-4">
         {useFieldInfo.map((field) => (

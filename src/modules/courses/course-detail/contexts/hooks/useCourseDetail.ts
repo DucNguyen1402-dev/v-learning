@@ -13,7 +13,9 @@ export const useCourseDetail = ({ maKhoaHoc }: UseCourseDetailProps) => {
   const { data: courseDetail = EMPTY_COURSE, isPending } =
     useCourseDetailQuery(maKhoaHoc);
 
-  const { handleRegisterCourse, isRegistering } = useCourseRegister();
+  const { handleRegisterCourse, isRegistering } = useCourseRegister({
+    maKhoaHoc,
+  });
   const enrichedCourseDetail = useMemo(
     () => enrichCourseDetail(courseDetail),
     [courseDetail],
@@ -24,6 +26,7 @@ export const useCourseDetail = ({ maKhoaHoc }: UseCourseDetailProps) => {
     isPending,
     handleRegisterCourse,
     isRegistering,
+    maKhoaHoc,
   };
 };
 
