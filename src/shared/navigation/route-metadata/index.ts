@@ -1,1 +1,1 @@
-export { RouteMetaData } from "./RouteMetaData";
+export { RouteMetaData } from "./components";

@@ -51,13 +51,13 @@ export const CourseCard = ({ course }: CourseCardProps) => {
           <p className="font-medium">{course.tenGiangVien}</p>
         </div>
         <div className="py-2">
-          <Navigation.components.Forward
-            routeKey={Navigation.client.keys.COURSES}
+          <Navigation.components.ForwardWithParam
+            routeBuilderKey={Navigation.client.buildersKeys.COURSES_DETAIL}
             param={course.maKhoaHoc}
             className="button-base button-primary solid w-full py-2 text-sm"
           >
             Xem chi tiết
-          </Navigation.components.Forward>
+          </Navigation.components.ForwardWithParam>
         </div>
       </div>
     </article>

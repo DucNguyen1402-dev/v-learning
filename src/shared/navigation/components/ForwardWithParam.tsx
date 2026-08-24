@@ -1,49 +1,50 @@
 import { type ReactNode, useMemo } from "react";
 import { useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { cn } from "@shared/utils";
 
-import { ClientNavigation, type ClientRouteKey } from "../client";
+import { ClientNavigation, type ClientRouteBuilderKey } from "../client";
 
 type ForwardProps = {
   children: ReactNode;
-  routeKey: ClientRouteKey;
+  routeBuilderKey: ClientRouteBuilderKey;
   payload?: unknown;
   className?: string;
   disabled?: boolean;
-  param?: string;
-  action?: string;
+  param: string;
 };
-import { Link } from "react-router-dom";
 
 type RouteState = {
   history?: string[];
 };
 
-export const Forward = ({
+export const ForwardWithParam = ({
   children,
-  routeKey,
+  routeBuilderKey,
   payload,
   className,
   disabled,
+  param,
 }: ForwardProps) => {
   const location = useLocation();
-
   const state: RouteState | null = location.state;
   const routeHistory = useMemo(() => state?.history ?? [], [state?.history]);
 
-  const to = ClientNavigation.paths[routeKey];
+  const to = ClientNavigation.builders[routeBuilderKey](param);
 
   const currentRouteKey = useMemo(
     () => ClientNavigation.findKey(location.pathname),
     [location.pathname],
   );
+
   return (
     <Link
       to={to}
       state={{
         history: [...routeHistory, currentRouteKey],
         payload: payload ?? null,
+        routeBuilderKey: routeBuilderKey,
       }}
       className={cn(className, {
         "pointer-events-none cursor-default": disabled,

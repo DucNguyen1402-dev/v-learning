@@ -1,70 +1,27 @@
-import { useState } from "react";
-
+import { Field, Input } from "@shared/fields";
+import { UserProfile } from "@shared/user-profile";
 export const UserPaymentInfo = () => {
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setUserInfo((prev) => ({ ...prev, [name]: value }));
-  };
-  const [userInfo, setUserInfo] = useState({
-    fullName: "Nguyễn Văn A",
-    email: "",
-    phone: "",
-  });
+  const { profile } = UserProfile.use();
+
+  const useFieldInfo = [
+    { label: "Họ và tên", value: profile.hoTen, id: "hoTen" },
+    { label: "Email nhận khóa học", value: profile.email, id: "email" },
+    { label: "Số điện thoại", value: profile.soDT, id: "soDT" },
+  ];
+
   return (
-    <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
-      <h2 className="mb-4 text-lg font-semibold text-slate-900">
-        1. Thông tin tài khoản
-      </h2>
-      <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
-        <div>
-          <label
-            htmlFor="fullName"
-            className="mb-1 block text-sm font-medium text-slate-700"
-          >
-            Họ và tên
-          </label>
-          <input
-            id="fullName"
-            type="text"
-            name="fullName"
-            value={userInfo.fullName}
-            onChange={handleInputChange}
-            className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
-          />
-        </div>
-        <div>
-          <label
-            htmlFor="email"
-            className="mb-1 block text-sm font-medium text-slate-700"
-          >
-            Email nhận khóa học
-          </label>
-          <input
-            id="email"
-            type="email"
-            name="email"
-            value={userInfo.email}
-            onChange={handleInputChange}
-            className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
-          />
-        </div>
-        <div>
-          <label
-            htmlFor="phone"
-            className="mb-1 block text-sm font-medium text-slate-700"
-          >
-            Số điện thoại
-          </label>
-          <input
-            id="phone"
-            type="tel"
-            name="phone"
-            value={userInfo.phone}
-            onChange={handleInputChange}
-            className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
-          />
-        </div>
-      </form>
+    <div className="flex flex-col gap-6 rounded-container border-border-subtle bg-bg-default p-6 shadow-surface">
+      <h2 className="text-lg font-semibold">1. Thông tin tài khoản của bạn</h2>
+      <div className="flex flex-col gap-4">
+        {useFieldInfo.map((field) => (
+          <Field.Root key={field.label}>
+            <Field.Label target={field.id} text={field.label} />
+            <Input.Root>
+              <Input.Field id={field.id} value={field.value} readOnly />
+            </Input.Root>
+          </Field.Root>
+        ))}
+      </div>
     </div>
   );
 };

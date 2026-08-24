@@ -9,10 +9,15 @@ export const CLIENT_ROUTE_KEYS = {
   PROFILE_PASSWORD_CHANGE: "PROFILE_PASSWORD_CHANGE",
   PERSONAL_COURSE: "PERSONAL_COURSE",
   COURSES: "COURSES",
+} as const;
+
+export const CLIENT_ROUTE_BUILDERS_KEYS = {
   COURSES_DETAIL: "COURSES_DETAIL",
+  COURSES_DETAIL_PAYMENT: "COURSES_DETAIL_PAYMENT",
 } as const;
 
 export type ClientRouteKey = keyof typeof CLIENT_ROUTE_KEYS;
+export type ClientRouteBuilderKey = keyof typeof CLIENT_ROUTE_BUILDERS_KEYS;
 
 export const CLIENT_ROUTE_PATHS = {
   [CLIENT_ROUTE_KEYS.HOME]: "home",
@@ -27,6 +32,11 @@ export const CLIENT_ROUTE_PATHS = {
   [CLIENT_ROUTE_KEYS.COURSES]: "courses",
 } as const;
 
+export const CLIENT_ROUTE_BUILDERS_PATHS = {
+  [CLIENT_ROUTE_BUILDERS_KEYS.COURSES_DETAIL]: ":maKhoaHoc",
+  [CLIENT_ROUTE_BUILDERS_KEYS.COURSES_DETAIL_PAYMENT]: "payment",
+} as const;
+
 export const CLIENT_ROUTE_TITLES = {
   [CLIENT_ROUTE_KEYS.HOME]: "Home",
   [CLIENT_ROUTE_KEYS.LOGIN]: "Login",
@@ -38,7 +48,11 @@ export const CLIENT_ROUTE_TITLES = {
   [CLIENT_ROUTE_KEYS.PROFILE_PASSWORD_CHANGE]: "Password Change",
   [CLIENT_ROUTE_KEYS.PERSONAL_COURSE]: "Personal Course",
   [CLIENT_ROUTE_KEYS.COURSES]: "Courses",
-  [CLIENT_ROUTE_KEYS.COURSES_DETAIL]: "Courses Detail",
+} as const;
+
+export const CLIENT_ROUTE_BUILDERS_TITLES = {
+  [CLIENT_ROUTE_BUILDERS_KEYS.COURSES_DETAIL]: "Course Detail",
+  [CLIENT_ROUTE_BUILDERS_KEYS.COURSES_DETAIL_PAYMENT]: "Course Payment",
 } as const;
 
 export const CLIENT_ROUTE_URLS = {
@@ -53,4 +67,11 @@ export const CLIENT_ROUTE_URLS = {
     "/client/profile/password-change",
   [CLIENT_ROUTE_KEYS.PERSONAL_COURSE]: "/client/personal-course",
   [CLIENT_ROUTE_KEYS.COURSES]: "/client/courses",
+} as const;
+
+export const CLIENT_ROUTE_BUILDERS = {
+  [CLIENT_ROUTE_BUILDERS_KEYS.COURSES_DETAIL]: (maKhoaHoc: string) =>
+    `/client/courses/${maKhoaHoc}`,
+  [CLIENT_ROUTE_BUILDERS_KEYS.COURSES_DETAIL_PAYMENT]: (maKhoaHoc: string) =>
+    `/client/courses/${maKhoaHoc}/payment`,
 } as const;

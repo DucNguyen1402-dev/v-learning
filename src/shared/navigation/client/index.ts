@@ -1,2 +1,2 @@
 export { ClientNavigation } from "./ClientNavigation";
-export type { ClientRouteKey } from "./constants";
+export type { ClientRouteBuilderKey, ClientRouteKey } from "./constants";

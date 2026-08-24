@@ -3,7 +3,7 @@ import { UserPaymentInfo } from "./UserPaymentInfo";
 
 export const CoursePaymentLeft = () => {
   return (
-    <div>
+    <div className="flex flex-col gap-3">
       <UserPaymentInfo />
       <CoursePaymentMethods />
     </div>

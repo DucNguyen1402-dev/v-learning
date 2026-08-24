@@ -1,5 +1,5 @@
 import { ClientNavigation } from "./client";
-import { Back, Forward, Go } from "./components";
+import { Back, Forward, ForwardWithParam, Go } from "./components";
 import { NavigationHooks } from "./hooks";
 
 export const Navigation = {
@@ -9,5 +9,6 @@ export const Navigation = {
     Go,
     Back,
     Forward,
+    ForwardWithParam,
   },
 };

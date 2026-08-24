@@ -13,10 +13,9 @@ export const queryClient = new QueryClient();
 
 createRoot(document.getElementById("root")!).render(
   <BrowserRouter>
-    <RouteMetaData.Provider>
-      <QueryClientProvider client={queryClient}>
-        <App />
-      </QueryClientProvider>
-    </RouteMetaData.Provider>
+    <RouteMetaData />
+    <QueryClientProvider client={queryClient}>
+      <App />
+    </QueryClientProvider>
   </BrowserRouter>,
 );
