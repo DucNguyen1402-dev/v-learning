@@ -5,7 +5,7 @@ import { GraduationCap } from "lucide-react";
 export const EmptyCourseState = () => {
   return (
     <div className="min-h-screen">
-      <div className="flex flex-col justify-center gap-4 rounded-container border border-border-subtle">
+      <div className="flex flex-col justify-center gap-4 rounded-container border border-border-subtle bg-bg-default">
         <EmptyState
           title="Bạn chưa ghi danh khóa học nào."
           description="Hãy khám phá các khóa học để bắt đầu hành trình học tập của bạn."

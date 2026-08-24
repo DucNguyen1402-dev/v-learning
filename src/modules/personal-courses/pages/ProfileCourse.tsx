@@ -1,17 +1,34 @@
+import { useEffect } from "react";
+
 import { UserInfor } from "@shared/auth";
+import { Navigation } from "@shared/navigation";
+import { Toast } from "@shared/overlays";
+import { State } from "@shared/state";
 
 import { EmptyCourseState } from "../components";
 export const ProfileCourse = () => {
-  const { infor } = UserInfor.useQuery();
+  Navigation.hooks.useScrollOnRouteChange();
 
+  //2. Show toast message if there's a payload in the location state
+  const { show: showToast } = Toast.use();
+  const [toastState] = State.useTemporary(Navigation.hooks.usePayload());
+  const consumePayload = Navigation.hooks.useConsumePayload();
+
+  useEffect(() => {
+    if (!toastState) return;
+    showToast(toastState);
+    //3. Consume the location state to prevent showing the toast again on re-render
+    consumePayload();
+  }, [toastState, showToast, consumePayload]);
+
+  const { infor } = UserInfor.useQuery();
   if (!infor) return;
 
   const courses = infor.chiTietKhoaHocGhiDanh;
 
   if (courses.length === 0) return <EmptyCourseState />;
-
   return (
-    <div className="grid min-h-screen gap-6">
+    <div className="grid min-h-screen gap-6 bg-bg-default">
       {courses.map((course) => (
         <article key={course.maKhoaHoc} className="rounded-lg border p-4">
           <img

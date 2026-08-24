@@ -11,4 +11,18 @@
   .label-vertical-spacing {
     margin-bottom: var(--spacing-field-label);
   }
+
+  .field-label {
+    @apply flex w-full cursor-pointer items-center gap-3 rounded-control px-4 py-6 transition-colors duration-200;
+    border: 1px solid var(--color-border-subtle);
+
+    &:not(.label-field-selected) {
+      border-color: var(--color-border-default);
+    }
+  }
+
+  .label-field-selected {
+
+    border-color: var(--color-border-selected);
+  }
 }

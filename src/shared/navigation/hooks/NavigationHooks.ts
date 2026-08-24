@@ -1,4 +1,5 @@
 import { useConsumeLocationPayload } from "./useConsumeLocationPayload";
+import { useLocationParams } from "./useLocationParams";
 import { useLocationPathname } from "./useLocationPathname";
 import { useLocationPayload } from "./useLocationPayload";
 import { useRouteNavigation } from "./useRouteNavigation";
@@ -14,4 +15,5 @@ export const NavigationHooks = {
   usePayload: useLocationPayload,
   usePathname: useLocationPathname,
   useShouldConfirmLeave,
+  useParams: useLocationParams,
 };

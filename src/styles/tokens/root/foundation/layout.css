@@ -5,5 +5,6 @@
 
     /* Common layout widths */
     --max-width-container: 80rem;
+    --max-width-container-sm: 64rem;
 
 }

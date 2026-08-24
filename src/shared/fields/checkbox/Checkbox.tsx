@@ -16,6 +16,8 @@ export type CheckboxProps = Omit<
   "children"
 > & {
   size?: CheckboxSize;
+  roundedFull?: boolean;
+  hideIndicator?: boolean;
 };
 
 export const Checkbox = forwardRef<

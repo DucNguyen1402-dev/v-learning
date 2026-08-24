@@ -13,12 +13,10 @@ export const useRouteNavigation = () => {
 
   const state = location.state as RouteState | null;
   const routeHistory = useMemo(() => state?.history ?? [], [state?.history]);
-  const currentRouteKey = useMemo(() => {
-    const key = location.state?.currentKey as ClientRouteKey | undefined;
-    if (key) return key;
-
-    return ClientNavigation.findKey(location.pathname);
-  }, [location.pathname, location.state?.currentKey]);
+  const currentRouteKey = useMemo(
+    () => ClientNavigation.findKey(location.pathname),
+    [location.pathname],
+  );
 
   const previousRouteKey = useMemo(() => {
     const previousKey = routeHistory.at(-1) as ClientRouteKey | undefined;

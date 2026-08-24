@@ -1,0 +1,1 @@
+export { CourseDetailMainLayout } from "./CourseDetailMainLayout";

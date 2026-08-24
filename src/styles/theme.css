@@ -38,7 +38,9 @@
   --color-text-muted: var(--color-fg-muted);
   --color-text-subtle: var(--color-fg-subtle);
   --color-text-on-brand: var(--color-fg-on-brand);
+  --color-text-brand: var(--color-fg-brand);
   --color-text-on-overlay: var(--color-fg-on-overlay);
+
 
   /* Background Colors */
   --color-bg-base: var(--color-bg-base);
@@ -62,4 +64,17 @@
 
   --color-text-required: var(--color-fg-required);
   --color-text-available: var(--color-fg-available);
+  --color-text-promotion: var(--color-fg-promotion);
+  --color-text-promotion-urgent: var(--color-fg-promotion-urgent);
+  --color-text-discount: var(--color-fg-discount);
+
+
+  /* Background Colors */
+  --color-bg-promotion: var(--color-bg-promotion);
+  --color-bg-promotion-urgent: var(--color-bg-promotion-urgent);
+
+
+  /* Border Colors */
+  --color-border-promotion: var(--border-color-promotion);
+
 }

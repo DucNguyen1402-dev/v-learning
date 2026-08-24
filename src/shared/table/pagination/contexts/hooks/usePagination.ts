@@ -14,6 +14,9 @@ type UsePaginationProps<T> = {
 };
 
 export type PaginationResult<T> = {
+  refs: {
+    scrollToTarget: React.RefObject<HTMLDivElement | null>;
+  };
   actions: {
     onPrevClick: () => void;
     onNextClick: () => void;
@@ -33,7 +36,7 @@ export type PaginationResult<T> = {
     displayEnd: number;
     paginatedList: readonly T[];
     pageOffset: number;
-    currentSize: number;
+    pageSize: number;
   };
 };
 export const usePagination = <T>({
@@ -48,6 +51,8 @@ export const usePagination = <T>({
     setPagination,
     skipNextPageResetRef,
     setSkipNextPageResetRef,
+    isFirstRender,
+    scrollToTargetRef,
   } = usePaginationState({ pageSize });
 
   const {
@@ -82,10 +87,16 @@ export const usePagination = <T>({
     setPagination,
     currentPage: pagination.page,
     totalPages,
+    pageSize: pagination.pageSize,
+    isFirstRender,
+    scrollToTargetRef,
   });
 
   return useMemo(
     () => ({
+      refs: {
+        scrollToTarget: scrollToTargetRef,
+      },
       actions: {
         onPrevClick,
         onNextClick,
@@ -104,7 +115,7 @@ export const usePagination = <T>({
         displayStart,
         displayEnd,
         paginatedList,
-        currentSize: pagination.pageSize,
+        pageSize: pagination.pageSize,
       },
     }),
     [
@@ -121,6 +132,7 @@ export const usePagination = <T>({
       pagination.page,
       pagination.pageSize,
       preventNextResetPage,
+      scrollToTargetRef,
       setPage,
       setSize,
       totalItems,

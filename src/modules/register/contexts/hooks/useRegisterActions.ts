@@ -3,6 +3,7 @@ import type { UseFormHandleSubmit } from "react-hook-form";
 import { REGISTER_FIELD_NAME_VALUES } from "@modules/register/constants";
 import type { RegisterData } from "@modules/register/types";
 import { RegisterAuth } from "@shared/auth/register";
+import { ENTITIES } from "@shared/domain";
 import { getErrorMessage } from "@shared/error";
 import { execution } from "@shared/execution";
 import { createPayload } from "@shared/form-utils";
@@ -25,7 +26,7 @@ export const useRegisterActions = ({
     try {
       execution.runAsyncTask(() => register(payload));
       go(Navigation.client.keys.LOGIN, {
-        toast: Toast.config.success.register(),
+        toast: Toast.config.success.register(ENTITIES.ACCOUNT),
         isRegistrationSuccessful: true,
       });
     } catch (error) {

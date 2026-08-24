@@ -1,2 +1,2 @@
 export type Category =
-  "Frontend" | "Backend" | "Didong" | "Fullstack" | "Tuduy" | "Design";
+  "FrontEnd" | "BackEnd" | "DiDong" | "FullStack" | "TuDuy" | "Design";

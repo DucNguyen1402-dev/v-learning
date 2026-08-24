@@ -1,5 +1,5 @@
 import type { CourseCardForm } from "@modules/courses/types";
-import { Button, BUTTON_APPEARANCES, BUTTON_INTENTS } from "@shared/ui";
+import { Navigation } from "@shared/navigation";
 import { Eye, GraduationCap, Users } from "lucide-react";
 
 interface CourseCardProps {
@@ -9,10 +9,10 @@ export const CourseCard = ({ course }: CourseCardProps) => {
   return (
     <article
       key={course.maKhoaHoc}
-      className="flex h-140 flex-col overflow-hidden rounded-container border border-border-default bg-bg-default shadow-surface select-none"
+      className="flex h-140 flex-col overflow-hidden rounded-container border border-border-subtle bg-bg-default shadow-surface transition-all duration-300 select-none hover:-translate-y-2 hover:border-border-default hover:shadow-surface-hover"
     >
       <img
-        src={course.hinhAnh}
+        src={course.thumbnail}
         alt={course.tenKhoaHoc}
         className="aspect-video w-full object-cover"
       />
@@ -51,13 +51,13 @@ export const CourseCard = ({ course }: CourseCardProps) => {
           <p className="font-medium">{course.tenGiangVien}</p>
         </div>
         <div className="py-2">
-          <Button
-            appearance={BUTTON_APPEARANCES.SOLID}
-            intent={BUTTON_INTENTS.PRIMARY}
-            fullWidth
+          <Navigation.components.ForwardWithParam
+            routeBuilderKey={Navigation.client.buildersKeys.COURSES_DETAIL}
+            param={course.maKhoaHoc}
+            className="button-base button-primary solid w-full py-2 text-sm"
           >
             Xem chi tiết
-          </Button>
+          </Navigation.components.ForwardWithParam>
         </div>
       </div>
     </article>

@@ -17,6 +17,10 @@
   box-shadow: var(--shadow-surface);
 }
 
+@utility shadow-surface-hover {
+  box-shadow: var(--shadow-surface--hover);
+}
+
 @utility shadow-popover {
   box-shadow: var(--shadow-popover);
 }

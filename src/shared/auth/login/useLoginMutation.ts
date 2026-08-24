@@ -24,6 +24,7 @@ export const useLoginMutation = () => {
       };
       AccessTokenStorage.save(data.accessToken, variable.remember);
       CurrentUserStorage.save(user, variable.remember);
+
       refreshUser();
     },
   });

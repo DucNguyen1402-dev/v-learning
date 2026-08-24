@@ -36,6 +36,7 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> &
     appearance?: ButtonAppearance;
     disabled?: boolean;
     selected?: boolean;
+    isGroup?: boolean;
   };
 
 export const Button = ({
@@ -51,6 +52,7 @@ export const Button = ({
   type = "button",
   disabled = false,
   selected = false,
+  isGroup = false,
   ...props
 }: ButtonProps) => {
   const currentSize = buttonSizes[size];
@@ -60,6 +62,7 @@ export const Button = ({
       disabled={loading || disabled}
       className={cn(
         "button-base",
+        isGroup && "group",
         currentSize.button,
         buttonLayouts[layout],
         fullWidth ? "w-full" : "",

@@ -33,7 +33,7 @@ export const AvatarListRender = ({
         </div>
       )}
       {pagination.state.paginatedList.map((avatar) => (
-        <div className="avatar-option-container">
+        <div className="avatar-option-container" key={avatar.value}>
           <Button
             key={avatar.value}
             size={BUTTON_SIZES.NONE}

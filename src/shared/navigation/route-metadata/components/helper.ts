@@ -1,10 +1,8 @@
-import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
-
 import { Navigation } from "@shared/navigation";
+import type { ClientRouteBuilderKey } from "@shared/navigation/client";
 
 import { clientFavicon } from "@assets/favicon";
-function getRouteMetadata(pathname: string) {
+export function getRouteMetadata(pathname: string) {
   const mappings = [
     {
       routes: Navigation.client,
@@ -35,25 +33,27 @@ function getRouteMetadata(pathname: string) {
   };
 }
 
-export const FaviconManager = () => {
-  const { pathname } = useLocation();
+export function getRouteMetadataWithBuilderKey(
+  builderKey: ClientRouteBuilderKey,
+) {
+  const mappings = [
+    {
+      titles: Navigation.client.buildersTitles,
+      favicon: clientFavicon,
+    },
+  ];
 
-  useEffect(() => {
-    const { title, favicon } = getRouteMetadata(pathname);
-
-    document.title = title;
-
-    const faviconElement =
-      document.querySelector<HTMLLinkElement>('link[rel="icon"]') ??
-      document.createElement("link");
-
-    faviconElement.rel = "icon";
-    faviconElement.href = favicon;
-
-    if (!faviconElement.parentNode) {
-      document.head.appendChild(faviconElement);
+  for (const { titles, favicon } of mappings) {
+    if (builderKey) {
+      return {
+        title: `V-learning | ${titles[builderKey]}`,
+        favicon,
+      };
     }
-  }, [pathname]);
+  }
 
-  return null;
-};
+  return {
+    title: "V-learning",
+    favicon: clientFavicon,
+  };
+}

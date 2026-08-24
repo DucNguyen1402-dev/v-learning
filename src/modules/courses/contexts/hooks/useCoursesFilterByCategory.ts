@@ -1,12 +1,11 @@
 import { useState } from "react";
 
 import type { Category } from "@modules/courses/types";
-export const useCoursesByCategory = () => {
+export const useCoursesFilterByCategory = () => {
   const [category, setCategory] = useState<Category | "all">("all");
 
-  const onChangeCategory = (newCategory: Category | "all") => {
+  const onChangeCategory = (newCategory: Category | "all") =>
     setCategory(newCategory);
-  };
 
   return {
     category,
