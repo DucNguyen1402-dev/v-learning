@@ -23,7 +23,7 @@ export const PromotionCountdown = ({
   };
 
   return (
-    <div className="flex items-center justify-between rounded-control border border-border-subtle bg-bg-subtle p-3 text-xs select-none">
+    <div className="flex items-center justify-between gap-3 rounded-control border border-border-subtle bg-bg-subtle p-3 text-xs select-none">
       <div className="flex items-center gap-2 font-medium text-slate-600">
         <Clock className="h-4 w-4 animate-pulse text-text-muted" />
         <span>Ưu đãi kết thúc sau:</span>

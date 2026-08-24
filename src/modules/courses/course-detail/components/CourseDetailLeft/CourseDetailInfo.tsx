@@ -35,7 +35,7 @@ export const CourseDetailInfo = ({
   ];
 
   return (
-    <div className="flex flex-col justify-between gap-4 rounded-overlay border-border-subtle bg-bg-subtle px-8 py-5 select-none">
+    <div className="flex flex-row flex-wrap justify-between gap-6 rounded-overlay border-border-subtle bg-bg-subtle px-8 py-5 select-none lg:flex-col">
       {infoItems.map((item, index) => (
         <div key={index} className="flex flex-col gap-3">
           <div className="flex items-center gap-1">

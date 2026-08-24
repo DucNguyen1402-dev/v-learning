@@ -11,7 +11,7 @@ export const CourseDetailRight = () => {
   const { courseDetail } = useCourseDetailContext();
   const hasPromotion = courseDetail.hasPromotion;
   return (
-    <div className="shadow-container flex flex-col rounded-container border border-border-subtle bg-bg-default p-6 shadow-surface">
+    <div className="shadow-container flex flex-col rounded-container border border-border-subtle bg-bg-default p-5 shadow-surface lg:p-6">
       {hasPromotion && (
         <div className="mb-5 self-start">
           <PromotionBadge />

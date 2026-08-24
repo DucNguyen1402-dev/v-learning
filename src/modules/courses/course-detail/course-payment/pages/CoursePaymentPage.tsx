@@ -9,7 +9,9 @@ export const CoursePaymentPage = () => {
         className="layout-container-sm flex scroll-target flex-col gap-6"
         ref={scrollRef}
       >
-        <h1 className="text-2xl font-bold">Thanh toán khóa học</h1>
+        <h1 className="text-center text-2xl font-bold md:text-left">
+          Thanh toán khóa học
+        </h1>
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-12">
           <div className="col-span-6">

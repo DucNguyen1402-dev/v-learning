@@ -9,10 +9,13 @@ export const UserPaymentInfo = () => {
     { label: "Số điện thoại", value: profile.soDT, id: "soDT" },
   ];
 
+  const isMobile = window.innerWidth < 768;
   return (
     <div className="flex flex-col gap-6 rounded-container border-border-subtle bg-bg-default p-6 py-8 shadow-surface">
-      <h2 className="text-lg font-semibold">1. Thông tin tài khoản của bạn</h2>
-      <div className="flex flex-col gap-4">
+      <h2 className="text-lg font-semibold">
+        1. Thông tin tài khoản {isMobile ? "" : "của bạn"}
+      </h2>
+      <div className="flex flex-col gap-5">
         {useFieldInfo.map((field) => (
           <Field.Root key={field.label}>
             <Field.Label target={field.id} text={field.label} />

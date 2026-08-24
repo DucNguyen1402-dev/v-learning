@@ -6,10 +6,10 @@ export const RegistrationCTA = ({ maKhoaHoc }: { maKhoaHoc: string }) => {
     <Navigation.components.ForwardWithParam
       routeBuilderKey={Navigation.client.buildersKeys.COURSES_DETAIL_PAYMENT}
       param={maKhoaHoc}
-      className="group button-base button-primary solid w-full py-3"
+      className="group button-base button-primary solid w-full py-2 lg:py-3"
     >
       <div className="flex items-center gap-2">
-        <span>Đăng ký tham gia ngay</span>
+        <span className="text-sm lg:text-base">Đăng ký tham gia ngay</span>
         <ArrowRight className="group h-4 w-4 transition-transform duration-150 group-hover:translate-x-1" />
       </div>
     </Navigation.components.ForwardWithParam>

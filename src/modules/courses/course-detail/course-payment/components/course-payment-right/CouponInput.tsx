@@ -6,7 +6,7 @@ export const CouponInput = () => {
     <div className="flex items-center gap-2">
       <Field.Root>
         <Input.Root>
-          <Input.Field placeholder="Nhập mã (thử: FRONTEND)" />
+          <Input.Field placeholder="Mã giảm giá" />
         </Input.Root>
       </Field.Root>
       <div className="shrink-0">

@@ -18,10 +18,10 @@ export const CoursePrice = ({
   }).format(discountedPrice);
   return (
     <div className="flex items-baseline gap-3">
-      <span className="text-3xl font-extrabold tracking-tight">
+      <span className="text-2xl font-extrabold tracking-tight lg:text-3xl">
         {formattedDiscountedPrice}
       </span>
-      <span className="text-sm font-medium text-text-muted line-through">
+      <span className="text-xs font-medium text-text-muted line-through lg:text-sm">
         {formattedOriginalPrice}
       </span>
     </div>

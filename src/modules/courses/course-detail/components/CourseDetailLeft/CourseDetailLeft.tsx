@@ -9,7 +9,7 @@ export const CourseDetailLeft = () => {
   const { courseDetail } = useCourseDetailContext();
 
   return (
-    <div className="flex flex-col gap-6 rounded-container border border-border-subtle bg-bg-default p-8 shadow-surface">
+    <div className="flex flex-col gap-6 rounded-container border border-border-subtle bg-bg-default p-6 shadow-surface lg:p-8">
       <CourseDetailHeading
         tenKhoaHoc={courseDetail.tenKhoaHoc}
         tenDanhMucKhoaHoc={courseDetail.danhMucKhoaHoc.tenDanhMucKhoaHoc}

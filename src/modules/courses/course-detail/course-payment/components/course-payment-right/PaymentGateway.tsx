@@ -1,16 +1,21 @@
-import QRCode from "qrcode";
+import { useEffect, useRef } from "react";
 
+import QRCode from "qrcode";
 export const PaymentGateway = ({ paymentMethod = "qr" }) => {
   const course = {
     code: "KH-001",
   };
 
-  const canvas = document.getElementById("qrcode") as HTMLCanvasElement;
+  const canvasRef = useRef<HTMLCanvasElement>(null);
 
-  QRCode.toCanvas(canvas, "https://google.com", {
-    width: 160,
-    margin: 2,
-  });
+  useEffect(() => {
+    if (!canvasRef.current) return;
+
+    QRCode.toCanvas(canvasRef.current, "https://google.com", {
+      width: 160,
+      margin: 2,
+    });
+  }, []);
 
   return paymentMethod === "qr" ? (
     <div className="flex flex-col gap-3 rounded-overlay border border-dashed border-border-subtle bg-bg-subtle p-4 text-center">
@@ -20,7 +25,7 @@ export const PaymentGateway = ({ paymentMethod = "qr" }) => {
 
       <div className="mx-auto flex w-40 items-center justify-center rounded-lg border bg-white p-2 shadow-sm">
         <div className="flex h-full w-full items-center justify-center rounded bg-slate-900 text-center text-xs text-white">
-          <canvas id="qrcode"></canvas>
+          <canvas ref={canvasRef}></canvas>
         </div>
       </div>
 
@@ -31,10 +36,10 @@ export const PaymentGateway = ({ paymentMethod = "qr" }) => {
             {course.code}
           </span>
         </div>
-        <p>
-          Chủ tài khoản:
+        <div className="flex flex-col justify-center gap-1 md:flex-row">
+          <span>Chủ tài khoản:</span>
           <span className="font-semibold">CONG TY CONG NGHE A</span>
-        </p>
+        </div>
       </div>
     </div>
   ) : (
