@@ -1,4 +1,4 @@
-import type { CourseCardForm } from "@modules/courses/types";
+import type { CourseCardForm } from "@modules/courses/client/types";
 import { Navigation } from "@shared/navigation";
 import { Eye, GraduationCap, Users } from "lucide-react";
 

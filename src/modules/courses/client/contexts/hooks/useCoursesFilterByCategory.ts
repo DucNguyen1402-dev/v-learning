@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import type { Category } from "@modules/courses/types";
+import type { Category } from "@modules/courses/client/types";
 export const useCoursesFilterByCategory = () => {
   const [category, setCategory] = useState<Category | "all">("all");
 

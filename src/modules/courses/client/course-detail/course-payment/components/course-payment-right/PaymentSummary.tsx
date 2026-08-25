@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { useCourseDetailContext } from "@modules/courses/course-detail/contexts";
+import { useCourseDetailContext } from "@modules/courses/client/course-detail/contexts";
 import { formatVND } from "@shared/utils";
 export const PaymentSummary = () => {
   const { courseDetail } = useCourseDetailContext();

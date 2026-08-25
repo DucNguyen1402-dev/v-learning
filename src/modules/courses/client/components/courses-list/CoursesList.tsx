@@ -1,5 +1,5 @@
-import { useCoursesContext } from "@modules/courses/contexts";
-import type { CourseCardForm } from "@modules/courses/types";
+import { useCoursesContext } from "@modules/courses/client/contexts";
+import type { CourseCardForm } from "@modules/courses/client/types";
 import { Pagination } from "@shared/table";
 import { createArray } from "@shared/utils";
 

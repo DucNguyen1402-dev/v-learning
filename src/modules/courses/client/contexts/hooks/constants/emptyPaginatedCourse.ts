@@ -1,4 +1,4 @@
-import type { Course, PaginatedCourse } from "@modules/courses/types";
+import type { Course, PaginatedCourse } from "@modules/courses/client/types";
 
 export const EMPTY_PAGINATED_COURSE: PaginatedCourse = {
   currentPage: 1,

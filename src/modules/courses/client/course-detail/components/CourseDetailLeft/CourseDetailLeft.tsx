@@ -1,4 +1,4 @@
-import { useCourseDetailContext } from "@modules/courses/course-detail/contexts";
+import { useCourseDetailContext } from "@modules/courses/client/course-detail/contexts";
 
 import { CourseDetailDescription } from "./CourseDetailDescription";
 import { CourseDetailHeading } from "./CourseDetailHeading";

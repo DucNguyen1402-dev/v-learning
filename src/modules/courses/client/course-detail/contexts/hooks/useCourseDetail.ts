@@ -1,9 +1,9 @@
 import { useMemo } from "react";
 
-import { EMPTY_COURSE } from "@modules/courses/constants";
+import { EMPTY_COURSE } from "@modules/courses/client/constants";
 
+import { useCourseDetailQuery } from "./useCourseDetailQuery";
 import { useCourseRegister } from "./useCourseRegister";
-import { useCourseDetailQuery } from "./useCouseDetailQuery";
 import { enrichCourseDetail } from "./utils";
 
 type UseCourseDetailProps = {

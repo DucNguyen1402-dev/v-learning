@@ -1,4 +1,4 @@
-import { useCourseDetailContext } from "@modules/courses/course-detail/contexts";
+import { useCourseDetailContext } from "@modules/courses/client/course-detail/contexts";
 import { Button, BUTTON_APPEARANCES, BUTTON_INTENTS } from "@shared/ui";
 
 export const PaymentConfirmation = () => {
