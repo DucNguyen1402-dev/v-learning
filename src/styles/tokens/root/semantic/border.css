@@ -2,7 +2,7 @@
   /* =================================================
     *  Brand dimensions
     *================================================== */
-  --color-border-brand: var(--brand);
+  --color-border-brand: var(--color-brand);
 
   /* =================================================
     *  Selected dimensions

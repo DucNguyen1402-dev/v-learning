@@ -1,0 +1,6 @@
+@layer components {
+
+    .separator {
+        @apply shrink-0 bg-border-default/60;
+    }
+}
