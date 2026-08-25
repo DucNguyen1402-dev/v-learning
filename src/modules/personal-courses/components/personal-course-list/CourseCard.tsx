@@ -4,7 +4,7 @@ import { ArrowRight, Star } from "lucide-react";
 
 export const CourseCard = ({ course }: { course: EnrichedPersonalCourse }) => {
   return (
-    <article className="group overflow-hidden rounded-container border-border-default bg-bg-default shadow-surface transition-all duration-300 hover:-translate-y-1 hover:shadow-surface-hover">
+    <article className="group overflow-hidden rounded-container border-border-default bg-bg-default shadow-surface transition-all duration-300 select-none hover:-translate-y-1 hover:shadow-surface-hover">
       <div className="relative overflow-hidden">
         <img
           src={course.thumbnail}
@@ -28,7 +28,11 @@ export const CourseCard = ({ course }: { course: EnrichedPersonalCourse }) => {
           {course.moTa}
         </p>
 
-        <div className="mt-8 flex items-center justify-end pt-1">
+        <div className="mt-8 flex items-center justify-between pt-1">
+          <p className="text-xs text-text-subtle">
+            <span> Ngày đăng ký: </span>
+            <span className="font-semibold">{course.ngayDangKy}</span>
+          </p>
           <Navigation.components.ForwardWithParam
             routeBuilderKey={
               Navigation.client.buildersKeys.PERSONAL_COURSE_DETAIL

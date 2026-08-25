@@ -41,8 +41,8 @@ export const useProfileChangeActions = () => {
         Navigation.client.keys.PROFILE,
         Toast.config.success.update(ENTITIES.USER),
       );
-    } catch (err) {
-      const message = getErrorMessage(err);
+    } catch (error) {
+      const message = getErrorMessage({ error });
       toast.show(Toast.config.error(message));
     }
   };

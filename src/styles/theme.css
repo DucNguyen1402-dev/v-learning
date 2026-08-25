@@ -67,10 +67,13 @@
   --color-text-promotion-urgent: var(--color-fg-promotion-urgent);
   --color-text-discount: var(--color-fg-discount);
   --color-text-rating: var(--color-fg-rating);
+  --color-text-completed: var(--color-fg-completed);
+  --color-text-incomplete: var(--color-fg-incomplete);
 
   /* Background Colors */
   --color-bg-promotion: var(--color-bg-promotion);
   --color-bg-promotion-urgent: var(--color-bg-promotion-urgent);
+  --color-bg-brand-subtle: var(--color-bg-brand-subtle);
 
   /* Border Colors */
   --color-border-promotion: var(--border-color-promotion);

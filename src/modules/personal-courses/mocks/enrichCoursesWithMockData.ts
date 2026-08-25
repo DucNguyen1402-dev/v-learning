@@ -4,8 +4,8 @@ import { mockCourses } from "./mockCourses";
 export const enrichCoursesWithMockData = (
   courses: PersonalCourse[],
 ): EnrichedPersonalCourse[] => {
-  return courses.map((course, index) => ({
+  return courses.map((course) => ({
     ...course,
-    ...mockCourses[index],
+    ...mockCourses[Math.floor(Math.random() * mockCourses.length)],
   }));
 };

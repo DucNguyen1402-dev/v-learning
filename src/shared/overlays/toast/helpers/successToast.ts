@@ -17,4 +17,5 @@ export const successToast = {
   login: () => success("Đăng nhập thành công!"),
   register: (entity: EntityType) =>
     success(`Đăng ký ${ENTITY_LABELS[entity]} thành công!`),
+  cancelCourse: () => success("Hủy đăng ký khóa học thành công!"),
 };

@@ -4,7 +4,14 @@ type ErrorResponse = {
   message?: string | string[];
 };
 
-export const getErrorMessage = (error: unknown): string => {
+type ErrorResponseWithStatus = {
+  error: unknown;
+  messageForInternalSeverError?: string;
+};
+export const getErrorMessage = ({
+  error,
+  messageForInternalSeverError,
+}: ErrorResponseWithStatus): string => {
   if (axios.isAxiosError(error)) {
     const data = error.response?.data as ErrorResponse;
     const message = data?.message;
@@ -28,7 +35,9 @@ export const getErrorMessage = (error: unknown): string => {
         return "Không tìm thấy dữ liệu.";
       case 500:
         //API trả về lỗi 500 khi đăng nhập sai, nên đổi thông báo lỗi để người dùng dễ hiểu hơn
-        return "Tài khoản hoặc mật khẩu không chính xác.";
+        return messageForInternalSeverError
+          ? messageForInternalSeverError
+          : "Tài khoản hoặc mật khẩu không chính xác.";
       default:
         return "Có lỗi xảy ra khi kết nối tới máy chủ.";
     }

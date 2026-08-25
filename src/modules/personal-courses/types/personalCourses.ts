@@ -5,3 +5,6 @@ export type PersonalCourse = EnrolledCourse;
 
 export type EnrichedPersonalCourse = PersonalCourse &
   Omit<MockCourse, "maDanhMucKhoahoc">;
+
+export type DanhSachBaiHoc = EnrichedPersonalCourse["danhSachBaiHoc"];
+export type BaiHoc = EnrichedPersonalCourse["baiHoc"];

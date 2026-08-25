@@ -30,7 +30,11 @@ export const useLoginActions = ({
       await execution.runAsyncTask(loginTask);
       go(Navigation.client.keys.HOME, Toast.config.success.login());
     } catch (error) {
-      const message = getErrorMessage(error);
+      const message = getErrorMessage({
+        error,
+        messageForInternalSeverError:
+          "Tài khoản hoặc mật khẩu không chính xác.",
+      });
       toast.show(Toast.config.error(message));
     }
   };

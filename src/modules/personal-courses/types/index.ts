@@ -1,1 +1,6 @@
-export type { EnrichedPersonalCourse, PersonalCourse } from "./personalCourses";
+export type {
+  BaiHoc,
+  DanhSachBaiHoc,
+  EnrichedPersonalCourse,
+  PersonalCourse,
+} from "./personalCourses";
