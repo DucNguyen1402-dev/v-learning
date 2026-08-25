@@ -20,7 +20,6 @@ export const useCourseRegister = ({ maKhoaHoc }: { maKhoaHoc: string }) => {
       maKhoaHoc,
       taiKhoan: currentUser.taiKhoan,
     };
-    console.log("payload", payload);
     try {
       const registerTask = () => registerCourse(payload);
 
@@ -30,7 +29,17 @@ export const useCourseRegister = ({ maKhoaHoc }: { maKhoaHoc: string }) => {
         Toast.config.success.register(ENTITIES.COURSE),
       );
     } catch (error) {
-      toast.show(Toast.config.error(getErrorMessage(error)));
+      // API trả về lỗi 500 không rõ ràng nên cần custom message cho từng trường hợp
+      // để hiển thị đúng ngữ cảnh cho người dùng.
+      toast.show(
+        Toast.config.error(
+          getErrorMessage({
+            error,
+            messageForInternalSeverError:
+              "Bạn đã đăng ký khóa học này trước đó.",
+          }),
+        ),
+      );
     }
   };
 

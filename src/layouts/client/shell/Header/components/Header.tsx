@@ -63,7 +63,7 @@ export const Header = () => {
               <span className="hidden text-sm font-medium lg:block">
                 {currentUser?.taiKhoan}
               </span>
-              <div className="absolute top-full left-0 z-popover hidden -translate-y-4 opacity-0 transition-all duration-300 group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100 lg:block">
+              <div className="pointer-events-none absolute top-full left-0 z-popover hidden -translate-y-4 opacity-0 transition-all duration-300 group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100 lg:block">
                 <ProfileDropdown />
               </div>
             </div>

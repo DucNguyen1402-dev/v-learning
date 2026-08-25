@@ -30,7 +30,7 @@ export const useRegisterActions = ({
         isRegistrationSuccessful: true,
       });
     } catch (error) {
-      const errorMessage = getErrorMessage(error);
+      const errorMessage = getErrorMessage({ error });
       toast.show(Toast.config.error(errorMessage));
     }
   };

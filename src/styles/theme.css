@@ -40,7 +40,7 @@
   --color-text-on-brand: var(--color-fg-on-brand);
   --color-text-brand: var(--color-fg-brand);
   --color-text-on-overlay: var(--color-fg-on-overlay);
-
+  --color-text-warning: var(--color-fg-warning);
 
   /* Background Colors */
   --color-bg-base: var(--color-bg-base);
@@ -49,6 +49,8 @@
   --color-bg-subtle: var(--color-bg-subtle);
   --color-bg-brand: var(--color-bg-brand);
   --color-bg-overlay: var(--color-bg-overlay);
+  --color-bg-elevated: var(--color-bg-elevated);
+  --color-bg-warning: var(--color-bg-warning);
 
   /* Border Colors */
   --color-border-default: var(--color-border-default);
@@ -67,14 +69,15 @@
   --color-text-promotion: var(--color-fg-promotion);
   --color-text-promotion-urgent: var(--color-fg-promotion-urgent);
   --color-text-discount: var(--color-fg-discount);
-
+  --color-text-rating: var(--color-fg-rating);
+  --color-text-completed: var(--color-fg-completed);
+  --color-text-incomplete: var(--color-fg-incomplete);
 
   /* Background Colors */
   --color-bg-promotion: var(--color-bg-promotion);
   --color-bg-promotion-urgent: var(--color-bg-promotion-urgent);
-
+  --color-bg-brand-subtle: var(--color-bg-brand-subtle);
 
   /* Border Colors */
   --color-border-promotion: var(--border-color-promotion);
-
 }
