@@ -1,6 +1,7 @@
-import { mockCourses } from "@modules/courses/mocks";
-import type { Course, EnrichedCourse } from "@modules/courses/types";
 import { findOrThrow } from "@shared/utils";
+
+import { mockCourses } from "../mocks";
+import type { Course, EnrichedCourse } from "../types";
 
 export const enrichCoursesWithMockData = (
   courses: Course[],

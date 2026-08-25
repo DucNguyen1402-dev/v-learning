@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 
-import { mockCourses, useCourseQuery } from "@modules/courses";
+import { mockCourses, useCourseQuery } from "@modules/courses/shared";
 
 export const useFeatureCourses = () => {
   const { data: courses, isPending: isLoading } = useCourseQuery();

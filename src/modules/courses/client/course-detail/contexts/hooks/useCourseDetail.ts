@@ -1,8 +1,8 @@
 import { useMemo } from "react";
 
-import { EMPTY_COURSE } from "@modules/courses/client/constants";
+import { EMPTY_COURSE } from "@modules/courses/shared/constants";
+import { useCourseDetailQuery } from "@modules/courses/shared/hooks";
 
-import { useCourseDetailQuery } from "./useCourseDetailQuery";
 import { useCourseRegister } from "./useCourseRegister";
 import { enrichCourseDetail } from "./utils";
 

@@ -1,4 +1,4 @@
-import type { Category } from "../types";
+import type { Category } from "@/modules/courses/shared/types";
 
 export const categories = [
   { label: "Frontend", value: "FrontEnd" },

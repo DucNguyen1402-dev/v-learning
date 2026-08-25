@@ -1,6 +1,7 @@
-import { getCoursesByCategory } from "@modules/courses/api";
-import type { Category } from "@modules/courses/client/types";
 import { useQuery } from "@tanstack/react-query";
+
+import { getCoursesByCategory } from "../api";
+import type { Category } from "../types";
 type UseCoursesQueryByCategoryParams = {
   category: Category | "all";
 };

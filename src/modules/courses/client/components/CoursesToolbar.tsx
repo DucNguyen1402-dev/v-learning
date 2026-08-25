@@ -1,3 +1,4 @@
+import { categories } from "@modules/courses/shared/config";
 import { Input } from "@shared/fields";
 import {
   Button,
@@ -9,7 +10,6 @@ import { cn } from "@shared/utils";
 import { capitalize } from "@shared/utils";
 import { Search } from "lucide-react";
 
-import { categories } from "../config";
 import { useCoursesContext } from "../contexts";
 
 export const CoursesToolbar = () => {

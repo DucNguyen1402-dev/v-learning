@@ -1,11 +1,10 @@
+import { useCourseDetailMutation } from "@modules/courses/client/hooks";
 import { CurrentUserStorage } from "@shared/auth";
 import { ENTITIES } from "@shared/domain";
 import { getErrorMessage } from "@shared/error";
 import { execution } from "@shared/execution";
 import { Navigation } from "@shared/navigation";
 import { Toast } from "@shared/overlays";
-
-import { useCourseDetailMutation } from "./useCourseDetailMutation";
 
 export const useCourseRegister = ({ maKhoaHoc }: { maKhoaHoc: string }) => {
   const { mutateAsync: registerCourse, isPending: isRegistering } =

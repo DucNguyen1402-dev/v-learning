@@ -1,11 +1,12 @@
 import { useCoursesContext } from "@modules/courses/client/contexts";
-import type { CourseCardForm } from "@modules/courses/client/types";
 import { Pagination } from "@shared/table";
 import { createArray } from "@shared/utils";
 
 import { CourseCard } from "./CourseCard";
 import { CoursesListSkeleton } from "./CoursesListSkeleton";
 import { EmptyCoursesState } from "./EmptyCoursesState";
+
+import type { CourseCardForm } from "@/modules/courses/shared/types";
 
 export function CoursesList() {
   const {

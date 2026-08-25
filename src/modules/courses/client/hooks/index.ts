@@ -1,1 +1,1 @@
-export { useCourseQuery } from "./useCourseQuery";
+export { useCourseDetailMutation } from "./useCourseDetailMutation";

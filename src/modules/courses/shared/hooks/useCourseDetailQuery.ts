@@ -1,5 +1,6 @@
-import { getCourseInfo } from "@modules/courses/api";
 import { useQuery } from "@tanstack/react-query";
+
+import { getCourseInfo } from "@/modules/courses/shared/api";
 
 export const useCourseDetailQuery = (courseId: string) => {
   return useQuery({

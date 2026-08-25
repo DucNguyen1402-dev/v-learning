@@ -1,14 +1,16 @@
-import { Pagination } from "@shared/table";
-
 import {
   EMPTY_PAGINATED_COURSE,
   EMPTY_PAGINATED_COURSE_BY_CATEGORY,
-} from "./constants";
+} from "@modules/courses/shared/constants";
+import {
+  useCoursesQueryByCategory,
+  usePaginatedCoursesQuery,
+} from "@modules/courses/shared/hooks";
+import { enrichCoursesWithMockData } from "@modules/courses/shared/utils";
+import { Pagination } from "@shared/table";
+
 import { useCoursesFilterByCategory } from "./useCoursesFilterByCategory";
-import { useCoursesQuery } from "./useCoursesQuery";
-import { useCoursesQueryByCategory } from "./useCoursesQueryByCategory";
 import { useCoursesSearchByName } from "./useCoursesSearchByName";
-import { enrichCoursesWithMockData } from "./utils";
 
 export const useCourses = () => {
   const { pagination, setPagination } = Pagination.hooks.useState();
@@ -24,7 +26,7 @@ export const useCourses = () => {
     data: courses = EMPTY_PAGINATED_COURSE,
     isPending: isPendingByPaginated,
     isFetching: isFetchingByPaginated,
-  } = useCoursesQuery({
+  } = usePaginatedCoursesQuery({
     page: pagination.page,
     pageSize: pagination.pageSize,
     tenKhoaHoc: tenKhoaHoc,

@@ -1,6 +1,7 @@
-import type { PaginatedCourse } from "@modules/courses/types";
 import { api } from "@shared/api";
 import axios from "axios";
+
+import type { PaginatedCourse } from "@/modules/courses/shared/types";
 type GetPaginatedCourseParams = {
   tenKhoaHoc: string;
   page: number;

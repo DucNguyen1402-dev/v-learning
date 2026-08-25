@@ -1,3 +1,4 @@
+import { Navigation } from "@shared/navigation";
 import { Pagination } from "@shared/table";
 
 import {
@@ -11,6 +12,7 @@ import { useCoursesContext } from "../contexts";
 export const CoursesPage = () => {
   const { courses } = useCoursesContext();
 
+  Navigation.hooks.useScrollOnRouteChange();
   return (
     <Pagination.Provider items={courses} resetDeps={[courses]}>
       <div className="flex min-h-screen flex-col gap-10">
