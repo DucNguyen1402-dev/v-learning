@@ -18,5 +18,6 @@ export type MockCourse = {
   danhSachBaiHoc: {
     tenBaiHoc: string;
     thoiLuong: string;
+    videoUrl: string;
   }[];
 };

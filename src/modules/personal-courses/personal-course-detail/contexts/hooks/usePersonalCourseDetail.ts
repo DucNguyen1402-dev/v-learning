@@ -8,24 +8,29 @@ export const usePersonalCourseDetail = ({
   maKhoaHoc: string;
 }) => {
   const [isCancelModalOpen, setIsCancelModalOpen] = useState(false);
+
   const { handleCancelCourse, isCancelCourseLoading } =
     useCancelCourseEnrollment({ maKhoaHoc });
 
-  const handleOpenCancelModal = () => {
-    setIsCancelModalOpen(true);
-  };
+  const onCancelEnrollmentClick = () => setIsCancelModalOpen(true);
 
-  const handleModalConfirm = () => {
+  const onModalConfirm = () => {
     handleCancelCourse();
     setIsCancelModalOpen(false);
   };
+
+  const onModalCancel = () => setIsCancelModalOpen(false);
+  const closeCancelModal = () => setIsCancelModalOpen(false);
   return {
     isCancelModalOpen,
     setIsCancelModalOpen,
-    handleOpenCancelModal,
+    onCancelEnrollmentClick,
     handleCancelCourse,
     isCancelCourseLoading,
-    handleModalConfirm,
+    onModalConfirm,
+    onModalCancel,
+    closeCancelModal,
+    maKhoaHoc,
   };
 };
 

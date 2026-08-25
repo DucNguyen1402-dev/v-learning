@@ -2,7 +2,7 @@ import { CurrentUserStorage } from "@shared/auth";
 import { getErrorMessage } from "@shared/error";
 import { execution } from "@shared/execution";
 import { Navigation } from "@shared/navigation";
-import { Toast } from "@shared/overlays";
+import { Loading, Toast } from "@shared/overlays";
 
 import { usePersonalCourseMutation } from "./usePersonalCourseMutation";
 
@@ -17,7 +17,7 @@ export const useCancelCourseEnrollment = ({
   const { go } = Navigation.hooks.useNavigate();
   const currentUser = CurrentUserStorage.get();
   const toast = Toast.use();
-
+  const { loader } = Loading.use();
   const handleCancelCourse = async () => {
     const payload = {
       maKhoaHoc,
@@ -26,7 +26,7 @@ export const useCancelCourseEnrollment = ({
     try {
       const cancelTask = () => cancelCourseMutation.mutateAsync(payload);
 
-      await execution.runAsyncTask(cancelTask);
+      await execution.runAsyncTask(cancelTask, loader);
       go(
         Navigation.client.keys.PERSONAL_COURSE,
         Toast.config.success.cancelCourse(),

@@ -1,0 +1,1 @@
+export { PersonalCourseDetailProviderWrapper } from "./PersonalCourseDetailProvider";

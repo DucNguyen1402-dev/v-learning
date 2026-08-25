@@ -36,26 +36,38 @@ export const mockCourses: MockCourse[] = [
       {
         tenBaiHoc: "Giới thiệu về lập trình Backend",
         thoiLuong: "15 phút",
+        videoUrl:
+          "https://www.youtube.com/embed/rOpEN1JDaD0?si=0VSt4uBAMbGP2mnm",
       },
       {
         tenBaiHoc: "Kiến trúc Backend vững chắc",
         thoiLuong: "20 phút",
+        videoUrl:
+          "https://www.youtube.com/embed/rOpEN1JDaD0?si=0VSt4uBAMbGP2mnm",
       },
       {
         tenBaiHoc: "Thiết kế RESTful API chuẩn",
         thoiLuong: "25 phút",
+        videoUrl:
+          "https://www.youtube.com/embed/rOpEN1JDaD0?si=0VSt4uBAMbGP2mnm",
       },
       {
         tenBaiHoc: "Tối ưu hóa hiệu năng cơ sở dữ liệu",
         thoiLuong: "30 phút",
+        videoUrl:
+          "https://www.youtube.com/embed/rOpEN1JDaD0?si=0VSt4uBAMbGP2mnm",
       },
       {
         tenBaiHoc: "Triển khai ứng dụng lên Cloud",
         thoiLuong: "35 phút",
+        videoUrl:
+          "https://www.youtube.com/embed/rOpEN1JDaD0?si=0VSt4uBAMbGP2mnm",
       },
       {
         tenBaiHoc: "Đánh giá và cải thiện kỹ năng lập trình Backend",
         thoiLuong: "20 phút",
+        videoUrl:
+          "https://www.youtube.com/embed/rOpEN1JDaD0?si=0VSt4uBAMbGP2mnm",
       },
     ],
   },
@@ -81,34 +93,51 @@ export const mockCourses: MockCourse[] = [
       {
         tenBaiHoc: "Giới thiệu về lập trình Frontend",
         thoiLuong: "15 phút",
+        videoUrl:
+          "https://www.youtube.com/embed/rOpEN1JDaD0?si=0VSt4uBAMbGP2mnm",
       },
       {
         tenBaiHoc: "Thiết kế giao diện theo hướng hợp phần",
         thoiLuong: "20 phút",
+        videoUrl:
+          "https://www.youtube.com/embed/rOpEN1JDaD0?si=0VSt4uBAMbGP2mnm",
       },
       {
         tenBaiHoc: "Quản lý trạng thái ứng dụng thông minh",
         thoiLuong: "25 phút",
+        videoUrl:
+          "https://www.youtube.com/embed/rOpEN1JDaD0?si=0VSt4uBAMbGP2mnm",
       },
       {
         tenBaiHoc: "Tối ưu hóa trải nghiệm và hiệu năng UI/UX",
         thoiLuong: "30 phút",
+        videoUrl:
+          "https://www.youtube.com/embed/rOpEN1JDaD0?si=0VSt4uBAMbGP2mnm",
       },
+
       {
         tenBaiHoc: "Tích hợp RESTful API mượt mà",
         thoiLuong: "35 phút",
+        videoUrl:
+          "https://www.youtube.com/embed/rOpEN1JDaD0?si=0VSt4uBAMbGP2mnm",
       },
       {
         tenBaiHoc: "Thực hành dự án Frontend thực tế",
         thoiLuong: "40 phút",
+        videoUrl:
+          "https://www.youtube.com/embed/rOpEN1JDaD0?si=0VSt4uBAMbGP2mnm",
       },
       {
         tenBaiHoc: "Đánh giá và cải thiện kỹ năng lập trình Frontend",
         thoiLuong: "25 phút",
+        videoUrl:
+          "https://www.youtube.com/embed/rOpEN1JDaD0?si=0VSt4uBAMbGP2mnm",
       },
       {
         tenBaiHoc: "Kết luận và tổng kết khóa học",
         thoiLuong: "10 phút",
+        videoUrl:
+          "https://www.youtube.com/embed/rOpEN1JDaD0?si=0VSt4uBAMbGP2mnm",
       },
     ],
   },
@@ -133,35 +162,51 @@ export const mockCourses: MockCourse[] = [
       {
         tenBaiHoc: "Giới thiệu về lập trình mobile đa nền tảng",
         thoiLuong: "15 phút",
+        videoUrl:
+          "https://www.youtube.com/embed/rOpEN1JDaD0?si=0VSt4uBAMbGP2mnm",
       },
       {
         tenBaiHoc: "Thiết kế giao diện UI/UX mượt mà",
         thoiLuong: "20 phút",
+        videoUrl:
+          "https://www.youtube.com/embed/rOpEN1JDaD0?si=0VSt4uBAMbGP2mnm",
       },
       {
         tenBaiHoc: "Quản lý trạng thái ứng dụng thông minh",
         thoiLuong: "25 phút",
+        videoUrl:
+          "https://www.youtube.com/embed/rOpEN1JDaD0?si=0VSt4uBAMbGP2mnm",
       },
       {
         tenBaiHoc: "Tối ưu hóa hiệu năng và trải nghiệm người dùng",
         thoiLuong: "30 phút",
+        videoUrl:
+          "https://www.youtube.com/embed/rOpEN1JDaD0?si=0VSt4uBAMbGP2mnm",
       },
       {
         tenBaiHoc:
           "Đóng gói và phát hành ứng dụng lên App Store và Google Play",
         thoiLuong: "35 phút",
+        videoUrl:
+          "https://www.youtube.com/embed/rOpEN1JDaD0?si=0VSt4uBAMbGP2mnm",
       },
       {
         tenBaiHoc: "Thực hành dự án mobile thực tế",
         thoiLuong: "40 phút",
+        videoUrl:
+          "https://www.youtube.com/embed/rOpEN1JDaD0?si=0VSt4uBAMbGP2mnm",
       },
       {
         tenBaiHoc: "Đánh giá và cải thiện kỹ năng lập trình mobile",
         thoiLuong: "25 phút",
+        videoUrl:
+          "https://www.youtube.com/embed/rOpEN1JDaD0?si=0VSt4uBAMbGP2mnm",
       },
       {
         tenBaiHoc: "Kết luận và tổng kết khóa học",
         thoiLuong: "10 phút",
+        videoUrl:
+          "https://www.youtube.com/embed/rOpEN1JDaD0?si=0VSt4uBAMbGP2mnm",
       },
     ],
   },
@@ -187,38 +232,57 @@ export const mockCourses: MockCourse[] = [
       {
         tenBaiHoc: "Giới thiệu về UI/UX và Figma",
         thoiLuong: "15 phút",
+        videoUrl:
+          "https://www.youtube.com/embed/rOpEN1JDaD0?si=0VSt4uBAMbGP2mnm",
       },
       {
         tenBaiHoc: "Nguyên tắc thiết kế giao diện người dùng",
         thoiLuong: "20 phút",
+        videoUrl:
+          "https://www.youtube.com/embed/rOpEN1JDaD0?si=0VSt4uBAMbGP2mnm",
       },
       {
         tenBaiHoc: "Thiết kế Wireframe và Prototype",
         thoiLuong: "25 phút",
+        videoUrl:
+          "https://www.youtube.com/embed/rOpEN1JDaD0?si=0VSt4uBAMbGP2mnm",
       },
       {
         tenBaiHoc: "Xây dựng Design System đồng bộ",
         thoiLuong: "30 phút",
+        videoUrl:
+          "https://www.youtube.com/embed/rOpEN1JDaD0?si=0VSt4uBAMbGP2mnm",
       },
       {
         tenBaiHoc: "Tối ưu hóa quy trình handoff cho Developer",
         thoiLuong: "20 phút",
+        videoUrl:
+          "https://www.youtube.com/embed/rOpEN1JDaD0?si=0VSt4uBAMbGP2mnm",
       },
       {
         tenBaiHoc: "Thực hành dự án thiết kế giao diện thực tế",
         thoiLuong: "40 phút",
+        videoUrl:
+          "https://www.youtube.com/embed/rOpEN1JDaD0?si=0VSt4uBAMbGP2mnm",
       },
       {
         tenBaiHoc: "Đánh giá và cải thiện trải nghiệm người dùng",
         thoiLuong: "25 phút",
+        videoUrl:
+          "https://www.youtube.com/embed/rOpEN1JDaD0?si=0VSt4uBAMbGP2mnm",
       },
+
       {
         tenBaiHoc: "Xu hướng thiết kế UI/UX hiện đại",
         thoiLuong: "15 phút",
+        videoUrl:
+          "https://www.youtube.com/embed/rOpEN1JDaD0?si=0VSt4uBAMbGP2mnm",
       },
       {
         tenBaiHoc: "Kết luận và tổng kết khóa học",
         thoiLuong: "10 phút",
+        videoUrl:
+          "https://www.youtube.com/embed/rOpEN1JDaD0?si=0VSt4uBAMbGP2mnm",
       },
     ],
   },
@@ -243,38 +307,56 @@ export const mockCourses: MockCourse[] = [
       {
         tenBaiHoc: "Giới thiệu về tư duy lập trình",
         thoiLuong: "15 phút",
+        videoUrl:
+          "https://www.youtube.com/embed/rOpEN1JDaD0?si=0VSt4uBAMbGP2mnm",
       },
       {
         tenBaiHoc: "Nguyên tắc First Principles",
         thoiLuong: "20 phút",
+        videoUrl:
+          "https://www.youtube.com/embed/rOpEN1JDaD0?si=0VSt4uBAMbGP2mnm",
       },
       {
         tenBaiHoc: "Cấu trúc dữ liệu nền tảng",
         thoiLuong: "25 phút",
+        videoUrl:
+          "https://www.youtube.com/embed/rOpEN1JDaD0?si=0VSt4uBAMbGP2mnm",
       },
       {
         tenBaiHoc: "Thuật toán cơ bản",
         thoiLuong: "30 phút",
+        videoUrl:
+          "https://www.youtube.com/embed/rOpEN1JDaD0?si=0VSt4uBAMbGP2mnm",
       },
       {
         tenBaiHoc: "Giải quyết bài toán hệ thống phức tạp",
         thoiLuong: "40 phút",
+        videoUrl:
+          "https://www.youtube.com/embed/rOpEN1JDaD0?si=0VSt4uBAMbGP2mnm",
       },
       {
         tenBaiHoc: "Lập trình web nâng cao",
         thoiLuong: "35 phút",
+        videoUrl:
+          "https://www.youtube.com/embed/rOpEN1JDaD0?si=0VSt4uBAMbGP2mnm",
       },
       {
         tenBaiHoc: "Thực hành dự án thực tế",
         thoiLuong: "50 phút",
+        videoUrl:
+          "https://www.youtube.com/embed/rOpEN1JDaD0?si=0VSt4uBAMbGP2mnm",
       },
       {
         tenBaiHoc: "Đánh giá và cải thiện kỹ năng",
         thoiLuong: "25 phút",
+        videoUrl:
+          "https://www.youtube.com/embed/rOpEN1JDaD0?si=0VSt4uBAMbGP2mnm",
       },
       {
         tenBaiHoc: "Kết luận và tổng kết khóa học",
         thoiLuong: "10 phút",
+        videoUrl:
+          "https://www.youtube.com/embed/rOpEN1JDaD0?si=0VSt4uBAMbGP2mnm",
       },
     ],
   },
@@ -299,22 +381,32 @@ export const mockCourses: MockCourse[] = [
       {
         tenBaiHoc: "Giới thiệu về lập trình Fullstack",
         thoiLuong: "15 phút",
+        videoUrl:
+          "https://www.youtube.com/embed/rOpEN1JDaD0?si=0VSt4uBAMbGP2mnm",
       },
       {
         tenBaiHoc: "Thiết kế giao diện Frontend",
         thoiLuong: "30 phút",
+        videoUrl:
+          "https://www.youtube.com/embed/rOpEN1JDaD0?si=0VSt4uBAMbGP2mnm",
       },
       {
         tenBaiHoc: "Xây dựng hệ thống Backend",
         thoiLuong: "40 phút",
+        videoUrl:
+          "https://www.youtube.com/embed/rOpEN1JDaD0?si=0VSt4uBAMbGP2mnm",
       },
       {
         tenBaiHoc: "Quản lý cơ sở dữ liệu",
         thoiLuong: "25 phút",
+        videoUrl:
+          "https://www.youtube.com/embed/rOpEN1JDaD0?si=0VSt4uBAMbGP2mnm",
       },
       {
         tenBaiHoc: "Triển khai sản phẩm thực tế với CI/CD",
         thoiLuong: "35 phút",
+        videoUrl:
+          "https://www.youtube.com/embed/rOpEN1JDaD0?si=0VSt4uBAMbGP2mnm",
       },
     ],
   },

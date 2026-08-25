@@ -40,6 +40,7 @@
   --color-text-on-brand: var(--color-fg-on-brand);
   --color-text-brand: var(--color-fg-brand);
   --color-text-on-overlay: var(--color-fg-on-overlay);
+  --color-text-warning: var(--color-fg-warning);
 
   /* Background Colors */
   --color-bg-base: var(--color-bg-base);
@@ -48,6 +49,8 @@
   --color-bg-subtle: var(--color-bg-subtle);
   --color-bg-brand: var(--color-bg-brand);
   --color-bg-overlay: var(--color-bg-overlay);
+  --color-bg-elevated: var(--color-bg-elevated);
+  --color-bg-warning: var(--color-bg-warning);
 
   /* Border Colors */
   --color-border-default: var(--color-border-default);

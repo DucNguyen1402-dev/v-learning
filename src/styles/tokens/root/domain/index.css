@@ -6,12 +6,10 @@
   --color-bg-promotion: var(--color-yellow-50);
   --color-bg-promotion-urgent: var(--color-rose-600);
 
-
   /* =================================================
     *  border colors
     *================================================== */
   --border-color-promotion: var(--color-yellow-300);
-
 
   /* =================================================
     *  Foreground colors

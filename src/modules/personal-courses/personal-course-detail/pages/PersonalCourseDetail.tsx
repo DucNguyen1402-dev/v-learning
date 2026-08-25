@@ -3,7 +3,7 @@ import { Navigation } from "@shared/navigation";
 
 import {
   CancelEnrollmentButton,
-  CancelEnrollmentModal,
+  CancelEnrollmentModalRender,
   PersonalCourseDetailLeft,
   PersonalCourseDetailRight,
 } from "../components";
@@ -11,16 +11,13 @@ import { usePersonalCourseDetailContext } from "../contexts";
 
 export const PersonalCourseDetail = () => {
   Navigation.hooks.useScrollOnRouteChange();
-  const { courses } = usePersonalCoursesContext();
 
+  const { isCancelModalOpen } = usePersonalCourseDetailContext();
   const { maKhoaHoc } = Navigation.hooks.useParams();
+  const { courses } = usePersonalCoursesContext();
   const targetCourse = courses.find(
     (course) => course.maKhoaHoc === maKhoaHoc,
   )!;
-
-  const { isCancelModalOpen, setIsCancelModalOpen, handleModalConfirm } =
-    usePersonalCourseDetailContext();
-
   return (
     <>
       <div className="min-h-screen p-2 lg:p-8">
@@ -30,13 +27,7 @@ export const PersonalCourseDetail = () => {
           <PersonalCourseDetailRight targetCourse={targetCourse} />
         </div>
       </div>
-      {isCancelModalOpen && (
-        <CancelEnrollmentModal
-          onClose={() => setIsCancelModalOpen(false)}
-          onConfirm={handleModalConfirm}
-          tenKhoaHoc={targetCourse.tenKhoaHoc}
-        />
-      )}
+      <CancelEnrollmentModalRender isOpen={isCancelModalOpen} />
     </>
   );
 };
