@@ -1,0 +1,1 @@
+export { useCourseDetailMutation } from "./useCourseDetailMutation";

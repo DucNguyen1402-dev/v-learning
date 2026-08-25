@@ -1,1 +1,0 @@
-export { useCourseQuery } from "./useCourseQuery";
