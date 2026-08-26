@@ -1,1 +1,1 @@
-export { GlobalProvider } from "./GlobalProvider";
+export { AppProvider } from "./AppProvider";

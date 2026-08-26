@@ -4,6 +4,7 @@ import { NavigationHooks } from "./hooks";
 
 export const Navigation = {
   client: ClientNavigation,
+  admin: ClientNavigation,
   hooks: NavigationHooks,
   components: {
     Go,

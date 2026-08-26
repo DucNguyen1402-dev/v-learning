@@ -1,3 +1,4 @@
+import { useCurrentArea } from "./useAppArea";
 import { useConsumeLocationPayload } from "./useConsumeLocationPayload";
 import { useLocationParams } from "./useLocationParams";
 import { useLocationPathname } from "./useLocationPathname";
@@ -15,5 +16,6 @@ export const NavigationHooks = {
   usePayload: useLocationPayload,
   usePathname: useLocationPathname,
   useShouldConfirmLeave,
+  useCurrentArea,
   useParams: useLocationParams,
 };

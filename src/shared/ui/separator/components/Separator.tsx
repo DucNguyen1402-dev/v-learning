@@ -10,7 +10,7 @@ import {
 type SeparatorProps = {
   orientation?: SeparatorOrientation;
   className?: string;
-  intent: SeparatorIntent;
+  intent?: SeparatorIntent;
 };
 export const Separator = ({
   orientation = SEPARATOR_ORIENTATION.HORIZONTAL,

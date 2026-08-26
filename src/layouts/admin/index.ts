@@ -1,3 +1,4 @@
-export { layout, LayoutProvider } from "./contexts";
-export { default as MainLayout } from "./MainLayout";
+export { AdminMainLayout } from "./AdminMainLayout";
+export { LayoutProvider } from "./contexts";
+export { Layout } from "./layout";
 export * from "./shell";

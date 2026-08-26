@@ -12,16 +12,18 @@ export const SidebarProfile = ({ isSidebarOpen }: SidebarProfileProps) => {
     <div>
       {isSidebarOpen && <Separator intent={SeparatorConfig.intents.PRIMARY} />}
       <div
-        className={cn("sidebar-profile group relative", {
-          "sidebar-profile--sidebar-closed": !isSidebarOpen,
+        className={cn("profile-menu group relative", {
+          "profile-menu--sidebar-colapsed": !isSidebarOpen,
         })}
       >
-        <div className="pointer-events-none absolute bottom-10 left-0 opacity-0 transition-opacity duration-500 group-hover:pointer-events-auto group-hover:opacity-100">
-          <ProfileDropdown />
-        </div>
+        {isSidebarOpen && (
+          <div className="dropdown-container dropdown-position-up">
+            <ProfileDropdown />
+          </div>
+        )}
 
-        <UserAvatar />
-        <UserAccount />
+        <UserAvatar enabledProfileLink={!isSidebarOpen} />
+        {isSidebarOpen && <UserAccount />}
       </div>
     </div>
   );
