@@ -6,24 +6,34 @@ import {
 
 import { navigationAreas } from "../config";
 
-export const getNavigationAreaMeta = (key: AdminRouteKey | ClientRouteKey) => {
-  if (isAdminRouteKey(key as AdminRouteKey)) {
-    const path = navigationAreas.admin.paths[key as AdminRouteKey];
+type NavigationAreaMeta = {
+  area: "admin" | "client";
+
+  routeKey: AdminRouteKey | ClientRouteKey;
+};
+export const getNavigationAreaMeta = ({
+  area,
+  routeKey,
+}: NavigationAreaMeta) => {
+  if (isAdminRouteKey(routeKey as AdminRouteKey) && area === "admin") {
+    const url = navigationAreas.admin.urls[routeKey as AdminRouteKey];
     const currentRouteKey = navigationAreas.admin.findKey(location.pathname);
     return {
       navigationArea: navigationAreas.admin,
-      routeKey: key,
-      path,
+      routeKey: routeKey,
+      url,
       currentRouteKey,
     };
   }
-  if (isClientRouteKey(key as ClientRouteKey)) {
-    const path = navigationAreas.client.paths[key as ClientRouteKey];
+  if (isClientRouteKey(routeKey as ClientRouteKey) && area === "client") {
+    const url = navigationAreas.client.urls[routeKey as ClientRouteKey];
+    const currentRouteKey = navigationAreas.client.findKey(location.pathname);
     return {
       navigationArea: navigationAreas.client,
-      routeKey: key,
-      path,
+      routeKey: routeKey,
+      url,
+      currentRouteKey,
     };
   }
-  throw new Error(`Invalid route key: ${key}`);
+  throw new Error(`Invalid route key: ${routeKey}`);
 };

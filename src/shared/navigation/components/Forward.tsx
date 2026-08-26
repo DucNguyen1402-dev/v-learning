@@ -5,6 +5,7 @@ import { cn } from "@shared/utils";
 
 import { type AdminRouteKey } from "../admin";
 import { type ClientRouteKey } from "../client";
+import { useCurrentArea } from "../hooks";
 import { getNavigationAreaMeta } from "./utils";
 
 type ForwardProps = {
@@ -34,11 +35,15 @@ export const Forward = ({
   const state: RouteState | null = location.state;
   const routeHistory = useMemo(() => state?.history ?? [], [state?.history]);
 
-  const navigationAreaMeta = getNavigationAreaMeta(routeKey);
+  const currentArea = useCurrentArea();
+  const navigationAreaMeta = getNavigationAreaMeta({
+    area: currentArea,
+    routeKey,
+  });
 
   return (
     <Link
-      to={navigationAreaMeta.path}
+      to={navigationAreaMeta.url}
       state={{
         history: [...routeHistory, navigationAreaMeta.currentRouteKey],
         payload: payload ?? null,
