@@ -1,4 +1,4 @@
-@layer components {
+@layer layout {
   .client-container {
     @apply layout-container scroll-mt-28 p-2 pb-12 lg:px-8;
   }

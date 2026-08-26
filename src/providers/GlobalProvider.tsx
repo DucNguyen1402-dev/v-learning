@@ -4,10 +4,10 @@ import { Layout } from "@shared/layouts";
 import { AppInteractionLock, Loading, Modal, Toast } from "@shared/overlays";
 import { User } from "@shared/user";
 
-type ClientProvidersProps = {
+type GlobalProvidersProps = {
   children: ReactNode;
 };
-export const ClientProvider = ({ children }: ClientProvidersProps) => (
+export const GlobalProvider = ({ children }: GlobalProvidersProps) => (
   <Layout.Provider>
     <Loading.Provider>
       <Modal.Provider>

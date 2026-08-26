@@ -1,41 +1,20 @@
 import { useLocation } from "react-router-dom";
 
+import { ProfileDropdown, UserAvatar } from "@layouts/shared/components";
 import { CurrentUserStorage } from "@shared/auth";
 import { Navigation } from "@shared/navigation";
-import { User } from "@shared/user";
 
 import { routesHideLoginButton, routesShowLogoutButton } from "../uiRules";
-import {
-  HeaderLogo,
-  HeaderNav,
-  LoginButton,
-  ProfileDropdown,
-  ThemeModeButton,
-} from ".";
+import { HeaderLogo, HeaderNav, LoginButton, ThemeModeButton } from ".";
 import { LogoutButton } from "./LogoutButton";
 
 export const Header = () => {
-  const { avatar } = User.use();
   const currentUser = CurrentUserStorage.tryGet();
   const { pathname } = useLocation();
   const routeKey = Navigation.client.findKey(pathname);
   const shouldHideLoginButton = routeKey && routesHideLoginButton.has(routeKey);
   const shouldShowLogoutButton =
     routeKey && routesShowLogoutButton.has(routeKey) && window.innerWidth < 640;
-
-  const { type, value } = avatar.current;
-  const avatarRender =
-    type === "image" ? (
-      <img
-        src={value}
-        alt="avatar"
-        className="size-10 rounded-full lg:size-8"
-      />
-    ) : (
-      <div className="group relative flex-center size-10 overflow-hidden rounded-pill border border-border-subtle bg-bg-subtle font-bold text-text-default lg:size-8">
-        {value}
-      </div>
-    );
 
   return (
     <header className="header">
@@ -49,17 +28,7 @@ export const Header = () => {
               <div className="lg:hidden">
                 <ThemeModeButton />
               </div>
-              {shouldShowLogoutButton ? (
-                <LogoutButton />
-              ) : (
-                <div className="lg:pointer-events-none lg:cursor-default">
-                  <Navigation.components.Forward
-                    routeKey={Navigation.client.keys.PROFILE}
-                  >
-                    {avatarRender}
-                  </Navigation.components.Forward>
-                </div>
-              )}
+              {shouldShowLogoutButton ? <LogoutButton /> : <UserAvatar />}
               <span className="hidden text-sm font-medium lg:block">
                 {currentUser?.taiKhoan}
               </span>

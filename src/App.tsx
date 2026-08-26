@@ -7,6 +7,15 @@
 //     {ClientRouteTree}
 //   </Routes>
 // );
-import { Sidebar } from "./Sidebar";
+import { UserProfile } from "@shared/user-profile";
 
-export const App = () => <Sidebar />;
+import { Sidebar } from "./sidebar";
+
+import { GlobalProvider } from "@/providers";
+export const App = () => (
+  <GlobalProvider>
+    <UserProfile.Provider>
+      <Sidebar />
+    </UserProfile.Provider>
+  </GlobalProvider>
+);
