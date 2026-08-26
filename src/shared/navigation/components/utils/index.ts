@@ -1,0 +1,1 @@
+export { getNavigationAreaMeta } from "./getNavigationAreaMeta";

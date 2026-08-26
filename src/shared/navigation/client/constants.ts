@@ -11,6 +11,9 @@ export const CLIENT_ROUTE_KEYS = {
   COURSES: "COURSES",
 } as const;
 
+export const clientRouteKeys = Object.values(
+  CLIENT_ROUTE_KEYS,
+) as ClientRouteKey[];
 export const CLIENT_ROUTE_BUILDERS_KEYS = {
   COURSES_DETAIL: "COURSES_DETAIL",
   COURSES_DETAIL_PAYMENT: "COURSES_DETAIL_PAYMENT",
