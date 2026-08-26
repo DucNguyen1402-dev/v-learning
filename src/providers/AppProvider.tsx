@@ -3,11 +3,10 @@ import type { ReactNode } from "react";
 import { Layout } from "@shared/layouts";
 import { AppInteractionLock, Loading, Modal, Toast } from "@shared/overlays";
 import { User } from "@shared/user";
-
-type ClientProvidersProps = {
+type AppProviderProps = {
   children: ReactNode;
 };
-export const ClientProvider = ({ children }: ClientProvidersProps) => (
+export const AppProvider = ({ children }: AppProviderProps) => (
   <Layout.Provider>
     <Loading.Provider>
       <Modal.Provider>

@@ -13,7 +13,7 @@
       "@modules/*": ["./src/modules/*"],
       "@routes": ["./src/routes/index.ts"],
       "@routes/*": ["./src/routes/*"],
-      "@providers/*": ["./src/providers/*"],
+      "@providers/*": ["./src/providers/index.ts"],
       "@shared/*": ["./src/shared/*"],
       "@styles/*": ["./src/styles/*"],
       "@layouts/*": ["./src/layouts/*"]

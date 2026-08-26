@@ -1,4 +1,7 @@
 export { Separator } from "./components";
-import { SEPARATOR_ORIENTATION } from "./constants";
+import { SEPARATOR_INTENTS, SEPARATOR_ORIENTATION } from "./constants";
 
-export const SeparatorConfig = { SEPARATOR_ORIENTATION };
+export const SeparatorConfig = {
+  orientation: SEPARATOR_ORIENTATION,
+  intents: SEPARATOR_INTENTS,
+};

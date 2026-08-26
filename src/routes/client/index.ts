@@ -1,1 +1,1 @@
-export { ClientRouteTree } from "./ClientRouteTree";
+export { clientRouteTree } from "./clientRouteTree";

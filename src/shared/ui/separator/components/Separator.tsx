@@ -1,14 +1,21 @@
 import { cn } from "@shared/utils";
 
-import { separatorOrientationMap } from "../config";
-import { SEPARATOR_ORIENTATION, type SeparatorOrientation } from "../constants";
+import { separatorIntentMap, separatorOrientationMap } from "../config";
+import {
+  SEPARATOR_INTENTS,
+  SEPARATOR_ORIENTATION,
+  type SeparatorIntent,
+  type SeparatorOrientation,
+} from "../constants";
 type SeparatorProps = {
   orientation?: SeparatorOrientation;
   className?: string;
+  intent?: SeparatorIntent;
 };
 export const Separator = ({
   orientation = SEPARATOR_ORIENTATION.HORIZONTAL,
   className,
+  intent = SEPARATOR_INTENTS.SECONDARY,
 }: SeparatorProps) => {
   return (
     <div
@@ -17,6 +24,7 @@ export const Separator = ({
       className={cn(
         "separator",
         separatorOrientationMap[orientation],
+        separatorIntentMap[intent],
         className,
       )}
     />
