@@ -4,6 +4,7 @@
 // // import { clearAuth } from "@shared/utils";
 // import { Clapperboard, LayoutDashboard, Users } from "lucide-react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { Separator } from "@shared/ui";
 import { cn } from "@shared/utils";
@@ -34,6 +35,7 @@ export const Sidebar = () => {
 
   // const onMenuClick = () => toggleSidebar();
 
+  const navigate = useNavigate();
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const toggleSidebar = () => setIsSidebarOpen((prev) => !prev);
 
@@ -53,6 +55,12 @@ export const Sidebar = () => {
           isSidebarOpen={isSidebarOpen}
         />
         <SidebarHeader />
+        <button
+          className="button-base, button-primary solid"
+          onClick={() => navigate("/client/home")}
+        >
+          Trang chủ
+        </button>
         <Separator />
         <SidebarNav isSidebarOpen={isSidebarOpen} />
         <SidebarProfile isSidebarOpen={isSidebarOpen} />

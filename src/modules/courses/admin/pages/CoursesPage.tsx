@@ -3,26 +3,13 @@ import { useEffect } from "react";
 import { Navigation } from "@shared/navigation";
 import { Toast } from "@shared/overlays";
 import { State } from "@shared/state";
-import { Pagination } from "@shared/table";
 
-import { useMovieListContext } from "@features/admin/movies/list/contexts";
-
-import {
-  AddMovieBtn,
-  MoviesTable,
-  MovieStatusFilter,
-  SearchBar,
-  SortSelect,
-} from "../components";
+import { AddCourseButton, CoursesTable } from "../components";
 
 import { Layout } from "@/layouts/admin";
 
 export const CoursesPage = () => {
   const { isSidebarOpen } = Layout.use();
-  const {
-    trailer: { trailer },
-    pagination,
-  } = useMovieListContext();
 
   const { show: showToast } = Toast.use();
   const [toastState] = State.useTemporary(Navigation.hooks.usePayload());
@@ -42,23 +29,11 @@ export const CoursesPage = () => {
       >
         <div className="flex items-center justify-end">
           <div className="flex flex-col gap-4">
-            <AddMovieBtn />
+            <AddCourseButton />
           </div>
         </div>
 
-        <div className="grid grid-cols-6 gap-3 rounded-2xl border border-slate-800/80 bg-[#1e293b]/50 p-4 backdrop-blur-sm">
-          <div className="col-span-3">
-            <SearchBar />
-          </div>
-          <MovieStatusFilter />
-          <SortSelect />
-          <Pagination.components.Select
-            value={pagination.state.currentSize}
-            onChange={() => {}}
-          />
-        </div>
-
-        <MoviesTable />
+        <CoursesTable />
       </div>
     </div>
   );

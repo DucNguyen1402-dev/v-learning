@@ -9,18 +9,19 @@ import { Sidebar } from "./shell";
 export const AdminMainLayout = () => {
   const { isSidebarOpen } = useLayoutContext();
   return (
-    <div className="min-h-screen bg-bg-base">
-      <Sidebar />
+    <>
+      <div className="min-h-screen bg-bg-base">
+        <Sidebar />
 
-      <div
-        className={`${isSidebarOpen ? SIDEBAR_CONTENT_OFFSET : SIDEBAR_COLLAPSED_OFFSET} flex flex-1 flex-col transition-[margin-left] duration-300 ease-in-out`}
-      >
-        <main className="flex-1">
-          <Outlet />
-
-          <GlobalUI />
-        </main>
+        <div
+          className={`${isSidebarOpen ? SIDEBAR_CONTENT_OFFSET : SIDEBAR_COLLAPSED_OFFSET} flex flex-1 flex-col transition-[margin-left] duration-300 ease-in-out`}
+        >
+          <main className="flex-1">
+            <Outlet />
+          </main>
+        </div>
       </div>
-    </div>
+      <GlobalUI />
+    </>
   );
 };

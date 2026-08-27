@@ -1,11 +1,12 @@
+import { useMemo } from "react";
 import type { ReactNode } from "react";
 
 import { cn } from "@shared/utils";
 
 import { type AdminRouteKey } from "../admin";
 import { type ClientRouteKey } from "../client";
+import { getNavigationAreaMeta } from "../helpers";
 import { useCurrentArea } from "../hooks";
-import { getNavigationAreaMeta } from "./utils";
 
 type ForwardProps = {
   children: ReactNode;
@@ -14,6 +15,7 @@ type ForwardProps = {
   className?: string;
   onClick?: () => void;
   disabled?: boolean;
+  area?: "admin" | "client";
 };
 import { Link } from "react-router-dom";
 
@@ -24,12 +26,17 @@ export const Go = ({
   className,
   onClick,
   disabled,
+  area,
 }: ForwardProps) => {
   const currentArea = useCurrentArea();
-  const navigationAreaMeta = getNavigationAreaMeta({
-    area: currentArea,
-    routeKey,
-  });
+  const navigationAreaMeta = useMemo(
+    () =>
+      getNavigationAreaMeta({
+        area: area ?? currentArea,
+        routeKey,
+      }),
+    [area, currentArea, routeKey],
+  );
 
   return (
     <Link

@@ -8,6 +8,7 @@ import { cn } from "@shared/utils";
 import { LogOut, User as UserIcon } from "lucide-react";
 
 export const ProfileDropdown = () => {
+  console.log("ProfileDropdown render");
   const {
     theme: { toggle: toggleTheme, asset: themeAsset },
     refresh: refreshUser,
@@ -17,7 +18,7 @@ export const ProfileDropdown = () => {
   const onLogoutClick = useCallback(() => {
     AuthSession.logout();
     refreshUser();
-    go(Navigation.client.keys.HOME);
+    go(Navigation.client.keys.LOGIN);
   }, [go, refreshUser]);
 
   const menuItems = useMemo(() => {

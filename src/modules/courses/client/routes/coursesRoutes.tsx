@@ -7,7 +7,7 @@ import { courseDetailRoute } from "../course-detail";
 import { CoursesMainLayout } from "../layout";
 import { CoursesPage } from "../pages/CoursesPage";
 
-export const coursesRoute = (
+export const coursesRoutes = (
   <Route
     path={Navigation.client.paths.COURSES}
     element={
