@@ -1,10 +1,10 @@
-import { useForm } from "react-hook-form";
-
+import { useCoursesContext } from "@modules/courses/admin/contexts";
 import { categories } from "@modules/courses/shared/config";
-import { Field, Select } from "@shared/fields";
+import { Category } from "@modules/courses/shared/types";
+import { Select } from "@shared/fields";
 
 export const CourseCategoryFilter = () => {
-  const { control } = useForm();
+  const { filter } = useCoursesContext();
   return (
     <Select.Root>
       <Select.Trigger
@@ -16,15 +16,12 @@ export const CourseCategoryFilter = () => {
           selected: "danh mục: ",
         }}
       />
-      <Field.Controller control={control} name="select">
-        {({ field }) => (
-          <Select.Content
-            value={field.value}
-            onChange={field.onChange}
-            options={categories}
-          />
-        )}
-      </Field.Controller>
+
+      <Select.Content
+        value={filter.category}
+        onChange={(value: Category) => filter.onChangeCategory(value)}
+        options={categories}
+      />
     </Select.Root>
   );
 };

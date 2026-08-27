@@ -3,9 +3,8 @@
 // // import { clearAuth } from "@shared/utils";
 // import { Clapperboard, LayoutDashboard, Users } from "lucide-react";
 
-import { useNavigate } from "react-router-dom";
-
 import { useLayoutContext } from "@layouts/admin/contexts";
+import { Navigation } from "@shared/navigation";
 import { Separator } from "@shared/ui";
 import { cn } from "@shared/utils";
 
@@ -35,8 +34,6 @@ export const Sidebar = () => {
 
   // const onMenuClick = () => toggleSidebar();
 
-  const navigate = useNavigate();
-
   return (
     <aside
       className={cn("group/outer sidebar-position", {
@@ -53,12 +50,15 @@ export const Sidebar = () => {
           isSidebarOpen={isSidebarOpen}
         />
         <SidebarHeader />
-        <button
-          className="button-base, button-primary solid"
-          onClick={() => navigate("/client/home")}
+        <Navigation.components.Go
+          className="button-base button-primary solid rounded-control-sm py-1"
+          routeKey={Navigation.client.keys.HOME}
+          area="client"
         >
-          Trang chủ
-        </button>
+          <div className="flex-center text-sm">
+            <span>Trang chủ</span>
+          </div>
+        </Navigation.components.Go>
         <Separator />
         <SidebarNav isSidebarOpen={isSidebarOpen} />
         <SidebarProfile isSidebarOpen={isSidebarOpen} />

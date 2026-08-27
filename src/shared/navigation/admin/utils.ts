@@ -1,5 +1,7 @@
 import {
   ADMIN_ROUTE_URLS,
+  type AdminRouteBuilderKey,
+  adminRouteBuilderKeys,
   type AdminRouteKey,
   adminRouteKeys,
 } from "./constants";
@@ -17,4 +19,8 @@ export const isRouteActive = (
 
 export const isAdminRouteKey = (key: AdminRouteKey) => {
   return adminRouteKeys.includes(key as keyof typeof ADMIN_ROUTE_URLS);
+};
+
+export const isAdminBuilderKey = (key: AdminRouteBuilderKey) => {
+  return adminRouteBuilderKeys.includes(key);
 };

@@ -1,5 +1,7 @@
 import {
   CLIENT_ROUTE_URLS,
+  type ClientRouteBuilderKey,
+  clientRouteBuilderKeys,
   type ClientRouteKey,
   clientRouteKeys,
 } from "./constants";
@@ -17,5 +19,9 @@ export const isRouteActive = (
 ) => key !== null && CLIENT_ROUTE_URLS[key] === path;
 
 export const isClientRouteKey = (key: ClientRouteKey) => {
-  return clientRouteKeys.includes(key as keyof typeof CLIENT_ROUTE_URLS);
+  return clientRouteKeys.includes(key);
+};
+
+export const isClientRouteBuilderKey = (key: ClientRouteBuilderKey) => {
+  return clientRouteBuilderKeys.includes(key);
 };

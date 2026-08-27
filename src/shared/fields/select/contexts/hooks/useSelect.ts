@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 
-type option = {
+type option<T> = {
   label: string;
-  value: string | number;
+  value: T;
 };
-export const useSelect = () => {
+export const useSelect = <T>() => {
   const [isOpen, setIsOpen] = useState(false);
-  const [option, setOption] = useState<option>({ label: "", value: "" });
+  const [option, setOption] = useState<option<T> | null>(null);
   const toggle = () => setIsOpen(!isOpen);
   const close = () => setIsOpen(false);
 

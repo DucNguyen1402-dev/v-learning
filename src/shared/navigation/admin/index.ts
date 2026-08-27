@@ -1,3 +1,8 @@
 export { AdminNavigation } from "./AdminNavigation";
-export { type AdminRouteKey, adminRouteKeys } from "./constants";
-export { isAdminRouteKey } from "./utils";
+export {
+  type AdminRouteBuilderKey,
+  adminRouteBuilderKeys,
+  type AdminRouteKey,
+  adminRouteKeys,
+} from "./constants";
+export { isAdminBuilderKey, isAdminRouteKey } from "./utils";

@@ -1,18 +1,18 @@
 import { useSelectContext } from "../contexts";
 import { SelectItem } from "./SelectItem";
 
-type SelectGroupItemProps = {
+type SelectGroupItemProps<T> = {
   label: string;
-  options: Array<{ value: string | number; label: string }>;
-  onChange: (value: string | number) => void;
-  value: string | number | null;
+  options: Array<{ value: T; label: string }>;
+  onChange: (value: T) => void;
+  value: T | null;
 };
-export const SelectGroupItem = ({
+export const SelectGroupItem = <T,>({
   label,
   options,
   onChange,
   value,
-}: SelectGroupItemProps) => {
+}: SelectGroupItemProps<T>) => {
   const { close, setOption } = useSelectContext();
 
   const onItemClick = ({
@@ -20,7 +20,7 @@ export const SelectGroupItem = ({
     value,
   }: {
     label: string;
-    value: string | number;
+    value: T;
   }) => {
     onChange(value);
     setOption({ label, value });

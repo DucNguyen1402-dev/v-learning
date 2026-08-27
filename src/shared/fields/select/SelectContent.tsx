@@ -1,30 +1,24 @@
 import { SelectGroupItem, SelectItem } from "./components";
 import { useSelectContext } from "./contexts";
-type DropdownMenuProps = {
+type DropdownMenuProps<T> = {
   options: ReadonlyArray<
-    | { value: string | number; label: string }
+    | { value: T; label: string }
     | {
         label: string;
-        options: Array<{ value: string | number; label: string }>;
+        options: Array<{ value: T; label: string }>;
       }
   >;
-  value: string | number | null;
-  onChange: (value: string | number) => void;
+  value: T | null;
+  onChange: (value: T) => void;
 };
-export const SelectContent = ({
+export const SelectContent = <T,>({
   options,
   value,
   onChange,
-}: DropdownMenuProps) => {
+}: DropdownMenuProps<T>) => {
   const { isOpen, close, setOption, selectRef } = useSelectContext();
 
-  const onItemClick = ({
-    label,
-    value,
-  }: {
-    label: string;
-    value: string | number;
-  }) => {
+  const onItemClick = ({ label, value }: { label: string; value: T }) => {
     onChange(value);
     close();
     setOption({ label, value });

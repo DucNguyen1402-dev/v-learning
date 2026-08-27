@@ -1,19 +1,17 @@
 import { cn } from "@shared/utils";
-type SelectItemProps = {
-  value: string | number;
+type SelectItemProps<T> = {
+  value: T;
   label: string;
   onClick: () => void;
   selected: boolean;
 };
 
-export const SelectItem = ({
-  value,
+export const SelectItem = <T,>({
   label,
   onClick,
   selected,
-}: SelectItemProps) => (
+}: SelectItemProps<T>) => (
   <li
-    key={value}
     className={cn("select-dropdown-menu-list-item", {
       "select-dropdown-menu-list-item-selected": selected,
     })}
