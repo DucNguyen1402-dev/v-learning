@@ -13,11 +13,17 @@ export const SelectGroupItem = ({
   onChange,
   value,
 }: SelectGroupItemProps) => {
-  const { close, setValue } = useSelectContext();
+  const { close, setOption } = useSelectContext();
 
-  const onItemClick = (value: string | number) => {
+  const onItemClick = ({
+    label,
+    value,
+  }: {
+    label: string;
+    value: string | number;
+  }) => {
     onChange(value);
-    setValue(value);
+    setOption({ label, value });
     close();
   };
 
@@ -31,7 +37,7 @@ export const SelectGroupItem = ({
             value={option.value}
             selected={value === option.value}
             onClick={() => {
-              onItemClick(option.value);
+              onItemClick({ label: option.label, value: option.value });
             }}
             label={option.label}
           />

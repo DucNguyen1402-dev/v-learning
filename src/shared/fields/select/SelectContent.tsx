@@ -1,9 +1,7 @@
-import { useEffect } from "react";
-
 import { SelectGroupItem, SelectItem } from "./components";
 import { useSelectContext } from "./contexts";
 type DropdownMenuProps = {
-  options: Array<
+  options: ReadonlyArray<
     | { value: string | number; label: string }
     | {
         label: string;
@@ -18,19 +16,25 @@ export const SelectContent = ({
   value,
   onChange,
 }: DropdownMenuProps) => {
-  const { isOpen, close, setValue, selectRef } = useSelectContext();
+  const { isOpen, close, setOption, selectRef } = useSelectContext();
 
-  const onItemClick = (value: string | number) => {
+  const onItemClick = ({
+    label,
+    value,
+  }: {
+    label: string;
+    value: string | number;
+  }) => {
     onChange(value);
     close();
-    setValue(value);
+    setOption({ label, value });
   };
 
-  useEffect(() => {
-    if (value !== null) {
-      setValue(value);
-    }
-  }, [value, setValue]);
+  // useEffect(() => {
+  //   if (value !== null) {
+  //     setOption({ label: "", value });
+  //   }
+  // }, [value, setOption]);
   return isOpen ? (
     <div className="select-dropdown-menu-container" ref={selectRef}>
       <ul className="select-dropdown-menu-list scrollbar">
@@ -51,7 +55,9 @@ export const SelectContent = ({
               selected={value === item.value}
               key={item.value}
               value={item.value}
-              onClick={() => onItemClick(item.value)}
+              onClick={() =>
+                onItemClick({ label: item.label, value: item.value })
+              }
               label={item.label}
             />
           );

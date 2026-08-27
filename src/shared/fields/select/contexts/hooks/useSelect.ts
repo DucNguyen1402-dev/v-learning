@@ -1,8 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 
+type option = {
+  label: string;
+  value: string | number;
+};
 export const useSelect = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [value, setValue] = useState<string | number | null>(null);
+  const [option, setOption] = useState<option>({ label: "", value: "" });
   const toggle = () => setIsOpen(!isOpen);
   const close = () => setIsOpen(false);
 
@@ -26,10 +30,10 @@ export const useSelect = () => {
 
   return {
     isOpen,
-    value,
+    option,
     toggle,
     close,
-    setValue,
+    setOption,
     selectRef,
   };
 };
