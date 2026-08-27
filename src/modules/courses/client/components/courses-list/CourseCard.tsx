@@ -53,7 +53,7 @@ export const CourseCard = ({ course }: CourseCardProps) => {
         </div>
         <div className="py-2">
           <Navigation.components.ForwardWithParam
-            routeBuilderKey={Navigation.client.buildersKeys.COURSES_DETAIL}
+            builderRouteKey={Navigation.client.buildersKeys.COURSES_DETAIL}
             param={course.maKhoaHoc}
             className="button-base button-primary solid w-full py-2 text-sm"
           >

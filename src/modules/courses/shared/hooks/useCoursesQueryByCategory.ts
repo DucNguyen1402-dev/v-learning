@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { getCoursesByCategory } from "../api";
 import type { Category } from "../types";
 type UseCoursesQueryByCategoryParams = {
-  category: Category | "all";
+  category: Category | null;
 };
 export const useCoursesQueryByCategory = ({
   category,
@@ -11,6 +11,6 @@ export const useCoursesQueryByCategory = ({
   return useQuery({
     queryKey: ["courses-by-category", category],
     queryFn: () => getCoursesByCategory(category),
-    enabled: category !== "all",
+    enabled: category !== null,
   });
 };

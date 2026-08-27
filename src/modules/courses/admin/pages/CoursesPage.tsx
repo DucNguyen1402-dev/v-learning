@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 
+import { CoursesFooter } from "@modules/courses/shared/components";
+import { useCoursesContext } from "@modules/courses/shared/contexts";
 import { Navigation } from "@shared/navigation";
 import { Toast } from "@shared/overlays";
 import { State } from "@shared/state";
@@ -17,6 +19,7 @@ import { Layout } from "@/layouts/admin";
 
 export const CoursesPage = () => {
   const { isSidebarOpen } = Layout.use();
+  Navigation.hooks.useScrollOnRouteChange();
 
   const { show: showToast } = Toast.use();
   const [toastState] = State.useTemporary(Navigation.hooks.usePayload());
@@ -29,26 +32,28 @@ export const CoursesPage = () => {
     consumePayload();
   }, [toastState, showToast, consumePayload]);
 
+  const { courses } = useCoursesContext();
   return (
-    <div className="min-h-screen px-6 pt-20 pb-8">
-      <div
-        className={`mx-auto flex w-full flex-col gap-16 transition-[max-width] duration-300 ease-in-out ${isSidebarOpen ? "max-w-full 2xl:max-w-360" : "max-w-7xl 2xl:max-w-340"}`}
-      >
-        <div className="flex items-center justify-between">
-          <div className="flex flex-1 items-center gap-5">
-            <div className="w-full max-w-80">
-              <CourseSearchBar />
+    <Pagination.Provider items={courses} resetDeps={[courses]}>
+      <div className="min-h-screen px-6 pt-20 pb-20">
+        <div
+          className={`mx-auto flex w-full flex-col gap-16 transition-[max-width] duration-300 ease-in-out ${isSidebarOpen ? "max-w-full 2xl:max-w-360" : "max-w-7xl 2xl:max-w-340"}`}
+        >
+          <div className="flex items-center justify-between">
+            <div className="flex flex-1 items-center gap-5">
+              <div className="w-full max-w-80">
+                <CourseSearchBar />
+              </div>
+              <CourseCategoryFilter />
+              <CourseSortSelect />
             </div>
-            <CourseCategoryFilter />
-            <CourseSortSelect />
-            <Pagination.components.Select value={""} onChange={() => {}} />
+
+            <AddCourseButton />
           </div>
-
-          <AddCourseButton />
+          <CoursesTable isSidebarOpen={isSidebarOpen} />
+          <CoursesFooter />
         </div>
-
-        <CoursesTable isSidebarOpen={isSidebarOpen} />
       </div>
-    </div>
+    </Pagination.Provider>
   );
 };

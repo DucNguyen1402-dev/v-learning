@@ -30,7 +30,7 @@ export const SelectTrigger = ({
   const state = displayState({
     disabled,
     selecting: isOpen,
-    selected: option.value,
+    selected: option?.value,
   });
 
   const isDesktop = window.innerWidth >= 1024;
@@ -38,8 +38,8 @@ export const SelectTrigger = ({
   const content = {
     disabled: labels?.disabled ?? "",
     selecting: <LabelElipsis />,
-    selected: option.label,
-    placeholder: labels?.placeholder,
+    selected: option?.label,
+    default: `Tất cả`,
   }[state];
 
   const hasValue = option?.value != null;

@@ -1,17 +1,20 @@
-import { useCourseQuery } from "@modules/courses/shared/hooks";
+import { useCoursesContext } from "@modules/courses/shared/contexts";
 import { TableEmptyState } from "@shared/table";
 
 import { CourseItem } from "./course-item";
 import { CourseTableSkeleton } from "./CourseTableSkeleton";
 
 export const CoursesTable = ({ isSidebarOpen }: { isSidebarOpen: boolean }) => {
-  const { data: courseData, isPending } = useCourseQuery();
+  const {
+    courses,
+    status: { isLoading },
+  } = useCoursesContext();
 
   const renderTableContent = () => {
-    if (isPending) {
+    if (isLoading) {
       return <CourseTableSkeleton />;
     }
-    const isEmptyMovieList = !courseData || courseData.length === 0;
+    const isEmptyMovieList = !courses || courses.length === 0;
     if (isEmptyMovieList) {
       return (
         <TableEmptyState
@@ -23,9 +26,9 @@ export const CoursesTable = ({ isSidebarOpen }: { isSidebarOpen: boolean }) => {
       );
     }
 
-    return courseData
-      .slice(0, 20)
-      .map((course) => <CourseItem key={course.maKhoaHoc} course={course} />);
+    return courses.map((course) => (
+      <CourseItem key={course.maKhoaHoc} course={course} />
+    ));
   };
 
   return (
@@ -45,8 +48,8 @@ export const CoursesTable = ({ isSidebarOpen }: { isSidebarOpen: boolean }) => {
             <th
               className={
                 isSidebarOpen
-                  ? "3xl:w-85 px-4 2xl:w-55"
-                  : "3xl:w-90 px-4 2xl:w-60"
+                  ? "3xl:w-95 px-4 2xl:w-65"
+                  : "3xl:w-100 px-4 2xl:w-70"
               }
             >
               Khóa học

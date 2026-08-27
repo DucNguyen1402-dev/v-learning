@@ -1,4 +1,4 @@
-import { useCoursesContext } from "@modules/courses/client/contexts";
+import { useCoursesContext } from "@modules/courses/shared/contexts";
 import { Pagination } from "@shared/table";
 import { createArray } from "@shared/utils";
 

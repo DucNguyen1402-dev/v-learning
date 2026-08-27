@@ -51,7 +51,7 @@ export const Sidebar = () => {
         />
         <SidebarHeader />
         <Navigation.components.Go
-          className="button-base button-primary solid rounded-control-sm py-1"
+          className={`button-base button-primary solid rounded-control-sm py-1 transition-opacity duration-150 ${isSidebarOpen ? "" : "opacity-0"}`}
           routeKey={Navigation.client.keys.HOME}
           area="client"
         >
@@ -59,7 +59,7 @@ export const Sidebar = () => {
             <span>Trang chủ</span>
           </div>
         </Navigation.components.Go>
-        <Separator />
+        {isSidebarOpen && <Separator />}
         <SidebarNav isSidebarOpen={isSidebarOpen} />
         <SidebarProfile isSidebarOpen={isSidebarOpen} />
       </div>

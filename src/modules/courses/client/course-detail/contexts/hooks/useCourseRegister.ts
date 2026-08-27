@@ -1,4 +1,4 @@
-import { useCourseDetailMutation } from "@modules/courses/client/hooks";
+import { useRegisterMutation } from "@modules/courses/client/hooks";
 import { CurrentUserStorage } from "@shared/auth";
 import { ENTITIES } from "@shared/domain";
 import { getErrorMessage } from "@shared/error";
@@ -8,7 +8,7 @@ import { Toast } from "@shared/overlays";
 
 export const useCourseRegister = ({ maKhoaHoc }: { maKhoaHoc: string }) => {
   const { mutateAsync: registerCourse, isPending: isRegistering } =
-    useCourseDetailMutation();
+    useRegisterMutation();
 
   const { go } = Navigation.hooks.useNavigate();
   const currentUser = CurrentUserStorage.get();

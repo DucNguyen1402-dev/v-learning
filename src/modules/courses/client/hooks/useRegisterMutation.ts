@@ -3,7 +3,7 @@ import { useQueryClient } from "@tanstack/react-query";
 
 import { registerCourse } from "../api";
 
-export const useCourseDetailMutation = () => {
+export const useRegisterMutation = () => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: registerCourse,

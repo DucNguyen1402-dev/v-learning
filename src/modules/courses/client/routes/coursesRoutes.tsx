@@ -1,8 +1,8 @@
 import { Route } from "react-router-dom";
 
+import { CoursesProvider } from "@modules/courses/shared/contexts";
 import { Navigation } from "@shared/navigation";
 
-import { CoursesProvider } from "../contexts";
 import { courseDetailRoute } from "../course-detail";
 import { CoursesMainLayout } from "../layout";
 import { CoursesPage } from "../pages/CoursesPage";

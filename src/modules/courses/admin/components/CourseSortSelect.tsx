@@ -33,7 +33,6 @@ export const CourseSortSelect = () => {
       <Select.Trigger
         id="select"
         labels={{
-          placeholder: "Chọn sắp xếp",
           disabled: "Disabled",
           required: "Required",
         }}

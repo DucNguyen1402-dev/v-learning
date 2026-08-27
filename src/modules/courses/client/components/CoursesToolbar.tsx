@@ -1,4 +1,5 @@
 import { categories } from "@modules/courses/shared/config";
+import { useCoursesContext } from "@modules/courses/shared/contexts";
 import { Input } from "@shared/fields";
 import {
   Button,
@@ -9,8 +10,6 @@ import {
 import { cn } from "@shared/utils";
 import { capitalize } from "@shared/utils";
 import { Search } from "lucide-react";
-
-import { useCoursesContext } from "../contexts";
 
 export const CoursesToolbar = () => {
   const {
@@ -56,8 +55,8 @@ export const CoursesToolbar = () => {
             appearance={BUTTON_APPEARANCES.OUTLINE}
             size={BUTTON_SIZES.NONE}
             fullSize
-            selected={category === "all"}
-            onClick={() => onChangeCategory("all")}
+            selected={category === null}
+            onClick={() => onChangeCategory(null)}
           >
             <span className="py-2.5 text-xs font-medium">Tất cả</span>
           </Button>

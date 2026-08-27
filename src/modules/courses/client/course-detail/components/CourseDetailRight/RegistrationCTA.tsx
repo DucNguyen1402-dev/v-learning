@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react";
 export const RegistrationCTA = ({ maKhoaHoc }: { maKhoaHoc: string }) => {
   return (
     <Navigation.components.ForwardWithParam
-      routeBuilderKey={Navigation.client.buildersKeys.COURSES_DETAIL_PAYMENT}
+      builderRouteKey={Navigation.client.buildersKeys.COURSES_DETAIL_PAYMENT}
       param={maKhoaHoc}
       className="group button-base button-primary solid w-full py-2 lg:py-3"
     >

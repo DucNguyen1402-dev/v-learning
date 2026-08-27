@@ -19,7 +19,7 @@ export const useCourses = () => {
 
   const { category, onChangeCategory } = useCoursesFilterByCategory();
 
-  const isPaginatedSource = category === "all";
+  const isPaginatedSource = category === null;
 
   const {
     data: courses = EMPTY_PAGINATED_COURSE,
@@ -81,7 +81,7 @@ export const useCourses = () => {
       tenKhoaHoc,
       onSearchByCoursesName,
       category,
-      shouldHideSearch: category !== "all",
+      shouldHideSearch: category !== null,
       onChangeCategory,
       handleClearSearch,
     },
