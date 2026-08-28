@@ -6,12 +6,13 @@ import { SquarePen, Trash } from "lucide-react";
 import { useCourseDeletion } from "./hooks";
 type CourseItemProps = {
   course: Course;
+  isRecentlyAffected?: boolean;
 };
-export const CourseItem = ({ course }: CourseItemProps) => {
+export const CourseItem = ({ course, isRecentlyAffected }: CourseItemProps) => {
   const { onDeleteClick } = useCourseDeletion();
   return (
     <tr
-      className={`group border-t border-border-muted text-sm transition-colors duration-150 ease-in-out hover:bg-bg-subtle`}
+      className={`group border-t border-border-muted text-sm transition-colors duration-150 ease-in-out hover:bg-bg-subtle ${isRecentlyAffected ? "animate-success-row" : ""}`}
     >
       <td className="py-4 pl-8 text-xs">#{course.maKhoaHoc}</td>
 

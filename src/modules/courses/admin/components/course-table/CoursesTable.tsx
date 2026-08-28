@@ -4,9 +4,17 @@ import { TableEmptyState } from "@shared/table";
 import { CourseItem } from "./course-item";
 import { CourseTableSkeleton } from "./CourseTableSkeleton";
 
-export const CoursesTable = ({ isSidebarOpen }: { isSidebarOpen: boolean }) => {
+type CoursesTableProps = {
+  isSidebarOpen: boolean;
+  affectedCourseId?: string;
+};
+
+export const CoursesTable = ({
+  isSidebarOpen,
+  affectedCourseId,
+}: CoursesTableProps) => {
   const {
-    courses,
+    courses ,
     status: { isLoading },
   } = useCoursesContext();
 
@@ -27,7 +35,11 @@ export const CoursesTable = ({ isSidebarOpen }: { isSidebarOpen: boolean }) => {
     }
 
     return courses.map((course) => (
-      <CourseItem key={course.maKhoaHoc} course={course} />
+      <CourseItem
+        key={course.maKhoaHoc}
+        course={course}
+        isRecentlyAffected={course.maKhoaHoc === affectedCourseId}
+      />
     ));
   };
 

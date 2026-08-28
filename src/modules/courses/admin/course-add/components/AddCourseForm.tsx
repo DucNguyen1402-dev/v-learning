@@ -76,6 +76,7 @@ export const AddCourseForm = () => {
                 )}
               </Field.Controller>
             </Select.Root>
+            <Field.ErrorMessage message={errors.maDanhMucKhoaHoc?.message} />
           </Field.Root>
         </div>
         <div className="mt-20 flex justify-end gap-4">

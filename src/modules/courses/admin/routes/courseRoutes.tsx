@@ -12,7 +12,7 @@ export const courseRoutes = (
     <Route
       index
       element={
-        <CoursesProvider>
+        <CoursesProvider shouldEnrichData={false}>
           <CoursesPage />
         </CoursesProvider>
       }

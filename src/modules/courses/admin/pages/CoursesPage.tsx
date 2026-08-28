@@ -21,17 +21,19 @@ export const CoursesPage = () => {
   Navigation.hooks.useScrollOnRouteChange();
 
   const { show: showToast } = Toast.use();
-  const [toastState] = State.useTemporary(Navigation.hooks.usePayload());
+  const { toastState, maKhoaHoc } = Navigation.hooks.usePayload() ?? {};
+  const [toast] = State.useTemporary(toastState);
   const consumePayload = Navigation.hooks.useConsumePayload();
 
   useEffect(() => {
-    if (!toastState) return;
-    showToast(toastState);
+    if (!toast) return;
+    showToast(toast);
 
     consumePayload();
-  }, [toastState, showToast, consumePayload]);
+  }, [toast, showToast, consumePayload]);
 
   const { courses } = useCoursesContext();
+
   return (
     <Pagination.Provider items={courses} resetDeps={[courses]}>
       <div className="min-h-screen px-6 pt-20 pb-20">
@@ -48,7 +50,10 @@ export const CoursesPage = () => {
 
             <AddCourseButton />
           </div>
-          <CoursesTable isSidebarOpen={isSidebarOpen} />
+          <CoursesTable
+            isSidebarOpen={isSidebarOpen}
+            affectedCourseId={maKhoaHoc}
+          />
           <CoursesFooter />
         </div>
       </div>

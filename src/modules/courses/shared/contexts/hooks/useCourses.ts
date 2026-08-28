@@ -11,7 +11,10 @@ import {
 import { enrichCoursesWithMockData } from "@modules/courses/shared/utils";
 import { Pagination } from "@shared/table";
 
-export const useCourses = () => {
+type UseCoursesProps = {
+  shouldEnrichData?: boolean;
+};
+export const useCourses = ({ shouldEnrichData = true }: UseCoursesProps) => {
   const { pagination, setPagination } = Pagination.hooks.useState();
 
   const { onSearchByCoursesName, tenKhoaHoc, handleClearSearch } =
@@ -61,7 +64,10 @@ export const useCourses = () => {
   });
 
   const targetCourses = isPaginatedSource ? courses.items : coursesByCategory;
-  const enrichedCourses = enrichCoursesWithMockData(targetCourses);
+
+  const renderCourses = shouldEnrichData
+    ? enrichCoursesWithMockData(targetCourses)
+    : targetCourses;
 
   Pagination.hooks.useEffect({
     setPagination,
@@ -75,7 +81,7 @@ export const useCourses = () => {
     : isPendingByCategory || isFetchingByCategory;
 
   return {
-    courses: enrichedCourses,
+    courses: renderCourses,
     isSourceByCategory: !isPaginatedSource,
     filter: {
       tenKhoaHoc,

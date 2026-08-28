@@ -1,7 +1,7 @@
 import { format } from "date-fns";
 
-import type { AddCourseFormData, AddCoursePayload } from "../types";
-import { generateCourseAlias, generateCourseId } from "../utils";
+import type { AddCourseFormData, AddCoursePayload } from "../../types";
+import { generateCourseAlias, generateCourseId } from "./utils";
 export const createAddCoursePayload = (
   data: AddCourseFormData,
 ): AddCoursePayload => {
@@ -12,11 +12,10 @@ export const createAddCoursePayload = (
     moTa: data.moTa,
     luotXem: 0,
     danhGia: 0,
-    hinhAnh:
-      "https://cdnv2.tgdd.vn/mwg-static/tgdd/Products/Images/7077/344752/apple-watch-series-11-gps-cellular-42mm-vien-nhom-day-the-thao-den-2-638931875900244422-750x500.jpg",
+    hinhAnh: data.hinhAnh[0].name,
     maNhom: "GP01",
     ngayTao: format(new Date(), "dd/MM/yyyy"),
     maDanhMucKhoaHoc: data.maDanhMucKhoaHoc,
-    taiKhoanNguoiTao: "bonnamsau",
+    taiKhoanNguoiTao: "",
   };
 };
