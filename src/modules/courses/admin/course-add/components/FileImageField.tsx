@@ -17,8 +17,8 @@ export const FileImageField = ({
   imgPreview,
 }: FileImageFieldProps) => {
   return (
-    <div className="flex justify-between rounded-sm border border-gray-600 px-5 py-3">
-      <div className="flex flex-col gap-4">
+    <div className="flex h-full flex-col items-center gap-4 rounded-control border border-border-subtle bg-bg-default p-6 shadow-surface">
+      <div className="rounded-container border border-border-default p-4">
         <Field.Root>
           <Field.Label target="hinhAnh" text="Hình ảnh khóa học" />
 
@@ -38,12 +38,13 @@ export const FileImageField = ({
           </Input.Root>
         </Field.Root>
       </div>
+
       {imgPreview && (
-        <div>
+        <div className="w-90 overflow-hidden rounded-container border border-border-subtle">
           <img
             src={imgPreview}
             alt="Preview"
-            className="h-full w-32 rounded border border-neutral-200 object-cover"
+            className="h-full w-full object-cover"
           />
         </div>
       )}

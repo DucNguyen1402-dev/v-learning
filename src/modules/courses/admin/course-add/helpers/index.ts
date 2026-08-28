@@ -1,0 +1,1 @@
+export { createAddCoursePayload } from "./createAddCoursePayload";

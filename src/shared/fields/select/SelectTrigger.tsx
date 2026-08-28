@@ -17,6 +17,7 @@ type SelectTriggerProps = {
   };
   icon?: React.ComponentType<{ className: string }>;
   entity?: string;
+  shouldShowPlaceholder?: boolean;
 };
 
 export const SelectTrigger = ({
@@ -25,6 +26,7 @@ export const SelectTrigger = ({
   labels,
   invalid,
   entity,
+  shouldShowPlaceholder = false,
 }: SelectTriggerProps) => {
   const { isOpen, toggle, option } = useSelectContext();
   const state = displayState({
@@ -39,7 +41,7 @@ export const SelectTrigger = ({
     disabled: labels?.disabled ?? "",
     selecting: <LabelElipsis />,
     selected: option?.label,
-    default: `Tất cả`,
+    default: shouldShowPlaceholder ? (labels?.placeholder ?? "") : "Tất cả",
   }[state];
 
   const hasValue = option?.value != null;

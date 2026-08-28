@@ -3,10 +3,10 @@ import { useState } from "react";
 import { ENTITIES } from "@shared/domain";
 import { getErrorMessage } from "@shared/error";
 import { execution } from "@shared/execution";
-import { createCourseFormData } from "@shared/form-utils";
 import { Navigation } from "@shared/navigation";
 import { Loading, Modal, Toast } from "@shared/overlays";
 
+import { createAddCoursePayload } from "../helpers";
 import type { AddCourseFormData } from "../types";
 import { useAddCourseMutation } from "./useAddCourseMutation";
 import { useAddForm } from "./useAddForm";
@@ -40,13 +40,17 @@ export function useAddCourseActions() {
     reader.readAsDataURL(file);
   };
 
-  const handleCancelClick = () => back();
-
-  const onCancelClick = () =>
-    modalApi.open({
-      ...Modal.config.unsavedChanges(ENTITIES.COURSE),
-      onConfirm: handleCancelClick,
-    });
+  const onCancelClick = () => {
+    if (isDirty) {
+      console.log("isDirty", isDirty);
+      modalApi.open({
+        ...Modal.config.unsavedChanges(ENTITIES.COURSE),
+        onConfirm: () => back(),
+      });
+      return;
+    }
+    back();
+  };
 
   const onValid = (data: AddCourseFormData) =>
     modalApi.open({
@@ -57,19 +61,16 @@ export function useAddCourseActions() {
   const handleSubmitEvent = () => void handleSubmit(onValid)();
 
   const handleSubmitNewCourse = async (data: AddCourseFormData) => {
-    const formData = createCourseFormData(data);
-
-    const submitNewCourseTask = () => mutateAsync(formData);
+    const payload = createAddCoursePayload(data);
+    const submitNewCourseTask = () => mutateAsync(payload);
 
     try {
-      const response = await execution.runAsyncTask(
-        submitNewCourseTask,
-        loader,
-      );
+      await execution.runAsyncTask(submitNewCourseTask, loader);
 
       go(Navigation.admin.keys.COURSES, {
         toastState: Toast.config.success.add(ENTITIES.COURSE),
-        maKhoaHoc: response.data.content.maKhoaHoc,
+        maKhoaHoc: payload.maKhoaHoc,
+        area: "admin",
       });
     } catch (error) {
       toaster.show(

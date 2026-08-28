@@ -15,11 +15,13 @@ type DropdownMenuProps<T> = {
   >;
   value: T | null;
   onChange: (value: T | null) => void;
+  hideAllOption?: boolean;
 };
 export const SelectContent = <T,>({
   options,
   value,
   onChange,
+  hideAllOption = false,
 }: DropdownMenuProps<T>) => {
   const { isOpen, close, setOption, selectRef } = useSelectContext();
 
@@ -44,15 +46,17 @@ export const SelectContent = <T,>({
   return isOpen ? (
     <div className="select-dropdown-menu-container" ref={selectRef}>
       <ul className="select-dropdown-menu-list scrollbar">
-        <li
-          value="null"
-          onClick={() => onItemClick({ label: "Tất cả", value: null })}
-          className={cn("select-dropdown-menu-list-item", {
-            "select-dropdown-menu-list-item-selected": value === null,
-          })}
-        >
-          Tất cả
-        </li>
+        {!hideAllOption && (
+          <li
+            value="null"
+            onClick={() => onItemClick({ label: "Tất cả", value: null })}
+            className={cn("select-dropdown-menu-list-item", {
+              "select-dropdown-menu-list-item-selected": value === null,
+            })}
+          >
+            Tất cả
+          </li>
+        )}
         {options.map((item, index) => {
           if ("options" in item) {
             return (

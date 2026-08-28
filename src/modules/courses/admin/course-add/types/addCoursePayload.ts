@@ -12,6 +12,9 @@ export type AddCoursePayload = {
   taiKhoanNguoiTao: string;
 };
 
-export type AddCourseFormData = Omit<AddCoursePayload, "hinhAnh"> & {
+export type AddCourseFormData = Pick<
+  AddCoursePayload,
+  "tenKhoaHoc" | "moTa" | "maDanhMucKhoaHoc"
+> & {
   hinhAnh: File[];
 };

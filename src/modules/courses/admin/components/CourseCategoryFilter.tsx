@@ -7,20 +7,22 @@ export const CourseCategoryFilter = () => {
   const { filter } = useCoursesContext();
 
   return (
-    <Select.Root>
-      <Select.Trigger
-        id="select"
-        labels={{
-          disabled: "Disabled",
-          required: "Required",
-        }}
-      />
+    <div className="w-full max-w-50">
+      <Select.Root>
+        <Select.Trigger
+          id="select"
+          labels={{
+            disabled: "Disabled",
+            required: "Required",
+          }}
+        />
 
-      <Select.Content
-        value={filter.category}
-        onChange={(value: Category | null) => filter.onChangeCategory(value)}
-        options={categories}
-      />
-    </Select.Root>
+        <Select.Content
+          value={filter.category}
+          onChange={(value: Category | null) => filter.onChangeCategory(value)}
+          options={categories}
+        />
+      </Select.Root>
+    </div>
   );
 };
