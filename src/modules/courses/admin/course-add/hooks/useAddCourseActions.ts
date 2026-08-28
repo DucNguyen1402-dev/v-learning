@@ -91,7 +91,8 @@ export function useAddCourseActions() {
         Toast.config.error(
           getErrorMessage({
             error,
-            messageForInternalSeverError: "Đã xảy ra lỗi khi thêm khóa học mới",
+            messageForInternalSeverError:
+              "Tên khóa học đã tồn tại. Vui lòng chọn tên khác.",
           }),
         ),
       );

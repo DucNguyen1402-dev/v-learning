@@ -3,13 +3,16 @@
     @keyframes successHightlight {
         50% {
             background-color: color-mix(in srgb, var(--color-bg-success) 80%, var(--color-bg-default) 20%);
+            color: var(--color-fg-on-feedback)
         }
     }
 
     @keyframes successHightlightDark {
         50% {
             background-color: color-mix(in srgb, var(--color-bg-success) 40%, var(--color-bg-default) 60%);
+             color: var(--color-fg-on-feedback)
         }
+        
     }
 
 

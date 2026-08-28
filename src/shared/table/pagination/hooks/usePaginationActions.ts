@@ -10,8 +10,14 @@ export const usePaginationActions = ({
   setPagination,
   pagination,
 }: UseCoursesPaginationProps) => {
-  const { onPrevClick, onNextClick, onPageClick, setSize, setPage } =
-    usePaginationActionsContext({ setPagination, pagination });
+  const {
+    onPrevClick,
+    onNextClick,
+    onPageClick,
+    setSize,
+    setPage,
+    preventNextResetPage,
+  } = usePaginationActionsContext({ setPagination, pagination });
 
   return {
     onPrevClick,
@@ -19,5 +25,6 @@ export const usePaginationActions = ({
     onPageClick,
     setSize,
     setPage,
+    preventNextResetPage,
   };
 };

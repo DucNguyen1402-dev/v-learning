@@ -21,22 +21,24 @@ export const CoursesPage = () => {
   Navigation.hooks.useScrollOnRouteChange();
 
   const { show: showToast } = Toast.use();
-  const { toastState, maKhoaHoc } = Navigation.hooks.usePayload() ?? {};
-  const [toast] = State.useTemporary(toastState);
+  const [displayState] = State.useTemporary(Navigation.hooks.usePayload());
   const consumePayload = Navigation.hooks.useConsumePayload();
 
   useEffect(() => {
-    if (!toast) return;
-    showToast(toast);
+    if (!displayState?.toastState) return;
+    showToast(displayState.toastState);
 
     consumePayload();
-  }, [toast, showToast, consumePayload]);
+  }, [displayState?.toastState, showToast, consumePayload]);
 
-  const { courses } = useCoursesContext();
+  const { processedCourses } = useCoursesContext();
 
   return (
-    <Pagination.Provider items={courses} resetDeps={[courses]}>
-      <div className="min-h-screen px-6 pt-20 pb-20">
+    <Pagination.Provider
+      items={processedCourses}
+      resetDeps={[processedCourses]}
+    >
+      <div className="min-h-screen pt-20 pb-20">
         <div
           className={`mx-auto flex w-full flex-col gap-16 transition-[max-width] duration-300 ease-in-out ${isSidebarOpen ? "max-w-full 2xl:max-w-360" : "max-w-7xl 2xl:max-w-340"}`}
         >
@@ -52,7 +54,7 @@ export const CoursesPage = () => {
           </div>
           <CoursesTable
             isSidebarOpen={isSidebarOpen}
-            affectedCourseId={maKhoaHoc}
+            affectedCourseId={displayState?.maKhoaHoc}
           />
           <CoursesFooter />
         </div>

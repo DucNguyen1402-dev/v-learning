@@ -12,5 +12,6 @@ export const useCoursesQueryByCategory = ({
     queryKey: ["courses-by-category", category],
     queryFn: () => getCoursesByCategory(category),
     enabled: category !== null,
+    refetchOnWindowFocus: false,
   });
 };

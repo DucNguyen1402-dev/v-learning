@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import { ENTITIES } from "@shared/domain";
 import { getErrorMessage } from "@shared/error";
 import { execution } from "@shared/execution";
@@ -5,8 +7,14 @@ import { Loading, Modal, Toast } from "@shared/overlays";
 
 import { useCourseDeletionMutation } from "./mutation";
 
-export const useCourseDeletion = () => {
+type UseCourseDeletionProps = {
+  tenKhoaHoc: string;
+};
+export const useCourseDeletion = ({ tenKhoaHoc }: UseCourseDeletionProps) => {
   const { mutateAsync: deleteCourseMutation } = useCourseDeletionMutation();
+  const [targetCourseDeletion, setTargetCourseDeletion] = useState<
+    string | null
+  >(null);
 
   const modal = Modal.use();
   const { loader } = Loading.use();
@@ -32,11 +40,16 @@ export const useCourseDeletion = () => {
     }
   };
 
-  const onDeleteClick = (maKhoaHoc: string) =>
-    modal.open({
-      ...Modal.config.delete(ENTITIES.COURSE),
-      onConfirm: () => deleteCourse(maKhoaHoc),
-    });
+  const onCancelDeletion = () => setTargetCourseDeletion(null);
 
-  return { onDeleteClick };
+  const onDeleteClick = (maKhoaHoc: string) => {
+    setTargetCourseDeletion(maKhoaHoc);
+    modal.open({
+      ...Modal.config.delete(ENTITIES.COURSE, tenKhoaHoc),
+      onConfirm: () => deleteCourse(maKhoaHoc),
+      onCancel: onCancelDeletion,
+    });
+  };
+
+  return { onDeleteClick, targetCourseDeletion };
 };

@@ -18,5 +18,6 @@ export const usePaginatedCoursesQuery = ({
     queryKey: ["courses", page, pageSize, tenKhoaHoc, category],
     queryFn: () => getPaginatedCourse({ page, pageSize, tenKhoaHoc }),
     enabled: category === null,
+    refetchOnWindowFocus: false,
   });
 };

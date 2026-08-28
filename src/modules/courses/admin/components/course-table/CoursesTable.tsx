@@ -1,5 +1,8 @@
+import { useCallback, useEffect, useRef } from "react";
+
 import { useCoursesContext } from "@modules/courses/shared/contexts";
 import { TableEmptyState } from "@shared/table";
+import { Pagination } from "@shared/table";
 
 import { CourseItem } from "./course-item";
 import { CourseTableSkeleton } from "./CourseTableSkeleton";
@@ -14,16 +17,49 @@ export const CoursesTable = ({
   affectedCourseId,
 }: CoursesTableProps) => {
   const {
-    courses ,
+    processedCourses,
+    allCourses,
     status: { isLoading },
+    pagination,
+    isSourceByCategory,
   } = useCoursesContext();
+  const hasMoveToPage = useRef(false);
+
+  const paginationCategory = Pagination.use();
+
+  const targetPagination = isSourceByCategory ? paginationCategory : pagination;
+
+  if (affectedCourseId) {
+    targetPagination.actions.preventNextResetPage();
+  }
+
+  const moveToMoviePage = useCallback(
+    (maKhoaHoc: string) => {
+      const courseIndex = allCourses?.findIndex((course) => {
+        return course.maKhoaHoc === maKhoaHoc;
+      });
+      if (courseIndex === -1 || courseIndex === undefined) return;
+
+      const coursePage =
+        Math.floor(courseIndex / targetPagination.state.pageSize) + 1;
+
+      targetPagination.actions.setPage(coursePage);
+    },
+    [targetPagination, allCourses],
+  );
+
+  useEffect(() => {
+    if (!affectedCourseId || isLoading || hasMoveToPage.current) return;
+    moveToMoviePage(affectedCourseId);
+    hasMoveToPage.current = true;
+  }, [affectedCourseId, isLoading, moveToMoviePage]);
 
   const renderTableContent = () => {
     if (isLoading) {
       return <CourseTableSkeleton />;
     }
-    const isEmptyMovieList = !courses || courses.length === 0;
-    if (isEmptyMovieList) {
+    const isEmpty = !processedCourses || processedCourses.length === 0;
+    if (isEmpty) {
       return (
         <TableEmptyState
           colSpan={8}
@@ -34,7 +70,7 @@ export const CoursesTable = ({
       );
     }
 
-    return courses.map((course) => (
+    return processedCourses.map((course) => (
       <CourseItem
         key={course.maKhoaHoc}
         course={course}

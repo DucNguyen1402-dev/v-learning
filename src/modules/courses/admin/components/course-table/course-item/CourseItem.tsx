@@ -1,6 +1,7 @@
 import type { Course } from "@modules/courses/shared/types";
 import { Navigation } from "@shared/navigation";
 import { Button, BUTTON_SIZES } from "@shared/ui/button";
+import { cn } from "@shared/utils";
 import { SquarePen, Trash } from "lucide-react";
 
 import { useCourseDeletion } from "./hooks";
@@ -9,10 +10,19 @@ type CourseItemProps = {
   isRecentlyAffected?: boolean;
 };
 export const CourseItem = ({ course, isRecentlyAffected }: CourseItemProps) => {
-  const { onDeleteClick } = useCourseDeletion();
+  const { onDeleteClick, targetCourseDeletion } = useCourseDeletion({
+    tenKhoaHoc: course.tenKhoaHoc,
+  });
   return (
     <tr
-      className={`group border-t border-border-muted text-sm transition-colors duration-150 ease-in-out hover:bg-bg-subtle ${isRecentlyAffected ? "animate-success-row" : ""}`}
+      className={cn(
+        "group border-t border-border-muted text-sm transition-colors duration-150 ease-in-out hover:bg-bg-subtle",
+        {
+          "animate-success-row": isRecentlyAffected,
+          "bg-bg-danger/50 text-text-on-feedback":
+            targetCourseDeletion === course.maKhoaHoc,
+        },
+      )}
     >
       <td className="py-4 pl-8 text-xs">#{course.maKhoaHoc}</td>
 

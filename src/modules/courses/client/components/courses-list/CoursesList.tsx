@@ -15,7 +15,7 @@ export function CoursesList() {
     },
     status: { isLoading },
     filter: { tenKhoaHoc, handleClearSearch },
-    courses,
+    processedCourses,
     isSourceByCategory,
   } = useCoursesContext();
   const categoryPagination = Pagination.use<CourseCardForm>();
@@ -29,15 +29,15 @@ export function CoursesList() {
     );
   }
 
-  const renderCourses = isSourceByCategory
+  const coursesToRender = isSourceByCategory
     ? categoryPagination.state.paginatedList
-    : courses;
+    : processedCourses;
 
   return (
     <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {isLoading
         ? createArray(10).map((_, index) => <CoursesListSkeleton key={index} />)
-        : renderCourses?.map((course) => {
+        : coursesToRender?.map((course) => {
             return <CourseCard key={course.maKhoaHoc} course={course} />;
           })}
     </div>

@@ -43,6 +43,7 @@
   --color-text-on-overlay: var(--color-fg-on-overlay);
   --color-text-warning: var(--color-fg-warning);
   --color-text-danger: var(--color-fg-danger);
+  --color-text-on-feedback: var(--color-fg-on-feedback);
 
   /* Background Colors */
   --color-bg-base: var(--color-bg-base);

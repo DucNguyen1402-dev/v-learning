@@ -29,10 +29,12 @@ export const useWindowedList = ({
   );
   const scrollToItem = useCallback(
     (item: number) => {
-      if (windowSize !== baseWindowSize) return;
       const index = items.indexOf(item);
       if (index === -1) return;
-      setSlideTo(Math.floor(index / windowSize) + 1);
+      const targetSlide = Math.floor(index / windowSize) + 1;
+
+      if (windowSize !== baseWindowSize) return;
+      setSlideTo(targetSlide);
     },
     [items, setSlideTo, windowSize, baseWindowSize],
   );

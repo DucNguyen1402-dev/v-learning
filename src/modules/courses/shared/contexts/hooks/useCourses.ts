@@ -3,6 +3,7 @@ import {
   EMPTY_PAGINATED_COURSE_BY_CATEGORY,
 } from "@modules/courses/shared/constants";
 import {
+  useCourseQuery,
   useCoursesFilterByCategory,
   useCoursesQueryByCategory,
   useCoursesSearchByName,
@@ -15,7 +16,15 @@ type UseCoursesProps = {
   shouldEnrichData?: boolean;
 };
 export const useCourses = ({ shouldEnrichData = true }: UseCoursesProps) => {
-  const { pagination, setPagination } = Pagination.hooks.useState();
+  const { data: allCourses } = useCourseQuery();
+  const {
+    pagination,
+    setPagination,
+    isFirstRender,
+    scrollToTargetRef,
+    skipNextPageResetRef,
+    setSkipNextPageResetRef,
+  } = Pagination.hooks.useState();
 
   const { onSearchByCoursesName, tenKhoaHoc, handleClearSearch } =
     useCoursesSearchByName();
@@ -45,11 +54,17 @@ export const useCourses = ({ shouldEnrichData = true }: UseCoursesProps) => {
     category,
   });
 
-  const { onPrevClick, onNextClick, onPageClick, setSize, setPage } =
-    Pagination.hooks.useActions({
-      pagination,
-      setPagination,
-    });
+  const {
+    onPrevClick,
+    onNextClick,
+    onPageClick,
+    setSize,
+    setPage,
+    preventNextResetPage,
+  } = Pagination.hooks.useActions({
+    pagination,
+    setPagination,
+  });
 
   const {
     displayStart,
@@ -65,7 +80,7 @@ export const useCourses = ({ shouldEnrichData = true }: UseCoursesProps) => {
 
   const targetCourses = isPaginatedSource ? courses.items : coursesByCategory;
 
-  const renderCourses = shouldEnrichData
+  const processedCourses = shouldEnrichData
     ? enrichCoursesWithMockData(targetCourses)
     : targetCourses;
 
@@ -74,6 +89,11 @@ export const useCourses = ({ shouldEnrichData = true }: UseCoursesProps) => {
     currentPage: pagination.page,
     totalPages: courses.totalPages,
     resetDeps: [tenKhoaHoc],
+    pageSize: pagination.pageSize,
+    isFirstRender,
+    scrollToTargetRef,
+    skipNextPageResetRef,
+    setSkipNextPageResetRef,
   });
 
   const isLoading = isPaginatedSource
@@ -81,7 +101,8 @@ export const useCourses = ({ shouldEnrichData = true }: UseCoursesProps) => {
     : isPendingByCategory || isFetchingByCategory;
 
   return {
-    courses: renderCourses,
+    processedCourses,
+    allCourses,
     isSourceByCategory: !isPaginatedSource,
     filter: {
       tenKhoaHoc,
@@ -114,6 +135,7 @@ export const useCourses = ({ shouldEnrichData = true }: UseCoursesProps) => {
         onPageClick,
         setSize,
         setPage,
+        preventNextResetPage,
       },
     },
   };

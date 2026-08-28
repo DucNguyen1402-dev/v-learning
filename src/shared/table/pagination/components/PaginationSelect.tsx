@@ -47,6 +47,7 @@ export const PaginationSelect = ({
           value={value}
           onChange={onChangeHandler}
           options={options}
+          hideAllOption
         />
       </Select.Root>
     </div>
