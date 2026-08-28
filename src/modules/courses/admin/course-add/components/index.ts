@@ -1,1 +1,1 @@
-export {default as AddMovieForm } from "./Form"
+export { AddCourseForm } from "./AddCourseForm";

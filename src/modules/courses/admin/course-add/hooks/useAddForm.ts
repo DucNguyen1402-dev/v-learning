@@ -1,24 +1,31 @@
 import { useForm } from "react-hook-form";
 
+import { UserProfile } from "@shared/user-profile";
+import { format } from "date-fns";
+
+import type { AddCourseFormData } from "../types";
+
 export function useAddForm() {
+  const { profile } = UserProfile.use();
   const {
     register,
     handleSubmit,
     formState: { errors, isDirty },
     control,
     watch,
-  } = useForm({
+  } = useForm<AddCourseFormData>({
     defaultValues: {
-      tenPhim: "",
-      trailer: "",
+      maKhoaHoc: "",
+      biDanh: "",
+      tenKhoaHoc: "",
       moTa: "",
-      hinhAnh: "",
-      maNhom: "GP01",
+      luotXem: 0,
       danhGia: 0,
-      hot: false,
-      ngayKhoiChieu: "",
-      dangChieu: false,
-      sapChieu: false,
+      hinhAnh: [],
+      maNhom: "GP01",
+      ngayTao: format(new Date(), "yyyy-MM-dd"),
+      maDanhMucKhoaHoc: "",
+      taiKhoanNguoiTao: profile.taiKhoan,
     },
   });
 

@@ -3,11 +3,15 @@ export type AddCoursePayload = {
   biDanh: string;
   tenKhoaHoc: string;
   moTa: string;
-  luotXem: 0;
-  danhGia: 0;
+  luotXem: number;
+  danhGia: number;
   hinhAnh: string;
   maNhom: string;
   ngayTao: string;
   maDanhMucKhoaHoc: string;
   taiKhoanNguoiTao: string;
+};
+
+export type AddCourseFormData = Omit<AddCoursePayload, "hinhAnh"> & {
+  hinhAnh: File[];
 };

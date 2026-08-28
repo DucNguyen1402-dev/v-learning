@@ -58,4 +58,8 @@
   }
 
 
+  .input-file {
+    @apply block w-fit text-sm file:mr-4 file:cursor-pointer file:rounded file:border-2 file:px-4 file:py-2 file:text-sm file:font-semibold file:transition-colors file:duration-300 file:border-border-subtle file:bg-bg-subtle file:text-text-subtle hover:file:border-border-brand hover:file:ring-2 hover:file:ring-border-brand/20;
+  }
+
 }

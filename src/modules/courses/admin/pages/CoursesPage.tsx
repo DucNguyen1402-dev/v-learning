@@ -11,7 +11,6 @@ import {
   AddCourseButton,
   CourseCategoryFilter,
   CourseSearchBar,
-  CourseSortSelect,
   CoursesTable,
 } from "../components";
 
@@ -45,7 +44,6 @@ export const CoursesPage = () => {
                 <CourseSearchBar />
               </div>
               <CourseCategoryFilter />
-              <CourseSortSelect />
             </div>
 
             <AddCourseButton />

@@ -1,1 +1,1 @@
-export type { AddCoursePayload } from "./AddCoursePayload";
+export type { AddCourseFormData, AddCoursePayload } from "./addCoursePayload";

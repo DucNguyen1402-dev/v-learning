@@ -1,23 +1,20 @@
 import { useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
 
 import { ENTITIES } from "@shared/domain";
-import * as execution from "@shared/execution";
+import { getErrorMessage } from "@shared/error";
+import { execution } from "@shared/execution";
+import { createCourseFormData } from "@shared/form-utils";
+import { Navigation } from "@shared/navigation";
 import { Loading, Modal, Toast } from "@shared/overlays";
 
-import { createMovieFormData } from "@features/admin/movies/add/utils";
-
+import type { AddCourseFormData } from "../types";
 import { useAddCourseMutation } from "./useAddCourseMutation";
 import { useAddForm } from "./useAddForm";
 
 export function useAddCourseActions() {
-  const [imgPreview, setImgPreview] = useState("");
+  const [imgPreview, setImgPreview] = useState<string>("");
 
-  const location = useLocation();
-  const history = location.state?.history ?? [];
-  const previousPath = history.at(-1) ?? "/admin/movies";
-  const navigate = useNavigate();
-
+  const { go, back } = Navigation.hooks.useNavigate();
   const { loader } = Loading.use();
   const toaster = Toast.use();
   const modalApi = Modal.use();
@@ -27,63 +24,62 @@ export function useAddCourseActions() {
 
   const { mutateAsync } = useAddCourseMutation();
 
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = (e) => setImgPreview(e.target.result);
-    }
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+
+    if (!file) return;
+
+    const reader = new FileReader();
+
+    reader.onload = ({ target }) => {
+      if (typeof target?.result === "string") {
+        setImgPreview(target.result);
+      }
+    };
+
+    reader.readAsDataURL(file);
   };
 
-  const handleCancelClick = () =>
-    navigate(previousPath, { state: { history: history.slice(0, -1) } });
+  const handleCancelClick = () => back();
+
   const onCancelClick = () =>
     modalApi.open({
-      ...Modal.config.unsavedChanges(ENTITIES.movie),
+      ...Modal.config.unsavedChanges(ENTITIES.COURSE),
       onConfirm: handleCancelClick,
     });
 
-  const onValid = (data) =>
+  const onValid = (data: AddCourseFormData) =>
     modalApi.open({
-      ...Modal.config.add(ENTITIES.movie),
-      onConfirm: () => handleSubmitNewMovie(data),
+      ...Modal.config.add(ENTITIES.COURSE),
+      onConfirm: () => handleSubmitNewCourse(data),
     });
 
-  const handleSubmitEvent = (e) => {
-    e.preventDefault();
-    handleSubmit(onValid)();
-  };
+  const handleSubmitEvent = () => void handleSubmit(onValid)();
 
-  const handleSubmitNewMovie = async (data) => {
-    const submitNewMovieTask = async () => {
-      const formData = createMovieFormData(data);
-      return await mutateAsync(formData);
-    };
+  const handleSubmitNewCourse = async (data: AddCourseFormData) => {
+    const formData = createCourseFormData(data);
+
+    const submitNewCourseTask = () => mutateAsync(formData);
 
     try {
-      const response = await execution.runWithLoading(
-        submitNewMovieTask,
+      const response = await execution.runAsyncTask(
+        submitNewCourseTask,
         loader,
       );
 
-      navigate(previousPath, {
-        state: {
-          movieId: response.data?.content?.maPhim,
-          toastState: Toast.config.success.add(ENTITIES.movie),
-          history,
-        },
+      go(Navigation.admin.keys.COURSES, {
+        toastState: Toast.config.success.add(ENTITIES.COURSE),
+        maKhoaHoc: response.data.content.maKhoaHoc,
       });
     } catch (error) {
-      console.log("throw:", error?.message);
-      const content = error.response?.data?.content;
-      // Chỗ này có vẻ là do tên phim bị trùng nhưng content trả về tử backend không rõ ràng
-      // mình fix tạm
-      const message =
-        content === "Upload file không thành công!"
-          ? "Tên phim đã tồn tại"
-          : content;
-      toaster.show(Toast.config.error(message));
+      toaster.show(
+        Toast.config.error(
+          getErrorMessage({
+            error,
+            messageForInternalSeverError: "Đã xảy ra lỗi khi thêm khóa học mới",
+          }),
+        ),
+      );
     }
   };
 

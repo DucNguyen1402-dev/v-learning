@@ -1,0 +1,1 @@
+export { addCoursesRules } from "./addCoursesRules";
