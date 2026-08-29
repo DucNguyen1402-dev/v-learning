@@ -4,6 +4,7 @@ import { CoursesProvider } from "@modules/courses/shared/contexts";
 import { Navigation } from "@shared/navigation";
 
 import { courseAddRoute } from "../course-add";
+import { courseEditRoute } from "../course-edit";
 import { CourseMainLayout } from "../layout";
 import { CoursesPage } from "../pages/CoursesPage";
 
@@ -19,5 +20,6 @@ export const courseRoutes = (
     />
 
     {courseAddRoute}
+    {courseEditRoute}
   </Route>
 );

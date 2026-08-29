@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 
-import type { AddCourseFormData } from "../types";
+import type { CourseFormData } from "@modules/courses/admin/shared/types";
 
 export function useAddForm() {
   const {
@@ -9,7 +9,7 @@ export function useAddForm() {
     formState: { errors, isDirty },
     control,
     watch,
-  } = useForm<AddCourseFormData>({
+  } = useForm<CourseFormData>({
     defaultValues: {
       tenKhoaHoc: "",
       moTa: "",

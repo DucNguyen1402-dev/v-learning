@@ -1,5 +1,4 @@
+import type { CoursePayload } from "@modules/courses/admin/shared/types";
 import { api } from "@shared/api";
-
-import type { AddCoursePayload } from "../types";
-export const addCourse = async (data: AddCoursePayload) =>
+export const addCourse = async (data: CoursePayload) =>
   api.post("/QuanLyKhoaHoc/ThemKhoaHoc", data);

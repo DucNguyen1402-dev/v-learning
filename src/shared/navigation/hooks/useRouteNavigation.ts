@@ -33,7 +33,6 @@ export const useRouteNavigation = () => {
       area: currentArea,
       routeKey: previousKey as ClientRouteKey | AdminRouteKey,
     });
-    console.log(navigationAreaMeta);
     if (previousKey) {
       navigate(navigationAreaMeta.url, {
         state: {

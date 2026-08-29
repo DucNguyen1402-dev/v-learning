@@ -3,29 +3,20 @@ import { Field, Input, Select, Textarea } from "@shared/fields";
 import { Navigation } from "@shared/navigation";
 import { Button, BUTTON_APPEARANCES, BUTTON_INTENTS } from "@shared/ui";
 
-import { useAddCourseActions } from "../hooks";
+import { useEditCourse } from "../hooks";
 import { FileImageField } from "./FileImageField";
 
 import { categories } from "@/modules/courses/shared/config";
 
-export const AddCourseForm = () => {
-  const {
-    register,
-    handleSubmitEvent,
-    errors,
-    handleFileChange,
-    imgPreview,
-    onCancelClick,
-    isDirty,
-    control,
-  } = useAddCourseActions();
+export const EditCourseForm = () => {
+  const { form, actions } = useEditCourse();
 
-  Navigation.hooks.useSyncLeaveConfirmation(isDirty);
+  Navigation.hooks.useSyncLeaveConfirmation(form.isDirty);
 
   return (
     <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-4">
       <div
-        onSubmit={handleSubmitEvent}
+        onSubmit={actions.handleSubmitEvent}
         className="col-span-2 rounded-container border border-border-subtle bg-bg-default p-6 shadow-surface"
       >
         <div className="flex flex-col gap-6">
@@ -35,17 +26,20 @@ export const AddCourseForm = () => {
             <Input.Root>
               <Input.Field
                 id="tenKhoaHoc"
-                {...register("tenKhoaHoc", coursesFormRules.tenKhoaHoc)}
+                {...form.register("tenKhoaHoc", coursesFormRules.tenKhoaHoc)}
               />
             </Input.Root>
-            <Field.ErrorMessage message={errors.tenKhoaHoc?.message} />
+            <Field.ErrorMessage message={form.errors.tenKhoaHoc?.message} />
           </Field.Root>
 
           <Field.Root>
             <Field.Label target="moTa" text="Mô tả" />
 
-            <Textarea id="moTa" {...register("moTa", coursesFormRules.moTa)} />
-            <Field.ErrorMessage message={errors.moTa?.message} />
+            <Textarea
+              id="moTa"
+              {...form.register("moTa", coursesFormRules.moTa)}
+            />
+            <Field.ErrorMessage message={form.errors.moTa?.message} />
           </Field.Root>
 
           <Field.Root>
@@ -63,7 +57,7 @@ export const AddCourseForm = () => {
 
               <Field.Controller
                 name="maDanhMucKhoaHoc"
-                control={control}
+                control={form.control}
                 rules={{ required: "Vui lòng chọn danh mục khóa học" }}
               >
                 {({ field }) => (
@@ -76,13 +70,15 @@ export const AddCourseForm = () => {
                 )}
               </Field.Controller>
             </Select.Root>
-            <Field.ErrorMessage message={errors.maDanhMucKhoaHoc?.message} />
+            <Field.ErrorMessage
+              message={form.errors.maDanhMucKhoaHoc?.message}
+            />
           </Field.Root>
         </div>
         <div className="mt-20 flex justify-end gap-4">
           <Button
             type="button"
-            onClick={onCancelClick}
+            onClick={actions.onCancelClick}
             appearance={BUTTON_APPEARANCES.OUTLINE}
             intent={BUTTON_INTENTS.SECONDARY}
           >
@@ -91,24 +87,23 @@ export const AddCourseForm = () => {
           <Button
             appearance={BUTTON_APPEARANCES.SOLID}
             intent={BUTTON_INTENTS.PRIMARY}
-            onClick={handleSubmitEvent}
+            onClick={actions.handleSubmitEvent}
           >
-            Thêm Khóa Học
+            Lưu Khóa Học
           </Button>
         </div>
 
         <p className="mt-6 text-xs text-text-subtle italic select-none">
           <span className="text-text-required">*</span> Kiểm tra kỹ thông tin
-          trước khi thêm khóa học.
+          trước khi lưu khóa học.
         </p>
       </div>
 
       <div className="col-span-2">
         <FileImageField
-          register={register}
-          error={errors.hinhAnh}
-          handleFileChange={handleFileChange}
-          imgPreview={imgPreview}
+          register={form.register}
+          handleFileChange={actions.handleFileChange}
+          imgPreview={actions.imgPreview}
         />
       </div>
     </div>

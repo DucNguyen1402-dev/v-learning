@@ -5,7 +5,7 @@ export const ADMIN_ROUTE_KEYS = {
 } as const;
 
 export const ADMIN_ROUTE_BUILDERS_KEYS = {
-  COURSES_EDIT: "COURSES_EDIT",
+  COURSE_EDIT: "COURSE_EDIT",
 } as const;
 
 export type AdminRouteKey = keyof typeof ADMIN_ROUTE_KEYS;
@@ -26,7 +26,7 @@ export const ADMIN_ROUTE_PATHS = {
 } as const;
 
 export const ADMIN_ROUTE_BUILDERS_PATHS = {
-  [ADMIN_ROUTE_BUILDERS_KEYS.COURSES_EDIT]: "edit/:maKhoaHoc",
+  [ADMIN_ROUTE_BUILDERS_KEYS.COURSE_EDIT]: "edit/:maKhoaHoc",
 } as const;
 
 export const ADMIN_ROUTE_TITLES = {
@@ -36,7 +36,7 @@ export const ADMIN_ROUTE_TITLES = {
 } as const;
 
 export const ADMIN_ROUTE_BUILDERS_TITLES = {
-  [ADMIN_ROUTE_BUILDERS_KEYS.COURSES_EDIT]: "Edit Course",
+  [ADMIN_ROUTE_BUILDERS_KEYS.COURSE_EDIT]: "Edit Course",
 } as const;
 
 export const ADMIN_ROUTE_URLS = {
@@ -46,6 +46,6 @@ export const ADMIN_ROUTE_URLS = {
 } as const;
 
 export const ADMIN_ROUTE_BUILDERS = {
-  [ADMIN_ROUTE_BUILDERS_KEYS.COURSES_EDIT]: (maKhoaHoc: string) =>
+  [ADMIN_ROUTE_BUILDERS_KEYS.COURSE_EDIT]: (maKhoaHoc: string) =>
     `/admin/courses/edit/${maKhoaHoc}`,
 } as const;

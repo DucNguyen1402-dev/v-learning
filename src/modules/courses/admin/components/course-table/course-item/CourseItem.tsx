@@ -56,7 +56,7 @@ export const CourseItem = ({ course, isRecentlyAffected }: CourseItemProps) => {
       <td>
         <div className="flex-center gap-3">
           <Navigation.components.ForwardWithParam
-            builderRouteKey={Navigation.admin.buildersKeys.COURSES_EDIT}
+            builderRouteKey={Navigation.admin.buildersKeys.COURSE_EDIT}
             param={course.maKhoaHoc}
           >
             <div className="rounded p-1.5 transition-colors duration-150 ease-in-out hover:bg-bg-brand/10 hover:text-text-brand">

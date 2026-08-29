@@ -5,13 +5,11 @@ import { Field, Input } from "@shared/fields";
 
 type FileImageFieldProps = {
   handleFileChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  error?: { message?: string };
   register: UseFormRegister<CourseFormData>;
   imgPreview?: string;
 };
 export const FileImageField = ({
   handleFileChange,
-  error,
   register,
   imgPreview,
 }: FileImageFieldProps) => {
@@ -26,14 +24,12 @@ export const FileImageField = ({
               type="file"
               id="hinhAnh"
               {...register("hinhAnh", {
-                required: "Vui lòng chọn hình ảnh",
                 onChange: handleFileChange,
               })}
 
               className="input-file"
               accept="image/*"
             />
-            <Field.ErrorMessage message={error?.message} />
           </Input.Root>
         </Field.Root>
       </div>

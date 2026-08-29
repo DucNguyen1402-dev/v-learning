@@ -1,0 +1,1 @@
+export { coursesFormRules } from "./coursesFormRules";
