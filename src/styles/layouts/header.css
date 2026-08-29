@@ -24,6 +24,7 @@
   .header-with-sidebar {
     @apply pl-8;
   }
+
   .header-without-sidebar {
     @apply lg:pl-20 2xl:pl-10;
   }

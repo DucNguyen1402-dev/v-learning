@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 
 import { cn } from "@shared/utils";
 
-import { sidebarNavLinks } from "./config";
+import { sidebarNavLinks } from "../../config";
 
 type SidebarNavProps = {
   isSidebarOpen: boolean;
