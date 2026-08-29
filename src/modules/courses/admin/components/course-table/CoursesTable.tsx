@@ -80,8 +80,8 @@ export const CoursesTable = ({
   };
 
   return (
-    <div className="select flex-1 overflow-hidden rounded-container border border-border-subtle bg-bg-default shadow-surface select-none">
-      <table className="w-full table-fixed border-collapse text-left">
+    <div className="select flex-1 overflow-x-auto rounded-container border border-border-subtle bg-bg-default shadow-surface select-none">
+      <table className="min-w-220 table-fixed border-collapse text-left">
         <thead className="select-none">
           <tr className="bg-bg-subtle text-xs font-medium tracking-wider text-text-subtle uppercase">
             <th

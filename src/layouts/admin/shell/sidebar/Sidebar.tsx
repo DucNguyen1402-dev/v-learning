@@ -32,8 +32,6 @@ export const Sidebar = () => {
   //   navigate("/login");
   // };
 
-  // const onMenuClick = () => toggleSidebar();
-
   return (
     <aside
       className={cn("group/outer sidebar-position", {
@@ -49,7 +47,7 @@ export const Sidebar = () => {
           onClick={toggleSidebar}
           isSidebarOpen={isSidebarOpen}
         />
-        <SidebarHeader />
+        <SidebarHeader isSidebarOpen={isSidebarOpen} />
         <Navigation.components.Go
           className={`button-base button-primary solid rounded-control-sm py-1 transition-opacity duration-150 ${isSidebarOpen ? "" : "opacity-0"}`}
           routeKey={Navigation.client.keys.HOME}

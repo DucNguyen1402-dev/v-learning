@@ -1,7 +1,10 @@
 import { EducationLogo } from "@shared/logo";
 import { cn } from "@shared/utils";
-export const SidebarHeader = () => {
-  const isSidebarOpen = true;
+
+type SidebarHeaderProps = {
+  isSidebarOpen: boolean;
+};
+export const SidebarHeader = ({ isSidebarOpen }: SidebarHeaderProps) => {
   return (
     <div
       className={cn("sidebar-header", {
