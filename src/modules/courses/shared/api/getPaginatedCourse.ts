@@ -11,11 +11,11 @@ type GetPaginatedCourseParams = {
 export const getPaginatedCourse = async ({
   page,
   pageSize,
-  tenKhoaHoc,
+  tenKhoaHoc = "",
 }: GetPaginatedCourseParams): Promise<PaginatedCourse> => {
   try {
     const res = await api.get<PaginatedCourse>(
-      `/QuanLyKhoaHoc/LayDanhSachKhoaHoc_PhanTrang?page=${page}&pageSize=${pageSize}&MaNhom=GP01&tenKhoaHoc=${tenKhoaHoc ?? ""}`,
+      `/QuanLyKhoaHoc/LayDanhSachKhoaHoc_PhanTrang?page=${page}&pageSize=${pageSize}&MaNhom=GP01&tenKhoaHoc=${tenKhoaHoc}`,
     );
 
     return res.data;
