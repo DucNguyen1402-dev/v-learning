@@ -8,10 +8,12 @@ import { EMPTY_COURSE } from "./constants";
 type UseEditCourseFormProps = {
   editCourseForm: CourseFormData;
   maKhoaHoc: string;
+  enabled: boolean;
 };
 export const useEditCourseForm = ({
   editCourseForm,
   maKhoaHoc,
+  enabled,
 }: UseEditCourseFormProps) => {
   const {
     register,
@@ -26,11 +28,12 @@ export const useEditCourseForm = ({
 
   const lastEditCourseId = useRef<string | null>(null);
   useEffect(() => {
-    if (!editCourseForm || lastEditCourseId.current === maKhoaHoc) return;
+    if (!enabled) return;
+    if (lastEditCourseId.current === maKhoaHoc) return;
 
     reset(editCourseForm);
     lastEditCourseId.current = maKhoaHoc;
-  }, [editCourseForm, maKhoaHoc, reset]);
+  }, [editCourseForm, maKhoaHoc, reset, enabled]);
 
   return { register, handleSubmit, errors, isDirty, control, watch };
 };

@@ -1,3 +1,4 @@
+import type { ClientRouteBuilderKey, ClientRouteKey } from "../client";
 import {
   ADMIN_ROUTE_URLS,
   type AdminRouteBuilderKey,
@@ -17,10 +18,11 @@ export const isRouteActive = (
   key: keyof typeof ADMIN_ROUTE_URLS | null,
 ) => key !== null && ADMIN_ROUTE_URLS[key] === path;
 
-export const isAdminRouteKey = (key: AdminRouteKey) => {
-  return adminRouteKeys.includes(key as keyof typeof ADMIN_ROUTE_URLS);
+export const isAdminRouteKey = (key: AdminRouteKey | ClientRouteKey) => {
+  return adminRouteKeys.includes(key as AdminRouteKey);
 };
 
-export const isAdminBuilderKey = (key: AdminRouteBuilderKey) => {
-  return adminRouteBuilderKeys.includes(key);
-};
+export const isAdminBuilderKey = (
+  key: AdminRouteBuilderKey | ClientRouteBuilderKey,
+): key is AdminRouteBuilderKey =>
+  adminRouteBuilderKeys.includes(key as AdminRouteBuilderKey);

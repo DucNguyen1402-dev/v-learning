@@ -12,6 +12,7 @@ import { getErrorMessage } from "@shared/error";
 import { execution } from "@shared/execution";
 import { Navigation } from "@shared/navigation";
 import { Loading, Modal, Toast } from "@shared/overlays";
+import { getFileNameFromUrl } from "@shared/utils";
 
 import type { UseEditCourseFormReturn } from "./useEditCourseForm";
 import { useUpdateCourseMutation } from "./useUpdateCourseMutation";
@@ -32,7 +33,6 @@ export function useEditCourseActions({
 }: UseEditCourseActionsProps) {
   const [imgPreview, setImgPreview] = useState<string>("");
 
-  console.log("editCourse", editCourse);
   useEffect(() => {
     if (!editCourse.hinhAnh) return;
     // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -85,15 +85,16 @@ export function useEditCourseActions({
 
   const handleSubmitNewCourse = async (data: CourseFormData) => {
     const payload = createCoursePayload({ data, courseSourse: editCourse });
-    const hasUpdatedImage = payload.hinhAnh.length > 0;
+    const hasUpdatedImage = !!payload.hinhAnh;
+
+    if (!hasUpdatedImage) {
+      payload.hinhAnh = getFileNameFromUrl(editCourse.hinhAnh);
+    }
 
     const formData = hasUpdatedImage
       ? createCourseImagePayload(data)
       : undefined;
 
-    if (!hasUpdatedImage) {
-      payload.hinhAnh = editCourse.hinhAnh;
-    }
     const submitNewCourseTask = () =>
       mutateAsync({ ...payload, taiKhoanNguoiTao: profile.taiKhoan });
 

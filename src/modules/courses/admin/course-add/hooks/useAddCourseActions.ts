@@ -69,7 +69,7 @@ export function useAddCourseActions() {
   const handleSubmitEvent = () => void handleSubmit(onValid)();
 
   const handleSubmitNewCourse = async (data: CourseFormData) => {
-    const payload = createCoursePayload(data);
+    const payload = createCoursePayload({ data });
     const formData = createCourseImagePayload(data);
     const submitNewCourseTask = () =>
       mutateAsync({ ...payload, taiKhoanNguoiTao: profile.taiKhoan });

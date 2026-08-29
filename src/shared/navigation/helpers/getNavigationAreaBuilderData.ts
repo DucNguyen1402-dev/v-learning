@@ -17,12 +17,8 @@ export const getNavigationAreaBuilderMeta = ({
   area,
   builderRouteKey,
 }: NavigationAreaMeta) => {
-  if (
-    isAdminBuilderKey(builderRouteKey as AdminRouteBuilderKey) &&
-    area === "admin"
-  ) {
-    const builderUrl =
-      navigationAreas.admin.builders[builderRouteKey as AdminRouteBuilderKey];
+  if (isAdminBuilderKey(builderRouteKey) && area === "admin") {
+    const builderUrl = navigationAreas.admin.builders[builderRouteKey];
     const currentRouteKey = navigationAreas.admin.findKey(location.pathname);
     return {
       navigationArea: navigationAreas.admin,
@@ -30,12 +26,8 @@ export const getNavigationAreaBuilderMeta = ({
       currentRouteKey,
     };
   }
-  if (
-    isClientRouteBuilderKey(builderRouteKey as ClientRouteBuilderKey) &&
-    area === "client"
-  ) {
-    const builderUrl =
-      navigationAreas.client.builders[builderRouteKey as ClientRouteBuilderKey];
+  if (isClientRouteBuilderKey(builderRouteKey) && area === "client") {
+    const builderUrl = navigationAreas.client.builders[builderRouteKey];
     const currentRouteKey = navigationAreas.client.findKey(location.pathname);
     return {
       navigationArea: navigationAreas.client,

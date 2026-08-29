@@ -39,8 +39,7 @@ export const ForwardWithParam = ({
     () =>
       getNavigationAreaBuilderMeta({
         area: currentArea,
-        builderRouteKey: builderRouteKey as
-          AdminRouteBuilderKey | ClientRouteBuilderKey,
+        builderRouteKey: builderRouteKey,
       }),
     [currentArea, builderRouteKey],
   );

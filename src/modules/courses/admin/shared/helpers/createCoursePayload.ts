@@ -21,8 +21,7 @@ export const createCoursePayload = ({
     hinhAnh: data.hinhAnh[0]?.name ?? "",
     maNhom: "GP01",
     ngayTao: courseSourse?.ngayTao ?? format(new Date(), "dd/MM/yyyy"),
-    maDanhMucKhoaHoc:
-      courseSourse?.danhMucKhoaHoc?.maDanhMucKhoahoc ?? data.maDanhMucKhoaHoc,
+    maDanhMucKhoaHoc: data.maDanhMucKhoaHoc,
     taiKhoanNguoiTao: "",
   };
 };

@@ -20,6 +20,7 @@ export const useCourseDeletion = ({ tenKhoaHoc }: UseCourseDeletionProps) => {
   const { loader } = Loading.use();
   const toast = Toast.use();
   const deleteCourse = async (maKhoaHoc: string) => {
+    setTargetCourseDeletion(null);
     modal.close();
     try {
       await execution.runAsyncTask(

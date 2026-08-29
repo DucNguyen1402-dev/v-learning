@@ -38,6 +38,7 @@ export const EditCourseForm = () => {
             <Textarea
               id="moTa"
               {...form.register("moTa", coursesFormRules.moTa)}
+              resizeKey={form.watch("moTa")}
             />
             <Field.ErrorMessage message={form.errors.moTa?.message} />
           </Field.Root>

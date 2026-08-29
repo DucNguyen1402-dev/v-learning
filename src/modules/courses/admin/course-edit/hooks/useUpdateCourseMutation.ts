@@ -11,6 +11,10 @@ export function useUpdateCourseMutation() {
       queryClient.invalidateQueries({
         queryKey: ["courses"],
       });
+
+      queryClient.invalidateQueries({
+        queryKey: ["course-detail"],
+      });
     },
   });
 }
