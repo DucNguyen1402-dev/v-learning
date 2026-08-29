@@ -1,0 +1,1 @@
+export { CoursesFooter } from "./CoursesFooter";

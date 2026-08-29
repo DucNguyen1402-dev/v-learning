@@ -34,7 +34,7 @@ export const CourseCard = ({ course }: { course: EnrichedPersonalCourse }) => {
             <span className="font-semibold">{course.ngayDangKy}</span>
           </p>
           <Navigation.components.ForwardWithParam
-            routeBuilderKey={
+            builderRouteKey={
               Navigation.client.buildersKeys.PERSONAL_COURSE_DETAIL
             }
             param={course.maKhoaHoc}

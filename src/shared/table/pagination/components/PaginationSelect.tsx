@@ -19,7 +19,7 @@ export const PaginationSelect = ({
   shouldCompactOptions = false,
   disabled,
 }: PaginationSelectProps) => {
-  const onChangeHandler = (value: number | string) => {
+  const onChangeHandler = (value: number | string | null) => {
     onChange(Number(value));
   };
 
@@ -47,6 +47,7 @@ export const PaginationSelect = ({
           value={value}
           onChange={onChangeHandler}
           options={options}
+          hideAllOption
         />
       </Select.Root>
     </div>

@@ -1,18 +1,21 @@
+import { createArray } from "@shared/utils";
+
 import { Skeleton } from "../components";
 import {
   type SkeletonHeight,
   type SkeletonRadius,
   type SkeletonWidth,
 } from "../constants";
-
 type TableSkeletonProps = {
   colSpan: number;
+  rowNumber?: number;
   width: SkeletonWidth;
   height: SkeletonHeight;
   radius: SkeletonRadius;
 };
 export const TableSkeleton = ({
   colSpan,
+  rowNumber = 10,
   width,
   height,
   radius,
@@ -24,5 +27,9 @@ export const TableSkeleton = ({
       </div>
     </td>
   ));
-  return <tr>{cols}</tr>;
+  return createArray(rowNumber).map((_, index) => (
+    <tr key={index} className="border-b border-border-subtle">
+      {cols}
+    </tr>
+  ));
 };

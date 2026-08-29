@@ -21,10 +21,11 @@ export const useLoginMutation = () => {
         hoTen: data.hoTen,
         email: data.email,
         soDT: data.soDT,
+        maLoaiNguoiDung: data.maLoaiNguoiDung,
       };
       AccessTokenStorage.save(data.accessToken, variable.remember);
       CurrentUserStorage.save(user, variable.remember);
-
+      console.log(data.accessToken);
       refreshUser();
     },
   });

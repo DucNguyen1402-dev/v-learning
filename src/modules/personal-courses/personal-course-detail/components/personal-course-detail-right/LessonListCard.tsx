@@ -24,7 +24,7 @@ export const LessonListCard = ({
         {danhSachBaiHoc.map((item, index) => (
           <Navigation.components.ForwardWithParam
             key={index}
-            routeBuilderKey={
+            builderRouteKey={
               Navigation.client.buildersKeys.PERSONAL_COURSE_DETAIL_PLAYER
             }
             param={maKhoaHoc}

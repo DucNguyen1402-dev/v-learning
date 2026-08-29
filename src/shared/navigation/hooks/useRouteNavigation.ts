@@ -1,7 +1,10 @@
 import { useCallback, useMemo } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
+import { type AdminRouteKey } from "../admin";
 import { ClientNavigation, type ClientRouteKey } from "../client";
+import { getNavigationAreaMeta } from "../helpers";
+import { useCurrentArea } from "./useCurrentArea";
 
 type RouteState = {
   history?: string[];
@@ -11,6 +14,7 @@ export const useRouteNavigation = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const currentArea = useCurrentArea();
   const state = location.state as RouteState | null;
   const routeHistory = useMemo(() => state?.history ?? [], [state?.history]);
   const currentRouteKey = useMemo(
@@ -24,9 +28,13 @@ export const useRouteNavigation = () => {
   }, [routeHistory]);
 
   const back = useCallback(() => {
-    const previousKey = routeHistory.at(-1) as ClientRouteKey | undefined;
+    const previousKey = routeHistory.at(-1);
+    const navigationAreaMeta = getNavigationAreaMeta({
+      area: currentArea,
+      routeKey: previousKey as ClientRouteKey | AdminRouteKey,
+    });
     if (previousKey) {
-      navigate(ClientNavigation.urls[previousKey], {
+      navigate(navigationAreaMeta.url, {
         state: {
           history: routeHistory.slice(0, -1),
         },
@@ -34,7 +42,7 @@ export const useRouteNavigation = () => {
     } else {
       navigate(-1);
     }
-  }, [navigate, routeHistory]);
+  }, [navigate, routeHistory, currentArea]);
 
   const forward = useCallback(
     (routeKey: ClientRouteKey, payload?: unknown) =>
@@ -48,13 +56,18 @@ export const useRouteNavigation = () => {
   );
 
   const go = useCallback(
-    (routeKey: ClientRouteKey, payload?: unknown) =>
-      navigate(ClientNavigation.urls[routeKey], {
+    (routeKey: ClientRouteKey | AdminRouteKey, payload?: unknown) => {
+      const navigationAreaMeta = getNavigationAreaMeta({
+        area: currentArea,
+        routeKey,
+      });
+      navigate(navigationAreaMeta.url, {
         state: {
           payload: payload ?? null,
         },
-      }),
-    [navigate],
+      });
+    },
+    [navigate, currentArea],
   );
 
   return {

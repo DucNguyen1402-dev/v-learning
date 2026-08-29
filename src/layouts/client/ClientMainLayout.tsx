@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 import { Layout } from "@shared/layouts";
 import { GlobalUI } from "@shared/overlays";
 
-import { BackButton } from "./components";
+import { BackButton } from "../shared/components";
 import { Footer, Header } from "./shell";
 
 export const ClientMainLayout = () => {

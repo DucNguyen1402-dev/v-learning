@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export function useTemporaryState<T>(initialValue: T, duration = 2000) {
+export function useTemporaryState<T>(initialValue: T, duration = 5000) {
   const [state, setState] = useState<T | undefined>(initialValue);
 
   useEffect(() => {

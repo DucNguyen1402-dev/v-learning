@@ -2,6 +2,7 @@ import {
   getCurrentUser,
   getCurrentUserProperty,
   getCurrentUserStorage,
+  isAdmin,
   saveCurrentUser,
   tryGetCurrentUserFromStorage,
   updateCurrentUser,
@@ -14,4 +15,5 @@ export const CurrentUserStorage = {
   getStorage: getCurrentUserStorage,
   getProperty: getCurrentUserProperty,
   get: getCurrentUser,
+  isAdmin: isAdmin,
 };

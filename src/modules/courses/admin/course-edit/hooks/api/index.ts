@@ -1,0 +1,1 @@
+export { updateCourse } from "./updateCourse";

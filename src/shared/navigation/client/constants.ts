@@ -18,6 +18,13 @@ export const CLIENT_ROUTE_BUILDERS_KEYS = {
   PERSONAL_COURSE_DETAIL_PLAYER: "PERSONAL_COURSE_DETAIL_PLAYER",
 } as const;
 
+export const clientRouteKeys = Object.values(
+  CLIENT_ROUTE_KEYS,
+) as ClientRouteKey[];
+export const clientRouteBuilderKeys = Object.values(
+  CLIENT_ROUTE_BUILDERS_KEYS,
+) as ClientRouteBuilderKey[];
+
 export type ClientRouteKey = keyof typeof CLIENT_ROUTE_KEYS;
 export type ClientRouteBuilderKey = keyof typeof CLIENT_ROUTE_BUILDERS_KEYS;
 

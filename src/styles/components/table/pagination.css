@@ -1,6 +1,6 @@
 @layer components {
   .pagination-select-container {
-    @apply w-full min-w-20 lg:min-w-30 select-none;
+    @apply w-full min-w-20 select-none lg:min-w-30;
   }
 
   .pagination-select-container-compact {
@@ -8,7 +8,7 @@
   }
 
   .pagination-control-info-wrapper {
-    @apply hidden text-sm lg:block select-none;
+    @apply hidden shrink-0 text-sm select-none lg:block;
     color: var(--color-text-muted);
   }
 
@@ -16,11 +16,9 @@
     @apply flex gap-2;
   }
 
-
   .pagination-control-action-icon {
     @apply size-5;
   }
-
 
   .pagination-page-number-container {
     @apply flex gap-2;

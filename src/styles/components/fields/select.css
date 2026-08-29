@@ -1,6 +1,6 @@
 @layer components {
   .select-root-container {
-    @apply relative inline-block w-full max-w-70;
+    @apply relative inline-block w-full;
   }
 
   .select-button-container {
@@ -35,7 +35,7 @@
   }
 
   .select-dropdown-menu-list {
-    @apply max-h-60 overflow-auto px-2 py-1;
+    @apply max-h-45 overflow-auto px-2 py-1;
   }
 
   .select-dropdown-menu-group {

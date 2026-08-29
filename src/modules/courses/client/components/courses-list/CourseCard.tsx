@@ -7,13 +7,20 @@ interface CourseCardProps {
   course: CourseCardForm;
 }
 export const CourseCard = ({ course }: CourseCardProps) => {
+  const image =
+    "thumbnail" in course
+      ? (course.thumbnail ?? course.hinhAnh)
+      : course.hinhAnh;
+
+  const tenGiangVien =
+    "tenGiangVien" in course ? course.tenGiangVien : course.nguoiTao.hoTen;
   return (
     <article
       key={course.maKhoaHoc}
       className="flex h-140 flex-col overflow-hidden rounded-container border border-border-subtle bg-bg-default shadow-surface transition-all duration-300 select-none hover:-translate-y-2 hover:border-border-default hover:shadow-surface-hover"
     >
       <img
-        src={course.thumbnail}
+        src={image}
         alt={course.tenKhoaHoc}
         className="aspect-video w-full object-cover"
       />
@@ -49,11 +56,11 @@ export const CourseCard = ({ course }: CourseCardProps) => {
             <GraduationCap className="size-5" />
             <p>Giảng viên</p>
           </div>
-          <p className="font-medium">{course.tenGiangVien}</p>
+          <p className="font-medium">{tenGiangVien}</p>
         </div>
         <div className="py-2">
           <Navigation.components.ForwardWithParam
-            routeBuilderKey={Navigation.client.buildersKeys.COURSES_DETAIL}
+            builderRouteKey={Navigation.client.buildersKeys.COURSES_DETAIL}
             param={course.maKhoaHoc}
             className="button-base button-primary solid w-full py-2 text-sm"
           >

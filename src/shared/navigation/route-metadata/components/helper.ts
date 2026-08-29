@@ -1,32 +1,34 @@
-import { Navigation } from "@shared/navigation";
-import type { ClientRouteBuilderKey } from "@shared/navigation/client";
+import {
+  type AdminRouteBuilderKey,
+  type ClientRouteBuilderKey,
+  Navigation,
+} from "@shared/navigation";
+import { isAdminBuilderKey, isAdminRouteKey } from "@shared/navigation/admin";
+import {
+  isClientRouteBuilderKey,
+  isClientRouteKey,
+} from "@shared/navigation/client";
 
-import { clientFavicon } from "@assets/favicon";
+import { adminFavicon, clientFavicon } from "@assets/favicon";
+
 export function getRouteMetadata(pathname: string) {
-  const mappings = [
-    {
-      routes: Navigation.client,
-      titles: Navigation.client.titles,
+  const clientRouteKey = Navigation.client.findKey(pathname);
+
+  if (clientRouteKey && isClientRouteKey(clientRouteKey)) {
+    return {
+      title: `V-learning | ${Navigation.client.titles[clientRouteKey]}`,
       favicon: clientFavicon,
-    },
-    // {
-    //   routes: AppRoutes.admin,
-    //   titles: ADMIN_ROUTE_TITLES,
-    //   favicon: adminFavicon,
-    // },
-  ];
-
-  for (const { routes, titles, favicon } of mappings) {
-    const routeKey = routes.findKey(pathname);
-
-    if (routeKey) {
-      return {
-        title: `V-learning | ${titles[routeKey]}`,
-        favicon,
-      };
-    }
+    };
   }
 
+  const adminRouteKey = Navigation.admin.findKey(pathname);
+
+  if (adminRouteKey && isAdminRouteKey(adminRouteKey)) {
+    return {
+      title: `Admin | ${Navigation.admin.titles[adminRouteKey]}`,
+      favicon: adminFavicon,
+    };
+  }
   return {
     title: "V-learning",
     favicon: clientFavicon,
@@ -34,24 +36,20 @@ export function getRouteMetadata(pathname: string) {
 }
 
 export function getRouteMetadataWithBuilderKey(
-  builderKey: ClientRouteBuilderKey,
+  builderKey: ClientRouteBuilderKey | AdminRouteBuilderKey,
 ) {
-  const mappings = [
-    {
-      titles: Navigation.client.buildersTitles,
+  if (isClientRouteBuilderKey(builderKey)) {
+    return {
+      title: `V-learning | ${Navigation.client.buildersTitles[builderKey]}`,
       favicon: clientFavicon,
-    },
-  ];
-
-  for (const { titles, favicon } of mappings) {
-    if (builderKey) {
-      return {
-        title: `V-learning | ${titles[builderKey]}`,
-        favicon,
-      };
-    }
+    };
   }
-
+  if (isAdminBuilderKey(builderKey)) {
+    return {
+      title: `Admin | ${Navigation.admin.builderTitles[builderKey]}`,
+      favicon: adminFavicon,
+    };
+  }
   return {
     title: "V-learning",
     favicon: clientFavicon,

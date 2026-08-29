@@ -4,11 +4,14 @@ import { Link } from "react-router-dom";
 
 import { cn } from "@shared/utils";
 
-import { ClientNavigation, type ClientRouteBuilderKey } from "../client";
+import { type AdminRouteBuilderKey } from "../admin";
+import { type ClientRouteBuilderKey } from "../client";
+import { getNavigationAreaBuilderMeta } from "../helpers";
+import { useCurrentArea } from "../hooks";
 
 type ForwardProps = {
   children: ReactNode;
-  routeBuilderKey: ClientRouteBuilderKey;
+  builderRouteKey: ClientRouteBuilderKey | AdminRouteBuilderKey;
   payload?: unknown;
   className?: string;
   disabled?: boolean;
@@ -21,7 +24,7 @@ type RouteState = {
 
 export const ForwardWithParam = ({
   children,
-  routeBuilderKey,
+  builderRouteKey,
   payload,
   className,
   disabled,
@@ -31,20 +34,28 @@ export const ForwardWithParam = ({
   const state: RouteState | null = location.state;
   const routeHistory = useMemo(() => state?.history ?? [], [state?.history]);
 
-  const to = ClientNavigation.builders[routeBuilderKey](param);
+  const currentArea = useCurrentArea();
+  const navigationAreaMeta = useMemo(
+    () =>
+      getNavigationAreaBuilderMeta({
+        area: currentArea,
+        builderRouteKey: builderRouteKey,
+      }),
+    [currentArea, builderRouteKey],
+  );
 
   const currentRouteKey = useMemo(
-    () => ClientNavigation.findKey(location.pathname),
-    [location.pathname],
+    () => navigationAreaMeta.navigationArea.findKey(location.pathname),
+    [navigationAreaMeta, location.pathname],
   );
 
   return (
     <Link
-      to={to}
+      to={navigationAreaMeta.builderUrl(param)}
       state={{
         history: [...routeHistory, currentRouteKey],
         payload: payload ?? null,
-        routeBuilderKey: routeBuilderKey,
+        routeBuilderKey: builderRouteKey,
       }}
       className={cn(className, {
         "pointer-events-none cursor-default": disabled,

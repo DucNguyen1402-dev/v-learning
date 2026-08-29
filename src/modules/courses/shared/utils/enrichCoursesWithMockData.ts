@@ -15,7 +15,11 @@ export const enrichCoursesWithMockData = (
       ),
     );
 
-    const { maDanhMucKhoahoc: _, ...rest } = matchedCourse;
+    const {
+      maDanhMucKhoahoc: _,
+      descriptionImage: _2,
+      ...rest
+    } = matchedCourse;
 
     const enrichedCourse = {
       ...course,

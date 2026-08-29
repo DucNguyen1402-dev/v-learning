@@ -1,45 +1,68 @@
 import { useEffect } from "react";
 
+import { cn } from "@shared/utils";
+
 import { SelectGroupItem, SelectItem } from "./components";
 import { useSelectContext } from "./contexts";
-type DropdownMenuProps = {
-  options: Array<
-    | { value: string | number; label: string }
+import { getOptionLabel } from "./utils";
+type DropdownMenuProps<T> = {
+  options: ReadonlyArray<
+    | { value: T | null; label: string }
     | {
         label: string;
-        options: Array<{ value: string | number; label: string }>;
+        options: Array<{ value: T; label: string }>;
       }
   >;
-  value: string | number | null;
-  onChange: (value: string | number) => void;
+  value: T | null;
+  onChange: (value: T | null) => void;
+  hideAllOption?: boolean;
 };
-export const SelectContent = ({
+export const SelectContent = <T,>({
   options,
   value,
   onChange,
-}: DropdownMenuProps) => {
-  const { isOpen, close, setValue, selectRef } = useSelectContext();
+  hideAllOption = false,
+}: DropdownMenuProps<T>) => {
+  const { isOpen, close, setOption, selectRef } = useSelectContext();
 
-  const onItemClick = (value: string | number) => {
+  const onItemClick = ({
+    label,
+    value,
+  }: {
+    label: string;
+    value: T | null;
+  }) => {
     onChange(value);
     close();
-    setValue(value);
+    setOption({ label, value });
   };
 
   useEffect(() => {
     if (value !== null) {
-      setValue(value);
+      const label = getOptionLabel(options, value);
+      setOption({ label: label ?? "", value });
     }
-  }, [value, setValue]);
+  }, [value, setOption, options]);
   return isOpen ? (
     <div className="select-dropdown-menu-container" ref={selectRef}>
       <ul className="select-dropdown-menu-list scrollbar">
-        {options.map((item) => {
+        {!hideAllOption && (
+          <li
+            value="null"
+            onClick={() => onItemClick({ label: "Tất cả", value: null })}
+            className={cn("select-dropdown-menu-list-item", {
+              "select-dropdown-menu-list-item-selected": value === null,
+            })}
+          >
+            Tất cả
+          </li>
+        )}
+        {options.map((item, index) => {
           if ("options" in item) {
             return (
               <SelectGroupItem
                 value={value}
-                key={item.label}
+                key={index}
                 label={item.label}
                 options={item.options}
                 onChange={onChange}
@@ -47,13 +70,16 @@ export const SelectContent = ({
             );
           }
           return (
-            <SelectItem
-              selected={value === item.value}
-              key={item.value}
-              value={item.value}
-              onClick={() => onItemClick(item.value)}
-              label={item.label}
-            />
+            <div key={index}>
+              <SelectItem
+                selected={value === item.value}
+
+                onClick={() =>
+                  onItemClick({ label: item.label, value: item.value })
+                }
+                label={item.label}
+              />
+            </div>
           );
         })}
       </ul>

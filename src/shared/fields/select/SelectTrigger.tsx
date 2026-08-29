@@ -17,6 +17,7 @@ type SelectTriggerProps = {
   };
   icon?: React.ComponentType<{ className: string }>;
   entity?: string;
+  shouldShowPlaceholder?: boolean;
 };
 
 export const SelectTrigger = ({
@@ -25,12 +26,13 @@ export const SelectTrigger = ({
   labels,
   invalid,
   entity,
+  shouldShowPlaceholder = false,
 }: SelectTriggerProps) => {
-  const { isOpen, toggle, value } = useSelectContext();
+  const { isOpen, toggle, option } = useSelectContext();
   const state = displayState({
     disabled,
     selecting: isOpen,
-    selected: value,
+    selected: option?.value,
   });
 
   const isDesktop = window.innerWidth >= 1024;
@@ -38,11 +40,11 @@ export const SelectTrigger = ({
   const content = {
     disabled: labels?.disabled ?? "",
     selecting: <LabelElipsis />,
-    selected: value!,
-    placeholder: labels?.placeholder,
+    selected: option?.label,
+    default: shouldShowPlaceholder ? (labels?.placeholder ?? "") : "Tất cả",
   }[state];
 
-  const hasValue = value != null;
+  const hasValue = option?.value != null;
 
   const displayContent =
     hasValue && !isOpen
@@ -57,9 +59,9 @@ export const SelectTrigger = ({
         "field-disabled": disabled,
         "field-error": invalid && !disabled,
         "field-default": !invalid && !disabled,
-        "select-button-inactive": !isOpen && !value,
+        "select-button-inactive": !isOpen && !option?.value,
         "select-button-active": isOpen,
-        "select-button-selected": !!value,
+        "select-button-selected": !!option?.value,
       })}
       aria-expanded={isOpen}
       aria-haspopup="dialog"
@@ -68,7 +70,7 @@ export const SelectTrigger = ({
       {
         <ChevronDown
           className={cn("trigger-icon", {
-            "triger-icon-active": isOpen,
+            "trigger-icon-active": isOpen,
           })}
         />
       }

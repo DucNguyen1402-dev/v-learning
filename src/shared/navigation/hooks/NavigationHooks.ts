@@ -1,5 +1,5 @@
-import { useCurrentArea } from "./useAppArea";
 import { useConsumeLocationPayload } from "./useConsumeLocationPayload";
+import { useCurrentArea } from "./useCurrentArea";
 import { useLocationParams } from "./useLocationParams";
 import { useLocationPathname } from "./useLocationPathname";
 import { useLocationPayload } from "./useLocationPayload";

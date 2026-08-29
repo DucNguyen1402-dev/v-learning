@@ -1,13 +1,9 @@
+import { CoursesFooter } from "@modules/courses/shared/components";
+import { useCoursesContext } from "@modules/courses/shared/contexts";
 import { Navigation } from "@shared/navigation";
 import { Pagination } from "@shared/table";
 
-import {
-  CoursesFooter,
-  CoursesHeader,
-  CoursesList,
-  CoursesToolbar,
-} from "../components";
-import { useCoursesContext } from "../contexts";
+import { CoursesHeader, CoursesList, CoursesToolbar } from "../components";
 
 export const CoursesPage = () => {
   const { courses } = useCoursesContext();

@@ -1,12 +1,12 @@
-type DisplayState = "disabled" | "selecting" | "selected" | "placeholder";
-export const displayState = ({
+type DisplayState = "disabled" | "selecting" | "selected" | "default";
+export const displayState = <T>({
   disabled,
   selecting,
   selected,
 }: {
   disabled: boolean;
   selecting: boolean;
-  selected: number | null | string;
+  selected: T | null;
 }): DisplayState => {
   return disabled
     ? "disabled"
@@ -14,5 +14,5 @@ export const displayState = ({
       ? "selecting"
       : selected
         ? "selected"
-        : "placeholder";
+        : "default";
 };

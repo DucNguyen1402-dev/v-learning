@@ -1,0 +1,1 @@
+export { navigationAreas } from "./navigationAreas";

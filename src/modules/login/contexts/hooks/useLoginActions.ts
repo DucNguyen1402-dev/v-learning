@@ -2,6 +2,7 @@ import type { SubmitHandler, UseFormHandleSubmit } from "react-hook-form";
 
 import { LoginFieldNamesValues } from "@modules/login/constants";
 import type { LoginData } from "@modules/login/types";
+import { CurrentUserStorage } from "@shared/auth";
 import { LoginAuth } from "@shared/auth/login";
 import { getErrorMessage } from "@shared/error";
 import { execution } from "@shared/execution";
@@ -28,7 +29,16 @@ export const useLoginActions = ({
     const loginTask = () => login({ payload, remember });
     try {
       await execution.runAsyncTask(loginTask);
-      go(Navigation.client.keys.HOME, Toast.config.success.login());
+      const isAdmin = CurrentUserStorage.isAdmin();
+      const navigationArea = isAdmin
+        ? Navigation.admin.keys.COURSES
+        : Navigation.client.keys.HOME;
+
+      go(
+        navigationArea,
+        Toast.config.success.login(),
+        isAdmin ? "admin" : "client",
+      );
     } catch (error) {
       const message = getErrorMessage({
         error,

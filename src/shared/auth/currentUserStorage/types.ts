@@ -8,4 +8,5 @@ export type CurrentUser = {
   soDT: string;
   theme?: ThemeValue;
   avatar?: Avatar;
+  maLoaiNguoiDung: string;
 };

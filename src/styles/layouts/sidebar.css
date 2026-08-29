@@ -1,7 +1,7 @@
 @layer layout {
   /* sidebar position */
   .sidebar-position {
-    @apply fixed z-fixed h-full transform-gpu transition-transform duration-300 ease-in-out will-change-transform;
+    @apply fixed z-fixed h-full transition-transform duration-300 ease-in-out will-change-transform;
   }
 
   .sidebar-closed {

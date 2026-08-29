@@ -1,1 +1,1 @@
-export { useCourseDetailMutation } from "./useCourseDetailMutation";
+export { useRegisterMutation } from "./useRegisterMutation";
