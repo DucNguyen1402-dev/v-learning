@@ -32,7 +32,7 @@ export const ADMIN_ROUTE_PATHS = {
 
 export const ADMIN_ROUTE_BUILDERS_PATHS = {
   [ADMIN_ROUTE_BUILDERS_KEYS.COURSE_EDIT]: "edit/:maKhoaHoc",
-  [ADMIN_ROUTE_BUILDERS_KEYS.USER_EDIT]: "edit/:maLoaiNguoiDung",
+  [ADMIN_ROUTE_BUILDERS_KEYS.USER_EDIT]: "edit/:taiKhoan",
 } as const;
 
 export const ADMIN_ROUTE_TITLES = {
@@ -59,6 +59,6 @@ export const ADMIN_ROUTE_URLS = {
 export const ADMIN_ROUTE_BUILDERS = {
   [ADMIN_ROUTE_BUILDERS_KEYS.COURSE_EDIT]: (maKhoaHoc: string) =>
     `/admin/courses/edit/${maKhoaHoc}`,
-  [ADMIN_ROUTE_BUILDERS_KEYS.USER_EDIT]: (maLoaiNguoiDung: string) =>
-    `/admin/users/edit/${maLoaiNguoiDung}`,
+  [ADMIN_ROUTE_BUILDERS_KEYS.USER_EDIT]: (taiKhoan: string) =>
+    `/admin/users/edit/${taiKhoan}`,
 } as const;

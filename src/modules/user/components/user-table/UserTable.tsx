@@ -1,4 +1,4 @@
-// import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 
 import { useUserContext } from "@modules/user/contexts";
 import type { User } from "@modules/user/types";
@@ -22,6 +22,8 @@ export const UserTable = ({
     isLocalPagination,
     status: { isLoading, isEmpty },
     filter: { handleClearSearch },
+    pagination,
+    allUsers,
   } = useUserContext();
 
   const localPagination = Pagination.use<User>();
@@ -29,36 +31,35 @@ export const UserTable = ({
   const renderUserList = isLocalPagination
     ? localPagination.state.paginatedList
     : processedUsers;
-  // const hasMoveToPage = useRef(false);
+  const hasMoveToPage = useRef(false);
 
-  // const paginationCategory = Pagination.use();
+  const targetPagination = isLocalPagination ? localPagination : pagination;
 
-  // const targetPagination = isSourceByCategory ? paginationCategory : pagination;
+  if (affectedUserAccount) {
+    targetPagination.actions.preventNextResetPage();
+  }
 
-  // if (affectedUserAccount) {
-  //   targetPagination.actions.preventNextResetPage();
-  // }
+  const moveToUserPage = useCallback(
+    (taiKhoan: string) => {
+      const userIndex = allUsers?.findIndex((user) => {
+        return user.taiKhoan === taiKhoan;
+      });
 
-  // const moveToUserPage = useCallback(
-  //   (maNguoiDung: string) => {
-  //     const userIndex = allCourses?.findIndex((course) => {
-  //       return course.maKhoaHoc === maNguoiDung;
-  //     });
-  //     if (userIndex === -1 || userIndex === undefined) return;
+      if (userIndex === -1 || userIndex === undefined) return;
 
-  //     const userPage =
-  //       Math.floor(userIndex / targetPagination.state.pageSize) + 1;
+      const userPage =
+        Math.floor(userIndex / targetPagination.state.pageSize) + 1;
 
-  //     targetPagination.actions.setPage(userPage);
-  //   },
-  //   [targetPagination, allCourses],
-  // );
+      targetPagination.actions.setPage(userPage);
+    },
+    [targetPagination, allUsers],
+  );
 
-  // useEffect(() => {
-  //   if (!affectedUserAccount || isLoading || hasMoveToPage.current) return;
-  //   moveToUserPage(affectedUserAccount);
-  //   hasMoveToPage.current = true;
-  // }, [affectedUserAccount, isLoading, moveToUserPage]);
+  useEffect(() => {
+    if (!affectedUserAccount || isLoading || hasMoveToPage.current) return;
+    moveToUserPage(affectedUserAccount);
+    hasMoveToPage.current = true;
+  }, [affectedUserAccount, isLoading, moveToUserPage]);
 
   const renderTableContent = () => {
     if (isLoading) {
@@ -85,8 +86,8 @@ export const UserTable = ({
   };
 
   return (
-    <div className="select flex-1 overflow-x-auto rounded-container border border-border-subtle bg-bg-default shadow-surface select-none">
-      <table className="w-full min-w-200 table-fixed border-collapse text-left">
+    <div className="select min-w-200 flex-1 overflow-x-auto rounded-container border border-border-subtle bg-bg-default shadow-surface select-none">
+      <table className="w-full table-fixed border-collapse text-left">
         <thead className="select-none">
           <tr className="bg-bg-subtle text-xs font-medium tracking-wider text-text-subtle uppercase">
             <th

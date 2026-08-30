@@ -24,7 +24,7 @@ export const CourseItem = ({ course, isRecentlyAffected }: CourseItemProps) => {
         },
       )}
     >
-      <td className="py-4 pl-8 text-xs">#{course.maKhoaHoc}</td>
+      <td className="py-4 pl-8 text-xs">{course.maKhoaHoc}</td>
 
       <td className="pl-4">
         <span className="block font-medium">{course.tenKhoaHoc}</span>

@@ -6,3 +6,13 @@ export type User = {
   soDt: string;
   maLoaiNguoiDung: UserRole;
 };
+
+export type UserPayload = {
+  taiKhoan: string;
+  matKhau: string;
+  hoTen: string;
+  soDT: string;
+  maLoaiNguoiDung: string;
+  email: string;
+  maNhom: string;
+};

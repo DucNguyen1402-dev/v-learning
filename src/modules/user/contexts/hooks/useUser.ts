@@ -85,6 +85,7 @@ export function useUser() {
   );
   return {
     processedUsers,
+    allUsers,
     isLocalPagination,
     status: {
       isLoading,

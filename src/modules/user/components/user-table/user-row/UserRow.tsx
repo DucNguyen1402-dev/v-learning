@@ -36,6 +36,7 @@ export const UserRow = ({ user, isRecentlyAffected }: UserRowProps) => {
   });
 
   const role = getUserRole(user);
+
   return (
     <tr
       className={cn(
@@ -47,7 +48,7 @@ export const UserRow = ({ user, isRecentlyAffected }: UserRowProps) => {
         },
       )}
     >
-      <td className="py-4 pl-8 font-medium">#{user.taiKhoan}</td>
+      <td className="py-4 pl-8 font-medium">{user.taiKhoan}</td>
 
       <td className="pl-4">
         <span className="block">{user.hoTen}</span>
@@ -62,7 +63,7 @@ export const UserRow = ({ user, isRecentlyAffected }: UserRowProps) => {
       </td>
 
       <td className="pl-4">
-        <div className="flex justify-center overflow-hidden rounded-pill border border-border-default bg-bg-subtle px-2 py-1 text-xs tracking-wider uppercase transition-colors duration-150 group-hover:bg-bg-selected/80 group-hover:text-text-on-selected">
+        <div className="flex justify-center overflow-hidden rounded-pill border border-border-default bg-bg-subtle px-2 py-1 text-xs tracking-wider text-text-default uppercase transition-colors duration-150 group-hover:bg-bg-selected/80 group-hover:text-text-on-selected">
           {role}
         </div>
       </td>
@@ -70,7 +71,7 @@ export const UserRow = ({ user, isRecentlyAffected }: UserRowProps) => {
       <td>
         <div className="flex-center gap-3">
           <Navigation.components.ForwardWithParam
-            builderRouteKey={Navigation.admin.buildersKeys.COURSE_EDIT}
+            builderRouteKey={Navigation.admin.buildersKeys.USER_EDIT}
             param={user.taiKhoan}
           >
             <div className="rounded p-1.5 transition-colors duration-150 ease-in-out hover:bg-bg-brand/10 hover:text-text-brand">
