@@ -4,19 +4,19 @@ import { Navigation } from "@shared/navigation";
 import { Button, BUTTON_APPEARANCES, BUTTON_INTENTS } from "@shared/ui";
 
 import { userUpdateFormFields } from "../config";
-import { useEditUserActions } from "../hooks";
+import { useEditUserContext } from "../contexts";
+import { NotFoundUser } from "./NotFoundUser";
 
 export const UpdateUserForm = () => {
   const {
-    register,
-    handleSubmitEvent,
-    errors,
-    onCancelClick,
-    isDirty,
-    control,
-  } = useEditUserActions();
+    hasUserData,
+    form: { register, errors, isDirty, control },
+    actions: { handleSubmitEvent, onCancelClick },
+  } = useEditUserContext();
 
   Navigation.hooks.useSyncLeaveConfirmation(isDirty);
+
+  if (!hasUserData) return <NotFoundUser />;
 
   return (
     <div
@@ -88,13 +88,13 @@ export const UpdateUserForm = () => {
           intent={BUTTON_INTENTS.PRIMARY}
           onClick={handleSubmitEvent}
         >
-          Thêm Người dùng
+          Lưu Người dùng
         </Button>
       </div>
 
       <p className="mt-6 text-xs text-text-subtle italic select-none">
         <span className="text-text-required">*</span> Kiểm tra kỹ thông tin
-        trước khi thêm người dùng.
+        trước khi cập nhật người dùng.
       </p>
     </div>
   );

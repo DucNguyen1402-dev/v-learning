@@ -21,7 +21,6 @@ export function useAddUserActions() {
 
   const onCancelClick = () => {
     if (isDirty) {
-      console.log("isDirty", isDirty);
       modal.open({
         ...Modal.config.unsavedChanges(ENTITIES.USER),
         onConfirm: () => back(),

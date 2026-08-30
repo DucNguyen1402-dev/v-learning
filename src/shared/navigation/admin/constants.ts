@@ -9,6 +9,7 @@ export const ADMIN_ROUTE_KEYS = {
 export const ADMIN_ROUTE_BUILDERS_KEYS = {
   COURSE_EDIT: "COURSE_EDIT",
   USER_EDIT: "USER_EDIT",
+  USER_ENROLLED_COURSES: "USER_ENROLLED_COURSES",
 } as const;
 
 export type AdminRouteKey = keyof typeof ADMIN_ROUTE_KEYS;
@@ -33,6 +34,8 @@ export const ADMIN_ROUTE_PATHS = {
 export const ADMIN_ROUTE_BUILDERS_PATHS = {
   [ADMIN_ROUTE_BUILDERS_KEYS.COURSE_EDIT]: "edit/:maKhoaHoc",
   [ADMIN_ROUTE_BUILDERS_KEYS.USER_EDIT]: "edit/:taiKhoan",
+  [ADMIN_ROUTE_BUILDERS_KEYS.USER_ENROLLED_COURSES]:
+    "enrolled-courses/:taiKhoan",
 } as const;
 
 export const ADMIN_ROUTE_TITLES = {
@@ -46,6 +49,7 @@ export const ADMIN_ROUTE_TITLES = {
 export const ADMIN_ROUTE_BUILDERS_TITLES = {
   [ADMIN_ROUTE_BUILDERS_KEYS.COURSE_EDIT]: "Edit Course",
   [ADMIN_ROUTE_BUILDERS_KEYS.USER_EDIT]: "Edit User",
+  [ADMIN_ROUTE_BUILDERS_KEYS.USER_ENROLLED_COURSES]: "User Enrolled Courses",
 } as const;
 
 export const ADMIN_ROUTE_URLS = {
@@ -61,4 +65,6 @@ export const ADMIN_ROUTE_BUILDERS = {
     `/admin/courses/edit/${maKhoaHoc}`,
   [ADMIN_ROUTE_BUILDERS_KEYS.USER_EDIT]: (taiKhoan: string) =>
     `/admin/users/edit/${taiKhoan}`,
+  [ADMIN_ROUTE_BUILDERS_KEYS.USER_ENROLLED_COURSES]: (taiKhoan: string) =>
+    `/admin/users/enrolled-courses/${taiKhoan}`,
 } as const;

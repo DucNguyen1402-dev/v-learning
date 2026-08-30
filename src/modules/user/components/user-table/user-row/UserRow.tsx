@@ -3,7 +3,7 @@ import type { PaginatedUser, User } from "@modules/user/types";
 import { Navigation } from "@shared/navigation";
 import { Button, BUTTON_SIZES } from "@shared/ui/button";
 import { cn } from "@shared/utils";
-import { SquarePen, Trash } from "lucide-react";
+import { BookOpen, SquarePen, Trash } from "lucide-react";
 
 import { useUserDeletion } from "./hooks";
 type UserRowProps = {
@@ -70,6 +70,16 @@ export const UserRow = ({ user, isRecentlyAffected }: UserRowProps) => {
 
       <td>
         <div className="flex-center gap-3">
+          <Navigation.components.ForwardWithParam
+            builderRouteKey={
+              Navigation.admin.buildersKeys.USER_ENROLLED_COURSES
+            }
+            param={user.taiKhoan}
+          >
+            <div className="rounded p-1.5 transition-colors duration-150 ease-in-out hover:bg-bg-brand/10 hover:text-text-brand">
+              <BookOpen className="size-4" />
+            </div>
+          </Navigation.components.ForwardWithParam>
           <Navigation.components.ForwardWithParam
             builderRouteKey={Navigation.admin.buildersKeys.USER_EDIT}
             param={user.taiKhoan}
