@@ -56,11 +56,16 @@ export const useRouteNavigation = () => {
   );
 
   const go = useCallback(
-    (routeKey: ClientRouteKey | AdminRouteKey, payload?: unknown) => {
+    (
+      routeKey: ClientRouteKey | AdminRouteKey,
+      area?: "admin" | "client",
+      payload?: unknown,
+    ) => {
       const navigationAreaMeta = getNavigationAreaMeta({
-        area: currentArea,
+        area: area ?? currentArea,
         routeKey,
       });
+
       navigate(navigationAreaMeta.url, {
         state: {
           payload: payload ?? null,

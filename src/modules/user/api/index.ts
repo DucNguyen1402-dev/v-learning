@@ -1,2 +1,2 @@
-export { getPaginatedUser } from "./getPaginatedUser";
-export { api } from "@shared/api";
+export { getPaginatedUsers } from "./getPaginatedUsers";
+export { getUsers } from "./getUsers";

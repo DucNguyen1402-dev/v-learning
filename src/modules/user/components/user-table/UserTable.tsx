@@ -1,11 +1,12 @@
 // import { useCallback, useEffect, useRef } from "react";
 
 import { useUserContext } from "@modules/user/contexts";
+import type { User } from "@modules/user/types";
+import { TableEmptyState } from "@shared/table";
+import { Pagination } from "@shared/table";
 
-// import { TableEmptyState } from "@shared/table";
-// import { Pagination } from "@shared/table";
 import { UserRow } from "./user-row";
-// import { UserTableSkeleton } from "./UserTableSkeleton";
+import { UserTableSkeleton } from "./UserTableSkeleton";
 
 type UserTableProps = {
   isSidebarOpen: boolean;
@@ -16,7 +17,18 @@ export const UserTable = ({
   isSidebarOpen,
   affectedUserAccount,
 }: UserTableProps) => {
-  const { users } = useUserContext();
+  const {
+    processedUsers,
+    isLocalPagination,
+    status: { isLoading, isEmpty },
+    filter: { handleClearSearch },
+  } = useUserContext();
+
+  const localPagination = Pagination.use<User>();
+
+  const renderUserList = isLocalPagination
+    ? localPagination.state.paginatedList
+    : processedUsers;
   // const hasMoveToPage = useRef(false);
 
   // const paginationCategory = Pagination.use();
@@ -49,30 +61,27 @@ export const UserTable = ({
   // }, [affectedUserAccount, isLoading, moveToUserPage]);
 
   const renderTableContent = () => {
-    // if (isLoading) {
-    //   return <UserTableSkeleton />;
-    // }
-    // const isEmpty = !processedCourses || processedCourses.length === 0;
-    // if (isEmpty) {
-    //   return (
-    //     <TableEmptyState
-    //       colSpan={8}
-    //       title="Không tìm thấy người dùng!"
-    //       description="Hãy thử lại với từ khóa khác."
-    //       actionHandler={() => {}}
-    //     />
-    //   );
-    // }
-
-    return users
-      .slice(0, 10)
-      .map((user) => (
-        <UserRow
-          key={user.taiKhoan}
-          user={user}
-          isRecentlyAffected={user.taiKhoan === affectedUserAccount}
+    if (isLoading) {
+      return <UserTableSkeleton />;
+    }
+    if (isEmpty) {
+      return (
+        <TableEmptyState
+          colSpan={8}
+          title="Không tìm thấy người dùng!"
+          description="Hãy thử lại với từ khóa khác."
+          actionHandler={handleClearSearch}
         />
-      ));
+      );
+    }
+
+    return renderUserList.map((user) => (
+      <UserRow
+        key={user.taiKhoan}
+        user={user}
+        isRecentlyAffected={user.taiKhoan === affectedUserAccount}
+      />
+    ));
   };
 
   return (

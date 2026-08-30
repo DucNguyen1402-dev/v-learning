@@ -1,10 +1,10 @@
 import { Select } from "@shared/fields";
 
 import { userRoleOptions } from "../config";
+import { useUserContext } from "../contexts";
 import type { UserRole } from "../types";
-
 export const UserRoleFilter = () => {
-  // const { filter } = useCoursesContext();
+  const { filter } = useUserContext();
 
   return (
     <div className="w-full max-w-50">
@@ -18,8 +18,8 @@ export const UserRoleFilter = () => {
         />
 
         <Select.Content
-          value={""}
-          onChange={() => {}}
+          value={filter.role}
+          onChange={(value: UserRole | null) => filter.onChangeRole(value)}
           options={userRoleOptions}
         />
       </Select.Root>

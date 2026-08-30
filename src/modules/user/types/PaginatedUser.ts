@@ -7,3 +7,11 @@ export type PaginatedUser = {
   maLoaiNguoiDung: string;
   maNhom: string | null;
 };
+
+export type PaginatedUserResponse = {
+  currentPage: number;
+  count: number;
+  totalPages: number;
+  totalCount: number;
+  items: PaginatedUser[];
+};

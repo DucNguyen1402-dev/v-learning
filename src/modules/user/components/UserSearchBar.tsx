@@ -1,16 +1,15 @@
-// import { useCoursesContext } from "@modules/courses/shared/contexts";
 import { Input } from "@shared/fields";
 import { Search, SearchX } from "lucide-react";
 
-// - API lấy paginated list không support filter caterory
-// - Khi đang filter với category (dùng một nguồn dữ liệu query riêng) -> block search bar
-// - Muốn search thì phải bỏ chọn filter category với mục "tất cả"
-export const UserSearchBar = () => {
-  // const {
-  //   filter: { tenKhoaHoc, onSearchByCoursesName, shouldHideSearch },
-  // } = useCoursesContext();
+import { useUserContext } from "../contexts";
 
-  const shouldHideSearch = false;
+// - The paginated list API does not support user role filtering.
+// - When filtering by role (using a separate query source), disable the search bar.
+// - To search, the role filter must be set to "Tất cả".
+export const UserSearchBar = () => {
+  const { filter, isLocalPagination } = useUserContext();
+
+  const shouldHideSearch = isLocalPagination;
   const Icon = shouldHideSearch ? SearchX : Search;
   const placeholder = shouldHideSearch
     ? "Chọn tất cả vai trò để tìm kiếm"
@@ -28,8 +27,8 @@ export const UserSearchBar = () => {
         <Input.Field
           hasLeftAddon
           placeholder={placeholder}
-          value={""}
-          onChange={() => {}}
+          value={filter.keyword}
+          onChange={(e) => filter.onSearchByUserName(e.target.value)}
         />
       </Input.Root>
     </div>

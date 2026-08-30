@@ -1,5 +1,5 @@
 import { USER_ROLE_LABELS } from "@modules/user/constants";
-import type { User } from "@modules/user/types";
+import type { PaginatedUser, User } from "@modules/user/types";
 import { Navigation } from "@shared/navigation";
 import { Button, BUTTON_SIZES } from "@shared/ui/button";
 import { cn } from "@shared/utils";
@@ -7,13 +7,35 @@ import { SquarePen, Trash } from "lucide-react";
 
 import { useUserDeletion } from "./hooks";
 type UserRowProps = {
-  user: User;
+  user: PaginatedUser | User;
   isRecentlyAffected?: boolean;
+};
+
+const getUserRole = (user: PaginatedUser | User) => {
+  if ("tenLoaiNguoiDung" in user) {
+    return user.tenLoaiNguoiDung;
+  }
+  if ("maLoaiNguoiDung" in user) {
+    return USER_ROLE_LABELS[user.maLoaiNguoiDung];
+  }
+  return "unknown";
+};
+
+const getUserPhone = (user: PaginatedUser | User) => {
+  if ("soDT" in user) {
+    return user.soDT;
+  }
+  if ("soDt" in user) {
+    return user.soDt;
+  }
+  return "unknown";
 };
 export const UserRow = ({ user, isRecentlyAffected }: UserRowProps) => {
   const { onDeleteClick, targetUserDeletion } = useUserDeletion({
     taiKhoan: user.taiKhoan,
   });
+
+  const role = getUserRole(user);
   return (
     <tr
       className={cn(
@@ -36,12 +58,12 @@ export const UserRow = ({ user, isRecentlyAffected }: UserRowProps) => {
       </td>
 
       <td className="pl-4">
-        <span>{user.soDt}</span>
+        <span>{getUserPhone(user)}</span>
       </td>
 
       <td className="pl-4">
-        <div className="flex justify-center overflow-hidden rounded-pill border border-border-default bg-bg-subtle px-2 py-1 text-xs tracking-wider uppercase group-hover:bg-bg-selected/80 group-hover:text-text-on-selected transition-colors duration-150">
-          {USER_ROLE_LABELS[user.maLoaiNguoiDung]}
+        <div className="flex justify-center overflow-hidden rounded-pill border border-border-default bg-bg-subtle px-2 py-1 text-xs tracking-wider uppercase transition-colors duration-150 group-hover:bg-bg-selected/80 group-hover:text-text-on-selected">
+          {role}
         </div>
       </td>
 

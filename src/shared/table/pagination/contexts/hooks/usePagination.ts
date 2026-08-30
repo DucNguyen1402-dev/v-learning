@@ -35,7 +35,6 @@ export type PaginationResult<T> = {
     displayStart: number;
     displayEnd: number;
     paginatedList: readonly T[];
-    pageOffset: number;
     pageSize: number;
   };
 };
