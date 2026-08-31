@@ -18,7 +18,7 @@ export const Header = () => {
 
   return (
     <header className="header">
-      <div className="layout-container flex items-center justify-between pr-2 md:px-2 lg:px-4">
+      <div className="layout-container-md flex items-center justify-between pr-2 md:px-2 lg:px-4">
         <HeaderLogo />
         <HeaderNav />
 

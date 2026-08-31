@@ -1,8 +1,8 @@
-import type { PendingEnrollmentCourse } from "@modules/user/user-courses/types";
+import type { PendingEnrollmentCoursePayload } from "@modules/user/user-courses/types";
 import { api } from "@shared/api";
 export const getPendingEnrollmentCourses = (taiKhoan: string) =>
   api
-    .post<PendingEnrollmentCourse[]>(
+    .post<PendingEnrollmentCoursePayload[]>(
       `/QuanLyNguoiDung/LayDanhSachKhoaHocChoXetDuyet`,
       {
         taiKhoan: taiKhoan,

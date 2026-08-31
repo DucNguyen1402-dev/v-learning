@@ -1,9 +1,9 @@
 @layer layout {
   .client-container {
-    @apply layout-container scroll-mt-28 p-2 pb-12 lg:px-8;
+    @apply layout-container-md scroll-mt-28 p-2 pb-12 lg:px-8;
   }
 
   .admin-container {
-    @apply layout-container scroll-mt-28 p-2 pb-12 lg:px-4 xl:px-8;
+    @apply layout-container-md scroll-mt-28 p-2 pb-12 lg:px-4 2xl:px-0;
   }
 }

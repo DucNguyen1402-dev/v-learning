@@ -3,7 +3,7 @@ import { Navigation } from "@shared/navigation";
 import { Tooltip } from "@shared/ui";
 import { Button, BUTTON_SIZES } from "@shared/ui/button";
 import { cn } from "@shared/utils";
-import { SquarePen, Trash } from "lucide-react";
+import { ClipboardPenLine, SquarePen, Trash } from "lucide-react";
 
 import { useCourseDeletion } from "./hooks";
 type CourseItemProps = {
@@ -25,21 +25,21 @@ export const CourseItem = ({ course, isRecentlyAffected }: CourseItemProps) => {
         },
       )}
     >
-      <td className="py-4 pl-8 text-xs">{course.maKhoaHoc}</td>
+      <td className="py-5 pl-8 text-xs">{course.maKhoaHoc}</td>
 
-      <td className="pl-4">
+      <td className="pl-8">
         <span className="block font-medium">{course.tenKhoaHoc}</span>
       </td>
 
-      <td className="pl-4">
+      <td className="pl-8">
         <span>{course.danhMucKhoaHoc.tenDanhMucKhoaHoc}</span>
       </td>
 
-      <td className="pl-4">
+      <td className="pl-8">
         <span>{course.nguoiTao.hoTen}</span>
       </td>
 
-      <td className="pl-4">
+      <td className="pl-8">
         <span className="text-[13px]">{course.ngayTao}</span>
       </td>
 
@@ -56,6 +56,16 @@ export const CourseItem = ({ course, isRecentlyAffected }: CourseItemProps) => {
 
       <td>
         <div className="flex-center gap-3">
+          <Tooltip content="Ghi danh">
+            <Navigation.components.ForwardWithParam
+              builderRouteKey={Navigation.admin.buildersKeys.USER_COURSES}
+              param={course.maKhoaHoc}
+            >
+              <div className="rounded p-1.5 transition-colors duration-150 ease-in-out hover:bg-bg-brand/10 hover:text-text-brand">
+                <ClipboardPenLine className="size-4" />
+              </div>
+            </Navigation.components.ForwardWithParam>
+          </Tooltip>
           <Tooltip content="Chỉnh sửa khóa học">
             <Navigation.components.ForwardWithParam
               builderRouteKey={Navigation.admin.buildersKeys.COURSE_EDIT}

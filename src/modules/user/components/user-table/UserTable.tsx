@@ -9,14 +9,10 @@ import { UserRow } from "./user-row";
 import { UserTableSkeleton } from "./UserTableSkeleton";
 
 type UserTableProps = {
-  isSidebarOpen: boolean;
   affectedUserAccount?: string;
 };
 
-export const UserTable = ({
-  isSidebarOpen,
-  affectedUserAccount,
-}: UserTableProps) => {
+export const UserTable = ({ affectedUserAccount }: UserTableProps) => {
   const {
     processedUsers,
     isLocalPagination,
@@ -90,59 +86,13 @@ export const UserTable = ({
       <table className="w-full table-fixed border-collapse text-left">
         <thead>
           <tr className="bg-bg-subtle text-xs font-medium tracking-wider text-text-subtle uppercase">
-            <th
-              className={
-                isSidebarOpen
-                  ? "3xl:w-35 w-35 py-8 pl-8 lg:w-40 2xl:w-45"
-                  : "3xl:w-40 w-40 py-8 pl-8 lg:w-45 2xl:w-50"
-              }
-            >
-              Tài khoản
-            </th>
-            <th
-              className={
-                isSidebarOpen
-                  ? "3xl:w-95 w-40 px-4 lg:w-45 2xl:w-40"
-                  : "3xl:w-100 w-45 px-4 lg:w-50 2xl:w-45"
-              }
-            >
-              Họ tên
-            </th>
-            <th
-              className={
-                isSidebarOpen
-                  ? "3xl:w-55 w-50 px-4 lg:w-55"
-                  : "3xl:w-60 w-55 px-4 lg:w-60"
-              }
-            >
-              Email
-            </th>
-            <th
-              className={
-                isSidebarOpen ? "3xl:w-55 w-30 px-4" : "3xl:w-60 w-35 px-4"
-              }
-            >
-              SDT
-            </th>
-            <th
-              className={`text-center ${
-                isSidebarOpen
-                  ? "3xl:w-55 w-25 px-4 2xl:w-30"
-                  : "3xl:w-60 w-30 px-4 2xl:w-35"
-              }`}
-            >
-              Vai trò
-            </th>
+            <th className="w-35 py-8 pl-8">Tài khoản</th>
+            <th className="w-40 pl-4">Họ tên</th>
+            <th className="w-55 pl-4">Email</th>
+            <th className="w-30 pl-4">SDT</th>
+            <th className="w-30 pl-4 text-center 2xl:w-30">Vai trò</th>
 
-            <th
-              className={`text-center ${
-                isSidebarOpen
-                  ? "3xl:w-50 w-35 px-4 2xl:w-40"
-                  : "3xl:w-50 w-40 px-4 2xl:w-45"
-              }`}
-            >
-              Thao tác
-            </th>
+            <th className="w-40 pl-4 text-center 2xl:w-40">Thao tác</th>
           </tr>
         </thead>
 

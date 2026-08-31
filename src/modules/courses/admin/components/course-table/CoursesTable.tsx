@@ -8,14 +8,10 @@ import { CourseItem } from "./course-item";
 import { CourseTableSkeleton } from "./CourseTableSkeleton";
 
 type CoursesTableProps = {
-  isSidebarOpen: boolean;
   affectedCourseId?: string;
 };
 
-export const CoursesTable = ({
-  isSidebarOpen,
-  affectedCourseId,
-}: CoursesTableProps) => {
+export const CoursesTable = ({ affectedCourseId }: CoursesTableProps) => {
   const {
     processedCourses,
     allCourses,
@@ -80,74 +76,18 @@ export const CoursesTable = ({
   };
 
   return (
-    <div className="select flex-1 overflow-x-auto rounded-container border border-border-subtle bg-bg-default shadow-surface select-none">
-      <table className="min-w-220 table-fixed border-collapse text-left">
-        <thead className="select-none">
+    <div className="scrollbar overflow-x-auto overflow-y-hidden rounded-container border border-border-subtle bg-bg-default shadow-surface select-none">
+      <table className="w-full table-fixed border-collapse text-left">
+        <thead>
           <tr className="bg-bg-subtle text-xs font-medium tracking-wider text-text-subtle uppercase">
-            <th
-              className={
-                isSidebarOpen
-                  ? "3xl:w-35 py-8 pl-8 2xl:w-25"
-                  : "3xl:w-40 py-8 pl-8 2xl:w-30"
-              }
-            >
-              Mã
-            </th>
-            <th
-              className={
-                isSidebarOpen
-                  ? "3xl:w-95 px-4 2xl:w-65"
-                  : "3xl:w-100 px-4 2xl:w-70"
-              }
-            >
-              Khóa học
-            </th>
-            <th
-              className={
-                isSidebarOpen
-                  ? "3xl:w-55 px-4 2xl:w-45"
-                  : "3xl:w-60 px-4 2xl:w-50"
-              }
-            >
-              Danh mục
-            </th>
-            <th
-              className={
-                isSidebarOpen
-                  ? "3xl:w-55 px-4 2xl:w-45"
-                  : "3xl:w-60 px-4 2xl:w-50"
-              }
-            >
-              Người tạo
-            </th>
-            <th
-              className={
-                isSidebarOpen
-                  ? "3xl:w-55 px-4 2xl:w-35"
-                  : "3xl:w-60 px-4 2xl:w-40"
-              }
-            >
-              Ngày tạo
-            </th>
-            <th
-              className={`text-center ${isSidebarOpen ? "3xl:w-50 2xl:w-25" : "3xl:w-55 2xl:w-30"}`}
-            >
-              Học viên
-            </th>
-            <th
-              className={`text-center ${isSidebarOpen ? "3xl:w-50 2xl:w-25" : "3xl:w-55 2xl:w-30"}`}
-            >
-              Đánh giá
-            </th>
-            <th
-              className={`text-center ${
-                isSidebarOpen
-                  ? "3xl:w-50 px-4 2xl:w-35"
-                  : "3xl:w-50 px-4 2xl:w-40"
-              }`}
-            >
-              Thao tác
-            </th>
+            <th className="w-25 py-8 pl-8">Mã</th>
+            <th className="w-60 pl-8">Tên Khóa học</th>
+            <th className="w-55 pl-8">Danh mục</th>
+            <th className="w-45 pl-8">Người tạo</th>
+            <th className="w-30 pl-8">Ngày tạo</th>
+            <th className="w-25 text-center">Học viên</th>
+            <th className="w-30 text-center">Đánh giá</th>
+            <th className="w-35 pl-4 text-center">Thao tác</th>
           </tr>
         </thead>
 

@@ -1,6 +1,7 @@
 import { ModalProvider, useModalContext } from "./contexts";
 import {
   createAddModal,
+  createCancelCourseEnrollmentModal,
   createChangePasswordModal,
   createDeleteModal,
   createLeavePageModal,
@@ -21,6 +22,7 @@ export const Modal = {
     passwordChange: createChangePasswordModal,
     unsavedPasswordChange: createUnsavedPasswordChangesModal,
     unsavedChanges: createUnsavedChangesModal,
+    cancelCourseEnrollment: createCancelCourseEnrollmentModal,
   },
   Provider: ModalProvider,
   Component: ModalRenderer,

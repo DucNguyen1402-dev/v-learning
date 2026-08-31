@@ -1,4 +1,4 @@
-export type EnrolledCourse = {
+export type PendingEnrollmentCoursePayload = {
   maKhoaHoc: string;
   tenKhoaHoc: string;
 };

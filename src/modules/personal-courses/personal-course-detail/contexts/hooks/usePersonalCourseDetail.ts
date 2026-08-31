@@ -9,7 +9,7 @@ export const usePersonalCourseDetail = ({
 }) => {
   const [isCancelModalOpen, setIsCancelModalOpen] = useState(false);
 
-  const { handleCancelCourse, isCancelCourseLoading } =
+  const { handleCancelCourse, isCancelPersonalCourseLoading } =
     useCancelCourseEnrollment({ maKhoaHoc });
 
   const onCancelEnrollmentClick = () => setIsCancelModalOpen(true);
@@ -26,7 +26,7 @@ export const usePersonalCourseDetail = ({
     setIsCancelModalOpen,
     onCancelEnrollmentClick,
     handleCancelCourse,
-    isCancelCourseLoading,
+    isCancelPersonalCourseLoading,
     onModalConfirm,
     onModalCancel,
     closeCancelModal,

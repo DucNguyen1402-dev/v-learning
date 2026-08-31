@@ -7,6 +7,7 @@ type TableEmptyStateProps = {
   title: string;
   description?: string;
   actionHandler?: () => void;
+  shouldHideAction?: boolean;
 };
 export const TableEmptyState = ({
   colSpan,
@@ -21,13 +22,15 @@ export const TableEmptyState = ({
         description={description}
         icon={SearchX}
         action={
-          <Button
-            intent={BUTTON_INTENTS.PRIMARY}
-            appearance={BUTTON_APPEARANCES.SOLID}
-            onClick={actionHandler}
-          >
-            Xóa bộ lọc
-          </Button>
+          actionHandler && (
+            <Button
+              intent={BUTTON_INTENTS.PRIMARY}
+              appearance={BUTTON_APPEARANCES.SOLID}
+              onClick={actionHandler}
+            >
+              Xóa bộ lọc
+            </Button>
+          )
         }
       />
     </td>
