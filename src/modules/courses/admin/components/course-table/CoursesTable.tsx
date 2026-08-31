@@ -81,13 +81,13 @@ export const CoursesTable = ({ affectedCourseId }: CoursesTableProps) => {
         <thead>
           <tr className="bg-bg-subtle text-xs font-medium tracking-wider text-text-subtle uppercase">
             <th className="w-25 py-8 pl-8">Mã</th>
-            <th className="w-60 pl-8">Tên Khóa học</th>
+            <th className="w-55 pl-8">Tên Khóa học</th>
             <th className="w-55 pl-8">Danh mục</th>
             <th className="w-45 pl-8">Người tạo</th>
             <th className="w-30 pl-8">Ngày tạo</th>
             <th className="w-25 text-center">Học viên</th>
             <th className="w-30 text-center">Đánh giá</th>
-            <th className="w-35 pl-4 text-center">Thao tác</th>
+            <th className="w-40 pl-4 text-center">Thao tác</th>
           </tr>
         </thead>
 

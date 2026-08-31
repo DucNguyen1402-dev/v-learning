@@ -4,6 +4,7 @@ export const ADMIN_ROUTE_KEYS = {
   PROFILE: "PROFILE",
   USER: "USER",
   USER_ADD: "USER_ADD",
+  ENROLL_USER: "ENROLL_USER",
 } as const;
 
 export const ADMIN_ROUTE_BUILDERS_KEYS = {
@@ -30,6 +31,7 @@ export const ADMIN_ROUTE_PATHS = {
   [ADMIN_ROUTE_KEYS.PROFILE]: "profile",
   [ADMIN_ROUTE_KEYS.USER]: "users",
   [ADMIN_ROUTE_KEYS.USER_ADD]: "add",
+  [ADMIN_ROUTE_KEYS.ENROLL_USER]: "enroll",
 } as const;
 
 export const ADMIN_ROUTE_BUILDERS_PATHS = {
@@ -45,6 +47,7 @@ export const ADMIN_ROUTE_TITLES = {
   [ADMIN_ROUTE_KEYS.PROFILE]: "Profile",
   [ADMIN_ROUTE_KEYS.USER]: "Users Management",
   [ADMIN_ROUTE_KEYS.USER_ADD]: "Add User",
+  [ADMIN_ROUTE_KEYS.ENROLL_USER]: "Enroll User",
 } as const;
 
 export const ADMIN_ROUTE_BUILDERS_TITLES = {
@@ -60,6 +63,7 @@ export const ADMIN_ROUTE_URLS = {
   [ADMIN_ROUTE_KEYS.PROFILE]: "/admin/profile",
   [ADMIN_ROUTE_KEYS.USER]: "/admin/users",
   [ADMIN_ROUTE_KEYS.USER_ADD]: "/admin/users/add",
+  [ADMIN_ROUTE_KEYS.ENROLL_USER]: "/admin/courses/enroll-user",
 } as const;
 
 export const ADMIN_ROUTE_BUILDERS = {
