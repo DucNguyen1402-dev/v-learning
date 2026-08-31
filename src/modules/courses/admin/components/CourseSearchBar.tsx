@@ -2,9 +2,9 @@ import { useCoursesContext } from "@modules/courses/shared/contexts";
 import { Input } from "@shared/fields";
 import { Search, SearchX } from "lucide-react";
 
-// - API lấy paginated list không support filter caterory
-// - Khi đang filter với category (dùng một nguồn dữ liệu query riêng) -> block search bar
-// - Muốn search thì phải bỏ chọn filter category với mục "tất cả"
+// - The paginated list API does not support category filtering.
+// - When filtering by category (using a separate query source), disable the search bar.
+// - To search, the category filter must be set to "Tất cả".
 export const CourseSearchBar = () => {
   const {
     filter: { tenKhoaHoc, onSearchByCoursesName, shouldHideSearch },

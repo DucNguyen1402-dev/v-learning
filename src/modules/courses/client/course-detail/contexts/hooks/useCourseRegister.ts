@@ -25,6 +25,7 @@ export const useCourseRegister = ({ maKhoaHoc }: { maKhoaHoc: string }) => {
       await execution.runAsyncTask(registerTask);
       go(
         Navigation.client.keys.PERSONAL_COURSE,
+        "client",
         Toast.config.success.register(ENTITIES.COURSE),
       );
     } catch (error) {

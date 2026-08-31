@@ -5,6 +5,13 @@
 
   --color-bg-promotion: var(--color-yellow-50);
   --color-bg-promotion-urgent: var(--color-rose-600);
+  --color-bg-enrollment-pending: var(--color-yellow-50);
+  --color-bg-enrollment-pending-hover: var(--color-yellow-100);
+  --color-bg-enrolled: var(--color-emerald-50);
+  --color-bg-enrolled-hover: var(--color-emerald-100);
+
+
+
 
   /* =================================================
     *  border colors
@@ -24,4 +31,7 @@
   --color-fg-incomplete: var(--color-red-700);
 
   --color-fg-discount: var(--color-green-700);
+
+  --color-fg-enrolled: var(--color-emerald-700);
+  --color-fg-enrollment-pending: var(--color-yellow-700);
 }

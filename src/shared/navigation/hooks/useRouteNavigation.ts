@@ -23,17 +23,17 @@ export const useRouteNavigation = () => {
   );
 
   const previousRouteKey = useMemo(() => {
-    const previousKey = routeHistory.at(-1) as ClientRouteKey | undefined;
+    const previousKey = routeHistory.at(-1) as
+      ClientRouteKey | AdminRouteKey | undefined;
     if (previousKey) return previousKey;
   }, [routeHistory]);
 
   const back = useCallback(() => {
-    const previousKey = routeHistory.at(-1);
-    const navigationAreaMeta = getNavigationAreaMeta({
-      area: currentArea,
-      routeKey: previousKey as ClientRouteKey | AdminRouteKey,
-    });
-    if (previousKey) {
+    if (previousRouteKey) {
+      const navigationAreaMeta = getNavigationAreaMeta({
+        area: currentArea,
+        routeKey: previousRouteKey as ClientRouteKey | AdminRouteKey,
+      });
       navigate(navigationAreaMeta.url, {
         state: {
           history: routeHistory.slice(0, -1),
@@ -42,7 +42,7 @@ export const useRouteNavigation = () => {
     } else {
       navigate(-1);
     }
-  }, [navigate, routeHistory, currentArea]);
+  }, [previousRouteKey, currentArea, navigate, routeHistory]);
 
   const forward = useCallback(
     (routeKey: ClientRouteKey, payload?: unknown) =>
@@ -56,11 +56,16 @@ export const useRouteNavigation = () => {
   );
 
   const go = useCallback(
-    (routeKey: ClientRouteKey | AdminRouteKey, payload?: unknown) => {
+    (
+      routeKey: ClientRouteKey | AdminRouteKey,
+      area?: "admin" | "client",
+      payload?: unknown,
+    ) => {
       const navigationAreaMeta = getNavigationAreaMeta({
-        area: currentArea,
+        area: area ?? currentArea,
         routeKey,
       });
+
       navigate(navigationAreaMeta.url, {
         state: {
           payload: payload ?? null,

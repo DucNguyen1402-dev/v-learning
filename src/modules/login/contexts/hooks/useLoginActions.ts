@@ -36,8 +36,8 @@ export const useLoginActions = ({
 
       go(
         navigationArea,
-        Toast.config.success.login(),
         isAdmin ? "admin" : "client",
+        Toast.config.success.login(),
       );
     } catch (error) {
       const message = getErrorMessage({

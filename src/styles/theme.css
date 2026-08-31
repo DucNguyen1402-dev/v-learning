@@ -44,6 +44,7 @@
   --color-text-warning: var(--color-fg-warning);
   --color-text-danger: var(--color-fg-danger);
   --color-text-on-feedback: var(--color-fg-on-feedback);
+  --color-text-on-selected: var(--color-fg-on-selected);
 
   /* Background Colors */
   --color-bg-base: var(--color-bg-base);
@@ -55,6 +56,7 @@
   --color-bg-elevated: var(--color-bg-elevated);
   --color-bg-warning: var(--color-bg-warning);
   --color-bg-danger: var(--color-bg-danger);
+  --color-bg-selected: var(--color-bg-selected);
 
   /* Border Colors */
   --color-border-default: var(--color-border-default);
@@ -76,12 +78,16 @@
   --color-text-rating: var(--color-fg-rating);
   --color-text-completed: var(--color-fg-completed);
   --color-text-incomplete: var(--color-fg-incomplete);
-
+  --color-text-enrolled: var(--color-fg-enrolled);
+  --color-text-enrollment-pending: var(--color-fg-enrollment-pending);
   /* Background Colors */
   --color-bg-promotion: var(--color-bg-promotion);
   --color-bg-promotion-urgent: var(--color-bg-promotion-urgent);
   --color-bg-brand-subtle: var(--color-bg-brand-subtle);
-
+  --color-bg-enrollment-pending: var(--color-bg-enrollment-pending);
+  --color-bg-enrolled: var(--color-bg-enrolled);
+  --color-bg-enrolled-hover: var(--color-bg-enrolled-hover);
+  --color-bg-enrollment-pending-hover: var(--color-bg-enrollment-pending-hover);
   /* Border Colors */
   --color-border-promotion: var(--border-color-promotion);
 }

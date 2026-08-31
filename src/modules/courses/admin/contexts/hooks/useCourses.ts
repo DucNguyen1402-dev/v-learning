@@ -12,14 +12,21 @@ import { enrichCoursesWithMockData } from "@modules/courses/shared/utils";
 import { Pagination } from "@shared/table";
 
 export const useCourses = () => {
-  const { pagination, setPagination } = Pagination.hooks.useState();
+  const {
+    pagination,
+    setPagination,
+    skipNextPageResetRef,
+    setSkipNextPageResetRef,
+    isFirstRender,
+    scrollToTargetRef,
+  } = Pagination.hooks.useState();
 
   const { onSearchByCoursesName, tenKhoaHoc, handleClearSearch } =
     useCoursesSearchByName();
 
   const { category, onChangeCategory } = useCoursesFilterByCategory();
 
-  const isPaginatedSource = category === "all";
+  const isPaginatedSource = category === null;
 
   const {
     data: courses = EMPTY_PAGINATED_COURSE,
@@ -64,10 +71,15 @@ export const useCourses = () => {
   const enrichedCourses = enrichCoursesWithMockData(targetCourses);
 
   Pagination.hooks.useEffect({
+    skipNextPageResetRef,
+    setSkipNextPageResetRef,
+    resetDeps: [tenKhoaHoc],
     setPagination,
     currentPage: pagination.page,
     totalPages: courses.totalPages,
-    resetDeps: [tenKhoaHoc],
+    pageSize: pagination.pageSize,
+    isFirstRender,
+    scrollToTargetRef,
   });
 
   const isLoading = isPaginatedSource
@@ -81,7 +93,7 @@ export const useCourses = () => {
       tenKhoaHoc,
       onSearchByCoursesName,
       category,
-      shouldHideSearch: category !== "all",
+      shouldHideSearch: category !== null,
       onChangeCategory,
       handleClearSearch,
     },
