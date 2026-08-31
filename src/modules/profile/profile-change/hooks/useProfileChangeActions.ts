@@ -39,6 +39,7 @@ export const useProfileChangeActions = () => {
       await execution.runAsyncTask(() => update(payload), loader);
       go(
         Navigation.client.keys.PROFILE,
+        "client",
         Toast.config.success.update(ENTITIES.USER),
       );
     } catch (error) {
