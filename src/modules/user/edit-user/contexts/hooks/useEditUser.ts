@@ -4,7 +4,7 @@ import { useEditForm, useEditUserActions, useUserInforQuery } from "./internal";
 
 export const useEditUser = () => {
   const { taiKhoan } = useParams<{ taiKhoan: string }>();
-  const { data: userInfo } = useUserInforQuery(taiKhoan as string);
+  const { data: userInfo, isPending } = useUserInforQuery(taiKhoan as string);
   const targetUser = userInfo?.find((user) => user.taiKhoan === taiKhoan);
 
   const { register, handleSubmit, errors, isDirty, control } = useEditForm({
@@ -19,6 +19,9 @@ export const useEditUser = () => {
 
   return {
     hasUserData: !!targetUser,
+    status: {
+      isLoading: isPending,
+    },
     form: {
       register,
       errors,

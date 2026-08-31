@@ -2,33 +2,67 @@ import { useParams } from "react-router-dom";
 
 import { Navigation } from "@shared/navigation";
 
-import { EmptyCourseState } from "../components";
+import { EmptyCourseState, UserCoursesSkeleton } from "../components";
 import { COURSE_ENROLLMENT_STATES } from "../constants";
 import { useUserCourses } from "../hooks";
+
 export const UserCoursesPage = () => {
   const { taiKhoan } = useParams<{ taiKhoan: string }>();
-  const { userCourses, isCourseEmpty } = useUserCourses(taiKhoan as string);
+  const { userCourses, isCourseEmpty, isLoading } = useUserCourses(
+    taiKhoan as string,
+  );
   const { scrollRef } = Navigation.hooks.useScrollOnRouteChange();
 
-  if (isCourseEmpty) {
-    return (
-      <div className="flex justify-center pt-10">
-        <div className="w-full rounded-container border border-border-subtle bg-bg-default">
-          <EmptyCourseState />
+  const createTableContent = () => {
+    if (isLoading) {
+      return <UserCoursesSkeleton />;
+    }
+    if (isCourseEmpty) {
+      return (
+        <div className="flex justify-center pt-10">
+          <div className="w-full rounded-container border border-border-subtle bg-bg-default">
+            <EmptyCourseState />
+          </div>
         </div>
-      </div>
+      );
+    }
+
+    return (
+      <>
+        {userCourses?.map((course, index) => {
+          const isEnrolled =
+            course.trangThai === COURSE_ENROLLMENT_STATES.ENROLLED;
+
+          return (
+            <tr
+              key={index}
+              className="group border-b border-border-subtle transition-colors duration-200 hover:bg-bg-subtle"
+            >
+              <td className="py-3 pl-8 text-left">{index + 1}</td>
+              <td className="pl-4 text-left text-sm">{course.tenKhoaHoc}</td>
+              <td className="pl-4 text-center">
+                <div
+                  className={`inline-block rounded-full px-3 py-1 text-xs font-medium ${isEnrolled ? "bg-bg-enrolled text-text-enrolled group-hover:bg-bg-enrolled-hover" : "bg-bg-enrollment-pending text-text-enrollment-pending group-hover:bg-bg-enrollment-pending-hover"}`}
+                >
+                  {course.trangThai}
+                </div>
+              </td>
+            </tr>
+          );
+        })}
+      </>
     );
-  }
+  };
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen pt-5">
       <div className="flex items-center justify-center gap-4">
-        <h1 className="text-xl font-semibold">
+        <h1 className="text-center text-lg font-semibold md:text-xl">
           Danh sách khóa học của người dùng: {taiKhoan}
         </h1>
       </div>
       <div className="mt-6 flex justify-center">
         <div
-          className="max-w-130 min-w-120 scroll-target rounded-container border border-border-subtle bg-bg-default shadow-surface select-none"
+          className="w-full scroll-target rounded-container border border-border-subtle bg-bg-default shadow-surface select-none md:max-w-130"
           ref={scrollRef}
         >
           <table className="w-full table-fixed border-collapse">
@@ -39,30 +73,7 @@ export const UserCoursesPage = () => {
                 <th className="pl-4 text-center">Trạng thái</th>
               </tr>
             </thead>
-            <tbody>
-              {userCourses?.map((course, index) => {
-                const isEnrolled =
-                  course.trangThai === COURSE_ENROLLMENT_STATES.ENROLLED;
-
-                return (
-                  <tr key={index}>
-                    <td className="border-b border-border-subtle py-3 pl-8 text-left">
-                      {index + 1}
-                    </td>
-                    <td className="border-b border-border-subtle pl-4 text-left text-sm">
-                      {course.tenKhoaHoc}
-                    </td>
-                    <td className="border-b border-border-subtle pl-4 text-center">
-                      <div
-                        className={`inline-block rounded-full px-3 py-1 text-xs font-medium ${isEnrolled ? "bg-bg-enrolled text-text-enrolled" : "bg-bg-enrollment-pending text-text-enrollment-pending"}`}
-                      >
-                        {course.trangThai}
-                      </div>
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
+            <tbody>{createTableContent()}</tbody>
           </table>
         </div>
       </div>

@@ -21,7 +21,7 @@ export const AddUserForm = () => {
   return (
     <div
       onSubmit={handleSubmitEvent}
-      className="col-span-2 min-w-md rounded-container border border-border-subtle bg-bg-default p-6 shadow-surface"
+      className="w-full rounded-container border border-border-subtle bg-bg-default p-6 shadow-surface"
     >
       <div className="flex flex-col gap-6">
         {userFormFields.map((field) => (

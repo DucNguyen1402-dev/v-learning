@@ -5,8 +5,9 @@ import {
 } from "./internal";
 
 export const useUserCourses = (taiKhoan: string) => {
-  const { data: enrolledCoursesQuery } = useEnrolledCoursesQuery(taiKhoan);
-  const { data: pendingEnrollmentCoursesQuery } =
+  const { data: enrolledCoursesQuery, isPending: isPendingEnrolled } =
+    useEnrolledCoursesQuery(taiKhoan);
+  const { data: pendingEnrollmentCoursesQuery, isPending: isPendingPending } =
     usePendingEnrollmentCoursesQuery(taiKhoan);
 
   const userCourses = [
@@ -25,5 +26,6 @@ export const useUserCourses = (taiKhoan: string) => {
   return {
     userCourses,
     isCourseEmpty,
+    isLoading: isPendingEnrolled || isPendingPending,
   };
 };

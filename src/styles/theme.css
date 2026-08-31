@@ -86,6 +86,8 @@
   --color-bg-brand-subtle: var(--color-bg-brand-subtle);
   --color-bg-enrollment-pending: var(--color-bg-enrollment-pending);
   --color-bg-enrolled: var(--color-bg-enrolled);
+  --color-bg-enrolled-hover: var(--color-bg-enrolled-hover);
+  --color-bg-enrollment-pending-hover: var(--color-bg-enrollment-pending-hover);
   /* Border Colors */
   --color-border-promotion: var(--border-color-promotion);
 }

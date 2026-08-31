@@ -86,15 +86,15 @@ export const UserTable = ({
   };
 
   return (
-    <div className="min-w-200 flex-1 overflow-x-auto rounded-container border border-border-subtle bg-bg-default shadow-surface select-none">
+    <div className="flex-1 overflow-x-auto rounded-container border border-border-subtle bg-bg-default shadow-surface select-none">
       <table className="w-full table-fixed border-collapse text-left">
         <thead>
           <tr className="bg-bg-subtle text-xs font-medium tracking-wider text-text-subtle uppercase">
             <th
               className={
                 isSidebarOpen
-                  ? "3xl:w-35 py-8 pl-8 2xl:w-45"
-                  : "3xl:w-40 py-8 pl-8 2xl:w-50"
+                  ? "3xl:w-35 w-35 py-8 pl-8 lg:w-40 2xl:w-45"
+                  : "3xl:w-40 w-40 py-8 pl-8 lg:w-45 2xl:w-50"
               }
             >
               Tài khoản
@@ -102,8 +102,8 @@ export const UserTable = ({
             <th
               className={
                 isSidebarOpen
-                  ? "3xl:w-95 px-4 2xl:w-40"
-                  : "3xl:w-100 px-4 2xl:w-45"
+                  ? "3xl:w-95 w-40 px-4 lg:w-45 2xl:w-40"
+                  : "3xl:w-100 w-45 px-4 lg:w-50 2xl:w-45"
               }
             >
               Họ tên
@@ -111,17 +111,15 @@ export const UserTable = ({
             <th
               className={
                 isSidebarOpen
-                  ? "3xl:w-55 px-4 2xl:w-55"
-                  : "3xl:w-60 px-4 2xl:w-60"
+                  ? "3xl:w-55 w-50 px-4 lg:w-55"
+                  : "3xl:w-60 w-55 px-4 lg:w-60"
               }
             >
               Email
             </th>
             <th
               className={
-                isSidebarOpen
-                  ? "3xl:w-55 px-4 2xl:w-30"
-                  : "3xl:w-60 px-4 2xl:w-35"
+                isSidebarOpen ? "3xl:w-55 w-30 px-4" : "3xl:w-60 w-35 px-4"
               }
             >
               SDT
@@ -129,8 +127,8 @@ export const UserTable = ({
             <th
               className={`text-center ${
                 isSidebarOpen
-                  ? "3xl:w-55 px-4 2xl:w-30"
-                  : "3xl:w-60 px-4 2xl:w-35"
+                  ? "3xl:w-55 w-25 px-4 2xl:w-30"
+                  : "3xl:w-60 w-30 px-4 2xl:w-35"
               }`}
             >
               Vai trò
@@ -139,8 +137,8 @@ export const UserTable = ({
             <th
               className={`text-center ${
                 isSidebarOpen
-                  ? "3xl:w-50 px-4 2xl:w-40"
-                  : "3xl:w-50 px-4 2xl:w-45"
+                  ? "3xl:w-50 w-35 px-4 2xl:w-40"
+                  : "3xl:w-50 w-40 px-4 2xl:w-45"
               }`}
             >
               Thao tác

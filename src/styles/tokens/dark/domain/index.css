@@ -7,6 +7,8 @@
   --color-bg-promotion-urgent: var(--color-rose-500);
   --color-bg-enrollment-pending: var(--color-yellow-950);
   --color-bg-enrolled: var(--color-emerald-950);
+  --color-bg-enrolled-hover: var(--color-emerald-900);
+  --color-bg-enrollment-pending-hover: var(--color-yellow-900);
 
   /* =================================================
     *  border colors

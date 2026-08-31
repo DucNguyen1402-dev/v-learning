@@ -6,22 +6,25 @@ import { Button, BUTTON_APPEARANCES, BUTTON_INTENTS } from "@shared/ui";
 import { userUpdateFormFields } from "../config";
 import { useEditUserContext } from "../contexts";
 import { NotFoundUser } from "./NotFoundUser";
+import { UpdateUserFormSkeleton } from "./UpdateUserFormSkeleton";
 
 export const UpdateUserForm = () => {
   const {
     hasUserData,
+    status: { isLoading },
     form: { register, errors, isDirty, control },
     actions: { handleSubmitEvent, onCancelClick },
   } = useEditUserContext();
 
   Navigation.hooks.useSyncLeaveConfirmation(isDirty);
 
+  if (isLoading) return <UpdateUserFormSkeleton />;
   if (!hasUserData) return <NotFoundUser />;
 
   return (
     <div
       onSubmit={handleSubmitEvent}
-      className="col-span-2 min-w-md rounded-container border border-border-subtle bg-bg-default p-6 shadow-surface"
+      className="w-full rounded-container border border-border-subtle bg-bg-default p-6 shadow-surface"
     >
       <div className="flex flex-col gap-6">
         {userUpdateFormFields.map((field) => (
