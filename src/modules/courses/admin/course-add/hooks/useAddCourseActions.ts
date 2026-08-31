@@ -81,8 +81,9 @@ export function useAddCourseActions() {
         loader,
       );
 
-      go(Navigation.admin.keys.COURSES, {
+      go(Navigation.admin.keys.COURSES, "admin", {
         toastState: Toast.config.success.add(ENTITIES.COURSE),
+
         maKhoaHoc: payload.maKhoaHoc,
       });
     } catch (error) {

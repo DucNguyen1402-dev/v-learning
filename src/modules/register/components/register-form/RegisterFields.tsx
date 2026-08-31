@@ -18,7 +18,7 @@ export const RegisterFields = () => {
               id={name}
               type={type}
               invalid={registerFieldState(name).invalid}
-              {...register(name, RegisterAuth.validation[name])}
+              {...register(name, RegisterAuth.validation["hoTen"])}
             />
             {type === "password" && <Input.PasswordVisibilityToggle />}
           </Input.Root>

@@ -106,7 +106,7 @@ export function useEditCourseActions({
           loader,
         );
       }
-      go(Navigation.admin.keys.COURSES, {
+      go(Navigation.admin.keys.COURSES, "admin", {
         toastState: Toast.config.success.update(ENTITIES.COURSE),
         maKhoaHoc: payload.maKhoaHoc,
       });

@@ -1,8 +1,8 @@
-import type { PersonalCourse } from "@modules/personal-courses/types";
+import type { EnrichedPersonalCourse } from "@modules/personal-courses/types";
 
 import { CourseCard } from "./CourseCard";
 type PersonalCourseListProps = {
-  courses: PersonalCourse[];
+  courses: EnrichedPersonalCourse[];
 };
 export const PersonalCourseList = ({ courses }: PersonalCourseListProps) => {
   return (
