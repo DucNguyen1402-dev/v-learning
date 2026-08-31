@@ -1,1 +1,1 @@
-export { PersonalCoursesMainLayout } from "./PersonalCoursesMainlayout";
+export { PersonalCoursesMainLayout } from "./PersonalCoursesMainLayout";
