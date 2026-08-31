@@ -5,6 +5,7 @@ import { Navigation } from "@shared/navigation";
 
 import { courseAddRoute } from "../course-add";
 import { courseEditRoute } from "../course-edit";
+import { courseEnrollmentRoute } from "../course-enrollment";
 import { CourseMainLayout } from "../layout";
 import { CoursesPage } from "../pages/CoursesPage";
 
@@ -21,5 +22,6 @@ export const courseRoutes = (
 
     {courseAddRoute}
     {courseEditRoute}
+    {courseEnrollmentRoute}
   </Route>
 );

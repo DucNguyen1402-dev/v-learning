@@ -1,2 +1,1 @@
-export type { EnrolledCourse } from "./enrolledCourses";
-export type { PendingEnrollmentCourse } from "./pendingEnrollmentCourse";
+export type { EnrollmentStatus, UserCourse } from "./userCourse";

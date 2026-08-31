@@ -1,7 +1,7 @@
 import { Navigation } from "@shared/navigation";
 export const HeroSection = () => {
   return (
-    <section className="flex flex-col gap-14 px-2 pt-24 pb-20 text-left lg:px-6">
+    <section className="flex flex-col gap-14 px-2 pt-24 pb-20 text-left select-none lg:px-6">
       <div className="flex max-w-3xl flex-col items-start gap-6 md:max-w-4/5">
         <span className="rounded-pill border border-border-default px-3 py-1 text-xs font-semibold tracking-wider text-text-subtle uppercase">
           Khóa học trực tuyến thực chiến

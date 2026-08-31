@@ -4,3 +4,4 @@ export { useCoursesFilterByCategory } from "./useCoursesFilterByCategory";
 export { useCoursesQueryByCategory } from "./useCoursesQueryByCategory";
 export { useCoursesSearchByName } from "./useCoursesSearchByName";
 export { usePaginatedCoursesQuery } from "./usePaginatedCoursesQuery";
+export { useRegisterMutation } from "./useRegisterMutation";

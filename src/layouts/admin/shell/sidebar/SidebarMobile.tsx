@@ -17,8 +17,8 @@ export const SidebarMobile = () => {
               to={link.path}
               key={link.path}
               className={({ isActive }) =>
-                cn(`group nav-link`, {
-                  "nav-link--active": isActive,
+                cn(`group sidebar-nav-link`, {
+                  "sidebar-nav-link--active": isActive,
                 })
               }
             >

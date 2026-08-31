@@ -8,7 +8,7 @@ import {
 export const UserCoursesSkeleton = () => {
   return (
     <TableSkeleton
-      colSpan={3}
+      colSpan={4}
       rowNumber={5}
       width={SKELETON_WIDTHS.MD}
       height={SKELETON_HEIGHTS.MD}

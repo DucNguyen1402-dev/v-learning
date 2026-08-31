@@ -11,11 +11,9 @@
 
   .empty-state-icon {
     @apply size-[70%];
-    color: color-mix(
-      in srgb,
-      var(--color-fg-muted) 70%,
-      var(--color-bg-default) 30%
-    );
+    color: color-mix(in srgb,
+        var(--color-fg-muted) 70%,
+        var(--color-bg-default) 30%);
   }
 
   .empty-state-content {

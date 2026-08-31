@@ -1,18 +1,19 @@
+import { useCancelPersonalCourseMutation } from "@modules/personal-courses/personal-course-detail/hooks";
 import { CurrentUserStorage } from "@shared/auth";
 import { getErrorMessage } from "@shared/error";
 import { execution } from "@shared/execution";
 import { Navigation } from "@shared/navigation";
 import { Loading, Toast } from "@shared/overlays";
 
-import { usePersonalCourseMutation } from "./usePersonalCourseMutation";
-
 export const useCancelCourseEnrollment = ({
   maKhoaHoc,
 }: {
   maKhoaHoc: string;
 }) => {
-  const { cancelCourseMutation, isCancelCourseLoading } =
-    usePersonalCourseMutation();
+  const {
+    mutation: cancelPersonalCourseMutation,
+    isLoading: isCancelPersonalCourseLoading,
+  } = useCancelPersonalCourseMutation();
 
   const { go } = Navigation.hooks.useNavigate();
   const currentUser = CurrentUserStorage.get();
@@ -24,11 +25,12 @@ export const useCancelCourseEnrollment = ({
       taiKhoan: currentUser.taiKhoan,
     };
     try {
-      const cancelTask = () => cancelCourseMutation.mutateAsync(payload);
+      const cancelTask = () => cancelPersonalCourseMutation(payload);
 
       await execution.runAsyncTask(cancelTask, loader);
       go(
         Navigation.client.keys.PERSONAL_COURSE,
+        "client",
         Toast.config.success.cancelCourse(),
       );
     } catch (error) {
@@ -48,6 +50,6 @@ export const useCancelCourseEnrollment = ({
 
   return {
     handleCancelCourse,
-    isCancelCourseLoading,
+    isCancelPersonalCourseLoading,
   };
 };

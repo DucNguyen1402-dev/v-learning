@@ -1,0 +1,1 @@
+export { UserCoursesTableRow } from "./UserCoursesTableRow";

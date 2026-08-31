@@ -10,6 +10,10 @@ import { useEditCourseForm } from "./useEditCourseForm";
 
 export const useEditCourse = () => {
   const { maKhoaHoc } = useParams();
+
+  if (!maKhoaHoc) {
+    throw new Error("Missing course ID in URL parameters");
+  }
   const { data: editCourse = EMPTY_COURSE, isSuccess } = useCourseDetailQuery(
     maKhoaHoc as string,
   );

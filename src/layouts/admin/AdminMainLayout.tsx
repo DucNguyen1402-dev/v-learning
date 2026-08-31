@@ -21,7 +21,7 @@ export const AdminMainLayout = () => {
           <SidebarMobile />
         </div>
         <div
-          className={`${isSidebarOpen ? SIDEBAR_CONTENT_OFFSET : SIDEBAR_COLLAPSED_OFFSET} flex flex-1 flex-col px-2 transition-[margin-left] duration-300 ease-in-out`}
+          className={`${isSidebarOpen ? SIDEBAR_CONTENT_OFFSET : SIDEBAR_COLLAPSED_OFFSET} flex flex-1 flex-col transition-[margin-left] duration-300 ease-in-out`}
         >
           <main className="admin-container flex-1">
             {shouldShowBackButton && <BackButton />}

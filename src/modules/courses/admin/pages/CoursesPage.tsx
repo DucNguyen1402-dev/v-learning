@@ -14,10 +14,7 @@ import {
   CoursesTable,
 } from "../components";
 
-import { Layout } from "@/layouts/admin";
-
 export const CoursesPage = () => {
-  const { isSidebarOpen } = Layout.use();
   Navigation.hooks.useScrollOnRouteChange();
 
   const { show: showToast } = Toast.use();
@@ -39,9 +36,7 @@ export const CoursesPage = () => {
       resetDeps={[processedCourses]}
     >
       <div className="min-h-screen pt-20 pb-20">
-        <div
-          className={`mx-auto flex w-full flex-col gap-16 transition-[max-width] duration-300 ease-in-out ${isSidebarOpen ? "max-w-full 2xl:max-w-360" : "max-w-7xl 2xl:max-w-340"}`}
-        >
+        <div className="mx-auto flex w-full flex-col gap-16 ease-in-out">
           <div className="flex flex-col gap-8 select-none md:flex-row md:items-center md:justify-between">
             <div className="flex flex-1 flex-col gap-5 md:flex-row md:items-center">
               <div className="w-full max-w-80">
@@ -52,10 +47,7 @@ export const CoursesPage = () => {
 
             <AddCourseButton />
           </div>
-          <CoursesTable
-            isSidebarOpen={isSidebarOpen}
-            affectedCourseId={displayState?.maKhoaHoc}
-          />
+          <CoursesTable affectedCourseId={displayState?.maKhoaHoc} />
           <CoursesFooter />
         </div>
       </div>

@@ -7,7 +7,7 @@ export const FeaturedCoursesSection = () => {
   const { highestRatingCourses } = useFeatureCourses();
 
   return (
-    <section className="mx-auto px-2 py-20 lg:px-6">
+    <section className="mx-auto px-2 py-20 select-none lg:px-6">
       <div className="mb-12 flex flex-col justify-between md:flex-row md:items-end">
         <div className="flex flex-col gap-3">
           <h2 className="text-2xl font-bold tracking-tight lg:text-3xl">

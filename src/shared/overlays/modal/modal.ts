@@ -1,7 +1,10 @@
 import { ModalProvider, useModalContext } from "./contexts";
 import {
   createAddModal,
+  createCancelCourseEnrollmentModal,
+  createCancelUserEnrollmentModal,
   createChangePasswordModal,
+  createConfirmUserEnrollmentModal,
   createDeleteModal,
   createLeavePageModal,
   createUnsavedChangesModal,
@@ -21,6 +24,9 @@ export const Modal = {
     passwordChange: createChangePasswordModal,
     unsavedPasswordChange: createUnsavedPasswordChangesModal,
     unsavedChanges: createUnsavedChangesModal,
+    cancelCourseEnrollment: createCancelCourseEnrollmentModal,
+    cancelUserEnrollment: createCancelUserEnrollmentModal,
+    confirmUserEnrollment: createConfirmUserEnrollmentModal,
   },
   Provider: ModalProvider,
   Component: ModalRenderer,

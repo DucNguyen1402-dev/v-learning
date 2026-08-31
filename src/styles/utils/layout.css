@@ -9,12 +9,18 @@
     @apply scroll-mt-30;
 }
 
-@utility layout-container {
+@utility layout-container-md {
     @apply mx-auto w-full;
-    max-width: var(--max-width-container);
+    max-width: var(--max-width-container-md);
 }
+
 
 @utility layout-container-sm {
     @apply mx-auto w-full;
     max-width: var(--max-width-container-sm);
+}
+
+@utility layout-container-lg {
+    @apply mx-auto w-full;
+    max-width: var(--max-width-container-lg);
 }

@@ -1,9 +1,9 @@
-import { EmptyState } from "@shared/ui";
-import { SearchX } from "lucide-react";
+import { TableEmptyState } from "@shared/table";
+
 export const EmptyCourseState = () => (
-  <EmptyState
+  <TableEmptyState
     title="Không có khóa học nào."
     description="Người dùng này chưa đăng ký bất kỳ khóa học nào. Hãy kiểm tra lại sau."
-    icon={SearchX}
+    colSpan={4}
   />
 );
