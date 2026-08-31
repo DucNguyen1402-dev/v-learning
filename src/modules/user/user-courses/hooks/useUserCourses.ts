@@ -1,3 +1,4 @@
+import { COURSE_ENROLLMENT_STATES } from "../constants";
 import {
   useEnrolledCoursesQuery,
   usePendingEnrollmentCoursesQuery,
@@ -8,20 +9,21 @@ export const useUserCourses = (taiKhoan: string) => {
   const { data: pendingEnrollmentCoursesQuery } =
     usePendingEnrollmentCoursesQuery(taiKhoan);
 
-  const userCourses = {
-    ...enrolledCoursesQuery?.map((course) => ({
+  const userCourses = [
+    ...(enrolledCoursesQuery?.map((course) => ({
       ...course,
-      state: "enrolled",
-    })),
-    ...pendingEnrollmentCoursesQuery?.map((course) => ({
-      ...course,
-      state: "pending",
-    })),
-  };
+      trangThai: COURSE_ENROLLMENT_STATES.ENROLLED,
+    })) ?? []),
 
+    ...(pendingEnrollmentCoursesQuery?.map((course) => ({
+      ...course,
+      trangThai: COURSE_ENROLLMENT_STATES.PENDING,
+    })) ?? []),
+  ];
+
+  const isCourseEmpty = userCourses.length === 0;
   return {
-    enrolledCoursesQuery,
-    pendingEnrollmentCoursesQuery,
     userCourses,
+    isCourseEmpty,
   };
 };

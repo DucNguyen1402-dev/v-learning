@@ -48,6 +48,7 @@ export function useUser() {
     setPagination,
   });
 
+  // The last page is empty, so subtract 1 from totalPages to avoid showing it.
   const {
     displayStart,
     displayEnd,
@@ -57,7 +58,7 @@ export function useUser() {
   } = Pagination.hooks.useDerived({
     currentPage: pagination.page,
     pageSize: pagination.pageSize,
-    totalPages: paginatedUserData.totalPages,
+    totalPages: paginatedUserData.totalPages - 1,
   });
 
   Pagination.hooks.useEffect({

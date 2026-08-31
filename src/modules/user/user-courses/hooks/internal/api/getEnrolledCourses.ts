@@ -1,6 +1,8 @@
+import type { EnrolledCourse } from "@modules/user/user-courses/types";
 import { api } from "@shared/api";
-
 export const getEnrolledCourses = (taiKhoan: string) =>
   api
-    .get(`/QuanLyNguoiDung/LayDanhSachKhoaHocDaXetDuyet/${taiKhoan}`)
+    .post<EnrolledCourse[]>(`/QuanLyNguoiDung/LayDanhSachKhoaHocDaXetDuyet`, {
+      taiKhoan: taiKhoan,
+    })
     .then((res) => res.data);

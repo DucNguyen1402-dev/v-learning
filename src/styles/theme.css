@@ -78,12 +78,14 @@
   --color-text-rating: var(--color-fg-rating);
   --color-text-completed: var(--color-fg-completed);
   --color-text-incomplete: var(--color-fg-incomplete);
-
+  --color-text-enrolled: var(--color-fg-enrolled);
+  --color-text-enrollment-pending: var(--color-fg-enrollment-pending);
   /* Background Colors */
   --color-bg-promotion: var(--color-bg-promotion);
   --color-bg-promotion-urgent: var(--color-bg-promotion-urgent);
   --color-bg-brand-subtle: var(--color-bg-brand-subtle);
-
+  --color-bg-enrollment-pending: var(--color-bg-enrollment-pending);
+  --color-bg-enrolled: var(--color-bg-enrolled);
   /* Border Colors */
   --color-border-promotion: var(--border-color-promotion);
 }

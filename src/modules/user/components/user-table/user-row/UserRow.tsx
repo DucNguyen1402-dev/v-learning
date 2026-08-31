@@ -71,9 +71,7 @@ export const UserRow = ({ user, isRecentlyAffected }: UserRowProps) => {
       <td>
         <div className="flex-center gap-3">
           <Navigation.components.ForwardWithParam
-            builderRouteKey={
-              Navigation.admin.buildersKeys.USER_ENROLLED_COURSES
-            }
+            builderRouteKey={Navigation.admin.buildersKeys.USER_COURSES}
             param={user.taiKhoan}
           >
             <div className="rounded p-1.5 transition-colors duration-150 ease-in-out hover:bg-bg-brand/10 hover:text-text-brand">
