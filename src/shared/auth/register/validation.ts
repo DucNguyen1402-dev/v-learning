@@ -1,4 +1,11 @@
-export const registerValidationRules = {
+import type { RegisterOptions } from "react-hook-form";
+
+import type { RegisterData } from "@modules/register/types";
+
+export const registerValidationRules: Record<
+  keyof RegisterData,
+  RegisterOptions<RegisterData, keyof RegisterData>
+> = {
   taiKhoan: {
     required: "Vui lòng nhập tài khoản",
     minLength: {
@@ -34,12 +41,18 @@ export const registerValidationRules = {
       message: "Họ và tên chỉ được chứa chữ cái, khoảng trắng, dấu ' và -",
     },
     validate: {
-      notBlank: (value: string) =>
-        value.trim().length > 0 || "Vui lòng nhập họ và tên",
+      notBlank: (value) => {
+        if (typeof value !== "string") return true;
+        return value.trim().length > 0 || "Vui lòng nhập họ và tên";
+      },
 
-      noMultipleSpaces: (value: string) =>
-        !/\s{2,}/.test(value) ||
-        "Họ và tên không được chứa nhiều khoảng trắng liên tiếp",
+      noMultipleSpaces: (value) => {
+        if (typeof value !== "string") return true;
+        return (
+          !/\s{2,}/.test(value) ||
+          "Họ và tên không được chứa nhiều khoảng trắng liên tiếp"
+        );
+      },
     },
   },
   email: {
@@ -60,6 +73,4 @@ export const registerValidationRules = {
   maNhom: {
     required: "Vui lòng chọn mã nhóm",
   },
-};
-
-export type RegisterValidationRules = typeof registerValidationRules;
+} as const;

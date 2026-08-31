@@ -1,5 +1,4 @@
-import type { RegisterFormData } from "./types";
-export const getDefaultValues = (): RegisterFormData => ({
+export const getDefaultValues = () => ({
   taiKhoan: "",
   matKhau: "",
   hoTen: "",
