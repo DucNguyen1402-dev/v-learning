@@ -1,3 +1,4 @@
+import type { ModalType } from "../../constants";
 export type ModalState = {
   isOpen: boolean;
   type: ModalType | null;
