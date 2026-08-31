@@ -59,7 +59,11 @@ export const usePasswordChangeActions = ({
 
     try {
       await execution.runAsyncTask(() => update(payload), loader);
-      go(Navigation.client.keys.PROFILE, Toast.config.success.changePassword());
+      go(
+        Navigation.client.keys.PROFILE,
+        "client",
+        Toast.config.success.changePassword(),
+      );
     } catch (error) {
       const errorMessage = getErrorMessage({ error });
       toast.show(Toast.config.error(errorMessage));
