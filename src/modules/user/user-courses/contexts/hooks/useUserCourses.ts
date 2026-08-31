@@ -1,4 +1,4 @@
-import { COURSE_ENROLLMENT_STATES } from "@modules/user/user-courses/constants";
+import { COURSE_ENROLLMENT_STATUS } from "@modules/user/user-courses/constants";
 import type { UserCourse } from "@modules/user/user-courses/types";
 
 import {
@@ -7,20 +7,22 @@ import {
 } from "./internal";
 
 export const useUserCourses = (taiKhoan: string) => {
-  const { data: enrolledCoursesQuery, isPending: isPendingEnrolled } =
+  const { data: enrolledCourses, isPending: isPendingEnrolled } =
     useEnrolledCoursesQuery(taiKhoan);
-  const { data: pendingEnrollmentCoursesQuery, isPending: isPendingPending } =
-    usePendingEnrollmentCoursesQuery(taiKhoan);
+  const {
+    data: pendingEnrollmentCourses,
+    isPending: isPendingPendingEnrollment,
+  } = usePendingEnrollmentCoursesQuery(taiKhoan);
 
   const userCourses: UserCourse[] = [
-    ...(enrolledCoursesQuery?.map((course) => ({
+    ...(enrolledCourses?.map((course) => ({
       ...course,
-      trangThai: COURSE_ENROLLMENT_STATES.ENROLLED,
+      trangThai: COURSE_ENROLLMENT_STATUS.ENROLLED,
     })) ?? []),
 
-    ...(pendingEnrollmentCoursesQuery?.map((course) => ({
+    ...(pendingEnrollmentCourses?.map((course) => ({
       ...course,
-      trangThai: COURSE_ENROLLMENT_STATES.PENDING,
+      trangThai: COURSE_ENROLLMENT_STATUS.PENDING,
     })) ?? []),
   ];
 
@@ -29,7 +31,7 @@ export const useUserCourses = (taiKhoan: string) => {
     userCourses,
     taiKhoan,
     status: {
-      isLoading: isPendingEnrolled || isPendingPending,
+      isLoading: isPendingEnrolled || isPendingPendingEnrollment,
       isCourseEmpty,
     },
   };

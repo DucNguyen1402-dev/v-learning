@@ -14,6 +14,10 @@ export const CourseItem = ({ course, isRecentlyAffected }: CourseItemProps) => {
   const { onDeleteClick, targetCourseDeletion } = useCourseDeletion({
     tenKhoaHoc: course.tenKhoaHoc,
   });
+
+  //Some courses have empty maKhoaHoc, which will cause the edit button to navigate to an invalid route.
+  // Therefore, I block the edit button for those courses.
+  const shouldBlockAction = course.maKhoaHoc === "";
   return (
     <tr
       className={cn(
@@ -26,27 +30,21 @@ export const CourseItem = ({ course, isRecentlyAffected }: CourseItemProps) => {
       )}
     >
       <td className="py-5 pl-8 text-xs">{course.maKhoaHoc}</td>
-
       <td className="pl-8">
         <span className="block font-medium">{course.tenKhoaHoc}</span>
       </td>
-
       <td className="pl-8">
         <span>{course.danhMucKhoaHoc.tenDanhMucKhoaHoc}</span>
       </td>
-
       <td className="pl-8">
         <span>{course.nguoiTao.hoTen}</span>
       </td>
-
       <td className="pl-8">
         <span className="text-[13px]">{course.ngayTao}</span>
       </td>
-
       <td>
         <div className="flex-center">{course.soLuongHocVien}</div>
       </td>
-
       <td>
         <div className="flex-center gap-1.5 text-xs">
           <span className="font-semibold">8</span>
@@ -56,26 +54,41 @@ export const CourseItem = ({ course, isRecentlyAffected }: CourseItemProps) => {
 
       <td>
         <div className="flex-center gap-3">
-          <Tooltip content="Ghi danh">
-            <Navigation.components.ForwardWithParam
-              builderRouteKey={Navigation.admin.buildersKeys.USER_COURSES}
-              param={course.maKhoaHoc}
-            >
-              <div className="rounded p-1.5 transition-colors duration-150 ease-in-out hover:bg-bg-brand/10 hover:text-text-brand">
-                <ClipboardPenLine className="size-4" />
-              </div>
-            </Navigation.components.ForwardWithParam>
-          </Tooltip>
-          <Tooltip content="Chỉnh sửa khóa học">
-            <Navigation.components.ForwardWithParam
-              builderRouteKey={Navigation.admin.buildersKeys.COURSE_EDIT}
-              param={course.maKhoaHoc}
-            >
-              <div className="rounded p-1.5 transition-colors duration-150 ease-in-out hover:bg-bg-brand/10 hover:text-text-brand">
-                <SquarePen className="size-4" />
-              </div>
-            </Navigation.components.ForwardWithParam>
-          </Tooltip>
+          <div
+            className={
+              shouldBlockAction ? "pointer-events-none opacity-50" : ""
+            }
+          >
+            <Tooltip content="Ghi danh">
+              <Navigation.components.ForwardWithParam
+                builderRouteKey={
+                  Navigation.admin.buildersKeys.COURSE_ENROLLMENT
+                }
+                param={course.maKhoaHoc}
+              >
+                <div className="rounded p-1.5 transition-colors duration-150 ease-in-out hover:bg-bg-brand/10 hover:text-text-brand">
+                  <ClipboardPenLine className="size-4" />
+                </div>
+              </Navigation.components.ForwardWithParam>
+            </Tooltip>
+          </div>
+
+          <div
+            className={
+              shouldBlockAction ? "pointer-events-none opacity-50" : ""
+            }
+          >
+            <Tooltip content="Chỉnh sửa khóa học">
+              <Navigation.components.ForwardWithParam
+                builderRouteKey={Navigation.admin.buildersKeys.USER_EDIT}
+                param={course.maKhoaHoc}
+              >
+                <div className="rounded p-1.5 transition-colors duration-150 ease-in-out hover:bg-bg-brand/10 hover:text-text-brand">
+                  <SquarePen className="size-4" />
+                </div>
+              </Navigation.components.ForwardWithParam>
+            </Tooltip>
+          </div>
 
           <Tooltip content="Xóa khóa học">
             <Button

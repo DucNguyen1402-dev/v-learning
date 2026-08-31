@@ -4,6 +4,6 @@
   }
 
   .admin-container {
-    @apply layout-container-md scroll-mt-28 p-2 pb-12 lg:px-4 2xl:px-0;
+    @apply  layout-container-md scroll-mt-28 p-2 pb-12 lg:px-4;
   }
 }

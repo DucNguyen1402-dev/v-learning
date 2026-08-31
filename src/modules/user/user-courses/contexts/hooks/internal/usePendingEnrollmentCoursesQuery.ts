@@ -6,5 +6,6 @@ export const usePendingEnrollmentCoursesQuery = (taiKhoan: string) => {
   return useQuery({
     queryKey: ["pendingEnrollmentCourses", taiKhoan],
     queryFn: () => getPendingEnrollmentCourses(taiKhoan),
+    refetchOnWindowFocus: false,
   });
 };

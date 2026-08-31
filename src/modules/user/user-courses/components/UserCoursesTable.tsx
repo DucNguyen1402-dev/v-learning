@@ -1,4 +1,4 @@
-import { COURSE_ENROLLMENT_STATES } from "../constants";
+import { COURSE_ENROLLMENT_STATUS } from "../constants";
 import { useUserCoursesContext } from "../contexts";
 import { EmptyCourseState } from "./EmptyCourseState";
 import { UserCoursesTableRow } from "./user-courses-table-row";
@@ -19,7 +19,7 @@ export const UserCoursesTable = () => {
     }
 
     return userCourses?.map((course, index) => {
-      const isEnrolled = course.trangThai === COURSE_ENROLLMENT_STATES.ENROLLED;
+      const isEnrolled = course.trangThai === COURSE_ENROLLMENT_STATUS.ENROLLED;
 
       return (
         <UserCoursesTableRow

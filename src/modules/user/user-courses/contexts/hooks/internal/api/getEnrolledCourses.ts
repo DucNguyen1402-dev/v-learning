@@ -1,8 +1,12 @@
-import type { EnrolledCoursePayload } from "@modules/user/user-courses/types";
 import { api } from "@shared/api";
+type EnrolledCourseResponse = {
+  maKhoaHoc: string;
+  tenKhoaHoc: string;
+};
+
 export const getEnrolledCourses = (taiKhoan: string) =>
   api
-    .post<EnrolledCoursePayload[]>(
+    .post<EnrolledCourseResponse[]>(
       `/QuanLyNguoiDung/LayDanhSachKhoaHocDaXetDuyet`,
       {
         taiKhoan: taiKhoan,

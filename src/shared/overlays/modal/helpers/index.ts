@@ -1,5 +1,8 @@
 export { createAddModal } from "./createAddModal";
-export { createCancelCourseEnrollmentModal } from "./createCancelCourseEnrollment";
+export {
+  createCancelCourseEnrollmentModal,
+  createCancelUserEnrollmentModal,
+} from "./createCancelCourseEnrollment";
 export { createChangePasswordModal } from "./createChangePasswordModal";
 export { createDeleteModal } from "./createDeleteModal";
 export { createLeavePageModal } from "./createLeavePageModal";

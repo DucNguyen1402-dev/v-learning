@@ -1,1 +1,1 @@
-export { COURSE_ENROLLMENT_STATES } from "./courseEnrollmentStates";
+export { COURSE_ENROLLMENT_STATUS } from "./courseEnrollmentStatus";
