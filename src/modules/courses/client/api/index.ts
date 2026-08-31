@@ -1,1 +1,0 @@
-export { registerCourse } from "./registerCourse";

@@ -5,6 +5,7 @@ import {
   BUTTON_INTENTS,
   BUTTON_SIZES,
 } from "@shared/ui";
+import { cn } from "@shared/utils";
 
 import { USER_ENROLLMENT_STATUS } from "../../constants";
 import { useCourseEnrollmentContext } from "../../contexts";
@@ -21,17 +22,25 @@ export const EnrollmentUserTableRow = ({
   isEnrolled,
 }: EnrollmentUserTableRowProps) => {
   const { maKhoaHoc } = useCourseEnrollmentContext();
-  const { isCancelPersonalCourseLoading, onCancelCourseClick, isCanceling } =
-    useEnrollmentUserTableRow({
-      maKhoaHoc,
-      taiKhoan: user.taiKhoan,
-    });
+  const {
+    isCancelPersonalCourseLoading,
+    onCancelCourseClick,
+    isCanceling,
+    isEnrollUserPending,
+    onEnrollUserClick,
+    isEnrolling,
+  } = useEnrollmentUserTableRow({
+    maKhoaHoc,
+    taiKhoan: user.taiKhoan,
+  });
 
   return (
     <tr
-      className={`group border-b border-border-subtle transition-colors duration-200 hover:bg-bg-subtle ${
-        isCanceling ? "bg-bg-danger/40 text-text-on-feedback" : ""
-      }`}
+      className={cn(
+        "group border-b border-border-subtle transition-colors duration-200 hover:bg-bg-subtle",
+        isCanceling ? "bg-bg-danger/40 text-text-on-feedback" : "",
+        isEnrolling ? "bg-bg-brand/40 text-text-on-feedback" : "",
+      )}
     >
       <td className="py-3 pl-8 text-left">{stt}</td>
       <td className="pl-4 text-left text-sm">{user.taiKhoan}</td>
@@ -52,6 +61,8 @@ export const EnrollmentUserTableRow = ({
                 appearance={BUTTON_APPEARANCES.SOLID}
                 size={BUTTON_SIZES.NONE}
                 fullWidth
+                onClick={onEnrollUserClick}
+                loading={isEnrollUserPending}
               >
                 <span className="py-1.5 text-xs">Xác nhận</span>
               </Button>

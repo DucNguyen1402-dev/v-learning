@@ -3,7 +3,7 @@ import { useQueryClient } from "@tanstack/react-query";
 
 import { registerCourse } from "../api";
 
-export const useRegisterMutation = () => {
+export const useRegisterMutation = (queryKeys?: string[]) => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: registerCourse,
@@ -11,6 +11,12 @@ export const useRegisterMutation = () => {
     onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: ["userInfor"],
+      });
+
+      queryKeys?.forEach((key) => {
+        queryClient.invalidateQueries({
+          queryKey: [key],
+        });
       });
     },
   });

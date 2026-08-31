@@ -4,6 +4,7 @@ export {
   createCancelUserEnrollmentModal,
 } from "./createCancelCourseEnrollment";
 export { createChangePasswordModal } from "./createChangePasswordModal";
+export { createConfirmUserEnrollmentModal } from "./createConfirmUserEnrollment";
 export { createDeleteModal } from "./createDeleteModal";
 export { createLeavePageModal } from "./createLeavePageModal";
 export { createUnsavedChangesModal } from "./createUnsavedChangesModal";

@@ -1,16 +1,16 @@
 import { Course } from "@shared/icon";
 import { Navigation } from "@shared/navigation";
-import { LayoutDashboard, Users } from "lucide-react";
+import { Users } from "lucide-react";
 
 import type { NavLink } from "../types";
 
 export const sidebarNavLinks: NavLink[] = [
-  {
-    path: "/admin/dashboard",
-    label: "Dashboard",
-    icon: LayoutDashboard,
-    iconColor: "text-indigo-500",
-  },
+  // {
+  //   path: "/admin/dashboard",
+  //   label: "Dashboard",
+  //   icon: LayoutDashboard,
+  //   iconColor: "text-indigo-500",
+  // },
   {
     path: Navigation.admin.urls.COURSES,
     label: "Course management",

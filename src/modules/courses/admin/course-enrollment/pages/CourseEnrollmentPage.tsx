@@ -15,12 +15,13 @@ export const CourseEnrollmentPage = () => {
         className="flex scroll-target items-center justify-center gap-4"
         ref={scrollRef}
       >
-        <div className="flex flex-col items-center gap-1.5 text-center">
+        <div className="flex flex-col items-center gap-1.5 text-center select-none">
           <h1 className="text-lg font-semibold tracking-wide uppercase md:text-xl">
             Danh sách học viên
           </h1>
           <span className="inline-flex items-center gap-1 rounded-pill border border-border-subtle bg-bg-subtle px-3 py-1 text-xs font-medium md:text-sm">
-            {tenKhoaHoc} ({maKhoaHoc})
+            {tenKhoaHoc}{" "}
+            <span className="text-muted font-mono">(#{maKhoaHoc})</span>
           </span>
         </div>
       </div>

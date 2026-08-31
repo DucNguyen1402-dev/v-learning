@@ -19,4 +19,5 @@ export const successToast = {
     success(`Đăng ký ${ENTITY_LABELS[entity]} thành công!`),
   cancelCourse: () => success("Hủy ghi danh khóa học thành công!"),
   cancelUserEnrollment: () => success("Hủy ghi danh người dùng thành công!"),
+  enrollUser: (taiKhoan: string) => success(`Ghi danh người dùng ${taiKhoan} vào khóa học thành công!`),
 };

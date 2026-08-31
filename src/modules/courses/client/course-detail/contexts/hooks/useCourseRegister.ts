@@ -1,4 +1,4 @@
-import { useRegisterMutation } from "@modules/courses/client/hooks";
+import { useRegisterMutation } from "@modules/courses/shared/hooks";
 import { CurrentUserStorage } from "@shared/auth";
 import { ENTITIES } from "@shared/domain";
 import { getErrorMessage } from "@shared/error";
