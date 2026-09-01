@@ -53,7 +53,7 @@ export const CourseItem = ({ course, isRecentlyAffected }: CourseItemProps) => {
       </td>
 
       <td>
-        <div className="flex-center gap-3">
+        <div className="flex-center gap-1">
           <div
             className={
               shouldBlockAction ? "pointer-events-none opacity-50" : "flex"
@@ -94,13 +94,14 @@ export const CourseItem = ({ course, isRecentlyAffected }: CourseItemProps) => {
             }
           >
             <Tooltip content="Ghi danh học viên">
-              <Navigation.components.Forward
-                routeKey={Navigation.admin.keys.ENROLL_USER}
+              <Navigation.components.ForwardWithParam
+                builderRouteKey={Navigation.admin.buildersKeys.ENROLL_USER}
+                param={course.maKhoaHoc}
 
                 className="rounded-control p-1.5 transition-colors duration-150 ease-in-out hover:bg-bg-brand/10 hover:text-text-brand"
               >
                 <ClipboardPenLine className="size-4" />
-              </Navigation.components.Forward>
+              </Navigation.components.ForwardWithParam>
             </Tooltip>
           </div>
 

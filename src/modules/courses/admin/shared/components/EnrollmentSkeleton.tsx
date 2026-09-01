@@ -5,11 +5,18 @@ import {
   TableSkeleton,
 } from "@shared/ui";
 
-export const CourseEnrollmentSkeleton = () => {
+type EnrollmentSkeletonProps = {
+  colSpan?: number;
+  rowNumber?: number;
+};
+export const EnrollmentSkeleton = ({
+  colSpan = 4,
+  rowNumber = 5,
+}: EnrollmentSkeletonProps) => {
   return (
     <TableSkeleton
-      colSpan={4}
-      rowNumber={5}
+      colSpan={colSpan}
+      rowNumber={rowNumber}
       width={SKELETON_WIDTHS.MD}
       height={SKELETON_HEIGHTS.MD}
       radius={SKELETON_RADIUS.MD}

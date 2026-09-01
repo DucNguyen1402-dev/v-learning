@@ -27,7 +27,7 @@ export const EnrollmentUserTableRow = ({
     onCancelCourseClick,
     isCanceling,
     isEnrollUserPending,
-    onEnrollUserClick,
+    onConfirmEnrollUserClick,
     isEnrolling,
   } = useEnrollmentUserTableRow({
     maKhoaHoc,
@@ -37,7 +37,7 @@ export const EnrollmentUserTableRow = ({
   return (
     <tr
       className={cn(
-        "group border-b border-border-subtle transition-colors duration-200 hover:bg-bg-subtle",
+        "group border-t border-border-subtle transition-colors duration-200 hover:bg-bg-subtle",
         isCanceling ? "bg-bg-danger/40 text-text-on-feedback" : "",
         isEnrolling ? "bg-bg-brand/40 text-text-on-feedback" : "",
       )}
@@ -61,7 +61,7 @@ export const EnrollmentUserTableRow = ({
                 appearance={BUTTON_APPEARANCES.SOLID}
                 size={BUTTON_SIZES.NONE}
                 fullWidth
-                onClick={onEnrollUserClick}
+                onClick={onConfirmEnrollUserClick}
                 loading={isEnrollUserPending}
               >
                 <span className="py-1.5 text-xs">Xác nhận</span>

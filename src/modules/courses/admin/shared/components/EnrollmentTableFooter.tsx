@@ -1,16 +1,16 @@
 import { Pagination } from "@shared/table";
 
-import { useCourseEnrollmentContext } from "../contexts";
-
-export const CoursesEnrollmentTableFooter = () => {
+type CoursesEnrollmentTableFooterProps = {
+  isLoading: boolean;
+};
+export const EnrollmentTableFooter = ({
+  isLoading,
+}: CoursesEnrollmentTableFooterProps) => {
   const {
     state,
     actions,
     refs: { scrollToTarget },
   } = Pagination.use();
-  const {
-    status: { isLoading },
-  } = useCourseEnrollmentContext();
 
   return (
     <div className="flex flex-col gap-8 lg:gap-5" ref={scrollToTarget}>
