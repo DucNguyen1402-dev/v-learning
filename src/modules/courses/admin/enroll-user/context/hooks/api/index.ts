@@ -1,4 +1,1 @@
-export {
-  getUnenrolledUsers,
-  type UnenrolledUserResponse,
-} from "./getUnenrolledUsers";
+export { getUnenrolledUsers } from "./getUnenrolledUsers";
