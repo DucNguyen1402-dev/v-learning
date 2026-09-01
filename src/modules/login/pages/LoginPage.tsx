@@ -56,6 +56,7 @@ export const LoginPage = () => {
       >
         <LoginHeader
           isRegistrationSuccessful={payload?.isRegistrationSuccessful}
+          loginRequired={payload?.loginRequired}
         />
 
         <div className="mt-5">

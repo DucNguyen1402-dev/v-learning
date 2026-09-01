@@ -1,0 +1,1 @@
+export { useCourseRegister } from "./useCourseRegister";

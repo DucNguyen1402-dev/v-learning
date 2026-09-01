@@ -4,13 +4,13 @@ import { LoginNavigation } from "@modules/login";
 import { AccessTokenStorage } from "@shared/auth";
 import { Navigation } from "@shared/navigation";
 
-type ProtectPersonalCourseRouteProps = {
+type CoursePaymentRouteGuardProps = {
   children: ReactNode;
 };
 
-export const ProtectPersonalCourseRoute = ({
+export const CoursePaymentRouteGuard = ({
   children,
-}: ProtectPersonalCourseRouteProps) => {
+}: CoursePaymentRouteGuardProps) => {
   const isLogin = AccessTokenStorage.isLogin();
   const { go } = Navigation.hooks.useNavigate();
 
