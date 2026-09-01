@@ -14,7 +14,6 @@ export const ProtectPersonalCourseRoute = ({
   const { go } = Navigation.hooks.useNavigate();
 
   useEffect(() => {
-    if (isPending) return;
     if (!infor) {
       go(Navigation.client.keys.LOGIN);
     }
