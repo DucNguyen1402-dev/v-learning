@@ -10,10 +10,10 @@ export const PersonalCourseDetailRight = ({
 }) => {
   return (
     <div className="flex flex-col gap-4">
-      <LessonProgress baiHoc={targetCourse.baiHoc} />
+      <LessonProgress baiHoc={targetCourse?.baiHoc} />
       <LessonListCard
-        danhSachBaiHoc={targetCourse.danhSachBaiHoc}
-        maKhoaHoc={targetCourse.maKhoaHoc}
+        danhSachBaiHoc={targetCourse?.danhSachBaiHoc}
+        maKhoaHoc={targetCourse?.maKhoaHoc}
       />
     </div>
   );

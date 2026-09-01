@@ -1,13 +1,12 @@
 import { Navigation } from "@shared/navigation";
-import { GraduationCap } from "lucide-react";
+import { Eye, GraduationCap, Users } from "lucide-react";
 
 import type { CourseCardForm } from "@/modules/courses/shared/types";
 
 interface CourseCardProps {
   course: CourseCardForm;
-  shouldHideCategory: boolean;
 }
-export const CourseCard = ({ course, shouldHideCategory }: CourseCardProps) => {
+export const CourseCard = ({ course }: CourseCardProps) => {
   const image =
     "thumbnail" in course
       ? (course.thumbnail ?? course.hinhAnh)
@@ -27,16 +26,23 @@ export const CourseCard = ({ course, shouldHideCategory }: CourseCardProps) => {
       />
 
       <div className="flex flex-1 flex-col gap-5 p-4">
-        <div className="flex flex-col gap-2">
-          {!shouldHideCategory && (
-            <p className="text-xs font-medium tracking-wide text-text-subtle uppercase">
-              {course.danhMucKhoaHoc.tenDanhMucKhoaHoc}
-            </p>
-          )}
+        <h2 className="line-clamp-2 text-lg font-semibold">
+          {course.tenKhoaHoc}
+        </h2>
 
-          <h2 className="line-clamp-2 text-lg font-semibold">
-            {course.tenKhoaHoc}
-          </h2>
+        <p className="line-clamp-2 flex-1 text-sm text-text-subtle">
+          {course.moTa}
+        </p>
+
+        <div className="mt-2 flex flex-wrap gap-6 text-sm text-text-subtle">
+          <div className="flex items-center gap-1">
+            <Eye className="size-4" />
+            <span>{course.luotXem}</span>
+          </div>
+          <div className="flex items-center gap-1">
+            <Users className="size-4" />
+            <span>{course.soLuongHocVien}</span>
+          </div>
         </div>
 
         <div className="flex items-center justify-between gap-1 border-t border-border-subtle pt-4 text-sm">

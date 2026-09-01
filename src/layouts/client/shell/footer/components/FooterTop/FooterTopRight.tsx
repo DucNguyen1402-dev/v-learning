@@ -1,16 +1,36 @@
 import { Link } from "react-router-dom";
 
+import { CATEGORIES } from "@modules/courses/shared/constants";
 import { Navigation } from "@shared/navigation";
-
 export const FooterTopRight = () => {
   const links = [
     {
       title: "Khóa học",
       list: [
-        { item: "Frontend", path: "/courses/frontend" },
-        { item: "Backend", path: "/courses/backend" },
-        { item: "Fullstack", path: "/courses/fullstack" },
-        { item: "Mobile", path: "/courses/mobile" },
+        {
+          item: "Frontend",
+          path: Navigation.client.builders.COURSES_BY_CATEGORY(
+            CATEGORIES.FRONTEND,
+          ),
+        },
+        {
+          item: "Backend",
+          path: Navigation.client.builders.COURSES_BY_CATEGORY(
+            CATEGORIES.BACKEND,
+          ),
+        },
+        {
+          item: "Fullstack",
+          path: Navigation.client.builders.COURSES_BY_CATEGORY(
+            CATEGORIES.FULLSTACK,
+          ),
+        },
+        {
+          item: "Mobile",
+          path: Navigation.client.builders.COURSES_BY_CATEGORY(
+            CATEGORIES.MOBILE,
+          ),
+        },
       ],
     },
     {

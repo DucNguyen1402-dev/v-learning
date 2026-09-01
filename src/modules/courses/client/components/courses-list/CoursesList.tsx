@@ -38,7 +38,13 @@ export function CoursesList() {
       {isLoading
         ? createArray(10).map((_, index) => <CoursesListSkeleton key={index} />)
         : coursesToRender?.map((course) => {
-            return <CourseCard key={course.maKhoaHoc} course={course} />;
+            return (
+              <CourseCard
+                key={course.maKhoaHoc}
+                course={course}
+                shouldHideCategory={isSourceByCategory}
+              />
+            );
           })}
     </div>
   );
