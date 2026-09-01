@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 
+import { Navigation } from "@shared/navigation";
+
 export const FooterTopRight = () => {
   const links = [
     {
@@ -14,17 +16,17 @@ export const FooterTopRight = () => {
     {
       title: "Giới thiệu",
       list: [
-        { item: "Về chúng tôi", path: "/about" },
-        { item: "Liên hệ", path: "/contact" },
-        { item: "Hỗ trợ", path: "/support" },
+        { item: "Về chúng tôi", path: Navigation.client.urls.ABOUT },
+        { item: "Liên hệ", path: Navigation.client.urls.CONTACT },
+        { item: "Hỗ trợ", path: Navigation.client.urls.SUPPORT },
       ],
     },
     {
       title: "Khám phá",
       list: [
-        { item: "Blog", path: "/blog" },
-        { item: "Sự kiện", path: "/events" },
-        { item: "Cộng đồng", path: "/community" },
+        { item: "Blogs", path: Navigation.client.paths.BLOGS },
+        { item: "Sự kiện", path: Navigation.client.urls.EVENTS },
+        { item: "Cộng đồng", path: Navigation.client.urls.COMMUNITY },
       ],
     },
   ];

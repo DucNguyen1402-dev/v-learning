@@ -9,6 +9,10 @@ export const CLIENT_ROUTE_KEYS = {
   PROFILE_PASSWORD_CHANGE: "PROFILE_PASSWORD_CHANGE",
   PERSONAL_COURSE: "PERSONAL_COURSE",
   COURSES: "COURSES",
+  COMMUNITY: "COMMUNITY",
+  EVENTS: "EVENTS",
+  CONTACT: "CONTACT",
+  SUPPORT: "SUPPORT",
 } as const;
 
 export const CLIENT_ROUTE_BUILDERS_KEYS = {
@@ -39,6 +43,10 @@ export const CLIENT_ROUTE_PATHS = {
   [CLIENT_ROUTE_KEYS.PROFILE_PASSWORD_CHANGE]: "password-change",
   [CLIENT_ROUTE_KEYS.PERSONAL_COURSE]: "personal-courses",
   [CLIENT_ROUTE_KEYS.COURSES]: "courses",
+  [CLIENT_ROUTE_KEYS.COMMUNITY]: "community",
+  [CLIENT_ROUTE_KEYS.EVENTS]: "events",
+  [CLIENT_ROUTE_KEYS.CONTACT]: "contact",
+  [CLIENT_ROUTE_KEYS.SUPPORT]: "support",
 } as const;
 
 export const CLIENT_ROUTE_BUILDERS_PATHS = {
@@ -59,6 +67,10 @@ export const CLIENT_ROUTE_TITLES = {
   [CLIENT_ROUTE_KEYS.PROFILE_PASSWORD_CHANGE]: "Password Change",
   [CLIENT_ROUTE_KEYS.PERSONAL_COURSE]: "Personal Courses",
   [CLIENT_ROUTE_KEYS.COURSES]: "Courses",
+  [CLIENT_ROUTE_KEYS.COMMUNITY]: "Community",
+  [CLIENT_ROUTE_KEYS.EVENTS]: "Events",
+  [CLIENT_ROUTE_KEYS.CONTACT]: "Contact",
+  [CLIENT_ROUTE_KEYS.SUPPORT]: "Support",
 } as const;
 
 export const CLIENT_ROUTE_BUILDERS_TITLES = {
@@ -81,6 +93,10 @@ export const CLIENT_ROUTE_URLS = {
     "/client/profile/password-change",
   [CLIENT_ROUTE_KEYS.PERSONAL_COURSE]: "/client/personal-courses",
   [CLIENT_ROUTE_KEYS.COURSES]: "/client/courses",
+  [CLIENT_ROUTE_KEYS.COMMUNITY]: "/client/community",
+  [CLIENT_ROUTE_KEYS.EVENTS]: "/client/events",
+  [CLIENT_ROUTE_KEYS.CONTACT]: "/client/contact",
+  [CLIENT_ROUTE_KEYS.SUPPORT]: "/client/support",
 } as const;
 
 export const CLIENT_ROUTE_BUILDERS = {
