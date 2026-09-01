@@ -2,7 +2,7 @@ export async function waitForMinimumDuration(
   startTime: number,
   minDuration: number,
 ): Promise<void> {
-  const elapsed = Date.now() - startTime;
+  const elapsed = performance.now() - startTime;
   const remaining = Math.max(0, minDuration - elapsed);
 
   if (remaining > 0) {
