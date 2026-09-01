@@ -22,7 +22,7 @@ export const usePasswordChangeActions = ({
   isDirty,
 }: UsePasswordChangeActionsProps) => {
   const { infor } = UserInfor.useQuery();
-
+  const currentArea = Navigation.hooks.useCurrentArea();
   const modal = Modal.use();
   const toast = Toast.use();
   const { update } = UpdateAuth.useMutation();
@@ -60,8 +60,8 @@ export const usePasswordChangeActions = ({
     try {
       await execution.runAsyncTask(() => update(payload), loader);
       go(
-        Navigation.client.keys.PROFILE,
-        "client",
+        Navigation[currentArea].keys.PROFILE,
+        currentArea,
         Toast.config.success.changePassword(),
       );
     } catch (error) {

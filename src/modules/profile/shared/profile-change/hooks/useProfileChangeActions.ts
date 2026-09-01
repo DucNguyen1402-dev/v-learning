@@ -1,4 +1,3 @@
-import type { ProfileChangeFormValues } from "@modules/profile/profile-change/types";
 import { UserInfor } from "@shared/auth";
 import { UpdateAuth } from "@shared/auth";
 import { ENTITIES } from "@shared/domain";
@@ -8,6 +7,7 @@ import { createPayload } from "@shared/form-utils";
 import { Navigation } from "@shared/navigation";
 import { Loading, Modal, Toast } from "@shared/overlays";
 
+import type { ProfileChangeFormValues } from "../types";
 import { useProfileChangeForm } from "./useProfileChangeForm";
 
 export const useProfileChangeActions = () => {
@@ -20,6 +20,8 @@ export const useProfileChangeActions = () => {
 
   const { register, handleSubmit, getFieldWithFormState, isDirty, isValid } =
     useProfileChangeForm();
+
+  const currentArea = Navigation.hooks.useCurrentArea();
 
   const onValid = async (data: ProfileChangeFormValues) => {
     if (!infor) return;
@@ -38,8 +40,8 @@ export const useProfileChangeActions = () => {
     try {
       await execution.runAsyncTask(() => update(payload), loader);
       go(
-        Navigation.client.keys.PROFILE,
-        "client",
+        Navigation[currentArea].keys.PROFILE,
+        currentArea,
         Toast.config.success.update(ENTITIES.USER),
       );
     } catch (error) {
