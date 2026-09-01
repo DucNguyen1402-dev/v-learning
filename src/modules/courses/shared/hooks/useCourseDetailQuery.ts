@@ -6,5 +6,6 @@ export const useCourseDetailQuery = (courseId: string) => {
   return useQuery({
     queryKey: ["course-detail", courseId],
     queryFn: () => getCourseInfo(courseId),
+    refetchOnWindowFocus: false,
   });
 };

@@ -3,7 +3,7 @@ import { Navigation } from "@shared/navigation";
 import { Tooltip } from "@shared/ui";
 import { Button, BUTTON_SIZES } from "@shared/ui/button";
 import { cn } from "@shared/utils";
-import { ClipboardPenLine, SquarePen, Trash } from "lucide-react";
+import { BookSearch, ClipboardPenLine, SquarePen, Trash } from "lucide-react";
 
 import { useCourseDeletion } from "./hooks";
 type CourseItemProps = {
@@ -53,39 +53,54 @@ export const CourseItem = ({ course, isRecentlyAffected }: CourseItemProps) => {
       </td>
 
       <td>
-        <div className="flex-center gap-3">
+        <div className="flex-center gap-1">
           <div
             className={
-              shouldBlockAction ? "pointer-events-none opacity-50" : ""
+              shouldBlockAction ? "pointer-events-none opacity-50" : "flex"
             }
           >
-            <Tooltip content="Ghi danh">
+            <Tooltip content="Quản lý học viên ghi danh">
               <Navigation.components.ForwardWithParam
                 builderRouteKey={
                   Navigation.admin.buildersKeys.COURSE_ENROLLMENT
                 }
                 param={course.maKhoaHoc}
+                className="rounded-control p-1.5 transition-colors duration-150 ease-in-out hover:bg-bg-brand/10 hover:text-text-brand"
               >
-                <div className="rounded p-1.5 transition-colors duration-150 ease-in-out hover:bg-bg-brand/10 hover:text-text-brand">
-                  <ClipboardPenLine className="size-4" />
-                </div>
+                <BookSearch className="size-4" />
               </Navigation.components.ForwardWithParam>
             </Tooltip>
           </div>
 
           <div
             className={
-              shouldBlockAction ? "pointer-events-none opacity-50" : ""
+              shouldBlockAction ? "pointer-events-none opacity-50" : "flex"
             }
           >
             <Tooltip content="Chỉnh sửa khóa học">
               <Navigation.components.ForwardWithParam
-                builderRouteKey={Navigation.admin.buildersKeys.USER_EDIT}
+                builderRouteKey={Navigation.admin.buildersKeys.COURSE_EDIT}
                 param={course.maKhoaHoc}
+                className="rounded-control p-1.5 transition-colors duration-150 ease-in-out hover:bg-bg-brand/10 hover:text-text-brand"
               >
-                <div className="rounded p-1.5 transition-colors duration-150 ease-in-out hover:bg-bg-brand/10 hover:text-text-brand">
-                  <SquarePen className="size-4" />
-                </div>
+                <SquarePen className="size-4" />
+              </Navigation.components.ForwardWithParam>
+            </Tooltip>
+          </div>
+
+          <div
+            className={
+              shouldBlockAction ? "pointer-events-none opacity-50" : "flex"
+            }
+          >
+            <Tooltip content="Ghi danh học viên">
+              <Navigation.components.ForwardWithParam
+                builderRouteKey={Navigation.admin.buildersKeys.ENROLL_USER}
+                param={course.maKhoaHoc}
+
+                className="rounded-control p-1.5 transition-colors duration-150 ease-in-out hover:bg-bg-brand/10 hover:text-text-brand"
+              >
+                <ClipboardPenLine className="size-4" />
               </Navigation.components.ForwardWithParam>
             </Tooltip>
           </div>
@@ -95,7 +110,7 @@ export const CourseItem = ({ course, isRecentlyAffected }: CourseItemProps) => {
               onClick={() => onDeleteClick(course.maKhoaHoc)}
               size={BUTTON_SIZES.NONE}
             >
-              <div className="rounded p-1.5 transition-colors duration-150 ease-in-out hover:bg-bg-danger/10 hover:text-text-danger">
+              <div className="rounded-control p-1.5 transition-colors duration-150 ease-in-out hover:bg-bg-danger/10 hover:text-text-danger">
                 <Trash className="size-4" />
               </div>
             </Button>

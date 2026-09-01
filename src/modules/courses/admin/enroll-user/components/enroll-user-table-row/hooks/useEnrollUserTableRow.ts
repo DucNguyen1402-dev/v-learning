@@ -1,14 +1,13 @@
 import { useState } from "react";
 
 import { useEnrollUserMutation } from "@modules/courses/admin/shared/hooks";
-import { useCancelPersonalCourseMutation } from "@modules/personal-courses";
 import { getErrorMessage } from "@shared/error";
 import { Modal, Toast } from "@shared/overlays";
 type UseEnrollmentUserTableRowParams = {
   maKhoaHoc: string;
   taiKhoan: string;
 };
-export const useEnrollmentUserTableRow = ({
+export const useEnrollUserTableRow = ({
   maKhoaHoc,
   taiKhoan,
 }: UseEnrollmentUserTableRowParams) => {
@@ -21,14 +20,7 @@ export const useEnrollmentUserTableRow = ({
   });
 
   const { mutateAsync: enrollUserMutation, isPending: isEnrollUserPending } =
-    useEnrollUserMutation(["enrolledUsers", "pendingEnrollmentUsers"]);
-  const {
-    mutation: cancelPersonalCourseMutation,
-    isLoading: isCancelPersonalCourseLoading,
-  } = useCancelPersonalCourseMutation([
-    "enrolledUsers",
-    "pendingEnrollmentUsers",
-  ]);
+    useEnrollUserMutation(["unenrolledUsers"]);
 
   const confirmEnrollUser = async () => {
     const payload = {
@@ -45,7 +37,7 @@ export const useEnrollmentUserTableRow = ({
     }
   };
 
-  const onConfirmEnrollUserClick = () => {
+  const onEnrollUserClick = () => {
     setRowState((prev) => ({ ...prev, isEnrolling: true }));
     modal.open({
       ...Modal.config.confirmUserEnrollment(taiKhoan),
@@ -54,35 +46,9 @@ export const useEnrollmentUserTableRow = ({
     });
   };
 
-  const cancelCourse = async () => {
-    const payload = {
-      maKhoaHoc,
-      taiKhoan,
-    };
-    try {
-      await cancelPersonalCourseMutation(payload);
-      toast.show(Toast.config.success.cancelUserEnrollment());
-    } catch (error) {
-      toast.show(Toast.config.error(getErrorMessage({ error })));
-    } finally {
-      setRowState((prev) => ({ ...prev, isCanceling: false }));
-    }
-  };
-
-  const onCancelCourseClick = () => {
-    setRowState((prev) => ({ ...prev, isCanceling: true }));
-    modal.open({
-      ...Modal.config.cancelUserEnrollment(taiKhoan),
-      onConfirm: cancelCourse,
-      onCancel: () => setRowState((prev) => ({ ...prev, isCanceling: false })),
-    });
-  };
   return {
-    onCancelCourseClick,
-    isCancelPersonalCourseLoading,
-    isCanceling: rowState.isCanceling,
     isEnrollUserPending,
-    onConfirmEnrollUserClick,
+    onEnrollUserClick,
     isEnrolling: rowState.isEnrolling,
   };
 };
