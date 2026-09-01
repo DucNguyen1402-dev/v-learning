@@ -1,15 +1,13 @@
 import { Route } from "react-router-dom";
 
-import { Navigation } from "@shared/navigation";
-
 import { ProfileMainLayout } from "../layouts";
+import { ProfileOverviewPage } from "../pages";
 import { passwordChangeRoute } from "../password-change";
 import { profileChangeRoute } from "../profile-change";
-import { profileOverviewRoute } from "../profile-overview";
 
-export const profileRoutes = (
-  <Route path={Navigation.client.paths.PROFILE} element={<ProfileMainLayout />}>
-    {profileOverviewRoute}
+export const createProfileRoute = (path: string) => (
+  <Route path={path} element={<ProfileMainLayout />}>
+    <Route index element={<ProfileOverviewPage />} />
     {profileChangeRoute}
     {passwordChangeRoute}
   </Route>

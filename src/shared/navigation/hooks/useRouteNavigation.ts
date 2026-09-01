@@ -2,7 +2,7 @@ import { useCallback, useMemo } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import { type AdminRouteKey } from "../admin";
-import { ClientNavigation, type ClientRouteKey } from "../client";
+import { type ClientRouteKey } from "../client";
 import { getNavigationAreaMeta } from "../helpers";
 import { useCurrentArea } from "./useCurrentArea";
 
@@ -17,10 +17,6 @@ export const useRouteNavigation = () => {
   const currentArea = useCurrentArea();
   const state = location.state as RouteState | null;
   const routeHistory = useMemo(() => state?.history ?? [], [state?.history]);
-  const currentRouteKey = useMemo(
-    () => ClientNavigation.findKey(location.pathname),
-    [location.pathname],
-  );
 
   const previousRouteKey = useMemo(() => {
     const previousKey = routeHistory.at(-1) as
@@ -44,17 +40,6 @@ export const useRouteNavigation = () => {
     }
   }, [previousRouteKey, currentArea, navigate, routeHistory]);
 
-  const forward = useCallback(
-    (routeKey: ClientRouteKey, payload?: unknown) =>
-      navigate(ClientNavigation.urls[routeKey], {
-        state: {
-          history: [...routeHistory, currentRouteKey],
-          payload: payload ?? null,
-        },
-      }),
-    [navigate, routeHistory, currentRouteKey],
-  );
-
   const go = useCallback(
     (
       routeKey: ClientRouteKey | AdminRouteKey,
@@ -77,7 +62,6 @@ export const useRouteNavigation = () => {
 
   return {
     go,
-    forward,
     back,
     previousRouteKey,
   };

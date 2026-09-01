@@ -3,7 +3,7 @@ import { homeRoute } from "@modules/home";
 import { loginRoute } from "@modules/login";
 import { personalCourseRoute } from "@modules/personal-courses";
 import { aboutRoute, blogsRoute } from "@modules/placeholders";
-import { profileRoutes } from "@modules/profile";
+import { clientProfileRoutes } from "@modules/profile/client";
 import { registerRoute } from "@modules/register";
 
 export const clientRoutes = [
@@ -12,7 +12,7 @@ export const clientRoutes = [
   coursesRoutes,
   homeRoute,
   loginRoute,
-  profileRoutes,
+  clientProfileRoutes,
   registerRoute,
   personalCourseRoute,
 ];

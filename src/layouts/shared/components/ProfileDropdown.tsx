@@ -14,6 +14,8 @@ export const ProfileDropdown = () => {
   } = User.use();
   const { go } = Navigation.hooks.useNavigate();
 
+  const currentArea = Navigation.hooks.useCurrentArea();
+
   const onLogoutClick = useCallback(() => {
     AuthSession.logout();
     refreshUser();
@@ -33,7 +35,7 @@ export const ProfileDropdown = () => {
         id: "profile",
         label: "Hồ sơ",
         icon: UserIcon,
-        routeKey: Navigation.client.keys.PROFILE,
+        routeKey: Navigation[currentArea].keys.PROFILE,
         component: "link",
       },
       {
@@ -44,7 +46,13 @@ export const ProfileDropdown = () => {
         component: "button",
       },
     ];
-  }, [toggleTheme, onLogoutClick, themeAsset]);
+  }, [
+    themeAsset.label,
+    themeAsset.icon,
+    toggleTheme,
+    currentArea,
+    onLogoutClick,
+  ]);
 
   const pathname = Navigation.hooks.usePathname();
 
@@ -52,7 +60,7 @@ export const ProfileDropdown = () => {
     <ul className="profile-dropdown">
       {menuItems.map((item) => {
         const isActive = item.routeKey
-          ? Navigation.client.isActive(pathname, item.routeKey)
+          ? Navigation[currentArea].isActive(pathname, item.routeKey)
           : false;
         const isLogout = item.id === "logout";
         return (
