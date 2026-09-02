@@ -14,16 +14,10 @@ export const CourseByCategoryPage = () => {
       resetDeps={[coursesByCategory]}
     >
       <div className="flex min-h-screen flex-col gap-10">
-        <div className="flex flex-col gap-10 p-container md:p-container-md lg:p-container-lg">
-          <CoursesHeader />
-          {/* <CoursesToolbar /> */}
-        </div>
+        <CoursesHeader />
 
         <CoursesList isLoading={isPending} isEmpty={isEpmty} />
-
-        <div className="mt-8">
-          <CoursesFooter isLoading={isPending} />
-        </div>
+        <CoursesFooter isLoading={isPending} />
       </div>
     </Pagination.Provider>
   );
