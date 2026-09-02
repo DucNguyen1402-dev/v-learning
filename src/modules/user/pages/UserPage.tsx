@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 import { Navigation } from "@shared/navigation";
 import { Toast } from "@shared/overlays";
@@ -20,11 +20,11 @@ export const UserPage = () => {
   const { show: showToast } = Toast.use();
   const [displayState] = State.useTemporary(Navigation.hooks.usePayload());
   const consumePayload = Navigation.hooks.useConsumePayload();
-
+  const hasShownToast = useRef(false);
   useEffect(() => {
-    if (!displayState?.toastState) return;
+    if (!displayState?.toastState || hasShownToast.current) return;
     showToast(displayState.toastState);
-
+    hasShownToast.current = true;
     consumePayload();
   }, [displayState?.toastState, showToast, consumePayload]);
 
