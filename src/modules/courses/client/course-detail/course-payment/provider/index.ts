@@ -1,0 +1,1 @@
+export { CoursePaymentRouteProvider } from "./CoursePaymentRouteProvider";

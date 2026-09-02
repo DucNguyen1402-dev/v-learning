@@ -1,13 +1,10 @@
-import { useCourseDetailContext } from "@modules/courses/client/course-detail/contexts";
 import { Button, BUTTON_APPEARANCES, BUTTON_INTENTS } from "@shared/ui";
 
-import { useCourseRegister } from "../../hooks";
+import { useCoursePaymentContext } from "../../context";
 
 export const PaymentConfirmation = () => {
-  const { maKhoaHoc } = useCourseDetailContext();
-  const { handleRegisterCourse, isRegistering } = useCourseRegister({
-    maKhoaHoc,
-  });
+  const { handleRegisterCourse, isRegistering } = useCoursePaymentContext();
+
   return (
     <div className="flex flex-col items-center gap-3">
       <Button

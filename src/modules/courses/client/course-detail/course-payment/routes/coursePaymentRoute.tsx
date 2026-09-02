@@ -4,6 +4,7 @@ import { Navigation } from "@shared/navigation";
 import { UserProfile } from "@shared/user-profile";
 
 import { CoursePaymentPage } from "../pages/CoursePaymentPage";
+import { CoursePaymentRouteProvider } from "../provider";
 import { CoursePaymentRouteGuard } from "./CoursePaymentRouteGuard";
 
 export const coursePaymentRoute = (
@@ -11,9 +12,11 @@ export const coursePaymentRoute = (
     path={Navigation.client.buildersPaths.COURSES_DETAIL_PAYMENT}
     element={
       <CoursePaymentRouteGuard>
-        <UserProfile.Provider>
-          <CoursePaymentPage />
-        </UserProfile.Provider>
+        <CoursePaymentRouteProvider>
+          <UserProfile.Provider>
+            <CoursePaymentPage />
+          </UserProfile.Provider>
+        </CoursePaymentRouteProvider>
       </CoursePaymentRouteGuard>
     }
   />

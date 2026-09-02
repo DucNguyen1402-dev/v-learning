@@ -1,8 +1,21 @@
+import { useEffect } from "react";
+
 import { Navigation } from "@shared/navigation";
+import { AppInteractionLock } from "@shared/overlays";
 
 import { CoursePaymentLeft, CoursePaymentRight } from "../components";
+import { useCoursePaymentContext } from "../context";
 export const CoursePaymentPage = () => {
   const { scrollRef } = Navigation.hooks.useScrollOnRouteChange();
+
+  const { isRegistering } = useCoursePaymentContext();
+
+  const { shouldLockInteraction } = AppInteractionLock.use();
+
+  useEffect(() => {
+    shouldLockInteraction(isRegistering);
+  }, [isRegistering, shouldLockInteraction]);
+
   return (
     <div className="min-h-screen px-4 py-8">
       <div
