@@ -120,6 +120,37 @@ Some features and UI components are still being improved and refined.
 
 ## 👨‍💻 Author
 
+<table align="center">
+  <tr>
+    <th>Member</th>
+    <th>Responsibility</th>
+    <th>Contact</th>
+  </tr>
+  <tr align="center">
+    <td>Duc Nguyen</td>
+    <td>Client Management & Admin Management </td>
+    <td>
+      <a href="https://github.com/DucNguyen1402-dev"  target="_blank"
+         rel="noopener noreferrer"
+         style="margin-right: 10px;"
+        >
+        <img
+          src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white"
+          alt="GitHub"
+        />
+      </a>
+     <a href="https://mail.google.com/mail/?view=cm&to=hoangduc140220@gmail.com"  target="_blank"
+        rel="noopener noreferrer">
+        <img
+    src="https://img.shields.io/badge/Gmail-D14836?style=flat-square&logo=gmail&logoColor=white"
+    alt="Gmail"
+          />
+       </a>
+    </td>
+  </tr>
+</table>
+
+
 **V-Learning**
 
 > A modern learning platform built with React and TypeScript.
