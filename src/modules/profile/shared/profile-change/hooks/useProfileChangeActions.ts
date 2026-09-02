@@ -45,7 +45,10 @@ export const useProfileChangeActions = () => {
         Toast.config.success.update(ENTITIES.USER),
       );
     } catch (error) {
-      const message = getErrorMessage({ error });
+      const message = getErrorMessage({
+        error,
+        messageForInternalSeverError: "Email đã tồn tại!",
+      });
       toast.show(Toast.config.error(message));
     }
   };
