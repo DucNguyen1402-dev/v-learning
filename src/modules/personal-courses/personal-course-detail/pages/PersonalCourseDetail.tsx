@@ -4,6 +4,7 @@ import { Navigation } from "@shared/navigation";
 import {
   CancelEnrollmentButton,
   CancelEnrollmentModalRender,
+  EmptyCourseState,
   PersonalCourseDetailLeft,
   PersonalCourseDetailRight,
 } from "../components";
@@ -15,19 +16,17 @@ export const PersonalCourseDetail = () => {
   const { isCancelModalOpen } = usePersonalCourseDetailContext();
   const { maKhoaHoc } = Navigation.hooks.useParams();
   const { courses } = usePersonalCoursesContext();
-  const targetCourse = courses.find(
-    (course) => course.maKhoaHoc === maKhoaHoc,
-  )!;
-  return (
-    <>
-      <div className="min-h-screen p-2 lg:p-8">
-        <CancelEnrollmentButton />
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-          <PersonalCourseDetailLeft targetCourse={targetCourse} />
-          <PersonalCourseDetailRight targetCourse={targetCourse} />
-        </div>
+  const targetCourse = courses.find((course) => course.maKhoaHoc === maKhoaHoc);
+  return !targetCourse ? (
+    <EmptyCourseState />
+  ) : (
+    <div className="min-h-screen p-2 lg:p-8">
+      <CancelEnrollmentButton />
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+        <PersonalCourseDetailLeft targetCourse={targetCourse} />
+        <PersonalCourseDetailRight targetCourse={targetCourse} />
       </div>
       <CancelEnrollmentModalRender isOpen={isCancelModalOpen} />
-    </>
+    </div>
   );
 };

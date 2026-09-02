@@ -3,11 +3,15 @@ import { DatabaseBackup, Home } from "lucide-react";
 
 interface EmptyFeatureProps {
   title: string;
+  shouldHideAction?: boolean;
 
   onBack?: () => void;
 }
 
-export const EmptyFeature = ({ title }: EmptyFeatureProps) => {
+export const EmptyFeature = ({
+  title,
+  shouldHideAction,
+}: EmptyFeatureProps) => {
   return (
     <section className="flex min-h-[calc(100vh-16rem)] w-full flex-col items-center justify-center px-4 py-16 text-center select-none">
       <div className="mx-auto flex max-w-xl flex-col items-center">
@@ -26,15 +30,17 @@ export const EmptyFeature = ({ title }: EmptyFeatureProps) => {
           khả dụng do chưa có dữ liệu cập nhật.
         </p>
 
-        <div className="mt-8">
-          <Navigation.components.Go
-            routeKey={Navigation.client.keys.HOME}
-            className="button-base button-primary solid rounded-control px-4 py-2 text-sm"
-          >
-            <Home className="h-4 w-4" />
-            Quay lại trang chủ
-          </Navigation.components.Go>
-        </div>
+        {!shouldHideAction && (
+          <div className="mt-8">
+            <Navigation.components.Go
+              routeKey={Navigation.client.keys.HOME}
+              className="button-base button-primary solid rounded-control px-4 py-2 text-sm"
+            >
+              <Home className="h-4 w-4" />
+              Quay lại trang chủ
+            </Navigation.components.Go>
+          </div>
+        )}
       </div>
     </section>
   );

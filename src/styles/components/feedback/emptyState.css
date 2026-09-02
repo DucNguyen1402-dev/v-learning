@@ -21,12 +21,12 @@
   }
 
   .empty-state-content-title {
-    @apply text-2xl font-semibold;
+    @apply text-xl md:text-2xl font-semibold;
     color: var(--color-fg-default);
   }
 
   .empty-state-content-description {
-    @apply max-w-md text-sm leading-6;
+    @apply max-w-md text-xs md:text-sm leading-6;
     color: var(--color-fg-subtle);
   }
 }
