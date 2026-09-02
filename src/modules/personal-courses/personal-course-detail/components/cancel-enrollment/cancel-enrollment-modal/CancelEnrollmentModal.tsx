@@ -17,7 +17,7 @@ export const CancelEnrollmentModal = () => {
 
   const { maKhoaHoc } = Navigation.hooks.useParams();
   const targetCourse = courses.find(
-    (course) => course?.maKhoaHoc === maKhoaHoc,
+    (course) => course.maKhoaHoc === maKhoaHoc,
   )!;
 
   const handleConfirm = () => {
@@ -43,11 +43,11 @@ export const CancelEnrollmentModal = () => {
           <AlertCircle className="h-6 w-6 text-text-warning" />
         </div>
         <div className="flex flex-col gap-1">
-          <h3 className="text-lg font-semibold">Xác nhận hủy ghi danh?</h3>
+          <h3 className="text-lg font-semibold">Xác nhận hủy ghi danh</h3>
           <p className="mt-1 text-sm text-text-subtle">
             Bạn đang yêu cầu hủy tham gia khóa học{" "}
             <span className="font-medium text-text-default">
-              "{targetCourse?.tenKhoaHoc}"
+              "{targetCourse.tenKhoaHoc}"
             </span>
             .
           </p>

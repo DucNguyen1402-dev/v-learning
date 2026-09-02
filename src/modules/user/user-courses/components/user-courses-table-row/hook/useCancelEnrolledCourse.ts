@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { useCancelPersonalCourseMutation } from "@modules/personal-courses";
+import { useCancelPersonalCourseMutation } from "@modules/courses/shared/hooks";
 import { Modal } from "@shared/overlays";
 type UseCancelEnrolledCourseParams = {
   maKhoaHoc: string;

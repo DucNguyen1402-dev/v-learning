@@ -27,11 +27,9 @@ export const useCourseRegister = ({ maKhoaHoc }: { maKhoaHoc: string }) => {
       const registerTask = () => registerCourse(payload);
 
       await execution.runAsyncTask(registerTask);
-      go(
-        Navigation.client.keys.PERSONAL_COURSE,
-        "client",
-        Toast.config.success.register(ENTITIES.COURSE),
-      );
+      go(Navigation.client.keys.PERSONAL_COURSE, "client", {
+        toastState: Toast.config.success.register(ENTITIES.COURSE),
+      });
     } catch (error) {
       // API trả về lỗi 500 không rõ ràng nên cần custom message cho từng trường hợp
       // để hiển thị đúng ngữ cảnh cho người dùng.

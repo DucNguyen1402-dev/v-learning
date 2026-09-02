@@ -1,13 +1,14 @@
-import { cancelCourse } from "@modules/personal-courses/api";
 import { useMutation } from "@tanstack/react-query";
 import { useQueryClient } from "@tanstack/react-query";
+
+import { cancelCourse } from "../api";
 
 type UseCancelPersonalCourseMutationProps = {
   invalidateQueryKeys?: string[];
 };
 export const useCancelPersonalCourseMutation = ({
   invalidateQueryKeys,
-}: UseCancelPersonalCourseMutationProps) => {
+}: UseCancelPersonalCourseMutationProps = {}) => {
   const queryClient = useQueryClient();
   const mutation = useMutation({
     mutationFn: cancelCourse,

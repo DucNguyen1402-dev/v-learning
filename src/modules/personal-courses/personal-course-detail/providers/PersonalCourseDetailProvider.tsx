@@ -1,6 +1,5 @@
 import type { ReactNode } from "react";
-
-import { Navigation } from "@shared/navigation";
+import { useParams } from "react-router-dom";
 
 import { PersonalCourseDetailProvider } from "../contexts";
 
@@ -11,7 +10,7 @@ type PersonalCourseDetailProviderProps = {
 export const PersonalCourseDetailProviderWrapper = ({
   children,
 }: PersonalCourseDetailProviderProps) => {
-  const { maKhoaHoc } = Navigation.hooks.useParams();
+  const { maKhoaHoc } = useParams<{ maKhoaHoc: string }>();
   return (
     <PersonalCourseDetailProvider maKhoaHoc={maKhoaHoc!}>
       {children}

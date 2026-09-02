@@ -1,3 +1,4 @@
+export { cancelCourse } from "./cancelCourse";
 export { getCourseInfo } from "./getCourseInfo";
 export { getCourses } from "./getCourses";
 export { getCoursesByCategory } from "./getCoursesByCaterory";

@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import { useEnrollUserMutation } from "@modules/courses/admin/shared/hooks";
-import { useCancelPersonalCourseMutation } from "@modules/personal-courses";
+import { useCancelPersonalCourseMutation } from "@modules/courses/shared/hooks";
 import { getErrorMessage } from "@shared/error";
 import { Modal, Toast } from "@shared/overlays";
 type UseEnrollmentUserTableRowParams = {
