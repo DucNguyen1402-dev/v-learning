@@ -25,10 +25,9 @@ export const useEnrollmentUserTableRow = ({
   const {
     mutation: cancelPersonalCourseMutation,
     isLoading: isCancelPersonalCourseLoading,
-  } = useCancelPersonalCourseMutation([
-    "enrolledUsers",
-    "pendingEnrollmentUsers",
-  ]);
+  } = useCancelPersonalCourseMutation({
+    invalidateQueryKeys: ["enrolledUsers", "pendingEnrollmentUsers"],
+  });
 
   const confirmEnrollUser = async () => {
     const payload = {

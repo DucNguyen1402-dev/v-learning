@@ -18,10 +18,9 @@ export const useCancelEnrolledCourse = ({
   const {
     mutation: cancelPersonalCourseMutation,
     isLoading: isCancelPersonalCourseLoading,
-  } = useCancelPersonalCourseMutation([
-    "pendingEnrollmentCourses",
-    "enrolledCourses",
-  ]);
+  } = useCancelPersonalCourseMutation({
+    invalidateQueryKeys: ["pendingEnrollmentCourses", "enrolledCourses"],
+  });
 
   const cancelCourse = async () => {
     const payload = {

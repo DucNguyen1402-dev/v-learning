@@ -1,75 +1,125 @@
-# React + TypeScript + Vite
+# V-Learning
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+V-Learning is an online learning platform built with React, focusing on a modern, responsive, and user-friendly learning experience.
 
-Currently, two official plugins are available:
+## ✨ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- 🔐 User authentication
+- 📚 Browse and explore courses
+- 🔎 Search and filter courses
+- 📄 Course pagination
+- 📖 Course details
+- 📝 Course enrollment and cancellation
+- 💳 Course payment
+- 🎥 Course learning and video content
+- 👤 User profile management
+- 📱 Responsive design for desktop, tablet, and mobile
 
-## React Compiler
+## 🛠️ Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **React**
+- **TypeScript**
+- **Vite**
+- **Tailwind CSS**
+- **React Router**
+- **TanStack React Query**
+- **Axios**
+- **React Hook Form**
+- **Lucide React**
 
-## Expanding the ESLint configuration
+## 📁 Project Structure
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+The project follows a **module-first architecture** to keep features isolated, maintainable, and scalable.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```text
+src/
+├── modules/
+│   ├── auth/
+│   ├── courses/
+│   ├── personal-courses/
+│   ├── profile/
+│   └── ...
+├── components/
+├── hooks/
+├── layouts/
+├── routes/
+├── services/
+├── types/
+└── ...
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Each module is responsible for a specific domain of the application.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🚀 Getting Started
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 1. Clone the repository
 
+```bash
+git clone <repository-url>
+cd v-learning
 ```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Start the development server
+
+```bash
+npm run dev
+```
+
+Then open the URL provided by Vite in your terminal.
+
+## 📦 Build
+
+Create a production build:
+
+```bash
+npm run build
+```
+
+Preview the production build:
+
+```bash
+npm run preview
+```
+
+## 🎨 UI & Design
+
+V-Learning uses Tailwind CSS with a **semantic design token system** to maintain a consistent and scalable UI.
+
+Key principles:
+
+- Mobile-first responsive design
+- Semantic color tokens
+- Reusable UI components
+- Consistent spacing, typography, and border radius
+- Minimal use of hard-coded colors inside components
+
+## 🔌 API
+
+The application communicates with a REST API for:
+
+- Authentication
+- Course catalog
+- Course enrollment
+- Personal courses
+- User profile
+- Payment
+
+Axios is used for API communication, while TanStack React Query handles server state and data fetching.
+
+## 📌 Project Status
+
+🚧 **In Development**
+
+Some features and UI components are still being improved and refined.
+
+## 👨‍💻 Author
+
+**V-Learning**
+
+> A modern learning platform built with React and TypeScript.
