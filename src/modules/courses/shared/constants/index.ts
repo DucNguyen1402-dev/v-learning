@@ -1,3 +1,4 @@
+export { CATEGORIES } from "./categories";
 export { EMPTY_COURSE } from "./emptyCourse";
 export {
   EMPTY_PAGINATED_COURSE,

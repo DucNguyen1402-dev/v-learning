@@ -1,6 +1,7 @@
 import { type ReactNode, useEffect } from "react";
 
-import { UserInfor } from "@shared/auth";
+import { LoginNavigation } from "@modules/login";
+import { AccessTokenStorage } from "@shared/auth";
 import { Navigation } from "@shared/navigation";
 
 type ProtectPersonalCourseRouteProps = {
@@ -10,16 +11,16 @@ type ProtectPersonalCourseRouteProps = {
 export const ProtectPersonalCourseRoute = ({
   children,
 }: ProtectPersonalCourseRouteProps) => {
-  const { infor, isPending } = UserInfor.useQuery();
+  const isLogin = AccessTokenStorage.isLogin();
   const { go } = Navigation.hooks.useNavigate();
 
   useEffect(() => {
-    if (!infor) {
-      go(Navigation.client.keys.LOGIN);
+    if (!isLogin) {
+      go(Navigation.client.keys.LOGIN, "client", LoginNavigation.required());
     }
-  }, [go, infor, isPending]);
+  }, [go, isLogin]);
 
-  if (!infor) return null;
+  if (!isLogin) return null;
 
   return children;
 };

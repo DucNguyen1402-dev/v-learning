@@ -1,12 +1,13 @@
 import { Navigation } from "@shared/navigation";
-import { Eye, GraduationCap, Users } from "lucide-react";
+import { GraduationCap } from "lucide-react";
 
 import type { CourseCardForm } from "@/modules/courses/shared/types";
 
 interface CourseCardProps {
   course: CourseCardForm;
+  shouldHideCategory: boolean;
 }
-export const CourseCard = ({ course }: CourseCardProps) => {
+export const CourseCard = ({ course, shouldHideCategory }: CourseCardProps) => {
   const image =
     "thumbnail" in course
       ? (course.thumbnail ?? course.hinhAnh)
@@ -17,7 +18,7 @@ export const CourseCard = ({ course }: CourseCardProps) => {
   return (
     <article
       key={course.maKhoaHoc}
-      className="flex h-140 flex-col overflow-hidden rounded-container border border-border-subtle bg-bg-default shadow-surface transition-all duration-300 select-none hover:-translate-y-2 hover:border-border-default hover:shadow-surface-hover"
+      className="flex flex-col overflow-hidden rounded-container border border-border-subtle bg-bg-default shadow-surface transition-all duration-300 select-none hover:-translate-y-2 hover:border-border-default hover:shadow-surface-hover"
     >
       <img
         src={image}
@@ -27,28 +28,15 @@ export const CourseCard = ({ course }: CourseCardProps) => {
 
       <div className="flex flex-1 flex-col gap-5 p-4">
         <div className="flex flex-col gap-2">
-          <p className="text-xs font-medium tracking-wide text-text-subtle uppercase">
-            {course.danhMucKhoaHoc.tenDanhMucKhoaHoc}
-          </p>
+          {!shouldHideCategory && (
+            <p className="text-xs font-medium tracking-wide text-text-subtle uppercase">
+              {course.danhMucKhoaHoc.tenDanhMucKhoaHoc}
+            </p>
+          )}
 
           <h2 className="line-clamp-2 text-lg font-semibold">
             {course.tenKhoaHoc}
           </h2>
-        </div>
-
-        <p className="line-clamp-2 flex-1 text-sm text-text-subtle">
-          {course.moTa}
-        </p>
-
-        <div className="mt-2 flex flex-wrap gap-6 text-sm text-text-subtle">
-          <div className="flex items-center gap-1">
-            <Eye className="size-4" />
-            <span>{course.luotXem}</span>
-          </div>
-          <div className="flex items-center gap-1">
-            <Users className="size-4" />
-            <span>{course.soLuongHocVien}</span>
-          </div>
         </div>
 
         <div className="flex items-center justify-between gap-1 border-t border-border-subtle pt-4 text-sm">

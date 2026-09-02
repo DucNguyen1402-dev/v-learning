@@ -17,7 +17,7 @@ export const CancelEnrollmentModal = () => {
 
   const { maKhoaHoc } = Navigation.hooks.useParams();
   const targetCourse = courses.find(
-    (course) => course.maKhoaHoc === maKhoaHoc,
+    (course) => course?.maKhoaHoc === maKhoaHoc,
   )!;
 
   const handleConfirm = () => {
@@ -47,7 +47,7 @@ export const CancelEnrollmentModal = () => {
           <p className="mt-1 text-sm text-text-subtle">
             Bạn đang yêu cầu hủy tham gia khóa học{" "}
             <span className="font-medium text-text-default">
-              "{targetCourse.tenKhoaHoc}"
+              "{targetCourse?.tenKhoaHoc}"
             </span>
             .
           </p>

@@ -15,8 +15,8 @@ export const usePersonalCourseDetail = ({
   const onCancelEnrollmentClick = () => setIsCancelModalOpen(true);
 
   const onModalConfirm = () => {
-    handleCancelCourse();
     setIsCancelModalOpen(false);
+    handleCancelCourse();
   };
 
   const onModalCancel = () => setIsCancelModalOpen(false);

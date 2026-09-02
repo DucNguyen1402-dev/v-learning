@@ -7,21 +7,21 @@ import { cn } from "@shared/utils";
 export const HeaderNav = () => {
   const currentUser = CurrentUserStorage.tryGet();
   const navLinks = [
-    { label: "Home", routeKey: Navigation.client.urls.HOME, isVisible: true },
+    { label: "Home", url: Navigation.client.urls.HOME, isVisible: true },
     {
       label: "Khóa học",
-      routeKey: Navigation.client.urls.COURSES,
+      url: Navigation.client.urls.COURSES,
       isVisible: true,
     },
-    { label: "Blogs", routeKey: Navigation.client.urls.BLOGS, isVisible: true },
+    { label: "Blogs", url: Navigation.client.urls.BLOGS, isVisible: true },
     {
       label: "Giới thiệu",
-      routeKey: Navigation.client.urls.ABOUT,
+      url: Navigation.client.urls.ABOUT,
       isVisible: !currentUser,
     },
     {
       label: "Khóa học của tôi",
-      routeKey: Navigation.client.urls.PERSONAL_COURSE,
+      url: Navigation.client.urls.PERSONAL_COURSE,
       isVisible: !!currentUser,
     },
   ];
@@ -33,8 +33,8 @@ export const HeaderNav = () => {
         .map((link) => {
           return (
             <NavLink
-              key={link.routeKey}
-              to={link.routeKey}
+              key={link.url}
+              to={link.url}
               className={({ isActive }) =>
                 cn("nav-link", isActive && "nav-link-active")
               }

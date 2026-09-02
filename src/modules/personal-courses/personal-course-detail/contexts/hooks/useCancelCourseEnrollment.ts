@@ -13,7 +13,7 @@ export const useCancelCourseEnrollment = ({
   const {
     mutation: cancelPersonalCourseMutation,
     isLoading: isCancelPersonalCourseLoading,
-  } = useCancelPersonalCourseMutation();
+  } = useCancelPersonalCourseMutation({ invalidateQueryKeys: ["userInfor"] });
 
   const { go } = Navigation.hooks.useNavigate();
   const currentUser = CurrentUserStorage.get();
