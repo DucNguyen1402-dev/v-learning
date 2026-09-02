@@ -9,7 +9,7 @@ export const useUserDeletionMutation = () => {
     mutationFn: (taiKhoan: string) => deleteCourse(taiKhoan),
     mutationKey: ["deleteUser"],
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["users"] });
+      queryClient.invalidateQueries({ queryKey: ["paginatedUsers"] });
     },
   });
 };

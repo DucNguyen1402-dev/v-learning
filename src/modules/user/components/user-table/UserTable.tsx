@@ -64,7 +64,7 @@ export const UserTable = ({ affectedUserAccount }: UserTableProps) => {
     if (isEmpty) {
       return (
         <TableEmptyState
-          colSpan={8}
+          colSpan={6}
           title="Không tìm thấy người dùng!"
           description="Hãy thử lại với từ khóa khác."
           actionHandler={handleClearSearch}
