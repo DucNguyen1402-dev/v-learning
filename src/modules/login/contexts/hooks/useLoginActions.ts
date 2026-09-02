@@ -1,3 +1,4 @@
+import { useState } from "react";
 import type { SubmitHandler, UseFormHandleSubmit } from "react-hook-form";
 
 import { LoginFieldNamesValues } from "@modules/login/constants";
@@ -19,14 +20,17 @@ export const useLoginActions = ({
   handleSubmit,
   remember,
 }: UseLoginActionsParams) => {
-  const { login, isLoggingIn } = LoginAuth.useMutation();
+  const { login } = LoginAuth.useMutation();
   const { go } = Navigation.hooks.useNavigate();
   const toast = Toast.use();
+  const [isLoggingIn, setIsLoggingIn] = useState(false);
 
   const onValid: SubmitHandler<LoginData> = async (data) => {
+    setIsLoggingIn(true);
     const payload = createPayload(data, LoginFieldNamesValues);
 
     const loginTask = () => login({ payload, remember });
+
     try {
       await execution.runAsyncTask(loginTask);
       const isAdmin = CurrentUserStorage.isAdmin();
@@ -44,6 +48,8 @@ export const useLoginActions = ({
           "Tài khoản hoặc mật khẩu không chính xác.",
       });
       toast.show(Toast.config.error(message));
+    } finally {
+      setIsLoggingIn(false);
     }
   };
 

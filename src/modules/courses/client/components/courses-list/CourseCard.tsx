@@ -15,6 +15,7 @@ export const CourseCard = ({ course, shouldHideCategory }: CourseCardProps) => {
 
   const tenGiangVien =
     "tenGiangVien" in course ? course.tenGiangVien : course.nguoiTao.hoTen;
+  const shouldDisabledCourseDetailButton = !course.maKhoaHoc;
   return (
     <article
       key={course.maKhoaHoc}
@@ -38,7 +39,6 @@ export const CourseCard = ({ course, shouldHideCategory }: CourseCardProps) => {
             {course.tenKhoaHoc}
           </h2>
         </div>
-
         <div className="flex items-center justify-between gap-1 border-t border-border-subtle pt-4 text-sm">
           <div className="flex items-center gap-2 text-text-subtle">
             <GraduationCap className="size-5" />
@@ -46,14 +46,23 @@ export const CourseCard = ({ course, shouldHideCategory }: CourseCardProps) => {
           </div>
           <p className="font-medium">{tenGiangVien}</p>
         </div>
-        <div className="py-2">
-          <Navigation.components.ForwardWithParam
-            builderRouteKey={Navigation.client.buildersKeys.COURSES_DETAIL}
-            param={course.maKhoaHoc}
-            className="button-base button-primary solid w-full py-2 text-sm"
-          >
-            Xem chi tiết
-          </Navigation.components.ForwardWithParam>
+        {/*Some courses don't have maKhoaHoc, so disable the button. */}
+        <div
+          className={
+            shouldDisabledCourseDetailButton
+              ? "pointer-events-none opacity-50"
+              : ""
+          }
+        >
+          <div className="py-2">
+            <Navigation.components.ForwardWithParam
+              builderRouteKey={Navigation.client.buildersKeys.COURSES_DETAIL}
+              param={course.maKhoaHoc}
+              className="button-base button-primary solid w-full py-2 text-sm"
+            >
+              Xem chi tiết
+            </Navigation.components.ForwardWithParam>
+          </div>
         </div>
       </div>
     </article>
