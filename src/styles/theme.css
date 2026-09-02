@@ -45,6 +45,7 @@
   --color-text-danger: var(--color-fg-danger);
   --color-text-on-feedback: var(--color-fg-on-feedback);
   --color-text-on-selected: var(--color-fg-on-selected);
+  --color-text-action: var(--color-fg-action);
 
   /* Background Colors */
   --color-bg-base: var(--color-bg-base);

@@ -52,4 +52,5 @@
     *================================================== */
 
   --color-fg-danger: var(--color-red-600);
+  --color-fg-action: var(--color-blue-600);
 }
