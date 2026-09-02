@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 import {
   LoginActions,
@@ -22,6 +22,7 @@ export const LoginPage = () => {
 
   //2. Show toast message if there's a payload in the location state
   const { show: showToast } = Toast.use();
+  const hasShownToast = useRef(false);
 
   const payload: LoginLocationPayload | undefined =
     Navigation.hooks.usePayload();
@@ -29,8 +30,9 @@ export const LoginPage = () => {
   const consumePayload = Navigation.hooks.useConsumePayload();
 
   useEffect(() => {
-    if (!toast) return;
+    if (!toast || hasShownToast.current) return;
     showToast(toast);
+    hasShownToast.current = true;
     //3. Consume the location state to prevent showing the toast again on re-render
     consumePayload("toast");
   }, [toast, showToast, consumePayload]);
