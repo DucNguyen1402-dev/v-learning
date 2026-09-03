@@ -44,9 +44,12 @@ export function useAddUserActions() {
     try {
       await execution.runAsyncTask(submitNewUserTask, loader);
 
-      go(Navigation.admin.keys.USER, "admin", {
-        toastState: Toast.config.success.add(ENTITIES.USER),
-        taiKhoan: data.taiKhoan,
+      go({
+        routeKey: Navigation.admin.keys.USER,
+        payload: {
+          toastState: Toast.config.success.add(ENTITIES.USER),
+          taiKhoan: data.taiKhoan,
+        },
       });
     } catch (error) {
       toaster.show(

@@ -5,21 +5,28 @@ import { Button, BUTTON_SIZES } from "@shared/ui/button";
 import { cn } from "@shared/utils";
 import { BookSearch, ClipboardPenLine, SquarePen, Trash } from "lucide-react";
 
-import { useCourseDeletion } from "./hooks";
+import { useCourseTableRow } from "./hooks";
+
 type CourseItemProps = {
   course: Course;
   isRecentlyAffected?: boolean;
 };
-export const CourseItem = ({ course, isRecentlyAffected }: CourseItemProps) => {
-  const { onDeleteClick, targetCourseDeletion } = useCourseDeletion({
-    tenKhoaHoc: course.tenKhoaHoc,
-  });
+export const CourseTableRow = ({
+  course,
+  isRecentlyAffected,
+}: CourseItemProps) => {
+  const { courseItemRef, onDeleteClick, targetCourseDeletion } =
+    useCourseTableRow({
+      tenKhoaHoc: course.tenKhoaHoc,
+      isRecentlyAffected: !!isRecentlyAffected,
+    });
 
   //Some courses have empty maKhoaHoc, which will cause the edit button to navigate to an invalid route.
   // Therefore, I block the edit button for those courses.
   const shouldBlockAction = course.maKhoaHoc === "";
   return (
     <tr
+      ref={courseItemRef}
       className={cn(
         "group border-t border-border-muted text-xs transition-colors duration-150 ease-in-out hover:bg-bg-subtle lg:text-sm",
         {

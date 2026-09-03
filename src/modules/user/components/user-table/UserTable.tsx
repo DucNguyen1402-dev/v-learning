@@ -82,7 +82,7 @@ export const UserTable = ({ affectedUserAccount }: UserTableProps) => {
   };
 
   return (
-    <div className="min-h-160 flex-1 overflow-x-auto rounded-container border border-border-subtle bg-bg-default shadow-surface select-none">
+    <div className="table-wrapper-min-height flex-1 overflow-x-auto rounded-container border border-border-subtle bg-bg-default shadow-surface select-none">
       <table className="w-full table-fixed border-collapse text-left">
         <thead>
           <tr className="bg-bg-subtle text-xs font-medium tracking-wider text-text-subtle uppercase">

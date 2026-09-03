@@ -4,7 +4,7 @@ import { useCoursesContext } from "@modules/courses/shared/contexts";
 import { TableEmptyState } from "@shared/table";
 import { Pagination } from "@shared/table";
 
-import { CourseItem } from "./course-item";
+import { CourseTableRow } from "./course-table-row";
 import { CourseTableSkeleton } from "./CourseTableSkeleton";
 
 type CoursesTableProps = {
@@ -67,7 +67,7 @@ export const CoursesTable = ({ affectedCourseId }: CoursesTableProps) => {
     }
 
     return processedCourses.map((course) => (
-      <CourseItem
+      <CourseTableRow
         key={course.maKhoaHoc}
         course={course}
         isRecentlyAffected={course.maKhoaHoc === affectedCourseId}
@@ -76,7 +76,7 @@ export const CoursesTable = ({ affectedCourseId }: CoursesTableProps) => {
   };
 
   return (
-    <div className="scrollbar overflow-x-auto rounded-container border border-border-subtle bg-bg-default shadow-surface select-none">
+    <div className="scrollbar table-wrapper-min-height overflow-x-auto rounded-container border border-border-subtle bg-bg-default shadow-surface select-none">
       <table className="min-w-310 table-fixed border-collapse text-left">
         <thead>
           <tr className="bg-bg-subtle text-xs font-medium tracking-wider text-text-subtle uppercase">

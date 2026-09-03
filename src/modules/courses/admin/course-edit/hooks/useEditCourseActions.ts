@@ -106,9 +106,12 @@ export function useEditCourseActions({
           loader,
         );
       }
-      go(Navigation.admin.keys.COURSES, "admin", {
-        toastState: Toast.config.success.update(ENTITIES.COURSE),
-        maKhoaHoc: payload.maKhoaHoc,
+      go({
+        routeKey: Navigation.admin.keys.COURSES,
+        payload: {
+          toastState: Toast.config.success.update(ENTITIES.COURSE),
+          maKhoaHoc: payload.maKhoaHoc,
+        },
       });
     } catch (error) {
       toaster.show(

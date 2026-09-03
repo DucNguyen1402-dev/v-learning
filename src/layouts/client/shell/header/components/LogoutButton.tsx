@@ -17,7 +17,7 @@ export const LogoutButton = () => {
   const onLogoutClick = useCallback(() => {
     AuthSession.logout();
     refreshUser();
-    go(Navigation.client.keys.HOME);
+    go({ routeKey: Navigation.client.keys.HOME });
   }, [go, refreshUser]);
 
   return (

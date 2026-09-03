@@ -15,7 +15,9 @@ export const ProtectCourseDetailRoute = ({
 
   useEffect(() => {
     if (!maKhoaHoc) {
-      go(Navigation.client.keys.COURSES);
+      go({
+        routeKey: Navigation.client.keys.COURSES,
+      });
     }
   }, [maKhoaHoc, go]);
 

@@ -38,8 +38,12 @@ export const useLoginActions = ({
         ? Navigation.admin.keys.COURSES
         : Navigation.client.keys.HOME;
 
-      go(navigationArea, isAdmin ? "admin" : "client", {
-        toastState: Toast.config.success.login(),
+      go({
+        routeKey: navigationArea,
+        area: isAdmin ? "admin" : "client",
+        payload: {
+          toastState: Toast.config.success.login(),
+        },
       });
     } catch (error) {
       const message = getErrorMessage({

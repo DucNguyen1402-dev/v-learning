@@ -12,7 +12,9 @@ export const RequireCurrentUser = ({ children }: RequireCurrentUserProps) => {
 
   useEffect(() => {
     if (!currentUser) {
-      go(Navigation.client.keys.LOGIN);
+      go({
+        routeKey: Navigation.client.keys.LOGIN,
+      });
     }
   }, [currentUser, go]);
 

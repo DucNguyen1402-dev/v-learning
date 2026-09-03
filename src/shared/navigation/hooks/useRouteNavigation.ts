@@ -40,12 +40,13 @@ export const useRouteNavigation = () => {
     }
   }, [previousRouteKey, currentArea, navigate, routeHistory]);
 
+  type GoParams = {
+    routeKey: ClientRouteKey | AdminRouteKey;
+    area?: "admin" | "client";
+    payload?: unknown;
+  };
   const go = useCallback(
-    (
-      routeKey: ClientRouteKey | AdminRouteKey,
-      area?: "admin" | "client",
-      payload?: unknown,
-    ) => {
+    ({ routeKey, area, payload }: GoParams) => {
       const navigationAreaMeta = getNavigationAreaMeta({
         area: area ?? currentArea,
         routeKey,

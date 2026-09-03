@@ -19,7 +19,7 @@ export const ProfileDropdown = () => {
   const onLogoutClick = useCallback(() => {
     AuthSession.logout();
     refreshUser();
-    go(Navigation.client.keys.LOGIN, "client");
+    go({ routeKey: Navigation.client.keys.LOGIN });
   }, [go, refreshUser]);
 
   const menuItems = useMemo(() => {

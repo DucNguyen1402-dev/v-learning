@@ -12,7 +12,9 @@ export const AdminRouteGuard = ({ children }: AdminRouteGuardProps) => {
 
   useEffect(() => {
     if (!isAdmin) {
-      go(Navigation.client.keys.LOGIN, "client");
+      go({
+        routeKey: Navigation.client.keys.LOGIN,
+      });
     }
   }, [isAdmin, go]);
   if (!isAdmin) return null;

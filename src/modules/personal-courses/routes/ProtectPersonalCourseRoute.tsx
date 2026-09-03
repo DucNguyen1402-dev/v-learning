@@ -16,7 +16,10 @@ export const ProtectPersonalCourseRoute = ({
 
   useEffect(() => {
     if (!isLogin) {
-      go(Navigation.client.keys.LOGIN, "client", LoginNavigation.required());
+      go({
+        routeKey: Navigation.client.keys.LOGIN,
+        payload: LoginNavigation.required(),
+      });
     }
   }, [go, isLogin]);
 
