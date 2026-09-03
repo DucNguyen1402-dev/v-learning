@@ -1,7 +1,7 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 
 type UseScrollIntoViewProps = {
-  ref: React.RefObject<HTMLElement | null>;
+  ref: React.RefObject<HTMLTableRowElement | null>;
   enabled: boolean;
   options?: ScrollIntoViewOptions;
 };
@@ -13,11 +13,8 @@ export function useScrollIntoView({
     block: "center",
   },
 }: UseScrollIntoViewProps) {
-  const hasScrolled = useRef(false);
-
   useEffect(() => {
-    if (!enabled || hasScrolled.current) return;
+    if (!enabled) return;
     ref.current?.scrollIntoView(options);
-    hasScrolled.current = true;
   }, [enabled, options, ref]);
 }
