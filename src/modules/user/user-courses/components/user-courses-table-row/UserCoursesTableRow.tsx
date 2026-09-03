@@ -29,7 +29,7 @@ export const UserCoursesTableRow = ({
 
   return (
     <tr
-      className={`group border-b border-border-subtle transition-colors duration-200 hover:bg-bg-subtle ${isCanceling ? "bg-bg-danger/40 text-text-on-feedback" : ""}`}
+      className={`group border-t border-border-subtle transition-colors duration-200 hover:bg-bg-subtle ${isCanceling ? "bg-bg-danger/40 text-text-on-feedback" : ""}`}
     >
       <td className="py-3 pl-8 text-left">{stt}</td>
       <td className="pl-4 text-left text-sm">{course.tenKhoaHoc}</td>

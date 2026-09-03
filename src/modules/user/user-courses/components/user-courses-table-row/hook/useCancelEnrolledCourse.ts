@@ -1,7 +1,8 @@
 import { useState } from "react";
 
 import { useCancelPersonalCourseMutation } from "@modules/courses/shared/hooks";
-import { Modal } from "@shared/overlays";
+import { getErrorMessage } from "@shared/error";
+import { Modal, Toast } from "@shared/overlays";
 type UseCancelEnrolledCourseParams = {
   maKhoaHoc: string;
   taiKhoan: string;
@@ -13,6 +14,7 @@ export const useCancelEnrolledCourse = ({
   tenKhoaHoc,
 }: UseCancelEnrolledCourseParams) => {
   const modal = Modal.use();
+  const toast = Toast.use();
 
   const [isCanceling, setIsCanceling] = useState(false);
   const {
@@ -27,8 +29,14 @@ export const useCancelEnrolledCourse = ({
       maKhoaHoc,
       taiKhoan,
     };
-    await cancelPersonalCourseMutation(payload);
-    setIsCanceling(false);
+    try {
+      await cancelPersonalCourseMutation(payload);
+      toast.show(Toast.config.success.cancelCourse());
+    } catch (error) {
+      toast.show(Toast.config.error(getErrorMessage({ error })));
+    } finally {
+      setIsCanceling(false);
+    }
   };
 
   const onCancelCourseClick = () => {

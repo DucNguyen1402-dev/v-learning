@@ -20,7 +20,7 @@ export const UserCoursesPage = () => {
         </div>
         <div className="mt-6 flex justify-center">
           <div
-            className="w-full scroll-target rounded-container border border-border-subtle bg-bg-default shadow-surface select-none md:max-w-130"
+            className="min-h-100 w-full scroll-target rounded-container border border-border-subtle bg-bg-default shadow-surface select-none md:max-w-130"
             ref={scrollRef}
           >
             <UserCoursesTable />
