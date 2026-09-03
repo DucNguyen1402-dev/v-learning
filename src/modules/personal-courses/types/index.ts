@@ -1,3 +1,4 @@
+export type { personalCoursePayload } from "./personalCoursePayload";
 export type {
   BaiHoc,
   DanhSachBaiHoc,

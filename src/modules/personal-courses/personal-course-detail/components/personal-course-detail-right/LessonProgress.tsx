@@ -6,7 +6,7 @@ interface LessonProgressCardProps {
 
 export const LessonProgress = ({ baiHoc }: LessonProgressCardProps) => {
   const percent =
-    Math.round((baiHoc?.daHoanThanh / baiHoc?.tongSoBaiHoc) * 100) || 0;
+    Math.round((baiHoc.daHoanThanh / baiHoc.tongSoBaiHoc) * 100) || 0;
 
   return (
     <div className="rounded-container border border-border-subtle bg-bg-default p-6 shadow-surface">
@@ -29,20 +29,20 @@ export const LessonProgress = ({ baiHoc }: LessonProgressCardProps) => {
       <div className="mt-4 grid grid-cols-3 gap-2 border-t border-border-subtle pt-4">
         <div className="text-center">
           <p className="text-xs font-medium text-text-subtle">Tổng số</p>
-          <p className="mt-1 text-sm font-bold">{baiHoc?.tongSoBaiHoc}</p>
+          <p className="mt-1 text-sm font-bold">{baiHoc.tongSoBaiHoc}</p>
         </div>
 
         <div className="border-x border-border-subtle text-center">
           <p className="text-xs font-medium text-text-subtle">Đã xong</p>
           <p className="mt-1 text-sm font-bold text-text-completed">
-            {baiHoc?.daHoanThanh}
+            {baiHoc.daHoanThanh}
           </p>
         </div>
 
         <div className="text-center">
           <p className="text-xs font-medium text-text-subtle">Chưa xong</p>
           <p className="mt-1 text-sm font-bold text-text-incomplete">
-            {baiHoc?.chuaHoanThanh}
+            {baiHoc.chuaHoanThanh}
           </p>
         </div>
       </div>

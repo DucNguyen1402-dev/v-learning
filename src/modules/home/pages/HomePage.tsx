@@ -9,6 +9,7 @@ import {
   HeroSection,
   StatsSection,
 } from "../components";
+import type { HomeLocationPayload } from "../types";
 
 export const HomePage = () => {
   //1. Scroll to top on route change
@@ -16,16 +17,18 @@ export const HomePage = () => {
 
   //2. Show toast message if there's a payload in the location state
   const { show: showToast } = Toast.use();
-  const [displayState] = State.useTemporary(Navigation.hooks.usePayload());
+  const [payload] = State.useTemporary<HomeLocationPayload | undefined>(
+    Navigation.hooks.usePayload(),
+  );
   const consumePayload = Navigation.hooks.useConsumePayload();
   const hasShownToast = useRef(false);
   useEffect(() => {
-    if (!displayState?.toastState || hasShownToast.current) return;
-    showToast(displayState.toastState);
+    if (!payload?.toastState || hasShownToast.current) return;
+    showToast(payload.toastState);
     hasShownToast.current = true;
     //3. Consume the location state to prevent showing the toast again on re-render
     consumePayload();
-  }, [displayState?.toastState, showToast, consumePayload]);
+  }, [payload?.toastState, showToast, consumePayload]);
 
   return (
     <div className="min-h-screen">

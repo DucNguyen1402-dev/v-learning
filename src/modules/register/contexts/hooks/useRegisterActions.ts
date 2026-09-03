@@ -29,7 +29,7 @@ export const useRegisterActions = ({
       await execution.runAsyncTask(() => register(payload));
 
       go(Navigation.client.keys.LOGIN, "client", {
-        toast: Toast.config.success.register(ENTITIES.ACCOUNT),
+        toastState: Toast.config.success.register(ENTITIES.ACCOUNT),
         isRegistrationSuccessful: true,
       });
     } catch (error) {

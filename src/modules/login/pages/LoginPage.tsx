@@ -26,7 +26,7 @@ export const LoginPage = () => {
 
   const payload: LoginLocationPayload | undefined =
     Navigation.hooks.usePayload();
-  const [toast] = State.useTemporary(payload?.toast);
+  const [toast] = State.useTemporary(payload?.toastState);
   const consumePayload = Navigation.hooks.useConsumePayload();
 
   useEffect(() => {

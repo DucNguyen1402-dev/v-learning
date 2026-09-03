@@ -4,7 +4,7 @@ import { Navigation } from "@shared/navigation";
 
 import { PersonalCoursesProvider } from "../contexts";
 import { PersonalCoursesMainLayout } from "../layouts";
-import { ProfileCourse } from "../pages/ProfileCourse";
+import { PersonalCoursePage } from "../pages/PersonalCoursePage";
 import { personalCourseDetailRoute } from "../personal-course-detail";
 import { ProtectPersonalCourseRoute } from "./ProtectPersonalCourseRoute";
 
@@ -19,7 +19,7 @@ export const personalCourseRoute = (
       </ProtectPersonalCourseRoute>
     }
   >
-    <Route index element={<ProfileCourse />} />
+    <Route index element={<PersonalCoursePage />} />
     {personalCourseDetailRoute}
   </Route>
 );
