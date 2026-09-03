@@ -8,13 +8,13 @@ import { useQueryClient } from "@tanstack/react-query";
 import { EmptyCourseState, PersonalCourseList } from "../components";
 import { usePersonalCoursesContext } from "../contexts";
 import { invalidatePersonalCourses } from "../queries";
-import type { LoginLocationPayload } from "../types";
+import type { personalCoursePayload } from "../types";
 export const PersonalCoursePage = () => {
   Navigation.hooks.useScrollOnRouteChange();
 
   const queryClient = useQueryClient();
   const { show: showToast } = Toast.use();
-  const [payload] = State.useTemporary<LoginLocationPayload>(
+  const [payload] = State.useTemporary<personalCoursePayload | undefined>(
     Navigation.hooks.usePayload(),
   );
   const consumePayload = Navigation.hooks.useConsumePayload();

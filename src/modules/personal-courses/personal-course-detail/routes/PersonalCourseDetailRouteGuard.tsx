@@ -1,9 +1,7 @@
-import { useEffect } from "react";
-
-import { UserInfor } from "@shared/auth";
+import { useUserCourseInfo } from "@shared/auth/userInfor";
 import { Navigation } from "@shared/navigation";
 
-import { CheckingCourseLoading } from "../components";
+import { CourseAccessChecking, PersonalCourseNotFound } from "../components";
 
 export const PersonalCourseDetailRouteGuard = ({
   children,
@@ -11,27 +9,18 @@ export const PersonalCourseDetailRouteGuard = ({
   children: React.ReactNode;
 }) => {
   const { maKhoaHoc } = Navigation.hooks.useParams();
-  const { go } = Navigation.hooks.useNavigate();
 
-  const { infor: userInfo, isPending } = UserInfor.useQuery();
-  const courses = userInfo?.chiTietKhoaHocGhiDanh || [];
+  const { courses, isPending } = useUserCourseInfo();
   const isCourseIdExist = courses.some(
     (course) => course.maKhoaHoc === maKhoaHoc,
   );
 
-  useEffect(() => {
-    if (isPending) return;
-    if (!maKhoaHoc || !isCourseIdExist) {
-      go(Navigation.client.keys.PERSONAL_COURSE, "client");
-    }
-  }, [go, maKhoaHoc, isCourseIdExist, isPending]);
-
-  if (true) {
-    return <CheckingCourseLoading />;
+  if (isPending) {
+    return <CourseAccessChecking />;
   }
 
   if (!maKhoaHoc || !isCourseIdExist) {
-    return null;
+    return <PersonalCourseNotFound />;
   }
 
   return children;

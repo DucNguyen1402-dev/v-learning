@@ -1,4 +1,4 @@
-export type { LoginLocationPayload } from "./personalCourseLoginPayload";
+export type { personalCoursePayload } from "./personalCoursePayload";
 export type {
   BaiHoc,
   DanhSachBaiHoc,

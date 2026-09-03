@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
 
 import { Button, BUTTON_SIZES } from "@shared/ui";
 
@@ -7,11 +6,16 @@ import { COURSE_CATEGORY_META } from "./config";
 
 import type { Category } from "@/modules/courses/shared/types";
 
-export const CoursesHeader = () => {
-  const { maDanhMuc } = useParams<{ maDanhMuc: Category }>();
-
-  const { title, description } = COURSE_CATEGORY_META[maDanhMuc!];
+export const CoursesHeader = ({ maDanhMuc }: { maDanhMuc: Category }) => {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [maDanhMucId, setMaDanhMucId] = useState(maDanhMuc);
+
+  if (maDanhMucId !== maDanhMuc) {
+    setMaDanhMucId(maDanhMuc);
+    setIsExpanded(false);
+  }
+  const { title, description } = COURSE_CATEGORY_META[maDanhMucId!];
+
   return (
     <div className="flex max-w-2xl flex-col gap-3 select-none">
       <h1 className="text-2xl font-bold tracking-tight md:text-3xl">{title}</h1>

@@ -1,5 +1,5 @@
 import type { ToastShowOptions } from "@shared/overlays/toast";
-export type LoginLocationPayload = {
+export type ProfileLocationPayload = {
   toastState: ToastShowOptions;
   shouldInvalidate: boolean;
 };
