@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
 type UseScrollIntoViewProps = {
-  ref: React.RefObject<HTMLTableElement | null>;
+  ref: React.RefObject<HTMLTableRowElement | null>;
   enabled: boolean;
   options?: ScrollIntoViewOptions;
 };
