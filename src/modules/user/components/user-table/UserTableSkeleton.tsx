@@ -5,10 +5,13 @@ import {
   TableSkeleton,
 } from "@shared/ui";
 
-export const UserTableSkeleton = () => {
+type UserTableSkeletonProps = {
+  colSpan: number;
+};
+export const UserTableSkeleton = ({ colSpan }: UserTableSkeletonProps) => {
   return (
     <TableSkeleton
-      colSpan={8}
+      colSpan={colSpan}
 
       width={SKELETON_WIDTHS.LG}
       height={SKELETON_HEIGHTS.LG}

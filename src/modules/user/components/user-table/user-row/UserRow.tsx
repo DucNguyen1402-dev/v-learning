@@ -6,10 +6,10 @@ import { Button, BUTTON_SIZES } from "@shared/ui/button";
 import { cn } from "@shared/utils";
 import { BookOpen, SquarePen, Trash } from "lucide-react";
 
-import { useUserDeletion } from "./hooks";
+import { useUserTableRow } from "./hooks";
 type UserRowProps = {
   user: PaginatedUser | User;
-  isRecentlyAffected?: boolean;
+  isRecentlyAffected: boolean;
 };
 
 const getUserRole = (user: PaginatedUser | User) => {
@@ -32,14 +32,16 @@ const getUserPhone = (user: PaginatedUser | User) => {
   return "unknown";
 };
 export const UserRow = ({ user, isRecentlyAffected }: UserRowProps) => {
-  const { onDeleteClick, targetUserDeletion } = useUserDeletion({
+  const { rowRef, onDeleteClick, targetUserDeletion } = useUserTableRow({
     taiKhoan: user.taiKhoan,
+    isRecentlyAffected,
   });
 
   const role = getUserRole(user);
 
   return (
     <tr
+      ref={rowRef}
       className={cn(
         "group border-t border-border-muted text-xs transition-colors duration-150 ease-in-out hover:bg-bg-subtle lg:text-sm",
         {

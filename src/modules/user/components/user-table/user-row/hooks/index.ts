@@ -1,1 +1,1 @@
-export { useUserDeletion } from "./useUserDeletion";
+export { useUserTableRow } from "./useUserTableRow";
