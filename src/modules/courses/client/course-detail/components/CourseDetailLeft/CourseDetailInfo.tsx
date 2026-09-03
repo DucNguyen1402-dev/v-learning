@@ -1,3 +1,5 @@
+import { useMemo } from "react";
+
 import { Eye, SquareUser, Star, UsersRound } from "lucide-react";
 
 export const CourseDetailInfo = ({
@@ -11,28 +13,31 @@ export const CourseDetailInfo = ({
   luotXem: number;
   danhGia: number;
 }) => {
-  const infoItems = [
-    {
-      label: "Giảng viên",
-      value: tenGiangVien,
-      icon: SquareUser,
-    },
-    {
-      label: "Học viên",
-      value: soLuongHocVien,
-      icon: UsersRound,
-    },
-    {
-      label: "Lượt xem ",
-      value: luotXem,
-      icon: Eye,
-    },
-    {
-      label: "Đánh giá",
-      value: danhGia,
-      icon: Star,
-    },
-  ];
+  const infoItems = useMemo(
+    () => [
+      {
+        label: "Giảng viên",
+        value: tenGiangVien,
+        icon: SquareUser,
+      },
+      {
+        label: "Học viên",
+        value: soLuongHocVien,
+        icon: UsersRound,
+      },
+      {
+        label: "Lượt xem ",
+        value: luotXem,
+        icon: Eye,
+      },
+      {
+        label: "Đánh giá",
+        value: danhGia,
+        icon: Star,
+      },
+    ],
+    [tenGiangVien, soLuongHocVien, luotXem, danhGia],
+  );
 
   return (
     <div className="flex flex-row flex-wrap justify-between gap-6 rounded-overlay border-border-subtle bg-bg-subtle px-8 py-5 select-none lg:flex-col">
