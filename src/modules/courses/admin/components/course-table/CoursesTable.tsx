@@ -77,7 +77,7 @@ export const CoursesTable = ({ affectedCourseId }: CoursesTableProps) => {
 
   return (
     <div className="scrollbar overflow-x-auto rounded-container border border-border-subtle bg-bg-default shadow-surface select-none">
-      <table className="min-w-7xl table-fixed border-collapse text-left">
+      <table className="min-w-310 table-fixed border-collapse text-left">
         <thead>
           <tr className="bg-bg-subtle text-xs font-medium tracking-wider text-text-subtle uppercase">
             <th className="w-25 py-8 pl-8">Mã</th>

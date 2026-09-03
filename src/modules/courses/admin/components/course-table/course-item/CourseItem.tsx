@@ -21,7 +21,7 @@ export const CourseItem = ({ course, isRecentlyAffected }: CourseItemProps) => {
   return (
     <tr
       className={cn(
-        "group border-t border-border-muted text-sm transition-colors duration-150 ease-in-out hover:bg-bg-subtle",
+        "group border-t border-border-muted text-xs transition-colors duration-150 ease-in-out hover:bg-bg-subtle lg:text-sm",
         {
           "animate-success-row": isRecentlyAffected,
           "bg-bg-danger/50 text-text-on-feedback":
