@@ -10,7 +10,7 @@ import { ProtectPersonalCourseRoute } from "./ProtectPersonalCourseRoute";
 
 export const personalCourseRoute = (
   <Route
-    path={Navigation.client.paths.PERSONAL_COURSE}
+    path={Navigation.client.paths.CLIENT_PERSONAL_COURSE}
     element={
       <ProtectPersonalCourseRoute>
         <PersonalCoursesProvider>

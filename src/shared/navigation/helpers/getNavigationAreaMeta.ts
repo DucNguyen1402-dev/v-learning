@@ -1,10 +1,5 @@
+import { type AdminRouteKey, isAdminRouteKey } from "@shared/navigation/admin";
 import {
-  type AdminRouteBuilderKey,
-  type AdminRouteKey,
-  isAdminRouteKey,
-} from "@shared/navigation/admin";
-import {
-  type ClientRouteBuilderKey,
   type ClientRouteKey,
   isClientRouteKey,
 } from "@shared/navigation/client";
@@ -12,19 +7,10 @@ import {
 import { navigationAreas } from "../config";
 
 type NavigationAreaMeta = {
-  area: "admin" | "client";
-
-  routeKey:
-    | AdminRouteKey
-    | ClientRouteKey
-    | AdminRouteBuilderKey
-    | ClientRouteBuilderKey;
+  routeKey: AdminRouteKey | ClientRouteKey;
 };
-export const getNavigationAreaMeta = ({
-  area,
-  routeKey,
-}: NavigationAreaMeta) => {
-  if (isAdminRouteKey(routeKey as AdminRouteKey) && area === "admin") {
+export const getNavigationAreaMeta = ({ routeKey }: NavigationAreaMeta) => {
+  if (isAdminRouteKey(routeKey as AdminRouteKey)) {
     const url = navigationAreas.admin.urls[routeKey as AdminRouteKey];
     const currentRouteKey = navigationAreas.admin.findKey(location.pathname);
     return {
@@ -34,7 +20,7 @@ export const getNavigationAreaMeta = ({
       currentRouteKey,
     };
   }
-  if (isClientRouteKey(routeKey as ClientRouteKey) && area === "client") {
+  if (isClientRouteKey(routeKey as ClientRouteKey)) {
     const url = navigationAreas.client.urls[routeKey as ClientRouteKey];
     const currentRouteKey = navigationAreas.client.findKey(location.pathname);
     return {

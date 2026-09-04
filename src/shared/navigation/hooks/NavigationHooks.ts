@@ -1,21 +1,19 @@
 import { useConsumeLocationPayload } from "./useConsumeLocationPayload";
 import { useCurrentArea } from "./useCurrentArea";
-import { useLocationParams } from "./useLocationParams";
-import { useLocationPathname } from "./useLocationPathname";
 import { useLocationPayload } from "./useLocationPayload";
-import { useRouteNavigation } from "./useRouteNavigation";
+import { useNavigateWithState } from "./useNavigateWithState";
 import { useScrollOnRouteChange } from "./useScrollOnRouteChange";
+import { useScrollToTopOnRouteChange } from "./useScrollToTopOnRouteChange";
 import { useShouldConfirmLeave } from "./useShouldConfirmLeave";
 import { useSyncLeaveConfirmation } from "./useSyncLeaveConfirmation";
 
 export const NavigationHooks = {
   useConsumePayload: useConsumeLocationPayload,
-  useNavigate: useRouteNavigation,
+  useNavigateWithState,
   useScrollOnRouteChange,
   useSyncLeaveConfirmation,
   usePayload: useLocationPayload,
-  usePathname: useLocationPathname,
   useShouldConfirmLeave,
   useCurrentArea,
-  useParams: useLocationParams,
+  useScrollToTopOnRouteChange,
 };

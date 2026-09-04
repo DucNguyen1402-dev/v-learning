@@ -23,7 +23,7 @@ export const useEditUserActions = ({
   handleSubmit,
   targetUser,
 }: UseEditUserActionsProps) => {
-  const { go, back } = Navigation.hooks.useNavigate();
+  const { go, back } = Navigation.hooks.useNavigateWithState();
   const { loader } = Loading.use();
   const toaster = Toast.use();
   const modal = Modal.use();

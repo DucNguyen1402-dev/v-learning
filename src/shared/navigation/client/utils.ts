@@ -14,10 +14,8 @@ export const findRouteKey = (path: string) => {
   return key as keyof typeof CLIENT_ROUTE_URLS | undefined;
 };
 
-export const isRouteActive = (
-  path: string,
-  key: keyof typeof CLIENT_ROUTE_URLS | null,
-) => key !== null && CLIENT_ROUTE_URLS[key] === path;
+export const isRouteActive = (path: string, key: ClientRouteKey) =>
+  key !== null && CLIENT_ROUTE_URLS[key] === path;
 
 export const isClientRouteKey = (key: ClientRouteKey | AdminRouteKey) => {
   return clientRouteKeys.includes(key as ClientRouteKey);

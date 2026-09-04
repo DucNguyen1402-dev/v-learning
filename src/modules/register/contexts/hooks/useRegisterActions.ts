@@ -19,7 +19,7 @@ export const useRegisterActions = ({
 }: UseRegisterActionsProps) => {
   const { register } = RegisterAuth.mutation();
   const [isRegistering, setIsRegistering] = useState(false);
-  const { go } = Navigation.hooks.useNavigate();
+  const { go } = Navigation.hooks.useNavigateWithState();
   const toast = Toast.use();
   const onValid = async (data: RegisterData) => {
     setIsRegistering(true);

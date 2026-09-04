@@ -39,7 +39,7 @@ export function useEditCourseActions({
     setImgPreview(editCourse.hinhAnh);
   }, [editCourse.hinhAnh]);
   const { profile } = UserProfile.use();
-  const { go, back } = Navigation.hooks.useNavigate();
+  const { go, back } = Navigation.hooks.useNavigateWithState();
   const { loader } = Loading.use();
   const toaster = Toast.use();
   const modalApi = Modal.use();

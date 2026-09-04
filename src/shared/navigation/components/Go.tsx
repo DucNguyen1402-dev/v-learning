@@ -6,7 +6,6 @@ import { cn } from "@shared/utils";
 import { type AdminRouteKey } from "../admin";
 import { type ClientRouteKey } from "../client";
 import { getNavigationAreaMeta } from "../helpers";
-import { useCurrentArea } from "../hooks";
 
 type ForwardProps = {
   children: ReactNode;
@@ -26,16 +25,13 @@ export const Go = ({
   className,
   onClick,
   disabled,
-  area,
 }: ForwardProps) => {
-  const currentArea = useCurrentArea();
   const navigationAreaMeta = useMemo(
     () =>
       getNavigationAreaMeta({
-        area: area ?? currentArea,
         routeKey,
       }),
-    [area, currentArea, routeKey],
+    [routeKey],
   );
 
   return (

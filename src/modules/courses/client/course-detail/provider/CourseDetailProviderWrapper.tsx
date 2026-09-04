@@ -1,4 +1,4 @@
-import { Navigation } from "@shared/navigation";
+import { useParams } from "react-router-dom";
 
 import { CourseDetailProvider } from "../contexts";
 
@@ -8,7 +8,7 @@ type CourseDetailProviderWrapperProps = {
 export const CourseDetailProviderWrapper = ({
   children,
 }: CourseDetailProviderWrapperProps) => {
-  const { maKhoaHoc } = Navigation.hooks.useParams();
+  const { maKhoaHoc } = useParams();
 
   return (
     <CourseDetailProvider maKhoaHoc={maKhoaHoc as string}>

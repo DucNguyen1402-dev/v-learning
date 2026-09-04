@@ -7,12 +7,12 @@ import { State } from "@shared/state";
 import { ProfileCard } from "../components";
 import type { ProfileLocationPayload } from "../types";
 export const ProfileOverviewPage = () => {
-  Navigation.hooks.useScrollOnRouteChange();
+  Navigation.hooks.useScrollToTopOnRouteChange();
 
   //1. Show toast message if there's a payload in the location state
   const { show: showToast } = Toast.use();
-  const [payload] = State.useTemporary<ProfileLocationPayload | undefined>(
-    Navigation.hooks.usePayload(),
+  const [payload] = State.useTemporary(
+    Navigation.hooks.usePayload<ProfileLocationPayload>(),
   );
   const consumePayload = Navigation.hooks.useConsumePayload();
   const hasShownToast = useRef(false);

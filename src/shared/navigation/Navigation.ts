@@ -2,6 +2,7 @@ import { AdminNavigation } from "./admin";
 import { ClientNavigation } from "./client";
 import { Back, Forward, ForwardWithParam, Go } from "./components";
 import { NavigationHooks } from "./hooks";
+import { isRouteActive } from "./utils";
 
 export const Navigation = {
   client: ClientNavigation,
@@ -12,5 +13,8 @@ export const Navigation = {
     Back,
     Forward,
     ForwardWithParam,
+  },
+  utils: {
+    isRouteActive,
   },
 };

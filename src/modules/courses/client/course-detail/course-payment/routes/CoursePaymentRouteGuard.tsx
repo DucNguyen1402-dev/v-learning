@@ -12,7 +12,7 @@ export const CoursePaymentRouteGuard = ({
   children,
 }: CoursePaymentRouteGuardProps) => {
   const isLogin = AccessTokenStorage.isLogin();
-  const { go } = Navigation.hooks.useNavigate();
+  const { go } = Navigation.hooks.useNavigateWithState();
 
   useEffect(() => {
     if (!isLogin) {

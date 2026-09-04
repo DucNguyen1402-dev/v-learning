@@ -1,3 +1,5 @@
+import { useParams } from "react-router-dom";
+
 import { usePersonalCoursesContext } from "@modules/personal-courses/contexts";
 import { Navigation } from "@shared/navigation";
 
@@ -10,10 +12,10 @@ import {
 import { usePersonalCourseDetailContext } from "../contexts";
 
 export const PersonalCourseDetail = () => {
-  Navigation.hooks.useScrollOnRouteChange();
+  Navigation.hooks.useScrollToTopOnRouteChange();
 
   const { isCancelModalOpen } = usePersonalCourseDetailContext();
-  const { maKhoaHoc } = Navigation.hooks.useParams();
+  const { maKhoaHoc } = useParams();
   const { courses } = usePersonalCoursesContext();
   const targetCourse = courses.find(
     (course) => course.maKhoaHoc === maKhoaHoc,

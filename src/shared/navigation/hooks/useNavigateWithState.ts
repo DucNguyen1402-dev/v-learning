@@ -4,30 +4,23 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { type AdminRouteKey } from "../admin";
 import { type ClientRouteKey } from "../client";
 import { getNavigationAreaMeta } from "../helpers";
-import { useCurrentArea } from "./useCurrentArea";
+import { getRouteHistory } from "../utils";
 
-type RouteState = {
-  history?: string[];
-};
+type PreviousRouteKey = ClientRouteKey | AdminRouteKey;
 
-export const useRouteNavigation = () => {
+export const useNavigateWithState = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const currentArea = useCurrentArea();
-  const state = location.state as RouteState | null;
-  const routeHistory = useMemo(() => state?.history ?? [], [state?.history]);
-
-  const previousRouteKey = useMemo(() => {
-    const previousKey = routeHistory.at(-1) as
-      ClientRouteKey | AdminRouteKey | undefined;
-    if (previousKey) return previousKey;
-  }, [routeHistory]);
+  const routeHistory = useMemo(
+    () => getRouteHistory({ location }) ?? [],
+    [location],
+  );
+  const previousRouteKey = routeHistory.at(-1) as PreviousRouteKey | undefined;
 
   const back = useCallback(() => {
     if (previousRouteKey) {
       const navigationAreaMeta = getNavigationAreaMeta({
-        area: currentArea,
         routeKey: previousRouteKey as ClientRouteKey | AdminRouteKey,
       });
       navigate(navigationAreaMeta.url, {
@@ -38,17 +31,15 @@ export const useRouteNavigation = () => {
     } else {
       navigate(-1);
     }
-  }, [previousRouteKey, currentArea, navigate, routeHistory]);
+  }, [previousRouteKey, navigate, routeHistory]);
 
   type GoParams = {
     routeKey: ClientRouteKey | AdminRouteKey;
-    area?: "admin" | "client";
     payload?: unknown;
   };
   const go = useCallback(
-    ({ routeKey, area, payload }: GoParams) => {
+    ({ routeKey, payload }: GoParams) => {
       const navigationAreaMeta = getNavigationAreaMeta({
-        area: area ?? currentArea,
         routeKey,
       });
 
@@ -58,12 +49,11 @@ export const useRouteNavigation = () => {
         },
       });
     },
-    [navigate, currentArea],
+    [navigate],
   );
 
   return {
     go,
     back,
-    previousRouteKey,
   };
 };

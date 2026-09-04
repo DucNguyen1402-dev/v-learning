@@ -8,7 +8,7 @@ import { LoginRouteGuard } from "./LoginRouteGuard";
 
 export const loginRoute = (
   <Route
-    path={Navigation.client.paths.LOGIN}
+    path={Navigation.client.paths.CLIENT_LOGIN}
     element={
       <LoginRouteGuard>
         <LoginProvider>

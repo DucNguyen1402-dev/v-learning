@@ -13,7 +13,7 @@ export const useCourseRegister = ({ maKhoaHoc }: { maKhoaHoc: string }) => {
 
   const [isRegistering, setIsRegistering] = useState(false);
 
-  const { go } = Navigation.hooks.useNavigate();
+  const { go } = Navigation.hooks.useNavigateWithState();
   const currentUser = CurrentUserStorage.get();
   const toast = Toast.use();
 

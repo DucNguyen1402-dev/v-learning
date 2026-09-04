@@ -7,7 +7,7 @@ type AdminRouteGuardProps = {
   children: React.ReactNode;
 };
 export const AdminRouteGuard = ({ children }: AdminRouteGuardProps) => {
-  const { go } = Navigation.hooks.useNavigate();
+  const { go } = Navigation.hooks.useNavigateWithState();
   const isAdmin = CurrentUserStorage.isAdmin();
 
   useEffect(() => {

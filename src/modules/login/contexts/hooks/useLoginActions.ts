@@ -21,7 +21,7 @@ export const useLoginActions = ({
   remember,
 }: UseLoginActionsParams) => {
   const { login } = LoginAuth.useMutation();
-  const { go } = Navigation.hooks.useNavigate();
+  const { go } = Navigation.hooks.useNavigateWithState();
   const toast = Toast.use();
   const [isLoggingIn, setIsLoggingIn] = useState(false);
 
@@ -40,7 +40,9 @@ export const useLoginActions = ({
 
       go({
         routeKey: navigationArea,
-        area: isAdmin ? "admin" : "client",
+        area: isAdmin
+          ? Navigation.config.APP_AREAS.ADMIN
+          : Navigation.config.APP_AREAS.CLIENT,
         payload: {
           toastState: Toast.config.success.login(),
         },

@@ -12,7 +12,7 @@ import { User } from "@shared/user";
 
 export const LogoutButton = () => {
   const { refresh: refreshUser } = User.use();
-  const { go } = Navigation.hooks.useNavigate();
+  const { go } = Navigation.hooks.useNavigateWithState();
 
   const onLogoutClick = useCallback(() => {
     AuthSession.logout();

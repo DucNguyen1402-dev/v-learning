@@ -8,7 +8,7 @@ type RequireCurrentUserProps = {
 };
 export const RequireCurrentUser = ({ children }: RequireCurrentUserProps) => {
   const currentUser = CurrentUserStorage.tryGet();
-  const { go } = Navigation.hooks.useNavigate();
+  const { go } = Navigation.hooks.useNavigateWithState();
 
   useEffect(() => {
     if (!currentUser) {

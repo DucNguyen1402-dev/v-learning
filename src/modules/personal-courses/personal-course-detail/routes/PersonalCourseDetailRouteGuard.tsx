@@ -1,5 +1,6 @@
+import { useParams } from "react-router-dom";
+
 import { useUserCourseInfo } from "@shared/auth/userInfor";
-import { Navigation } from "@shared/navigation";
 
 import { CourseAccessChecking, PersonalCourseNotFound } from "../components";
 
@@ -8,7 +9,7 @@ export const PersonalCourseDetailRouteGuard = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const { maKhoaHoc } = Navigation.hooks.useParams();
+  const { maKhoaHoc } = useParams();
 
   const { courses, isPending } = useUserCourseInfo();
   const isCourseIdExist = courses.some(

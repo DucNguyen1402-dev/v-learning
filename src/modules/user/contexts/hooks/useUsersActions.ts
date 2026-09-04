@@ -1,4 +1,4 @@
-import { useLocation,useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export function useUsersActions() {
   const location = useLocation();
@@ -13,7 +13,7 @@ export function useUsersActions() {
       },
     });
 
-    return {
-        onAddUserClick
-    }
+  return {
+    onAddUserClick,
+  };
 }

@@ -15,7 +15,7 @@ export const useProfileChangeActions = () => {
   const toast = Toast.use();
   const modal = Modal.use();
   const { loader } = Loading.use();
-  const { back, go } = Navigation.hooks.useNavigate();
+  const { back, go } = Navigation.hooks.useNavigateWithState();
   const { update } = UpdateAuth.useMutation();
 
   const { register, handleSubmit, getFieldWithFormState, isDirty, isValid } =

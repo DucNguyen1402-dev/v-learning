@@ -27,7 +27,7 @@ export const usePasswordChangeActions = ({
   const toast = Toast.use();
   const { update } = UpdateAuth.useMutation();
   const { loader } = Loading.use();
-  const { go, back } = Navigation.hooks.useNavigate();
+  const { go, back } = Navigation.hooks.useNavigateWithState();
 
   const onValid = async (data: PasswordChangeFormValues) => {
     if (!infor) return;

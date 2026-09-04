@@ -13,12 +13,12 @@ import type { HomeLocationPayload } from "../types";
 
 export const HomePage = () => {
   //1. Scroll to top on route change
-  Navigation.hooks.useScrollOnRouteChange();
+  Navigation.hooks.useScrollToTopOnRouteChange();
 
   //2. Show toast message if there's a payload in the location state
   const { show: showToast } = Toast.use();
-  const [payload] = State.useTemporary<HomeLocationPayload | undefined>(
-    Navigation.hooks.usePayload(),
+  const [payload] = State.useTemporary(
+    Navigation.hooks.usePayload<HomeLocationPayload>(),
   );
   const consumePayload = Navigation.hooks.useConsumePayload();
   const hasShownToast = useRef(false);

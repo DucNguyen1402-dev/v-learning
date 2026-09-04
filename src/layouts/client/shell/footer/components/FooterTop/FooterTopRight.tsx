@@ -9,25 +9,25 @@ export const FooterTopRight = () => {
       list: [
         {
           item: "Frontend",
-          path: Navigation.client.builders.COURSES_BY_CATEGORY(
+          path: Navigation.client.builders.CLIENT_COURSES_BY_CATEGORY(
             CATEGORIES.FRONTEND,
           ),
         },
         {
           item: "Backend",
-          path: Navigation.client.builders.COURSES_BY_CATEGORY(
+          path: Navigation.client.builders.CLIENT_COURSES_BY_CATEGORY(
             CATEGORIES.BACKEND,
           ),
         },
         {
           item: "Fullstack",
-          path: Navigation.client.builders.COURSES_BY_CATEGORY(
+          path: Navigation.client.builders.CLIENT_COURSES_BY_CATEGORY(
             CATEGORIES.FULLSTACK,
           ),
         },
         {
           item: "Mobile",
-          path: Navigation.client.builders.COURSES_BY_CATEGORY(
+          path: Navigation.client.builders.CLIENT_COURSES_BY_CATEGORY(
             CATEGORIES.MOBILE,
           ),
         },
@@ -36,17 +36,17 @@ export const FooterTopRight = () => {
     {
       title: "Giới thiệu",
       list: [
-        { item: "Về chúng tôi", path: Navigation.client.urls.ABOUT },
-        { item: "Liên hệ", path: Navigation.client.urls.CONTACT },
-        { item: "Hỗ trợ", path: Navigation.client.urls.SUPPORT },
+        { item: "Về chúng tôi", path: Navigation.client.urls.CLIENT_ABOUT },
+        { item: "Liên hệ", path: Navigation.client.urls.CLIENT_CONTACT },
+        { item: "Hỗ trợ", path: Navigation.client.urls.CLIENT_SUPPORT },
       ],
     },
     {
       title: "Khám phá",
       list: [
-        { item: "Blogs", path: Navigation.client.paths.BLOGS },
-        { item: "Sự kiện", path: Navigation.client.urls.EVENTS },
-        { item: "Cộng đồng", path: Navigation.client.urls.COMMUNITY },
+        { item: "Blogs", path: Navigation.client.paths.CLIENT_BLOGS },
+        { item: "Sự kiện", path: Navigation.client.urls.CLIENT_EVENTS },
+        { item: "Cộng đồng", path: Navigation.client.urls.CLIENT_COMMUNITY },
       ],
     },
   ];

@@ -24,8 +24,7 @@ export const LoginPage = () => {
   const { show: showToast } = Toast.use();
   const hasShownToast = useRef(false);
 
-  const payload: LoginLocationPayload | undefined =
-    Navigation.hooks.usePayload();
+  const payload = Navigation.hooks.usePayload<LoginLocationPayload>();
   const [toast] = State.useTemporary(payload?.toastState);
   const consumePayload = Navigation.hooks.useConsumePayload();
 

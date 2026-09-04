@@ -12,7 +12,7 @@ export const CourseByCategoryPage = () => {
   const { coursesByCategory, isPending, isEpmty } = useCourseCategoryContext();
   const { maDanhMuc } = useParams<{ maDanhMuc: Category }>();
 
-  Navigation.hooks.useScrollOnRouteChange();
+  Navigation.hooks.useScrollToTopOnRouteChange();
   return (
     <Pagination.Provider
       items={coursesByCategory}

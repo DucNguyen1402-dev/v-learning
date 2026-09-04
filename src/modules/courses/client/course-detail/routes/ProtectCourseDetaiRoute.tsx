@@ -11,7 +11,7 @@ export const ProtectCourseDetailRoute = ({
   children,
 }: ProtectCourseDetailRouteProps) => {
   const { maKhoaHoc } = useParams<{ maKhoaHoc: string }>();
-  const { go } = Navigation.hooks.useNavigate();
+  const { go } = Navigation.hooks.useNavigateWithState();
 
   useEffect(() => {
     if (!maKhoaHoc) {

@@ -9,7 +9,7 @@ import { useAddForm } from "./useAddForm";
 import { useAddUserMutation } from "./useAddUserMutation";
 
 export function useAddUserActions() {
-  const { go, back } = Navigation.hooks.useNavigate();
+  const { go, back } = Navigation.hooks.useNavigateWithState();
   const { loader } = Loading.use();
   const toaster = Toast.use();
   const modal = Modal.use();

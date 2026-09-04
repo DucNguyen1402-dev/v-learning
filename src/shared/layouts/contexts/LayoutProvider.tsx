@@ -2,6 +2,8 @@ import { useMemo } from "react";
 import type { ReactNode } from "react";
 import { useLocation } from "react-router-dom";
 
+import { getRouteHistory } from "@shared/navigation";
+
 import { LayoutContext } from "./LayoutContext";
 
 type LayoutProviderProps = {
@@ -10,7 +12,7 @@ type LayoutProviderProps = {
 export const LayoutProvider = ({ children }: LayoutProviderProps) => {
   const location = useLocation();
 
-  const historyRoute = location.state?.history ?? [];
+  const historyRoute = getRouteHistory({ location }) ?? [];
   const value = useMemo(
     () => ({
       shouldShowBackButton: historyRoute.length > 0,

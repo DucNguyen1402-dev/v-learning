@@ -21,7 +21,7 @@ export function useAddCourseActions() {
   const [imgPreview, setImgPreview] = useState<string>("");
 
   const { profile } = UserProfile.use();
-  const { go, back } = Navigation.hooks.useNavigate();
+  const { go, back } = Navigation.hooks.useNavigateWithState();
   const { loader } = Loading.use();
   const toaster = Toast.use();
   const modalApi = Modal.use();

@@ -17,7 +17,7 @@ export const useCancelCourseEnrollment = ({
 
   const [isCancelPersonalCourseLoading, setIsCancelPersonalCourseLoading] =
     useState(false);
-  const { go } = Navigation.hooks.useNavigate();
+  const { go } = Navigation.hooks.useNavigateWithState();
   const currentUser = CurrentUserStorage.get();
   const toast = Toast.use();
   const { loader } = Loading.use();

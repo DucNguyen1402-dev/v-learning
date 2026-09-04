@@ -7,7 +7,6 @@ import { cn } from "@shared/utils";
 import { type AdminRouteBuilderKey } from "../admin";
 import { type ClientRouteBuilderKey } from "../client";
 import { getNavigationAreaBuilderMeta } from "../helpers";
-import { useCurrentArea } from "../hooks";
 
 type ForwardProps = {
   children: ReactNode;
@@ -34,14 +33,12 @@ export const ForwardWithParam = ({
   const state: RouteState | null = location.state;
   const routeHistory = useMemo(() => state?.history ?? [], [state?.history]);
 
-  const currentArea = useCurrentArea();
   const navigationAreaMeta = useMemo(
     () =>
       getNavigationAreaBuilderMeta({
-        area: currentArea,
         builderRouteKey: builderRouteKey,
       }),
-    [currentArea, builderRouteKey],
+    [builderRouteKey],
   );
 
   const currentRouteKey = useMemo(

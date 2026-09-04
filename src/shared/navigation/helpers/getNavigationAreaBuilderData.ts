@@ -10,14 +10,12 @@ import {
 import { navigationAreas } from "../config";
 
 type NavigationAreaMeta = {
-  area: "admin" | "client";
   builderRouteKey: AdminRouteBuilderKey | ClientRouteBuilderKey;
 };
 export const getNavigationAreaBuilderMeta = ({
-  area,
   builderRouteKey,
 }: NavigationAreaMeta) => {
-  if (isAdminBuilderKey(builderRouteKey) && area === "admin") {
+  if (isAdminBuilderKey(builderRouteKey)) {
     const builderUrl = navigationAreas.admin.builders[builderRouteKey];
     const currentRouteKey = navigationAreas.admin.findKey(location.pathname);
     return {
@@ -26,7 +24,7 @@ export const getNavigationAreaBuilderMeta = ({
       currentRouteKey,
     };
   }
-  if (isClientRouteBuilderKey(builderRouteKey) && area === "client") {
+  if (isClientRouteBuilderKey(builderRouteKey)) {
     const builderUrl = navigationAreas.client.builders[builderRouteKey];
     const currentRouteKey = navigationAreas.client.findKey(location.pathname);
     return {

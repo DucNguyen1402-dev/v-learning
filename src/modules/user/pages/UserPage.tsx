@@ -13,12 +13,15 @@ import {
   UserTable,
 } from "../components";
 import { useUserContext } from "../contexts";
+import type { UserLocationPayload } from "../types";
 
 export const UserPage = () => {
-  Navigation.hooks.useScrollOnRouteChange();
+  Navigation.hooks.useScrollToTopOnRouteChange();
 
   const { show: showToast } = Toast.use();
-  const [displayState] = State.useTemporary(Navigation.hooks.usePayload());
+  const [displayState] = State.useTemporary(
+    Navigation.hooks.usePayload<UserLocationPayload>(),
+  );
   const consumePayload = Navigation.hooks.useConsumePayload();
   const hasShownToast = useRef(false);
   useEffect(() => {
