@@ -1,4 +1,5 @@
-import type { AppRouteBuilderKey, AppRouteKey } from "../types";
+import type { AppRouteBuilderKey, AppRouteKey } from "@shared/navigation/types";
+
 import {
   CLIENT_ROUTE_URLS,
   type ClientRouteBuilderKey,

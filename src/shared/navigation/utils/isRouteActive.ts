@@ -1,10 +1,12 @@
-import { AdminNavigation, type AdminRouteKey } from "../admin";
-import { ClientNavigation, type ClientRouteKey } from "../client";
+import {
+  AdminNavigation,
+  type AdminRouteKey,
+  ClientNavigation,
+  type ClientRouteKey,
+} from "../areas";
+import type { AppRouteKey } from "../types";
 
-export const isRouteActive = (
-  path: string,
-  key: AdminRouteKey | ClientRouteKey,
-) => {
+export const isRouteActive = (path: string, key: AppRouteKey) => {
   if (key in AdminNavigation.urls) {
     return AdminNavigation.urls[key as AdminRouteKey] === path;
   }

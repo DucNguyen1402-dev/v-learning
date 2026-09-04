@@ -1,5 +1,4 @@
-import { AdminNavigation } from "@shared/navigation/admin";
-import { ClientNavigation } from "@shared/navigation/client";
+import { AdminNavigation, ClientNavigation } from "@shared/navigation/areas";
 
 import { adminFavicon, clientFavicon } from "@assets/favicon";
 
@@ -21,5 +20,8 @@ export function getRouteMetadata(pathname: string) {
       favicon: adminFavicon,
     };
   }
-  throw new Error(`No route metadata found for pathname: ${pathname}`);
+  return {
+    title: "V-learning",
+    favicon: clientFavicon,
+  };
 }

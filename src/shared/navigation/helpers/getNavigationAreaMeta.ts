@@ -1,6 +1,4 @@
-import { isAdminRouteKey } from "@shared/navigation/admin";
-import { isClientRouteKey } from "@shared/navigation/client";
-
+import { isAdminRouteKey, isClientRouteKey } from "../areas";
 import { navigationAreas } from "../config";
 import type { AppRouteKey } from "../types";
 

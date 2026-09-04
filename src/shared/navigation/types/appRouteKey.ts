@@ -1,5 +1,9 @@
-import type { AdminRouteBuilderKey, AdminRouteKey } from "../admin";
-import type { ClientRouteBuilderKey, ClientRouteKey } from "../client";
+import type {
+  AdminRouteBuilderKey,
+  AdminRouteKey,
+  ClientRouteBuilderKey,
+  ClientRouteKey,
+} from "../areas";
 
 export type AppRouteKey = ClientRouteKey | AdminRouteKey;
 export type AppRouteBuilderKey = ClientRouteBuilderKey | AdminRouteBuilderKey;

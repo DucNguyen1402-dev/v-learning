@@ -2,16 +2,14 @@ import { useMemo } from "react";
 import type { ReactNode } from "react";
 import { useLocation } from "react-router-dom";
 
+import { getNavigationAreaMeta } from "@shared/navigation/helpers";
+import type { AppRouteKey } from "@shared/navigation/types";
+import { isRouteActive } from "@shared/navigation/utils";
 import { cn } from "@shared/utils";
-
-import { type AdminRouteKey } from "../admin";
-import { type ClientRouteKey } from "../client";
-import { getNavigationAreaMeta } from "../helpers";
-import { isRouteActive } from "../utils";
 
 type ForwardProps = {
   children: ReactNode;
-  routeKey: ClientRouteKey | AdminRouteKey;
+  routeKey: AppRouteKey;
   payload?: unknown;
   className?: string;
   onClick?: () => void;

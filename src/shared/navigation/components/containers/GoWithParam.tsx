@@ -1,15 +1,13 @@
 import { type ReactNode, useMemo } from "react";
 import { Link } from "react-router-dom";
 
+import { getNavigationAreaBuilderMeta } from "@shared/navigation/helpers";
+import type { AppRouteBuilderKey } from "@shared/navigation/types";
 import { cn } from "@shared/utils";
-
-import { type AdminRouteBuilderKey } from "../admin";
-import { type ClientRouteBuilderKey } from "../client";
-import { getNavigationAreaBuilderMeta } from "../helpers";
 
 type GoWithParamProps = {
   children: ReactNode;
-  builderRouteKey: ClientRouteBuilderKey | AdminRouteBuilderKey;
+  builderRouteKey: AppRouteBuilderKey;
   payload?: unknown;
   className?: string;
   disabled?: boolean;

@@ -1,5 +1,4 @@
-import { AdminNavigation } from "./admin";
-import { ClientNavigation } from "./client";
+import { AdminNavigation, ClientNavigation } from "./areas";
 import { Back, Forward, ForwardWithParam, Go, GoWithParam } from "./components";
 import { NavigationHooks } from "./hooks";
 import { isRouteActive } from "./utils";

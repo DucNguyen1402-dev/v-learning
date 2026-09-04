@@ -1,12 +1,12 @@
 import { Navigation } from "@shared/navigation";
+import type { ClientRouteKey } from "@shared/navigation/areas";
 
-export const routesHideLoginButton = new Set<
-  keyof typeof Navigation.client.keys
->([Navigation.client.keys.REGISTER, Navigation.client.keys.LOGIN]);
+export const routesHideLoginButton = new Set<ClientRouteKey>([
+  Navigation.client.keys.REGISTER,
+  Navigation.client.keys.LOGIN,
+]);
 
-export const routesShowLogoutButton = new Set<
-  keyof typeof Navigation.client.keys
->([
+export const routesShowLogoutButton = new Set<ClientRouteKey>([
   Navigation.client.keys.PROFILE,
   Navigation.client.keys.PROFILE_CHANGE,
   Navigation.client.keys.PROFILE_PASSWORD_CHANGE,

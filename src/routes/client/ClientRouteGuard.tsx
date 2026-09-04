@@ -14,7 +14,6 @@ export const ClientRouteGuard = ({ children }: ClientRouteGuardProps) => {
     if (isAdmin) {
       go({
         routeKey: Navigation.admin.keys.COURSES,
-        area: "admin",
       });
     }
   }, [go, isAdmin]);

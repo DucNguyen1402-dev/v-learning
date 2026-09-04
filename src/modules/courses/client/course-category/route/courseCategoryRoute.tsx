@@ -6,7 +6,7 @@ import { CourseByCategoryPage } from "../page/CourseByCategoryPage";
 import { CourseCategoryRouteProvider } from "../provider";
 export const courseCategoryRoute = (
   <Route
-    path={Navigation.client.builders.CLIENT_COURSES_BY_CATEGORY(":maDanhMuc")}
+    path={Navigation.client.builderPaths.CLIENT_COURSES_BY_CATEGORY}
     element={
       <CourseCategoryRouteProvider>
         <CourseByCategoryPage />

@@ -104,7 +104,7 @@ export const CLIENT_ROUTE_URLS = {
   [CLIENT_ROUTE_KEYS.SUPPORT]: "/client/support",
 } as const;
 
-export const CLIENT_ROUTE_BUILDERS = {
+export const CLIENT_ROUTE_BUILDER_URLS = {
   [CLIENT_ROUTE_BUILDER_KEYS.COURSES_DETAIL]: (maKhoaHoc: string) =>
     `/client/courses/${maKhoaHoc}`,
   [CLIENT_ROUTE_BUILDER_KEYS.COURSES_DETAIL_PAYMENT]: (maKhoaHoc: string) =>

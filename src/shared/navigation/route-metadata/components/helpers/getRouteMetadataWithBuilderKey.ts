@@ -1,11 +1,9 @@
 import {
   AdminNavigation,
-  isAdminRouteBuilderKey,
-} from "@shared/navigation/admin";
-import {
   ClientNavigation,
+  isAdminRouteBuilderKey,
   isClientRouteBuilderKey,
-} from "@shared/navigation/client";
+} from "@shared/navigation/areas";
 import type { AppRouteBuilderKey } from "@shared/navigation/types";
 
 import { adminFavicon, clientFavicon } from "@assets/favicon";
@@ -23,5 +21,8 @@ export function getRouteMetadataWithBuilderKey(builderKey: AppRouteBuilderKey) {
       favicon: adminFavicon,
     };
   }
-  throw new Error(`No route metadata found for builderKey: ${builderKey}`);
+  return {
+    title: "V-learning",
+    favicon: clientFavicon,
+  };
 }
