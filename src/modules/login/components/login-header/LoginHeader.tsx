@@ -3,15 +3,15 @@ import { EducationLogo, LOGO_SIZES } from "@shared/logo";
 import { getTitleAndSubtitle } from "./helper";
 
 type LoginHeaderProps = {
-  isRegistrationSuccessful: boolean;
-  loginRequired: boolean;
-  adminAuthRequired: boolean;
+  isRegistrationSuccessful?: boolean;
+  loginRequired?: boolean;
+  adminAuthRequired?: boolean;
 };
 
 export const LoginHeader = ({
-  isRegistrationSuccessful,
-  loginRequired,
-  adminAuthRequired,
+  isRegistrationSuccessful = false,
+  loginRequired = false,
+  adminAuthRequired = false,
 }: LoginHeaderProps) => {
   const { title, subtitle } = getTitleAndSubtitle({
     isRegistrationSuccessful,
