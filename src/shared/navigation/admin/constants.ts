@@ -8,7 +8,7 @@ export const ADMIN_ROUTE_KEYS = {
   USER_ADD: "ADMIN_USER_ADD",
 } as const;
 
-export const ADMIN_ROUTE_BUILDERS_KEYS = {
+export const ADMIN_ROUTE_BUILDER_KEYS = {
   COURSE_EDIT: "ADMIN_COURSE_EDIT",
   USER_EDIT: "ADMIN_USER_EDIT",
   USER_COURSES: "ADMIN_USER_COURSES",
@@ -19,14 +19,14 @@ export const ADMIN_ROUTE_BUILDERS_KEYS = {
 export type AdminRouteKey =
   (typeof ADMIN_ROUTE_KEYS)[keyof typeof ADMIN_ROUTE_KEYS];
 export type AdminRouteBuilderKey =
-  (typeof ADMIN_ROUTE_BUILDERS_KEYS)[keyof typeof ADMIN_ROUTE_BUILDERS_KEYS];
+  (typeof ADMIN_ROUTE_BUILDER_KEYS)[keyof typeof ADMIN_ROUTE_BUILDER_KEYS];
 
 export const adminRouteKeys = Object.values(
   ADMIN_ROUTE_KEYS,
 ) as AdminRouteKey[];
 
 export const adminRouteBuilderKeys = Object.values(
-  ADMIN_ROUTE_BUILDERS_KEYS,
+  ADMIN_ROUTE_BUILDER_KEYS,
 ) as AdminRouteBuilderKey[];
 
 export const ADMIN_ROUTE_PATHS = {
@@ -39,12 +39,12 @@ export const ADMIN_ROUTE_PATHS = {
   [ADMIN_ROUTE_KEYS.PROFILE_PASSWORD_CHANGE]: "profile/password-change",
 } as const;
 
-export const ADMIN_ROUTE_BUILDERS_PATHS = {
-  [ADMIN_ROUTE_BUILDERS_KEYS.COURSE_EDIT]: "edit/:maKhoaHoc",
-  [ADMIN_ROUTE_BUILDERS_KEYS.USER_EDIT]: "edit/:taiKhoan",
-  [ADMIN_ROUTE_BUILDERS_KEYS.USER_COURSES]: "enrolled-courses/:taiKhoan",
-  [ADMIN_ROUTE_BUILDERS_KEYS.COURSE_ENROLLMENT]: ":maKhoaHoc/enrollment",
-  [ADMIN_ROUTE_BUILDERS_KEYS.ENROLL_USER]: ":maKhoaHoc/enroll-user",
+export const ADMIN_ROUTE_BUILDER_PATHS = {
+  [ADMIN_ROUTE_BUILDER_KEYS.COURSE_EDIT]: "edit/:maKhoaHoc",
+  [ADMIN_ROUTE_BUILDER_KEYS.USER_EDIT]: "edit/:taiKhoan",
+  [ADMIN_ROUTE_BUILDER_KEYS.USER_COURSES]: "enrolled-courses/:taiKhoan",
+  [ADMIN_ROUTE_BUILDER_KEYS.COURSE_ENROLLMENT]: ":maKhoaHoc/enrollment",
+  [ADMIN_ROUTE_BUILDER_KEYS.ENROLL_USER]: ":maKhoaHoc/enroll-user",
 } as const;
 
 export const ADMIN_ROUTE_TITLES = {
@@ -57,12 +57,12 @@ export const ADMIN_ROUTE_TITLES = {
   [ADMIN_ROUTE_KEYS.PROFILE_PASSWORD_CHANGE]: "Change Password",
 } as const;
 
-export const ADMIN_ROUTE_BUILDERS_TITLES = {
-  [ADMIN_ROUTE_BUILDERS_KEYS.COURSE_EDIT]: "Edit Course",
-  [ADMIN_ROUTE_BUILDERS_KEYS.USER_EDIT]: "Edit User",
-  [ADMIN_ROUTE_BUILDERS_KEYS.USER_COURSES]: "User Enrolled Courses",
-  [ADMIN_ROUTE_BUILDERS_KEYS.COURSE_ENROLLMENT]: "Course Enrollment",
-  [ADMIN_ROUTE_BUILDERS_KEYS.ENROLL_USER]: "Enroll User",
+export const ADMIN_ROUTE_BUILDER_TITLES = {
+  [ADMIN_ROUTE_BUILDER_KEYS.COURSE_EDIT]: "Edit Course",
+  [ADMIN_ROUTE_BUILDER_KEYS.USER_EDIT]: "Edit User",
+  [ADMIN_ROUTE_BUILDER_KEYS.USER_COURSES]: "User Enrolled Courses",
+  [ADMIN_ROUTE_BUILDER_KEYS.COURSE_ENROLLMENT]: "Course Enrollment",
+  [ADMIN_ROUTE_BUILDER_KEYS.ENROLL_USER]: "Enroll User",
 } as const;
 
 export const ADMIN_ROUTE_URLS = {
@@ -76,14 +76,14 @@ export const ADMIN_ROUTE_URLS = {
 } as const;
 
 export const ADMIN_ROUTE_BUILDERS = {
-  [ADMIN_ROUTE_BUILDERS_KEYS.COURSE_EDIT]: (maKhoaHoc: string) =>
+  [ADMIN_ROUTE_BUILDER_KEYS.COURSE_EDIT]: (maKhoaHoc: string) =>
     `/admin/courses/edit/${maKhoaHoc}`,
-  [ADMIN_ROUTE_BUILDERS_KEYS.USER_EDIT]: (taiKhoan: string) =>
+  [ADMIN_ROUTE_BUILDER_KEYS.USER_EDIT]: (taiKhoan: string) =>
     `/admin/users/edit/${taiKhoan}`,
-  [ADMIN_ROUTE_BUILDERS_KEYS.USER_COURSES]: (taiKhoan: string) =>
+  [ADMIN_ROUTE_BUILDER_KEYS.USER_COURSES]: (taiKhoan: string) =>
     `/admin/users/enrolled-courses/${taiKhoan}`,
-  [ADMIN_ROUTE_BUILDERS_KEYS.COURSE_ENROLLMENT]: (maKhoaHoc: string) =>
+  [ADMIN_ROUTE_BUILDER_KEYS.COURSE_ENROLLMENT]: (maKhoaHoc: string) =>
     `/admin/courses/${maKhoaHoc}/enrollment`,
-  [ADMIN_ROUTE_BUILDERS_KEYS.ENROLL_USER]: (maKhoaHoc: string) =>
+  [ADMIN_ROUTE_BUILDER_KEYS.ENROLL_USER]: (maKhoaHoc: string) =>
     `/admin/courses/${maKhoaHoc}/enroll-user`,
 } as const;

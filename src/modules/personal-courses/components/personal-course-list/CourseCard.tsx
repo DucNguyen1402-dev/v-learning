@@ -35,7 +35,7 @@ export const CourseCard = ({ course }: { course: EnrichedPersonalCourse }) => {
           </p>
           <Navigation.components.ForwardWithParam
             builderRouteKey={
-              Navigation.client.buildersKeys.PERSONAL_COURSE_DETAIL
+              Navigation.client.builderKeys.PERSONAL_COURSE_DETAIL
             }
             param={course.maKhoaHoc}
             className="group/inner flex items-center gap-1 text-sm text-text-subtle transition-colors duration-200 hover:text-text-brand"

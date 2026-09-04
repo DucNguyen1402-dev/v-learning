@@ -1,13 +1,11 @@
-import { type AdminRouteKey, isAdminRouteKey } from "@shared/navigation/admin";
-import {
-  type ClientRouteKey,
-  isClientRouteKey,
-} from "@shared/navigation/client";
+import { isAdminRouteKey } from "@shared/navigation/admin";
+import { isClientRouteKey } from "@shared/navigation/client";
 
 import { navigationAreas } from "../config";
+import type { AppRouteKey } from "../types";
 
 type NavigationAreaMeta = {
-  routeKey: AdminRouteKey | ClientRouteKey;
+  routeKey: AppRouteKey;
   pathname?: string;
 };
 export const getNavigationAreaMeta = ({
@@ -26,7 +24,6 @@ export const getNavigationAreaMeta = ({
 
   return {
     navigationArea: area,
-    routeKey,
     url: area.urls[routeKey as keyof typeof area.urls],
     currentRouteKey: pathname ? area.findKey(pathname) : undefined,
   };

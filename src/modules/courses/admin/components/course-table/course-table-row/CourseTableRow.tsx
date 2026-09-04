@@ -68,9 +68,7 @@ export const CourseTableRow = ({
           >
             <Tooltip content="Quản lý học viên ghi danh">
               <Navigation.components.ForwardWithParam
-                builderRouteKey={
-                  Navigation.admin.buildersKeys.COURSE_ENROLLMENT
-                }
+                builderRouteKey={Navigation.admin.builderKeys.COURSE_ENROLLMENT}
                 param={course.maKhoaHoc}
                 className="rounded-control p-1.5 transition-colors duration-150 ease-in-out hover:bg-bg-brand/10 hover:text-text-brand"
               >
@@ -86,7 +84,7 @@ export const CourseTableRow = ({
           >
             <Tooltip content="Chỉnh sửa khóa học">
               <Navigation.components.ForwardWithParam
-                builderRouteKey={Navigation.admin.buildersKeys.COURSE_EDIT}
+                builderRouteKey={Navigation.admin.builderKeys.COURSE_EDIT}
                 param={course.maKhoaHoc}
                 className="rounded-control p-1.5 transition-colors duration-150 ease-in-out hover:bg-bg-brand/10 hover:text-text-brand"
               >
@@ -102,7 +100,7 @@ export const CourseTableRow = ({
           >
             <Tooltip content="Ghi danh học viên">
               <Navigation.components.ForwardWithParam
-                builderRouteKey={Navigation.admin.buildersKeys.ENROLL_USER}
+                builderRouteKey={Navigation.admin.builderKeys.ENROLL_USER}
                 param={course.maKhoaHoc}
 
                 className="rounded-control p-1.5 transition-colors duration-150 ease-in-out hover:bg-bg-brand/10 hover:text-text-brand"

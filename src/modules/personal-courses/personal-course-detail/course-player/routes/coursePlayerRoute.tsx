@@ -6,7 +6,7 @@ import { CoursePlayerPage } from "../pages/CoursePlayerPage";
 
 export const coursePlayerRoute = (
   <Route
-    path={Navigation.client.buildersPaths.CLIENT_PERSONAL_COURSE_DETAIL_PLAYER}
+    path={Navigation.client.builderPaths.CLIENT_PERSONAL_COURSE_DETAIL_PLAYER}
     element={<CoursePlayerPage />}
   />
 );

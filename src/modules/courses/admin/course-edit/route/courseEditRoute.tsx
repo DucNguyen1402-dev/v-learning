@@ -6,7 +6,7 @@ import { CourseEditPage } from "../pages/CourseEditPage";
 
 export const courseEditRoute = (
   <Route
-    path={Navigation.admin.buildersPaths.ADMIN_COURSE_EDIT}
+    path={Navigation.admin.builderPaths.ADMIN_COURSE_EDIT}
     element={<CourseEditPage />}
   />
 );

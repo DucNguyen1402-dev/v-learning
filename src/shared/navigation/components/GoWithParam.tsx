@@ -1,5 +1,4 @@
 import { type ReactNode, useMemo } from "react";
-import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 import { cn } from "@shared/utils";
@@ -7,9 +6,8 @@ import { cn } from "@shared/utils";
 import { type AdminRouteBuilderKey } from "../admin";
 import { type ClientRouteBuilderKey } from "../client";
 import { getNavigationAreaBuilderMeta } from "../helpers";
-import { getRouteHistory } from "../utils";
 
-type ForwardProps = {
+type GoWithParamProps = {
   children: ReactNode;
   builderRouteKey: ClientRouteBuilderKey | AdminRouteBuilderKey;
   payload?: unknown;
@@ -18,32 +16,26 @@ type ForwardProps = {
   param: string;
 };
 
-export const ForwardWithParam = ({
+export const GoWithParam = ({
   children,
   builderRouteKey,
   payload,
   className,
   disabled,
   param,
-}: ForwardProps) => {
-  const location = useLocation();
-
-  const routeHistory = getRouteHistory({ location }) ?? [];
-
-  const { urlBuilder, currentBuilderRouteKey } = useMemo(
+}: GoWithParamProps) => {
+  const { urlBuilder } = useMemo(
     () =>
       getNavigationAreaBuilderMeta({
         builderRouteKey: builderRouteKey,
-        pathname: location.pathname,
       }),
-    [builderRouteKey, location.pathname],
+    [builderRouteKey],
   );
 
   return (
     <Link
       to={urlBuilder(param)}
       state={{
-        history: [...routeHistory, currentBuilderRouteKey],
         payload: payload ?? null,
         routeMetaContext: {
           builderRouteKey,

@@ -31,6 +31,7 @@ export const usePasswordChangeActions = ({
 
   const onValid = async (data: PasswordChangeFormValues) => {
     if (!infor) return;
+
     if (data.currentPassword !== infor.matKhau) {
       toast.show(Toast.config.error("Mật khẩu hiện tại không đúng!"));
       return;

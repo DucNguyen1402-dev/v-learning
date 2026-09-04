@@ -56,7 +56,7 @@ export const CourseCard = ({ course, shouldHideCategory }: CourseCardProps) => {
         >
           <div className="py-2">
             <Navigation.components.ForwardWithParam
-              builderRouteKey={Navigation.client.buildersKeys.COURSES_DETAIL}
+              builderRouteKey={Navigation.client.builderKeys.COURSES_DETAIL}
               param={course.maKhoaHoc}
               className="button-base button-primary solid w-full py-2 text-sm"
             >

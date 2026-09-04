@@ -25,7 +25,7 @@ export const LessonListCard = ({
           <Navigation.components.ForwardWithParam
             key={index}
             builderRouteKey={
-              Navigation.client.buildersKeys.PERSONAL_COURSE_DETAIL_PLAYER
+              Navigation.client.builderKeys.PERSONAL_COURSE_DETAIL_PLAYER
             }
             param={maKhoaHoc}
             payload={{ baiHocIndex: index }}

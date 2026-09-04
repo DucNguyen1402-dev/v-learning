@@ -9,7 +9,7 @@ import { PersonalCourseDetailProviderWrapper } from "../providers";
 import { PersonalCourseDetailRouteGuard } from "./PersonalCourseDetailRouteGuard";
 export const personalCourseDetailRoute = (
   <Route
-    path={Navigation.client.buildersPaths.CLIENT_PERSONAL_COURSE_DETAIL}
+    path={Navigation.client.builderPaths.CLIENT_PERSONAL_COURSE_DETAIL}
     element={
       <PersonalCourseDetailRouteGuard>
         <PersonalCourseDetailProviderWrapper>

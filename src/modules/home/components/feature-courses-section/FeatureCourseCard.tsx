@@ -22,7 +22,7 @@ export const FeatureCourseCard = ({
 }: FeatureCourseCardProps) => {
   return (
     <Navigation.components.ForwardWithParam
-      builderRouteKey={Navigation.client.buildersKeys.COURSES_DETAIL}
+      builderRouteKey={Navigation.client.builderKeys.COURSES_DETAIL}
       param={maKhoahoc}
     >
       <article className="group relative flex cursor-pointer flex-col justify-between rounded-container border border-border-default bg-bg-default p-6 transition-transform duration-300 select-none hover:-translate-y-2 hover:border-border-brand hover:shadow-surface-hover">
