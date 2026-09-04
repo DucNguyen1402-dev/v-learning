@@ -15,10 +15,10 @@ export const SidebarNav = ({ isSidebarOpen }: SidebarNavProps) => {
         isSidebarOpen ? " " : "sidebar-nav--compact",
       )}
     >
-      {sidebarNavLinks.map((link) => (
+      {sidebarNavLinks.map((link, index) => (
         <NavLink
           to={link.path}
-          key={link.path}
+          key={index}
           className={({ isActive }) =>
             cn(`group sidebar-nav-link`, {
               "sidebar-nav-link--active": isActive,

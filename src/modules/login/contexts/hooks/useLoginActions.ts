@@ -34,15 +34,12 @@ export const useLoginActions = ({
     try {
       await execution.runAsyncTask(loginTask);
       const isAdmin = CurrentUserStorage.isAdmin();
-      const navigationArea = isAdmin
+      const routeKey = isAdmin
         ? Navigation.admin.keys.COURSES
         : Navigation.client.keys.HOME;
 
       go({
-        routeKey: navigationArea,
-        area: isAdmin
-          ? Navigation.config.APP_AREAS.ADMIN
-          : Navigation.config.APP_AREAS.CLIENT,
+        routeKey,
         payload: {
           toastState: Toast.config.success.login(),
         },

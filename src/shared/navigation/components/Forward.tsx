@@ -6,6 +6,7 @@ import { cn } from "@shared/utils";
 import { type AdminRouteKey } from "../admin";
 import { type ClientRouteKey } from "../client";
 import { getNavigationAreaMeta } from "../helpers";
+import { getRouteHistory } from "../utils";
 
 type ForwardProps = {
   children: ReactNode;
@@ -18,10 +19,6 @@ type ForwardProps = {
 };
 import { Link } from "react-router-dom";
 
-type RouteState = {
-  history?: string[];
-};
-
 export const Forward = ({
   children,
   routeKey,
@@ -31,22 +28,23 @@ export const Forward = ({
 }: ForwardProps) => {
   const location = useLocation();
 
-  const state: RouteState | null = location.state;
-  const routeHistory = useMemo(() => state?.history ?? [], [state?.history]);
+  const routeHistory = getRouteHistory({ location }) ?? [];
+  const pathname = location.pathname;
 
-  const navigationAreaMeta = useMemo(
+  const { url, currentRouteKey } = useMemo(
     () =>
       getNavigationAreaMeta({
         routeKey,
+        pathname,
       }),
-    [routeKey],
+    [routeKey, pathname],
   );
 
   return (
     <Link
-      to={navigationAreaMeta.url}
+      to={url}
       state={{
-        history: [...routeHistory, navigationAreaMeta.currentRouteKey],
+        history: [...routeHistory, currentRouteKey],
         payload: payload ?? null,
       }}
       className={cn(className, {

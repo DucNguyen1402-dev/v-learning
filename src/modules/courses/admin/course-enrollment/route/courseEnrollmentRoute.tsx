@@ -7,7 +7,7 @@ import { CourseEnrollmentProviders } from "../provider";
 
 export const courseEnrollmentRoute = (
   <Route
-    path={Navigation.admin.buildersPaths.COURSE_ENROLLMENT}
+    path={Navigation.admin.buildersPaths.ADMIN_COURSE_ENROLLMENT}
     element={
       <CourseEnrollmentProviders>
         <CourseEnrollmentPage />

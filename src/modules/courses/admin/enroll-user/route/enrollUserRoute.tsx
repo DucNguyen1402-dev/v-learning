@@ -7,7 +7,7 @@ import { EnrollUserRouteProvider } from "../provider";
 
 export const enrollUserRoute = (
   <Route
-    path={Navigation.admin.buildersPaths.ENROLL_USER}
+    path={Navigation.admin.buildersPaths.ADMIN_ENROLL_USER}
     element={
       <EnrollUserRouteProvider>
         <EnrollUserPage />

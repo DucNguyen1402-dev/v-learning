@@ -19,14 +19,14 @@ export const UserAvatar = ({ enabledProfileLink = false }: UserAvatarProps) => {
         enabledProfileLink ? "" : "lg:pointer-events-none lg:cursor-default"
       }
     >
-      <Navigation.components.Forward
+      <Navigation.components.Go
         routeKey={profileKey}
         className={cn("profile-avatar", {
           "profile-avatar--initial": type !== "image",
         })}
       >
         {avatarRender}
-      </Navigation.components.Forward>
+      </Navigation.components.Go>
     </div>
   );
 };

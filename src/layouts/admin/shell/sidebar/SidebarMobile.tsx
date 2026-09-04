@@ -12,10 +12,10 @@ export const SidebarMobile = () => {
       <div className="group/outer flex h-20 items-center justify-between px-2 md:px-4">
         <EducationLogo />
         <div className="flex gap-4 md:gap-8">
-          {sidebarNavLinks.map((link) => (
+          {sidebarNavLinks.map((link, index) => (
             <NavLink
               to={link.path}
-              key={link.path}
+              key={index}
               className={({ isActive }) =>
                 cn(`group sidebar-nav-link`, {
                   "sidebar-nav-link--active": isActive,

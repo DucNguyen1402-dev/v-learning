@@ -6,7 +6,7 @@ import { CourseAddPage } from "../pages/CourseAddPage";
 
 export const courseAddRoute = (
   <Route
-    path={Navigation.admin.paths.COURSES_ADD}
+    path={Navigation.admin.paths.ADMIN_COURSES_ADD}
     element={<CourseAddPage />}
   />
 );

@@ -1,11 +1,13 @@
 import { useMemo } from "react";
 import type { ReactNode } from "react";
+import { useLocation } from "react-router-dom";
 
 import { cn } from "@shared/utils";
 
 import { type AdminRouteKey } from "../admin";
 import { type ClientRouteKey } from "../client";
 import { getNavigationAreaMeta } from "../helpers";
+import { isRouteActive } from "../utils";
 
 type ForwardProps = {
   children: ReactNode;
@@ -34,12 +36,15 @@ export const Go = ({
     [routeKey],
   );
 
+  const { pathname } = useLocation();
+  const isActive = isRouteActive(pathname, routeKey);
+
   return (
     <Link
       to={navigationAreaMeta.url}
       state={{ payload: payload ?? null }}
       className={cn(className, {
-        "pointer-events-none cursor-default": disabled,
+        "pointer-events-none cursor-default": disabled || isActive,
       })}
       onClick={onClick}
     >
