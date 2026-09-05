@@ -1,1 +1,2 @@
-export { courseEnrollmentRoute } from "./route/courseEnrollmentRoute";
+export * from "./navigation";
+export * from "./route";

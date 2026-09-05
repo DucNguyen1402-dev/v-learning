@@ -1,0 +1,1 @@
+export { enrollUserRouteConfig } from "./config";

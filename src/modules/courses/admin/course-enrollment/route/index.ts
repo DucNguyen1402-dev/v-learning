@@ -1,0 +1,1 @@
+export { courseEnrollmentRoute } from "./courseEnrollmentRoute";

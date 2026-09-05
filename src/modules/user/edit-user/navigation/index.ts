@@ -1,0 +1,1 @@
+export { editUserRouteConfig } from "./config";

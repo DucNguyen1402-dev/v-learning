@@ -1,13 +1,12 @@
 import { Route } from "react-router-dom";
 
-import { Navigation } from "@shared/navigation";
-
+import { ENROLL_USER_ROUTE_SEGMENT } from "../navigation/constants";
 import { EnrollUserPage } from "../page/EnrollUserPage";
 import { EnrollUserRouteProvider } from "../provider";
 
 export const enrollUserRoute = (
   <Route
-    path={Navigation.admin.builderPaths.ADMIN_ENROLL_USER}
+    path={ENROLL_USER_ROUTE_SEGMENT}
     element={
       <EnrollUserRouteProvider>
         <EnrollUserPage />

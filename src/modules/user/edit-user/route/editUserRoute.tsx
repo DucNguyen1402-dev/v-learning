@@ -1,13 +1,12 @@
 import { Route } from "react-router-dom";
 
-import { Navigation } from "@shared/navigation";
-
 import { EditUserProvider } from "../contexts";
+import { EDIT_USER_ROUTE_SEGMENT } from "../navigation/constants";
 import { UpdateUserPage } from "../pages/UpdateUserPage";
 
 export const editUserRoute = (
   <Route
-    path={Navigation.admin.builderPaths.ADMIN_USER_EDIT}
+    path={EDIT_USER_ROUTE_SEGMENT}
     element={
       <EditUserProvider>
         <UpdateUserPage />

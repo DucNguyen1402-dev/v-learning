@@ -1,7 +1,7 @@
-export const PERSONAL_COURSES_ROUTE_KEY = "CLIENT_PERSONAL_COURSES";
+export const PROFILE_ROUTE_KEY = "ADMIN_PROFILE";
 
-export const PERSONAL_COURSES_ROUTE_PATH = "personal-courses";
+export const PROFILE_ROUTE_SEGMENT = "profile";
 
-export const PERSONAL_COURSES_ROUTE_TITLE = "Personal Courses";
+export const PROFILE_ROUTE_TITLE = "Hồ sơ";
 
-export const PERSONAL_COURSES_ROUTE_URL = "/client/personal-courses";
+export const PROFILE_ROUTE_PATH = `/admin/${PROFILE_ROUTE_SEGMENT}`;

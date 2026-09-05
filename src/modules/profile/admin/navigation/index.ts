@@ -1,1 +1,2 @@
-export { personalCoursesRouteConfig } from "./config";
+export { profileRouteConfig } from "./config";
+export * from "./sub-modules";

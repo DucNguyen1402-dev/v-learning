@@ -1,18 +1,17 @@
 import { Route } from "react-router-dom";
 
-import { Navigation } from "@shared/navigation";
-
 import { addUserRoute } from "../add-user";
 import { editUserRoute } from "../edit-user";
 import { UsersLayout } from "../layouts";
+import { USER_ROUTE_SEGMENT } from "../navigation/constants";
 import { UserPage } from "../pages/UserPage";
-import { userCoursesRoute } from "../user-courses";
+import { userCourseRoute } from "../user-courses";
 
-export const userRoutes = (
-  <Route path={Navigation.admin.paths.ADMIN_USER} element={<UsersLayout />}>
+export const userRoute = (
+  <Route path={USER_ROUTE_SEGMENT} element={<UsersLayout />}>
     <Route index element={<UserPage />} />
     {addUserRoute}
     {editUserRoute}
-    {userCoursesRoute}
+    {userCourseRoute}
   </Route>
 );

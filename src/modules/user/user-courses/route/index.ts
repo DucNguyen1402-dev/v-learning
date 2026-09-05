@@ -1,0 +1,1 @@
+export { userCourseRoute } from "./userCourseRoute";
