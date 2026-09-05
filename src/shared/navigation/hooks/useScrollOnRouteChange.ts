@@ -16,15 +16,11 @@ export const useScrollOnRouteChange = ({
 
   useEffect(() => {
     if (!enabled) return;
-
-    if (ref?.current) {
-      ref.current.scrollIntoView({
-        behavior,
-        block,
-      });
-      return;
-    }
-    window.scrollTo(0, 0);
+    if (!ref?.current) return;
+    ref.current.scrollIntoView({
+      behavior,
+      block,
+    });
   }, [pathname, enabled, ref, behavior, block]);
 
   return {

@@ -6,7 +6,7 @@ import { UserCoursesPage } from "../pages/UserCoursesPage";
 
 export const userCoursesRoute = (
   <Route
-    path={Navigation.admin.buildersPaths.USER_COURSES}
+    path={Navigation.admin.builderPaths.ADMIN_USER_COURSES}
     element={<UserCoursesPage />}
   />
 );

@@ -4,5 +4,8 @@ import { Navigation } from "@shared/navigation";
 
 import { ContactPage } from "../pages/ContactPage";
 export const contactRoute = (
-  <Route path={Navigation.client.paths.CONTACT} element={<ContactPage />} />
+  <Route
+    path={Navigation.client.paths.CLIENT_CONTACT}
+    element={<ContactPage />}
+  />
 );

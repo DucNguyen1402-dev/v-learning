@@ -13,7 +13,7 @@ export const useCourseRegister = ({ maKhoaHoc }: { maKhoaHoc: string }) => {
 
   const [isRegistering, setIsRegistering] = useState(false);
 
-  const { go } = Navigation.hooks.useNavigate();
+  const { go } = Navigation.hooks.useNavigateWithState();
   const currentUser = CurrentUserStorage.get();
   const toast = Toast.use();
 
@@ -27,8 +27,11 @@ export const useCourseRegister = ({ maKhoaHoc }: { maKhoaHoc: string }) => {
       const registerTask = () => registerCourse(payload);
 
       await execution.runAsyncTask(registerTask);
-      go(Navigation.client.keys.PERSONAL_COURSE, "client", {
-        toastState: Toast.config.success.register(ENTITIES.COURSE),
+      go({
+        routeKey: Navigation.client.keys.PERSONAL_COURSE,
+        payload: {
+          toastState: Toast.config.success.register(ENTITIES.COURSE),
+        },
       });
     } catch (error) {
       // API trả về lỗi 500 không rõ ràng nên cần custom message cho từng trường hợp

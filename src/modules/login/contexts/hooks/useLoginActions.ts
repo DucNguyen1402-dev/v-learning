@@ -21,7 +21,7 @@ export const useLoginActions = ({
   remember,
 }: UseLoginActionsParams) => {
   const { login } = LoginAuth.useMutation();
-  const { go } = Navigation.hooks.useNavigate();
+  const { go } = Navigation.hooks.useNavigateWithState();
   const toast = Toast.use();
   const [isLoggingIn, setIsLoggingIn] = useState(false);
 
@@ -34,12 +34,15 @@ export const useLoginActions = ({
     try {
       await execution.runAsyncTask(loginTask);
       const isAdmin = CurrentUserStorage.isAdmin();
-      const navigationArea = isAdmin
+      const routeKey = isAdmin
         ? Navigation.admin.keys.COURSES
         : Navigation.client.keys.HOME;
 
-      go(navigationArea, isAdmin ? "admin" : "client", {
-        toastState: Toast.config.success.login(),
+      go({
+        routeKey,
+        payload: {
+          toastState: Toast.config.success.login(),
+        },
       });
     } catch (error) {
       const message = getErrorMessage({

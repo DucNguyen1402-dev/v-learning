@@ -23,7 +23,7 @@ export const useEditUserActions = ({
   handleSubmit,
   targetUser,
 }: UseEditUserActionsProps) => {
-  const { go, back } = Navigation.hooks.useNavigate();
+  const { go, back } = Navigation.hooks.useNavigateWithState();
   const { loader } = Loading.use();
   const toaster = Toast.use();
   const modal = Modal.use();
@@ -59,9 +59,12 @@ export const useEditUserActions = ({
     try {
       await execution.runAsyncTask(submitNewUserTask, loader);
 
-      go(Navigation.admin.keys.USER, "admin", {
-        toastState: Toast.config.success.update(ENTITIES.USER),
-        taiKhoan: data.taiKhoan,
+      go({
+        routeKey: Navigation.admin.keys.USER,
+        payload: {
+          toastState: Toast.config.success.update(ENTITIES.USER),
+          taiKhoan: data.taiKhoan,
+        },
       });
     } catch (error) {
       toaster.show(

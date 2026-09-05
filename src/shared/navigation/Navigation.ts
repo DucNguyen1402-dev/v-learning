@@ -1,7 +1,7 @@
-import { AdminNavigation } from "./admin";
-import { ClientNavigation } from "./client";
-import { Back, Forward, ForwardWithParam, Go } from "./components";
+import { AdminNavigation, ClientNavigation } from "./areas";
+import { Back, Forward, ForwardWithParam, Go, GoWithParam } from "./components";
 import { NavigationHooks } from "./hooks";
+import { isRouteActive } from "./utils";
 
 export const Navigation = {
   client: ClientNavigation,
@@ -12,5 +12,9 @@ export const Navigation = {
     Back,
     Forward,
     ForwardWithParam,
+    GoWithParam,
+  },
+  utils: {
+    isRouteActive,
   },
 };

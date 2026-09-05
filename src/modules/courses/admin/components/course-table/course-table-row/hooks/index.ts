@@ -1,0 +1,1 @@
+export { useCourseTableRow } from "./useCourseTableRow";

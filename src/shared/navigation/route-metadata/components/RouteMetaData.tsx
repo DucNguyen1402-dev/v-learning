@@ -1,16 +1,19 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
-import { getRouteMetadata, getRouteMetadataWithBuilderKey } from "./helper";
+import { useRouteMetaContext } from "@shared/navigation/hooks";
+
+import { getRouteMetadata, getRouteMetadataWithBuilderKey } from "./helpers";
+import type { RouteMetaContext } from "./types";
 import { setFavicon } from "./utils";
 
 export const RouteMetaData = () => {
   const location = useLocation();
   const pathname = location.pathname;
-  const builderKey = location.state?.routeBuilderKey;
+  const routeMetaContext = useRouteMetaContext<RouteMetaContext>();
 
   useEffect(() => {
-    if (!builderKey) {
+    if (!routeMetaContext) {
       const { title, favicon } = getRouteMetadata(pathname);
 
       document.title = title;
@@ -18,12 +21,14 @@ export const RouteMetaData = () => {
       setFavicon(favicon);
       return;
     }
-    const { title, favicon } = getRouteMetadataWithBuilderKey(builderKey);
+    const { title, favicon } = getRouteMetadataWithBuilderKey(
+      routeMetaContext.builderRouteKey,
+    );
 
     document.title = title;
 
     setFavicon(favicon);
-  }, [builderKey, pathname]);
+  }, [routeMetaContext, pathname]);
 
   return null;
 };

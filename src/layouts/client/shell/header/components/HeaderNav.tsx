@@ -7,21 +7,25 @@ import { cn } from "@shared/utils";
 export const HeaderNav = () => {
   const currentUser = CurrentUserStorage.tryGet();
   const navLinks = [
-    { label: "Home", url: Navigation.client.urls.HOME, isVisible: true },
+    { label: "Home", url: Navigation.client.urls.CLIENT_HOME, isVisible: true },
     {
       label: "Khóa học",
-      url: Navigation.client.urls.COURSES,
+      url: Navigation.client.urls.CLIENT_COURSES,
       isVisible: true,
     },
-    { label: "Blogs", url: Navigation.client.urls.BLOGS, isVisible: true },
+    {
+      label: "Blogs",
+      url: Navigation.client.urls.CLIENT_BLOGS,
+      isVisible: true,
+    },
     {
       label: "Giới thiệu",
-      url: Navigation.client.urls.ABOUT,
+      url: Navigation.client.urls.CLIENT_ABOUT,
       isVisible: !currentUser,
     },
     {
       label: "Khóa học của tôi",
-      url: Navigation.client.urls.PERSONAL_COURSE,
+      url: Navigation.client.urls.CLIENT_PERSONAL_COURSE,
       isVisible: !!currentUser,
     },
   ];

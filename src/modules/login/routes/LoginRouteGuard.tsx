@@ -7,7 +7,7 @@ type LoginRouteGuardProps = {
   children: React.ReactNode;
 };
 export const LoginRouteGuard = ({ children }: LoginRouteGuardProps) => {
-  const { back } = Navigation.hooks.useNavigate();
+  const { back } = Navigation.hooks.useNavigateWithState();
   const hasCurrentUser = CurrentUserStorage.tryGet();
 
   useEffect(() => {

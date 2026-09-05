@@ -15,7 +15,7 @@ export const useProfileChangeActions = () => {
   const toast = Toast.use();
   const modal = Modal.use();
   const { loader } = Loading.use();
-  const { back, go } = Navigation.hooks.useNavigate();
+  const { back, go } = Navigation.hooks.useNavigateWithState();
   const { update } = UpdateAuth.useMutation();
 
   const { register, handleSubmit, getFieldWithFormState, isDirty, isValid } =
@@ -39,8 +39,11 @@ export const useProfileChangeActions = () => {
 
     try {
       await execution.runAsyncTask(() => update(payload), loader);
-      go(Navigation[currentArea].keys.PROFILE, currentArea, {
-        toastState: Toast.config.success.update(ENTITIES.USER),
+      go({
+        routeKey: Navigation[currentArea].keys.PROFILE,
+        payload: {
+          toastState: Toast.config.success.update(ENTITIES.USER),
+        },
       });
     } catch (error) {
       const message = getErrorMessage({

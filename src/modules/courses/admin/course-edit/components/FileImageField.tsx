@@ -44,7 +44,7 @@ export const FileImageField = ({
         </Field.Root>
       </div>
 
-      {!hasError ? (
+      {!hasError && imgSrc ? (
         <div className="w-90 overflow-hidden rounded-container border border-border-default">
           <img
             src={imgSrc}

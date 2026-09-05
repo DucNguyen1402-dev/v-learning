@@ -39,7 +39,7 @@ export function useEditCourseActions({
     setImgPreview(editCourse.hinhAnh);
   }, [editCourse.hinhAnh]);
   const { profile } = UserProfile.use();
-  const { go, back } = Navigation.hooks.useNavigate();
+  const { go, back } = Navigation.hooks.useNavigateWithState();
   const { loader } = Loading.use();
   const toaster = Toast.use();
   const modalApi = Modal.use();
@@ -106,9 +106,12 @@ export function useEditCourseActions({
           loader,
         );
       }
-      go(Navigation.admin.keys.COURSES, "admin", {
-        toastState: Toast.config.success.update(ENTITIES.COURSE),
-        maKhoaHoc: payload.maKhoaHoc,
+      go({
+        routeKey: Navigation.admin.keys.COURSES,
+        payload: {
+          toastState: Toast.config.success.update(ENTITIES.COURSE),
+          maKhoaHoc: payload.maKhoaHoc,
+        },
       });
     } catch (error) {
       toaster.show(

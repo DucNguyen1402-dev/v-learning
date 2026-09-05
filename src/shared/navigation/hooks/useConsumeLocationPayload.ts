@@ -16,7 +16,6 @@ export function useConsumeLocationPayload() {
       let nextPayload: Partial<TPayload> | undefined;
 
       if (payloadKey) {
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const { [payloadKey]: _, ...rest } = payload;
         nextPayload = Object.keys(rest).length
           ? (rest as Partial<TPayload>)

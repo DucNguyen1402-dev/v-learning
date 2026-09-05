@@ -13,12 +13,15 @@ import {
   CourseSearchBar,
   CoursesTable,
 } from "../components";
+import type { CourseLocationPayload } from "./types";
 
 export const CoursesPage = () => {
-  Navigation.hooks.useScrollOnRouteChange();
+  Navigation.hooks.useScrollToTopOnRouteChange();
 
   const { show: showToast } = Toast.use();
-  const [displayState] = State.useTemporary(Navigation.hooks.usePayload());
+  const [displayState] = State.useTemporary(
+    Navigation.hooks.usePayload<CourseLocationPayload>(),
+  );
   const consumePayload = Navigation.hooks.useConsumePayload();
   const hasShownToast = useRef(false);
   useEffect(() => {

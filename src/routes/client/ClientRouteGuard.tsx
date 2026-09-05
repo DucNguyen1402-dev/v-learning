@@ -7,12 +7,14 @@ type ClientRouteGuardProps = {
   children: React.ReactNode;
 };
 export const ClientRouteGuard = ({ children }: ClientRouteGuardProps) => {
-  const { go } = Navigation.hooks.useNavigate();
+  const { go } = Navigation.hooks.useNavigateWithState();
   const isAdmin = CurrentUserStorage.isAdmin();
 
   useEffect(() => {
     if (isAdmin) {
-      go(Navigation.admin.keys.COURSES, "admin");
+      go({
+        routeKey: Navigation.admin.keys.COURSES,
+      });
     }
   }, [go, isAdmin]);
 

@@ -4,5 +4,8 @@ import { Navigation } from "@shared/navigation";
 
 import { SupportPage } from "../pages/SupportPage";
 export const supportRoute = (
-  <Route path={Navigation.client.paths.SUPPORT} element={<SupportPage />} />
+  <Route
+    path={Navigation.client.paths.CLIENT_SUPPORT}
+    element={<SupportPage />}
+  />
 );

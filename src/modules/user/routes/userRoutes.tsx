@@ -9,7 +9,7 @@ import { UserPage } from "../pages/UserPage";
 import { userCoursesRoute } from "../user-courses";
 
 export const userRoutes = (
-  <Route path={Navigation.admin.paths.USER} element={<UsersLayout />}>
+  <Route path={Navigation.admin.paths.ADMIN_USER} element={<UsersLayout />}>
     <Route index element={<UserPage />} />
     {addUserRoute}
     {editUserRoute}

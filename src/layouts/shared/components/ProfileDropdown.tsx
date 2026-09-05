@@ -1,4 +1,5 @@
 import { useCallback, useMemo } from "react";
+import { useLocation } from "react-router-dom";
 
 import { AuthSession } from "@shared/auth";
 import { Navigation } from "@shared/navigation";
@@ -8,18 +9,21 @@ import { cn } from "@shared/utils";
 import { LogOut, User as UserIcon } from "lucide-react";
 
 export const ProfileDropdown = () => {
+  const { pathname } = useLocation();
   const {
     theme: { toggle: toggleTheme, asset: themeAsset },
     refresh: refreshUser,
   } = User.use();
-  const { go } = Navigation.hooks.useNavigate();
+  const { go } = Navigation.hooks.useNavigateWithState();
 
   const currentArea = Navigation.hooks.useCurrentArea();
 
   const onLogoutClick = useCallback(() => {
     AuthSession.logout();
     refreshUser();
-    go(Navigation.client.keys.LOGIN, "client");
+    go({
+      routeKey: Navigation.client.keys.LOGIN,
+    });
   }, [go, refreshUser]);
 
   const menuItems = useMemo(() => {
@@ -54,13 +58,11 @@ export const ProfileDropdown = () => {
     onLogoutClick,
   ]);
 
-  const pathname = Navigation.hooks.usePathname();
-
   return (
     <ul className="profile-dropdown">
       {menuItems.map((item) => {
         const isActive = item.routeKey
-          ? Navigation[currentArea].isActive(pathname, item.routeKey)
+          ? Navigation.utils.isRouteActive(pathname, item.routeKey)
           : false;
         const isLogout = item.id === "logout";
         return (

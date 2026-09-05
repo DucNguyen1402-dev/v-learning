@@ -8,7 +8,7 @@ import { RegisterRouteGuard } from "./RegisterRouteGuard";
 
 export const registerRoute = (
   <Route
-    path={Navigation.client.paths.REGISTER}
+    path={Navigation.client.paths.CLIENT_REGISTER}
     element={
       <RegisterRouteGuard>
         <RegisterProvider>

@@ -1,5 +1,7 @@
 import { useLocation } from "react-router-dom";
-type AppArea = "client" | "admin";
+
+import type { AppArea } from "../types";
+
 export const useCurrentArea = (): AppArea => {
   const { pathname } = useLocation();
 

@@ -7,14 +7,23 @@ type AdminRouteGuardProps = {
   children: React.ReactNode;
 };
 export const AdminRouteGuard = ({ children }: AdminRouteGuardProps) => {
-  const { go } = Navigation.hooks.useNavigate();
+  const { go } = Navigation.hooks.useNavigateWithState();
+  const hasCurrentUser = CurrentUserStorage.tryGet();
+  const targetRouteKey = hasCurrentUser
+    ? Navigation.client.keys.HOME
+    : Navigation.client.keys.LOGIN;
   const isAdmin = CurrentUserStorage.isAdmin();
 
   useEffect(() => {
     if (!isAdmin) {
-      go(Navigation.client.keys.LOGIN, "client");
+      go({
+        routeKey: targetRouteKey,
+        payload: {
+          adminAuthRequired: true,
+        },
+      });
     }
-  }, [isAdmin, go]);
+  }, [isAdmin, go, targetRouteKey]);
   if (!isAdmin) return null;
 
   return children;

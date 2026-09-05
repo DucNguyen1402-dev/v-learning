@@ -1,1 +1,0 @@
-export { useCourseDeletion } from "./useCourseDeletion";

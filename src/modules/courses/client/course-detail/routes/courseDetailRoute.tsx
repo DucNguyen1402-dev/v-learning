@@ -10,7 +10,7 @@ import { ProtectCourseDetailRoute } from "./ProtectCourseDetaiRoute";
 
 export const courseDetailRoute = (
   <Route
-    path={Navigation.client.buildersPaths.COURSES_DETAIL}
+    path={Navigation.client.builderPaths.CLIENT_COURSES_DETAIL}
     element={
       <ProtectCourseDetailRoute>
         <CourseDetailProviderWrapper>

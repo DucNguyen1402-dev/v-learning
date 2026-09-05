@@ -7,7 +7,7 @@ import { UpdateUserPage } from "../pages/UpdateUserPage";
 
 export const editUserRoute = (
   <Route
-    path={Navigation.admin.buildersPaths.USER_EDIT}
+    path={Navigation.admin.builderPaths.ADMIN_USER_EDIT}
     element={
       <EditUserProvider>
         <UpdateUserPage />

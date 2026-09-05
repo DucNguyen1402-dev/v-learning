@@ -10,7 +10,7 @@ import { CoursesPage } from "../pages/CoursesPage";
 
 export const coursesRoutes = (
   <Route
-    path={Navigation.client.paths.COURSES}
+    path={Navigation.client.paths.CLIENT_COURSES}
     element={
       <CoursesProvider>
         <CoursesMainLayout />

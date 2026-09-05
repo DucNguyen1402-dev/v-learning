@@ -27,10 +27,11 @@ export const usePasswordChangeActions = ({
   const toast = Toast.use();
   const { update } = UpdateAuth.useMutation();
   const { loader } = Loading.use();
-  const { go, back } = Navigation.hooks.useNavigate();
+  const { go, back } = Navigation.hooks.useNavigateWithState();
 
   const onValid = async (data: PasswordChangeFormValues) => {
     if (!infor) return;
+
     if (data.currentPassword !== infor.matKhau) {
       toast.show(Toast.config.error("Mật khẩu hiện tại không đúng!"));
       return;
@@ -59,8 +60,11 @@ export const usePasswordChangeActions = ({
 
     try {
       await execution.runAsyncTask(() => update(payload), loader);
-      go(Navigation[currentArea].keys.PROFILE, currentArea, {
-        toastState: Toast.config.success.changePassword(),
+      go({
+        routeKey: Navigation[currentArea].keys.PROFILE,
+        payload: {
+          toastState: Toast.config.success.changePassword(),
+        },
       });
     } catch (error) {
       const errorMessage = getErrorMessage({ error });

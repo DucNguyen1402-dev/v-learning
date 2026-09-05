@@ -1,39 +1,31 @@
-import {
-  type AdminRouteBuilderKey,
-  isAdminBuilderKey,
-} from "@shared/navigation/admin";
-import {
-  type ClientRouteBuilderKey,
-  isClientRouteBuilderKey,
-} from "@shared/navigation/client";
-
+import { isAdminRouteBuilderKey, isClientRouteBuilderKey } from "../areas";
 import { navigationAreas } from "../config";
+import type { AppRouteBuilderKey } from "../types";
 
-type NavigationAreaMeta = {
-  area: "admin" | "client";
-  builderRouteKey: AdminRouteBuilderKey | ClientRouteBuilderKey;
+type NavigationAreaBuilderMeta = {
+  builderRouteKey: AppRouteBuilderKey;
+  pathname?: string;
 };
 export const getNavigationAreaBuilderMeta = ({
-  area,
   builderRouteKey,
-}: NavigationAreaMeta) => {
-  if (isAdminBuilderKey(builderRouteKey) && area === "admin") {
-    const builderUrl = navigationAreas.admin.builders[builderRouteKey];
-    const currentRouteKey = navigationAreas.admin.findKey(location.pathname);
-    return {
-      navigationArea: navigationAreas.admin,
-      builderUrl,
-      currentRouteKey,
-    };
+  pathname,
+}: NavigationAreaBuilderMeta) => {
+  const area = isAdminRouteBuilderKey(builderRouteKey)
+    ? navigationAreas.admin
+    : isClientRouteBuilderKey(builderRouteKey)
+      ? navigationAreas.client
+      : null;
+
+  if (!area) {
+    throw new Error(`Invalid route key: ${builderRouteKey}`);
   }
-  if (isClientRouteBuilderKey(builderRouteKey) && area === "client") {
-    const builderUrl = navigationAreas.client.builders[builderRouteKey];
-    const currentRouteKey = navigationAreas.client.findKey(location.pathname);
-    return {
-      navigationArea: navigationAreas.client,
-      builderUrl,
-      currentRouteKey,
-    };
-  }
-  throw new Error(`Invalid route key: ${builderRouteKey}`);
+  const builder = area.urlBuilders as Record<
+    AppRouteBuilderKey,
+    (param: string) => string
+  >;
+  return {
+    navigationArea: area,
+    urlBuilder: builder[builderRouteKey as keyof typeof builder],
+    currentBuilderRouteKey: pathname ? area.findKey(pathname) : undefined,
+  };
 };

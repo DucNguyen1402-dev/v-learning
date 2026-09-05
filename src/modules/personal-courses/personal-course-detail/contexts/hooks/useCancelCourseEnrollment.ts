@@ -17,7 +17,7 @@ export const useCancelCourseEnrollment = ({
 
   const [isCancelPersonalCourseLoading, setIsCancelPersonalCourseLoading] =
     useState(false);
-  const { go } = Navigation.hooks.useNavigate();
+  const { go } = Navigation.hooks.useNavigateWithState();
   const currentUser = CurrentUserStorage.get();
   const toast = Toast.use();
   const { loader } = Loading.use();
@@ -31,9 +31,12 @@ export const useCancelCourseEnrollment = ({
       const cancelTask = () => cancelPersonalCourseMutation(payload);
 
       await execution.runAsyncTask(cancelTask, loader);
-      go(Navigation.client.keys.PERSONAL_COURSE, "client", {
-        toastState: Toast.config.success.cancelCourse(),
-        shouldInvalidate: true,
+      go({
+        routeKey: Navigation.client.keys.PERSONAL_COURSE,
+        payload: {
+          toastState: Toast.config.success.cancelCourse(),
+          shouldInvalidate: true,
+        },
       });
     } catch (error) {
       // API trả về lỗi 500 không rõ ràng nên cần custom message cho từng trường hợp

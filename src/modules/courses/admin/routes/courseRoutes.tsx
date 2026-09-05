@@ -11,7 +11,10 @@ import { CourseMainLayout } from "../layout";
 import { CoursesPage } from "../pages/CoursesPage";
 
 export const courseRoutes = (
-  <Route path={Navigation.admin.keys.COURSES} element={<CourseMainLayout />}>
+  <Route
+    path={Navigation.admin.paths.ADMIN_COURSES}
+    element={<CourseMainLayout />}
+  >
     <Route
       index
       element={

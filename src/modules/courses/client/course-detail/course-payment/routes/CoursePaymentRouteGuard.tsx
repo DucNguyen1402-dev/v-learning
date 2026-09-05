@@ -12,11 +12,14 @@ export const CoursePaymentRouteGuard = ({
   children,
 }: CoursePaymentRouteGuardProps) => {
   const isLogin = AccessTokenStorage.isLogin();
-  const { go } = Navigation.hooks.useNavigate();
+  const { go } = Navigation.hooks.useNavigateWithState();
 
   useEffect(() => {
     if (!isLogin) {
-      go(Navigation.client.keys.LOGIN, "client", LoginNavigation.required());
+      go({
+        routeKey: Navigation.client.keys.LOGIN,
+        payload: LoginNavigation.required(),
+      });
     }
   }, [go, isLogin]);
 

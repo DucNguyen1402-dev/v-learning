@@ -1,6 +1,7 @@
+import { useParams } from "react-router-dom";
+
 import { usePersonalCoursesContext } from "@modules/personal-courses/contexts";
 import { usePersonalCourseDetailContext } from "@modules/personal-courses/personal-course-detail/contexts";
-import { Navigation } from "@shared/navigation";
 import {
   Button,
   BUTTON_APPEARANCES,
@@ -15,7 +16,7 @@ export const CancelEnrollmentModal = () => {
 
   const { courses } = usePersonalCoursesContext();
 
-  const { maKhoaHoc } = Navigation.hooks.useParams();
+  const { maKhoaHoc } = useParams();
   const targetCourse = courses.find(
     (course) => course.maKhoaHoc === maKhoaHoc,
   )!;

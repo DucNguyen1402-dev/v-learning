@@ -9,7 +9,7 @@ import { CoursePaymentRouteGuard } from "./CoursePaymentRouteGuard";
 
 export const coursePaymentRoute = (
   <Route
-    path={Navigation.client.buildersPaths.COURSES_DETAIL_PAYMENT}
+    path={Navigation.client.builderPaths.CLIENT_COURSES_DETAIL_PAYMENT}
     element={
       <CoursePaymentRouteGuard>
         <CoursePaymentRouteProvider>

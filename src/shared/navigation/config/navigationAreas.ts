@@ -1,5 +1,4 @@
-import { AdminNavigation } from "../admin";
-import { ClientNavigation } from "../client";
+import { AdminNavigation, ClientNavigation } from "../areas";
 
 export const navigationAreas = {
   admin: AdminNavigation,

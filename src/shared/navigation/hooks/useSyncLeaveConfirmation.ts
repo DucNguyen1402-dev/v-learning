@@ -1,11 +1,14 @@
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
+import { useShouldConfirmLeave } from "./useShouldConfirmLeave";
+
 export function useSyncLeaveConfirmation(enabled: boolean) {
   const navigate = useNavigate();
   const location = useLocation();
+  const shouldConfirmLeave = useShouldConfirmLeave();
   useEffect(() => {
-    if (location.state?.shouldConfirmLeave === enabled) return;
+    if (shouldConfirmLeave === enabled) return;
     navigate(".", {
       replace: true,
       state: {
@@ -13,5 +16,5 @@ export function useSyncLeaveConfirmation(enabled: boolean) {
         shouldConfirmLeave: enabled,
       },
     });
-  }, [enabled, location.state, navigate]);
+  }, [enabled, location.state, navigate, shouldConfirmLeave]);
 }

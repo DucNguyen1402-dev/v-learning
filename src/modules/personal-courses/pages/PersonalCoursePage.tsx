@@ -10,12 +10,12 @@ import { usePersonalCoursesContext } from "../contexts";
 import { invalidatePersonalCourses } from "../queries";
 import type { personalCoursePayload } from "../types";
 export const PersonalCoursePage = () => {
-  Navigation.hooks.useScrollOnRouteChange();
+  Navigation.hooks.useScrollToTopOnRouteChange();
 
   const queryClient = useQueryClient();
   const { show: showToast } = Toast.use();
-  const [payload] = State.useTemporary<personalCoursePayload | undefined>(
-    Navigation.hooks.usePayload(),
+  const [payload] = State.useTemporary(
+    Navigation.hooks.usePayload<personalCoursePayload>(),
   );
   const consumePayload = Navigation.hooks.useConsumePayload();
   const hasShownToast = useRef(false);

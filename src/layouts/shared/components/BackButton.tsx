@@ -9,7 +9,7 @@ import {
 import { MoveLeft } from "lucide-react";
 
 export const BackButton = () => {
-  const { back } = Navigation.hooks.useNavigate();
+  const { back } = Navigation.hooks.useNavigateWithState();
   const shouldConfirmLeave = Navigation.hooks.useShouldConfirmLeave();
   const modal = Modal.use();
   const handleBackClick = () => {
