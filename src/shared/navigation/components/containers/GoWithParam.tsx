@@ -22,7 +22,7 @@ export const GoWithParam = ({
   disabled,
   param,
 }: GoWithParamProps) => {
-  const { urlBuilder } = useMemo(
+  const { pathBuilder } = useMemo(
     () =>
       getNavigationAreaBuilderMeta({
         builderRouteKey: builderRouteKey,
@@ -32,7 +32,7 @@ export const GoWithParam = ({
 
   return (
     <Link
-      to={urlBuilder(param)}
+      to={pathBuilder(param)}
       state={{
         payload: payload ?? null,
         routeMetaContext: {

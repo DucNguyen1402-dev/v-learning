@@ -1,6 +1,5 @@
 import { createProfileRoute } from "@modules/profile/shared/routes";
-import { Navigation } from "@shared/navigation";
 
-export const profileRoute = createProfileRoute(
-  Navigation.admin.paths.ADMIN_PROFILE,
-);
+import { PROFILE_ROUTE_SEGMENT } from "../navigation/constants";
+
+export const profileRoute = createProfileRoute(PROFILE_ROUTE_SEGMENT);

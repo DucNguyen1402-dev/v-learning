@@ -22,7 +22,7 @@ export const useNavigateWithState = () => {
       const navigationAreaMeta = getNavigationAreaMeta({
         routeKey: previousRouteKey,
       });
-      navigate(navigationAreaMeta.url, {
+      navigate(navigationAreaMeta.path, {
         state: {
           history: routeHistory.slice(0, -1),
         },
@@ -42,7 +42,7 @@ export const useNavigateWithState = () => {
         routeKey,
       });
 
-      navigate(navigationAreaMeta.url, {
+      navigate(navigationAreaMeta.path, {
         state: {
           payload: payload ?? null,
         },

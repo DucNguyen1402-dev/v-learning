@@ -1,1 +1,1 @@
-export { clientProfileRoutes } from "./clientProfileRoutes";
+export { profileRoute } from "./profileRoute";

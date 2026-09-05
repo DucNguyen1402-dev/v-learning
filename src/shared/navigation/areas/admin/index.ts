@@ -4,5 +4,5 @@ export {
   adminRouteBuilderKeys,
   type AdminRouteKey,
   adminRouteKeys,
-} from "./constants";
+} from "./constant";
 export { isAdminRouteBuilderKey, isAdminRouteKey } from "./utils";

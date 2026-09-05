@@ -84,7 +84,7 @@ export const CourseTableRow = ({
           >
             <Tooltip content="Chỉnh sửa khóa học">
               <Navigation.components.ForwardWithParam
-                builderRouteKey={Navigation.admin.builderKeys.COURSE_EDIT}
+                builderRouteKey={Navigation.admin.builderKeys.EDIT_COURSE}
                 param={course.maKhoaHoc}
                 className="rounded-control p-1.5 transition-colors duration-150 ease-in-out hover:bg-bg-brand/10 hover:text-text-brand"
               >

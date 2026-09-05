@@ -1,5 +1,8 @@
-import { isAdminRouteBuilderKey, isClientRouteBuilderKey } from "../areas";
-import { navigationAreas } from "../config";
+import {
+  isAdminRouteBuilderKey,
+  isClientRouteBuilderKey,
+  NavigationAreas,
+} from "../areas";
 import type { AppRouteBuilderKey } from "../types";
 
 type NavigationAreaBuilderMeta = {
@@ -11,21 +14,21 @@ export const getNavigationAreaBuilderMeta = ({
   pathname,
 }: NavigationAreaBuilderMeta) => {
   const area = isAdminRouteBuilderKey(builderRouteKey)
-    ? navigationAreas.admin
+    ? NavigationAreas.admin
     : isClientRouteBuilderKey(builderRouteKey)
-      ? navigationAreas.client
+      ? NavigationAreas.client
       : null;
 
   if (!area) {
     throw new Error(`Invalid route key: ${builderRouteKey}`);
   }
-  const builder = area.urlBuilders as Record<
+  const builder = area.pathBuilders as Record<
     AppRouteBuilderKey,
     (param: string) => string
   >;
   return {
     navigationArea: area,
-    urlBuilder: builder[builderRouteKey as keyof typeof builder],
+    pathBuilder: builder[builderRouteKey as keyof typeof builder],
     currentBuilderRouteKey: pathname ? area.findKey(pathname) : undefined,
   };
 };

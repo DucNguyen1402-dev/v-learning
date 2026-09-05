@@ -6,7 +6,7 @@ export const RegisterFooter = () => {
     <p className="flex-center gap-1.5 select-none">
       <span className="text-sm text-text-subtle"> Đã có tài khoản?</span>
       <Link
-        to={Navigation.client.urls.CLIENT_LOGIN}
+        to={Navigation.client.paths.CLIENT_LOGIN}
         className="link link-primary"
       >
         Đăng nhập ngay
