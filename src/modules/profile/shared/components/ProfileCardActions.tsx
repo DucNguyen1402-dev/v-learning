@@ -13,7 +13,7 @@ export const ProfileCardActions = ({ isPending }: { isPending: boolean }) => {
       </Navigation.components.Forward>
 
       <Navigation.components.Forward
-        routeKey={Navigation[currentArea].keys.PROFILE_PASSWORD_CHANGE}
+        routeKey={Navigation[currentArea].keys.PASSWORD_CHANGE}
         className={`button-base button-secondary ghost px-4 py-1.5 ${isPending ? "pointer-events-none opacity-50" : ""}`}
       >
         Đổi mật khẩu

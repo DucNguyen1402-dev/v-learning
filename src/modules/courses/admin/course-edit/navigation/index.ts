@@ -1,0 +1,1 @@
+export { editCourseBuilderRouteConfig } from "./config";

@@ -1,1 +1,2 @@
-export { supportRoute } from "./routes/supportRoute";
+export * from "./navigation";
+export * from "./route";

@@ -1,1 +1,2 @@
-export { communityRoute } from "./routes/communityRoute";
+export * from "./navigation";
+export * from "./route";

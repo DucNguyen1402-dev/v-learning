@@ -1,7 +1,7 @@
 import {
   COURSES_DETAIL_BUILDER_KEY,
   COURSES_DETAIL_BUILDER_TITLE,
-  COURSES_DETAIL_URL_BUILDER,
+  COURSES_DETAIL_PATH_BUILDER,
 } from "./constants";
 
 export const coursesDetailBuilderRouteConfig = {
@@ -12,7 +12,7 @@ export const coursesDetailBuilderRouteConfig = {
   title: {
     [COURSES_DETAIL_BUILDER_KEY]: COURSES_DETAIL_BUILDER_TITLE,
   },
-  urlBuilder: {
-    [COURSES_DETAIL_BUILDER_KEY]: COURSES_DETAIL_URL_BUILDER,
+  pathBuilder: {
+    [COURSES_DETAIL_BUILDER_KEY]: COURSES_DETAIL_PATH_BUILDER,
   },
-};
+} as const;

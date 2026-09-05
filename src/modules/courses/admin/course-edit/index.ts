@@ -1,1 +1,1 @@
-export { courseEditRoute } from "./route/courseEditRoute";
+export * from "./navigation";

@@ -1,0 +1,1 @@
+export { eventRouteConfig } from "./config";

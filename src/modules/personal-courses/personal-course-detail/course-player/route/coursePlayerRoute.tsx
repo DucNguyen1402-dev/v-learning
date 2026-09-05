@@ -1,8 +1,8 @@
 import { Route } from "react-router-dom";
 
-import { COURSES_PLAYER_BUILDER_PATH } from "../navigation/constants";
+import { COURSES_PLAYER_BUILDER_SEGMENT } from "../navigation/constants";
 import { CoursePlayerPage } from "../pages/CoursePlayerPage";
 
 export const coursePlayerRoute = (
-  <Route path={COURSES_PLAYER_BUILDER_PATH} element={<CoursePlayerPage />} />
+  <Route path={COURSES_PLAYER_BUILDER_SEGMENT} element={<CoursePlayerPage />} />
 );

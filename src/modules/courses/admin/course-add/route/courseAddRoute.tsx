@@ -1,12 +1,8 @@
 import { Route } from "react-router-dom";
 
-import { Navigation } from "@shared/navigation";
-
+import { ADD_COURSE_ROUTE_SEGMENT } from "../navigation/constants";
 import { CourseAddPage } from "../pages/CourseAddPage";
 
 export const courseAddRoute = (
-  <Route
-    path={Navigation.admin.paths.ADMIN_COURSES_ADD}
-    element={<CourseAddPage />}
-  />
+  <Route path={ADD_COURSE_ROUTE_SEGMENT} element={<CourseAddPage />} />
 );

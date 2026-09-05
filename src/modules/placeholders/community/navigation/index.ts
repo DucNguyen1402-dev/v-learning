@@ -1,0 +1,1 @@
+export { communityRouteConfig } from "./config";

@@ -32,7 +32,7 @@ export const useCancelCourseEnrollment = ({
 
       await execution.runAsyncTask(cancelTask, loader);
       go({
-        routeKey: Navigation.client.keys.PERSONAL_COURSE,
+        routeKey: Navigation.client.keys.PERSONAL_COURSES,
         payload: {
           toastState: Toast.config.success.cancelCourse(),
           shouldInvalidate: true,

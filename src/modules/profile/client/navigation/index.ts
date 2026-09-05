@@ -1,2 +1,2 @@
 export { profileRouteConfig } from "./config";
-export * from "./profile-change";
+export * from "./sub-modules";

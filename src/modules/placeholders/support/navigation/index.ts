@@ -1,0 +1,1 @@
+export { supportRouteConfig } from "./config";

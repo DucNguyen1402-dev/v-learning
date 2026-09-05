@@ -1,7 +1,7 @@
 import {
   COURSES_PLAYER_BUILDER_KEY,
   COURSES_PLAYER_BUILDER_TITLE,
-  COURSES_PLAYER_URL_BUILDER,
+  COURSES_PLAYER_PATH_BUILDER,
 } from "./constants";
 
 export const coursesPlayerRouteConfig = {
@@ -12,7 +12,7 @@ export const coursesPlayerRouteConfig = {
   title: {
     [COURSES_PLAYER_BUILDER_KEY]: COURSES_PLAYER_BUILDER_TITLE,
   },
-  urlBuilder: {
-    [COURSES_PLAYER_BUILDER_KEY]: COURSES_PLAYER_URL_BUILDER,
+  pathBuilder: {
+    [COURSES_PLAYER_BUILDER_KEY]: COURSES_PLAYER_PATH_BUILDER,
   },
-};
+} as const;

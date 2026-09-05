@@ -1,0 +1,1 @@
+export { aboutRoute } from "./aboutRoute";

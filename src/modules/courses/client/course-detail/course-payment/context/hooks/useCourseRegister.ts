@@ -28,7 +28,7 @@ export const useCourseRegister = ({ maKhoaHoc }: { maKhoaHoc: string }) => {
 
       await execution.runAsyncTask(registerTask);
       go({
-        routeKey: Navigation.client.keys.PERSONAL_COURSE,
+        routeKey: Navigation.client.keys.PERSONAL_COURSES,
         payload: {
           toastState: Toast.config.success.register(ENTITIES.COURSE),
         },

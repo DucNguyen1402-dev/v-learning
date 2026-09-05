@@ -1,1 +1,2 @@
-export { blogsRoute } from "./routes/BlogsRoute";
+export * from "./navigation";
+export * from "./route";

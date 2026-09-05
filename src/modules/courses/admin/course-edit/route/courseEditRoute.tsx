@@ -1,12 +1,8 @@
 import { Route } from "react-router-dom";
 
-import { Navigation } from "@shared/navigation";
-
+import { EDIT_COURSE_ROUTE_SEGMENT } from "../navigation/constants";
 import { CourseEditPage } from "../pages/CourseEditPage";
 
 export const courseEditRoute = (
-  <Route
-    path={Navigation.admin.builderPaths.ADMIN_COURSE_EDIT}
-    element={<CourseEditPage />}
-  />
+  <Route path={EDIT_COURSE_ROUTE_SEGMENT} element={<CourseEditPage />} />
 );

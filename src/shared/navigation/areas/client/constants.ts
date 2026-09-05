@@ -12,6 +12,15 @@ import {
   personalCoursesRouteConfig,
 } from "@modules/personal-courses";
 import {
+  aboutRouteConfig,
+  blogsRouteConfig,
+  communityRouteConfig,
+  contactRouteConfig,
+  eventRouteConfig,
+  supportRouteConfig,
+} from "@modules/placeholders";
+import {
+  passwordChangeRouteConfig,
   profileChangeRouteConfig,
   profileRouteConfig,
 } from "@modules/profile/client";
@@ -20,42 +29,28 @@ import { registerRouteConfig } from "@modules/register";
 export const CLIENT_ROUTE_KEYS = {
   ...homeRouteConfig.key,
   ...loginRouteConfig.key,
-  ...profileRouteConfig.key,
   ...registerRouteConfig.key,
   ...personalCoursesRouteConfig.key,
   ...coursesRouteConfig.key,
+  ...profileRouteConfig.key,
   ...profileChangeRouteConfig.key,
-  PROFILE_PASSWORD_CHANGE: "CLIENT_PROFILE_PASSWORD_CHANGE",
+  ...passwordChangeRouteConfig.key,
 
-  ABOUT: "CLIENT_ABOUT",
-  BLOGS: "CLIENT_BLOGS",
-  COMMUNITY: "CLIENT_COMMUNITY",
-  EVENTS: "CLIENT_EVENTS",
-  CONTACT: "CLIENT_CONTACT",
-  SUPPORT: "CLIENT_SUPPORT",
+  // Non-essential demo module keys
+  ...aboutRouteConfig.key,
+  ...blogsRouteConfig.key,
+  ...communityRouteConfig.key,
+  ...contactRouteConfig.key,
+  ...eventRouteConfig.key,
+  ...supportRouteConfig.key,
 } as const;
+
+export type ClientRouteKey =
+  (typeof CLIENT_ROUTE_KEYS)[keyof typeof CLIENT_ROUTE_KEYS];
 
 export const clientRouteKeys = Object.values(
   CLIENT_ROUTE_KEYS,
 ) as ClientRouteKey[];
-
-export type ClientRouteKey =
-  (typeof CLIENT_ROUTE_KEYS)[keyof typeof CLIENT_ROUTE_KEYS];
-export type ClientRouteBuilderKey =
-  (typeof CLIENT_ROUTE_BUILDER_KEYS)[keyof typeof CLIENT_ROUTE_BUILDER_KEYS];
-
-export const CLIENT_ROUTE_PATHS = {
-  [CLIENT_ROUTE_KEYS.PROFILE_PASSWORD_CHANGE]: "password-change",
-
-  [CLIENT_ROUTE_KEYS.ABOUT]: "about",
-  [CLIENT_ROUTE_KEYS.REGISTER]: "register",
-  [CLIENT_ROUTE_KEYS.BLOGS]: "blogs",
-  [CLIENT_ROUTE_KEYS.PROFILE]: "profile",
-  [CLIENT_ROUTE_KEYS.COMMUNITY]: "community",
-  [CLIENT_ROUTE_KEYS.EVENTS]: "events",
-  [CLIENT_ROUTE_KEYS.CONTACT]: "contact",
-  [CLIENT_ROUTE_KEYS.SUPPORT]: "support",
-} as const;
 
 export const CLIENT_ROUTE_TITLES = {
   ...homeRouteConfig.title,
@@ -64,38 +59,35 @@ export const CLIENT_ROUTE_TITLES = {
   ...personalCoursesRouteConfig.title,
   ...coursesRouteConfig.title,
   ...profileRouteConfig.title,
-
+  ...passwordChangeRouteConfig.title,
   ...profileChangeRouteConfig.title,
-  [CLIENT_ROUTE_KEYS.PROFILE_PASSWORD_CHANGE]: "Password Change",
 
-  [CLIENT_ROUTE_KEYS.ABOUT]: "About",
-  [CLIENT_ROUTE_KEYS.BLOGS]: "Blogs",
-  [CLIENT_ROUTE_KEYS.COMMUNITY]: "Community",
-  [CLIENT_ROUTE_KEYS.EVENTS]: "Events",
-  [CLIENT_ROUTE_KEYS.CONTACT]: "Contact",
-  [CLIENT_ROUTE_KEYS.SUPPORT]: "Support",
+  // Non-essential demo module titles
+  ...aboutRouteConfig.title,
+  ...blogsRouteConfig.title,
+  ...communityRouteConfig.title,
+  ...eventRouteConfig.title,
+  ...contactRouteConfig.title,
+  ...supportRouteConfig.title,
 } as const;
 
-export const CLIENT_ROUTE_URLS = {
-  ...homeRouteConfig.url,
-  ...loginRouteConfig.url,
+export const CLIENT_ROUTE_PATHS = {
+  ...homeRouteConfig.path,
+  ...loginRouteConfig.path,
+  ...registerRouteConfig.path,
+  ...personalCoursesRouteConfig.path,
+  ...coursesRouteConfig.path,
+  ...profileRouteConfig.path,
+  ...profileChangeRouteConfig.path,
+  ...passwordChangeRouteConfig.path,
 
-  ...registerRouteConfig.url,
-  ...profileRouteConfig.url,
-  ...personalCoursesRouteConfig.url,
-  ...coursesRouteConfig.url,
-
-  ...profileChangeRouteConfig.url,
-  [CLIENT_ROUTE_KEYS.PROFILE_PASSWORD_CHANGE]:
-    "/client/profile/password-change",
-
-  [CLIENT_ROUTE_KEYS.ABOUT]: "/client/about",
-  [CLIENT_ROUTE_KEYS.BLOGS]: "/client/blogs",
-  [CLIENT_ROUTE_KEYS.PROFILE]: "/client/profile",
-  [CLIENT_ROUTE_KEYS.COMMUNITY]: "/client/community",
-  [CLIENT_ROUTE_KEYS.EVENTS]: "/client/events",
-  [CLIENT_ROUTE_KEYS.CONTACT]: "/client/contact",
-  [CLIENT_ROUTE_KEYS.SUPPORT]: "/client/support",
+  // Non-essential demo module urls
+  ...aboutRouteConfig.path,
+  ...blogsRouteConfig.path,
+  ...communityRouteConfig.path,
+  ...contactRouteConfig.path,
+  ...eventRouteConfig.path,
+  ...supportRouteConfig.path,
 } as const;
 
 /** ================================================================================ */
@@ -107,6 +99,9 @@ export const CLIENT_ROUTE_BUILDER_KEYS = {
   ...personalCoursesDetailBuilderRouteConfig.key,
   ...coursesPlayerRouteConfig.key,
 } as const;
+
+export type ClientRouteBuilderKey =
+  (typeof CLIENT_ROUTE_BUILDER_KEYS)[keyof typeof CLIENT_ROUTE_BUILDER_KEYS];
 
 export const clientRouteBuilderKeys = Object.values(
   CLIENT_ROUTE_BUILDER_KEYS,
@@ -120,10 +115,10 @@ export const CLIENT_ROUTE_BUILDER_TITLES = {
   ...coursesPlayerRouteConfig.title,
 } as const;
 
-export const CLIENT_ROUTE_BUILDER_URLS = {
-  ...coursesDetailBuilderRouteConfig.urlBuilder,
-  ...coursesByCategoryBuilderRouteConfig.urlBuilder,
-  ...coursesPaymentBuilderRouteConfig.urlBuilder,
-  ...personalCoursesDetailBuilderRouteConfig.urlBuilder,
-  ...coursesPlayerRouteConfig.urlBuilder,
+export const CLIENT_ROUTE_BUILDER_PATHS = {
+  ...coursesDetailBuilderRouteConfig.pathBuilder,
+  ...coursesByCategoryBuilderRouteConfig.pathBuilder,
+  ...coursesPaymentBuilderRouteConfig.pathBuilder,
+  ...personalCoursesDetailBuilderRouteConfig.pathBuilder,
+  ...coursesPlayerRouteConfig.pathBuilder,
 } as const;

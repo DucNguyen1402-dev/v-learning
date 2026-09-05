@@ -1,1 +1,2 @@
-export { aboutRoute } from "./routes/aboutRoute";
+export * from "./navigation";
+export * from "./route";
