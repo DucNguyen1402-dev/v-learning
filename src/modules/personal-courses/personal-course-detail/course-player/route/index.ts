@@ -1,0 +1,1 @@
+export { coursePlayerRoute } from "./coursePlayerRoute";

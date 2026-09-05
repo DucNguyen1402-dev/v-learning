@@ -1,14 +1,13 @@
 import { Route } from "react-router-dom";
 
-import { Navigation } from "@shared/navigation";
-
 import { LoginProvider } from "../contexts";
+import { LOGIN_ROUTE_PATH } from "../navigation/constants";
 import { LoginPage } from "../pages/LoginPage";
 import { LoginRouteGuard } from "./LoginRouteGuard";
 
 export const loginRoute = (
   <Route
-    path={Navigation.client.paths.CLIENT_LOGIN}
+    path={LOGIN_ROUTE_PATH}
     element={
       <LoginRouteGuard>
         <LoginProvider>

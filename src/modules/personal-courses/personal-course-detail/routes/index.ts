@@ -1,0 +1,1 @@
+export { personalCourseDetailRoute } from "./personalCourseDetailRoute";

@@ -1,14 +1,13 @@
 import { Route } from "react-router-dom";
 
-import { Navigation } from "@shared/navigation";
-
 import { RegisterProvider } from "../contexts";
+import { REGISTER_ROUTE_PATH } from "../navigation/constants";
 import { RegisterPage } from "../pages/RegisterPage";
 import { RegisterRouteGuard } from "./RegisterRouteGuard";
 
 export const registerRoute = (
   <Route
-    path={Navigation.client.paths.CLIENT_REGISTER}
+    path={REGISTER_ROUTE_PATH}
     element={
       <RegisterRouteGuard>
         <RegisterProvider>

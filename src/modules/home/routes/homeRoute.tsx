@@ -1,9 +1,8 @@
 import { Route } from "react-router-dom";
 
-import { Navigation } from "@shared/navigation";
-
+import { HOME_ROUTE_PATH } from "../navigation/constants";
 import { HomePage } from "../pages/HomePage";
 
 export const homeRoute = (
-  <Route path={Navigation.client.paths.CLIENT_HOME} element={<HomePage />} />
+  <Route path={HOME_ROUTE_PATH} element={<HomePage />} />
 );

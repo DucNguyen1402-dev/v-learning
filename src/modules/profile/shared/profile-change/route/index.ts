@@ -1,0 +1,1 @@
+export { profileChangeRoute } from "./profileChangeRoute";

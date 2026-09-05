@@ -34,10 +34,10 @@ export const HeaderNav = () => {
     <nav className="hidden items-center gap-8 md:flex lg:gap-10">
       {navLinks
         .filter((link) => link.isVisible)
-        .map((link) => {
+        .map((link, index) => {
           return (
             <NavLink
-              key={link.url}
+              key={index}
               to={link.url}
               className={({ isActive }) =>
                 cn("nav-link", isActive && "nav-link-active")

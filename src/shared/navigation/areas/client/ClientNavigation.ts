@@ -1,6 +1,5 @@
 import {
   CLIENT_ROUTE_BUILDER_KEYS,
-  CLIENT_ROUTE_BUILDER_PATHS,
   CLIENT_ROUTE_BUILDER_TITLES,
   CLIENT_ROUTE_BUILDER_URLS,
   CLIENT_ROUTE_KEYS,
@@ -17,7 +16,6 @@ export const ClientNavigation = {
   urls: CLIENT_ROUTE_URLS,
   titles: CLIENT_ROUTE_TITLES,
   urlBuilders: CLIENT_ROUTE_BUILDER_URLS,
-  builderPaths: CLIENT_ROUTE_BUILDER_PATHS,
   builderTitles: CLIENT_ROUTE_BUILDER_TITLES,
   findKey: findRouteKey,
   isActive: isRouteActive,

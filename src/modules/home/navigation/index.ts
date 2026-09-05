@@ -1,0 +1,1 @@
+export { homeRouteConfig } from "./config";

@@ -1,34 +1,43 @@
+import {
+  coursesByCategoryBuilderRouteConfig,
+  coursesDetailBuilderRouteConfig,
+  coursesPaymentBuilderRouteConfig,
+  coursesRouteConfig,
+} from "@modules/courses/client";
+import { homeRouteConfig } from "@modules/home";
+import { loginRouteConfig } from "@modules/login";
+import {
+  coursesPlayerRouteConfig,
+  personalCoursesDetailBuilderRouteConfig,
+  personalCoursesRouteConfig,
+} from "@modules/personal-courses";
+import {
+  profileChangeRouteConfig,
+  profileRouteConfig,
+} from "@modules/profile/client";
+import { registerRouteConfig } from "@modules/register";
+
 export const CLIENT_ROUTE_KEYS = {
-  HOME: "CLIENT_HOME",
-  LOGIN: "CLIENT_LOGIN",
-  ABOUT: "CLIENT_ABOUT",
-  REGISTER: "CLIENT_REGISTER",
-  BLOGS: "CLIENT_BLOGS",
-  PROFILE: "CLIENT_PROFILE",
-  PROFILE_CHANGE: "CLIENT_PROFILE_CHANGE",
+  ...homeRouteConfig.key,
+  ...loginRouteConfig.key,
+  ...profileRouteConfig.key,
+  ...registerRouteConfig.key,
+  ...personalCoursesRouteConfig.key,
+  ...coursesRouteConfig.key,
+  ...profileChangeRouteConfig.key,
   PROFILE_PASSWORD_CHANGE: "CLIENT_PROFILE_PASSWORD_CHANGE",
-  PERSONAL_COURSE: "CLIENT_PERSONAL_COURSE",
-  COURSES: "CLIENT_COURSES",
+
+  ABOUT: "CLIENT_ABOUT",
+  BLOGS: "CLIENT_BLOGS",
   COMMUNITY: "CLIENT_COMMUNITY",
   EVENTS: "CLIENT_EVENTS",
   CONTACT: "CLIENT_CONTACT",
   SUPPORT: "CLIENT_SUPPORT",
 } as const;
 
-export const CLIENT_ROUTE_BUILDER_KEYS = {
-  COURSES_DETAIL: "CLIENT_COURSES_DETAIL",
-  COURSES_BY_CATEGORY: "CLIENT_COURSES_BY_CATEGORY",
-  COURSES_DETAIL_PAYMENT: "CLIENT_COURSES_DETAIL_PAYMENT",
-  PERSONAL_COURSE_DETAIL: "CLIENT_PERSONAL_COURSE_DETAIL",
-  PERSONAL_COURSE_DETAIL_PLAYER: "CLIENT_PERSONAL_COURSE_DETAIL_PLAYER",
-} as const;
-
 export const clientRouteKeys = Object.values(
   CLIENT_ROUTE_KEYS,
 ) as ClientRouteKey[];
-export const clientRouteBuilderKeys = Object.values(
-  CLIENT_ROUTE_BUILDER_KEYS,
-) as ClientRouteBuilderKey[];
 
 export type ClientRouteKey =
   (typeof CLIENT_ROUTE_KEYS)[keyof typeof CLIENT_ROUTE_KEYS];
@@ -36,84 +45,85 @@ export type ClientRouteBuilderKey =
   (typeof CLIENT_ROUTE_BUILDER_KEYS)[keyof typeof CLIENT_ROUTE_BUILDER_KEYS];
 
 export const CLIENT_ROUTE_PATHS = {
-  [CLIENT_ROUTE_KEYS.HOME]: "home",
-  [CLIENT_ROUTE_KEYS.LOGIN]: "login",
+  [CLIENT_ROUTE_KEYS.PROFILE_PASSWORD_CHANGE]: "password-change",
+
   [CLIENT_ROUTE_KEYS.ABOUT]: "about",
   [CLIENT_ROUTE_KEYS.REGISTER]: "register",
   [CLIENT_ROUTE_KEYS.BLOGS]: "blogs",
   [CLIENT_ROUTE_KEYS.PROFILE]: "profile",
-  [CLIENT_ROUTE_KEYS.PROFILE_CHANGE]: "profile-change",
-  [CLIENT_ROUTE_KEYS.PROFILE_PASSWORD_CHANGE]: "password-change",
-  [CLIENT_ROUTE_KEYS.PERSONAL_COURSE]: "personal-courses",
-  [CLIENT_ROUTE_KEYS.COURSES]: "courses",
   [CLIENT_ROUTE_KEYS.COMMUNITY]: "community",
   [CLIENT_ROUTE_KEYS.EVENTS]: "events",
   [CLIENT_ROUTE_KEYS.CONTACT]: "contact",
   [CLIENT_ROUTE_KEYS.SUPPORT]: "support",
 } as const;
 
-export const CLIENT_ROUTE_BUILDER_PATHS = {
-  [CLIENT_ROUTE_BUILDER_KEYS.COURSES_DETAIL]: ":maKhoaHoc",
-  [CLIENT_ROUTE_BUILDER_KEYS.COURSES_DETAIL_PAYMENT]: "payment",
-  [CLIENT_ROUTE_BUILDER_KEYS.PERSONAL_COURSE_DETAIL]: ":maKhoaHoc",
-  [CLIENT_ROUTE_BUILDER_KEYS.PERSONAL_COURSE_DETAIL_PLAYER]: "player",
-  [CLIENT_ROUTE_BUILDER_KEYS.COURSES_BY_CATEGORY]: "category/:maDanhMuc",
-} as const;
-
 export const CLIENT_ROUTE_TITLES = {
-  [CLIENT_ROUTE_KEYS.HOME]: "Home",
-  [CLIENT_ROUTE_KEYS.LOGIN]: "Login",
-  [CLIENT_ROUTE_KEYS.ABOUT]: "About",
-  [CLIENT_ROUTE_KEYS.REGISTER]: "Register",
-  [CLIENT_ROUTE_KEYS.BLOGS]: "Blogs",
-  [CLIENT_ROUTE_KEYS.PROFILE]: "Profile",
-  [CLIENT_ROUTE_KEYS.PROFILE_CHANGE]: "Profile Change",
+  ...homeRouteConfig.title,
+  ...loginRouteConfig.title,
+  ...registerRouteConfig.title,
+  ...personalCoursesRouteConfig.title,
+  ...coursesRouteConfig.title,
+  ...profileRouteConfig.title,
+
+  ...profileChangeRouteConfig.title,
   [CLIENT_ROUTE_KEYS.PROFILE_PASSWORD_CHANGE]: "Password Change",
-  [CLIENT_ROUTE_KEYS.PERSONAL_COURSE]: "Personal Courses",
-  [CLIENT_ROUTE_KEYS.COURSES]: "Courses",
+
+  [CLIENT_ROUTE_KEYS.ABOUT]: "About",
+  [CLIENT_ROUTE_KEYS.BLOGS]: "Blogs",
   [CLIENT_ROUTE_KEYS.COMMUNITY]: "Community",
   [CLIENT_ROUTE_KEYS.EVENTS]: "Events",
   [CLIENT_ROUTE_KEYS.CONTACT]: "Contact",
   [CLIENT_ROUTE_KEYS.SUPPORT]: "Support",
 } as const;
 
-export const CLIENT_ROUTE_BUILDER_TITLES = {
-  [CLIENT_ROUTE_BUILDER_KEYS.COURSES_DETAIL]: "Course Detail",
-  [CLIENT_ROUTE_BUILDER_KEYS.COURSES_DETAIL_PAYMENT]: "Course Payment",
-  [CLIENT_ROUTE_BUILDER_KEYS.PERSONAL_COURSE_DETAIL]: "Personal Course Detail",
-  [CLIENT_ROUTE_BUILDER_KEYS.PERSONAL_COURSE_DETAIL_PLAYER]:
-    "Personal Course Player",
-  [CLIENT_ROUTE_BUILDER_KEYS.COURSES_BY_CATEGORY]: "Courses By Category",
-} as const;
-
 export const CLIENT_ROUTE_URLS = {
-  [CLIENT_ROUTE_KEYS.HOME]: "/client/home",
-  [CLIENT_ROUTE_KEYS.LOGIN]: "/client/login",
-  [CLIENT_ROUTE_KEYS.ABOUT]: "/client/about",
-  [CLIENT_ROUTE_KEYS.REGISTER]: "/client/register",
-  [CLIENT_ROUTE_KEYS.BLOGS]: "/client/blogs",
-  [CLIENT_ROUTE_KEYS.PROFILE]: "/client/profile",
-  [CLIENT_ROUTE_KEYS.PROFILE_CHANGE]: "/client/profile/change",
+  ...homeRouteConfig.url,
+  ...loginRouteConfig.url,
+
+  ...registerRouteConfig.url,
+  ...profileRouteConfig.url,
+  ...personalCoursesRouteConfig.url,
+  ...coursesRouteConfig.url,
+
+  ...profileChangeRouteConfig.url,
   [CLIENT_ROUTE_KEYS.PROFILE_PASSWORD_CHANGE]:
     "/client/profile/password-change",
-  [CLIENT_ROUTE_KEYS.PERSONAL_COURSE]: "/client/personal-courses",
-  [CLIENT_ROUTE_KEYS.COURSES]: "/client/courses",
+
+  [CLIENT_ROUTE_KEYS.ABOUT]: "/client/about",
+  [CLIENT_ROUTE_KEYS.BLOGS]: "/client/blogs",
+  [CLIENT_ROUTE_KEYS.PROFILE]: "/client/profile",
   [CLIENT_ROUTE_KEYS.COMMUNITY]: "/client/community",
   [CLIENT_ROUTE_KEYS.EVENTS]: "/client/events",
   [CLIENT_ROUTE_KEYS.CONTACT]: "/client/contact",
   [CLIENT_ROUTE_KEYS.SUPPORT]: "/client/support",
 } as const;
 
+/** ================================================================================ */
+
+export const CLIENT_ROUTE_BUILDER_KEYS = {
+  ...coursesDetailBuilderRouteConfig.key,
+  ...coursesByCategoryBuilderRouteConfig.key,
+  ...coursesPaymentBuilderRouteConfig.key,
+  ...personalCoursesDetailBuilderRouteConfig.key,
+  ...coursesPlayerRouteConfig.key,
+} as const;
+
+export const clientRouteBuilderKeys = Object.values(
+  CLIENT_ROUTE_BUILDER_KEYS,
+) as ClientRouteBuilderKey[];
+
+export const CLIENT_ROUTE_BUILDER_TITLES = {
+  ...coursesDetailBuilderRouteConfig.title,
+  ...coursesByCategoryBuilderRouteConfig.title,
+  ...coursesPaymentBuilderRouteConfig.title,
+  ...personalCoursesDetailBuilderRouteConfig.title,
+  ...coursesPlayerRouteConfig.title,
+} as const;
+
 export const CLIENT_ROUTE_BUILDER_URLS = {
-  [CLIENT_ROUTE_BUILDER_KEYS.COURSES_DETAIL]: (maKhoaHoc: string) =>
-    `/client/courses/${maKhoaHoc}`,
-  [CLIENT_ROUTE_BUILDER_KEYS.COURSES_DETAIL_PAYMENT]: (maKhoaHoc: string) =>
-    `/client/courses/${maKhoaHoc}/payment`,
-  [CLIENT_ROUTE_BUILDER_KEYS.PERSONAL_COURSE_DETAIL]: (maKhoaHoc: string) =>
-    `/client/personal-courses/${maKhoaHoc}`,
-  [CLIENT_ROUTE_BUILDER_KEYS.PERSONAL_COURSE_DETAIL_PLAYER]: (
-    maKhoaHoc: string,
-  ) => `/client/personal-courses/${maKhoaHoc}/player`,
-  [CLIENT_ROUTE_BUILDER_KEYS.COURSES_BY_CATEGORY]: (maDanhMuc: string) =>
-    `/client/courses/category/${maDanhMuc}`,
+  ...coursesDetailBuilderRouteConfig.urlBuilder,
+  ...coursesByCategoryBuilderRouteConfig.urlBuilder,
+  ...coursesPaymentBuilderRouteConfig.urlBuilder,
+  ...personalCoursesDetailBuilderRouteConfig.urlBuilder,
+  ...coursesPlayerRouteConfig.urlBuilder,
 } as const;

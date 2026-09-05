@@ -1,2 +1,3 @@
+export * from "./navigation";
 export * from "./personal-course-detail";
-export { personalCourseRoute } from "./routes/personalCourseRoute";
+export * from "./routes";

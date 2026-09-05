@@ -1,0 +1,1 @@
+export { coursesPaymentBuilderRouteConfig } from "./config";

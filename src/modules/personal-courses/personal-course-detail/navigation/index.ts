@@ -1,0 +1,1 @@
+export { personalCoursesDetailBuilderRouteConfig } from "./config";
