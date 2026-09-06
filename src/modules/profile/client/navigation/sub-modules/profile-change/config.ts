@@ -1,4 +1,4 @@
-import { PROFILE_CHANGE_ROUTE_TITLE } from "@modules/profile/shared/profile-change";
+import { PROFILE_CHANGE_ROUTE_TITLE } from "@modules/profile/shared/sub-modules/profile-change";
 
 import {
   PROFILE_CHANGE_ROUTE_KEY,

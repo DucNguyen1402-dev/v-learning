@@ -1,7 +1,7 @@
 import { ProfileCardInforSkeleton } from "./ProfileCardInforSkeleton";
 
 type ProfileCardInforProps = {
-  infor:
+  currentUser:
     | {
         taiKhoan: string;
         soDT: string;
@@ -9,12 +9,12 @@ type ProfileCardInforProps = {
       }
     | undefined;
 };
-export const ProfileCardInfor = ({ infor }: ProfileCardInforProps) => {
-  if (!infor) return <ProfileCardInforSkeleton />;
+export const ProfileCardInfor = ({ currentUser }: ProfileCardInforProps) => {
+  if (!currentUser) return <ProfileCardInforSkeleton />;
   const informations = [
-    { label: "Tài khoản", value: infor.taiKhoan },
-    { label: "Số Điện Thoại", value: infor.soDT },
-    { label: "Email", value: infor.email },
+    { label: "Tài khoản", value: currentUser.taiKhoan },
+    { label: "Số Điện Thoại", value: currentUser.soDT },
+    { label: "Email", value: currentUser.email },
   ];
   return (
     <div className="flex flex-col gap-4 text-[13px]">

@@ -1,7 +1,7 @@
 import { Navigation } from "@shared/navigation";
 import { cn } from "@shared/utils";
 
-import { UserPreferences } from "@/shared/user";
+import { UserPreferences } from "@/shared/current-user";
 type UserAvatarProps = {
   enabledProfileLink?: boolean;
 };

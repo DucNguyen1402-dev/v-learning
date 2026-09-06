@@ -1,6 +1,6 @@
 import type { LoginData } from "@modules/login";
 import { AccessTokenStorage, CurrentUserStorage } from "@shared/auth";
-import { UserPreferences } from "@shared/user";
+import { UserPreferences } from "@shared/current-user";
 import { useMutation } from "@tanstack/react-query";
 
 import { login } from "./api";

@@ -4,7 +4,7 @@ import { Pagination } from "@shared/table";
 import { useUserFilterByRole } from "./useUserFilterByRole";
 import { useUserSearchByName } from "./useUserSearchByName";
 
-import { UserProfile } from "@/shared/user";
+import { UserProfile } from "@/shared/current-user";
 
 export function useUser() {
   const { data: allUsers } = useUsersQuery();

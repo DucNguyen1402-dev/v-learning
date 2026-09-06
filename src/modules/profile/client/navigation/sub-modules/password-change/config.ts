@@ -1,4 +1,4 @@
-import { PASSWORD_CHANGE_ROUTE_TITLE } from "@modules/profile/shared/password-change";
+import { PASSWORD_CHANGE_ROUTE_TITLE } from "@modules/profile/shared/sub-modules/password-change";
 
 import {
   PASSWORD_CHANGE_ROUTE_KEY,

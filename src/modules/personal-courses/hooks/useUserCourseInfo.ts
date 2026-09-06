@@ -1,7 +1,7 @@
-import { useUserInforQuery } from "@shared/auth";
+import { useCurrentUserQuery } from "@shared/current-user";
 
 export const useUserCourseInfo = () => {
-  const { infor: userInfo, isPending } = useUserInforQuery();
-  const courses = userInfo?.chiTietKhoaHocGhiDanh || [];
+  const { currentUser, isPending } = useCurrentUserQuery();
+  const courses = currentUser?.chiTietKhoaHocGhiDanh || [];
   return { courses, isPending };
 };

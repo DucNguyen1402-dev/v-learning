@@ -1,7 +1,8 @@
 import { registerFields } from "@modules/register/config";
 import { useRegisterContext } from "@modules/register/contexts";
-import { RegisterAuth } from "@shared/auth/register";
 import { Field, Input } from "@shared/fields";
+
+import { registerValidationRules } from "../../validations";
 
 export const RegisterFields = () => {
   const {
@@ -18,7 +19,7 @@ export const RegisterFields = () => {
               id={name}
               type={type}
               invalid={registerFieldState(name).invalid}
-              {...register(name, RegisterAuth.validation[name])}
+              {...register(name, registerValidationRules[name])}
             />
             {type === "password" && <Input.PasswordVisibilityToggle />}
           </Input.Root>

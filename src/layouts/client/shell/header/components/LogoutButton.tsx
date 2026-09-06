@@ -1,6 +1,7 @@
 import { useCallback } from "react";
 
 import { AuthSession } from "@shared/auth";
+import { UserPreferences } from "@shared/current-user";
 import { Navigation } from "@shared/navigation";
 import {
   Button,
@@ -8,7 +9,6 @@ import {
   BUTTON_INTENTS,
   BUTTON_SIZES,
 } from "@shared/ui";
-import { UserPreferences } from "@shared/user";
 
 export const LogoutButton = () => {
   const { refreshPreferences } = UserPreferences.use();

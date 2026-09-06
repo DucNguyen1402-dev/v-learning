@@ -1,4 +1,4 @@
-import { UserPreferences } from "@shared/user";
+import { UserPreferences } from "@shared/current-user";
 
 export const FooterTopLeft = () => {
   const {

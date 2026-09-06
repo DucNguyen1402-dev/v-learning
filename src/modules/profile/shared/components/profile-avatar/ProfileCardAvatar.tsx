@@ -1,14 +1,12 @@
 import { useState } from "react";
 
 import { AvatarSelect } from "@shared/avatar";
+import { UserPreferences, UserProfile } from "@shared/current-user";
 import { useLockBodyScroll } from "@shared/overlays";
 import { Button, BUTTON_SIZES } from "@shared/ui";
-import { UserPreferences } from "@shared/user";
 import { Pencil } from "lucide-react";
 
 import { ProfileAvatarSkeleton } from "./ProfileAvatarSkeleton";
-
-import { UserProfile } from "@/shared/user";
 
 export const ProfileCardAvatar = ({ isPending }: { isPending: boolean }) => {
   const { avatar } = UserPreferences.use();

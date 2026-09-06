@@ -10,7 +10,7 @@ export const useRegisterMutation = (queryKeys?: string[]) => {
     mutationKey: ["registerCourse"],
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ["userInfor"],
+        queryKey: ["currentUser"],
       });
 
       queryKeys?.forEach((key) => {

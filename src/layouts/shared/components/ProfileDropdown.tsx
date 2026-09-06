@@ -2,9 +2,9 @@ import { useCallback, useMemo } from "react";
 import { useLocation } from "react-router-dom";
 
 import { AuthSession } from "@shared/auth";
+import { UserPreferences } from "@shared/current-user";
 import { Navigation } from "@shared/navigation";
 import { Button, BUTTON_LAYOUTS, BUTTON_SIZES } from "@shared/ui";
-import { UserPreferences } from "@shared/user";
 import { cn } from "@shared/utils";
 import { LogOut, User as UserIcon } from "lucide-react";
 

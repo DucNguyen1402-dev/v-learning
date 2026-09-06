@@ -5,7 +5,7 @@ import { CoursePaymentPage } from "../pages/CoursePaymentPage";
 import { CoursePaymentRouteProvider } from "../provider";
 import { CoursePaymentRouteGuard } from "./CoursePaymentRouteGuard";
 
-import { UserProfile } from "@/shared/user";
+import { UserProfile } from "@/shared/current-user";
 
 export const coursePaymentRoute = (
   <Route

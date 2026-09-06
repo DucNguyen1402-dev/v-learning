@@ -1,10 +1,10 @@
+import { UserPreferences } from "@shared/current-user";
 import {
   Button,
   BUTTON_APPEARANCES,
   BUTTON_INTENTS,
   BUTTON_SIZES,
 } from "@shared/ui";
-import { UserPreferences } from "@shared/user";
 import { cn } from "@shared/utils";
 import { MoonStar, Sun } from "lucide-react";
 
