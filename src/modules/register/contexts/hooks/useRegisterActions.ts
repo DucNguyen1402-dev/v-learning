@@ -7,9 +7,9 @@ import { RegisterAuth } from "@shared/auth/register";
 import { ENTITIES } from "@shared/domain";
 import { getErrorMessage } from "@shared/error";
 import { execution } from "@shared/execution";
-import { createPayload } from "@shared/form-utils";
 import { Navigation } from "@shared/navigation";
 import { Toast } from "@shared/overlays";
+import { createPayload } from "@shared/utils";
 type UseRegisterActionsProps = {
   handleSubmit: UseFormHandleSubmit<RegisterData>;
 };

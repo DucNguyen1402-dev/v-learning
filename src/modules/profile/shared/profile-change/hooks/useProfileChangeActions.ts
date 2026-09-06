@@ -3,9 +3,9 @@ import { UpdateAuth } from "@shared/auth";
 import { ENTITIES } from "@shared/domain";
 import { getErrorMessage } from "@shared/error";
 import { execution } from "@shared/execution";
-import { createPayload } from "@shared/form-utils";
 import { Navigation } from "@shared/navigation";
 import { Loading, Modal, Toast } from "@shared/overlays";
+import { createPayload } from "@shared/utils";
 
 import type { ProfileChangeFormValues } from "../types";
 import { useProfileChangeForm } from "./useProfileChangeForm";

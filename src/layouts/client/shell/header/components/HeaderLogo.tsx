@@ -1,9 +1,9 @@
-import { User } from "@shared/user";
+import { UserPreferences } from "@shared/user";
 
 export const HeaderLogo = () => {
   const {
     theme: { asset },
-  } = User.use();
+  } = UserPreferences.use();
 
   return (
     <div className="flex items-center">

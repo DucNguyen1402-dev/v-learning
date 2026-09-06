@@ -4,7 +4,7 @@ import { CoursesFooter } from "@modules/courses/shared/components";
 import { useCoursesContext } from "@modules/courses/shared/contexts";
 import { Navigation } from "@shared/navigation";
 import { Toast } from "@shared/overlays";
-import { State } from "@shared/state";
+import { useTemporaryState } from "@shared/state";
 import { Pagination } from "@shared/table";
 
 import {
@@ -19,7 +19,7 @@ export const CoursesPage = () => {
   Navigation.hooks.useScrollToTopOnRouteChange();
 
   const { show: showToast } = Toast.use();
-  const [displayState] = State.useTemporary(
+  const [displayState] = useTemporaryState(
     Navigation.hooks.usePayload<CourseLocationPayload>(),
   );
   const consumePayload = Navigation.hooks.useConsumePayload();

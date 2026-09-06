@@ -1,5 +1,6 @@
 import { Layout } from "@layouts/admin";
-import { UserProfile } from "@shared/user-profile";
+
+import { UserProfile } from "@/shared/user";
 export const AdminProvider = ({ children }: { children: React.ReactNode }) => {
   return (
     <UserProfile.Provider>

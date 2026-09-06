@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 
 import { Navigation } from "@shared/navigation";
 import { Toast } from "@shared/overlays";
-import { State } from "@shared/state";
+import { useTemporaryState } from "@shared/state";
 import { useQueryClient } from "@tanstack/react-query";
 
 import { EmptyCourseState, PersonalCourseList } from "../components";
@@ -14,7 +14,7 @@ export const PersonalCoursePage = () => {
 
   const queryClient = useQueryClient();
   const { show: showToast } = Toast.use();
-  const [payload] = State.useTemporary(
+  const [payload] = useTemporaryState(
     Navigation.hooks.usePayload<personalCoursePayload>(),
   );
   const consumePayload = Navigation.hooks.useConsumePayload();

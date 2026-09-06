@@ -9,7 +9,7 @@ import {
 import { Navigation } from "@shared/navigation";
 import { AppInteractionLock } from "@shared/overlays";
 import { Toast } from "@shared/overlays";
-import { State } from "@shared/state";
+import { useTemporaryState } from "@shared/state";
 
 import { useLoginContext } from "../contexts";
 import type { LoginLocationPayload } from "../types";
@@ -25,7 +25,7 @@ export const LoginPage = () => {
   const hasShownToast = useRef(false);
 
   const payload = Navigation.hooks.usePayload<LoginLocationPayload>();
-  const [toast] = State.useTemporary(payload?.toastState);
+  const [toast] = useTemporaryState(payload?.toastState);
   const consumePayload = Navigation.hooks.useConsumePayload();
 
   useEffect(() => {

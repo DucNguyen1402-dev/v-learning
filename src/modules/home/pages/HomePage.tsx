@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 
 import { Navigation } from "@shared/navigation";
 import { Toast } from "@shared/overlays";
-import { State } from "@shared/state";
+import { useTemporaryState } from "@shared/state";
 
 import {
   FeaturedCoursesSection,
@@ -17,7 +17,7 @@ export const HomePage = () => {
 
   //2. Show toast message if there's a payload in the location state
   const { show: showToast } = Toast.use();
-  const [payload] = State.useTemporary(
+  const [payload] = useTemporaryState(
     Navigation.hooks.usePayload<HomeLocationPayload>(),
   );
   const consumePayload = Navigation.hooks.useConsumePayload();

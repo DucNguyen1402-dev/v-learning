@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 
 import { Navigation } from "@shared/navigation";
 import { Toast } from "@shared/overlays";
-import { State } from "@shared/state";
+import { useTemporaryState } from "@shared/state";
 
 import { ProfileCard } from "../components";
 import type { ProfileLocationPayload } from "../types";
@@ -11,7 +11,7 @@ export const ProfileOverviewPage = () => {
 
   //1. Show toast message if there's a payload in the location state
   const { show: showToast } = Toast.use();
-  const [payload] = State.useTemporary(
+  const [payload] = useTemporaryState(
     Navigation.hooks.usePayload<ProfileLocationPayload>(),
   );
   const consumePayload = Navigation.hooks.useConsumePayload();

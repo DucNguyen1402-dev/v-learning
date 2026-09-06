@@ -4,35 +4,32 @@ import { useLocation } from "react-router-dom";
 import { AuthSession } from "@shared/auth";
 import { Navigation } from "@shared/navigation";
 import { Button, BUTTON_LAYOUTS, BUTTON_SIZES } from "@shared/ui";
-import { User } from "@shared/user";
+import { UserPreferences } from "@shared/user";
 import { cn } from "@shared/utils";
 import { LogOut, User as UserIcon } from "lucide-react";
 
 export const ProfileDropdown = () => {
   const { pathname } = useLocation();
-  const {
-    theme: { toggle: toggleTheme, asset: themeAsset },
-    refresh: refreshUser,
-  } = User.use();
+  const { theme, refreshPreferences } = UserPreferences.use();
   const { go } = Navigation.hooks.useNavigateWithState();
 
   const currentArea = Navigation.hooks.useCurrentArea();
 
   const onLogoutClick = useCallback(() => {
     AuthSession.logout();
-    refreshUser();
+    refreshPreferences();
     go({
       routeKey: Navigation.client.keys.LOGIN,
     });
-  }, [go, refreshUser]);
+  }, [go, refreshPreferences]);
 
   const menuItems = useMemo(() => {
     return [
       {
         id: "theme-toggle",
-        label: `Chế độ ${themeAsset.label}`,
-        onClick: toggleTheme,
-        icon: themeAsset.icon,
+        label: `Chế độ ${theme.asset.label}`,
+        onClick: theme.toggle,
+        icon: theme.asset.icon,
         component: "button",
       },
       {
@@ -51,9 +48,9 @@ export const ProfileDropdown = () => {
       },
     ];
   }, [
-    themeAsset.label,
-    themeAsset.icon,
-    toggleTheme,
+    theme.asset.label,
+    theme.asset.icon,
+    theme.toggle,
     currentArea,
     onLogoutClick,
   ]);

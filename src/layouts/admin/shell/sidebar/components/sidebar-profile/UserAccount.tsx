@@ -1,4 +1,4 @@
-import { UserProfile } from "@shared/user-profile";
+import { UserProfile } from "@/shared/user";
 export const UserAccount = () => {
   const { profile } = UserProfile.use();
 

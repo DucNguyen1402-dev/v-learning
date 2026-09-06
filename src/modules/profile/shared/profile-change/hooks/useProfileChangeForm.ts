@@ -1,8 +1,8 @@
 import { useForm } from "react-hook-form";
 
-import { UserProfile } from "@shared/user-profile";
-
 import type { ProfileChangeFormValues } from "../types";
+
+import { UserProfile } from "@/shared/user";
 
 export const useProfileChangeForm = () => {
   const { profile } = UserProfile.use();

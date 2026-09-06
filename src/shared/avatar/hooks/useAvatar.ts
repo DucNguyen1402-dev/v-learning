@@ -5,19 +5,19 @@ import { getUserAvatar, updateUserAvatar } from "../utils";
 
 export const useAvatar = () => {
   const userAvatar = getUserAvatar();
-  const [avatar, setAvatar] = useState<Avatar>(userAvatar);
+  const [current, setCurrent] = useState<Avatar>(userAvatar);
 
-  const updateAvatar = (newAvatar: Avatar) => {
+  const update = (newAvatar: Avatar) => {
     updateUserAvatar(newAvatar);
     const userAvatar = getUserAvatar();
-    setAvatar(userAvatar);
+    setCurrent(userAvatar);
   };
 
-  const refreshAvatar = useCallback(() => {
+  const refresh = useCallback(() => {
     const userAvatar = getUserAvatar();
-    setAvatar(userAvatar);
+    setCurrent(userAvatar);
   }, []);
-  return { avatar, updateAvatar, refreshAvatar };
+  return { current, update, refresh };
 };
 
 export type UseAvatarReturnType = ReturnType<typeof useAvatar>;

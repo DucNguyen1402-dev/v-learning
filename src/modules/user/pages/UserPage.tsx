@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 
 import { Navigation } from "@shared/navigation";
 import { Toast } from "@shared/overlays";
-import { State } from "@shared/state";
+import { useTemporaryState } from "@shared/state";
 import { Pagination } from "@shared/table";
 
 import {
@@ -19,7 +19,7 @@ export const UserPage = () => {
   Navigation.hooks.useScrollToTopOnRouteChange();
 
   const { show: showToast } = Toast.use();
-  const [displayState] = State.useTemporary(
+  const [displayState] = useTemporaryState(
     Navigation.hooks.usePayload<UserLocationPayload>(),
   );
   const consumePayload = Navigation.hooks.useConsumePayload();

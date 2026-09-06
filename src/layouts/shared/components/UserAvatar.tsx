@@ -1,12 +1,12 @@
 import { Navigation } from "@shared/navigation";
 import { cn } from "@shared/utils";
 
-import { User } from "@/shared/user/User";
+import { UserPreferences } from "@/shared/user";
 type UserAvatarProps = {
   enabledProfileLink?: boolean;
 };
 export const UserAvatar = ({ enabledProfileLink = false }: UserAvatarProps) => {
-  const { avatar } = User.use();
+  const { avatar } = UserPreferences.use();
   const { type, value } = avatar.current;
   const avatarRender =
     type === "image" ? <img src={value} alt="user avatar" /> : value;

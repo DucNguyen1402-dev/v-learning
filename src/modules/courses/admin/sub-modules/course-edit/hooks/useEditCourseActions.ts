@@ -17,7 +17,7 @@ import { getFileNameFromUrl } from "@shared/utils";
 import type { UseEditCourseFormReturn } from "./useEditCourseForm";
 import { useUpdateCourseMutation } from "./useUpdateCourseMutation";
 
-import { UserProfile } from "@/shared/user-profile";
+import { UserProfile } from "@/shared/user";
 
 type UseEditCourseActionsProps = {
   isDirty: boolean;

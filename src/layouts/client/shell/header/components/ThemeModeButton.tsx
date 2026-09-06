@@ -4,14 +4,12 @@ import {
   BUTTON_INTENTS,
   BUTTON_SIZES,
 } from "@shared/ui";
-import { User } from "@shared/user";
+import { UserPreferences } from "@shared/user";
 import { cn } from "@shared/utils";
 import { MoonStar, Sun } from "lucide-react";
 
 export const ThemeModeButton = () => {
-  const {
-    theme: { isDark, toggle },
-  } = User.use();
+  const { theme } = UserPreferences.use();
 
   const iconClass = "absolute transition-all duration-300 ease-in-out";
   const visible = "scale-100 rotate-0 opacity-100";
@@ -20,7 +18,7 @@ export const ThemeModeButton = () => {
   return (
     <div className="relative flex-center">
       <Button
-        onClick={toggle}
+        onClick={theme.toggle}
         appearance={BUTTON_APPEARANCES.GHOST}
         intent={BUTTON_INTENTS.TERTIARY}
         size={BUTTON_SIZES.LARGE}
@@ -28,14 +26,14 @@ export const ThemeModeButton = () => {
         <MoonStar
           className={cn(
             iconClass + " text-zinc-500",
-            isDark ? hidden : visible,
+            theme.isDarkMode ? hidden : visible,
           )}
         />
 
         <Sun
           className={cn(
             iconClass + " text-yellow-500",
-            isDark ? visible : hidden,
+            theme.isDarkMode ? visible : hidden,
           )}
         />
       </Button>

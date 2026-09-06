@@ -1,4 +1,5 @@
 export * from "./array";
+export { createPayload } from "./createPayload";
 export { getFileNameFromUrl, urlToFile } from "./file";
 export { formatVND } from "./format";
 export { mergeRefs } from "./mergeRefs";

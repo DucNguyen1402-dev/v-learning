@@ -8,17 +8,17 @@ import {
   BUTTON_INTENTS,
   BUTTON_SIZES,
 } from "@shared/ui";
-import { User } from "@shared/user";
+import { UserPreferences } from "@shared/user";
 
 export const LogoutButton = () => {
-  const { refresh: refreshUser } = User.use();
+  const { refreshPreferences } = UserPreferences.use();
   const { go } = Navigation.hooks.useNavigateWithState();
 
   const onLogoutClick = useCallback(() => {
     AuthSession.logout();
-    refreshUser();
+    refreshPreferences();
     go({ routeKey: Navigation.client.keys.HOME });
-  }, [go, refreshUser]);
+  }, [go, refreshPreferences]);
 
   return (
     <Button

@@ -1,5 +1,6 @@
 import { Field, Input } from "@shared/fields";
-import { UserProfile } from "@shared/user-profile";
+
+import { UserProfile } from "@/shared/user";
 export const UserPaymentInfo = () => {
   const { profile } = UserProfile.use();
 

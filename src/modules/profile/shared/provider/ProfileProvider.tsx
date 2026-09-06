@@ -1,8 +1,8 @@
 import type { ReactNode } from "react";
 
-import { UserProfile } from "@shared/user-profile";
-
 import { RequireCurrentUser } from "./RequireCurrentUser";
+
+import { UserProfile } from "@/shared/user";
 
 type ProfileProviderProp = {
   children: ReactNode;

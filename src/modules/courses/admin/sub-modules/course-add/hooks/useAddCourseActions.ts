@@ -15,7 +15,7 @@ import { Loading, Modal, Toast } from "@shared/overlays";
 import { useAddCourseMutation } from "./useAddCourseMutation";
 import { useAddForm } from "./useAddForm";
 
-import { UserProfile } from "@/shared/user-profile";
+import { UserProfile } from "@/shared/user";
 
 export function useAddCourseActions() {
   const [imgPreview, setImgPreview] = useState<string>("");

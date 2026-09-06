@@ -7,9 +7,9 @@ import { CurrentUserStorage } from "@shared/auth";
 import { LoginAuth } from "@shared/auth/login";
 import { getErrorMessage } from "@shared/error";
 import { execution } from "@shared/execution";
-import { createPayload } from "@shared/form-utils";
 import { Navigation } from "@shared/navigation";
 import { Toast } from "@shared/overlays";
+import { createPayload } from "@shared/utils";
 
 type UseLoginActionsParams = {
   handleSubmit: UseFormHandleSubmit<LoginData>;

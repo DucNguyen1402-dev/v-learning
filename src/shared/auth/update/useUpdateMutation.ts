@@ -1,13 +1,12 @@
 import { CurrentUserStorage } from "@shared/auth";
-import { User } from "@shared/user";
-import { UserProfile } from "@shared/user-profile";
+import { UserPreferences, UserProfile } from "@shared/user";
 import { useMutation } from "@tanstack/react-query";
 import { useQueryClient } from "@tanstack/react-query";
 
 import { updateUser } from "./api";
 
 export const useUpdateMutation = () => {
-  const { refresh: refreshUser } = User.use();
+  const { refreshPreferences } = UserPreferences.use();
   const { refreshProfile } = UserProfile.use();
   const queryClient = useQueryClient();
 
@@ -18,7 +17,7 @@ export const useUpdateMutation = () => {
       CurrentUserStorage.update({ ...rest, soDT: soDt });
 
       queryClient.invalidateQueries({ queryKey: ["userInfor"] });
-      refreshUser();
+      refreshPreferences();
       refreshProfile();
     },
   });

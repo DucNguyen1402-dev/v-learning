@@ -1,9 +1,9 @@
-import { User } from "@shared/user";
+import { UserPreferences } from "@shared/user";
 
 export const FooterTopLeft = () => {
   const {
     theme: { asset },
-  } = User.use();
+  } = UserPreferences.use();
 
   return (
     <div className="footer-top-left">

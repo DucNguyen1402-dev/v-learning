@@ -13,7 +13,7 @@ export const useTheme = () => {
     document.documentElement.classList.toggle("dark", currentTheme === "dark");
   }, [currentTheme]);
 
-  const toggleTheme = () => {
+  const toggle = () => {
     setCurrentTheme((prev) => {
       const newTheme = prev === "light" ? "dark" : "light";
       updateCurrentUserTheme(newTheme);
@@ -21,18 +21,18 @@ export const useTheme = () => {
     });
   };
 
-  const refreshTheme = useCallback(() => {
+  const refresh = useCallback(() => {
     const userTheme = getCurrentUserTheme();
     setCurrentTheme(userTheme);
   }, []);
 
   return {
     currentTheme,
-    toggleTheme,
+    toggle,
     isDarkMode: currentTheme === "dark",
     isLightMode: currentTheme === "light",
     asset: themeAssets[currentTheme],
-    refreshTheme,
+    refresh,
   };
 };
 

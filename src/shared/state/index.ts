@@ -1,1 +1,1 @@
-export { State } from "./State";
+export { useTemporaryState } from "./useTemporaryState";

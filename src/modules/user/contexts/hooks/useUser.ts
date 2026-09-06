@@ -1,9 +1,10 @@
 import { usePaginatedUserQuery, useUsersQuery } from "@modules/user/hooks";
 import { Pagination } from "@shared/table";
-import { UserProfile } from "@shared/user-profile";
 
 import { useUserFilterByRole } from "./useUserFilterByRole";
 import { useUserSearchByName } from "./useUserSearchByName";
+
+import { UserProfile } from "@/shared/user";
 
 export function useUser() {
   const { data: allUsers } = useUsersQuery();
