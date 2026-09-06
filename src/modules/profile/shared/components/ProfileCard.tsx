@@ -2,10 +2,10 @@ import { ProfileCardAvatar } from "./profile-avatar";
 import { ProfileCardInfor } from "./profile-infor";
 import { ProfileCardActions } from "./ProfileCardActions";
 
-import { UserInfor } from "@/shared/auth/userInfor/UserInfor";
+import { useUserInforQuery } from "@/shared/auth";
 
 export const ProfileCard = () => {
-  const { infor, isPending } = UserInfor.useQuery();
+  const { infor, isPending } = useUserInforQuery();
 
   return (
     <div className="flex w-full max-w-md flex-col gap-8 rounded-xl border border-border-subtle bg-bg-default p-6 pb-3 shadow-surface select-none">

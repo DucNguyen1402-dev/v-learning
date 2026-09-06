@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 
-import { useUserCourseInfo } from "@shared/auth/userInfor";
+import { useUserCourseInfo } from "@modules/personal-courses/hooks";
 
 import { CourseAccessChecking, PersonalCourseNotFound } from "../components";
 

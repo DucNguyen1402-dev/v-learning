@@ -1,6 +1,6 @@
 import type { UseFormHandleSubmit } from "react-hook-form";
 
-import { UpdateAuth, UserInfor } from "@shared/auth";
+import { UpdateAuth, useUserInforQuery } from "@shared/auth";
 import { ENTITIES } from "@shared/domain";
 import { getErrorMessage } from "@shared/error";
 import { execution } from "@shared/execution";
@@ -21,7 +21,7 @@ export const usePasswordChangeActions = ({
   isValid,
   isDirty,
 }: UsePasswordChangeActionsProps) => {
-  const { infor } = UserInfor.useQuery();
+  const { infor } = useUserInforQuery();
   const currentArea = Navigation.hooks.useCurrentArea();
   const modal = Modal.use();
   const toast = Toast.use();

@@ -1,12 +1,5 @@
 import type { LoginData } from "@modules/login";
-export type LoginFn = ({
-  payload,
-  remember,
-}: {
-  payload: LoginData;
-  remember: boolean;
-}) => Promise<LoginResponse>;
-
+import { api } from "@shared/api";
 export type LoginResponse = {
   accessToken: string;
   taiKhoan: string;
@@ -16,3 +9,8 @@ export type LoginResponse = {
   maNhom: string;
   maLoaiNguoiDung: string;
 };
+
+export const login = (payload: LoginData) =>
+  api
+    .post<LoginResponse>("/QuanLyNguoiDung/DangNhap", payload)
+    .then((res) => res.data);

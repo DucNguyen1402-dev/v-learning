@@ -4,12 +4,13 @@ import type { SubmitHandler, UseFormHandleSubmit } from "react-hook-form";
 import { LoginFieldNamesValues } from "@modules/login/constants";
 import type { LoginData } from "@modules/login/types";
 import { CurrentUserStorage } from "@shared/auth";
-import { LoginAuth } from "@shared/auth/login";
 import { getErrorMessage } from "@shared/error";
 import { execution } from "@shared/execution";
 import { Navigation } from "@shared/navigation";
 import { Toast } from "@shared/overlays";
 import { createPayload } from "@shared/utils";
+
+import { useLoginMutation } from "./useLoginMutation";
 
 type UseLoginActionsParams = {
   handleSubmit: UseFormHandleSubmit<LoginData>;
@@ -20,7 +21,7 @@ export const useLoginActions = ({
   handleSubmit,
   remember,
 }: UseLoginActionsParams) => {
-  const { login } = LoginAuth.useMutation();
+  const { login } = useLoginMutation();
   const { go } = Navigation.hooks.useNavigateWithState();
   const toast = Toast.use();
   const [isLoggingIn, setIsLoggingIn] = useState(false);

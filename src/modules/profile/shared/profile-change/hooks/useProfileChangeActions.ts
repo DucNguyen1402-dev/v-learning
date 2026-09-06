@@ -1,4 +1,4 @@
-import { UserInfor } from "@shared/auth";
+import { useUserInforQuery } from "@shared/auth";
 import { UpdateAuth } from "@shared/auth";
 import { ENTITIES } from "@shared/domain";
 import { getErrorMessage } from "@shared/error";
@@ -11,7 +11,7 @@ import type { ProfileChangeFormValues } from "../types";
 import { useProfileChangeForm } from "./useProfileChangeForm";
 
 export const useProfileChangeActions = () => {
-  const { infor } = UserInfor.useQuery();
+  const { infor } = useUserInforQuery();
   const toast = Toast.use();
   const modal = Modal.use();
   const { loader } = Loading.use();

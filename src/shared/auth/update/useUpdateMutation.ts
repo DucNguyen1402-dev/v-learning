@@ -23,6 +23,5 @@ export const useUpdateMutation = () => {
   });
   return {
     update: mutation.mutateAsync,
-    isUpdating: mutation.isPending,
   };
 };

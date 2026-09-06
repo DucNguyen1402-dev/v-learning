@@ -1,4 +1,4 @@
-import { useUserInforQuery } from "./useUserInforQuery";
+import { useUserInforQuery } from "@shared/auth";
 
 export const useUserCourseInfo = () => {
   const { infor: userInfo, isPending } = useUserInforQuery();

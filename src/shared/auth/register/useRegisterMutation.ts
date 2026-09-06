@@ -9,6 +9,5 @@ export const useRegisterMutation = () => {
 
   return {
     register: mutation.mutateAsync,
-    isRegistering: mutation.isPending,
   };
 };

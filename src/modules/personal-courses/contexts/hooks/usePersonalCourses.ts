@@ -1,19 +1,15 @@
 import { useMemo } from "react";
 
 import { enrichCoursesWithMockData } from "@modules/personal-courses/mocks";
-import { UserInfor } from "@shared/auth";
+
+import { useUserCourseInfo } from "../../hooks";
 
 export const usePersonalCourses = () => {
-  const { infor, isPending } = UserInfor.useQuery();
-
-  const registeredCourses = useMemo(
-    () => infor?.chiTietKhoaHocGhiDanh ?? [],
-    [infor?.chiTietKhoaHocGhiDanh],
-  );
+  const { courses, isPending } = useUserCourseInfo();
 
   const enrichedCourses = useMemo(
-    () => enrichCoursesWithMockData(registeredCourses),
-    [registeredCourses],
+    () => enrichCoursesWithMockData(courses),
+    [courses],
   );
   return {
     courses: enrichedCourses,

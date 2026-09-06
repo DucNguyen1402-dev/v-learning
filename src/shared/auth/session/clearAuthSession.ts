@@ -1,5 +1,4 @@
-import { deleteAccessToken } from "../accessTokenStorage/utils/deleteAccessToken";
-import { deleteCurrentUser } from "../currentUserStorage/utils/deleteCurrentUser";
+import { deleteAccessToken, deleteCurrentUser } from "../storage";
 
 export const clearAuthSession = () => {
   deleteAccessToken();

@@ -1,3 +1,4 @@
+export { deleteCurrentUser } from "./deleteCurrentUser";
 export { getCurrentUser } from "./getCurrentUser";
 export { getCurrentUserProperty } from "./getCurrentUserProperty";
 export { getCurrentUserStorage } from "./getCurrentUserStorage";

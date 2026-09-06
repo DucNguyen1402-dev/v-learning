@@ -4,7 +4,7 @@ import { ProfileDropdown, UserAvatar } from "@layouts/shared/components";
 import { CurrentUserStorage } from "@shared/auth";
 import { Navigation } from "@shared/navigation";
 
-import { routesHideLoginButton, routesShowLogoutButton } from "../uiRules";
+import { isRouteHideLoginButton, isRouteShowLogoutButton } from "../ui";
 import { HeaderLogo, HeaderNav, LoginButton, ThemeModeButton } from ".";
 import { LogoutButton } from "./LogoutButton";
 
@@ -12,9 +12,9 @@ export const Header = () => {
   const currentUser = CurrentUserStorage.tryGet();
   const { pathname } = useLocation();
   const routeKey = Navigation.client.findKey(pathname);
-  const shouldHideLoginButton = routeKey && routesHideLoginButton.has(routeKey);
+  const shouldHideLoginButton = routeKey && isRouteHideLoginButton(routeKey);
   const shouldShowLogoutButton =
-    routeKey && routesShowLogoutButton.has(routeKey) && window.innerWidth < 640;
+    routeKey && isRouteShowLogoutButton(routeKey) && window.innerWidth < 640;
 
   return (
     <header className="header">

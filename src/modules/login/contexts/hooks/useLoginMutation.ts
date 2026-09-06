@@ -4,7 +4,6 @@ import { UserPreferences } from "@shared/user";
 import { useMutation } from "@tanstack/react-query";
 
 import { login } from "./api";
-import type { LoginFn } from "./types";
 
 type LoginMutationVariables = {
   payload: LoginData;
@@ -30,8 +29,6 @@ export const useLoginMutation = () => {
   });
 
   return {
-    login: mutation.mutateAsync as LoginFn,
-    isLoggingIn: mutation.isPending,
-    error: mutation.error,
+    login: mutation.mutateAsync,
   };
 };
