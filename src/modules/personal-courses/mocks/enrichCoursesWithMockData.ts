@@ -1,5 +1,6 @@
-import type { EnrichedPersonalCourse, PersonalCourse } from "../types";
+import type { PersonalCourse } from "../types";
 import { mockCourses } from "./mockCourses";
+import type { EnrichedPersonalCourse } from "./types";
 
 export const enrichCoursesWithMockData = (
   courses: PersonalCourse[],

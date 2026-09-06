@@ -1,4 +1,4 @@
-import type { EnrichedPersonalCourse } from "@modules/personal-courses/types";
+import type { EnrichedPersonalCourse } from "@modules/personal-courses/mocks";
 import { Navigation } from "@shared/navigation";
 import { ArrowRight, Star } from "lucide-react";
 

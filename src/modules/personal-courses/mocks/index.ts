@@ -1,3 +1,8 @@
 export { enrichCoursesWithMockData } from "./enrichCoursesWithMockData";
 export { mockCourses } from "./mockCourses";
-export type { MockCourse } from "./types";
+export type {
+  BaiHoc,
+  DanhSachBaiHoc,
+  EnrichedPersonalCourse,
+  MockCourse,
+} from "./types";

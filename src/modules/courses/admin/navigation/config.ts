@@ -8,10 +8,10 @@ export const coursesRouteConfig = {
   key: {
     COURSES: COURSES_ROUTE_KEY,
   },
-  path: {
-    [COURSES_ROUTE_KEY]: COURSES_ROUTE_PATH,
-  },
   title: {
     [COURSES_ROUTE_KEY]: COURSES_ROUTE_TITLE,
+  },
+  path: {
+    [COURSES_ROUTE_KEY]: COURSES_ROUTE_PATH,
   },
 } as const;

@@ -72,7 +72,7 @@ export const CLIENT_ROUTE_PATHS = {
   ...profileChangeRouteConfig.path,
   ...passwordChangeRouteConfig.path,
 
-  // Non-essential demo module urls
+  // Non-essential demo module paths
   ...aboutRouteConfig.path,
   ...blogsRouteConfig.path,
   ...communityRouteConfig.path,

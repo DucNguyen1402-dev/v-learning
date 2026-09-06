@@ -1,0 +1,17 @@
+import {
+  COURSES_BY_CATEGORY_BUILDER_KEY,
+  COURSES_BY_CATEGORY_BUILDER_TITLE,
+  COURSES_BY_CATEGORY_PATH_BUILDER,
+} from "./constants";
+
+export const coursesByCategoryBuilderRouteConfig = {
+  builderKey: {
+    COURSES_BY_CATEGORY: COURSES_BY_CATEGORY_BUILDER_KEY,
+  },
+  title: {
+    [COURSES_BY_CATEGORY_BUILDER_KEY]: COURSES_BY_CATEGORY_BUILDER_TITLE,
+  },
+  pathBuilder: {
+    [COURSES_BY_CATEGORY_BUILDER_KEY]: COURSES_BY_CATEGORY_PATH_BUILDER,
+  },
+} as const;

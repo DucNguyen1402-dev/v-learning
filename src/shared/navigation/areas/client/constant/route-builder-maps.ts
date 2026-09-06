@@ -9,11 +9,11 @@ import {
 } from "@modules/personal-courses";
 
 export const CLIENT_ROUTE_BUILDER_KEYS = {
-  ...coursesDetailBuilderRouteConfig.key,
-  ...coursesByCategoryBuilderRouteConfig.key,
-  ...coursesPaymentBuilderRouteConfig.key,
-  ...personalCoursesDetailBuilderRouteConfig.key,
-  ...coursesPlayerRouteConfig.key,
+  ...coursesDetailBuilderRouteConfig.builderKey,
+  ...coursesByCategoryBuilderRouteConfig.builderKey,
+  ...coursesPaymentBuilderRouteConfig.builderKey,
+  ...personalCoursesDetailBuilderRouteConfig.builderKey,
+  ...coursesPlayerRouteConfig.builderKey,
 } as const;
 
 export type ClientRouteBuilderKey =

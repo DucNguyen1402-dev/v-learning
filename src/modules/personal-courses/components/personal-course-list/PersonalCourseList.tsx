@@ -1,4 +1,4 @@
-import type { EnrichedPersonalCourse } from "@modules/personal-courses/types";
+import type { EnrichedPersonalCourse } from "@modules/personal-courses/mocks";
 
 import { CourseCard } from "./CourseCard";
 type PersonalCourseListProps = {

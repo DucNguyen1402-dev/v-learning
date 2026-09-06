@@ -1,0 +1,1 @@
+export { enrichCourseDetail } from "./enrichCourseDetail";

@@ -1,0 +1,40 @@
+import { useParams } from "react-router-dom";
+
+import { useEditForm } from "./useEditForm";
+import { useEditUserActions } from "./useEditUserActions";
+import { useUserInforQuery } from "./useUserInforQuery";
+
+export const useEditUser = () => {
+  const { taiKhoan } = useParams<{ taiKhoan: string }>();
+  const { data: userInfo, isPending } = useUserInforQuery(taiKhoan as string);
+  const targetUser = userInfo?.find((user) => user.taiKhoan === taiKhoan);
+
+  const { register, handleSubmit, errors, isDirty, control } = useEditForm({
+    targetUser,
+  });
+
+  const actions = useEditUserActions({
+    isDirty,
+    handleSubmit,
+    targetUser,
+  });
+
+  return {
+    hasUserData: !!targetUser,
+    status: {
+      isLoading: isPending,
+    },
+    form: {
+      register,
+      errors,
+      isDirty,
+      control,
+    },
+    actions: {
+      handleSubmitEvent: actions?.handleSubmitEvent,
+      onCancelClick: actions?.onCancelClick,
+    },
+  };
+};
+
+export type UseEditUserReturn = ReturnType<typeof useEditUser>;
