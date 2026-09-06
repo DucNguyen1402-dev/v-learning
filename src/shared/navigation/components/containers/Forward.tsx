@@ -26,10 +26,10 @@ export const Forward = ({
 }: ForwardProps) => {
   const location = useLocation();
 
-  const routeHistory = getRouteHistory({ location }) ?? [];
+  const routeHistory = getRouteHistory({ location });
   const pathname = location.pathname;
 
-  const { url, currentRouteKey } = useMemo(
+  const { path, currentRouteKey } = useMemo(
     () =>
       getNavigationAreaMeta({
         routeKey,
@@ -40,7 +40,7 @@ export const Forward = ({
 
   return (
     <Link
-      to={url}
+      to={path}
       state={{
         history: [...routeHistory, currentRouteKey],
         payload: payload ?? null,

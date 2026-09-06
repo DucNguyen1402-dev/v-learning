@@ -1,0 +1,1 @@
+export { courseEnrollmentRouteConfig } from "./config";

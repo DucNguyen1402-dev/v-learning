@@ -1,1 +1,2 @@
-export { homeRoute } from "./routes/homeRoute";
+export * from "./navigation";
+export * from "./routes";

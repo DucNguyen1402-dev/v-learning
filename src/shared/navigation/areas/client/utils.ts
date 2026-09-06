@@ -1,18 +1,18 @@
 import type { AppRouteBuilderKey, AppRouteKey } from "@shared/navigation/types";
 
 import {
-  CLIENT_ROUTE_URLS,
+  CLIENT_ROUTE_PATHS,
   type ClientRouteBuilderKey,
   clientRouteBuilderKeys,
   type ClientRouteKey,
   clientRouteKeys,
-} from "./constants";
+} from "./constant";
 
 export const findRouteKey = (path: string) =>
-  clientRouteKeys.find((key) => CLIENT_ROUTE_URLS[key] === path);
+  clientRouteKeys.find((key) => CLIENT_ROUTE_PATHS[key] === path);
 
 export const isRouteActive = (path: string, key: ClientRouteKey) =>
-  key !== null && CLIENT_ROUTE_URLS[key] === path;
+  key !== null && CLIENT_ROUTE_PATHS[key] === path;
 
 export const isClientRouteKey = (key: AppRouteKey) =>
   clientRouteKeys.includes(key as ClientRouteKey);

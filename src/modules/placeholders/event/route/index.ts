@@ -1,0 +1,1 @@
+export { eventRoute } from "./eventRoute";

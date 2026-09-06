@@ -1,0 +1,1 @@
+export { coursesByCategoryBuilderRouteConfig } from "./config";

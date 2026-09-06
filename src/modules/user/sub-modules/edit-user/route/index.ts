@@ -1,0 +1,1 @@
+export { editUserRoute } from "./editUserRoute";

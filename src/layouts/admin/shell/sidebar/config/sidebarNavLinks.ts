@@ -12,13 +12,13 @@ export const sidebarNavLinks: NavLink[] = [
   //   iconColor: "text-indigo-500",
   // },
   {
-    path: Navigation.admin.urls.ADMIN_COURSES,
+    path: Navigation.admin.paths.ADMIN_COURSES,
     label: "Course management",
     icon: Course,
     iconColor: "text-red-500",
   },
   {
-    path: Navigation.admin.urls.ADMIN_USER,
+    path: Navigation.admin.paths.ADMIN_USER,
     label: "User management",
     icon: Users,
     iconColor: "text-purple-500",

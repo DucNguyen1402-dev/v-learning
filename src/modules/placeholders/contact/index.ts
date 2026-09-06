@@ -1,1 +1,2 @@
-export { contactRoute } from "./routes/contactRoute";
+export * from "./navigation";
+export * from "./route";

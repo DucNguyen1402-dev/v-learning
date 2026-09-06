@@ -9,5 +9,5 @@ export const routesHideLoginButton = new Set<ClientRouteKey>([
 export const routesShowLogoutButton = new Set<ClientRouteKey>([
   Navigation.client.keys.PROFILE,
   Navigation.client.keys.PROFILE_CHANGE,
-  Navigation.client.keys.PROFILE_PASSWORD_CHANGE,
+  Navigation.client.keys.PASSWORD_CHANGE,
 ]);

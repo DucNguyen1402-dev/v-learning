@@ -5,8 +5,8 @@ import { ProfileOverviewPage } from "../pages";
 import { passwordChangeRoute } from "../password-change";
 import { profileChangeRoute } from "../profile-change";
 
-export const createProfileRoute = (path: string) => (
-  <Route path={path} element={<ProfileMainLayout />}>
+export const createProfileRoute = (segment: string) => (
+  <Route path={segment} element={<ProfileMainLayout />}>
     <Route index element={<ProfileOverviewPage />} />
     {profileChangeRoute}
     {passwordChangeRoute}

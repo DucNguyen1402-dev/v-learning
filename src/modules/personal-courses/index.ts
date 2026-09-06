@@ -1,2 +1,3 @@
-export * from "./personal-course-detail";
-export { personalCourseRoute } from "./routes/personalCourseRoute";
+export * from "./navigation";
+export * from "./routes";
+export * from "./sub-modules";

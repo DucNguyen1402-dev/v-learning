@@ -1,3 +1,3 @@
 export * from "./navigation";
-export { loginRoute } from "./routes/LoginRoute";
+export * from "./routes";
 export * from "./types";

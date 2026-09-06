@@ -1,0 +1,1 @@
+export { courseRoutes } from "./courseRoutes";

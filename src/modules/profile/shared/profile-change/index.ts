@@ -1,1 +1,2 @@
-export { profileChangeRoute } from "./routes/profileChangeRoute";
+export * from "./navigation";
+export * from "./route";

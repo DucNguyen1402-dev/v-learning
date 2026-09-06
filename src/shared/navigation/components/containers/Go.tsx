@@ -39,7 +39,7 @@ export const Go = ({
 
   return (
     <Link
-      to={navigationAreaMeta.url}
+      to={navigationAreaMeta.path}
       state={{ payload: payload ?? null }}
       className={cn(className, {
         "pointer-events-none cursor-default": disabled || isActive,

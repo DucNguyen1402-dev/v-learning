@@ -1,0 +1,1 @@
+export { enrollUserRoute } from "./enrollUserRoute";

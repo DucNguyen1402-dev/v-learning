@@ -1,0 +1,1 @@
+export { blogsRoute } from "./BlogsRoute";

@@ -1,1 +1,2 @@
-export { passwordChangeRoute } from "./routes/passwordChangeRoute";
+export * from "./navigation";
+export * from "./route";

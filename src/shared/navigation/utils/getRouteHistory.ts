@@ -5,7 +5,4 @@ type GetHistoryRouteParams = {
 };
 export const getRouteHistory = ({
   location,
-}: GetHistoryRouteParams): string[] | undefined => {
-  const state = location.state;
-  return state?.history ?? [];
-};
+}: GetHistoryRouteParams): string[] => location.state?.history ?? [];

@@ -1,23 +1,21 @@
 import {
-  ADMIN_BUILDER_ROUTE_KEYS,
-  ADMIN_BUILDER_ROUTE_PATHS,
-  ADMIN_BUILDER_ROUTE_TITLES,
-  ADMIN_BUILDER_ROUTE_URLS,
+  ADMIN_ROUTE_BUILDER_KEYS,
+  ADMIN_ROUTE_BUILDER_PATHS,
+  ADMIN_ROUTE_BUILDER_TITLES,
   ADMIN_ROUTE_KEYS,
   ADMIN_ROUTE_PATHS,
   ADMIN_ROUTE_TITLES,
-  ADMIN_ROUTE_URLS,
-} from "./constants";
+} from "./constant";
 import { findRouteKey, isRouteActive } from "./utils";
 export const AdminNavigation = {
   keys: ADMIN_ROUTE_KEYS,
-  paths: ADMIN_ROUTE_PATHS,
-  builderPaths: ADMIN_BUILDER_ROUTE_PATHS,
-  builderKeys: ADMIN_BUILDER_ROUTE_KEYS,
-  urlBuilders: ADMIN_BUILDER_ROUTE_URLS,
-  builderTitles: ADMIN_BUILDER_ROUTE_TITLES,
   titles: ADMIN_ROUTE_TITLES,
-  urls: ADMIN_ROUTE_URLS,
+  paths: ADMIN_ROUTE_PATHS,
+
+  builderKeys: ADMIN_ROUTE_BUILDER_KEYS,
+  builderTitles: ADMIN_ROUTE_BUILDER_TITLES,
+  pathBuilders: ADMIN_ROUTE_BUILDER_PATHS,
+
   findKey: findRouteKey,
   isActive: isRouteActive,
 };

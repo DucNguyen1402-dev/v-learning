@@ -1,1 +1,2 @@
-export { eventRoute } from "./routes/eventRoute";
+export * from "./navigation";
+export * from "./route";

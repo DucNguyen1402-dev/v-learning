@@ -3,3 +3,4 @@ export { Forward } from "./Forward";
 export { ForwardWithParam } from "./ForwardWithParam";
 export { Go } from "./Go";
 export { GoWithParam } from "./GoWithParam";
+export { RouteMetaData } from "./route-metadata";

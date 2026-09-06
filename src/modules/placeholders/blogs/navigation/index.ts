@@ -1,0 +1,1 @@
+export { blogsRouteConfig } from "./config";

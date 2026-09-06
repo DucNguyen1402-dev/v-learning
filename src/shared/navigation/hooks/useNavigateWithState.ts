@@ -11,10 +11,7 @@ export const useNavigateWithState = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const routeHistory = useMemo(
-    () => getRouteHistory({ location }) ?? [],
-    [location],
-  );
+  const routeHistory = useMemo(() => getRouteHistory({ location }), [location]);
   const previousRouteKey = routeHistory.at(-1) as PreviousRouteKey | undefined;
 
   const back = useCallback(() => {
@@ -22,7 +19,7 @@ export const useNavigateWithState = () => {
       const navigationAreaMeta = getNavigationAreaMeta({
         routeKey: previousRouteKey,
       });
-      navigate(navigationAreaMeta.url, {
+      navigate(navigationAreaMeta.path, {
         state: {
           history: routeHistory.slice(0, -1),
         },
@@ -42,7 +39,7 @@ export const useNavigateWithState = () => {
         routeKey,
       });
 
-      navigate(navigationAreaMeta.url, {
+      navigate(navigationAreaMeta.path, {
         state: {
           payload: payload ?? null,
         },

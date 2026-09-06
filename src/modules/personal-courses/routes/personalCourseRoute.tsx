@@ -1,16 +1,15 @@
 import { Route } from "react-router-dom";
 
-import { Navigation } from "@shared/navigation";
-
 import { PersonalCoursesProvider } from "../contexts";
 import { PersonalCoursesMainLayout } from "../layouts";
+import { PERSONAL_COURSES_ROUTE_SEGMENT } from "../navigation/constants";
 import { PersonalCoursePage } from "../pages/PersonalCoursePage";
-import { personalCourseDetailRoute } from "../personal-course-detail";
+import { personalCourseDetailRoute } from "../sub-modules";
 import { ProtectPersonalCourseRoute } from "./ProtectPersonalCourseRoute";
 
 export const personalCourseRoute = (
   <Route
-    path={Navigation.client.paths.CLIENT_PERSONAL_COURSE}
+    path={PERSONAL_COURSES_ROUTE_SEGMENT}
     element={
       <ProtectPersonalCourseRoute>
         <PersonalCoursesProvider>

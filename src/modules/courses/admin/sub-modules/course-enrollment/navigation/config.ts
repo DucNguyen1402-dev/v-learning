@@ -1,0 +1,17 @@
+import {
+  COURSE_ENROLLMENT_ROUTE_KEY,
+  COURSE_ENROLLMENT_ROUTE_PATH_BUILDER,
+  COURSE_ENROLLMENT_ROUTE_TITLE,
+} from "./constants";
+
+export const courseEnrollmentRouteConfig = {
+  builderKey: {
+    COURSE_ENROLLMENT: COURSE_ENROLLMENT_ROUTE_KEY,
+  },
+  title: {
+    [COURSE_ENROLLMENT_ROUTE_KEY]: COURSE_ENROLLMENT_ROUTE_TITLE,
+  },
+  pathBuilder: {
+    [COURSE_ENROLLMENT_ROUTE_KEY]: COURSE_ENROLLMENT_ROUTE_PATH_BUILDER,
+  },
+} as const;

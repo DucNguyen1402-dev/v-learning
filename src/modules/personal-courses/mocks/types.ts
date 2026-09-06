@@ -1,3 +1,5 @@
+import type { PersonalCourse } from "../types";
+
 export type MockCourse = {
   tenDanhMucKhoaHoc: string;
   tenKhoaHoc: string;
@@ -21,3 +23,9 @@ export type MockCourse = {
     videoUrl: string;
   }[];
 };
+
+export type EnrichedPersonalCourse = PersonalCourse &
+  Omit<MockCourse, "maDanhMucKhoahoc">;
+
+export type DanhSachBaiHoc = EnrichedPersonalCourse["danhSachBaiHoc"];
+export type BaiHoc = EnrichedPersonalCourse["baiHoc"];

@@ -1,1 +1,2 @@
-export { adminProfileRoutes } from "./routes/adminProfileRoutes";
+export * from "./navigation";
+export * from "./route";

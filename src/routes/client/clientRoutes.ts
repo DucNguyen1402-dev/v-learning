@@ -10,7 +10,7 @@ import {
   eventRoute,
   supportRoute,
 } from "@modules/placeholders";
-import { clientProfileRoutes } from "@modules/profile/client";
+import { profileRoute } from "@modules/profile/client";
 import { registerRoute } from "@modules/register";
 
 export const clientRoutes = [
@@ -23,7 +23,7 @@ export const clientRoutes = [
   coursesRoutes,
   homeRoute,
   loginRoute,
-  clientProfileRoutes,
+  profileRoute,
   registerRoute,
   personalCourseRoute,
 ];

@@ -75,7 +75,7 @@ export const UserRow = ({ user, isRecentlyAffected }: UserRowProps) => {
         <div className="flex-center gap-3">
           <Tooltip content="Xem khóa học">
             <Navigation.components.ForwardWithParam
-              builderRouteKey={Navigation.admin.builderKeys.USER_COURSES}
+              builderRouteKey={Navigation.admin.builderKeys.USER_COURSE}
               param={user.taiKhoan}
             >
               <div className="rounded p-1.5 transition-colors duration-150 ease-in-out hover:bg-bg-brand/10 hover:text-text-brand">
@@ -85,7 +85,7 @@ export const UserRow = ({ user, isRecentlyAffected }: UserRowProps) => {
           </Tooltip>
           <Tooltip content="Chỉnh sửa người dùng">
             <Navigation.components.ForwardWithParam
-              builderRouteKey={Navigation.admin.builderKeys.USER_EDIT}
+              builderRouteKey={Navigation.admin.builderKeys.EDIT_USER}
               param={user.taiKhoan}
             >
               <div className="rounded p-1.5 transition-colors duration-150 ease-in-out hover:bg-bg-brand/10 hover:text-text-brand">

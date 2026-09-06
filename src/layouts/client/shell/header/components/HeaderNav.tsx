@@ -7,25 +7,29 @@ import { cn } from "@shared/utils";
 export const HeaderNav = () => {
   const currentUser = CurrentUserStorage.tryGet();
   const navLinks = [
-    { label: "Home", url: Navigation.client.urls.CLIENT_HOME, isVisible: true },
+    {
+      label: "Home",
+      url: Navigation.client.paths.CLIENT_HOME,
+      isVisible: true,
+    },
     {
       label: "Khóa học",
-      url: Navigation.client.urls.CLIENT_COURSES,
+      url: Navigation.client.paths.CLIENT_COURSES,
       isVisible: true,
     },
     {
       label: "Blogs",
-      url: Navigation.client.urls.CLIENT_BLOGS,
+      url: Navigation.client.paths.CLIENT_BLOGS,
       isVisible: true,
     },
     {
       label: "Giới thiệu",
-      url: Navigation.client.urls.CLIENT_ABOUT,
+      url: Navigation.client.paths.CLIENT_ABOUT,
       isVisible: !currentUser,
     },
     {
       label: "Khóa học của tôi",
-      url: Navigation.client.urls.CLIENT_PERSONAL_COURSE,
+      url: Navigation.client.paths.CLIENT_PERSONAL_COURSES,
       isVisible: !!currentUser,
     },
   ];
@@ -34,10 +38,10 @@ export const HeaderNav = () => {
     <nav className="hidden items-center gap-8 md:flex lg:gap-10">
       {navLinks
         .filter((link) => link.isVisible)
-        .map((link) => {
+        .map((link, index) => {
           return (
             <NavLink
-              key={link.url}
+              key={index}
               to={link.url}
               className={({ isActive }) =>
                 cn("nav-link", isActive && "nav-link-active")

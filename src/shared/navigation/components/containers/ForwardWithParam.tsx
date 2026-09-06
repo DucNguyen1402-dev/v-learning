@@ -26,9 +26,9 @@ export const ForwardWithParam = ({
 }: ForwardProps) => {
   const location = useLocation();
 
-  const routeHistory = getRouteHistory({ location }) ?? [];
+  const routeHistory = getRouteHistory({ location });
 
-  const { urlBuilder, currentBuilderRouteKey } = useMemo(
+  const { pathBuilder, currentBuilderRouteKey } = useMemo(
     () =>
       getNavigationAreaBuilderMeta({
         builderRouteKey: builderRouteKey,
@@ -39,7 +39,7 @@ export const ForwardWithParam = ({
 
   return (
     <Link
-      to={urlBuilder(param)}
+      to={pathBuilder(param)}
       state={{
         history: [...routeHistory, currentBuilderRouteKey],
         payload: payload ?? null,

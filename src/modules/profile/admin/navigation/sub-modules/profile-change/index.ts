@@ -1,0 +1,1 @@
+export { profileChangeRouteConfig } from "./config";
