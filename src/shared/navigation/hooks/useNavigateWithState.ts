@@ -11,10 +11,7 @@ export const useNavigateWithState = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const routeHistory = useMemo(
-    () => getRouteHistory({ location }) ?? [],
-    [location],
-  );
+  const routeHistory = useMemo(() => getRouteHistory({ location }), [location]);
   const previousRouteKey = routeHistory.at(-1) as PreviousRouteKey | undefined;
 
   const back = useCallback(() => {

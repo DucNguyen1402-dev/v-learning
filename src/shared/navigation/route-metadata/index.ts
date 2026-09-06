@@ -1,1 +1,0 @@
-export { RouteMetaData } from "./components";

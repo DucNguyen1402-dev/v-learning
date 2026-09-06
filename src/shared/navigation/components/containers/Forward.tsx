@@ -26,7 +26,7 @@ export const Forward = ({
 }: ForwardProps) => {
   const location = useLocation();
 
-  const routeHistory = getRouteHistory({ location }) ?? [];
+  const routeHistory = getRouteHistory({ location });
   const pathname = location.pathname;
 
   const { path, currentRouteKey } = useMemo(
