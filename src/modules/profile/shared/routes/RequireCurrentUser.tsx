@@ -1,18 +1,18 @@
 import { type ReactNode, useEffect } from "react";
 
 import { LoginNavigation } from "@modules/login";
-import { hasStoredCurrentUser } from "@shared/current-user";
+import { CurrentUser } from "@shared/current-user";
 import { Navigation } from "@shared/navigation";
 
 type RequireCurrentUserProps = {
   children: ReactNode;
 };
 export const RequireCurrentUser = ({ children }: RequireCurrentUserProps) => {
-  const storedCurrentUser = hasStoredCurrentUser();
+  const { hasCurrentUser } = CurrentUser.use();
   const { go } = Navigation.hooks.useNavigateWithState();
 
   useEffect(() => {
-    if (!storedCurrentUser) {
+    if (!hasCurrentUser) {
       go({
         routeKey: Navigation.client.keys.LOGIN,
         payload: {
@@ -20,9 +20,9 @@ export const RequireCurrentUser = ({ children }: RequireCurrentUserProps) => {
         },
       });
     }
-  }, [storedCurrentUser, go]);
+  }, [hasCurrentUser, go]);
 
-  if (!storedCurrentUser) {
+  if (!hasCurrentUser) {
     return null;
   }
 

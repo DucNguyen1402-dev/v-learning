@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 
-import { UserPreferences } from "@shared/current-user";
+import { CurrentUser } from "@shared/current-user";
 import { Navigation } from "@shared/navigation";
 import { Session } from "@shared/session";
 import {
@@ -11,7 +11,9 @@ import {
 } from "@shared/ui";
 
 export const LogoutButton = () => {
-  const { refreshPreferences } = UserPreferences.use();
+  const {
+    preferences: { refreshPreferences },
+  } = CurrentUser.use();
   const { go } = Navigation.hooks.useNavigateWithState();
 
   const onLogoutClick = useCallback(() => {

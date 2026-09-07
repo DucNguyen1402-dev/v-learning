@@ -1,10 +1,10 @@
-import { UserProfile } from "@shared/current-user";
+import { CurrentUser } from "@shared/current-user";
 export const UserAccount = () => {
-  const { profile } = UserProfile.use();
+  const { profile } = CurrentUser.use();
 
   return (
     <span className="hidden text-sm font-medium lg:block">
-      {profile.taiKhoan}
+      {profile.current.taiKhoan}
     </span>
   );
 };

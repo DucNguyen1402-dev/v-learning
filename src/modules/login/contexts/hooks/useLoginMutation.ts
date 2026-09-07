@@ -1,5 +1,5 @@
 import type { LoginData } from "@modules/login";
-import { UserPreferences } from "@shared/current-user";
+import { CurrentUser } from "@shared/current-user";
 import { Session } from "@shared/session";
 import { useMutation } from "@tanstack/react-query";
 
@@ -11,7 +11,7 @@ type LoginMutationVariables = {
 };
 
 export const useLoginMutation = () => {
-  const { refreshPreferences } = UserPreferences.use();
+  const { preferences } = CurrentUser.use();
   const mutation = useMutation({
     mutationFn: ({ payload }: LoginMutationVariables) => login(payload),
     onSuccess: (data, variable) => {
@@ -29,7 +29,7 @@ export const useLoginMutation = () => {
         remember: variable.remember,
       });
 
-      refreshPreferences();
+      preferences.refreshPreferences();
     },
   });
 

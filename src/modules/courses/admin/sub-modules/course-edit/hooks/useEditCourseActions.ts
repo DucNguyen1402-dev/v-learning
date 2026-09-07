@@ -17,7 +17,7 @@ import { getFileNameFromUrl } from "@shared/utils";
 import type { UseEditCourseFormReturn } from "./useEditCourseForm";
 import { useUpdateCourseMutation } from "./useUpdateCourseMutation";
 
-import { UserProfile } from "@/shared/current-user";
+import { CurrentUser } from "@/shared/current-user";
 
 type UseEditCourseActionsProps = {
   isDirty: boolean;
@@ -38,7 +38,7 @@ export function useEditCourseActions({
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setImgPreview(editCourse.hinhAnh);
   }, [editCourse.hinhAnh]);
-  const { profile } = UserProfile.use();
+  const { profile } = CurrentUser.use();
   const { go, back } = Navigation.hooks.useNavigateWithState();
   const { loader } = Loading.use();
   const toaster = Toast.use();
@@ -96,7 +96,7 @@ export function useEditCourseActions({
       : undefined;
 
     const submitNewCourseTask = () =>
-      mutateAsync({ ...payload, taiKhoanNguoiTao: profile.taiKhoan });
+      mutateAsync({ ...payload, taiKhoanNguoiTao: profile.current.taiKhoan });
 
     try {
       await execution.runAsyncTask(submitNewCourseTask, loader);

@@ -2,16 +2,16 @@ import { useForm } from "react-hook-form";
 
 import type { ProfileChangeFormValues } from "../types";
 
-import { UserProfile } from "@/shared/current-user";
+import { CurrentUser } from "@/shared/current-user";
 
 export const useProfileChangeForm = () => {
-  const { profile } = UserProfile.use();
+  const { profile } = CurrentUser.use();
   const { register, handleSubmit, formState, getFieldState } =
     useForm<ProfileChangeFormValues>({
       defaultValues: {
-        hoTen: profile.hoTen,
-        email: profile.email,
-        soDT: profile.soDT,
+        hoTen: profile.current.hoTen,
+        email: profile.current.email,
+        soDT: profile.current.soDT,
       },
       mode: "onChange",
     });

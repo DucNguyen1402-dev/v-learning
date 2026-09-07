@@ -1,13 +1,13 @@
 import { Field, Input } from "@shared/fields";
 
-import { UserProfile } from "@/shared/current-user";
+import { CurrentUser } from "@/shared/current-user";
 export const UserPaymentInfo = () => {
-  const { profile } = UserProfile.use();
+  const { profile } = CurrentUser.use();
 
   const useFieldInfo = [
-    { label: "Họ và tên", value: profile.hoTen, id: "hoTen" },
-    { label: "Email nhận khóa học", value: profile.email, id: "email" },
-    { label: "Số điện thoại", value: profile.soDT, id: "soDT" },
+    { label: "Họ và tên", value: profile.current.hoTen, id: "hoTen" },
+    { label: "Email nhận khóa học", value: profile.current.email, id: "email" },
+    { label: "Số điện thoại", value: profile.current.soDT, id: "soDT" },
   ];
 
   const isMobile = window.innerWidth < 768;

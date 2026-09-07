@@ -1,11 +1,11 @@
 import { NavLink } from "react-router-dom";
 
-import { hasStoredCurrentUser } from "@shared/current-user";
+import { CurrentUser } from "@shared/current-user";
 import { Navigation } from "@shared/navigation";
 import { cn } from "@shared/utils";
 
 export const HeaderNav = () => {
-  const currentUser = hasStoredCurrentUser();
+  const { hasCurrentUser } = CurrentUser.use();
   const navLinks = [
     {
       label: "Home",
@@ -25,12 +25,12 @@ export const HeaderNav = () => {
     {
       label: "Giới thiệu",
       url: Navigation.client.paths.CLIENT_ABOUT,
-      isVisible: !currentUser,
+      isVisible: !hasCurrentUser,
     },
     {
       label: "Khóa học của tôi",
       url: Navigation.client.paths.CLIENT_PERSONAL_COURSES,
-      isVisible: !!currentUser,
+      isVisible: hasCurrentUser,
     },
   ];
 

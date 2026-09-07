@@ -1,7 +1,7 @@
 import { useCallback, useMemo } from "react";
 import { useLocation } from "react-router-dom";
 
-import { UserPreferences } from "@shared/current-user";
+import { CurrentUser } from "@shared/current-user";
 import { Navigation } from "@shared/navigation";
 import { Session } from "@shared/session";
 import { Button, BUTTON_LAYOUTS, BUTTON_SIZES } from "@shared/ui";
@@ -10,7 +10,9 @@ import { LogOut, User as UserIcon } from "lucide-react";
 
 export const ProfileDropdown = () => {
   const { pathname } = useLocation();
-  const { theme, refreshPreferences } = UserPreferences.use();
+  const {
+    preferences: { theme, refreshPreferences },
+  } = CurrentUser.use();
   const { go } = Navigation.hooks.useNavigateWithState();
 
   const currentArea = Navigation.hooks.useCurrentArea();

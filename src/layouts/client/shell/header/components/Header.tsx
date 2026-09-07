@@ -1,17 +1,19 @@
 import { useLocation } from "react-router-dom";
 
 import { ProfileDropdown, UserAvatar } from "@layouts/shared/components";
-import { hasStoredCurrentUser } from "@shared/current-user";
-import { UserProfile } from "@shared/current-user";
+import { CurrentUser } from "@shared/current-user";
 import { Navigation } from "@shared/navigation";
 
 import { isRouteHideLoginButton, isRouteShowLogoutButton } from "../ui";
-import { HeaderLogo, HeaderNav, LoginButton, ThemeModeButton } from ".";
+import { HeaderLogo } from "./HeaderLogo";
+import { HeaderNav } from "./HeaderNav";
+import { LoginButton } from "./LoginButton";
 import { LogoutButton } from "./LogoutButton";
+import { ThemeModeButton } from "./ThemeModeButton";
 import { UserAccount } from "./UserAccount";
 
 export const Header = () => {
-  const currentUser = hasStoredCurrentUser();
+  const { hasCurrentUser } = CurrentUser.use();
   const { pathname } = useLocation();
   const routeKey = Navigation.client.findKey(pathname);
   const shouldHideLoginButton = routeKey && isRouteHideLoginButton(routeKey);
@@ -25,15 +27,14 @@ export const Header = () => {
         <HeaderNav />
 
         <div className="flex items-center gap-4">
-          {currentUser ? (
+          {hasCurrentUser ? (
             <div className="group relative flex items-center gap-3 p-2 lg:gap-2.5">
               <div className="lg:hidden">
                 <ThemeModeButton />
               </div>
               {shouldShowLogoutButton ? <LogoutButton /> : <UserAvatar />}
-              <UserProfile.Provider>
-                <UserAccount />
-              </UserProfile.Provider>
+
+              <UserAccount />
 
               <div className="dropdown-container dropdown-position-down hidden lg:block">
                 <ProfileDropdown />
