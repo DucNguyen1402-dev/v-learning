@@ -1,1 +1,0 @@
-export { useUserCourseInfo } from "./useUserCourseInfo";

@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 
-import { themeAssets } from "./config";
-import type { ThemeValue } from "./types";
+import { themeAssets, type ThemeValue } from "@shared/theme";
+
 import { getCurrentUserTheme, updateCurrentUserTheme } from "./utils";
 
 export const useTheme = () => {

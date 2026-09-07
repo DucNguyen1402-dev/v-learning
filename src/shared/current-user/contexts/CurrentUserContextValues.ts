@@ -1,10 +1,12 @@
 import type {
   ProfileReturnType,
   UseAvatarReturnType,
+  UseEnrolledCourseResult,
   UseThemeReturnType,
 } from "./internal";
 
 export type CurrentUserContextValues = {
+  isAdmin: boolean;
   hasCurrentUser: boolean;
   preferences: {
     avatar: UseAvatarReturnType;
@@ -12,4 +14,5 @@ export type CurrentUserContextValues = {
     refreshPreferences: () => void;
   };
   profile: ProfileReturnType;
+  enrolledCourse: UseEnrolledCourseResult;
 };

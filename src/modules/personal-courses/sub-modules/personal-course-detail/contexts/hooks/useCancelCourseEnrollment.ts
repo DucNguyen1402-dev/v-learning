@@ -1,11 +1,11 @@
 import { useState } from "react";
 
 import { useCancelPersonalCourseMutation } from "@modules/courses/shared/hooks";
+import { CurrentUser } from "@shared/current-user";
 import { getErrorMessage } from "@shared/error";
 import { execution } from "@shared/execution";
 import { Navigation } from "@shared/navigation";
 import { Loading, Toast } from "@shared/overlays";
-import { CurrentUserStorage } from "@shared/storage";
 
 export const useCancelCourseEnrollment = ({
   maKhoaHoc,
@@ -18,14 +18,14 @@ export const useCancelCourseEnrollment = ({
   const [isCancelPersonalCourseLoading, setIsCancelPersonalCourseLoading] =
     useState(false);
   const { go } = Navigation.hooks.useNavigateWithState();
-  const currentUser = CurrentUserStorage.get();
+  const { profile } = CurrentUser.use();
   const toast = Toast.use();
   const { loader } = Loading.use();
   const handleCancelCourse = async () => {
     setIsCancelPersonalCourseLoading(true);
     const payload = {
       maKhoaHoc,
-      taiKhoan: currentUser.taiKhoan,
+      taiKhoan: profile.current.taiKhoan,
     };
     try {
       const cancelTask = () => cancelPersonalCourseMutation(payload);

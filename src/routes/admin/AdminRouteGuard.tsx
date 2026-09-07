@@ -1,18 +1,18 @@
 import { useEffect } from "react";
 
+import { CurrentUser } from "@shared/current-user";
 import { Navigation } from "@shared/navigation";
-import { CurrentUserStorage } from "@shared/storage";
 
 type AdminRouteGuardProps = {
   children: React.ReactNode;
 };
 export const AdminRouteGuard = ({ children }: AdminRouteGuardProps) => {
   const { go } = Navigation.hooks.useNavigateWithState();
-  const hasCurrentUser = CurrentUserStorage.tryGet();
+  const { hasCurrentUser } = CurrentUser.use();
   const targetRouteKey = hasCurrentUser
     ? Navigation.client.keys.HOME
     : Navigation.client.keys.LOGIN;
-  const isAdmin = CurrentUserStorage.isAdmin();
+  const { isAdmin } = CurrentUser.use();
 
   useEffect(() => {
     if (!isAdmin) {
