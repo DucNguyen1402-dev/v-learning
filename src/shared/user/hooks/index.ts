@@ -1,1 +1,0 @@
-export { useCurrentUserQuery } from "./useCurrentUserQuery";

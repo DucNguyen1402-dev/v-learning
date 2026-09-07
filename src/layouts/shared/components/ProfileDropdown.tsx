@@ -1,9 +1,9 @@
 import { useCallback, useMemo } from "react";
 import { useLocation } from "react-router-dom";
 
-import { AuthSession } from "@shared/auth";
 import { UserPreferences } from "@shared/current-user";
 import { Navigation } from "@shared/navigation";
+import { Session } from "@shared/session";
 import { Button, BUTTON_LAYOUTS, BUTTON_SIZES } from "@shared/ui";
 import { cn } from "@shared/utils";
 import { LogOut, User as UserIcon } from "lucide-react";
@@ -16,7 +16,7 @@ export const ProfileDropdown = () => {
   const currentArea = Navigation.hooks.useCurrentArea();
 
   const onLogoutClick = useCallback(() => {
-    AuthSession.logout();
+    Session.logout();
     refreshPreferences();
     go({
       routeKey: Navigation.client.keys.LOGIN,

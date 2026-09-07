@@ -1,14 +1,10 @@
 import type { ReactNode } from "react";
 
-import { RequireCurrentUser } from "./RequireCurrentUser";
-
 import { UserProfile } from "@/shared/current-user";
 
 type ProfileProviderProp = {
   children: ReactNode;
 };
 export const ProfileProvider = ({ children }: ProfileProviderProp) => (
-  <RequireCurrentUser>
-    <UserProfile.Provider>{children}</UserProfile.Provider>
-  </RequireCurrentUser>
+  <UserProfile.Provider>{children}</UserProfile.Provider>
 );

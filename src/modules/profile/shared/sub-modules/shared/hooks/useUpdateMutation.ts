@@ -1,5 +1,5 @@
-import { CurrentUserStorage } from "@shared/auth";
 import { UserPreferences, UserProfile } from "@shared/current-user";
+import { CurrentUserStorage } from "@shared/storage";
 import { useMutation } from "@tanstack/react-query";
 import { useQueryClient } from "@tanstack/react-query";
 

@@ -1,4 +1,4 @@
-import { CurrentUserStorage } from "@shared/auth";
+import { CurrentUserStorage } from "@shared/storage";
 
 import type { Avatar } from "../types";
 

@@ -1,11 +1,11 @@
 import { NavLink } from "react-router-dom";
 
-import { CurrentUserStorage } from "@shared/auth";
+import { hasStoredCurrentUser } from "@shared/current-user";
 import { Navigation } from "@shared/navigation";
 import { cn } from "@shared/utils";
 
 export const HeaderNav = () => {
-  const currentUser = CurrentUserStorage.tryGet();
+  const currentUser = hasStoredCurrentUser();
   const navLinks = [
     {
       label: "Home",

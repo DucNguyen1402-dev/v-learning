@@ -1,12 +1,12 @@
 import { useState } from "react";
 
 import { useRegisterMutation } from "@modules/courses/shared/hooks";
-import { CurrentUserStorage } from "@shared/auth";
 import { ENTITIES } from "@shared/domain";
 import { getErrorMessage } from "@shared/error";
 import { execution } from "@shared/execution";
 import { Navigation } from "@shared/navigation";
 import { Toast } from "@shared/overlays";
+import { CurrentUserStorage } from "@shared/storage";
 
 export const useCourseRegister = ({ maKhoaHoc }: { maKhoaHoc: string }) => {
   const { mutateAsync: registerCourse } = useRegisterMutation();

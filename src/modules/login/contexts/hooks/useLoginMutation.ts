@@ -1,6 +1,6 @@
 import type { LoginData } from "@modules/login";
-import { AccessTokenStorage, CurrentUserStorage } from "@shared/auth";
 import { UserPreferences } from "@shared/current-user";
+import { Session } from "@shared/session";
 import { useMutation } from "@tanstack/react-query";
 
 import { login } from "./api";
@@ -22,8 +22,13 @@ export const useLoginMutation = () => {
         soDT: data.soDT,
         maLoaiNguoiDung: data.maLoaiNguoiDung,
       };
-      AccessTokenStorage.save(data.accessToken, variable.remember);
-      CurrentUserStorage.save(user, variable.remember);
+
+      Session.save({
+        currentUser: user,
+        accessToken: data.accessToken,
+        remember: variable.remember,
+      });
+
       refreshPreferences();
     },
   });

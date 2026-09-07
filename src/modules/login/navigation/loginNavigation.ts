@@ -4,4 +4,9 @@ export const LoginNavigation = {
       loginRequired: true,
     };
   },
+  registrationSuccess() {
+    return {
+      isRegistrationSuccessful: true,
+    };
+  },
 };

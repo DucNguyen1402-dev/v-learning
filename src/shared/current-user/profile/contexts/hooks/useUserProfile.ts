@@ -1,15 +1,27 @@
 import { useState } from "react";
 
+import { CurrentUserStorage } from "@shared/storage";
+
 import type { UserProfile } from "./types";
-import { getUserProfile } from "./utils";
 
 export const useUserProfile = () => {
-  const currentProfile = getUserProfile();
-  const [profile, setProfile] = useState<UserProfile>(currentProfile);
+  const currentUser = CurrentUserStorage.get();
+
+  const [profile, setProfile] = useState<UserProfile>({
+    hoTen: currentUser.hoTen,
+    email: currentUser.email,
+    soDT: currentUser.soDT,
+    taiKhoan: currentUser.taiKhoan,
+  });
 
   const refreshProfile = () => {
-    const currentProfile = getUserProfile();
-    setProfile(currentProfile);
+    const currentUser = CurrentUserStorage.get();
+    setProfile({
+      hoTen: currentUser.hoTen,
+      email: currentUser.email,
+      soDT: currentUser.soDT,
+      taiKhoan: currentUser.taiKhoan,
+    });
   };
 
   return {

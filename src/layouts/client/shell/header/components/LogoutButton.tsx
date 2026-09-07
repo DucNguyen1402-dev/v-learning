@@ -1,8 +1,8 @@
 import { useCallback } from "react";
 
-import { AuthSession } from "@shared/auth";
 import { UserPreferences } from "@shared/current-user";
 import { Navigation } from "@shared/navigation";
+import { Session } from "@shared/session";
 import {
   Button,
   BUTTON_APPEARANCES,
@@ -15,7 +15,7 @@ export const LogoutButton = () => {
   const { go } = Navigation.hooks.useNavigateWithState();
 
   const onLogoutClick = useCallback(() => {
-    AuthSession.logout();
+    Session.logout();
     refreshPreferences();
     go({ routeKey: Navigation.client.keys.HOME });
   }, [go, refreshPreferences]);

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import type { UseFormHandleSubmit } from "react-hook-form";
 
+import { LoginNavigation } from "@modules/login";
 import { REGISTER_FIELD_NAME_VALUES } from "@modules/register/constants";
 import type { RegisterData } from "@modules/register/types";
 import { ENTITIES } from "@shared/domain";
@@ -33,7 +34,7 @@ export const useRegisterActions = ({
         routeKey: Navigation.client.keys.LOGIN,
         payload: {
           toastState: Toast.config.success.register(ENTITIES.ACCOUNT),
-          isRegistrationSuccessful: true,
+          ...LoginNavigation.registrationSuccess(),
         },
       });
     } catch (error) {

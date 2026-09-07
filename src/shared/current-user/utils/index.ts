@@ -1,0 +1,1 @@
+export { hasStoredCurrentUser } from "./hasStoredCurrentUser";

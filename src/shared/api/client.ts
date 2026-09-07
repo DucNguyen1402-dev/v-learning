@@ -1,4 +1,4 @@
-import { AccessTokenStorage } from "@shared/auth";
+import { AccessTokenStorage } from "@shared/storage";
 import axios from "axios";
 
 export const api = axios.create({

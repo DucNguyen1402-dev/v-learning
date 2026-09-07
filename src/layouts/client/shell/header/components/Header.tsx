@@ -1,15 +1,17 @@
 import { useLocation } from "react-router-dom";
 
 import { ProfileDropdown, UserAvatar } from "@layouts/shared/components";
-import { CurrentUserStorage } from "@shared/auth";
+import { hasStoredCurrentUser } from "@shared/current-user";
+import { UserProfile } from "@shared/current-user";
 import { Navigation } from "@shared/navigation";
 
 import { isRouteHideLoginButton, isRouteShowLogoutButton } from "../ui";
 import { HeaderLogo, HeaderNav, LoginButton, ThemeModeButton } from ".";
 import { LogoutButton } from "./LogoutButton";
+import { UserAccount } from "./UserAccount";
 
 export const Header = () => {
-  const currentUser = CurrentUserStorage.tryGet();
+  const currentUser = hasStoredCurrentUser();
   const { pathname } = useLocation();
   const routeKey = Navigation.client.findKey(pathname);
   const shouldHideLoginButton = routeKey && isRouteHideLoginButton(routeKey);
@@ -29,9 +31,10 @@ export const Header = () => {
                 <ThemeModeButton />
               </div>
               {shouldShowLogoutButton ? <LogoutButton /> : <UserAvatar />}
-              <span className="hidden text-sm font-medium lg:block">
-                {currentUser?.taiKhoan}
-              </span>
+              <UserProfile.Provider>
+                <UserAccount />
+              </UserProfile.Provider>
+
               <div className="dropdown-container dropdown-position-down hidden lg:block">
                 <ProfileDropdown />
               </div>

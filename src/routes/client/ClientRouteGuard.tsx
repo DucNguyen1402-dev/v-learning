@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
-import { CurrentUserStorage } from "@shared/auth";
 import { Navigation } from "@shared/navigation";
+import { CurrentUserStorage } from "@shared/storage";
 
 type ClientRouteGuardProps = {
   children: React.ReactNode;

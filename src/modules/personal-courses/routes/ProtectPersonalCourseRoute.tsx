@@ -1,8 +1,8 @@
 import { type ReactNode, useEffect } from "react";
 
 import { LoginNavigation } from "@modules/login";
-import { AccessTokenStorage } from "@shared/auth";
 import { Navigation } from "@shared/navigation";
+import { AccessTokenStorage } from "@shared/storage";
 
 type ProtectPersonalCourseRouteProps = {
   children: ReactNode;

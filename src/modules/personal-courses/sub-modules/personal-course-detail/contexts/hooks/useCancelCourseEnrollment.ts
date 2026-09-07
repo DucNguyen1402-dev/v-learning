@@ -1,11 +1,11 @@
 import { useState } from "react";
 
 import { useCancelPersonalCourseMutation } from "@modules/courses/shared/hooks";
-import { CurrentUserStorage } from "@shared/auth";
 import { getErrorMessage } from "@shared/error";
 import { execution } from "@shared/execution";
 import { Navigation } from "@shared/navigation";
 import { Loading, Toast } from "@shared/overlays";
+import { CurrentUserStorage } from "@shared/storage";
 
 export const useCancelCourseEnrollment = ({
   maKhoaHoc,
