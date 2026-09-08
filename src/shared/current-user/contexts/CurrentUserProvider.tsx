@@ -1,13 +1,7 @@
-import { CurrentUserStorage } from "@shared/storage";
+import { CurrentUser } from "@shared/current-user";
 
 import { CurrentUserContext } from "./CurrentUserContext";
-import {
-  isAdmin,
-  useAvatar,
-  useEnrolledCourse,
-  useProfile,
-  useTheme,
-} from "./internal";
+import { useAvatar, useEnrolledCourse, useProfile, useTheme } from "./internal";
 
 type CurrentUserProviderProps = {
   children: React.ReactNode;
@@ -18,17 +12,22 @@ export const CurrentUserProvider = ({ children }: CurrentUserProviderProps) => {
   const theme = useTheme();
   const enrolledCourse = useEnrolledCourse();
 
-  const hasCurrentUser = CurrentUserStorage.hasStored();
+  const hasCurrentUser = CurrentUser.utils.hasStored();
 
   const refreshPreferences = () => {
     avatar.refresh();
     theme.refresh();
   };
+
+  const refreshCurrentUser = () => {
+    profile.refresh();
+    refreshPreferences();
+  };
   return (
     <CurrentUserContext.Provider
       value={{
-        isAdmin: isAdmin(),
         hasCurrentUser,
+        refreshCurrentUser,
         profile,
         preferences: {
           avatar,

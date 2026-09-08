@@ -1,5 +1,5 @@
-import { BackdropContainer } from "@shared/overlays/backdrop";
-import { useLockBodyScroll } from "@shared/overlays/hooks";
+import { BackdropContainer } from "@shared/overlays/shared/components";
+import { useLockBodyScroll } from "@shared/overlays/shared/hooks";
 import { AnimatePresence, motion } from "motion/react";
 
 import { ContainerSpinner } from "../components";

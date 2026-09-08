@@ -1,6 +1,6 @@
 import { type ReactNode, useEffect } from "react";
 
-import { LoginNavigation } from "@modules/login/navigation";
+import { LoginNavigationPayload } from "@modules/login/navigation";
 import { Navigation } from "@shared/navigation";
 import { AccessTokenStorage } from "@shared/storage";
 
@@ -18,7 +18,7 @@ export const CoursePaymentRouteGuard = ({
     if (!isLogin) {
       go({
         routeKey: Navigation.client.keys.LOGIN,
-        payload: LoginNavigation.required(),
+        payload: LoginNavigationPayload.required(),
       });
     }
   }, [go, isLogin]);

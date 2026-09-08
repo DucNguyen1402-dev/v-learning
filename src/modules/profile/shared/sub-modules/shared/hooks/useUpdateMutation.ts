@@ -6,10 +6,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import { updateUser } from "./api";
 
 export const useUpdateMutation = () => {
-  const {
-    preferences: { refreshPreferences },
-  } = CurrentUser.use();
-  const { profile } = CurrentUser.use();
+  const { refreshCurrentUser } = CurrentUser.use();
   const queryClient = useQueryClient();
 
   const mutation = useMutation({
@@ -19,8 +16,7 @@ export const useUpdateMutation = () => {
       CurrentUserStorage.update({ ...rest, soDT: soDt });
 
       queryClient.invalidateQueries({ queryKey: ["currentUser"] });
-      refreshPreferences();
-      profile.refresh();
+      refreshCurrentUser();
     },
   });
   return {

@@ -1,8 +1,8 @@
-import { ContainerLoading } from "@shared/overlays";
+import { Loading } from "@shared/overlays";
 export const CourseAccessChecking = () => {
   return (
     <div className="min-h-screen">
-      <ContainerLoading isVisible={true} />
+      <Loading.components.ContainerLoading isVisible={true} />
     </div>
   );
 };

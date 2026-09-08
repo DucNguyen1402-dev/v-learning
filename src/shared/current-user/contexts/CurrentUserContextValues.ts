@@ -6,7 +6,6 @@ import type {
 } from "./internal";
 
 export type CurrentUserContextValues = {
-  isAdmin: boolean;
   hasCurrentUser: boolean;
   preferences: {
     avatar: UseAvatarReturnType;
@@ -15,4 +14,5 @@ export type CurrentUserContextValues = {
   };
   profile: ProfileReturnType;
   enrolledCourse: UseEnrolledCourseResult;
+  refreshCurrentUser: () => void;
 };

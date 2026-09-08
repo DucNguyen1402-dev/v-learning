@@ -1,4 +1,4 @@
-import { Backdrop, useLockBodyScroll } from "@shared/overlays";
+import { useLockBodyScroll } from "@shared/overlays/shared/hooks";
 import { AnimatePresence, motion } from "motion/react";
 
 import { CancelEnrollmentModal } from "./CancelEnrollmentModal";
@@ -13,7 +13,7 @@ export const CancelEnrollmentModalRender = ({
   return (
     <AnimatePresence>
       {isOpen && (
-        <Backdrop>
+        <div className="fixed inset-0 z-overlay flex-center bg-bg-overlay backdrop-blur-[2px] transition-opacity duration-200">
           <motion.div
             initial={{ scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
@@ -22,7 +22,7 @@ export const CancelEnrollmentModalRender = ({
           >
             <CancelEnrollmentModal />
           </motion.div>
-        </Backdrop>
+        </div>
       )}
     </AnimatePresence>
   );

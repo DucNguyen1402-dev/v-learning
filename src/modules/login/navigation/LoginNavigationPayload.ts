@@ -1,4 +1,4 @@
-export const LoginNavigation = {
+export const LoginNavigationPayload = {
   required() {
     return {
       loginRequired: true,
@@ -7,6 +7,11 @@ export const LoginNavigation = {
   registrationSuccess() {
     return {
       isRegistrationSuccessful: true,
+    };
+  },
+  adminAuthRequired() {
+    return {
+      adminAuthRequired: true,
     };
   },
 };

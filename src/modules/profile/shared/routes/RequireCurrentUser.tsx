@@ -1,6 +1,6 @@
 import { type ReactNode, useEffect } from "react";
 
-import { LoginNavigation } from "@modules/login/navigation";
+import { LoginNavigationPayload } from "@modules/login/navigation";
 import { CurrentUser } from "@shared/current-user";
 import { Navigation } from "@shared/navigation";
 
@@ -15,9 +15,7 @@ export const RequireCurrentUser = ({ children }: RequireCurrentUserProps) => {
     if (!hasCurrentUser) {
       go({
         routeKey: Navigation.client.keys.LOGIN,
-        payload: {
-          ...LoginNavigation.required(),
-        },
+        payload: LoginNavigationPayload.required(),
       });
     }
   }, [hasCurrentUser, go]);

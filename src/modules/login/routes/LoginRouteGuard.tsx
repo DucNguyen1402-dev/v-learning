@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
 
 import { CurrentUser } from "@shared/current-user";
 import { Navigation } from "@shared/navigation";
@@ -9,25 +8,20 @@ type LoginRouteGuardProps = {
 };
 export const LoginRouteGuard = ({ children }: LoginRouteGuardProps) => {
   const { go } = Navigation.hooks.useNavigateWithState();
-  const { hasCurrentUser, isAdmin } = CurrentUser.use();
-  const { pathname } = useLocation();
-  const isLoginRouteActive = Navigation.utils.isRouteActive(
-    pathname,
-    Navigation.client.keys.LOGIN,
-  );
+  const hasCurrentUser = CurrentUser.utils.hasStored();
+  const isAdmin = CurrentUser.utils.isAdmin();
 
-  const routeKey = isAdmin
+  const targetRouteKey = isAdmin
     ? Navigation.admin.keys.COURSES
     : Navigation.client.keys.HOME;
   useEffect(() => {
-    if (hasCurrentUser && !isLoginRouteActive) {
-      go({
-        routeKey,
-      });
-    }
-  }, [go, hasCurrentUser, isLoginRouteActive, routeKey]);
+    if (!hasCurrentUser) return;
+    go({
+      routeKey: targetRouteKey,
+    });
+  }, [go, hasCurrentUser, targetRouteKey]);
 
-  if (hasCurrentUser && !isLoginRouteActive) {
+  if (hasCurrentUser) {
     return null;
   }
   return children;

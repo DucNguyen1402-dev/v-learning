@@ -13,7 +13,7 @@ import { ThemeModeButton } from "./ThemeModeButton";
 import { UserAccount } from "./UserAccount";
 
 export const Header = () => {
-  const { hasCurrentUser } = CurrentUser.use();
+  const hasCurrentUser = CurrentUser.utils.hasStored();
   const { pathname } = useLocation();
   const routeKey = Navigation.client.findKey(pathname);
   const shouldHideLoginButton = routeKey && isRouteHideLoginButton(routeKey);

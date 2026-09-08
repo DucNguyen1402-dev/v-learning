@@ -6,7 +6,7 @@ import { Toast } from "./toast";
 export const GlobalUI = () => {
   return (
     <>
-      <Loading.Component />
+      <Loading.components.DualRingLoadingRender />
       <Modal.Component />
       <AppInteractionLock.Component />
       <Toast.Component />

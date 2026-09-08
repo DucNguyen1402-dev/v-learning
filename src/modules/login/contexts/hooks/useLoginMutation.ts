@@ -11,7 +11,7 @@ type LoginMutationVariables = {
 };
 
 export const useLoginMutation = () => {
-  const { preferences } = CurrentUser.use();
+  const { refreshCurrentUser } = CurrentUser.use();
   const mutation = useMutation({
     mutationFn: ({ payload }: LoginMutationVariables) => login(payload),
     onSuccess: (data, variable) => {
@@ -29,7 +29,7 @@ export const useLoginMutation = () => {
         remember: variable.remember,
       });
 
-      preferences.refreshPreferences();
+      refreshCurrentUser();
     },
   });
 

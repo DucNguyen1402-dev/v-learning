@@ -11,7 +11,8 @@ import { LogOut, User as UserIcon } from "lucide-react";
 export const ProfileDropdown = () => {
   const { pathname } = useLocation();
   const {
-    preferences: { theme, refreshPreferences },
+    refreshCurrentUser,
+    preferences: { theme },
   } = CurrentUser.use();
   const { go } = Navigation.hooks.useNavigateWithState();
 
@@ -19,11 +20,11 @@ export const ProfileDropdown = () => {
 
   const onLogoutClick = useCallback(() => {
     Session.logout();
-    refreshPreferences();
+    refreshCurrentUser();
     go({
       routeKey: Navigation.client.keys.LOGIN,
     });
-  }, [go, refreshPreferences]);
+  }, [go, refreshCurrentUser]);
 
   const menuItems = useMemo(() => {
     return [

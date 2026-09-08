@@ -11,16 +11,14 @@ import {
 } from "@shared/ui";
 
 export const LogoutButton = () => {
-  const {
-    preferences: { refreshPreferences },
-  } = CurrentUser.use();
+  const { refreshCurrentUser } = CurrentUser.use();
   const { go } = Navigation.hooks.useNavigateWithState();
 
   const onLogoutClick = useCallback(() => {
     Session.logout();
-    refreshPreferences();
+    refreshCurrentUser();
     go({ routeKey: Navigation.client.keys.HOME });
-  }, [go, refreshPreferences]);
+  }, [go, refreshCurrentUser]);
 
   return (
     <Button

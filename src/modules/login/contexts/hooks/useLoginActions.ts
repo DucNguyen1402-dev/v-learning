@@ -3,11 +3,11 @@ import type { SubmitHandler, UseFormHandleSubmit } from "react-hook-form";
 
 import { LoginFieldNamesValues } from "@modules/login/constants";
 import type { LoginData } from "@modules/login/types";
+import { CurrentUser } from "@shared/current-user";
 import { getErrorMessage } from "@shared/error";
 import { execution } from "@shared/execution";
 import { Navigation } from "@shared/navigation";
 import { Toast } from "@shared/overlays";
-import { CurrentUserStorage } from "@shared/storage";
 import { createPayload } from "@shared/utils";
 
 import { useLoginMutation } from "./useLoginMutation";
@@ -34,7 +34,7 @@ export const useLoginActions = ({
 
     try {
       await execution.runAsyncTask(loginTask);
-      const isAdmin = CurrentUserStorage.isAdmin();
+      const isAdmin = CurrentUser.utils.isAdmin();
       const routeKey = isAdmin
         ? Navigation.admin.keys.COURSES
         : Navigation.client.keys.HOME;
