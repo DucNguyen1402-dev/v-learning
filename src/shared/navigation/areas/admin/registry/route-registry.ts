@@ -18,13 +18,6 @@ export const ADMIN_ROUTE_KEYS = {
   ...addUserRouteConfig.key,
 } as const;
 
-export type AdminRouteKey =
-  (typeof ADMIN_ROUTE_KEYS)[keyof typeof ADMIN_ROUTE_KEYS];
-
-export const adminRouteKeys = Object.values(
-  ADMIN_ROUTE_KEYS,
-) as AdminRouteKey[];
-
 export const ADMIN_ROUTE_TITLES = {
   ...coursesRouteConfig.title,
   ...addCourseRouteConfig.title,

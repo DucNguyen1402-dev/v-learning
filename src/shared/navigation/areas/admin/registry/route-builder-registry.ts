@@ -17,13 +17,6 @@ export const ADMIN_ROUTE_BUILDER_KEYS = {
   ...userCourseRouteConfig.builderKey,
 } as const;
 
-export type AdminRouteBuilderKey =
-  (typeof ADMIN_ROUTE_BUILDER_KEYS)[keyof typeof ADMIN_ROUTE_BUILDER_KEYS];
-
-export const adminRouteBuilderKeys = Object.values(
-  ADMIN_ROUTE_BUILDER_KEYS,
-) as AdminRouteBuilderKey[];
-
 export const ADMIN_ROUTE_BUILDER_TITLES = {
   ...editCourseBuilderRouteConfig.title,
   ...courseEnrollmentRouteConfig.title,

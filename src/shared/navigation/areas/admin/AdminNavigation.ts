@@ -5,7 +5,7 @@ import {
   ADMIN_ROUTE_KEYS,
   ADMIN_ROUTE_PATHS,
   ADMIN_ROUTE_TITLES,
-} from "./constant";
+} from "./registry";
 import { findRouteKey, isRouteActive } from "./utils";
 export const AdminNavigation = {
   keys: ADMIN_ROUTE_KEYS,

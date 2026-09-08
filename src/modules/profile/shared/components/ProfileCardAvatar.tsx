@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import { AvatarSelect } from "@shared/avatar";
 import { CurrentUser } from "@shared/current-user";
-import { AppInteractionLock } from "@shared/overlays";
+import { AppLock } from "@shared/overlays";
 import { Button, BUTTON_SIZES } from "@shared/ui";
 import { Pencil } from "lucide-react";
 
@@ -15,11 +15,13 @@ export const ProfileCardAvatar = () => {
   const [isAvatarSelectOpen, setIsAvatarSelectOpen] = useState(false);
 
   const onCloseAvatarSelect = () => setIsAvatarSelectOpen(false);
-  const { shouldLockInteraction } = AppInteractionLock.use();
+  const {
+    bodyScrollLock: { shouldLockBodyScroll },
+  } = AppLock.use();
 
   useEffect(() => {
-    shouldLockInteraction(isAvatarSelectOpen);
-  }, [isAvatarSelectOpen, shouldLockInteraction]);
+    shouldLockBodyScroll(isAvatarSelectOpen);
+  }, [isAvatarSelectOpen, shouldLockBodyScroll]);
 
   const { type, value } = avatar.current;
   const renderAvatar =

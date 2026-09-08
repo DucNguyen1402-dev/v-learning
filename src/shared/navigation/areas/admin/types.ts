@@ -1,4 +1,4 @@
-import { ADMIN_ROUTE_BUILDER_KEYS, ADMIN_ROUTE_KEYS } from "./constant";
+import { ADMIN_ROUTE_BUILDER_KEYS, ADMIN_ROUTE_KEYS } from "./registry";
 
 export type AdminRouteKey =
   (typeof ADMIN_ROUTE_KEYS)[keyof typeof ADMIN_ROUTE_KEYS];

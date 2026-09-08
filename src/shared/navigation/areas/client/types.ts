@@ -1,4 +1,4 @@
-import { CLIENT_ROUTE_BUILDER_KEYS, CLIENT_ROUTE_KEYS } from "./constant";
+import { CLIENT_ROUTE_BUILDER_KEYS, CLIENT_ROUTE_KEYS } from "./registry";
 
 export type ClientRouteKey =
   (typeof CLIENT_ROUTE_KEYS)[keyof typeof CLIENT_ROUTE_KEYS];

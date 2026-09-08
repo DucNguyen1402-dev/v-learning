@@ -1,3 +1,4 @@
 export { AdminNavigation } from "./AdminNavigation";
-export * from "./constant";
+export * from "./registry";
+export * from "./types";
 export { isAdminRouteBuilderKey, isAdminRouteKey } from "./utils";

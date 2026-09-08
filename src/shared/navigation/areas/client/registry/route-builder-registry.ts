@@ -16,13 +16,6 @@ export const CLIENT_ROUTE_BUILDER_KEYS = {
   ...coursesPlayerRouteConfig.builderKey,
 } as const;
 
-export type ClientRouteBuilderKey =
-  (typeof CLIENT_ROUTE_BUILDER_KEYS)[keyof typeof CLIENT_ROUTE_BUILDER_KEYS];
-
-export const clientRouteBuilderKeys = Object.values(
-  CLIENT_ROUTE_BUILDER_KEYS,
-) as ClientRouteBuilderKey[];
-
 export const CLIENT_ROUTE_BUILDER_TITLES = {
   ...coursesDetailBuilderRouteConfig.title,
   ...coursesByCategoryBuilderRouteConfig.title,

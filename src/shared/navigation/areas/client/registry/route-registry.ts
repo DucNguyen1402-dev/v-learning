@@ -34,13 +34,6 @@ export const CLIENT_ROUTE_KEYS = {
   ...supportRouteConfig.key,
 } as const;
 
-export type ClientRouteKey =
-  (typeof CLIENT_ROUTE_KEYS)[keyof typeof CLIENT_ROUTE_KEYS];
-
-export const clientRouteKeys = Object.values(
-  CLIENT_ROUTE_KEYS,
-) as ClientRouteKey[];
-
 export const CLIENT_ROUTE_TITLES = {
   ...homeRouteConfig.title,
   ...loginRouteConfig.title,

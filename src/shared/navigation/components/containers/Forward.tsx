@@ -1,10 +1,11 @@
 import { type ReactNode, useMemo } from "react";
 import { useLocation } from "react-router-dom";
 
-import { getNavigationAreaMeta } from "@shared/navigation/helpers";
-import type { AppRouteKey } from "@shared/navigation/types";
-import { getRouteHistory } from "@shared/navigation/utils";
 import { cn } from "@shared/utils";
+
+import { getNavigationAreaMeta } from "../../helpers";
+import type { AppRouteKey } from "../../types";
+import { getRouteHistory } from "../../utils";
 
 type ForwardProps = {
   children: ReactNode;

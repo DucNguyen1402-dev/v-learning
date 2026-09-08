@@ -1,3 +1,4 @@
+export * from "./app-lock";
 export { GlobalUI } from "./GlobalUI";
 export * from "./interaction-lock";
 export * from "./loading";

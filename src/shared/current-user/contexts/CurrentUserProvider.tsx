@@ -1,4 +1,4 @@
-import { CurrentUser } from "@shared/current-user";
+import { CurrentUserStorage } from "@shared/storage";
 
 import { CurrentUserContext } from "./CurrentUserContext";
 import { useAvatar, useEnrolledCourse, useProfile, useTheme } from "./internal";
@@ -12,7 +12,7 @@ export const CurrentUserProvider = ({ children }: CurrentUserProviderProps) => {
   const theme = useTheme();
   const enrolledCourse = useEnrolledCourse();
 
-  const hasCurrentUser = CurrentUser.utils.hasStored();
+  const hasCurrentUser = !!CurrentUserStorage.tryGet();
 
   const refreshPreferences = () => {
     avatar.refresh();

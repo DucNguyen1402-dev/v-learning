@@ -1,21 +1,23 @@
 import type { AppRouteBuilderKey, AppRouteKey } from "@shared/navigation/types";
 
 import {
+  ADMIN_ROUTE_BUILDER_KEYS,
+  ADMIN_ROUTE_KEYS,
   ADMIN_ROUTE_PATHS,
-  adminRouteBuilderKeys,
-  adminRouteKeys,
-} from "./constant";
+} from "./registry";
 import type { AdminRouteBuilderKey, AdminRouteKey } from "./types";
 export const findRouteKey = (path: string) =>
-  adminRouteKeys.find((key) => ADMIN_ROUTE_PATHS[key] === path);
+  Object.values(ADMIN_ROUTE_KEYS).find(
+    (key) => ADMIN_ROUTE_PATHS[key] === path,
+  );
 
 export const isRouteActive = (path: string, key: AdminRouteKey) =>
   ADMIN_ROUTE_PATHS[key] === path;
 
 export const isAdminRouteKey = (key: AppRouteKey) =>
-  adminRouteKeys.includes(key as AdminRouteKey);
+  Object.values(ADMIN_ROUTE_KEYS).includes(key as AdminRouteKey);
 
 export const isAdminRouteBuilderKey = (
   key: AppRouteBuilderKey,
 ): key is AdminRouteBuilderKey =>
-  adminRouteBuilderKeys.includes(key as AdminRouteBuilderKey);
+  Object.values(ADMIN_ROUTE_BUILDER_KEYS).includes(key as AdminRouteBuilderKey);
