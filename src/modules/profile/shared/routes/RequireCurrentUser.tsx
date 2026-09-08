@@ -1,6 +1,6 @@
 import { type ReactNode, useEffect } from "react";
 
-import { LoginNavigation } from "@modules/login";
+import { LoginNavigation } from "@modules/login/navigation";
 import { CurrentUser } from "@shared/current-user";
 import { Navigation } from "@shared/navigation";
 

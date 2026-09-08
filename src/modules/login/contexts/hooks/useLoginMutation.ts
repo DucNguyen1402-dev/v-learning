@@ -1,4 +1,4 @@
-import type { LoginData } from "@modules/login";
+import type { LoginData } from "@modules/login/types";
 import { CurrentUser } from "@shared/current-user";
 import { Session } from "@shared/session";
 import { useMutation } from "@tanstack/react-query";

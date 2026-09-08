@@ -1,9 +1,5 @@
-import {
-  AdminNavigation,
-  type AdminRouteKey,
-  ClientNavigation,
-  type ClientRouteKey,
-} from "../areas";
+import { AdminNavigation, type AdminRouteKey } from "../areas/admin";
+import { ClientNavigation, type ClientRouteKey } from "../areas/client";
 import type { AppRouteKey } from "../types";
 
 export const isRouteActive = (path: string, key: AppRouteKey) => {

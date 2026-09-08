@@ -1,4 +1,6 @@
-import { isAdminRouteKey, isClientRouteKey, NavigationAreas } from "../areas";
+import { isAdminRouteKey } from "../areas/admin";
+import { isClientRouteKey } from "../areas/client";
+import { NavigationAreas } from "../areas/NavigationAreas";
 import type { AppRouteKey } from "../types";
 
 type NavigationAreaMeta = {

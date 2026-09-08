@@ -5,7 +5,7 @@ import type {
   SVGProps,
 } from "react";
 
-import { Spinner } from "@shared/overlays";
+import { Spinner } from "@shared/overlays/loading";
 import { cn } from "@shared/utils";
 import { type VariantProps } from "class-variance-authority";
 

@@ -1,7 +1,7 @@
 import { coursesRouteConfig } from "@modules/courses/client";
-import { homeRouteConfig } from "@modules/home";
-import { loginRouteConfig } from "@modules/login";
-import { personalCoursesRouteConfig } from "@modules/personal-courses";
+import { homeRouteConfig } from "@modules/home/navigation";
+import { loginRouteConfig } from "@modules/login/navigation";
+import { personalCoursesRouteConfig } from "@modules/personal-courses/navigation";
 import {
   aboutRouteConfig,
   blogsRouteConfig,
@@ -15,7 +15,7 @@ import {
   profileChangeRouteConfig,
   profileRouteConfig,
 } from "@modules/profile/client";
-import { registerRouteConfig } from "@modules/register";
+import { registerRouteConfig } from "@modules/register/navigation";
 
 export const CLIENT_ROUTE_KEYS = {
   ...homeRouteConfig.key,

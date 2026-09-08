@@ -1,5 +1,5 @@
-import type { Avatar } from "@shared/avatar";
-import type { ThemeValue } from "@shared/theme";
+import type { Avatar } from "@shared/avatar/types";
+import type { ThemeValue } from "@shared/theme/types";
 
 export type CurrentUser = {
   taiKhoan: string;

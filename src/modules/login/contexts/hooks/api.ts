@@ -1,4 +1,4 @@
-import type { LoginData } from "@modules/login";
+import type { LoginData } from "@modules/login/types";
 import { api } from "@shared/api";
 export type LoginResponse = {
   accessToken: string;

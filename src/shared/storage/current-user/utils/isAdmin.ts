@@ -1,4 +1,4 @@
-import { AccessTokenStorage } from "@shared/storage";
+import { AccessTokenStorage } from "@shared/storage/access-token";
 
 import { getCurrentUserProperty } from "./getCurrentUserProperty";
 export const isAdmin = () => {

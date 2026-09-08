@@ -1,7 +1,7 @@
-import { registerFields } from "@modules/register/config";
-import { useRegisterContext } from "@modules/register/contexts";
 import { Field, Input } from "@shared/fields";
 
+import { registerFields } from "../../config";
+import { useRegisterContext } from "../../contexts";
 import { registerValidationRules } from "../../validations";
 
 export const RegisterFields = () => {

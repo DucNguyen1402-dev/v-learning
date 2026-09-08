@@ -1,5 +1,4 @@
-import { MODAL_TYPES } from ".";
-
+import { MODAL_TYPES } from "../constants";
 export const createLeavePageModal = () => {
   return {
     type: MODAL_TYPES.LEAVE_PAGE,

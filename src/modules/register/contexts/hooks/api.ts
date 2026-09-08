@@ -1,5 +1,6 @@
-import type { RegisterData } from "@modules/register";
 import { api } from "@shared/api";
+
+import type { RegisterData } from "../../types";
 
 type RegisterResponse = {
   taiKhoan: string;

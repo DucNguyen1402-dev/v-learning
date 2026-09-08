@@ -1,4 +1,4 @@
-import { MODAL_TYPES } from ".";
+import { MODAL_TYPES } from "../constants";
 
 export const createCancelCourseEnrollmentModal = (tenKhoaHoc: string) => {
   return {

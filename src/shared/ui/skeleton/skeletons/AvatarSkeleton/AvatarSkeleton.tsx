@@ -1,6 +1,5 @@
-import { Skeleton } from "@shared/ui/skeleton/components";
-import { SKELETON_RADIUS } from "@shared/ui/skeleton/constants";
-
+import { Skeleton } from "../../components";
+import { SKELETON_RADIUS } from "../../constants";
 import { avatarSizes } from "./config";
 import { AVATAR_SIZES, type AvatarSize } from "./constants";
 
