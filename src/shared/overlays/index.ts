@@ -1,3 +1,4 @@
+export * from "./backdrop";
 export { GlobalUI } from "./GlobalUI";
 export * from "./hooks";
 export * from "./interaction-lock";

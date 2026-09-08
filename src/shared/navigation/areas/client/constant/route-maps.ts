@@ -1,20 +1,18 @@
-import { coursesRouteConfig } from "@modules/courses/client";
+import { coursesRouteConfig } from "@modules/courses/client/navigation";
 import { homeRouteConfig } from "@modules/home/navigation";
 import { loginRouteConfig } from "@modules/login/navigation";
 import { personalCoursesRouteConfig } from "@modules/personal-courses/navigation";
-import {
-  aboutRouteConfig,
-  blogsRouteConfig,
-  communityRouteConfig,
-  contactRouteConfig,
-  eventRouteConfig,
-  supportRouteConfig,
-} from "@modules/placeholders";
+import { aboutRouteConfig } from "@modules/placeholders/about/navigation";
+import { blogsRouteConfig } from "@modules/placeholders/blogs/navigation";
+import { communityRouteConfig } from "@modules/placeholders/community/navigation";
+import { contactRouteConfig } from "@modules/placeholders/contact/navigation";
+import { eventRouteConfig } from "@modules/placeholders/event/navigation";
+import { supportRouteConfig } from "@modules/placeholders/support/navigation";
 import {
   passwordChangeRouteConfig,
   profileChangeRouteConfig,
   profileRouteConfig,
-} from "@modules/profile/client";
+} from "@modules/profile/client/navigation";
 import { registerRouteConfig } from "@modules/register/navigation";
 
 export const CLIENT_ROUTE_KEYS = {

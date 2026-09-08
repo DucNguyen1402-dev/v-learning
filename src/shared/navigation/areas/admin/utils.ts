@@ -2,11 +2,10 @@ import type { AppRouteBuilderKey, AppRouteKey } from "@shared/navigation/types";
 
 import {
   ADMIN_ROUTE_PATHS,
-  type AdminRouteBuilderKey,
   adminRouteBuilderKeys,
-  type AdminRouteKey,
   adminRouteKeys,
 } from "./constant";
+import type { AdminRouteBuilderKey, AdminRouteKey } from "./types";
 export const findRouteKey = (path: string) =>
   adminRouteKeys.find((key) => ADMIN_ROUTE_PATHS[key] === path);
 

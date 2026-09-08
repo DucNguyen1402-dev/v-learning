@@ -2,8 +2,11 @@ import {
   courseEnrollmentRouteConfig,
   editCourseBuilderRouteConfig,
   enrollUserRouteConfig,
-} from "@modules/courses/admin";
-import { editUserRouteConfig, userCourseRouteConfig } from "@modules/user";
+} from "@modules/courses/admin/navigation";
+import {
+  editUserRouteConfig,
+  userCourseRouteConfig,
+} from "@modules/user/navigation";
 
 export const ADMIN_ROUTE_BUILDER_KEYS = {
   ...editCourseBuilderRouteConfig.builderKey,

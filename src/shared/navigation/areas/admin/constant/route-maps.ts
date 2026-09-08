@@ -1,13 +1,13 @@
 import {
   addCourseRouteConfig,
   coursesRouteConfig,
-} from "@modules/courses/admin";
+} from "@modules/courses/admin/navigation";
 import {
   passwordChangeRouteConfig,
   profileChangeRouteConfig,
   profileRouteConfig,
-} from "@modules/profile/admin";
-import { addUserRouteConfig, userRouteConfig } from "@modules/user";
+} from "@modules/profile/admin/navigation";
+import { addUserRouteConfig, userRouteConfig } from "@modules/user/navigation";
 export const ADMIN_ROUTE_KEYS = {
   ...coursesRouteConfig.key,
   ...addCourseRouteConfig.key,

@@ -1,4 +1,4 @@
-import { useCurrentUserQuery } from "@shared/current-user";
+import { useCurrentUserQuery } from "@shared/current-user/hooks";
 
 export const useEnrolledCourse = () => {
   const { currentUser } = useCurrentUserQuery();

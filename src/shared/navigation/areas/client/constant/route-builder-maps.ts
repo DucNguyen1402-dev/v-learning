@@ -2,11 +2,11 @@ import {
   coursesByCategoryBuilderRouteConfig,
   coursesDetailBuilderRouteConfig,
   coursesPaymentBuilderRouteConfig,
-} from "@modules/courses/client";
+} from "@modules/courses/client/navigation";
 import {
   coursesPlayerRouteConfig,
   personalCoursesDetailBuilderRouteConfig,
-} from "@modules/personal-courses";
+} from "@modules/personal-courses/navigation";
 
 export const CLIENT_ROUTE_BUILDER_KEYS = {
   ...coursesDetailBuilderRouteConfig.builderKey,
