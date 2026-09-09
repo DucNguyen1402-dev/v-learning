@@ -28,9 +28,13 @@ export const CollapsedPageButtons = ({
     trailingPages,
     windowSlideList,
     showLeadingEllipsis,
+    prevWindowSlideItem,
     showTrailingEllipsis,
     shouldShowWindow,
     skeletonCount,
+    nextWindowSlideItem,
+    shouldShowNextWindowSlideItem,
+    shouldShowPrevWindowSlideItem,
     handleResizeWindow,
   } = useCollapsedPageButtons({
     pageNumbers,
@@ -60,10 +64,21 @@ export const CollapsedPageButtons = ({
       })}
 
       {showLeadingEllipsis && <PaginationEllipsis />}
+      {shouldShowPrevWindowSlideItem && (
+        <PageButton
+          key={prevWindowSlideItem}
+          page={prevWindowSlideItem}
+          isCurrentPage={prevWindowSlideItem === currentPage}
+          onPageClick={(page) => {
+            handleResizeWindow();
+            onPageClick(page);
+          }}
+        />
+      )}
+
       {shouldShowWindow &&
         windowSlideList.map((page) => {
           const isCurrentPage = page === currentPage;
-
           return (
             <PageButton
               key={page}
@@ -76,6 +91,18 @@ export const CollapsedPageButtons = ({
             />
           );
         })}
+
+      {shouldShowNextWindowSlideItem && (
+        <PageButton
+          key={nextWindowSlideItem}
+          page={nextWindowSlideItem}
+          isCurrentPage={nextWindowSlideItem === currentPage}
+          onPageClick={(page) => {
+            handleResizeWindow();
+            onPageClick(page);
+          }}
+        />
+      )}
 
       {showTrailingEllipsis && <PaginationEllipsis />}
       {trailingPages.map((page) => {

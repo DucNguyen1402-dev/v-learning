@@ -1,1 +1,1 @@
-export { useCollapsedPageButtons } from "./useCollapsedPageButtons";
+export { useCollapsedPageButtons } from "./useCollapsedPageButton";

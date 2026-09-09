@@ -20,6 +20,16 @@ export const useWindowedList = ({
     return items.slice((slide - 1) * windowSize, slide * windowSize);
   }, [items, slide, windowSize]);
 
+  const nextWindowSlideItem = useMemo(() => {
+    return items.slice(slide * windowSize, (slide + 1) * windowSize)[0];
+  }, [items, slide, windowSize]);
+
+  const prevWindowSlideItem = useMemo(() => {
+    return items
+      .slice((slide - 2) * windowSize, (slide - 1) * windowSize)
+      .at(-1)!;
+  }, [items, slide, windowSize]);
+
   const setSlideTo = useCallback(
     (targetSlide: number) => {
       if (targetSlide < 1 || targetSlide > totalSlides) return;
@@ -27,7 +37,7 @@ export const useWindowedList = ({
     },
     [totalSlides],
   );
-  const scrollToItem = useCallback(
+  const scrollToSlide = useCallback(
     (item: number) => {
       const index = items.indexOf(item);
       if (index === -1) return;
@@ -41,9 +51,11 @@ export const useWindowedList = ({
 
   return {
     windowSlideList,
+    nextWindowSlideItem,
+    prevWindowSlideItem,
     currentSlide: slide,
     lastSlide: totalSlides,
-    scrollToItem,
+    scrollToSlide,
     setSlideTo,
   };
 };
