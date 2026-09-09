@@ -2,7 +2,7 @@ import { TinyButtonSkeleton } from "@shared/ui";
 import { createArray } from "@shared/utils";
 
 import { PageButton } from "../shared";
-import { useCollapsedPageButtons } from "./internal";
+import { useCollapsedPageButtons } from "./hooks";
 import { PaginationEllipsis } from "./PaginationEllipsis";
 type CollapsedPageButtonsProps = {
   pageNumbers: number[];
@@ -11,7 +11,7 @@ type CollapsedPageButtonsProps = {
   isLoading?: boolean;
   dynamicWindowSize: number;
   setDynamicWindowSize: React.Dispatch<React.SetStateAction<number>>;
-  stopResizeRef: React.RefObject<boolean>;
+  stopResizeDynamicWindowRef: React.RefObject<boolean>;
 };
 
 export const CollapsedPageButtons = ({
@@ -21,27 +21,27 @@ export const CollapsedPageButtons = ({
   isLoading,
   dynamicWindowSize,
   setDynamicWindowSize,
-  stopResizeRef,
+  stopResizeDynamicWindowRef,
 }: CollapsedPageButtonsProps) => {
   const {
     leadingPages,
     trailingPages,
     windowSlideList,
-    showLeadingEllipsis,
+    shouldShowLeadingEllipsis,
     prevWindowSlideItem,
-    showTrailingEllipsis,
+    shouldShowTrailingEllipsis,
     shouldShowWindow,
-    skeletonCount,
     nextWindowSlideItem,
+    skeletonCount,
     shouldShowNextWindowSlideItem,
     shouldShowPrevWindowSlideItem,
-    handleResizeWindow,
+    handleResizeDynamicWindow,
   } = useCollapsedPageButtons({
     pageNumbers,
     currentPage,
     dynamicWindowSize,
     setDynamicWindowSize,
-    stopResizeRef,
+    stopResizeDynamicWindowRef,
   });
 
   return isLoading ? (
@@ -63,14 +63,14 @@ export const CollapsedPageButtons = ({
         );
       })}
 
-      {showLeadingEllipsis && <PaginationEllipsis />}
+      {shouldShowLeadingEllipsis && <PaginationEllipsis />}
       {shouldShowPrevWindowSlideItem && (
         <PageButton
           key={prevWindowSlideItem}
           page={prevWindowSlideItem}
           isCurrentPage={prevWindowSlideItem === currentPage}
           onPageClick={(page) => {
-            handleResizeWindow();
+            handleResizeDynamicWindow();
             onPageClick(page);
           }}
         />
@@ -85,7 +85,7 @@ export const CollapsedPageButtons = ({
               page={page}
               isCurrentPage={isCurrentPage}
               onPageClick={(page) => {
-                handleResizeWindow();
+                handleResizeDynamicWindow();
                 onPageClick(page);
               }}
             />
@@ -98,13 +98,13 @@ export const CollapsedPageButtons = ({
           page={nextWindowSlideItem}
           isCurrentPage={nextWindowSlideItem === currentPage}
           onPageClick={(page) => {
-            handleResizeWindow();
+            handleResizeDynamicWindow();
             onPageClick(page);
           }}
         />
       )}
 
-      {showTrailingEllipsis && <PaginationEllipsis />}
+      {shouldShowTrailingEllipsis && <PaginationEllipsis />}
       {trailingPages.map((page) => {
         const isCurrentPage = page === currentPage;
 

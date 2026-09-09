@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-type UseCollapsedPageButtonEffectProps = {
+type UseWindowListEffectProps = {
   leadingPages: number[];
   trailingPages: number[];
   currentPage: number;
@@ -7,14 +7,14 @@ type UseCollapsedPageButtonEffectProps = {
   setSlideTo: (slide: number) => void;
   lastSlide: number;
 };
-export const useCollapsedPageButtonEffect = ({
+export const useWindowListEffect = ({
   leadingPages,
   trailingPages,
   currentPage,
   scrollToSlide,
   setSlideTo,
   lastSlide,
-}: UseCollapsedPageButtonEffectProps) => {
+}: UseWindowListEffectProps) => {
   useEffect(() => {
     if (leadingPages.includes(currentPage)) {
       setSlideTo(1);

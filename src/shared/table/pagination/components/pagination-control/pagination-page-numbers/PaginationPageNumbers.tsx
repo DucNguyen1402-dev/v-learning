@@ -16,7 +16,7 @@ export const PaginationPageNumbers = ({
   isLoading,
 }: PaginationPageNumbersProps) => {
   const [dynamicWindowSize, setDynamicWindowSize] = useState(1);
-  const stopResizeRef = useRef(false);
+  const stopResizeDynamicWindowRef = useRef(false);
 
   if (pageNumbers.length === 0) {
     return null;
@@ -41,7 +41,7 @@ export const PaginationPageNumbers = ({
       isLoading={isLoading}
       dynamicWindowSize={dynamicWindowSize}
       setDynamicWindowSize={setDynamicWindowSize}
-      stopResizeRef={stopResizeRef}
+      stopResizeDynamicWindowRef={stopResizeDynamicWindowRef}
     />
   );
 };

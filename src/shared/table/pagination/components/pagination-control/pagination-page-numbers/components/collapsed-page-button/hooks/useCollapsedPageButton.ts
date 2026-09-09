@@ -1,31 +1,36 @@
 import { useCallback } from "react";
 
 import { edgeCountConfig } from "./helpers";
-import { useCollapsedPageButtonDerived } from "./useCollapsedPageButtonDerived";
-import { useCollapsedPageButtonEffect } from "./useCollapsedPageButtonEffect";
-import { useWindowedList } from "./useWindowedList";
-import { useWindowListDerived } from "./useWindowListDerived";
+import {
+  useDynamicWindowEffect,
+  usePageNumberGroups,
+  useWindowedList,
+  useWindowListDerived,
+  useWindowListEffect,
+} from "./internal";
 
 type UseCollapsedPageButtonsProps = {
   pageNumbers: number[];
   currentPage: number;
   dynamicWindowSize: number;
   setDynamicWindowSize: React.Dispatch<React.SetStateAction<number>>;
-  stopResizeRef: React.RefObject<boolean>;
+  stopResizeDynamicWindowRef: React.RefObject<boolean>;
 };
 export const useCollapsedPageButtons = ({
   pageNumbers,
   currentPage,
   dynamicWindowSize,
   setDynamicWindowSize,
-  stopResizeRef,
+  stopResizeDynamicWindowRef,
 }: UseCollapsedPageButtonsProps) => {
-  const edgeConfig = edgeCountConfig(window.innerWidth);
-  const { leadingPages, middlePages, trailingPages } =
-    useCollapsedPageButtonDerived({
-      pageNumbers,
-      edgeConfig,
-    });
+  const { count: edgeCount, windowSize: baseWindowSize } = edgeCountConfig(
+    window.innerWidth,
+  );
+
+  const { leadingPages, middlePages, trailingPages } = usePageNumberGroups({
+    pageNumbers,
+    edgeCount,
+  });
 
   const {
     windowSlideList,
@@ -37,24 +42,11 @@ export const useCollapsedPageButtons = ({
     nextWindowSlideItem,
   } = useWindowedList({
     items: middlePages,
-    windowSize: dynamicWindowSize,
-    baseWindowSize: edgeConfig.windowSize,
-  });
-  const handleResizeWindow = useCallback(() => {
-    if (dynamicWindowSize > edgeConfig.windowSize) {
-      setDynamicWindowSize((prev) => prev - 1);
-      stopResizeRef.current = true;
-    }
-    if (stopResizeRef.current) return;
-    setDynamicWindowSize((prev) => prev + 1);
-  }, [
     dynamicWindowSize,
-    edgeConfig.windowSize,
-    stopResizeRef,
-    setDynamicWindowSize,
-  ]);
+    baseWindowSize,
+  });
 
-  useCollapsedPageButtonEffect({
+  useWindowListEffect({
     leadingPages,
     trailingPages,
     currentPage,
@@ -64,10 +56,9 @@ export const useCollapsedPageButtons = ({
   });
 
   const {
-    showLeadingEllipsis,
-    showTrailingEllipsis,
+    shouldShowLeadingEllipsis,
+    shouldShowTrailingEllipsis,
     shouldShowWindow,
-    skeletonCount,
     shouldShowNextWindowSlideItem,
     shouldShowPrevWindowSlideItem,
   } = useWindowListDerived({
@@ -77,8 +68,27 @@ export const useCollapsedPageButtons = ({
     lastSlide,
     leadingPages,
     trailingPages,
-    windowSize: dynamicWindowSize,
+    dynamicWindowSize,
+    baseWindowSize,
   });
+
+  useDynamicWindowEffect({
+    leadingPages,
+    trailingPages,
+    currentPage,
+    stopResizeDynamicWindowRef,
+    setDynamicWindowSize,
+    dynamicWindowSize,
+    baseWindowSize,
+  });
+  const handleResizeDynamicWindow = useCallback(() => {
+    if (stopResizeDynamicWindowRef.current) return;
+    setDynamicWindowSize((prev) => prev + 1);
+  }, [stopResizeDynamicWindowRef, setDynamicWindowSize]);
+
+  const skeletonCount = shouldShowWindow
+    ? edgeCount * 2 + baseWindowSize
+    : edgeCount * 2;
 
   return {
     leadingPages,
@@ -86,12 +96,12 @@ export const useCollapsedPageButtons = ({
     windowSlideList,
     nextWindowSlideItem,
     prevWindowSlideItem,
-    showLeadingEllipsis,
-    showTrailingEllipsis,
+    shouldShowLeadingEllipsis,
+    shouldShowTrailingEllipsis,
     shouldShowWindow,
-    skeletonCount,
     shouldShowNextWindowSlideItem,
     shouldShowPrevWindowSlideItem,
-    handleResizeWindow,
+    handleResizeDynamicWindow,
+    skeletonCount,
   };
 };
