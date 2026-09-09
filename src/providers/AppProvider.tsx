@@ -1,8 +1,8 @@
 import type { ReactNode } from "react";
 
+import { CurrentUser } from "@shared/current-user";
 import { Layout } from "@shared/layouts";
-import { AppInteractionLock, Loading, Modal, Toast } from "@shared/overlays";
-import { UserPreferences } from "@shared/user";
+import { AppLock, Loading, Modal, Toast } from "@shared/overlays";
 type AppProviderProps = {
   children: ReactNode;
 };
@@ -11,9 +11,9 @@ export const AppProvider = ({ children }: AppProviderProps) => (
     <Loading.Provider>
       <Modal.Provider>
         <Toast.Provider>
-          <AppInteractionLock.Provider>
-            <UserPreferences.Provider>{children}</UserPreferences.Provider>
-          </AppInteractionLock.Provider>
+          <AppLock.Provider>
+            <CurrentUser.Provider>{children}</CurrentUser.Provider>
+          </AppLock.Provider>
         </Toast.Provider>
       </Modal.Provider>
     </Loading.Provider>

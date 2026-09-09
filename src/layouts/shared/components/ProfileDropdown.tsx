@@ -1,27 +1,30 @@
 import { useCallback, useMemo } from "react";
 import { useLocation } from "react-router-dom";
 
-import { AuthSession } from "@shared/auth";
+import { CurrentUser } from "@shared/current-user";
 import { Navigation } from "@shared/navigation";
+import { Session } from "@shared/session";
 import { Button, BUTTON_LAYOUTS, BUTTON_SIZES } from "@shared/ui";
-import { UserPreferences } from "@shared/user";
 import { cn } from "@shared/utils";
 import { LogOut, User as UserIcon } from "lucide-react";
 
 export const ProfileDropdown = () => {
   const { pathname } = useLocation();
-  const { theme, refreshPreferences } = UserPreferences.use();
+  const {
+    refreshCurrentUser,
+    preferences: { theme },
+  } = CurrentUser.use();
   const { go } = Navigation.hooks.useNavigateWithState();
 
   const currentArea = Navigation.hooks.useCurrentArea();
 
   const onLogoutClick = useCallback(() => {
-    AuthSession.logout();
-    refreshPreferences();
+    Session.logout();
+    refreshCurrentUser();
     go({
       routeKey: Navigation.client.keys.LOGIN,
     });
-  }, [go, refreshPreferences]);
+  }, [go, refreshCurrentUser]);
 
   const menuItems = useMemo(() => {
     return [

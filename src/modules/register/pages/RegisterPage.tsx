@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
 import { Navigation } from "@shared/navigation";
-import { AppInteractionLock } from "@shared/overlays";
+import { AppLock } from "@shared/overlays";
 
 import { BrandValueSection, RegisterForm } from "../components";
 import { useRegisterContext } from "../contexts";
@@ -11,7 +11,9 @@ export const RegisterPage = () => {
   const {
     actions: { isRegistering },
   } = useRegisterContext();
-  const { shouldLockInteraction } = AppInteractionLock.use();
+  const {
+    interactionLock: { shouldLockInteraction },
+  } = AppLock.use();
   useEffect(() => {
     shouldLockInteraction(isRegistering);
   }, [isRegistering, shouldLockInteraction]);

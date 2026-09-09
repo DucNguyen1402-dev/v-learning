@@ -1,8 +1,8 @@
 import { LoadingProvider, useLoadingContext } from "./contexts";
-import { DualRingLoadingRender } from "./render";
+import { ContainerLoading, DualRingLoadingRender } from "./loadings";
 
 export const Loading = {
   use: useLoadingContext,
   Provider: LoadingProvider,
-  Component: DualRingLoadingRender,
+  components: { DualRingLoadingRender, ContainerLoading },
 };

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-import { CurrentUserStorage } from "@shared/auth";
+import { CurrentUser } from "@shared/current-user";
 import { Navigation } from "@shared/navigation";
 
 type ClientRouteGuardProps = {
@@ -8,7 +8,7 @@ type ClientRouteGuardProps = {
 };
 export const ClientRouteGuard = ({ children }: ClientRouteGuardProps) => {
   const { go } = Navigation.hooks.useNavigateWithState();
-  const isAdmin = CurrentUserStorage.isAdmin();
+  const isAdmin = CurrentUser.utils.isAdmin();
 
   useEffect(() => {
     if (isAdmin) {
@@ -18,5 +18,8 @@ export const ClientRouteGuard = ({ children }: ClientRouteGuardProps) => {
     }
   }, [go, isAdmin]);
 
+  if (isAdmin) {
+    return null;
+  }
   return children;
 };

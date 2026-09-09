@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-import { CurrentUserStorage } from "@shared/auth";
+import { CurrentUser } from "@shared/current-user";
 import { Navigation } from "@shared/navigation";
 
 type RegisterRouteGuardProps = {
@@ -8,7 +8,7 @@ type RegisterRouteGuardProps = {
 };
 export const RegisterRouteGuard = ({ children }: RegisterRouteGuardProps) => {
   const { back } = Navigation.hooks.useNavigateWithState();
-  const hasCurrentUser = CurrentUserStorage.tryGet();
+  const { hasCurrentUser } = CurrentUser.use();
 
   useEffect(() => {
     if (hasCurrentUser) {

@@ -1,15 +1,17 @@
 import { useState } from "react";
 import type { UseFormHandleSubmit } from "react-hook-form";
 
-import { REGISTER_FIELD_NAME_VALUES } from "@modules/register/constants";
-import type { RegisterData } from "@modules/register/types";
-import { RegisterAuth } from "@shared/auth/register";
+import { LoginNavigationPayload } from "@modules/login/navigation";
 import { ENTITIES } from "@shared/domain";
 import { getErrorMessage } from "@shared/error";
 import { execution } from "@shared/execution";
 import { Navigation } from "@shared/navigation";
 import { Toast } from "@shared/overlays";
 import { createPayload } from "@shared/utils";
+
+import { REGISTER_FIELD_NAME_VALUES } from "../../constants";
+import type { RegisterData } from "../../types";
+import { useRegisterMutation } from "./useRegisterMutation";
 type UseRegisterActionsProps = {
   handleSubmit: UseFormHandleSubmit<RegisterData>;
 };
@@ -17,7 +19,7 @@ type UseRegisterActionsProps = {
 export const useRegisterActions = ({
   handleSubmit,
 }: UseRegisterActionsProps) => {
-  const { register } = RegisterAuth.mutation();
+  const { register } = useRegisterMutation();
   const [isRegistering, setIsRegistering] = useState(false);
   const { go } = Navigation.hooks.useNavigateWithState();
   const toast = Toast.use();
@@ -32,11 +34,14 @@ export const useRegisterActions = ({
         routeKey: Navigation.client.keys.LOGIN,
         payload: {
           toastState: Toast.config.success.register(ENTITIES.ACCOUNT),
-          isRegistrationSuccessful: true,
+          ...LoginNavigationPayload.registrationSuccess(),
         },
       });
     } catch (error) {
-      const errorMessage = getErrorMessage({ error });
+      const errorMessage = getErrorMessage({
+        error,
+        messageForInternalSeverError: "Email đã tồn tại!",
+      });
       toast.show(Toast.config.error(errorMessage));
     } finally {
       setIsRegistering(false);

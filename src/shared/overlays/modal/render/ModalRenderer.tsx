@@ -1,4 +1,5 @@
-import { Backdrop, useLockBodyScroll } from "@shared/overlays";
+import { Backdrop } from "@shared/overlays/shared/components";
+import { useLockBodyScroll } from "@shared/overlays/shared/hooks";
 import { AnimatePresence, motion } from "motion/react";
 
 import { ModalContainer } from "../containers";

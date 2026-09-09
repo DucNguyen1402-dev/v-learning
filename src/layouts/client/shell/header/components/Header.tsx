@@ -1,20 +1,24 @@
 import { useLocation } from "react-router-dom";
 
 import { ProfileDropdown, UserAvatar } from "@layouts/shared/components";
-import { CurrentUserStorage } from "@shared/auth";
+import { CurrentUser } from "@shared/current-user";
 import { Navigation } from "@shared/navigation";
 
-import { routesHideLoginButton, routesShowLogoutButton } from "../uiRules";
-import { HeaderLogo, HeaderNav, LoginButton, ThemeModeButton } from ".";
+import { isRouteHideLoginButton, isRouteShowLogoutButton } from "../ui";
+import { HeaderLogo } from "./HeaderLogo";
+import { HeaderNav } from "./HeaderNav";
+import { LoginButton } from "./LoginButton";
 import { LogoutButton } from "./LogoutButton";
+import { ThemeModeButton } from "./ThemeModeButton";
+import { UserAccount } from "./UserAccount";
 
 export const Header = () => {
-  const currentUser = CurrentUserStorage.tryGet();
+  const hasCurrentUser = CurrentUser.utils.hasStored();
   const { pathname } = useLocation();
   const routeKey = Navigation.client.findKey(pathname);
-  const shouldHideLoginButton = routeKey && routesHideLoginButton.has(routeKey);
+  const shouldHideLoginButton = routeKey && isRouteHideLoginButton(routeKey);
   const shouldShowLogoutButton =
-    routeKey && routesShowLogoutButton.has(routeKey) && window.innerWidth < 640;
+    routeKey && isRouteShowLogoutButton(routeKey) && window.innerWidth < 640;
 
   return (
     <header className="header">
@@ -23,15 +27,15 @@ export const Header = () => {
         <HeaderNav />
 
         <div className="flex items-center gap-4">
-          {currentUser ? (
+          {hasCurrentUser ? (
             <div className="group relative flex items-center gap-3 p-2 lg:gap-2.5">
               <div className="lg:hidden">
                 <ThemeModeButton />
               </div>
               {shouldShowLogoutButton ? <LogoutButton /> : <UserAvatar />}
-              <span className="hidden text-sm font-medium lg:block">
-                {currentUser?.taiKhoan}
-              </span>
+
+              <UserAccount />
+
               <div className="dropdown-container dropdown-position-down hidden lg:block">
                 <ProfileDropdown />
               </div>

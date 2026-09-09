@@ -1,9 +1,9 @@
 import { useMemo, useState } from "react";
 
-import { enrichCourseDetail } from "@modules/courses/client/sub-modules/course-detail/utils";
 import { EMPTY_COURSE } from "@modules/courses/shared/constants";
 import { useCourseDetailQuery } from "@modules/courses/shared/hooks";
 
+import { enrichCourseDetail } from "../../../utils";
 import { useCourseRegister } from "./useCourseRegister";
 
 export const useCoursePayment = ({ maKhoaHoc }: { maKhoaHoc: string }) => {

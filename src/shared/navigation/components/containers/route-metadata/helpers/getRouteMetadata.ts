@@ -1,4 +1,5 @@
-import { AdminNavigation, ClientNavigation } from "@shared/navigation/areas";
+import { AdminNavigation } from "@shared/navigation/areas/admin";
+import { ClientNavigation } from "@shared/navigation/areas/client";
 
 import { adminFavicon, clientFavicon } from "@assets/favicon";
 

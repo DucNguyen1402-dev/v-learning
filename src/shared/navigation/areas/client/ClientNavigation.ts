@@ -5,7 +5,7 @@ import {
   CLIENT_ROUTE_KEYS,
   CLIENT_ROUTE_PATHS,
   CLIENT_ROUTE_TITLES,
-} from "./constant";
+} from "./registry";
 import { findRouteKey, isRouteActive } from "./utils";
 
 export const ClientNavigation = {

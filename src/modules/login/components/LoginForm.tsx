@@ -1,6 +1,6 @@
 import { loginFields } from "@modules/login/config";
 import { useLoginContext } from "@modules/login/contexts";
-import { LoginAuth } from "@shared/auth/login";
+import { loginValidationRules } from "@modules/login/validation";
 import {
   Checkbox,
   CHECKBOX_SIZE,
@@ -24,7 +24,7 @@ export const LoginForm = () => {
               id={field.name}
               type={field.type}
               invalid={registerFieldState(field.name).invalid}
-              {...register(field.name, LoginAuth.validation[field.name])}
+              {...register(field.name, loginValidationRules[field.name])}
             />
             {field.type === "password" && <Input.PasswordVisibilityToggle />}
           </Input.Root>

@@ -1,4 +1,5 @@
-import { Navigation } from "@shared/navigation";
+import { Link } from "react-router-dom";
+
 import { DatabaseBackup, Home } from "lucide-react";
 
 interface EmptyFeatureProps {
@@ -32,13 +33,13 @@ export const EmptyFeature = ({
 
         {!shouldHideAction && (
           <div className="mt-8">
-            <Navigation.components.Go
-              routeKey={Navigation.client.keys.HOME}
+            <Link
+              to="/client/home"
               className="button-base button-primary solid rounded-control px-4 py-2 text-sm"
             >
               <Home className="h-4 w-4" />
               Quay lại trang chủ
-            </Navigation.components.Go>
+            </Link>
           </div>
         )}
       </div>

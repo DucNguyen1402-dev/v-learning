@@ -5,7 +5,6 @@ import type {
   SVGProps,
 } from "react";
 
-import { Spinner } from "@shared/overlays";
 import { cn } from "@shared/utils";
 import { type VariantProps } from "class-variance-authority";
 
@@ -20,6 +19,7 @@ import {
   type ButtonLayout,
   type ButtonSize,
 } from "../constants";
+import { ButtonSpinner } from "./ButtonSpinner";
 
 type ButtonIcon = ComponentType<SVGProps<SVGSVGElement>>;
 
@@ -77,7 +77,7 @@ export const Button = ({
       {...props}
     >
       {Icon && !loading && <Icon className={currentSize.icon} />}
-      {loading && <Spinner />}
+      {loading && <ButtonSpinner />}
 
       {children}
     </button>

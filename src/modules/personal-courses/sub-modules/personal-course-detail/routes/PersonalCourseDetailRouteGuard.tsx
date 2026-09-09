@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
 
-import { useUserCourseInfo } from "@shared/auth/userInfor";
+import { CurrentUser } from "@shared/current-user";
 
-import { CourseAccessChecking, PersonalCourseNotFound } from "../components";
+import { PersonalCourseNotFound } from "../components";
 
 export const PersonalCourseDetailRouteGuard = ({
   children,
@@ -11,14 +11,10 @@ export const PersonalCourseDetailRouteGuard = ({
 }) => {
   const { maKhoaHoc } = useParams();
 
-  const { courses, isPending } = useUserCourseInfo();
-  const isCourseIdExist = courses.some(
+  const { enrolledCourse } = CurrentUser.use();
+  const isCourseIdExist = enrolledCourse.list.some(
     (course) => course.maKhoaHoc === maKhoaHoc,
   );
-
-  if (isPending) {
-    return <CourseAccessChecking />;
-  }
 
   if (!maKhoaHoc || !isCourseIdExist) {
     return <PersonalCourseNotFound />;

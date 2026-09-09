@@ -1,9 +1,10 @@
 import { type ReactNode, useMemo } from "react";
 import { Link } from "react-router-dom";
 
-import { getNavigationAreaBuilderMeta } from "@shared/navigation/helpers";
-import type { AppRouteBuilderKey } from "@shared/navigation/types";
 import { cn } from "@shared/utils";
+
+import { getNavigationAreaBuilderMeta } from "../../helpers";
+import type { AppRouteBuilderKey } from "../../types";
 
 type GoWithParamProps = {
   children: ReactNode;

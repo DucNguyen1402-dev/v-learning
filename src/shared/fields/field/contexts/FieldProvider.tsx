@@ -1,7 +1,6 @@
 import type { ReactNode } from "react";
 
-import type { FieldLayout } from "@shared/fields";
-
+import type { FieldLayout } from "../types";
 import { FieldContext } from "./FieldContext";
 import type { FieldContextValues } from "./FieldContextValues";
 

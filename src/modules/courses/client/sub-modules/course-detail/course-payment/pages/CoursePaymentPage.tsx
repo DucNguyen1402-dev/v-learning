@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
 import { Navigation } from "@shared/navigation";
-import { AppInteractionLock } from "@shared/overlays";
+import { AppLock } from "@shared/overlays";
 
 import { CoursePaymentLeft, CoursePaymentRight } from "../components";
 import { useCoursePaymentContext } from "../context";
@@ -10,7 +10,9 @@ export const CoursePaymentPage = () => {
 
   const { isRegistering } = useCoursePaymentContext();
 
-  const { shouldLockInteraction } = AppInteractionLock.use();
+  const {
+    interactionLock: { shouldLockInteraction },
+  } = AppLock.use();
 
   useEffect(() => {
     shouldLockInteraction(isRegistering);

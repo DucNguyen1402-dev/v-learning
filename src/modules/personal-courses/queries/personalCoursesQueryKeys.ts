@@ -1,1 +1,1 @@
-export const personalCoursesQueryKeys = ["userInfor"];
+export const personalCoursesQueryKeys = ["currentUser"];

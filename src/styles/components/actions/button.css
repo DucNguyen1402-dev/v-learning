@@ -106,4 +106,20 @@
       color: var(--color-fg-on-destructive-ghost-hover);
     }
   }
+
+
+  .button-spinner-container {
+    @apply relative size-4.5;
+  }
+
+  .button-spinner-outer {
+    @apply absolute inset-0 rounded-pill border-3 border-current/20 bg-current/20;
+  }
+
+  .button-spinner-inner {
+    @apply absolute inset-0 animate-spin rounded-pill border border-transparent [animation-duration:1s];
+    border-top: 3px solid currentColor;
+  }
+
+
 }

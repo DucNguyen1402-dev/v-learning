@@ -1,2 +1,2 @@
-import type { EnrolledCourse } from "@/shared/auth/userInfor";
-export type PersonalCourse = EnrolledCourse;
+import type { CurrentUserEnrolledCourse } from "@/shared/current-user";
+export type PersonalCourse = CurrentUserEnrolledCourse;

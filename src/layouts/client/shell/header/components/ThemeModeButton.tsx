@@ -1,15 +1,17 @@
+import { CurrentUser } from "@shared/current-user";
 import {
   Button,
   BUTTON_APPEARANCES,
   BUTTON_INTENTS,
   BUTTON_SIZES,
 } from "@shared/ui";
-import { UserPreferences } from "@shared/user";
 import { cn } from "@shared/utils";
 import { MoonStar, Sun } from "lucide-react";
 
 export const ThemeModeButton = () => {
-  const { theme } = UserPreferences.use();
+  const {
+    preferences: { theme },
+  } = CurrentUser.use();
 
   const iconClass = "absolute transition-all duration-300 ease-in-out";
   const visible = "scale-100 rotate-0 opacity-100";

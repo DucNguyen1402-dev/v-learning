@@ -16,7 +16,8 @@
       "@providers/*": ["./src/providers/index.ts"],
       "@shared/*": ["./src/shared/*"],
       "@styles/*": ["./src/styles/*"],
-      "@layouts/*": ["./src/layouts/*"]
+      "@layouts/*": ["./src/layouts/*"],
+      "@styles": ["./src/styles/index.css"]
     },
 
     /* Bundler mode */

@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import { useRegisterMutation } from "@modules/courses/shared/hooks";
-import { CurrentUserStorage } from "@shared/auth";
+import { CurrentUser } from "@shared/current-user";
 import { ENTITIES } from "@shared/domain";
 import { getErrorMessage } from "@shared/error";
 import { execution } from "@shared/execution";
@@ -14,14 +14,14 @@ export const useCourseRegister = ({ maKhoaHoc }: { maKhoaHoc: string }) => {
   const [isRegistering, setIsRegistering] = useState(false);
 
   const { go } = Navigation.hooks.useNavigateWithState();
-  const currentUser = CurrentUserStorage.get();
+  const { profile } = CurrentUser.use();
   const toast = Toast.use();
 
   const handleRegisterCourse = async () => {
     setIsRegistering(true);
     const payload = {
       maKhoaHoc,
-      taiKhoan: currentUser.taiKhoan,
+      taiKhoan: profile.current.taiKhoan,
     };
     try {
       const registerTask = () => registerCourse(payload);

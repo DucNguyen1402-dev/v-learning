@@ -10,10 +10,15 @@ export const runAsyncTask = async <T>(
 ): Promise<T> => {
   const start = performance.now();
   loader?.show();
+
   try {
-    return await AsyncTask();
+    const [result] = await Promise.all([
+      AsyncTask(),
+      waitForMinimumDuration(start, minimumLoadingTime),
+    ]);
+
+    return result;
   } finally {
-    await waitForMinimumDuration(start, minimumLoadingTime);
     loader?.hide();
   }
 };

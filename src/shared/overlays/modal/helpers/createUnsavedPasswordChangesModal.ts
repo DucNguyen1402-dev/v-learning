@@ -1,5 +1,4 @@
-import { MODAL_TYPES } from ".";
-
+import { MODAL_TYPES } from "../constants";
 export const createUnsavedPasswordChangesModal = () => {
   return {
     type: MODAL_TYPES.UNSAVED_CHANGES,

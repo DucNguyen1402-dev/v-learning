@@ -15,12 +15,12 @@ import { Loading, Modal, Toast } from "@shared/overlays";
 import { useAddCourseMutation } from "./useAddCourseMutation";
 import { useAddForm } from "./useAddForm";
 
-import { UserProfile } from "@/shared/user";
+import { CurrentUser } from "@/shared/current-user";
 
 export function useAddCourseActions() {
   const [imgPreview, setImgPreview] = useState<string>("");
 
-  const { profile } = UserProfile.use();
+  const { profile } = CurrentUser.use();
   const { go, back } = Navigation.hooks.useNavigateWithState();
   const { loader } = Loading.use();
   const toaster = Toast.use();
@@ -72,7 +72,7 @@ export function useAddCourseActions() {
     const payload = createCoursePayload({ data });
     const formData = createCourseImagePayload(data);
     const submitNewCourseTask = () =>
-      mutateAsync({ ...payload, taiKhoanNguoiTao: profile.taiKhoan });
+      mutateAsync({ ...payload, taiKhoanNguoiTao: profile.current.taiKhoan });
 
     try {
       await execution.runAsyncTask(submitNewCourseTask, loader);

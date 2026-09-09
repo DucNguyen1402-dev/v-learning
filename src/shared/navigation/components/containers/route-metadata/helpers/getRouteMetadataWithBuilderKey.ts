@@ -1,9 +1,11 @@
 import {
   AdminNavigation,
-  ClientNavigation,
   isAdminRouteBuilderKey,
+} from "@shared/navigation/areas/admin";
+import {
+  ClientNavigation,
   isClientRouteBuilderKey,
-} from "@shared/navigation/areas";
+} from "@shared/navigation/areas/client";
 import type { AppRouteBuilderKey } from "@shared/navigation/types";
 
 import { adminFavicon, clientFavicon } from "@assets/favicon";

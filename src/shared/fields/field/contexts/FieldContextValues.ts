@@ -1,4 +1,4 @@
-import type { FieldLayout } from "@shared/fields";
+import type { FieldLayout } from "../types";
 
 export type FieldContextValues = {
   layout: FieldLayout;

@@ -1,5 +1,4 @@
-import { MODAL_TYPES } from ".";
-
+import { MODAL_TYPES } from "../constants";
 export const createConfirmUserEnrollmentModal = (tenNguoiDung: string) => {
   return {
     type: MODAL_TYPES.ADD,

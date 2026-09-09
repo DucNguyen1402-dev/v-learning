@@ -1,23 +1,17 @@
 import { useMemo } from "react";
 
 import { enrichCoursesWithMockData } from "@modules/personal-courses/mocks";
-import { UserInfor } from "@shared/auth";
+import { CurrentUser } from "@shared/current-user";
 
 export const usePersonalCourses = () => {
-  const { infor, isPending } = UserInfor.useQuery();
-
-  const registeredCourses = useMemo(
-    () => infor?.chiTietKhoaHocGhiDanh ?? [],
-    [infor?.chiTietKhoaHocGhiDanh],
-  );
+  const { enrolledCourse } = CurrentUser.use();
 
   const enrichedCourses = useMemo(
-    () => enrichCoursesWithMockData(registeredCourses),
-    [registeredCourses],
+    () => enrichCoursesWithMockData(enrolledCourse.list),
+    [enrolledCourse.list],
   );
   return {
     courses: enrichedCourses,
-    isPending,
   };
 };
 

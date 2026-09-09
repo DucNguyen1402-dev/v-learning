@@ -4,7 +4,7 @@ import { Pagination } from "@shared/table";
 import { useUserFilterByRole } from "./useUserFilterByRole";
 import { useUserSearchByName } from "./useUserSearchByName";
 
-import { UserProfile } from "@/shared/user";
+import { CurrentUser } from "@/shared/current-user";
 
 export function useUser() {
   const { data: allUsers } = useUsersQuery();
@@ -80,10 +80,10 @@ export function useUser() {
     ? filteredUsers
     : paginatedUserData.items;
 
-  const { profile } = UserProfile.use();
+  const { profile } = CurrentUser.use();
 
   const processedUsers = targetCourses.filter(
-    (user) => user.taiKhoan !== profile.taiKhoan,
+    (user) => user.taiKhoan !== profile.current.taiKhoan,
   );
   return {
     processedUsers,

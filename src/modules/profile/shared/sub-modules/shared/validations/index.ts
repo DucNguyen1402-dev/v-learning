@@ -1,0 +1,1 @@
+export { updateUserValidation } from "./updateUserValidation";

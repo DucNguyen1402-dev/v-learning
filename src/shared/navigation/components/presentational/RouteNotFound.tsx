@@ -1,12 +1,15 @@
-import { Navigation } from "@shared/navigation";
+import { AdminNavigation } from "../../areas/admin";
+import { ClientNavigation } from "../../areas/client";
+import { useCurrentArea } from "../../hooks";
+import { Go } from "../containers";
 
 export const RouteNotFound = () => {
-  const currentArea = Navigation.hooks.useCurrentArea();
+  const currentArea = useCurrentArea();
 
   const targetRouteKey =
     currentArea === "client"
-      ? Navigation.client.keys.HOME
-      : Navigation.admin.keys.COURSES;
+      ? ClientNavigation.keys.HOME
+      : AdminNavigation.keys.COURSES;
 
   return (
     <div className="flex-center min-h-screen flex-col px-4">
@@ -17,12 +20,12 @@ export const RouteNotFound = () => {
       <p className="mb-8 max-w-md text-center text-sm text-text-muted">
         Đường dẫn bạn truy cập có thể đã bị thay đổi, xóa hoặc không tồn tại.
       </p>
-      <Navigation.components.Go
+      <Go
         routeKey={targetRouteKey}
         className="button-base button-primary solid px-4 py-2"
       >
         Về trang chủ
-      </Navigation.components.Go>
+      </Go>
     </div>
   );
 };

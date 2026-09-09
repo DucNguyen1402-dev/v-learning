@@ -1,12 +1,12 @@
-import { Toast } from "@shared/overlays/toast";
 import { AnimatePresence, motion } from "motion/react";
 
+import { useToastContext } from "../contexts";
 import { ToastContainer } from "./ToastContainer";
 
 export const ToastView = () => {
   const {
     state: { isOpen, message, variant, ref },
-  } = Toast.use();
+  } = useToastContext();
   return (
     <AnimatePresence>
       {isOpen && (

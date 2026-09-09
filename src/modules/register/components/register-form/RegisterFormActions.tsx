@@ -1,10 +1,11 @@
-import { useRegisterContext } from "@modules/register/contexts";
 import {
   ACTION_LABELS,
   Button,
   BUTTON_APPEARANCES,
   BUTTON_INTENTS,
 } from "@shared/ui";
+
+import { useRegisterContext } from "../../contexts";
 export const RegisterFormActions = () => {
   const {
     actions: { onRegisterClick, isRegistering },

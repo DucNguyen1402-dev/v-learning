@@ -1,4 +1,4 @@
-import { TOAST_VARIANT } from "@shared/overlays/toast/constants";
+import { TOAST_VARIANT } from "../constants";
 
 export const warningToast = (message: string) => ({
   variant: TOAST_VARIANT.WARNING,

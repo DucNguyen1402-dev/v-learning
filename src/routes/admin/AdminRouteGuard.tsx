@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 
-import { CurrentUserStorage } from "@shared/auth";
+import { LoginNavigationPayload } from "@modules/login/navigation";
+import { CurrentUser } from "@shared/current-user";
 import { Navigation } from "@shared/navigation";
 
 type AdminRouteGuardProps = {
@@ -8,23 +9,30 @@ type AdminRouteGuardProps = {
 };
 export const AdminRouteGuard = ({ children }: AdminRouteGuardProps) => {
   const { go } = Navigation.hooks.useNavigateWithState();
-  const hasCurrentUser = CurrentUserStorage.tryGet();
-  const targetRouteKey = hasCurrentUser
-    ? Navigation.client.keys.HOME
-    : Navigation.client.keys.LOGIN;
-  const isAdmin = CurrentUserStorage.isAdmin();
+  const hasCurrentUser = CurrentUser.utils.hasStored();
+
+  const hasAuthentication = CurrentUser.utils.isAdmin();
 
   useEffect(() => {
-    if (!isAdmin) {
+    if (!hasCurrentUser) {
       go({
-        routeKey: targetRouteKey,
-        payload: {
-          adminAuthRequired: true,
-        },
+        routeKey: Navigation.client.keys.LOGIN,
+        payload: LoginNavigationPayload.adminAuthRequired(),
       });
+      return;
     }
-  }, [isAdmin, go, targetRouteKey]);
-  if (!isAdmin) return null;
+
+    if (!hasAuthentication) {
+      go({
+        routeKey: Navigation.client.keys.HOME,
+      });
+      return;
+    }
+  }, [hasAuthentication, go, hasCurrentUser]);
+
+  if (!hasCurrentUser || !hasAuthentication) {
+    return null;
+  }
 
   return children;
 };

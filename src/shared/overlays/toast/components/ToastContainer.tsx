@@ -1,3 +1,5 @@
+import { cn } from "@shared/utils";
+
 import {
   iconTypeClasses,
   messageFontSizes,
@@ -5,9 +7,8 @@ import {
   toastIconTypes,
   toastSizeClasses,
   toastTypeClasses,
-} from "@shared/overlays/toast/config";
-import type { ToastVariant } from "@shared/overlays/toast/constants";
-import { cn } from "@shared/utils";
+} from "../config";
+import type { ToastVariant } from "../constants";
 
 type ToastContainerProps = {
   message: string;

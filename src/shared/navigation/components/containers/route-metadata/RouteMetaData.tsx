@@ -1,10 +1,9 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
-import { useRouteMetaContext } from "@shared/navigation/hooks";
-
 import { getRouteMetadata, getRouteMetadataWithBuilderKey } from "./helpers";
 import type { RouteMetaContext } from "./types";
+import { useRouteMetaContext } from "./useRouteMetaContext";
 import { setFavicon } from "./utils";
 
 export const RouteMetaData = () => {

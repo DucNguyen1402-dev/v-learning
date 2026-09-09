@@ -1,19 +1,26 @@
+import { useState } from "react";
+
 import { useLoginActions } from "./useLoginActions";
 import { useLoginForm } from "./useLoginForm";
-import { useLoginState } from "./useLoginState";
 
 export const useLogin = () => {
   const form = useLoginForm();
-  const state = useLoginState();
+
+  const [remember, setRemember] = useState(false);
+
+  const toggleRemember = () => setRemember((prev) => !prev);
 
   const actions = useLoginActions({
     handleSubmit: form.handleSubmit,
-    remember: state.remember,
+    remember: remember,
   });
 
   return {
     form,
-    state,
+    state: {
+      remember,
+      toggleRemember,
+    },
     actions,
   };
 };

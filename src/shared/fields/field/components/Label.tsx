@@ -1,4 +1,5 @@
-import { FIELD_LAYOUT, useFieldContext } from "@shared/fields";
+import { FIELD_LAYOUT } from "../constants";
+import { useFieldContext } from "../contexts";
 
 type LabelProps = {
   target: string;
