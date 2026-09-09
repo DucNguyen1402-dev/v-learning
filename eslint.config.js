@@ -69,7 +69,6 @@ export default defineConfig([
     },
   },
   {
-    // Keep module route-config free of @shared/navigation to prevent circular imports
     files: ["src/modules/*/navigation/**/*.{ts,tsx}"],
     rules: {
       "no-restricted-imports": [
@@ -81,6 +80,26 @@ export default defineConfig([
               group: ["@shared/navigation", "@shared/navigation/*"],
               message:
                 "modules/*/navigation must not import @shared/navigation (causes circular deps). Keep only route key/path/title config here.",
+            },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    files: [
+      "src/shared/avatar/types/**/*.{ts,tsx}",
+      "src/shared/theme/types.{ts,tsx}",
+    ],
+    rules: {
+      "no-restricted-imports": [
+        "error",
+        {
+          patterns: [
+            {
+              group: ["@shared/storage", "@shared/storage/**"],
+              message:
+                "shared/avatar/types and shared/theme/types must not import anything from @shared/storage.",
             },
           ],
         },

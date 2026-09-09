@@ -7,7 +7,7 @@ import {
   LoginHeader,
 } from "@modules/login/components";
 import { Navigation } from "@shared/navigation";
-import { AppInteractionLock } from "@shared/overlays";
+import { AppLock } from "@shared/overlays";
 import { Toast } from "@shared/overlays";
 import { useTemporaryState } from "@shared/state";
 
@@ -43,7 +43,9 @@ export const LoginPage = () => {
     actions: { isLoggingIn },
   } = useLoginContext();
 
-  const { shouldLockInteraction } = AppInteractionLock.use();
+  const {
+    interactionLock: { shouldLockInteraction },
+  } = AppLock.use();
 
   useEffect(() => {
     shouldLockInteraction(isLoggingIn);

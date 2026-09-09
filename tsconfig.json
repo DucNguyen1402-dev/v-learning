@@ -10,9 +10,11 @@
       "@assets/*": ["./src/assets/*"],
       "@modules/*": ["./src/modules/*"],
       "@routes/*": ["./src/routes/*"],
+      "@routes": ["./src/routes/index.ts"],
       "@providers/*": ["./src/providers/*"],
       "@shared/*": ["./src/shared/*"],
-      "@layouts/*": ["./src/layouts/*"]
+      "@layouts/*": ["./src/layouts/*"],
+      "@styles": ["./src/styles/index.css"]
     }
   }
 }
