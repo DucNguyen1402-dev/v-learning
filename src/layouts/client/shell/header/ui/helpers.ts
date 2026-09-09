@@ -1,5 +1,3 @@
-import type { ClientRouteKey } from "@shared/navigation";
-
 import {
   type RoutesHideLoginButton,
   routesHideLoginButton,
@@ -7,11 +5,11 @@ import {
   routesShowLogoutButton,
 } from "./constants";
 export const isRouteHideLoginButton = (
-  routeKey: ClientRouteKey,
+  routeKey: string,
 ): routeKey is RoutesHideLoginButton =>
   routesHideLoginButton.has(routeKey as RoutesHideLoginButton);
 
 export const isRouteShowLogoutButton = (
-  routeKey: ClientRouteKey,
+  routeKey: string,
 ): routeKey is RoutesShowLogoutButton =>
   routesShowLogoutButton.has(routeKey as RoutesShowLogoutButton);
