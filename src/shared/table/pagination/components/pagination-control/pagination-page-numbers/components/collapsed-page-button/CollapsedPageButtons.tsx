@@ -2,6 +2,7 @@ import { TinyButtonSkeleton } from "@shared/ui";
 import { createArray } from "@shared/utils";
 
 import { PageButton } from "../shared";
+import { getEdgeCountConfig, getPageNumberGroups } from "./helpers";
 import { useCollapsedPageButtons } from "./hooks";
 import { PaginationEllipsis } from "./PaginationEllipsis";
 type CollapsedPageButtonsProps = {
@@ -23,9 +24,16 @@ export const CollapsedPageButtons = ({
   setDynamicWindowSize,
   stopResizeDynamicWindowRef,
 }: CollapsedPageButtonsProps) => {
+  const { count: edgeCount, windowSize: baseWindowSize } = getEdgeCountConfig(
+    window.innerWidth,
+  );
+
+  const { leadingPages, middlePages, trailingPages } = getPageNumberGroups({
+    pageNumbers,
+    edgeCount,
+  });
+
   const {
-    leadingPages,
-    trailingPages,
     windowSlideList,
     shouldShowLeadingEllipsis,
     prevWindowSlideItem,
@@ -37,11 +45,15 @@ export const CollapsedPageButtons = ({
     shouldShowPrevWindowSlideItem,
     handleResizeDynamicWindow,
   } = useCollapsedPageButtons({
-    pageNumbers,
     currentPage,
     dynamicWindowSize,
     setDynamicWindowSize,
     stopResizeDynamicWindowRef,
+    leadingPages,
+    trailingPages,
+    middlePages,
+    baseWindowSize,
+    edgeCount,
   });
 
   return isLoading ? (

@@ -1,37 +1,33 @@
 import { useCallback } from "react";
 
-import { edgeCountConfig } from "./helpers";
 import {
   useDynamicWindowEffect,
-  usePageNumberGroups,
   useWindowedList,
   useWindowListDerived,
   useWindowListEffect,
 } from "./internal";
-
 type UseCollapsedPageButtonsProps = {
-  pageNumbers: number[];
+  leadingPages: number[];
+  trailingPages: number[];
+  middlePages: number[];
+  baseWindowSize: number;
+  edgeCount: number;
   currentPage: number;
   dynamicWindowSize: number;
   setDynamicWindowSize: React.Dispatch<React.SetStateAction<number>>;
   stopResizeDynamicWindowRef: React.RefObject<boolean>;
 };
 export const useCollapsedPageButtons = ({
-  pageNumbers,
+  leadingPages,
+  trailingPages,
+  middlePages,
+  baseWindowSize,
+  edgeCount,
   currentPage,
   dynamicWindowSize,
   setDynamicWindowSize,
   stopResizeDynamicWindowRef,
 }: UseCollapsedPageButtonsProps) => {
-  const { count: edgeCount, windowSize: baseWindowSize } = edgeCountConfig(
-    window.innerWidth,
-  );
-
-  const { leadingPages, middlePages, trailingPages } = usePageNumberGroups({
-    pageNumbers,
-    edgeCount,
-  });
-
   const {
     windowSlideList,
     currentSlide,
@@ -81,8 +77,10 @@ export const useCollapsedPageButtons = ({
     dynamicWindowSize,
     baseWindowSize,
   });
+
   const handleResizeDynamicWindow = useCallback(() => {
     if (stopResizeDynamicWindowRef.current) return;
+
     setDynamicWindowSize((prev) => prev + 1);
   }, [stopResizeDynamicWindowRef, setDynamicWindowSize]);
 

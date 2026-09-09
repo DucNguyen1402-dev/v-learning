@@ -1,8 +1,16 @@
+import { edgeCount } from "./config";
+export const getEdgeCountConfig = (width: number) => {
+  const edge = edgeCount.find((edge) => width < edge.breakpoint);
+  return edge
+    ? { count: edge.count, windowSize: edge.windowSize }
+    : { count: 3, windowSize: 3 };
+};
+
 type UseCollapsedPageButtonDerivedProps = {
   pageNumbers: number[];
   edgeCount: number;
 };
-export const usePageNumberGroups = ({
+export const getPageNumberGroups = ({
   pageNumbers,
   edgeCount,
 }: UseCollapsedPageButtonDerivedProps) => {

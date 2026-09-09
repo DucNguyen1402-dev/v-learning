@@ -8,7 +8,7 @@ const isPageInWindow = ({
   lastLeadingPage,
   firstTrailingPage,
 }: IsPageInWindowProps) =>
-  currentPage >= firstTrailingPage && currentPage <= lastLeadingPage;
+  currentPage >= lastLeadingPage && currentPage <= firstTrailingPage;
 
 type GetShouldShowNextWindowSlideItemProps = {
   currentPage: number;
