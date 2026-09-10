@@ -4,10 +4,11 @@ export const usePaginationState = () => {
   const {
     pagination,
     setPagination,
-    isFirstRender,
     scrollToTargetRef,
     skipNextPageResetRef,
     setSkipNextPageResetRef,
+    skipNextScrollToTargetRef,
+    setSkipNextScrollToTargetRef,
   } = useContextPaginationState({
     pageSize: 10,
   });
@@ -15,9 +16,10 @@ export const usePaginationState = () => {
   return {
     pagination,
     setPagination,
-    isFirstRender,
     scrollToTargetRef,
     skipNextPageResetRef,
     setSkipNextPageResetRef,
+    skipNextScrollToTargetRef,
+    setSkipNextScrollToTargetRef,
   };
 };

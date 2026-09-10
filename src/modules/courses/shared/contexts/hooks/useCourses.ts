@@ -1,3 +1,5 @@
+import { useRef } from "react";
+
 import {
   EMPTY_PAGINATED_COURSE,
   EMPTY_PAGINATED_COURSE_BY_CATEGORY,
@@ -11,7 +13,6 @@ import {
 } from "@modules/courses/shared/hooks";
 import { enrichCoursesWithMockData } from "@modules/courses/shared/utils";
 import { Pagination } from "@shared/table";
-
 type UseCoursesProps = {
   shouldEnrichData?: boolean;
 };
@@ -20,10 +21,11 @@ export const useCourses = ({ shouldEnrichData = true }: UseCoursesProps) => {
   const {
     pagination,
     setPagination,
-    isFirstRender,
     scrollToTargetRef,
     skipNextPageResetRef,
     setSkipNextPageResetRef,
+    skipNextScrollToTargetRef,
+    setSkipNextScrollToTargetRef,
   } = Pagination.hooks.useState();
 
   const { onSearchByCoursesName, tenKhoaHoc, handleClearSearch } =
@@ -61,9 +63,11 @@ export const useCourses = ({ shouldEnrichData = true }: UseCoursesProps) => {
     setSize,
     setPage,
     preventNextResetPage,
+    preventNextScrollToTarget,
   } = Pagination.hooks.useActions({
     pagination,
     setPagination,
+    setSkipNextScrollToTargetRef,
   });
 
   const {
@@ -78,17 +82,30 @@ export const useCourses = ({ shouldEnrichData = true }: UseCoursesProps) => {
     totalPages: courses.totalPages,
   });
 
+  const prevPaginationPage = useRef(pagination.page);
+  const prevPaginationPageSize = useRef(pagination.pageSize);
+
+  // eslint-disable-next-line react-hooks/refs
+  if (prevPaginationPage.current === pagination.page) {
+    preventNextScrollToTarget();
+  } else {
+    // eslint-disable-next-line react-hooks/refs
+    prevPaginationPage.current = pagination.page;
+  }
+  // eslint-disable-next-line react-hooks/refs
+  if (prevPaginationPageSize.current === pagination.pageSize) {
+    preventNextScrollToTarget();
+  } else {
+    // eslint-disable-next-line react-hooks/refs
+    prevPaginationPageSize.current = pagination.pageSize;
+  }
   const targetCourses = isPaginatedSource ? courses.items : coursesByCategory;
 
   const processedCourses = shouldEnrichData
     ? enrichCoursesWithMockData(targetCourses)
     : targetCourses;
 
-  const isFetchingActiveSource = isPaginatedSource
-    ? isFetchingByPaginated
-    : isFetchingByCategory;
-
-  const isActiveSourceReady = !isFetchingActiveSource;
+  const isActiveSourceReady = !isFetchingByPaginated;
 
   Pagination.hooks.useEffect({
     setPagination,
@@ -96,11 +113,12 @@ export const useCourses = ({ shouldEnrichData = true }: UseCoursesProps) => {
     totalPages: courses.totalPages,
     resetDeps: [tenKhoaHoc],
     pageSize: pagination.pageSize,
-    isFirstRender,
     scrollToTargetRef,
     skipNextPageResetRef,
     setSkipNextPageResetRef,
+    skipNextScrollToTargetRef,
     scrollTriggerDeps: [isActiveSourceReady],
+    setSkipNextScrollToTargetRef,
   });
   // Dùng trạng thái fetching làm trigger bổ sung để scroll effect chạy lại, kể cả khi dữ liệu đến từ cache.
 

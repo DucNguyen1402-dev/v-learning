@@ -11,9 +11,10 @@ type UsePaginationEffectProps = {
   totalPages: number;
   currentPage: number;
   pageSize: number;
-  isFirstRender: RefObject<boolean>;
   scrollToTargetRef: RefObject<HTMLDivElement | null>;
   scrollTriggerDeps?: readonly unknown[];
+  skipNextScrollToTargetRef?: RefObject<boolean>;
+  setSkipNextScrollToTargetRef?: (value: boolean) => void;
 };
 export function usePaginationEffect({
   skipNextPageResetRef,
@@ -24,9 +25,10 @@ export function usePaginationEffect({
   currentPage,
   pageSize,
   totalPages,
-  isFirstRender,
   scrollToTargetRef,
   scrollTriggerDeps = [],
+  skipNextScrollToTargetRef,
+  setSkipNextScrollToTargetRef,
 }: UsePaginationEffectProps) {
   useEffect(() => {
     if (skipNextPageResetRef?.current) {
@@ -52,13 +54,11 @@ export function usePaginationEffect({
     }
   }, [currentPage, setPagination, totalPages]);
 
-  // eslint-disable-next-line react-hooks/immutability
   useLayoutEffect(() => {
     const targetElement = scrollToTargetRef?.current;
     if (!targetElement) return;
-    if (isFirstRender.current) {
-      // eslint-disable-next-line react-hooks/immutability
-      isFirstRender.current = false;
+    if (skipNextScrollToTargetRef?.current) {
+      setSkipNextScrollToTargetRef?.(false);
       return;
     }
 

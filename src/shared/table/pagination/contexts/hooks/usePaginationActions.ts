@@ -9,12 +9,14 @@ type UsePaginationActionsProps = {
   >;
   pagination: { page: number; pageSize: number };
   setSkipNextPageResetRef?: (value: boolean) => void;
+  setSkipNextScrollToTargetRef?: (value: boolean) => void;
 };
 
 export function usePaginationActions({
   setPagination,
   pagination,
   setSkipNextPageResetRef,
+  setSkipNextScrollToTargetRef,
 }: UsePaginationActionsProps) {
   const setSize = useCallback(
     (value: number) => setPagination({ pageSize: value, page: 1 }),
@@ -46,8 +48,13 @@ export function usePaginationActions({
     [setSkipNextPageResetRef],
   );
 
+  const preventNextScrollToTarget = useCallback(
+    () => setSkipNextScrollToTargetRef?.(true),
+    [setSkipNextScrollToTargetRef],
+  );
   return {
     preventNextResetPage,
+    preventNextScrollToTarget,
     onPrevClick,
     onNextClick,
     onPageClick,

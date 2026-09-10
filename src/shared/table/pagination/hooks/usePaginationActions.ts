@@ -5,10 +5,13 @@ type UseCoursesPaginationProps = {
     React.SetStateAction<{ page: number; pageSize: number }>
   >;
   pagination: { page: number; pageSize: number };
+
+  setSkipNextScrollToTargetRef: (value: boolean) => void;
 };
 export const usePaginationActions = ({
   setPagination,
   pagination,
+  setSkipNextScrollToTargetRef,
 }: UseCoursesPaginationProps) => {
   const {
     onPrevClick,
@@ -17,7 +20,12 @@ export const usePaginationActions = ({
     setSize,
     setPage,
     preventNextResetPage,
-  } = usePaginationActionsContext({ setPagination, pagination });
+    preventNextScrollToTarget,
+  } = usePaginationActionsContext({
+    setPagination,
+    pagination,
+    setSkipNextScrollToTargetRef,
+  });
 
   return {
     onPrevClick,
@@ -26,5 +34,6 @@ export const usePaginationActions = ({
     setSize,
     setPage,
     preventNextResetPage,
+    preventNextScrollToTarget,
   };
 };

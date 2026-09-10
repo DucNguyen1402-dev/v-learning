@@ -9,10 +9,11 @@ type UsePaginationEffectProps = {
   currentPage: number;
   totalPages: number;
   pageSize: number;
-  isFirstRender: RefObject<boolean>;
   scrollToTargetRef: RefObject<HTMLDivElement | null>;
   skipNextPageResetRef?: RefObject<boolean>;
   setSkipNextPageResetRef?: (value: boolean) => void;
+  skipNextScrollToTargetRef?: RefObject<boolean>;
+  setSkipNextScrollToTargetRef?: (value: boolean) => void;
 };
 export const usePaginationEffect = ({
   setPagination,
@@ -20,11 +21,12 @@ export const usePaginationEffect = ({
   currentPage,
   totalPages,
   pageSize,
-  isFirstRender,
   scrollToTargetRef,
   skipNextPageResetRef,
   scrollTriggerDeps,
   setSkipNextPageResetRef,
+  skipNextScrollToTargetRef,
+  setSkipNextScrollToTargetRef,
 }: UsePaginationEffectProps) => {
   usePaginationEffectContext({
     setPagination,
@@ -32,10 +34,11 @@ export const usePaginationEffect = ({
     currentPage,
     totalPages,
     pageSize,
-    isFirstRender,
     scrollToTargetRef,
     skipNextPageResetRef,
     setSkipNextPageResetRef,
     scrollTriggerDeps,
+    skipNextScrollToTargetRef,
+    setSkipNextScrollToTargetRef,
   });
 };

@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, useRef } from "react";
 
 import { usePaginationActions } from "./usePaginationActions";
 import { usePaginationDerived } from "./usePaginationDerived";
@@ -24,6 +24,7 @@ export type PaginationResult<T> = {
     setSize: (size: number) => void;
     setPage: (page: number) => void;
     preventNextResetPage: () => void;
+    preventNextScrollToTarget: () => void;
   };
   state: {
     entityName?: string;
@@ -50,8 +51,9 @@ export const usePagination = <T>({
     setPagination,
     skipNextPageResetRef,
     setSkipNextPageResetRef,
-    isFirstRender,
     scrollToTargetRef,
+    skipNextScrollToTargetRef,
+    setSkipNextScrollToTargetRef,
   } = usePaginationState({ pageSize });
 
   const {
@@ -61,10 +63,12 @@ export const usePagination = <T>({
     onPageClick,
     setSize,
     setPage,
+    preventNextScrollToTarget,
   } = usePaginationActions({
     setPagination,
     pagination,
     setSkipNextPageResetRef,
+    setSkipNextScrollToTargetRef,
   });
 
   const {
@@ -78,6 +82,24 @@ export const usePagination = <T>({
     totalPages,
   } = usePaginationDerived({ pagination, items });
 
+  const prevPaginationPage = useRef(pagination.page);
+  const prevPaginationPageSize = useRef(pagination.pageSize);
+
+  // eslint-disable-next-line react-hooks/refs
+  if (prevPaginationPage.current === pagination.page) {
+    preventNextScrollToTarget();
+  } else {
+    // eslint-disable-next-line react-hooks/refs
+    prevPaginationPage.current = pagination.page;
+  }
+  // eslint-disable-next-line react-hooks/refs
+  if (prevPaginationPageSize.current === pagination.pageSize) {
+    preventNextScrollToTarget();
+  } else {
+    // eslint-disable-next-line react-hooks/refs
+    prevPaginationPageSize.current = pagination.pageSize;
+  }
+
   usePaginationEffect({
     skipNextPageResetRef,
     setSkipNextPageResetRef,
@@ -87,9 +109,10 @@ export const usePagination = <T>({
     currentPage: pagination.page,
     totalPages,
     pageSize: pagination.pageSize,
-    isFirstRender,
     scrollToTargetRef,
     scrollTriggerDeps: [paginatedList],
+    skipNextScrollToTargetRef,
+    setSkipNextScrollToTargetRef,
   });
 
   return useMemo(
@@ -104,6 +127,7 @@ export const usePagination = <T>({
         setSize,
         setPage,
         preventNextResetPage,
+        preventNextScrollToTarget,
       },
       state: {
         entityName,
@@ -132,6 +156,7 @@ export const usePagination = <T>({
       pagination.page,
       pagination.pageSize,
       preventNextResetPage,
+      preventNextScrollToTarget,
       scrollToTargetRef,
       setPage,
       setSize,
