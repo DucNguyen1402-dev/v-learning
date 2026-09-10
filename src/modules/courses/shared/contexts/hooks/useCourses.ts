@@ -84,6 +84,12 @@ export const useCourses = ({ shouldEnrichData = true }: UseCoursesProps) => {
     ? enrichCoursesWithMockData(targetCourses)
     : targetCourses;
 
+  const isFetchingActiveSource = isPaginatedSource
+    ? isFetchingByPaginated
+    : isFetchingByCategory;
+
+  const isActiveSourceReady = !isFetchingActiveSource;
+
   Pagination.hooks.useEffect({
     setPagination,
     currentPage: pagination.page,
@@ -94,7 +100,9 @@ export const useCourses = ({ shouldEnrichData = true }: UseCoursesProps) => {
     scrollToTargetRef,
     skipNextPageResetRef,
     setSkipNextPageResetRef,
+    scrollTriggerDeps: [isActiveSourceReady],
   });
+  // Dùng trạng thái fetching làm trigger bổ sung để scroll effect chạy lại, kể cả khi dữ liệu đến từ cache.
 
   const isLoading = isPaginatedSource
     ? isPendingByPaginated || isFetchingByPaginated
@@ -118,6 +126,9 @@ export const useCourses = ({ shouldEnrichData = true }: UseCoursesProps) => {
     pagination: {
       status: {
         isEmpty,
+      },
+      refs: {
+        scrollToTarget: scrollToTargetRef,
       },
       state: {
         currentPage: pagination.page,

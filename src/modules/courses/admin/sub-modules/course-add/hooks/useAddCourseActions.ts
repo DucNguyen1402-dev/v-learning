@@ -50,7 +50,6 @@ export function useAddCourseActions() {
 
   const onCancelClick = () => {
     if (isDirty) {
-      console.log("isDirty", isDirty);
       modalApi.open({
         ...Modal.config.unsavedChanges(ENTITIES.COURSE),
         onConfirm: () => back(),

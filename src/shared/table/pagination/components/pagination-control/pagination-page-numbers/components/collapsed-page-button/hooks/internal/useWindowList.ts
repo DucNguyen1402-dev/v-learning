@@ -15,6 +15,7 @@ export const useWindowList = ({
 
   // clamp during render (not in an effect) to avoid a stale-window flash for one frame
   if (slide > totalSlides) setSlide(totalSlides);
+  
   const clampedSlide = Math.min(slide, totalSlides);
 
   const windowStart = (clampedSlide - 1) * dynamicWindowSize;
