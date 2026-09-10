@@ -119,6 +119,9 @@ export const useCourses = ({ shouldEnrichData = true }: UseCoursesProps) => {
       status: {
         isEmpty,
       },
+      refs: {
+        scrollToTarget: scrollToTargetRef,
+      },
       state: {
         currentPage: pagination.page,
         pageSize: pagination.pageSize,

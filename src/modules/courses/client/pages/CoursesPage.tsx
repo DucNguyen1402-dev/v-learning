@@ -9,7 +9,7 @@ export const CoursesPage = () => {
   const { processedCourses, isSourceByCategory } = useCoursesContext();
 
   const localPaginationSource = isSourceByCategory ? processedCourses : [];
-  Navigation.hooks.useScrollToTopOnRouteChange();
+  Navigation.hooks.useScrollToTopOnRouteChange({ behavior: "instant" });
   return (
     <Pagination.Provider
       items={localPaginationSource}

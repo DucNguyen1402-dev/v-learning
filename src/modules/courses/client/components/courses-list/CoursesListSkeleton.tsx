@@ -1,7 +1,7 @@
 import { Skeleton, SKELETON_HEIGHTS, SKELETON_WIDTHS } from "@shared/ui";
 
 export const CoursesListSkeleton = () => (
-  <article className="flex h-125 flex-col overflow-hidden rounded-container border border-border-default bg-bg-default shadow-surface select-none">
+  <article className="flex h-120 flex-col overflow-hidden rounded-container border border-border-default bg-bg-default shadow-surface select-none">
     <Skeleton fullWidth />
     <div className="flex flex-1 flex-col gap-5 p-4">
       <div className="flex flex-col gap-2">

@@ -21,7 +21,7 @@
   }
 
   .pagination-page-number-container {
-    @apply flex gap-2;
+    @apply flex gap-1 md:gap-2;
   }
 
   .pagination-page-button {

@@ -1,35 +1,17 @@
-import { useLayoutEffect, useRef } from "react";
-
 import { Pagination } from "@shared/table";
 
 import { useCoursesContext } from "../contexts";
 
 export const CoursesFooter = () => {
   const { pagination, status, isSourceByCategory } = useCoursesContext();
-  const footerRef = useRef<HTMLDivElement | null>(null);
-  const isFirstRender = useRef(true);
-
   const categoryPagination = Pagination.use();
-  useLayoutEffect(() => {
-    const footerElement = footerRef.current;
-    if (!footerElement) return;
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-      return;
-    }
-
-    const rect = footerElement.getBoundingClientRect();
-    const targetTop = window.scrollY + rect.top - window.innerHeight / 2;
-
-    window.scrollTo({ top: targetTop, behavior: "instant" });
-  }, [pagination.state.pageSize, pagination.state.currentPage]);
 
   const targetPagination = isSourceByCategory ? categoryPagination : pagination;
   const targetRef = isSourceByCategory
     ? categoryPagination.refs.scrollToTarget
-    : footerRef;
+    : pagination.refs.scrollToTarget;
   return (
-    <div className="flex flex-col gap-8 lg:gap-5" ref={targetRef}>
+    <div className="flex scroll-target flex-col gap-8 lg:gap-5" ref={targetRef}>
       <div className="flex items-center justify-center px-4 text-sm lg:justify-between">
         <Pagination.components.Info
           displayStart={targetPagination.state.displayStart}

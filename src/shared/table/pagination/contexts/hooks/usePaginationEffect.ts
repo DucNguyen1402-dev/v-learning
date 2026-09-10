@@ -60,10 +60,16 @@ export function usePaginationEffect({
       return;
     }
 
-    const rect = targetElement.getBoundingClientRect();
-    const targetTop = window.scrollY + rect.top - window.innerHeight / 2;
+    const isMobile = window.innerWidth <= 768;
 
-    window.scrollTo({ top: targetTop, behavior: "instant" });
+    if (isMobile) {
+      targetElement.scrollIntoView({ behavior: "smooth", block: "center" });
+    } else {
+      const rect = targetElement.getBoundingClientRect();
+      const targetTop = window.scrollY + rect.top - window.innerHeight / 2;
+      window.scrollTo({ top: targetTop, behavior: "instant" });
+    }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pageSize, currentPage]);
 }
