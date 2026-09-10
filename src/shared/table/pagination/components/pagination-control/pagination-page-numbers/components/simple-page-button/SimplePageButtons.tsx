@@ -1,7 +1,7 @@
 import { TinyButtonSkeleton } from "@shared/ui";
 import { createArray } from "@shared/utils";
 
-import { PageButton } from "./PageButton";
+import { PageButton } from "../shared";
 
 type SimplePageButtonsProps = {
   pageNumbers: number[];

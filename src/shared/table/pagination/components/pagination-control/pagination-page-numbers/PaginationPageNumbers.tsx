@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 
 import { CollapsedPageButtons, SimplePageButtons } from "./components";
 
@@ -15,17 +15,29 @@ export const PaginationPageNumbers = ({
   pageNumbers,
   isLoading,
 }: PaginationPageNumbersProps) => {
-  const [dynamicWindowSize, setDynamicWindowSize] = useState(1);
-  const stopResizeRef = useRef(false);
+  const lastPageNumbersRef = useRef<number[]>(pageNumbers);
 
-  if (pageNumbers.length === 0) {
+  if (pageNumbers.length > 0) {
+    // eslint-disable-next-line react-hooks/refs
+    lastPageNumbersRef.current = pageNumbers;
+  }
+  const stablePageNumbers =
+    isLoading && pageNumbers.length === 0
+      ? // eslint-disable-next-line react-hooks/refs
+        lastPageNumbersRef.current
+      : pageNumbers;
+
+  const isCollapsed = stablePageNumbers.length > 5;
+  const isEmpty = stablePageNumbers.length === 0;
+
+  if (isEmpty) {
     return null;
   }
 
-  if (pageNumbers.length <= 5) {
+  if (isCollapsed) {
     return (
-      <SimplePageButtons
-        pageNumbers={pageNumbers}
+      <CollapsedPageButtons
+        pageNumbers={stablePageNumbers}
         currentPage={currentPage}
         onPageClick={onPageClick}
         isLoading={isLoading}
@@ -34,14 +46,11 @@ export const PaginationPageNumbers = ({
   }
 
   return (
-    <CollapsedPageButtons
-      pageNumbers={pageNumbers}
+    <SimplePageButtons
+      pageNumbers={stablePageNumbers}
       currentPage={currentPage}
       onPageClick={onPageClick}
       isLoading={isLoading}
-      dynamicWindowSize={dynamicWindowSize}
-      setDynamicWindowSize={setDynamicWindowSize}
-      stopResizeRef={stopResizeRef}
     />
   );
 };

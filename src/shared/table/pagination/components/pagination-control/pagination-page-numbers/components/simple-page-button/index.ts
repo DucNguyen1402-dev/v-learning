@@ -1,0 +1,1 @@
+export { SimplePageButtons } from "./SimplePageButtons";
