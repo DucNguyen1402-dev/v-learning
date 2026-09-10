@@ -13,18 +13,20 @@ type UsePaginationEffectProps = {
   pageSize: number;
   isFirstRender: RefObject<boolean>;
   scrollToTargetRef: RefObject<HTMLDivElement | null>;
+  scrollTriggerDeps?: readonly unknown[];
 };
 export function usePaginationEffect({
   skipNextPageResetRef,
   setSkipNextPageResetRef,
   enabled = true,
   setPagination,
-  resetDeps,
+  resetDeps = [],
   currentPage,
   pageSize,
   totalPages,
   isFirstRender,
   scrollToTargetRef,
+  scrollTriggerDeps = [],
 }: UsePaginationEffectProps) {
   useEffect(() => {
     if (skipNextPageResetRef?.current) {
@@ -38,7 +40,7 @@ export function usePaginationEffect({
       page: 1,
     }));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [...(resetDeps ?? []), setPagination, enabled]);
+  }, [...resetDeps, setPagination, enabled]);
 
   useEffect(() => {
     if (totalPages === 0) return;
@@ -60,16 +62,10 @@ export function usePaginationEffect({
       return;
     }
 
-    const isMobile = window.innerWidth <= 768;
-
-    if (isMobile) {
-      targetElement.scrollIntoView({ behavior: "smooth", block: "center" });
-    } else {
-      const rect = targetElement.getBoundingClientRect();
-      const targetTop = window.scrollY + rect.top - window.innerHeight / 2;
-      window.scrollTo({ top: targetTop, behavior: "instant" });
-    }
+    const rect = targetElement.getBoundingClientRect();
+    const targetTop = window.scrollY + rect.top - window.innerHeight / 2;
+    window.scrollTo({ top: targetTop, behavior: "instant" });
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pageSize, currentPage]);
+  }, [pageSize, currentPage, ...scrollTriggerDeps]);
 }

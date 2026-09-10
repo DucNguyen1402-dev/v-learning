@@ -2,6 +2,7 @@ import { type Dispatch, type RefObject, type SetStateAction } from "react";
 
 import { usePaginationEffect as usePaginationEffectContext } from "../contexts";
 type UsePaginationEffectProps = {
+  scrollTriggerDeps?: readonly unknown[];
   enabled?: boolean;
   setPagination: Dispatch<SetStateAction<{ page: number; pageSize: number }>>;
   resetDeps?: readonly unknown[];
@@ -22,6 +23,7 @@ export const usePaginationEffect = ({
   isFirstRender,
   scrollToTargetRef,
   skipNextPageResetRef,
+  scrollTriggerDeps,
   setSkipNextPageResetRef,
 }: UsePaginationEffectProps) => {
   usePaginationEffectContext({
@@ -34,5 +36,6 @@ export const usePaginationEffect = ({
     scrollToTargetRef,
     skipNextPageResetRef,
     setSkipNextPageResetRef,
+    scrollTriggerDeps,
   });
 };

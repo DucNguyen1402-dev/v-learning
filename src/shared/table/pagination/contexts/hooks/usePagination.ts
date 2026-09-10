@@ -89,6 +89,7 @@ export const usePagination = <T>({
     pageSize: pagination.pageSize,
     isFirstRender,
     scrollToTargetRef,
+    scrollTriggerDeps: [paginatedList],
   });
 
   return useMemo(

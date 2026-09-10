@@ -18,6 +18,14 @@ export function CoursesList() {
   } = useCoursesContext();
   const categoryPagination = Pagination.use<CourseCardForm>();
 
+  const coursesToRender = isSourceByCategory
+    ? categoryPagination.state.paginatedList
+    : processedCourses;
+
+  const skeletonCount = isSourceByCategory
+    ? categoryPagination.state.pageSize
+    : pagination.state.pageSize;
+
   if (pagination.status.isEmpty) {
     return (
       <EmptyCoursesState
@@ -26,14 +34,6 @@ export function CoursesList() {
       />
     );
   }
-
-  const coursesToRender = isSourceByCategory
-    ? categoryPagination.state.paginatedList
-    : processedCourses;
-
-  const skeletonCount = isSourceByCategory
-    ? categoryPagination.state.pageSize
-    : pagination.state.pageSize;
 
   return (
     <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
