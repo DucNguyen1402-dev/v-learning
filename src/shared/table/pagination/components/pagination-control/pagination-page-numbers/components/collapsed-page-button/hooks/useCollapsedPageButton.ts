@@ -1,8 +1,8 @@
-import { useCallback } from "react";
+import { useCallback, useRef, useState } from "react";
 
 import {
   useDynamicWindowEffect,
-  useWindowedList,
+  useWindowList,
   useWindowListDerived,
   useWindowListEffect,
 } from "./internal";
@@ -13,9 +13,6 @@ type UseCollapsedPageButtonsProps = {
   baseWindowSize: number;
   edgeCount: number;
   currentPage: number;
-  dynamicWindowSize: number;
-  setDynamicWindowSize: React.Dispatch<React.SetStateAction<number>>;
-  stopResizeDynamicWindowRef: React.RefObject<boolean>;
 };
 export const useCollapsedPageButtons = ({
   leadingPages,
@@ -24,10 +21,16 @@ export const useCollapsedPageButtons = ({
   baseWindowSize,
   edgeCount,
   currentPage,
-  dynamicWindowSize,
-  setDynamicWindowSize,
-  stopResizeDynamicWindowRef,
 }: UseCollapsedPageButtonsProps) => {
+  const stopResizeDynamicWindowRef = useRef(false);
+  const [dynamicWindowSize, setDynamicWindowSize] = useState(1);
+  const isDynamicWindowExpanded = dynamicWindowSize > baseWindowSize;
+  const handleResizeDynamicWindow = useCallback(() => {
+    if (stopResizeDynamicWindowRef.current) return;
+
+    setDynamicWindowSize((prev) => prev + 1);
+  }, [stopResizeDynamicWindowRef, setDynamicWindowSize]);
+
   const {
     windowSlideList,
     currentSlide,
@@ -36,10 +39,10 @@ export const useCollapsedPageButtons = ({
     prevWindowSlideItem,
     setSlideTo,
     nextWindowSlideItem,
-  } = useWindowedList({
+  } = useWindowList({
     items: middlePages,
     dynamicWindowSize,
-    baseWindowSize,
+    isDynamicWindowExpanded,
   });
 
   useWindowListEffect({
@@ -57,6 +60,7 @@ export const useCollapsedPageButtons = ({
     shouldShowWindow,
     shouldShowNextWindowSlideItem,
     shouldShowPrevWindowSlideItem,
+    skeletonCount,
   } = useWindowListDerived({
     middlePages,
     currentSlide,
@@ -66,27 +70,16 @@ export const useCollapsedPageButtons = ({
     trailingPages,
     dynamicWindowSize,
     baseWindowSize,
+    edgeCount,
   });
 
   useDynamicWindowEffect({
-    leadingPages,
-    trailingPages,
+    middlePages,
     currentPage,
     stopResizeDynamicWindowRef,
     setDynamicWindowSize,
-    dynamicWindowSize,
-    baseWindowSize,
+    isDynamicWindowExpanded,
   });
-
-  const handleResizeDynamicWindow = useCallback(() => {
-    if (stopResizeDynamicWindowRef.current) return;
-
-    setDynamicWindowSize((prev) => prev + 1);
-  }, [stopResizeDynamicWindowRef, setDynamicWindowSize]);
-
-  const skeletonCount = shouldShowWindow
-    ? edgeCount * 2 + baseWindowSize
-    : edgeCount * 2;
 
   return {
     leadingPages,

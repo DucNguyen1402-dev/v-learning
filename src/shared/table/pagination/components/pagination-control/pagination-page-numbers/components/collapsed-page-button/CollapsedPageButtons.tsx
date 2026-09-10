@@ -10,9 +10,6 @@ type CollapsedPageButtonsProps = {
   currentPage: number;
   onPageClick: (page: number) => void;
   isLoading?: boolean;
-  dynamicWindowSize: number;
-  setDynamicWindowSize: React.Dispatch<React.SetStateAction<number>>;
-  stopResizeDynamicWindowRef: React.RefObject<boolean>;
 };
 
 export const CollapsedPageButtons = ({
@@ -20,9 +17,6 @@ export const CollapsedPageButtons = ({
   onPageClick,
   pageNumbers,
   isLoading,
-  dynamicWindowSize,
-  setDynamicWindowSize,
-  stopResizeDynamicWindowRef,
 }: CollapsedPageButtonsProps) => {
   const { count: edgeCount, windowSize: baseWindowSize } = getEdgeCountConfig(
     window.innerWidth,
@@ -46,9 +40,6 @@ export const CollapsedPageButtons = ({
     handleResizeDynamicWindow,
   } = useCollapsedPageButtons({
     currentPage,
-    dynamicWindowSize,
-    setDynamicWindowSize,
-    stopResizeDynamicWindowRef,
     leadingPages,
     trailingPages,
     middlePages,

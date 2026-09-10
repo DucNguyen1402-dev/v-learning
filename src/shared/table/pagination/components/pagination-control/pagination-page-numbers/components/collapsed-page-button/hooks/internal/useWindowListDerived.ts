@@ -55,6 +55,17 @@ const getShouldShowPrevWindowSlideItem = ({
   return middlePageIndex % dynamicWindowSize === 0;
 };
 
+type UseWindowListDerivedProps = {
+  currentSlide: number;
+  currentPage: number;
+  lastSlide: number;
+  leadingPages: number[];
+  trailingPages: number[];
+  middlePages: number[];
+  dynamicWindowSize: number;
+  baseWindowSize: number;
+  edgeCount: number;
+};
 export const useWindowListDerived = ({
   currentSlide,
   currentPage,
@@ -64,16 +75,8 @@ export const useWindowListDerived = ({
   middlePages,
   dynamicWindowSize,
   baseWindowSize,
-}: {
-  currentSlide: number;
-  currentPage: number;
-  lastSlide: number;
-  leadingPages: number[];
-  trailingPages: number[];
-  middlePages: number[];
-  dynamicWindowSize: number;
-  baseWindowSize: number;
-}) => {
+  edgeCount,
+}: UseWindowListDerivedProps) => {
   const shouldShowLeadingEllipsis = currentSlide > 1;
   const shouldShowTrailingEllipsis = currentSlide < lastSlide;
 
@@ -101,11 +104,14 @@ export const useWindowListDerived = ({
     isBaseWindow,
   });
 
+  const skeletonCount = edgeCount * 2 + (shouldShowWindow ? baseWindowSize : 0);
+
   return {
     shouldShowLeadingEllipsis,
     shouldShowTrailingEllipsis,
     shouldShowWindow,
     shouldShowNextWindowSlideItem,
     shouldShowPrevWindowSlideItem,
+    skeletonCount,
   };
 };

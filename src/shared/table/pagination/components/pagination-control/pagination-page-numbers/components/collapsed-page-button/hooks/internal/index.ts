@@ -1,4 +1,4 @@
 export { useDynamicWindowEffect } from "./useDynamicWindowEffect";
-export { useWindowedList } from "./useWindowedList";
+export { useWindowList } from "./useWindowList";
 export { useWindowListDerived } from "./useWindowListDerived";
 export { useWindowListEffect } from "./useWindowListEffect";
