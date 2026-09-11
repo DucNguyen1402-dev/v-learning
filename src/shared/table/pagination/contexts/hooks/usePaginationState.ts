@@ -1,49 +1,28 @@
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useState } from "react";
 
 type UsePaginationStateProps = {
-  pageSize?: number;
+  initialPageSize?: number;
 };
 
-export function usePaginationState({ pageSize = 10 }: UsePaginationStateProps) {
+export function usePaginationState({
+  initialPageSize = 10,
+}: UsePaginationStateProps) {
   const [pagination, setPagination] = useState<{
     page: number;
     pageSize: number;
   }>({
     page: 1,
-    pageSize,
+    pageSize: initialPageSize,
   });
 
-  const hasJustResetPageRef = useRef(false);
-  const skipNextPageResetRef = useRef(true);
-
-  const scrollToTargetRef = useRef<HTMLDivElement | null>(null);
-  const nextScrollToTargetRef = useRef(false);
-
-  const resetPaginationPage = useCallback(
-    (newPage: number = 1) => {
-      setPagination((prev) => ({ ...prev, page: newPage }));
-      hasJustResetPageRef.current = true;
-    },
-    [setPagination],
-  );
-  const skipNextPageReset = () => (skipNextPageResetRef.current = true);
-
-  const resetHasJustResetPage = () => (hasJustResetPageRef.current = false);
-
-  const resetNextScrollToTarget = () => (nextScrollToTargetRef.current = false);
-  const setNextScrollToTarget = () => (nextScrollToTargetRef.current = true);
+  const resetPaginationPage = useCallback((newPage: number = 1) => {
+    setPagination((prev) => ({ ...prev, page: newPage }));
+  }, []);
 
   return {
-    pagination,
+    currentPage: pagination.page,
     setPagination,
-    skipNextPageResetRef,
-    skipNextPageReset,
-    scrollToTargetRef,
-    nextScrollToTargetRef,
-    resetNextScrollToTarget,
-    setNextScrollToTarget,
+    pageSize: pagination.pageSize,
     resetPaginationPage,
-    resetHasJustResetPage,
-    hasJustResetPageRef,
   };
 }

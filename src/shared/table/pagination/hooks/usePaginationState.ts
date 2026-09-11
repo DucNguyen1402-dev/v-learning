@@ -1,33 +1,20 @@
 import { usePaginationState as useContextPaginationState } from "../contexts";
 
-export const usePaginationState = () => {
-  const {
-    pagination,
-    setPagination,
-    scrollToTargetRef,
-    skipNextPageResetRef,
-    skipNextPageReset,
-    nextScrollToTargetRef,
-    resetNextScrollToTarget,
-    resetHasJustResetPage,
-    resetPaginationPage,
-    hasJustResetPageRef,
-    setNextScrollToTarget,
-  } = useContextPaginationState({
-    pageSize: 10,
-  });
+type UsePaginationStateProps = {
+  initialPageSize?: number;
+};
+export const usePaginationState = ({
+  initialPageSize = 10,
+}: UsePaginationStateProps) => {
+  const { currentPage, pageSize, setPagination, resetPaginationPage } =
+    useContextPaginationState({
+      initialPageSize,
+    });
 
   return {
-    pagination,
+    currentPage,
+    pageSize,
     setPagination,
-    scrollToTargetRef,
-    skipNextPageResetRef,
-    skipNextPageReset,
-    nextScrollToTargetRef,
-    resetNextScrollToTarget,
     resetPaginationPage,
-    resetHasJustResetPage,
-    hasJustResetPageRef,
-    setNextScrollToTarget,
   };
 };

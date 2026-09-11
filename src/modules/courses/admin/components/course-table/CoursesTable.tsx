@@ -26,7 +26,7 @@ export const CoursesTable = ({ affectedCourseId }: CoursesTableProps) => {
   const targetPagination = isSourceByCategory ? paginationCategory : pagination;
 
   if (affectedCourseId) {
-    targetPagination.actions.preventNextResetPage();
+    targetPagination.actions.skipNextPageReset();
   }
 
   const moveToMoviePage = useCallback(

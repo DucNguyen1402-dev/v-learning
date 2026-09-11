@@ -8,14 +8,8 @@ import { CurrentUser } from "@/shared/current-user";
 
 export function useUser() {
   const { data: allUsers } = useUsersQuery();
-  const {
-    pagination,
-    setPagination,
-    isFirstRender,
-    scrollToTargetRef,
-    skipNextPageResetRef,
-    setSkipNextPageResetRef,
-  } = Pagination.hooks.useState();
+  const { currentPage, pageSize, setPagination, resetPaginationPage } =
+    Pagination.hooks.useState();
 
   const { role, onChangeRole, filteredUsers } = useUserFilterByRole({
     allUsers,
@@ -30,24 +24,18 @@ export function useUser() {
     isPending: isPendingByPaginated,
     isFetching: isFetchingByPaginated,
   } = usePaginatedUserQuery({
-    page: pagination.page,
-    pageSize: pagination.pageSize,
+    page: currentPage,
+    pageSize,
     role,
     tuKhoa: keyword,
   });
 
   const isEmpty = !isPendingByPaginated && paginatedUserData.items.length === 0;
-  const {
-    onPrevClick,
-    onNextClick,
-    onPageClick,
-    setSize,
-    setPage,
-    preventNextResetPage,
-  } = Pagination.hooks.useActions({
-    pagination,
-    setPagination,
-  });
+  const { onPrevClick, onNextClick, onPageClick, setSize, setPage } =
+    Pagination.hooks.useActions({
+      setPagination,
+      currentPage,
+    });
 
   // The last page is empty, so subtract 1 from totalPages to avoid showing it.
   const {
@@ -57,21 +45,17 @@ export function useUser() {
     isPrevDisabled,
     isNextDisabled,
   } = Pagination.hooks.useDerived({
-    currentPage: pagination.page,
-    pageSize: pagination.pageSize,
+    currentPage,
+    pageSize,
     totalPages: paginatedUserData.totalPages - 1,
   });
 
-  Pagination.hooks.useEffect({
-    setPagination,
-    currentPage: pagination.page,
+  const { scrollToTargetRef, skipNextPageReset } = Pagination.hooks.useEffect({
+    currentPage,
     totalPages: paginatedUserData.totalPages,
+    pageSize,
+    resetPaginationPage,
     resetDeps: [],
-    pageSize: pagination.pageSize,
-    isFirstRender,
-    scrollToTargetRef,
-    skipNextPageResetRef,
-    setSkipNextPageResetRef,
   });
 
   const isLoading = isPendingByPaginated || isFetchingByPaginated;
@@ -105,8 +89,8 @@ export function useUser() {
         scrollToTarget: scrollToTargetRef,
       },
       state: {
-        currentPage: pagination.page,
-        pageSize: pagination.pageSize,
+        currentPage,
+        pageSize,
         displayStart,
         displayEnd,
         pageNumbers,
@@ -120,7 +104,7 @@ export function useUser() {
         onPageClick,
         setSize,
         setPage,
-        preventNextResetPage,
+        skipNextPageReset,
       },
     },
   };

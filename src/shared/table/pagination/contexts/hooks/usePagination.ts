@@ -6,9 +6,9 @@ import { usePaginationEffect } from "./usePaginationEffect";
 import { usePaginationState } from "./usePaginationState";
 
 type UsePaginationProps<T> = {
-  pageSize?: number;
+  initialPageSize?: number;
   items: readonly T[];
-  enabled: boolean;
+  enabled?: boolean;
   resetDeps?: readonly unknown[];
   entityName?: string;
 };
@@ -23,8 +23,7 @@ export type PaginationResult<T> = {
     onPageClick: (page: number) => void;
     setSize: (size: number) => void;
     setPage: (page: number) => void;
-    preventNextResetPage: () => void;
-    preventNextScrollToTarget: () => void;
+    skipNextPageReset: () => void;
   };
   state: {
     entityName?: string;
@@ -40,37 +39,20 @@ export type PaginationResult<T> = {
   };
 };
 export const usePagination = <T>({
-  pageSize,
+  initialPageSize,
   items,
-  enabled,
+  enabled = true,
   resetDeps,
   entityName,
 }: UsePaginationProps<T>) => {
-  const {
-    pagination,
-    setPagination,
-    skipNextPageResetRef,
-    skipNextPageReset,
-    scrollToTargetRef,
-    nextScrollToTargetRef,
-    resetNextScrollToTarget,
-    resetPaginationPage,
-    setNextScrollToTarget,
-    resetHasJustResetPage,
-    hasJustResetPageRef,
-  } = usePaginationState({ pageSize });
+  const { currentPage, pageSize, setPagination, resetPaginationPage } =
+    usePaginationState({ initialPageSize });
 
-  const {
-    preventNextResetPage,
-    onPrevClick,
-    onNextClick,
-    onPageClick,
-    setSize,
-    setPage,
-  } = usePaginationActions({
-    setPagination,
-    pagination,
-  });
+  const { onPrevClick, onNextClick, onPageClick, setSize, setPage } =
+    usePaginationActions({
+      setPagination,
+      currentPage,
+    });
 
   const {
     paginatedList,
@@ -81,24 +63,16 @@ export const usePagination = <T>({
     isPrevDisabled,
     isNextDisabled,
     totalPages,
-  } = usePaginationDerived({ pagination, items });
+  } = usePaginationDerived({ currentPage, pageSize, items });
 
-  usePaginationEffect({
-    skipNextPageResetRef,
-    skipNextPageReset,
+  const { scrollToTargetRef, skipNextPageReset } = usePaginationEffect({
     enabledResetPage: enabled,
     resetDeps,
     resetPaginationPage,
-    currentPage: pagination.page,
+    currentPage,
     totalPages,
-    pageSize: pagination.pageSize,
-    scrollToTargetRef,
+    pageSize,
     scrollTriggerDeps: [paginatedList],
-    nextScrollToTargetRef,
-    resetNextScrollToTarget,
-    setNextScrollToTarget,
-    resetHasJustResetPage,
-    hasJustResetPageRef,
   });
 
   return useMemo(
@@ -112,11 +86,11 @@ export const usePagination = <T>({
         onPageClick,
         setSize,
         setPage,
-        preventNextResetPage,
+        skipNextPageReset,
       },
       state: {
         entityName,
-        currentPage: pagination.page,
+        currentPage,
         totalItems,
         isPrevDisabled,
         isNextDisabled,
@@ -124,7 +98,7 @@ export const usePagination = <T>({
         displayStart,
         displayEnd,
         paginatedList,
-        pageSize: pagination.pageSize,
+        pageSize,
       },
     }),
     [
@@ -138,12 +112,12 @@ export const usePagination = <T>({
       onPrevClick,
       pageNumbers,
       paginatedList,
-      pagination.page,
-      pagination.pageSize,
-      preventNextResetPage,
+      currentPage,
+      pageSize,
       scrollToTargetRef,
       setPage,
       setSize,
+      skipNextPageReset,
       totalItems,
     ],
   );

@@ -18,19 +18,8 @@ type UseCoursesProps = {
 };
 export const useCourses = ({ shouldEnrichData = true }: UseCoursesProps) => {
   const { data: allCourses } = useCourseQuery();
-  const {
-    pagination,
-    setPagination,
-    skipNextPageResetRef,
-    skipNextPageReset,
-    scrollToTargetRef,
-    nextScrollToTargetRef,
-    resetNextScrollToTarget,
-    setNextScrollToTarget,
-    resetPaginationPage,
-    resetHasJustResetPage,
-    hasJustResetPageRef,
-  } = Pagination.hooks.useState();
+  const { currentPage, pageSize, setPagination, resetPaginationPage } =
+    Pagination.hooks.useState();
 
   const { onSearchByCoursesName, tenKhoaHoc, handleClearSearch } =
     useCoursesSearchByName();
@@ -40,6 +29,7 @@ export const useCourses = ({ shouldEnrichData = true }: UseCoursesProps) => {
   const isPaginatedSource = category === null;
   const prevIsPaginatedSource = useRef(isPaginatedSource);
   const [enabledResetPage, setEnabledResetPage] = useState(false);
+
   useLayoutEffect(() => {
     if (prevIsPaginatedSource.current !== isPaginatedSource) {
       setEnabledResetPage(true);
@@ -47,14 +37,15 @@ export const useCourses = ({ shouldEnrichData = true }: UseCoursesProps) => {
     } else {
       setEnabledResetPage(false);
     }
-  }, [isPaginatedSource]);
+  }, [isPaginatedSource, enabledResetPage]);
+
   const {
     data: courses = EMPTY_PAGINATED_COURSE,
     isPending: isPendingByPaginated,
     isFetching: isFetchingByPaginated,
   } = usePaginatedCoursesQuery({
-    page: pagination.page,
-    pageSize: pagination.pageSize,
+    page: currentPage,
+    pageSize,
     tenKhoaHoc: tenKhoaHoc,
     category,
   });
@@ -69,17 +60,11 @@ export const useCourses = ({ shouldEnrichData = true }: UseCoursesProps) => {
     category,
   });
 
-  const {
-    onPrevClick,
-    onNextClick,
-    onPageClick,
-    setSize,
-    setPage,
-    preventNextResetPage,
-  } = Pagination.hooks.useActions({
-    pagination,
-    setPagination,
-  });
+  const { onPrevClick, onNextClick, onPageClick, setSize, setPage } =
+    Pagination.hooks.useActions({
+      setPagination,
+      currentPage,
+    });
 
   const {
     displayStart,
@@ -88,8 +73,8 @@ export const useCourses = ({ shouldEnrichData = true }: UseCoursesProps) => {
     isPrevDisabled,
     isNextDisabled,
   } = Pagination.hooks.useDerived({
-    currentPage: pagination.page,
-    pageSize: pagination.pageSize,
+    currentPage,
+    pageSize,
     totalPages: courses.totalPages,
   });
 
@@ -101,23 +86,15 @@ export const useCourses = ({ shouldEnrichData = true }: UseCoursesProps) => {
 
   const isActiveSourceReady = !isFetchingByPaginated;
 
-  Pagination.hooks.useEffect({
-    currentPage: pagination.page,
+  const { scrollToTargetRef, skipNextPageReset } = Pagination.hooks.useEffect({
+    currentPage,
     totalPages: courses.totalPages,
-    pageSize: pagination.pageSize,
-    scrollToTargetRef,
-    skipNextPageResetRef,
-    resetDeps: [targetCourses],
-    resetHasJustResetPage,
-    scrollTriggerDeps: [isActiveSourceReady],
-    skipNextPageReset,
-    enabledResetPage: enabledResetPage,
-    nextScrollToTargetRef,
-    enabledScrollToTarget: isActiveSourceReady,
-    resetNextScrollToTarget,
+    pageSize,
     resetPaginationPage,
-    setNextScrollToTarget,
-    hasJustResetPageRef,
+    resetDeps: [targetCourses],
+    scrollTriggerDeps: [isActiveSourceReady],
+    enabledResetPage,
+    enabledScrollToTarget: isActiveSourceReady,
   });
 
   const isLoading = isPaginatedSource
@@ -142,13 +119,14 @@ export const useCourses = ({ shouldEnrichData = true }: UseCoursesProps) => {
     pagination: {
       status: {
         isEmpty,
+        enabledResetPage,
       },
       refs: {
         scrollToTarget: scrollToTargetRef,
       },
       state: {
-        currentPage: pagination.page,
-        pageSize: pagination.pageSize,
+        currentPage,
+        pageSize,
         displayStart,
         displayEnd,
         pageNumbers,
@@ -162,7 +140,7 @@ export const useCourses = ({ shouldEnrichData = true }: UseCoursesProps) => {
         onPageClick,
         setSize,
         setPage,
-        preventNextResetPage,
+        skipNextPageReset,
       },
     },
   };

@@ -1,26 +1,20 @@
 import { usePaginationActions as usePaginationActionsContext } from "../contexts";
 
-type UseCoursesPaginationProps = {
+type UsePaginationActionsProps = {
   setPagination: React.Dispatch<
     React.SetStateAction<{ page: number; pageSize: number }>
   >;
-  pagination: { page: number; pageSize: number };
+  currentPage: number;
 };
 export const usePaginationActions = ({
   setPagination,
-  pagination,
-}: UseCoursesPaginationProps) => {
-  const {
-    onPrevClick,
-    onNextClick,
-    onPageClick,
-    setSize,
-    setPage,
-    preventNextResetPage,
-  } = usePaginationActionsContext({
-    setPagination,
-    pagination,
-  });
+  currentPage,
+}: UsePaginationActionsProps) => {
+  const { onPrevClick, onNextClick, onPageClick, setSize, setPage } =
+    usePaginationActionsContext({
+      setPagination,
+      currentPage,
+    });
 
   return {
     onPrevClick,
@@ -28,6 +22,5 @@ export const usePaginationActions = ({
     onPageClick,
     setSize,
     setPage,
-    preventNextResetPage,
   };
 };

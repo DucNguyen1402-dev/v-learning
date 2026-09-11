@@ -2,30 +2,29 @@ import { useMemo } from "react";
 
 import { createArray } from "@shared/utils";
 type UsePaginationDerivedProps<T> = {
-  pagination: { page: number; pageSize: number };
+  currentPage: number;
+  pageSize: number;
   items: readonly T[] | undefined;
 };
 
 export const usePaginationDerived = <T>({
-  pagination,
+  currentPage,
+  pageSize,
   items,
 }: UsePaginationDerivedProps<T>) =>
   useMemo(() => {
-    const startIndex = (pagination.page - 1) * pagination.pageSize;
+    const startIndex = (currentPage - 1) * pageSize;
 
-    const endIndex = pagination.page * pagination.pageSize;
+    const endIndex = currentPage * pageSize;
 
     const paginatedList = items?.slice(startIndex, endIndex) ?? [];
 
     const totalItems = items?.length ?? 0;
     const displayStart =
-      totalItems === 0 ? 0 : (pagination.page - 1) * pagination.pageSize + 1;
-    const displayEnd = Math.min(
-      pagination.page * pagination.pageSize,
-      totalItems,
-    );
+      totalItems === 0 ? 0 : (currentPage - 1) * pageSize + 1;
+    const displayEnd = Math.min(currentPage * pageSize, totalItems);
 
-    const totalPages = Math.max(1, Math.ceil(totalItems / pagination.pageSize));
+    const totalPages = Math.max(1, Math.ceil(totalItems / pageSize));
     const pageNumbers = createArray(totalPages, (_, index) => index + 1);
 
     return {
@@ -34,8 +33,8 @@ export const usePaginationDerived = <T>({
       totalItems,
       displayEnd,
       pageNumbers,
-      isPrevDisabled: pagination.page === 1,
-      isNextDisabled: pagination.page >= totalPages,
+      isPrevDisabled: currentPage === 1,
+      isNextDisabled: currentPage >= totalPages,
       totalPages,
     };
-  }, [pagination, items]);
+  }, [currentPage, pageSize, items]);

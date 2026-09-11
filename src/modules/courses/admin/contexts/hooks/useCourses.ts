@@ -12,14 +12,8 @@ import { enrichCoursesWithMockData } from "@modules/courses/shared/utils";
 import { Pagination } from "@shared/table";
 
 export const useCourses = () => {
-  const {
-    pagination,
-    setPagination,
-    skipNextPageResetRef,
-    setSkipNextPageResetRef,
-    isFirstRender,
-    scrollToTargetRef,
-  } = Pagination.hooks.useState();
+  const { currentPage, pageSize, setPagination, resetPaginationPage } =
+    Pagination.hooks.useState();
 
   const { onSearchByCoursesName, tenKhoaHoc, handleClearSearch } =
     useCoursesSearchByName();
@@ -33,8 +27,8 @@ export const useCourses = () => {
     isPending: isPendingByPaginated,
     isFetching: isFetchingByPaginated,
   } = usePaginatedCoursesQuery({
-    page: pagination.page,
-    pageSize: pagination.pageSize,
+    page: currentPage,
+    pageSize,
     tenKhoaHoc: tenKhoaHoc,
     category,
   });
@@ -51,8 +45,8 @@ export const useCourses = () => {
 
   const { onPrevClick, onNextClick, onPageClick, setSize, setPage } =
     Pagination.hooks.useActions({
-      pagination,
       setPagination,
+      currentPage,
     });
 
   const {
@@ -62,24 +56,20 @@ export const useCourses = () => {
     isPrevDisabled,
     isNextDisabled,
   } = Pagination.hooks.useDerived({
-    currentPage: pagination.page,
-    pageSize: pagination.pageSize,
+    currentPage,
+    pageSize,
     totalPages: courses.totalPages,
   });
 
   const targetCourses = isPaginatedSource ? courses.items : coursesByCategory;
   const enrichedCourses = enrichCoursesWithMockData(targetCourses);
 
-  Pagination.hooks.useEffect({
-    skipNextPageResetRef,
-    setSkipNextPageResetRef,
+  const { skipNextPageReset } = Pagination.hooks.useEffect({
     resetDeps: [tenKhoaHoc],
-    setPagination,
-    currentPage: pagination.page,
+    currentPage,
     totalPages: courses.totalPages,
-    pageSize: pagination.pageSize,
-    isFirstRender,
-    scrollToTargetRef,
+    pageSize,
+    resetPaginationPage,
   });
 
   const isLoading = isPaginatedSource
@@ -105,8 +95,8 @@ export const useCourses = () => {
         isEmpty,
       },
       state: {
-        currentPage: pagination.page,
-        pageSize: pagination.pageSize,
+        currentPage,
+        pageSize,
         displayStart,
         displayEnd,
         pageNumbers,
@@ -120,6 +110,7 @@ export const useCourses = () => {
         onPageClick,
         setSize,
         setPage,
+        skipNextPageReset,
       },
     },
   };

@@ -27,7 +27,7 @@ export const AvatarSelect = ({
   return (
     <Pagination.Provider
       items={toAvatars(avatarList)}
-      pageSize={isMobile ? 3 : 7}
+      initialPageSize={isMobile ? 3 : 7}
       resetDeps={[avatarList]}
     >
       <div className="avatar-select-position">
