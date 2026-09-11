@@ -1,4 +1,4 @@
-import { useMemo, useRef } from "react";
+import { useMemo } from "react";
 
 import { usePaginationActions } from "./usePaginationActions";
 import { usePaginationDerived } from "./usePaginationDerived";
@@ -52,8 +52,9 @@ export const usePagination = <T>({
     skipNextPageResetRef,
     setSkipNextPageResetRef,
     scrollToTargetRef,
-    skipNextScrollToTargetRef,
-    setSkipNextScrollToTargetRef,
+    nextScrollToTargetRef,
+    resetNextScrollToTarget,
+    resetPaginationPage,
   } = usePaginationState({ pageSize });
 
   const {
@@ -63,12 +64,9 @@ export const usePagination = <T>({
     onPageClick,
     setSize,
     setPage,
-    preventNextScrollToTarget,
   } = usePaginationActions({
     setPagination,
     pagination,
-    setSkipNextPageResetRef,
-    setSkipNextScrollToTargetRef,
   });
 
   const {
@@ -82,37 +80,22 @@ export const usePagination = <T>({
     totalPages,
   } = usePaginationDerived({ pagination, items });
 
-  const prevPaginationPage = useRef(pagination.page);
-  const prevPaginationPageSize = useRef(pagination.pageSize);
-
-  // eslint-disable-next-line react-hooks/refs
-  if (prevPaginationPage.current === pagination.page) {
-    preventNextScrollToTarget();
-  } else {
-    // eslint-disable-next-line react-hooks/refs
-    prevPaginationPage.current = pagination.page;
-  }
-  // eslint-disable-next-line react-hooks/refs
-  if (prevPaginationPageSize.current === pagination.pageSize) {
-    preventNextScrollToTarget();
-  } else {
-    // eslint-disable-next-line react-hooks/refs
-    prevPaginationPageSize.current = pagination.pageSize;
-  }
-
   usePaginationEffect({
     skipNextPageResetRef,
     setSkipNextPageResetRef,
     enabled,
     resetDeps,
-    setPagination,
+    resetPaginationPage,
     currentPage: pagination.page,
     totalPages,
     pageSize: pagination.pageSize,
     scrollToTargetRef,
     scrollTriggerDeps: [paginatedList],
-    skipNextScrollToTargetRef,
-    setSkipNextScrollToTargetRef,
+    nextScrollToTargetRef,
+    resetNextScrollToTarget,
+
+    // eslint-disable-next-line react-hooks/refs
+    enabledScrollToTarget: nextScrollToTargetRef?.current,
   });
 
   return useMemo(
@@ -127,7 +110,7 @@ export const usePagination = <T>({
         setSize,
         setPage,
         preventNextResetPage,
-        preventNextScrollToTarget,
+        resetNextScrollToTarget,
       },
       state: {
         entityName,
@@ -156,7 +139,7 @@ export const usePagination = <T>({
       pagination.page,
       pagination.pageSize,
       preventNextResetPage,
-      preventNextScrollToTarget,
+      resetNextScrollToTarget,
       scrollToTargetRef,
       setPage,
       setSize,

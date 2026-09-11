@@ -4,31 +4,31 @@ type UsePaginationEffectProps = {
   skipNextPageResetRef?: RefObject<boolean>;
   setSkipNextPageResetRef?: (value: boolean) => void;
   enabled?: boolean;
-  setPagination: React.Dispatch<
-    React.SetStateAction<{ page: number; pageSize: number }>
-  >;
+  resetPaginationPage: (newPage?: number) => void;
   resetDeps?: readonly unknown[];
   totalPages: number;
   currentPage: number;
   pageSize: number;
   scrollToTargetRef: RefObject<HTMLDivElement | null>;
   scrollTriggerDeps?: readonly unknown[];
-  skipNextScrollToTargetRef?: RefObject<boolean>;
-  setSkipNextScrollToTargetRef?: (value: boolean) => void;
+  nextScrollToTargetRef?: RefObject<boolean>;
+  resetNextScrollToTarget?: () => void;
+  enabledScrollToTarget?: boolean;
 };
 export function usePaginationEffect({
   skipNextPageResetRef,
   setSkipNextPageResetRef,
   enabled = true,
-  setPagination,
+  resetPaginationPage,
   resetDeps = [],
   currentPage,
   pageSize,
   totalPages,
   scrollToTargetRef,
   scrollTriggerDeps = [],
-  skipNextScrollToTargetRef,
-  setSkipNextScrollToTargetRef,
+  nextScrollToTargetRef,
+  enabledScrollToTarget = false,
+  resetNextScrollToTarget,
 }: UsePaginationEffectProps) {
   useEffect(() => {
     if (skipNextPageResetRef?.current) {
@@ -37,34 +37,32 @@ export function usePaginationEffect({
     }
     if (!enabled) return;
 
-    setPagination((prev) => ({
-      ...prev,
-      page: 1,
-    }));
+    resetPaginationPage();
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [...resetDeps, setPagination, enabled]);
+  }, [...resetDeps, resetPaginationPage, enabled]);
 
   useEffect(() => {
     if (totalPages === 0) return;
     if (currentPage > totalPages) {
-      setPagination((prev) => ({
-        ...prev,
-        page: totalPages,
-      }));
+      resetPaginationPage(totalPages);
     }
-  }, [currentPage, setPagination, totalPages]);
+  }, [currentPage, resetPaginationPage, totalPages]);
 
   useLayoutEffect(() => {
     const targetElement = scrollToTargetRef?.current;
-    if (!targetElement) return;
-    if (skipNextScrollToTargetRef?.current) {
-      setSkipNextScrollToTargetRef?.(false);
+    if (
+      !targetElement ||
+      !nextScrollToTargetRef?.current ||
+      !enabledScrollToTarget
+    ) {
       return;
     }
-
     const rect = targetElement.getBoundingClientRect();
     const targetTop = window.scrollY + rect.top - window.innerHeight / 2;
     window.scrollTo({ top: targetTop, behavior: "instant" });
+
+    resetNextScrollToTarget?.();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pageSize, currentPage, ...scrollTriggerDeps]);
