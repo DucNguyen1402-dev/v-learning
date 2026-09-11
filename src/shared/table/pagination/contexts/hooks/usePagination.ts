@@ -93,9 +93,6 @@ export const usePagination = <T>({
     scrollTriggerDeps: [paginatedList],
     nextScrollToTargetRef,
     resetNextScrollToTarget,
-
-    // eslint-disable-next-line react-hooks/refs
-    enabledScrollToTarget: nextScrollToTargetRef?.current,
   });
 
   return useMemo(

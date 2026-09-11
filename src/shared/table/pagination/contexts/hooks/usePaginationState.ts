@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useLayoutEffect, useRef, useState } from "react";
 
 type UsePaginationStateProps = {
   pageSize?: number;
@@ -27,12 +27,7 @@ export function usePaginationState({ pageSize = 10 }: UsePaginationStateProps) {
     [setPagination],
   );
 
-  const setNextScrollToTargetRef = (value: boolean) =>
-    (nextScrollToTargetRef.current = value);
-
   const resetNextScrollToTarget = () => (nextScrollToTargetRef.current = false);
-
-  const resetHasJustResetPage = () => (hasJustResetPageRef.current = false);
 
   const setSkipNextPageResetRef = (value: boolean) =>
     (skipNextPageResetRef.current = value);
@@ -40,34 +35,22 @@ export function usePaginationState({ pageSize = 10 }: UsePaginationStateProps) {
   const prevPaginationPage = useRef(pagination.page);
   const prevPaginationPageSize = useRef(pagination.pageSize);
 
-  // eslint-disable-next-line react-hooks/refs
-  if (prevPaginationPage.current !== pagination.page) {
-    // eslint-disable-next-line react-hooks/refs
-    prevPaginationPage.current = pagination.page;
-    // eslint-disable-next-line react-hooks/refs
-    if (hasJustResetPageRef.current) {
-      // eslint-disable-next-line react-hooks/refs
-      resetHasJustResetPage();
-    } else {
-      // eslint-disable-next-line react-hooks/refs
-      setNextScrollToTargetRef(true);
-    }
-  }
+  useLayoutEffect(() => {
+    const pageChanged = prevPaginationPage.current !== pagination.page;
+    const pageSizeChanged =
+      prevPaginationPageSize.current !== pagination.pageSize;
 
-  // eslint-disable-next-line react-hooks/refs
-  if (prevPaginationPageSize.current !== pagination.pageSize) {
-    // eslint-disable-next-line react-hooks/refs
+    if (!pageChanged && !pageSizeChanged) return;
+
+    prevPaginationPage.current = pagination.page;
     prevPaginationPageSize.current = pagination.pageSize;
 
-    // eslint-disable-next-line react-hooks/refs
     if (hasJustResetPageRef.current) {
-      // eslint-disable-next-line react-hooks/refs
-      resetHasJustResetPage();
+      hasJustResetPageRef.current = false;
     } else {
-      // eslint-disable-next-line react-hooks/refs
-      setNextScrollToTargetRef(true);
+      nextScrollToTargetRef.current = true;
     }
-  }
+  }, [pagination.page, pagination.pageSize]);
 
   return {
     pagination,
