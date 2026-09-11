@@ -1,9 +1,9 @@
-import { type RefObject, useEffect, useLayoutEffect } from "react";
+import { type RefObject, useEffect, useLayoutEffect, useRef } from "react";
 
 type UsePaginationEffectProps = {
   skipNextPageResetRef?: RefObject<boolean>;
-  setSkipNextPageResetRef?: (value: boolean) => void;
-  enabled?: boolean;
+  skipNextPageReset: () => void;
+  enabledResetPage: boolean;
   resetPaginationPage: (newPage?: number) => void;
   resetDeps?: readonly unknown[];
   totalPages: number;
@@ -11,14 +11,17 @@ type UsePaginationEffectProps = {
   pageSize: number;
   scrollToTargetRef: RefObject<HTMLDivElement | null>;
   scrollTriggerDeps?: readonly unknown[];
-  nextScrollToTargetRef?: RefObject<boolean>;
-  resetNextScrollToTarget?: () => void;
+  nextScrollToTargetRef: RefObject<boolean>;
+  resetNextScrollToTarget: () => void;
   enabledScrollToTarget?: boolean;
+  hasJustResetPageRef: RefObject<boolean>;
+  setNextScrollToTarget: () => void;
+  resetHasJustResetPage: () => void;
 };
 export function usePaginationEffect({
   skipNextPageResetRef,
-  setSkipNextPageResetRef,
-  enabled = true,
+  skipNextPageReset,
+  enabledResetPage = true,
   resetPaginationPage,
   resetDeps = [],
   currentPage,
@@ -27,27 +30,39 @@ export function usePaginationEffect({
   scrollToTargetRef,
   scrollTriggerDeps = [],
   nextScrollToTargetRef,
-  enabledScrollToTarget = false,
+  enabledScrollToTarget = true,
+  hasJustResetPageRef,
   resetNextScrollToTarget,
+  setNextScrollToTarget,
+  resetHasJustResetPage,
 }: UsePaginationEffectProps) {
-  useEffect(() => {
-    if (skipNextPageResetRef?.current) {
-      setSkipNextPageResetRef?.(false);
-      return;
+  const prevPaginationPage = useRef(currentPage);
+  const prevPaginationPageSize = useRef(pageSize);
+
+  useLayoutEffect(() => {
+    const pageChanged = prevPaginationPage.current !== currentPage;
+    const pageSizeChanged = prevPaginationPageSize.current !== pageSize;
+
+    if (!pageChanged && !pageSizeChanged) return;
+
+    prevPaginationPage.current = currentPage;
+    prevPaginationPageSize.current = pageSize;
+
+    if (hasJustResetPageRef.current) {
+      resetHasJustResetPage();
+    } else {
+      setNextScrollToTarget();
     }
-    if (!enabled) return;
-
-    resetPaginationPage();
-
+  }, [
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [...resetDeps, resetPaginationPage, enabled]);
-
-  useEffect(() => {
-    if (totalPages === 0) return;
-    if (currentPage > totalPages) {
-      resetPaginationPage(totalPages);
-    }
-  }, [currentPage, resetPaginationPage, totalPages]);
+    ...scrollTriggerDeps,
+    currentPage,
+    hasJustResetPageRef,
+    nextScrollToTargetRef,
+    pageSize,
+    resetHasJustResetPage,
+    setNextScrollToTarget,
+  ]);
 
   useLayoutEffect(() => {
     const targetElement = scrollToTargetRef?.current;
@@ -58,12 +73,42 @@ export function usePaginationEffect({
     ) {
       return;
     }
+
     const rect = targetElement.getBoundingClientRect();
     const targetTop = window.scrollY + rect.top - window.innerHeight / 2;
     window.scrollTo({ top: targetTop, behavior: "instant" });
 
-    resetNextScrollToTarget?.();
+    resetNextScrollToTarget();
+  }, [
+    pageSize,
+    currentPage,
+    scrollToTargetRef,
+    nextScrollToTargetRef,
+    enabledScrollToTarget,
+    resetNextScrollToTarget,
+  ]);
 
+  useEffect(() => {
+    if (skipNextPageResetRef?.current) {
+      skipNextPageReset();
+      return;
+    }
+    if (!enabledResetPage) return;
+
+    resetPaginationPage();
+  }, [
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pageSize, currentPage, ...scrollTriggerDeps]);
+    ...resetDeps,
+    resetPaginationPage,
+    enabledResetPage,
+    skipNextPageResetRef,
+    skipNextPageReset,
+  ]);
+
+  useEffect(() => {
+    if (totalPages === 0) return;
+    if (currentPage > totalPages) {
+      resetPaginationPage(totalPages);
+    }
+  }, [currentPage, resetPaginationPage, totalPages]);
 }

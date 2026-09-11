@@ -2,19 +2,23 @@ import { type RefObject } from "react";
 
 import { usePaginationEffect as usePaginationEffectContext } from "../contexts";
 type UsePaginationEffectProps = {
-  scrollTriggerDeps?: readonly unknown[];
-  enabled?: boolean;
+  resetHasJustResetPage: () => void;
+  enabledResetPage: boolean;
+  scrollTriggerDeps: readonly unknown[];
   resetDeps?: readonly unknown[];
   currentPage: number;
   totalPages: number;
   pageSize: number;
   scrollToTargetRef: RefObject<HTMLDivElement | null>;
   skipNextPageResetRef?: RefObject<boolean>;
-  setSkipNextPageResetRef?: (value: boolean) => void;
-  nextScrollToTargetRef?: RefObject<boolean>;
-  resetNextScrollToTarget?: () => void;
+  skipNextPageReset: () => void;
+  nextScrollToTargetRef: RefObject<boolean>;
+  resetNextScrollToTarget: () => void;
   enabledScrollToTarget?: boolean;
   resetPaginationPage: (newPage?: number) => void;
+
+  setNextScrollToTarget: () => void;
+  hasJustResetPageRef: RefObject<boolean>;
 };
 export const usePaginationEffect = ({
   resetDeps,
@@ -23,25 +27,33 @@ export const usePaginationEffect = ({
   pageSize,
   scrollToTargetRef,
   skipNextPageResetRef,
+  resetHasJustResetPage,
   scrollTriggerDeps,
-  setSkipNextPageResetRef,
+  skipNextPageReset,
   nextScrollToTargetRef,
   enabledScrollToTarget,
   resetNextScrollToTarget,
   resetPaginationPage,
+  setNextScrollToTarget,
+  hasJustResetPageRef,
+  enabledResetPage,
 }: UsePaginationEffectProps) => {
   usePaginationEffectContext({
+    skipNextPageResetRef,
+    skipNextPageReset,
+    enabledResetPage,
     resetPaginationPage,
     resetDeps,
     currentPage,
-    totalPages,
     pageSize,
+    totalPages,
     scrollToTargetRef,
-    skipNextPageResetRef,
-    setSkipNextPageResetRef,
     scrollTriggerDeps,
     nextScrollToTargetRef,
-    resetNextScrollToTarget,
     enabledScrollToTarget,
+    hasJustResetPageRef,
+    resetNextScrollToTarget,
+    setNextScrollToTarget,
+    resetHasJustResetPage,
   });
 };

@@ -1,3 +1,5 @@
+import { useLayoutEffect, useRef, useState } from "react";
+
 import {
   EMPTY_PAGINATED_COURSE,
   EMPTY_PAGINATED_COURSE_BY_CATEGORY,
@@ -19,12 +21,15 @@ export const useCourses = ({ shouldEnrichData = true }: UseCoursesProps) => {
   const {
     pagination,
     setPagination,
-    scrollToTargetRef,
     skipNextPageResetRef,
-    setSkipNextPageResetRef,
+    skipNextPageReset,
+    scrollToTargetRef,
     nextScrollToTargetRef,
     resetNextScrollToTarget,
+    setNextScrollToTarget,
     resetPaginationPage,
+    resetHasJustResetPage,
+    hasJustResetPageRef,
   } = Pagination.hooks.useState();
 
   const { onSearchByCoursesName, tenKhoaHoc, handleClearSearch } =
@@ -33,7 +38,16 @@ export const useCourses = ({ shouldEnrichData = true }: UseCoursesProps) => {
   const { category, onChangeCategory } = useCoursesFilterByCategory();
 
   const isPaginatedSource = category === null;
-
+  const prevIsPaginatedSource = useRef(isPaginatedSource);
+  const [enabledResetPage, setEnabledResetPage] = useState(false);
+  useLayoutEffect(() => {
+    if (prevIsPaginatedSource.current !== isPaginatedSource) {
+      setEnabledResetPage(true);
+      prevIsPaginatedSource.current = isPaginatedSource;
+    } else {
+      setEnabledResetPage(false);
+    }
+  }, [isPaginatedSource]);
   const {
     data: courses = EMPTY_PAGINATED_COURSE,
     isPending: isPendingByPaginated,
@@ -88,19 +102,22 @@ export const useCourses = ({ shouldEnrichData = true }: UseCoursesProps) => {
   const isActiveSourceReady = !isFetchingByPaginated;
 
   Pagination.hooks.useEffect({
-    resetPaginationPage,
     currentPage: pagination.page,
     totalPages: courses.totalPages,
-    resetDeps: [tenKhoaHoc],
     pageSize: pagination.pageSize,
     scrollToTargetRef,
     skipNextPageResetRef,
-    setSkipNextPageResetRef,
-    nextScrollToTargetRef,
-    //Use fetching state as an additional trigger for the scroll effect, even when the data comes from the cache.
+    resetDeps: [targetCourses],
+    resetHasJustResetPage,
     scrollTriggerDeps: [isActiveSourceReady],
+    skipNextPageReset,
+    enabledResetPage: enabledResetPage,
+    nextScrollToTargetRef,
     enabledScrollToTarget: isActiveSourceReady,
     resetNextScrollToTarget,
+    resetPaginationPage,
+    setNextScrollToTarget,
+    hasJustResetPageRef,
   });
 
   const isLoading = isPaginatedSource

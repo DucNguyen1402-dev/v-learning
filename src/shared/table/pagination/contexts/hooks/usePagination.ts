@@ -8,7 +8,7 @@ import { usePaginationState } from "./usePaginationState";
 type UsePaginationProps<T> = {
   pageSize?: number;
   items: readonly T[];
-  enabled?: boolean;
+  enabled: boolean;
   resetDeps?: readonly unknown[];
   entityName?: string;
 };
@@ -50,11 +50,14 @@ export const usePagination = <T>({
     pagination,
     setPagination,
     skipNextPageResetRef,
-    setSkipNextPageResetRef,
+    skipNextPageReset,
     scrollToTargetRef,
     nextScrollToTargetRef,
     resetNextScrollToTarget,
     resetPaginationPage,
+    setNextScrollToTarget,
+    resetHasJustResetPage,
+    hasJustResetPageRef,
   } = usePaginationState({ pageSize });
 
   const {
@@ -82,8 +85,8 @@ export const usePagination = <T>({
 
   usePaginationEffect({
     skipNextPageResetRef,
-    setSkipNextPageResetRef,
-    enabled,
+    skipNextPageReset,
+    enabledResetPage: enabled,
     resetDeps,
     resetPaginationPage,
     currentPage: pagination.page,
@@ -93,6 +96,9 @@ export const usePagination = <T>({
     scrollTriggerDeps: [paginatedList],
     nextScrollToTargetRef,
     resetNextScrollToTarget,
+    setNextScrollToTarget,
+    resetHasJustResetPage,
+    hasJustResetPageRef,
   });
 
   return useMemo(
@@ -107,7 +113,6 @@ export const usePagination = <T>({
         setSize,
         setPage,
         preventNextResetPage,
-        resetNextScrollToTarget,
       },
       state: {
         entityName,
@@ -136,7 +141,6 @@ export const usePagination = <T>({
       pagination.page,
       pagination.pageSize,
       preventNextResetPage,
-      resetNextScrollToTarget,
       scrollToTargetRef,
       setPage,
       setSize,

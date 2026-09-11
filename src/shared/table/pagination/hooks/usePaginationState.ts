@@ -6,10 +6,13 @@ export const usePaginationState = () => {
     setPagination,
     scrollToTargetRef,
     skipNextPageResetRef,
-    setSkipNextPageResetRef,
+    skipNextPageReset,
     nextScrollToTargetRef,
     resetNextScrollToTarget,
+    resetHasJustResetPage,
     resetPaginationPage,
+    hasJustResetPageRef,
+    setNextScrollToTarget,
   } = useContextPaginationState({
     pageSize: 10,
   });
@@ -19,9 +22,12 @@ export const usePaginationState = () => {
     setPagination,
     scrollToTargetRef,
     skipNextPageResetRef,
-    setSkipNextPageResetRef,
+    skipNextPageReset,
     nextScrollToTargetRef,
     resetNextScrollToTarget,
     resetPaginationPage,
+    resetHasJustResetPage,
+    hasJustResetPageRef,
+    setNextScrollToTarget,
   };
 };
