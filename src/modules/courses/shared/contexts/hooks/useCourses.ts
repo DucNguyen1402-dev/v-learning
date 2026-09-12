@@ -53,7 +53,25 @@ export const useCourses = ({ shouldEnrichData = true }: UseCoursesProps) => {
 
   const isActiveSourceReady = !isFetchingByPaginated;
 
-  const isEmpty = !isPendingByPaginated && courses.items.length === 0;
+  const { updateMeta } = pagination;
+  useLayoutEffect(() => {
+    updateMeta({
+      totalPage: courses.totalPages,
+      enabledResetPage,
+      scrollTriggerDeps: [courses],
+      enabledScrollToTarget: isActiveSourceReady,
+      resetDeps: [enabledResetPage],
+    });
+  }, [
+    enabledResetPage,
+    updateMeta,
+    courses.totalPages,
+    isActiveSourceReady,
+    pagination.state.pageSize,
+    pagination.state.currentPage,
+    isPaginatedSource,
+    courses,
+  ]);
 
   const {
     data: coursesByCategory = EMPTY_PAGINATED_COURSE_BY_CATEGORY,
@@ -63,31 +81,15 @@ export const useCourses = ({ shouldEnrichData = true }: UseCoursesProps) => {
     category,
   });
 
+  const isEmpty =
+    (!isPendingByPaginated && courses.items.length === 0) ||
+    (!isPendingByCategory && coursesByCategory.length === 0);
+
   const isLoading = isPaginatedSource
     ? isPendingByPaginated || isFetchingByPaginated
     : isPendingByCategory || isFetchingByCategory;
 
   const targetCourses = isPaginatedSource ? courses.items : coursesByCategory;
-
-  const { updateMeta } = pagination;
-  useLayoutEffect(() => {
-    if (!enabledResetPage) return;
-    updateMeta({
-      totalPage: courses.totalPages,
-      enabledResetPage,
-      scrollTriggerDeps: [isActiveSourceReady],
-      enabledScrollToTarget: isActiveSourceReady,
-    });
-  }, [
-    isPaginatedSource,
-    enabledResetPage,
-    updateMeta,
-    courses.totalPages,
-    category,
-    tenKhoaHoc,
-    isActiveSourceReady,
-    targetCourses,
-  ]);
 
   const processedCourses = shouldEnrichData
     ? enrichCoursesWithMockData(targetCourses)

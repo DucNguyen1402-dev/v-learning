@@ -7,13 +7,14 @@ import { usePaginationEffect } from "./usePaginationEffect";
 import { usePaginationState } from "./usePaginationState";
 
 type PaginationMeta = {
-  totalPage?: number;
-  resetDeps?: readonly unknown[];
-  scrollTriggerDeps?: readonly unknown[];
-  enabledScrollToTarget?: boolean;
-  enabledResetPage?: boolean;
+  totalPage: number;
+  resetDeps: readonly unknown[];
+  scrollTriggerDeps: readonly unknown[];
+  enabledScrollToTarget: boolean;
+  enabledResetPage: boolean;
 };
 
+type PaginationMetaOptions = Partial<PaginationMeta>;
 export const usePagination = (initialOptions?: {
   initialPageSize?: number;
 }) => {
@@ -25,7 +26,7 @@ export const usePagination = (initialOptions?: {
     enabledResetPage: false,
   });
 
-  const updateMeta = useCallback((newMeta: PaginationMeta) => {
+  const updateMeta = useCallback((newMeta: PaginationMetaOptions) => {
     setMeta((prev) => {
       const nextTotalPage = newMeta.totalPage ?? 0;
       const nextResetDeps = newMeta.resetDeps ?? [];
@@ -73,12 +74,12 @@ export const usePagination = (initialOptions?: {
   } = usePaginationDerived({
     currentPage,
     pageSize,
-    totalPages: meta.totalPage ?? 0,
+    totalPages: meta.totalPage,
   });
 
   const { scrollToTargetRef, skipNextPageReset } = usePaginationEffect({
     currentPage,
-    totalPages: meta.totalPage ?? 0,
+    totalPages: meta.totalPage,
     pageSize,
     resetPaginationPage,
     resetDeps: meta.resetDeps,
