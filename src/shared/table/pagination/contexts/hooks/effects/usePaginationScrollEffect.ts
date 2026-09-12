@@ -1,5 +1,7 @@
 import { type RefObject, useLayoutEffect, useRef } from "react";
 
+import { isArrayShallowEqual } from "@shared/utils";
+
 type UsePaginationScrollEffectProps = {
   currentPage: number;
   pageSize: number;
@@ -20,12 +22,19 @@ export function usePaginationScrollEffect({
   const skipNextScrollToTargetRef = useRef(false);
   const prevPaginationPage = useRef(currentPage);
   const prevPaginationPageSize = useRef(pageSize);
+  const prevScrollTriggerDeps = useRef(scrollTriggerDeps);
 
   useLayoutEffect(() => {
     const pageChanged = prevPaginationPage.current !== currentPage;
     const pageSizeChanged = prevPaginationPageSize.current !== pageSize;
+    const triggerDepsChanged = !isArrayShallowEqual(
+      prevScrollTriggerDeps.current,
+      scrollTriggerDeps,
+    );
 
-    if (!pageChanged && !pageSizeChanged) return;
+    prevScrollTriggerDeps.current = scrollTriggerDeps;
+
+    if (!pageChanged && !pageSizeChanged && !triggerDepsChanged) return;
 
     prevPaginationPage.current = currentPage;
     prevPaginationPageSize.current = pageSize;
@@ -36,8 +45,7 @@ export function usePaginationScrollEffect({
       skipNextScrollToTargetRef.current = true;
     }
   }, [
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    ...scrollTriggerDeps,
+    scrollTriggerDeps,
     currentPage,
     pageSize,
     hasJustResetPageRef,

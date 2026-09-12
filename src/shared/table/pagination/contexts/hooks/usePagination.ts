@@ -46,7 +46,6 @@ export const usePagination = <T>({
     currentPage,
     totalPages,
     pageSize,
-    scrollTriggerDeps: [items],
   });
 
   return useMemo(

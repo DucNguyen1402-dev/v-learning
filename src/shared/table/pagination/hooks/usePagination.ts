@@ -1,41 +1,57 @@
 import { useCallback, useState } from "react";
 
+import { isArrayShallowEqual } from "@shared/utils";
+
 import { usePaginationDerived } from "./usePaginationDerived";
 import { usePaginationEffect } from "./usePaginationEffect";
 import { usePaginationState } from "./usePaginationState";
 
-type ResetPaginationParams = {
-  totalPage: number;
-  resetDeps: readonly unknown[];
-  scrollTriggerDeps: readonly unknown[];
-  enabledScrollToTarget: boolean;
+type PaginationMeta = {
+  totalPage?: number;
+  resetDeps?: readonly unknown[];
+  scrollTriggerDeps?: readonly unknown[];
+  enabledScrollToTarget?: boolean;
+  enabledResetPage?: boolean;
 };
 
-export const usePagination = () => {
-  const [paginationParams, setPaginationParams] =
-    useState<ResetPaginationParams>({
-      totalPage: 0,
-      resetDeps: [],
-      scrollTriggerDeps: [],
-      enabledScrollToTarget: false,
-    });
+export const usePagination = (initialOptions?: {
+  initialPageSize?: number;
+}) => {
+  const [meta, setMeta] = useState<PaginationMeta>({
+    totalPage: 0,
+    resetDeps: [],
+    scrollTriggerDeps: [],
+    enabledScrollToTarget: false,
+    enabledResetPage: false,
+  });
 
-  const resetPagination = useCallback(
-    ({
-      totalPage,
-      resetDeps,
-      scrollTriggerDeps,
-      enabledScrollToTarget,
-    }: ResetPaginationParams) => {
-      setPaginationParams({
-        totalPage,
-        resetDeps,
-        scrollTriggerDeps,
-        enabledScrollToTarget,
-      });
-    },
-    [],
-  );
+  const updateMeta = useCallback((newMeta: PaginationMeta) => {
+    setMeta((prev) => {
+      const nextTotalPage = newMeta.totalPage ?? 0;
+      const nextResetDeps = newMeta.resetDeps ?? [];
+      const nextScrollTriggerDeps = newMeta.scrollTriggerDeps ?? [];
+      const nextEnabledScrollToTarget = newMeta.enabledScrollToTarget ?? false;
+      const nextEnabledResetPage = newMeta.enabledResetPage ?? false;
+
+      if (
+        prev.totalPage === nextTotalPage &&
+        prev.enabledScrollToTarget === nextEnabledScrollToTarget &&
+        prev.enabledResetPage === nextEnabledResetPage &&
+        isArrayShallowEqual(prev.resetDeps, nextResetDeps) &&
+        isArrayShallowEqual(prev.scrollTriggerDeps, nextScrollTriggerDeps)
+      ) {
+        return prev;
+      }
+
+      return {
+        totalPage: nextTotalPage,
+        resetDeps: nextResetDeps,
+        scrollTriggerDeps: nextScrollTriggerDeps,
+        enabledScrollToTarget: nextEnabledScrollToTarget,
+        enabledResetPage: nextEnabledResetPage,
+      };
+    });
+  }, []);
 
   const {
     currentPage,
@@ -46,7 +62,7 @@ export const usePagination = () => {
     onPageClick,
     setSize,
     setPage,
-  } = usePaginationState();
+  } = usePaginationState({ initialPageSize: initialOptions?.initialPageSize });
 
   const {
     displayStart,
@@ -57,18 +73,18 @@ export const usePagination = () => {
   } = usePaginationDerived({
     currentPage,
     pageSize,
-    totalPages: paginationParams.totalPage,
+    totalPages: meta.totalPage ?? 0,
   });
 
   const { scrollToTargetRef, skipNextPageReset } = usePaginationEffect({
     currentPage,
-    totalPages: paginationParams.totalPage,
+    totalPages: meta.totalPage ?? 0,
     pageSize,
     resetPaginationPage,
-    resetDeps: paginationParams.resetDeps,
-    scrollTriggerDeps: paginationParams.scrollTriggerDeps,
-    enabledResetPage: true,
-    enabledScrollToTarget: paginationParams.enabledScrollToTarget,
+    resetDeps: meta.resetDeps,
+    scrollTriggerDeps: meta.scrollTriggerDeps,
+    enabledResetPage: meta.enabledResetPage,
+    enabledScrollToTarget: meta.enabledScrollToTarget,
   });
 
   return {
@@ -78,7 +94,7 @@ export const usePagination = () => {
     state: {
       currentPage,
       pageSize,
-      totalPage: paginationParams.totalPage,
+      totalPage: meta.totalPage ?? 0,
       displayStart,
       displayEnd,
       pageNumbers,
@@ -93,6 +109,6 @@ export const usePagination = () => {
       setPage,
       skipNextPageReset,
     },
-    resetPagination,
+    updateMeta,
   };
 };

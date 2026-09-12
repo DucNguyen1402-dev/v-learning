@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 
 import {
   EMPTY_PAGINATED_COURSE,
@@ -13,6 +13,7 @@ import {
 } from "@modules/courses/shared/hooks";
 import { enrichCoursesWithMockData } from "@modules/courses/shared/utils";
 import { Pagination } from "@shared/table";
+
 type UseCoursesProps = {
   shouldEnrichData?: boolean;
 };
@@ -68,16 +69,25 @@ export const useCourses = ({ shouldEnrichData = true }: UseCoursesProps) => {
 
   const targetCourses = isPaginatedSource ? courses.items : coursesByCategory;
 
-  const { resetPagination } = pagination;
-  useEffect(() => {
-    if (!isActiveSourceReady) return;
-    resetPagination({
+  const { updateMeta } = pagination;
+  useLayoutEffect(() => {
+    if (!enabledResetPage) return;
+    updateMeta({
       totalPage: courses.totalPages,
-      resetDeps: [targetCourses],
+      enabledResetPage,
       scrollTriggerDeps: [isActiveSourceReady],
       enabledScrollToTarget: isActiveSourceReady,
     });
-  }, [courses.totalPages, targetCourses, isActiveSourceReady, resetPagination]);
+  }, [
+    isPaginatedSource,
+    enabledResetPage,
+    updateMeta,
+    courses.totalPages,
+    category,
+    tenKhoaHoc,
+    isActiveSourceReady,
+    targetCourses,
+  ]);
 
   const processedCourses = shouldEnrichData
     ? enrichCoursesWithMockData(targetCourses)

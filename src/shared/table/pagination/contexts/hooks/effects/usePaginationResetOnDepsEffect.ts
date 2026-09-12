@@ -1,4 +1,6 @@
-import { type RefObject, useEffect } from "react";
+import { type RefObject, useEffect, useRef } from "react";
+
+import { isArrayShallowEqual } from "@shared/utils";
 
 type UsePaginationResetOnDepsEffectProps = {
   enabledResetPage?: boolean;
@@ -15,7 +17,24 @@ export function usePaginationResetOnDepsEffect({
   hasJustResetPageRef,
   skipNextPageResetRef,
 }: UsePaginationResetOnDepsEffectProps) {
+  const prevResetDepsRef = useRef(resetDeps);
+  const isFirstRenderRef = useRef(true);
+
   useEffect(() => {
+    if (isFirstRenderRef.current) {
+      isFirstRenderRef.current = false;
+      prevResetDepsRef.current = resetDeps;
+      return;
+    }
+
+    const isDepsChanged = !isArrayShallowEqual(
+      prevResetDepsRef.current,
+      resetDeps,
+    );
+    prevResetDepsRef.current = resetDeps;
+
+    if (!isDepsChanged) return;
+
     if (skipNextPageResetRef.current) {
       skipNextPageResetRef.current = false;
       return;
@@ -25,8 +44,7 @@ export function usePaginationResetOnDepsEffect({
     resetPaginationPage();
     hasJustResetPageRef.current = true;
   }, [
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    ...resetDeps,
+    resetDeps,
     resetPaginationPage,
     enabledResetPage,
     skipNextPageResetRef,
