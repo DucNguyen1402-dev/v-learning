@@ -54,7 +54,6 @@ export function usePaginationScrollEffect({
       return;
     }
 
-    console.log("Scrolling to target element:", targetElement);
     const rect = targetElement.getBoundingClientRect();
     const targetTop = window.scrollY + rect.top - window.innerHeight / 2;
     window.scrollTo({ top: targetTop, behavior: "instant" });

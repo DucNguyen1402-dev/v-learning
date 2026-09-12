@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 import {
   EMPTY_PAGINATED_COURSE,
@@ -18,16 +18,6 @@ type UseCoursesProps = {
 };
 export const useCourses = ({ shouldEnrichData = true }: UseCoursesProps) => {
   const { data: allCourses } = useCourseQuery();
-  const {
-    currentPage,
-    pageSize,
-    resetPaginationPage,
-    onPrevClick,
-    onNextClick,
-    onPageClick,
-    setSize,
-    setPage,
-  } = Pagination.hooks.useState();
 
   const { onSearchByCoursesName, tenKhoaHoc, handleClearSearch } =
     useCoursesSearchByName();
@@ -47,30 +37,20 @@ export const useCourses = ({ shouldEnrichData = true }: UseCoursesProps) => {
     }
   }, [isPaginatedSource, enabledResetPage]);
 
+  const pagination = Pagination.hooks.usePagination();
+
   const {
     data: courses = EMPTY_PAGINATED_COURSE,
     isPending: isPendingByPaginated,
     isFetching: isFetchingByPaginated,
   } = usePaginatedCoursesQuery({
-    page: currentPage,
-    pageSize,
+    page: pagination.state.currentPage,
+    pageSize: pagination.state.pageSize,
     tenKhoaHoc: tenKhoaHoc,
     category,
   });
 
   const isActiveSourceReady = !isFetchingByPaginated;
-
-  const {
-    displayStart,
-    displayEnd,
-    pageNumbers,
-    isPrevDisabled,
-    isNextDisabled,
-  } = Pagination.hooks.useDerived({
-    currentPage,
-    pageSize,
-    totalPages: courses.totalPages,
-  });
 
   const isEmpty = !isPendingByPaginated && courses.items.length === 0;
 
@@ -88,16 +68,16 @@ export const useCourses = ({ shouldEnrichData = true }: UseCoursesProps) => {
 
   const targetCourses = isPaginatedSource ? courses.items : coursesByCategory;
 
-  const { scrollToTargetRef, skipNextPageReset } = Pagination.hooks.useEffect({
-    currentPage,
-    totalPages: courses.totalPages,
-    pageSize,
-    resetPaginationPage,
-    resetDeps: [targetCourses],
-    scrollTriggerDeps: [isActiveSourceReady],
-    enabledResetPage,
-    enabledScrollToTarget: isActiveSourceReady,
-  });
+  const { resetPagination } = pagination;
+  useEffect(() => {
+    if (!isActiveSourceReady) return;
+    resetPagination({
+      totalPage: courses.totalPages,
+      resetDeps: [targetCourses],
+      scrollTriggerDeps: [isActiveSourceReady],
+      enabledScrollToTarget: isActiveSourceReady,
+    });
+  }, [courses.totalPages, targetCourses, isActiveSourceReady, resetPagination]);
 
   const processedCourses = shouldEnrichData
     ? enrichCoursesWithMockData(targetCourses)
@@ -124,25 +104,14 @@ export const useCourses = ({ shouldEnrichData = true }: UseCoursesProps) => {
         enabledResetPage,
       },
       refs: {
-        scrollToTarget: scrollToTargetRef,
+        ...pagination.ref,
       },
       state: {
-        currentPage,
-        pageSize,
-        displayStart,
-        displayEnd,
-        pageNumbers,
-        isPrevDisabled,
-        isNextDisabled,
+        ...pagination.state,
         totalItems: courses.totalCount,
       },
       actions: {
-        onPrevClick,
-        onNextClick,
-        onPageClick,
-        setSize,
-        setPage,
-        skipNextPageReset,
+        ...pagination.actions,
       },
     },
   };
