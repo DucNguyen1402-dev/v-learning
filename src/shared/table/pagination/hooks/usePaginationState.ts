@@ -5,16 +5,8 @@ type UsePaginationStateProps = {
 };
 export const usePaginationState = ({
   initialPageSize = 10,
-}: UsePaginationStateProps) => {
-  const { currentPage, pageSize, setPagination, resetPaginationPage } =
-    useContextPaginationState({
-      initialPageSize,
-    });
-
-  return {
-    currentPage,
-    pageSize,
-    setPagination,
-    resetPaginationPage,
-  };
+}: UsePaginationStateProps = {}) => {
+  return useContextPaginationState({
+    initialPageSize,
+  });
 };

@@ -5,7 +5,6 @@ import {
 } from "./components";
 import { PaginationProvider, usePaginationContext } from "./contexts";
 import {
-  usePaginationActions,
   usePaginationDerived,
   usePaginationEffect,
   usePaginationState,
@@ -17,7 +16,6 @@ export const Pagination = {
   hooks: {
     useEffect: usePaginationEffect,
     useState: usePaginationState,
-    useActions: usePaginationActions,
     useDerived: usePaginationDerived,
   },
   components: {

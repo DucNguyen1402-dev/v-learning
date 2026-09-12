@@ -4,7 +4,7 @@ import { createArray } from "@shared/utils";
 type UsePaginationDerivedProps<T> = {
   currentPage: number;
   pageSize: number;
-  items: readonly T[] | undefined;
+  items: readonly T[];
 };
 
 export const usePaginationDerived = <T>({
@@ -13,13 +13,10 @@ export const usePaginationDerived = <T>({
   items,
 }: UsePaginationDerivedProps<T>) =>
   useMemo(() => {
-    const startIndex = (currentPage - 1) * pageSize;
+    const paginatedList =
+      items.slice((currentPage - 1) * pageSize, currentPage * pageSize) ?? [];
 
-    const endIndex = currentPage * pageSize;
-
-    const paginatedList = items?.slice(startIndex, endIndex) ?? [];
-
-    const totalItems = items?.length ?? 0;
+    const totalItems = items.length;
     const displayStart =
       totalItems === 0 ? 0 : (currentPage - 1) * pageSize + 1;
     const displayEnd = Math.min(currentPage * pageSize, totalItems);

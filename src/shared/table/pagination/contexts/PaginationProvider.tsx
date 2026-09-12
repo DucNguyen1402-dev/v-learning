@@ -5,26 +5,24 @@ import { PaginationContext } from "./PaginationContext";
 
 type PaginationProviderProps<T> = {
   children: ReactNode;
-  enabled?: boolean;
+  enabledResetPage?: boolean;
   initialPageSize?: number;
   items: readonly T[];
-  resetDeps?: readonly unknown[];
+  resetDeps: readonly unknown[];
   entityName?: string;
 };
 export const PaginationProvider = <T,>({
   children,
-  enabled = true,
+  enabledResetPage = true,
   initialPageSize = 10,
   items,
   resetDeps,
-  entityName = "items",
 }: PaginationProviderProps<T>) => {
   const value = usePagination<T>({
     initialPageSize,
     items,
-    enabled,
+    enabledResetPage,
     resetDeps,
-    entityName,
   });
   return (
     <PaginationContext.Provider value={value}>

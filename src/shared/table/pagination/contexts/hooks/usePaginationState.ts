@@ -6,7 +6,7 @@ type UsePaginationStateProps = {
 
 export function usePaginationState({
   initialPageSize = 10,
-}: UsePaginationStateProps) {
+}: UsePaginationStateProps = {}) {
   const [pagination, setPagination] = useState<{
     page: number;
     pageSize: number;
@@ -15,14 +15,39 @@ export function usePaginationState({
     pageSize: initialPageSize,
   });
 
+  const setSize = useCallback((value: number) => {
+    setPagination((prev) => ({ ...prev, pageSize: value, page: 1 }));
+  }, []);
+
+  const setPage = useCallback((value: number) => {
+    setPagination((prev) => ({ ...prev, page: value }));
+  }, []);
+
+  const onPrevClick = useCallback(() => {
+    setPagination((prev) => ({ ...prev, page: prev.page - 1 }));
+  }, []);
+
+  const onNextClick = useCallback(() => {
+    setPagination((prev) => ({ ...prev, page: prev.page + 1 }));
+  }, []);
+
+  const onPageClick = useCallback((page: number) => {
+    setPagination((prev) => ({ ...prev, page }));
+  }, []);
+
   const resetPaginationPage = useCallback((newPage: number = 1) => {
     setPagination((prev) => ({ ...prev, page: newPage }));
   }, []);
 
   return {
     currentPage: pagination.page,
-    setPagination,
     pageSize: pagination.pageSize,
+    setPagination,
+    setSize,
+    setPage,
+    onPrevClick,
+    onNextClick,
+    onPageClick,
     resetPaginationPage,
   };
 }

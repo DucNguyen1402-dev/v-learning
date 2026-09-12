@@ -18,8 +18,16 @@ type UseCoursesProps = {
 };
 export const useCourses = ({ shouldEnrichData = true }: UseCoursesProps) => {
   const { data: allCourses } = useCourseQuery();
-  const { currentPage, pageSize, setPagination, resetPaginationPage } =
-    Pagination.hooks.useState();
+  const {
+    currentPage,
+    pageSize,
+    resetPaginationPage,
+    onPrevClick,
+    onNextClick,
+    onPageClick,
+    setSize,
+    setPage,
+  } = Pagination.hooks.useState();
 
   const { onSearchByCoursesName, tenKhoaHoc, handleClearSearch } =
     useCoursesSearchByName();
@@ -50,21 +58,7 @@ export const useCourses = ({ shouldEnrichData = true }: UseCoursesProps) => {
     category,
   });
 
-  const isEmpty = !isPendingByPaginated && courses.items.length === 0;
-
-  const {
-    data: coursesByCategory = EMPTY_PAGINATED_COURSE_BY_CATEGORY,
-    isPending: isPendingByCategory,
-    isFetching: isFetchingByCategory,
-  } = useCoursesQueryByCategory({
-    category,
-  });
-
-  const { onPrevClick, onNextClick, onPageClick, setSize, setPage } =
-    Pagination.hooks.useActions({
-      setPagination,
-      currentPage,
-    });
+  const isActiveSourceReady = !isFetchingByPaginated;
 
   const {
     displayStart,
@@ -78,13 +72,21 @@ export const useCourses = ({ shouldEnrichData = true }: UseCoursesProps) => {
     totalPages: courses.totalPages,
   });
 
+  const isEmpty = !isPendingByPaginated && courses.items.length === 0;
+
+  const {
+    data: coursesByCategory = EMPTY_PAGINATED_COURSE_BY_CATEGORY,
+    isPending: isPendingByCategory,
+    isFetching: isFetchingByCategory,
+  } = useCoursesQueryByCategory({
+    category,
+  });
+
+  const isLoading = isPaginatedSource
+    ? isPendingByPaginated || isFetchingByPaginated
+    : isPendingByCategory || isFetchingByCategory;
+
   const targetCourses = isPaginatedSource ? courses.items : coursesByCategory;
-
-  const processedCourses = shouldEnrichData
-    ? enrichCoursesWithMockData(targetCourses)
-    : targetCourses;
-
-  const isActiveSourceReady = !isFetchingByPaginated;
 
   const { scrollToTargetRef, skipNextPageReset } = Pagination.hooks.useEffect({
     currentPage,
@@ -97,9 +99,9 @@ export const useCourses = ({ shouldEnrichData = true }: UseCoursesProps) => {
     enabledScrollToTarget: isActiveSourceReady,
   });
 
-  const isLoading = isPaginatedSource
-    ? isPendingByPaginated || isFetchingByPaginated
-    : isPendingByCategory || isFetchingByCategory;
+  const processedCourses = shouldEnrichData
+    ? enrichCoursesWithMockData(targetCourses)
+    : targetCourses;
 
   return {
     processedCourses,

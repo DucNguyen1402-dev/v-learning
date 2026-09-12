@@ -12,8 +12,16 @@ import { enrichCoursesWithMockData } from "@modules/courses/shared/utils";
 import { Pagination } from "@shared/table";
 
 export const useCourses = () => {
-  const { currentPage, pageSize, setPagination, resetPaginationPage } =
-    Pagination.hooks.useState();
+  const {
+    currentPage,
+    pageSize,
+    resetPaginationPage,
+    onPrevClick,
+    onNextClick,
+    onPageClick,
+    setSize,
+    setPage,
+  } = Pagination.hooks.useState();
 
   const { onSearchByCoursesName, tenKhoaHoc, handleClearSearch } =
     useCoursesSearchByName();
@@ -42,12 +50,6 @@ export const useCourses = () => {
   } = useCoursesQueryByCategory({
     category,
   });
-
-  const { onPrevClick, onNextClick, onPageClick, setSize, setPage } =
-    Pagination.hooks.useActions({
-      setPagination,
-      currentPage,
-    });
 
   const {
     displayStart,

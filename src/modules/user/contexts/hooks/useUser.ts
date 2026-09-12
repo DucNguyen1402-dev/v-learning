@@ -8,8 +8,16 @@ import { CurrentUser } from "@/shared/current-user";
 
 export function useUser() {
   const { data: allUsers } = useUsersQuery();
-  const { currentPage, pageSize, setPagination, resetPaginationPage } =
-    Pagination.hooks.useState();
+  const {
+    currentPage,
+    pageSize,
+    resetPaginationPage,
+    onPrevClick,
+    onNextClick,
+    onPageClick,
+    setSize,
+    setPage,
+  } = Pagination.hooks.useState();
 
   const { role, onChangeRole, filteredUsers } = useUserFilterByRole({
     allUsers,
@@ -31,11 +39,6 @@ export function useUser() {
   });
 
   const isEmpty = !isPendingByPaginated && paginatedUserData.items.length === 0;
-  const { onPrevClick, onNextClick, onPageClick, setSize, setPage } =
-    Pagination.hooks.useActions({
-      setPagination,
-      currentPage,
-    });
 
   // The last page is empty, so subtract 1 from totalPages to avoid showing it.
   const {
