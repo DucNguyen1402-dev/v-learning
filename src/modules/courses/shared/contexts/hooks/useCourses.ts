@@ -53,14 +53,17 @@ export const useCourses = ({ shouldEnrichData = true }: UseCoursesProps) => {
 
   const isActiveSourceReady = !isFetchingByPaginated;
 
-  const { updateMeta } = pagination;
+  const { updateMeta, syncEnabledResetPage, syncEnabledScrollToTarget } =
+    pagination;
+
+  syncEnabledResetPage(enabledResetPage);
+  syncEnabledScrollToTarget(isActiveSourceReady);
+
   useEffect(() => {
     updateMeta({
       totalPage: courses.totalPages,
-      enabledResetPage,
-      enabledScrollToTarget: isActiveSourceReady,
     });
-  }, [updateMeta, courses.totalPages, enabledResetPage, isActiveSourceReady]);
+  }, [updateMeta, courses.totalPages]);
   const {
     data: coursesByCategory = EMPTY_PAGINATED_COURSE_BY_CATEGORY,
     isPending: isPendingByCategory,

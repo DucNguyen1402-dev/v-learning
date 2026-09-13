@@ -6,21 +6,29 @@ type UsePaginationScrollEffectProps = {
   enabledScrollToTarget?: boolean;
   hasJustResetPageRef: RefObject<boolean>;
   scrollToTargetRef: RefObject<HTMLDivElement | null>;
+  resetEnabledScrollToTarget: () => void;
 };
 
 export function usePaginationScrollEffect({
   currentPage,
   pageSize,
-  enabledScrollToTarget = true,
+  enabledScrollToTarget = false,
   hasJustResetPageRef,
   scrollToTargetRef,
+  resetEnabledScrollToTarget,
 }: UsePaginationScrollEffectProps) {
   const prevPageSize = useRef(pageSize);
   const prevCurrentPage = useRef(currentPage);
 
   useLayoutEffect(() => {
+    if (!scrollToTargetRef.current || !enabledScrollToTarget) {
+      return;
+    }
+    resetEnabledScrollToTarget();
     const pageSizeChanged = prevPageSize.current !== pageSize;
+
     const currentPageChanged = prevCurrentPage.current !== currentPage;
+
     if (!pageSizeChanged && !currentPageChanged) return;
 
     prevPageSize.current = pageSize;
@@ -31,18 +39,15 @@ export function usePaginationScrollEffect({
       return;
     }
 
-    if (!scrollToTargetRef.current || !enabledScrollToTarget) {
-      return;
-    }
-
     const rect = scrollToTargetRef.current.getBoundingClientRect();
     const targetTop = window.scrollY + rect.top - window.innerHeight / 2;
     window.scrollTo({ top: targetTop, behavior: "instant" });
   }, [
-    currentPage,
     pageSize,
+    currentPage,
     enabledScrollToTarget,
     hasJustResetPageRef,
     scrollToTargetRef,
+    resetEnabledScrollToTarget,
   ]);
 }
