@@ -22,7 +22,7 @@ export const PaginationPageNumbers = ({
     lastPageNumbersRef.current = pageNumbers;
   }
   const stablePageNumbers =
-    isLoading && pageNumbers.length === 0
+    pageNumbers.length === 0
       ? // eslint-disable-next-line react-hooks/refs
         lastPageNumbersRef.current
       : pageNumbers;

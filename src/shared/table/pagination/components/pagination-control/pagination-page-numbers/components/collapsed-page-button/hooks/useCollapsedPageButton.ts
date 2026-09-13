@@ -74,7 +74,8 @@ export const useCollapsedPageButtons = ({
   });
 
   useDynamicWindowEffect({
-    middlePages,
+    leadingPages,
+    trailingPages,
     currentPage,
     stopResizeDynamicWindowRef,
     setDynamicWindowSize,

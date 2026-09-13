@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 import {
   EMPTY_PAGINATED_COURSE,
@@ -54,25 +54,14 @@ export const useCourses = ({ shouldEnrichData = true }: UseCoursesProps) => {
   const isActiveSourceReady = !isFetchingByPaginated;
 
   const { updateMeta } = pagination;
-  useLayoutEffect(() => {
+  useEffect(() => {
     updateMeta({
       totalPage: courses.totalPages,
       enabledResetPage,
-      scrollTriggerDeps: [courses],
       enabledScrollToTarget: isActiveSourceReady,
       resetDeps: [enabledResetPage],
     });
-  }, [
-    enabledResetPage,
-    updateMeta,
-    courses.totalPages,
-    isActiveSourceReady,
-    pagination.state.pageSize,
-    pagination.state.currentPage,
-    isPaginatedSource,
-    courses,
-  ]);
-
+  }, [updateMeta, courses.totalPages, enabledResetPage, isActiveSourceReady]);
   const {
     data: coursesByCategory = EMPTY_PAGINATED_COURSE_BY_CATEGORY,
     isPending: isPendingByCategory,

@@ -26,33 +26,36 @@ export const usePagination = (initialOptions?: {
     enabledResetPage: false,
   });
 
-  const updateMeta = useCallback((newMeta: PaginationMetaOptions) => {
-    setMeta((prev) => {
-      const nextTotalPage = newMeta.totalPage ?? 0;
-      const nextResetDeps = newMeta.resetDeps ?? [];
-      const nextScrollTriggerDeps = newMeta.scrollTriggerDeps ?? [];
-      const nextEnabledScrollToTarget = newMeta.enabledScrollToTarget ?? false;
-      const nextEnabledResetPage = newMeta.enabledResetPage ?? false;
+  const updateMeta = useCallback(
+    ({
+      totalPage: nextTotalPage = 0,
+      resetDeps: nextResetDeps = [],
+      scrollTriggerDeps: nextScrollTriggerDeps = [],
+      enabledScrollToTarget: nextEnabledScrollToTarget = false,
+      enabledResetPage: nextEnabledResetPage = false,
+    }: PaginationMetaOptions) => {
+      setMeta((prev) => {
+        if (
+          prev.totalPage === nextTotalPage &&
+          prev.enabledScrollToTarget === nextEnabledScrollToTarget &&
+          prev.enabledResetPage === nextEnabledResetPage &&
+          isArrayShallowEqual(prev.resetDeps, nextResetDeps) &&
+          isArrayShallowEqual(prev.scrollTriggerDeps, nextScrollTriggerDeps)
+        ) {
+          return prev;
+        }
 
-      if (
-        prev.totalPage === nextTotalPage &&
-        prev.enabledScrollToTarget === nextEnabledScrollToTarget &&
-        prev.enabledResetPage === nextEnabledResetPage &&
-        isArrayShallowEqual(prev.resetDeps, nextResetDeps) &&
-        isArrayShallowEqual(prev.scrollTriggerDeps, nextScrollTriggerDeps)
-      ) {
-        return prev;
-      }
-
-      return {
-        totalPage: nextTotalPage,
-        resetDeps: nextResetDeps,
-        scrollTriggerDeps: nextScrollTriggerDeps,
-        enabledScrollToTarget: nextEnabledScrollToTarget,
-        enabledResetPage: nextEnabledResetPage,
-      };
-    });
-  }, []);
+        return {
+          totalPage: nextTotalPage,
+          resetDeps: nextResetDeps,
+          scrollTriggerDeps: nextScrollTriggerDeps,
+          enabledScrollToTarget: nextEnabledScrollToTarget,
+          enabledResetPage: nextEnabledResetPage,
+        };
+      });
+    },
+    [],
+  );
 
   const {
     currentPage,

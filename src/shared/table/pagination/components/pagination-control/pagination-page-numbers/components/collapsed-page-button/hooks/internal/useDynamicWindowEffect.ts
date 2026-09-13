@@ -6,27 +6,33 @@ import {
 } from "react";
 
 type UseDynamicWindowEffectProps = {
-  middlePages: number[];
+  leadingPages: number[];
+  trailingPages: number[];
   currentPage: number;
   stopResizeDynamicWindowRef: RefObject<boolean>;
   setDynamicWindowSize: Dispatch<SetStateAction<number>>;
   isDynamicWindowExpanded: boolean;
 };
 export const useDynamicWindowEffect = ({
-  middlePages,
+  leadingPages,
+  trailingPages,
   currentPage,
   stopResizeDynamicWindowRef,
   setDynamicWindowSize,
   isDynamicWindowExpanded,
 }: UseDynamicWindowEffectProps) => {
   useEffect(() => {
-    if (!middlePages.includes(currentPage)) {
+    if (
+      leadingPages.includes(currentPage) ||
+      trailingPages.includes(currentPage)
+    ) {
       stopResizeDynamicWindowRef.current = false;
       setDynamicWindowSize(1);
     }
   }, [
     currentPage,
-    middlePages,
+    leadingPages,
+    trailingPages,
     setDynamicWindowSize,
     stopResizeDynamicWindowRef,
   ]);

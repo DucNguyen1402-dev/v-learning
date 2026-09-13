@@ -18,22 +18,17 @@ export function usePaginationResetOnDepsEffect({
   skipNextPageResetRef,
 }: UsePaginationResetOnDepsEffectProps) {
   const prevResetDepsRef = useRef(resetDeps);
-  const isFirstRenderRef = useRef(true);
 
   useEffect(() => {
-    if (isFirstRenderRef.current) {
-      isFirstRenderRef.current = false;
+    if (resetDeps.length > 0) {
+      const isDepsChanged = !isArrayShallowEqual(
+        prevResetDepsRef.current,
+        resetDeps,
+      );
       prevResetDepsRef.current = resetDeps;
-      return;
+
+      if (!isDepsChanged) return;
     }
-
-    const isDepsChanged = !isArrayShallowEqual(
-      prevResetDepsRef.current,
-      resetDeps,
-    );
-    prevResetDepsRef.current = resetDeps;
-
-    if (!isDepsChanged) return;
 
     if (skipNextPageResetRef.current) {
       skipNextPageResetRef.current = false;

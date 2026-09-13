@@ -37,9 +37,9 @@ export function usePaginationScrollEffect({
         scrollTriggerDeps,
       );
       if (!triggerDepsChanged) return;
-    }
 
-    prevScrollTriggerDeps.current = scrollTriggerDeps;
+      prevScrollTriggerDeps.current = scrollTriggerDeps;
+    }
 
     if (hasJustResetPageRef.current) {
       hasJustResetPageRef.current = false;
