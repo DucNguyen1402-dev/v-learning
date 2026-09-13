@@ -11,8 +11,6 @@ type UsePaginationEffectProps = {
   totalPages: number;
   currentPage: number;
   pageSize: number;
-  enabledScrollToTarget?: boolean;
-  resetEnabledScrollToTarget: () => void;
 };
 
 export function usePaginationEffect({
@@ -22,11 +20,7 @@ export function usePaginationEffect({
   currentPage,
   pageSize,
   totalPages,
-  enabledScrollToTarget = false,
-  resetEnabledScrollToTarget,
 }: UsePaginationEffectProps) {
-  const scrollToTargetRef = useRef<HTMLDivElement | null>(null);
-
   const hasJustResetPageRef = useRef(false);
   const skipNextPageResetRef = useRef(false);
 
@@ -34,14 +28,12 @@ export function usePaginationEffect({
     skipNextPageResetRef.current = true;
   }, []);
 
-  usePaginationScrollEffect({
-    currentPage,
-    pageSize,
-    enabledScrollToTarget,
-    hasJustResetPageRef,
-    scrollToTargetRef,
-    resetEnabledScrollToTarget,
-  });
+  const { syncEnabledScrollToTarget, scrollToTargetRef } =
+    usePaginationScrollEffect({
+      currentPage,
+      pageSize,
+      hasJustResetPageRef,
+    });
 
   usePaginationResetOnDepsEffect({
     enabledResetPage,
@@ -60,5 +52,6 @@ export function usePaginationEffect({
   return {
     scrollToTargetRef,
     skipNextPageReset,
+    syncEnabledScrollToTarget,
   };
 }

@@ -20,17 +20,11 @@ export const usePagination = (initialOptions?: {
   });
 
   const enabledResetPage = useRef(false);
-  const enabledScrollToTarget = useRef(false);
 
   const syncEnabledResetPage = (value: boolean) => {
     enabledResetPage.current = value;
   };
-  const syncEnabledScrollToTarget = (value: boolean) => {
-    enabledScrollToTarget.current = value;
-  };
-  const resetEnabledScrollToTarget = useCallback(() => {
-    enabledScrollToTarget.current = false;
-  }, []);
+
   const updateMeta = useCallback(
     ({
       totalPage: nextTotalPage = 0,
@@ -76,18 +70,15 @@ export const usePagination = (initialOptions?: {
     totalPages: meta.totalPage,
   });
 
-  // eslint-disable-next-line react-hooks/refs
-  const { scrollToTargetRef, skipNextPageReset } = usePaginationEffect({
-    currentPage,
-    totalPages: meta.totalPage,
-    pageSize,
-    resetPaginationPage,
-    // eslint-disable-next-line react-hooks/refs
-    enabledResetPage: enabledResetPage.current,
-    // eslint-disable-next-line react-hooks/refs
-    enabledScrollToTarget: enabledScrollToTarget.current,
-    resetEnabledScrollToTarget,
-  });
+  const { scrollToTargetRef, skipNextPageReset, syncEnabledScrollToTarget } =
+    usePaginationEffect({
+      currentPage,
+      totalPages: meta.totalPage,
+      pageSize,
+      resetPaginationPage,
+      // eslint-disable-next-line react-hooks/refs
+      enabledResetPage: enabledResetPage.current,
+    });
 
   return {
     ref: {

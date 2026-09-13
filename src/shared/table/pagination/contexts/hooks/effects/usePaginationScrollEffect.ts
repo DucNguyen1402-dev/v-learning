@@ -1,30 +1,30 @@
-import { type RefObject, useLayoutEffect, useRef } from "react";
+import { type RefObject, useCallback, useLayoutEffect, useRef } from "react";
 
 type UsePaginationScrollEffectProps = {
   currentPage: number;
   pageSize: number;
-  enabledScrollToTarget?: boolean;
   hasJustResetPageRef: RefObject<boolean>;
-  scrollToTargetRef: RefObject<HTMLDivElement | null>;
-  resetEnabledScrollToTarget: () => void;
 };
 
 export function usePaginationScrollEffect({
   currentPage,
   pageSize,
-  enabledScrollToTarget = false,
   hasJustResetPageRef,
-  scrollToTargetRef,
-  resetEnabledScrollToTarget,
 }: UsePaginationScrollEffectProps) {
+  const scrollToTargetRef = useRef<HTMLDivElement | null>(null);
+
   const prevPageSize = useRef(pageSize);
   const prevCurrentPage = useRef(currentPage);
+  const enabledScrollToTarget = useRef(false);
+  const syncEnabledScrollToTarget = useCallback((value: boolean) => {
+    enabledScrollToTarget.current = value;
+  }, []);
 
   useLayoutEffect(() => {
-    if (!scrollToTargetRef.current || !enabledScrollToTarget) {
+    if (!scrollToTargetRef.current || !enabledScrollToTarget.current) {
       return;
     }
-    resetEnabledScrollToTarget();
+    enabledScrollToTarget.current = false;
     const pageSizeChanged = prevPageSize.current !== pageSize;
 
     const currentPageChanged = prevCurrentPage.current !== currentPage;
@@ -48,6 +48,7 @@ export function usePaginationScrollEffect({
     enabledScrollToTarget,
     hasJustResetPageRef,
     scrollToTargetRef,
-    resetEnabledScrollToTarget,
   ]);
+
+  return { scrollToTargetRef, syncEnabledScrollToTarget };
 }
