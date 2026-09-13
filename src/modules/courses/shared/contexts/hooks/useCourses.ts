@@ -59,7 +59,6 @@ export const useCourses = ({ shouldEnrichData = true }: UseCoursesProps) => {
       totalPage: courses.totalPages,
       enabledResetPage,
       enabledScrollToTarget: isActiveSourceReady,
-      resetDeps: [enabledResetPage],
     });
   }, [updateMeta, courses.totalPages, enabledResetPage, isActiveSourceReady]);
   const {

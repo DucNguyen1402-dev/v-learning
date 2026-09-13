@@ -1,10 +1,8 @@
 import { useCallback, useRef } from "react";
 
-import {
-  usePaginationBoundaryEffect,
-  usePaginationResetOnDepsEffect,
-  usePaginationScrollEffect,
-} from "./effects";
+import { usePaginationBoundaryEffect } from "./usePaginationBoundaryEffect";
+import { usePaginationResetOnDepsEffect } from "./usePaginationResetOnDepsEffect";
+import { usePaginationScrollEffect } from "./usePaginationScrollEffect";
 
 type UsePaginationEffectProps = {
   enabledResetPage?: boolean;
@@ -13,7 +11,6 @@ type UsePaginationEffectProps = {
   totalPages: number;
   currentPage: number;
   pageSize: number;
-  scrollTriggerDeps?: readonly unknown[];
   enabledScrollToTarget?: boolean;
 };
 
@@ -24,7 +21,6 @@ export function usePaginationEffect({
   currentPage,
   pageSize,
   totalPages,
-  scrollTriggerDeps = [],
   enabledScrollToTarget = true,
 }: UsePaginationEffectProps) {
   const scrollToTargetRef = useRef<HTMLDivElement | null>(null);
@@ -39,7 +35,6 @@ export function usePaginationEffect({
   usePaginationScrollEffect({
     currentPage,
     pageSize,
-    scrollTriggerDeps,
     enabledScrollToTarget,
     hasJustResetPageRef,
     scrollToTargetRef,

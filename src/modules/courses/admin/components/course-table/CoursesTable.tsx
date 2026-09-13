@@ -7,6 +7,8 @@ import { Pagination } from "@shared/table";
 import { CourseTableRow } from "./course-table-row";
 import { CourseTableSkeleton } from "./CourseTableSkeleton";
 
+import type { CourseCardForm } from "@/modules/courses/shared/types";
+
 type CoursesTableProps = {
   affectedCourseId?: string;
 };
@@ -18,13 +20,16 @@ export const CoursesTable = ({ affectedCourseId }: CoursesTableProps) => {
     status: { isLoading },
     pagination,
     isSourceByCategory,
+    filter,
   } = useCoursesContext();
   const hasMoveToPage = useRef(false);
 
-  const paginationCategory = Pagination.use();
+  const paginationCategory = Pagination.use<CourseCardForm>();
 
   const targetPagination = isSourceByCategory ? paginationCategory : pagination;
-
+  const targetPaginationList = isSourceByCategory
+    ? paginationCategory.state.paginatedList
+    : processedCourses;
   if (affectedCourseId) {
     targetPagination.actions.skipNextPageReset();
   }
@@ -54,19 +59,18 @@ export const CoursesTable = ({ affectedCourseId }: CoursesTableProps) => {
     if (isLoading) {
       return <CourseTableSkeleton />;
     }
-    const isEmpty = !processedCourses || processedCourses.length === 0;
-    if (isEmpty) {
+    if (pagination.status.isEmpty) {
       return (
         <TableEmptyState
           colSpan={8}
           title="Không tìm thấy khóa học!"
           description="Hãy thử lại với từ khóa khác."
-          actionHandler={() => {}}
+          actionHandler={filter.handleClearSearch}
         />
       );
     }
 
-    return processedCourses.map((course) => (
+    return targetPaginationList.map((course) => (
       <CourseTableRow
         key={course.maKhoaHoc}
         course={course}

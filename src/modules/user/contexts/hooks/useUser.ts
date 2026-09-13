@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 import { usePaginatedUserQuery, useUsersQuery } from "@modules/user/hooks";
 import { Pagination } from "@shared/table";
 
@@ -8,16 +10,6 @@ import { CurrentUser } from "@/shared/current-user";
 
 export function useUser() {
   const { data: allUsers } = useUsersQuery();
-  const {
-    currentPage,
-    pageSize,
-    resetPaginationPage,
-    onPrevClick,
-    onNextClick,
-    onPageClick,
-    setSize,
-    setPage,
-  } = Pagination.hooks.useState();
 
   const { role, onChangeRole, filteredUsers } = useUserFilterByRole({
     allUsers,
@@ -26,42 +18,30 @@ export function useUser() {
     useUserSearchByName();
 
   const isLocalPagination = role !== null;
+  const pagination = Pagination.hooks.usePagination();
 
   const {
     data: paginatedUserData,
     isPending: isPendingByPaginated,
     isFetching: isFetchingByPaginated,
   } = usePaginatedUserQuery({
-    page: currentPage,
-    pageSize,
+    page: pagination.state.currentPage,
+    pageSize: pagination.state.pageSize,
     role,
     tuKhoa: keyword,
   });
 
+  const isLoading = isPendingByPaginated || isFetchingByPaginated;
   const isEmpty = !isPendingByPaginated && paginatedUserData.items.length === 0;
 
-  // The last page is empty, so subtract 1 from totalPages to avoid showing it.
-  const {
-    displayStart,
-    displayEnd,
-    pageNumbers,
-    isPrevDisabled,
-    isNextDisabled,
-  } = Pagination.hooks.useDerived({
-    currentPage,
-    pageSize,
-    totalPages: paginatedUserData.totalPages - 1,
-  });
-
-  const { scrollToTargetRef, skipNextPageReset } = Pagination.hooks.useEffect({
-    currentPage,
-    totalPages: paginatedUserData.totalPages,
-    pageSize,
-    resetPaginationPage,
-    resetDeps: [],
-  });
-
-  const isLoading = isPendingByPaginated || isFetchingByPaginated;
+  const { updateMeta } = pagination;
+  useEffect(() => {
+    updateMeta({
+      totalPage: paginatedUserData.totalPages,
+      enabledResetPage: false,
+      enabledScrollToTarget: !isLoading,
+    });
+  }, [updateMeta, paginatedUserData.totalPages, isLoading]);
 
   const targetCourses = isLocalPagination
     ? filteredUsers
@@ -72,6 +52,7 @@ export function useUser() {
   const processedUsers = targetCourses.filter(
     (user) => user.taiKhoan !== profile.current.taiKhoan,
   );
+
   return {
     processedUsers,
     allUsers,
@@ -89,25 +70,14 @@ export function useUser() {
     },
     pagination: {
       refs: {
-        scrollToTarget: scrollToTargetRef,
+        ...pagination.ref,
       },
       state: {
-        currentPage,
-        pageSize,
-        displayStart,
-        displayEnd,
-        pageNumbers,
-        isPrevDisabled,
-        isNextDisabled,
+        ...pagination.state,
         totalItems: paginatedUserData.totalCount,
       },
       actions: {
-        onPrevClick,
-        onNextClick,
-        onPageClick,
-        setSize,
-        setPage,
-        skipNextPageReset,
+        ...pagination.actions,
       },
     },
   };

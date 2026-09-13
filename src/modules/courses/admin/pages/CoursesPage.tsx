@@ -32,15 +32,17 @@ export const CoursesPage = () => {
     consumePayload();
   }, [displayState?.toastState, showToast, consumePayload]);
 
-  const { processedCourses } = useCoursesContext();
+  const { processedCourses, isSourceByCategory } = useCoursesContext();
+
+  const localPaginationSource = isSourceByCategory ? processedCourses : [];
 
   return (
     <Pagination.Provider
-      items={processedCourses}
-      resetDeps={[processedCourses]}
+      items={localPaginationSource}
+      resetDeps={[localPaginationSource]}
     >
       <div className="min-h-screen pt-20 pb-20">
-        <div className="mx-auto flex w-full flex-col gap-16 ease-in-out">
+        <div className="mx-auto flex w-full flex-col gap-16">
           <div className="flex flex-col gap-8 select-none md:flex-row md:items-center md:justify-between">
             <div className="flex flex-1 flex-col gap-5 md:flex-row md:items-center">
               <div className="w-full max-w-80">

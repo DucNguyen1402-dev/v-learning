@@ -41,7 +41,7 @@ export function CoursesList() {
         ? createArray(skeletonCount).map((_, index) => (
             <CoursesListSkeleton key={index} />
           ))
-        : coursesToRender?.map((course) => {
+        : coursesToRender.map((course) => {
             return (
               <CourseCard
                 key={course.maKhoaHoc}

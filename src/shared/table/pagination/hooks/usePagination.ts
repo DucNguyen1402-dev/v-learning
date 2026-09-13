@@ -2,14 +2,12 @@ import { useCallback, useState } from "react";
 
 import { isArrayShallowEqual } from "@shared/utils";
 
+import { usePaginationEffect, usePaginationState } from "../contexts";
 import { usePaginationDerived } from "./usePaginationDerived";
-import { usePaginationEffect } from "./usePaginationEffect";
-import { usePaginationState } from "./usePaginationState";
 
 type PaginationMeta = {
   totalPage: number;
   resetDeps: readonly unknown[];
-  scrollTriggerDeps: readonly unknown[];
   enabledScrollToTarget: boolean;
   enabledResetPage: boolean;
 };
@@ -21,7 +19,6 @@ export const usePagination = (initialOptions?: {
   const [meta, setMeta] = useState<PaginationMeta>({
     totalPage: 0,
     resetDeps: [],
-    scrollTriggerDeps: [],
     enabledScrollToTarget: false,
     enabledResetPage: false,
   });
@@ -30,7 +27,6 @@ export const usePagination = (initialOptions?: {
     ({
       totalPage: nextTotalPage = 0,
       resetDeps: nextResetDeps = [],
-      scrollTriggerDeps: nextScrollTriggerDeps = [],
       enabledScrollToTarget: nextEnabledScrollToTarget = false,
       enabledResetPage: nextEnabledResetPage = false,
     }: PaginationMetaOptions) => {
@@ -39,8 +35,7 @@ export const usePagination = (initialOptions?: {
           prev.totalPage === nextTotalPage &&
           prev.enabledScrollToTarget === nextEnabledScrollToTarget &&
           prev.enabledResetPage === nextEnabledResetPage &&
-          isArrayShallowEqual(prev.resetDeps, nextResetDeps) &&
-          isArrayShallowEqual(prev.scrollTriggerDeps, nextScrollTriggerDeps)
+          isArrayShallowEqual(prev.resetDeps, nextResetDeps)
         ) {
           return prev;
         }
@@ -48,7 +43,6 @@ export const usePagination = (initialOptions?: {
         return {
           totalPage: nextTotalPage,
           resetDeps: nextResetDeps,
-          scrollTriggerDeps: nextScrollTriggerDeps,
           enabledScrollToTarget: nextEnabledScrollToTarget,
           enabledResetPage: nextEnabledResetPage,
         };
@@ -86,7 +80,6 @@ export const usePagination = (initialOptions?: {
     pageSize,
     resetPaginationPage,
     resetDeps: meta.resetDeps,
-    scrollTriggerDeps: meta.scrollTriggerDeps,
     enabledResetPage: meta.enabledResetPage,
     enabledScrollToTarget: meta.enabledScrollToTarget,
   });

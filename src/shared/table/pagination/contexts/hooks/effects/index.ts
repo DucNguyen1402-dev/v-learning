@@ -1,3 +1,1 @@
-export * from "./usePaginationBoundaryEffect";
-export * from "./usePaginationResetOnDepsEffect";
-export * from "./usePaginationScrollEffect";
+export { usePaginationEffect } from "./usePaginationEffect";

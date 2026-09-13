@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 
+import { usePaginationEffect } from "./effects";
 import { usePaginationDerived } from "./usePaginationDerived";
-import { usePaginationEffect } from "./usePaginationEffect";
 import { usePaginationState } from "./usePaginationState";
 
 type UsePaginationProps<T> = {
