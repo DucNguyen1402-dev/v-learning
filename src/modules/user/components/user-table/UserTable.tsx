@@ -32,7 +32,7 @@ export const UserTable = ({ affectedUserAccount }: UserTableProps) => {
   const targetPagination = isLocalPagination ? localPagination : pagination;
 
   if (affectedUserAccount) {
-    targetPagination.actions.skipNextPageReset();
+    targetPagination.controls.skipNextPageReset();
   }
 
   const moveToUserPage = useCallback(

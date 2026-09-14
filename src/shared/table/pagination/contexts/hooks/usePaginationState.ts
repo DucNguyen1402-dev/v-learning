@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 type UsePaginationStateProps = {
   initialPageSize?: number;
@@ -14,6 +14,24 @@ export function usePaginationState({
     page: 1,
     pageSize: initialPageSize,
   });
+
+  const prevPagination = useRef(pagination);
+
+  const hasPaginationChanged = useRef(false);
+  const resetPaginationChanged = useCallback(() => {
+    hasPaginationChanged.current = false;
+  }, []);
+
+  useEffect(() => {
+    const hasChanged =
+      prevPagination.current.page !== pagination.page ||
+      prevPagination.current.pageSize !== pagination.pageSize;
+
+    if (!hasChanged) return;
+
+    hasPaginationChanged.current = true;
+    prevPagination.current = pagination;
+  }, [pagination]);
 
   const setSize = useCallback((value: number) => {
     setPagination((prev) => ({ ...prev, pageSize: value, page: 1 }));
@@ -48,6 +66,8 @@ export function usePaginationState({
     onPrevClick,
     onNextClick,
     onPageClick,
+    hasPaginationChanged,
     resetPaginationPage,
+    resetPaginationChanged,
   };
 }

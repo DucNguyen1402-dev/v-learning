@@ -15,15 +15,13 @@ type PaginationControlProps = {
     onNextClick: () => void;
     onPageClick: (page: number) => void;
   };
-  status?: {
-    isLoading?: boolean;
-  };
+  isLoading?: boolean;
 };
 
 export const PaginationControl = ({
   state: { currentPage, pageNumbers, isPrevDisabled, isNextDisabled },
   actions: { onPrevClick, onNextClick, onPageClick },
-  status,
+  isLoading,
 }: PaginationControlProps) => {
   return (
     <div className="pagination-control-container">
@@ -31,19 +29,19 @@ export const PaginationControl = ({
         onClick={onPrevClick}
         disabled={isPrevDisabled}
         icon={ChevronLeft}
-        isLoading={status?.isLoading}
+        isLoading={isLoading}
       />
       <PaginationPageNumbers
         currentPage={currentPage}
         pageNumbers={pageNumbers}
         onPageClick={onPageClick}
-        isLoading={status?.isLoading}
+        isLoading={isLoading}
       />
       <PaginationButtonControl
         onClick={onNextClick}
         disabled={isNextDisabled}
         icon={ChevronRight}
-        isLoading={status?.isLoading}
+        isLoading={isLoading}
       />
     </div>
   );

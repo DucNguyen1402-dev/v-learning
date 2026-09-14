@@ -34,14 +34,20 @@ export function useUser() {
   const isLoading = isPendingByPaginated || isFetchingByPaginated;
   const isEmpty = !isPendingByPaginated && paginatedUserData.items.length === 0;
 
-  const { updateMeta } = pagination;
+  const {
+    config: { syncPaginationMeta },
+  } = pagination;
+
   useEffect(() => {
-    updateMeta({
-      totalPage: paginatedUserData.totalPages,
-      enabledResetPage: false,
-      enabledScrollToTarget: !isLoading,
+    syncPaginationMeta({
+      totalPages: paginatedUserData.totalPages,
+      totalItems: paginatedUserData.totalCount,
     });
-  }, [updateMeta, paginatedUserData.totalPages, isLoading]);
+  }, [
+    syncPaginationMeta,
+    paginatedUserData.totalPages,
+    paginatedUserData.totalCount,
+  ]);
 
   const targetCourses = isLocalPagination
     ? filteredUsers
@@ -69,15 +75,9 @@ export function useUser() {
       handleClearSearch,
     },
     pagination: {
-      refs: {
-        ...pagination.ref,
-      },
-      state: {
-        ...pagination.state,
-        totalItems: paginatedUserData.totalCount,
-      },
-      actions: {
-        ...pagination.actions,
+      ...pagination,
+      status: {
+        isEmpty,
       },
     },
   };

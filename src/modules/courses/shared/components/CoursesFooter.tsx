@@ -10,15 +10,14 @@ export const CoursesFooter = () => {
 
   const targetPagination = isSourceByCategory ? categoryPagination : pagination;
   const {
-    meta: { setScrollToTarget },
-  } = pagination;
+    controls: { scrollToTarget },
+    flags: { hasPaginationChanged },
+  } = targetPagination;
 
   useLayoutEffect(() => {
-    const shouldSrollToTarget = true;
-    if (shouldSrollToTarget) {
-      setScrollToTarget();
-    }
-  }, [setScrollToTarget]);
+    if (status.isLoading || !hasPaginationChanged()) return;
+    scrollToTarget();
+  }, [hasPaginationChanged, scrollToTarget, status.isLoading]);
 
   const targetRef = isSourceByCategory
     ? categoryPagination.refs.scrollToTarget
@@ -34,7 +33,7 @@ export const CoursesFooter = () => {
         <Pagination.components.Control
           state={targetPagination.state}
           actions={targetPagination.actions}
-          status={status}
+          isLoading={status.isLoading}
         />
       </div>
 

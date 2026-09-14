@@ -40,7 +40,9 @@ export const useCourses = ({ shouldEnrichData = true }: UseCoursesProps) => {
     category,
   });
 
-  const { updateMeta, setEnabledResetPage } = pagination;
+  const {
+    config: { setEnabledResetPage, syncPaginationMeta },
+  } = pagination;
 
   const prevIsPaginatedSource = useRef(isPaginatedSource);
 
@@ -48,15 +50,17 @@ export const useCourses = ({ shouldEnrichData = true }: UseCoursesProps) => {
     if (prevIsPaginatedSource.current !== isPaginatedSource) {
       setEnabledResetPage();
     }
-    updateMeta({
-      totalPage: courses.totalPages,
+    syncPaginationMeta({
+      totalPages: courses.totalPages,
+      totalItems: courses.totalCount,
     });
   }, [
-    updateMeta,
     courses.totalPages,
+    courses.totalCount,
     setEnabledResetPage,
     isPaginatedSource,
     isFetchingByPaginated,
+    syncPaginationMeta,
   ]);
 
   const {
@@ -97,21 +101,9 @@ export const useCourses = ({ shouldEnrichData = true }: UseCoursesProps) => {
       isLoading: isLoading,
     },
     pagination: {
+      ...pagination,
       status: {
         isEmpty,
-      },
-      refs: {
-        ...pagination.ref,
-      },
-      state: {
-        ...pagination.state,
-        totalItems: courses.totalCount,
-      },
-      actions: {
-        ...pagination.actions,
-      },
-      meta: {
-        setScrollToTarget: pagination.setScrollToTarget,
       },
     },
   };

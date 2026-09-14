@@ -1,5 +1,3 @@
-import { useRef } from "react";
-
 import { usePaginationBoundaryEffect } from "./usePaginationBoundaryEffect";
 import { usePaginationResetOnDepsEffect } from "./usePaginationResetOnDepsEffect";
 import { usePaginationScrollEffect } from "./usePaginationScrollEffect";
@@ -8,25 +6,39 @@ type UsePaginationEffectProps = {
   resetPaginationPage: (newPage?: number) => void;
   totalPages: number;
   currentPage: number;
+  hasPaginationChanged: React.RefObject<boolean>;
+  resetPaginationChanged: () => void;
+  enabledResetPage?: boolean;
+  resetDeps?: readonly unknown[];
 };
 
 export function usePaginationEffect({
   resetPaginationPage,
   currentPage,
   totalPages,
+  hasPaginationChanged,
+  resetPaginationChanged,
+  enabledResetPage,
+  resetDeps,
 }: UsePaginationEffectProps) {
-  const hasJustResetPageRef = useRef(false);
-
-  const { setScrollToTarget, scrollToTargetRef } = usePaginationScrollEffect({
-    hasJustResetPageRef,
+  const {
+    skipNextPageReset,
+    setEnabledResetPage,
+    setResetDeps,
+    getHasJustResetPage,
+    clearPageJustReset,
+  } = usePaginationResetOnDepsEffect({
+    resetPaginationPage,
+    enabledResetPage,
+    resetDeps,
   });
 
-  const { skipNextPageReset, setEnabledResetPage, setResetDeps } =
-    usePaginationResetOnDepsEffect({
-      resetPaginationPage,
-      hasJustResetPageRef,
-    });
-
+  const { scrollToTarget, scrollToTargetRef } = usePaginationScrollEffect({
+    getHasJustResetPage,
+    clearPageJustReset,
+    resetPaginationChanged,
+    hasPaginationChanged,
+  });
   usePaginationBoundaryEffect({
     currentPage,
     totalPages,
@@ -36,7 +48,7 @@ export function usePaginationEffect({
   return {
     scrollToTargetRef,
     skipNextPageReset,
-    setScrollToTarget,
+    scrollToTarget,
     setEnabledResetPage,
     setResetDeps,
   };

@@ -31,7 +31,7 @@ export const CoursesTable = ({ affectedCourseId }: CoursesTableProps) => {
     ? paginationCategory.state.paginatedList
     : processedCourses;
   if (affectedCourseId) {
-    targetPagination.actions.skipNextPageReset();
+    targetPagination.controls.skipNextPageReset();
   }
 
   const moveToMoviePage = useCallback(

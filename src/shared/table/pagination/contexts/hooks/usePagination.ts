@@ -7,11 +7,15 @@ import { usePaginationState } from "./usePaginationState";
 type UsePaginationProps<T> = {
   initialPageSize?: number;
   items: readonly T[];
+  enabledResetPage?: boolean;
+  resetDeps?: readonly unknown[];
 };
 
 export const usePagination = <T>({
   initialPageSize,
   items,
+  enabledResetPage,
+  resetDeps,
 }: UsePaginationProps<T>) => {
   const {
     currentPage,
@@ -22,6 +26,8 @@ export const usePagination = <T>({
     onPageClick,
     setSize,
     setPage,
+    hasPaginationChanged,
+    resetPaginationChanged,
   } = usePaginationState({ initialPageSize });
 
   const {
@@ -40,16 +46,30 @@ export const usePagination = <T>({
     skipNextPageReset,
     setEnabledResetPage,
     setResetDeps,
+    scrollToTarget,
   } = usePaginationEffect({
     resetPaginationPage,
     currentPage,
     totalPages,
+    hasPaginationChanged,
+    resetPaginationChanged,
+    enabledResetPage,
+    resetDeps,
   });
 
   return useMemo(
     () => ({
-      setEnabledResetPage,
-      setResetDeps,
+      controls: {
+        scrollToTarget,
+        skipNextPageReset,
+      },
+      config: {
+        setEnabledResetPage,
+        setResetDeps,
+      },
+      flags: {
+        hasPaginationChanged: () => hasPaginationChanged.current,
+      },
       refs: {
         scrollToTarget: scrollToTargetRef,
       },
@@ -59,10 +79,11 @@ export const usePagination = <T>({
         onPageClick,
         setSize,
         setPage,
-        skipNextPageReset,
       },
       state: {
         currentPage,
+        pageSize,
+        totalPages,
         totalItems,
         isPrevDisabled,
         isNextDisabled,
@@ -70,10 +91,10 @@ export const usePagination = <T>({
         displayStart,
         displayEnd,
         paginatedList,
-        pageSize,
       },
     }),
     [
+      scrollToTarget,
       setEnabledResetPage,
       setResetDeps,
       scrollToTargetRef,
@@ -84,6 +105,8 @@ export const usePagination = <T>({
       setPage,
       skipNextPageReset,
       currentPage,
+      pageSize,
+      totalPages,
       totalItems,
       isPrevDisabled,
       isNextDisabled,
@@ -91,7 +114,7 @@ export const usePagination = <T>({
       displayStart,
       displayEnd,
       paginatedList,
-      pageSize,
+      hasPaginationChanged,
     ],
   );
 };

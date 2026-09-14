@@ -4,7 +4,8 @@ import { usePaginationEffect, usePaginationState } from "../contexts";
 import { usePaginationDerived } from "./usePaginationDerived";
 
 type PaginationMeta = {
-  totalPage: number;
+  totalPages: number;
+  totalItems: number;
 };
 
 type PaginationMetaOptions = Partial<PaginationMeta>;
@@ -12,18 +13,29 @@ export const usePagination = (initialOptions?: {
   initialPageSize?: number;
 }) => {
   const [meta, setMeta] = useState<PaginationMeta>({
-    totalPage: 0,
+    totalPages: 0,
+    totalItems: 0,
   });
 
-  const updateMeta = useCallback(
-    ({ totalPage: nextTotalPage = 0 }: PaginationMetaOptions) => {
+  const syncPaginationMeta = useCallback(
+    ({
+      totalPages: nextTotalPages,
+      totalItems: nextTotalItems,
+    }: PaginationMetaOptions) => {
       setMeta((prev) => {
-        if (prev.totalPage === nextTotalPage) {
+        const resolvedTotalPages = nextTotalPages ?? prev.totalPages;
+        const resolvedTotalItems = nextTotalItems ?? prev.totalItems;
+
+        if (
+          prev.totalPages === resolvedTotalPages &&
+          prev.totalItems === resolvedTotalItems
+        ) {
           return prev;
         }
 
         return {
-          totalPage: nextTotalPage,
+          totalPages: resolvedTotalPages,
+          totalItems: resolvedTotalItems,
         };
       });
     },
@@ -34,11 +46,13 @@ export const usePagination = (initialOptions?: {
     currentPage,
     pageSize,
     resetPaginationPage,
+    hasPaginationChanged,
     onPrevClick,
     onNextClick,
     onPageClick,
     setSize,
     setPage,
+    resetPaginationChanged,
   } = usePaginationState({ initialPageSize: initialOptions?.initialPageSize });
 
   const {
@@ -50,29 +64,36 @@ export const usePagination = (initialOptions?: {
   } = usePaginationDerived({
     currentPage,
     pageSize,
-    totalPages: meta.totalPage,
+    totalPages: meta.totalPages,
+    totalItems: meta.totalItems,
   });
 
   const {
     scrollToTargetRef,
     skipNextPageReset,
-    setScrollToTarget,
+    scrollToTarget,
     setEnabledResetPage,
     setResetDeps,
   } = usePaginationEffect({
     currentPage,
-    totalPages: meta.totalPage,
+    totalPages: meta.totalPages,
     resetPaginationPage,
+    hasPaginationChanged,
+    resetPaginationChanged,
   });
 
   return {
-    ref: {
+    flags: {
+      hasPaginationChanged: () => hasPaginationChanged.current,
+    },
+    refs: {
       scrollToTarget: scrollToTargetRef,
     },
     state: {
       currentPage,
       pageSize,
-      totalPage: meta.totalPage ?? 0,
+      totalPages: meta.totalPages,
+      totalItems: meta.totalItems,
       displayStart,
       displayEnd,
       pageNumbers,
@@ -85,11 +106,15 @@ export const usePagination = (initialOptions?: {
       onPageClick,
       setSize,
       setPage,
+    },
+    config: {
+      syncPaginationMeta,
+      setEnabledResetPage,
+      setResetDeps,
+    },
+    controls: {
+      scrollToTarget,
       skipNextPageReset,
     },
-    updateMeta,
-    setEnabledResetPage,
-    setResetDeps,
-    setScrollToTarget,
   };
 };

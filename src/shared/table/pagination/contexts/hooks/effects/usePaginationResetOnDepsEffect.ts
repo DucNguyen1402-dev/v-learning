@@ -1,33 +1,37 @@
-import {
-  type RefObject,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import { isArrayShallowEqual } from "@shared/utils";
 
 type UsePaginationResetOnDepsEffectProps = {
-  enabledResetPage?: boolean;
   resetPaginationPage: (newPage?: number) => void;
-  hasJustResetPageRef: RefObject<boolean>;
+  enabledResetPage?: boolean;
+  resetDeps?: readonly unknown[];
 };
 
-type Meta = {
-  resetDeps: readonly unknown[];
-  enabledResetPage: boolean;
-  skipNextPageReset: boolean;
-};
 export function usePaginationResetOnDepsEffect({
   resetPaginationPage,
-  hasJustResetPageRef,
+  enabledResetPage: propEnabledResetPage = false,
+  resetDeps: propResetDeps,
 }: UsePaginationResetOnDepsEffectProps) {
+  type Meta = {
+    resetDeps: readonly unknown[];
+    enabledResetPage: boolean;
+    skipNextPageReset: boolean;
+  };
   const [meta, setMeta] = useState<Meta>({
-    resetDeps: [],
-    enabledResetPage: false,
+    resetDeps: propResetDeps ?? [],
+    enabledResetPage: propEnabledResetPage,
     skipNextPageReset: false,
   });
+  const hasJustResetPageRef = useRef(false);
+  const getHasJustResetPage = useCallback(
+    () => hasJustResetPageRef.current,
+    [],
+  );
+
+  const clearPageJustReset = useCallback(() => {
+    hasJustResetPageRef.current = false;
+  }, []);
 
   const skipNextPageReset = useCallback(() => {
     setMeta((prev) => ({ ...prev, skipNextPageReset: true }));
@@ -37,17 +41,31 @@ export function usePaginationResetOnDepsEffect({
     setMeta((prev) => ({ ...prev, enabledResetPage: true }));
   }, []);
 
-  const setResetDeps = useCallback(
-    (resetDeps: readonly unknown[]) => {
-      if (!isArrayShallowEqual(meta.resetDeps, resetDeps)) {
-        setMeta((prev) => ({
-          ...prev,
-          resetDeps: resetDeps,
-        }));
+  const setResetDeps = useCallback((resetDeps: readonly unknown[]) => {
+    setMeta((prev) => {
+      if (isArrayShallowEqual(prev.resetDeps, resetDeps)) {
+        return prev;
       }
-    },
-    [meta.resetDeps],
-  );
+      return {
+        ...prev,
+        resetDeps,
+      };
+    });
+  }, []);
+
+  useEffect(() => {
+    if (propResetDeps !== undefined) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setResetDeps(propResetDeps);
+    }
+  }, [propResetDeps, setResetDeps]);
+
+  useEffect(() => {
+    if (propEnabledResetPage) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setEnabledResetPage();
+    }
+  }, [propEnabledResetPage, setEnabledResetPage]);
 
   const prevResetDepsRef = useRef<readonly unknown[]>(meta.resetDeps);
   useEffect(() => {
@@ -83,5 +101,7 @@ export function usePaginationResetOnDepsEffect({
     skipNextPageReset,
     setEnabledResetPage,
     setResetDeps,
+    getHasJustResetPage,
+    clearPageJustReset,
   };
 }
