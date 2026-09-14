@@ -66,7 +66,7 @@ export function usePaginationState({
     onPrevClick,
     onNextClick,
     onPageClick,
-    hasPaginationChanged,
+    hasPaginationChanged: useCallback(() => hasPaginationChanged.current, []),
     resetPaginationPage,
     resetPaginationChanged,
   };

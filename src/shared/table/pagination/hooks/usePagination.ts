@@ -68,23 +68,18 @@ export const usePagination = (initialOptions?: {
     totalItems: meta.totalItems,
   });
 
-  const {
-    scrollToTargetRef,
-    skipNextPageReset,
-    scrollToTarget,
-    setEnabledResetPage,
-    setResetDeps,
-  } = usePaginationEffect({
-    currentPage,
-    totalPages: meta.totalPages,
-    resetPaginationPage,
-    hasPaginationChanged,
-    resetPaginationChanged,
-  });
+  const { scrollToTargetRef, skipNextPageReset, scrollToTarget, setResetDeps } =
+    usePaginationEffect({
+      currentPage,
+      totalPages: meta.totalPages,
+      resetPaginationPage,
+      hasPaginationChanged,
+      resetPaginationChanged,
+    });
 
   return {
     flags: {
-      hasPaginationChanged: () => hasPaginationChanged.current,
+      hasPaginationChanged,
     },
     refs: {
       scrollToTarget: scrollToTargetRef,
@@ -109,7 +104,6 @@ export const usePagination = (initialOptions?: {
     },
     config: {
       syncPaginationMeta,
-      setEnabledResetPage,
       setResetDeps,
     },
     controls: {

@@ -15,7 +15,9 @@ export const CoursesFooter = () => {
   } = targetPagination;
 
   useLayoutEffect(() => {
+    console.log("hasPaginationChanged:", hasPaginationChanged());
     if (status.isLoading || !hasPaginationChanged()) return;
+
     scrollToTarget();
   }, [hasPaginationChanged, scrollToTarget, status.isLoading]);
 

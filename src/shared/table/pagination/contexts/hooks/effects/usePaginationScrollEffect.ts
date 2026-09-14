@@ -1,14 +1,8 @@
-import {
-  type RefObject,
-  useCallback,
-  useLayoutEffect,
-  useRef,
-  useState,
-} from "react";
+import { useCallback, useLayoutEffect, useRef, useState } from "react";
 
 type UsePaginationScrollEffectProps = {
   clearPageJustReset: () => void;
-  hasPaginationChanged: RefObject<boolean>;
+  hasPaginationChanged: () => boolean;
   resetPaginationChanged: () => void;
   getHasJustResetPage: () => boolean;
 };
@@ -21,34 +15,41 @@ export function usePaginationScrollEffect({
 }: UsePaginationScrollEffectProps) {
   const scrollToTargetRef = useRef<HTMLDivElement | null>(null);
 
-  const [scrollEnabled, setScrollEnabled] = useState(false);
+  const [scrollRequestId, setScrollRequestId] = useState(0);
+  const scrollRequestRef = useRef(false);
 
   const scrollToTarget = useCallback(() => {
-    setScrollEnabled(true);
+    scrollRequestRef.current = true;
+    setScrollRequestId((id) => id + 1);
   }, []);
 
   useLayoutEffect(() => {
-    if (!scrollEnabled || !hasPaginationChanged.current) return;
+    // has a target to scroll to
+    if (!scrollToTargetRef.current) return;
 
-    resetPaginationChanged();
+    // has a change to perform scrolling
+    if (!hasPaginationChanged()) return;
 
-    if (!scrollToTargetRef.current) {
-      return;
-    }
-    setScrollEnabled(false);
+    // has a scroll request
+    if (!scrollRequestRef.current) return;
 
+    // if the page has just been reset, do not perform scrolling
     if (getHasJustResetPage()) {
       clearPageJustReset();
       return;
     }
 
+    resetPaginationChanged();
+    scrollRequestRef.current = false;
+
     const rect = scrollToTargetRef.current.getBoundingClientRect();
     const targetTop = window.scrollY + rect.top - window.innerHeight / 2;
-    window.scrollTo({ top: targetTop, behavior: "instant" });
+    window.scrollTo({ top: Math.max(targetTop, 0), behavior: "instant" });
   }, [
     getHasJustResetPage,
     scrollToTargetRef,
-    scrollEnabled,
+    scrollRequestRef,
+    scrollRequestId,
     hasPaginationChanged,
     resetPaginationChanged,
     clearPageJustReset,

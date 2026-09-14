@@ -14,7 +14,6 @@ type UsePaginationProps<T> = {
 export const usePagination = <T>({
   initialPageSize,
   items,
-  enabledResetPage,
   resetDeps,
 }: UsePaginationProps<T>) => {
   const {
@@ -41,21 +40,15 @@ export const usePagination = <T>({
     totalPages,
   } = usePaginationDerived({ currentPage, pageSize, items });
 
-  const {
-    scrollToTargetRef,
-    skipNextPageReset,
-    setEnabledResetPage,
-    setResetDeps,
-    scrollToTarget,
-  } = usePaginationEffect({
-    resetPaginationPage,
-    currentPage,
-    totalPages,
-    hasPaginationChanged,
-    resetPaginationChanged,
-    enabledResetPage,
-    resetDeps,
-  });
+  const { scrollToTargetRef, skipNextPageReset, setResetDeps, scrollToTarget } =
+    usePaginationEffect({
+      resetPaginationPage,
+      currentPage,
+      totalPages,
+      hasPaginationChanged,
+      resetDeps,
+      resetPaginationChanged,
+    });
 
   return useMemo(
     () => ({
@@ -64,11 +57,10 @@ export const usePagination = <T>({
         skipNextPageReset,
       },
       config: {
-        setEnabledResetPage,
         setResetDeps,
       },
       flags: {
-        hasPaginationChanged: () => hasPaginationChanged.current,
+        hasPaginationChanged,
       },
       refs: {
         scrollToTarget: scrollToTargetRef,
@@ -95,7 +87,6 @@ export const usePagination = <T>({
     }),
     [
       scrollToTarget,
-      setEnabledResetPage,
       setResetDeps,
       scrollToTargetRef,
       onPrevClick,

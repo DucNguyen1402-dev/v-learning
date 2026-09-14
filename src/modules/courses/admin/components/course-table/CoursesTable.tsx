@@ -17,7 +17,7 @@ export const CoursesTable = ({ affectedCourseId }: CoursesTableProps) => {
   const {
     processedCourses,
     allCourses,
-    status: { isLoading },
+    status: { isLoading, isEmpty },
     pagination,
     isSourceByCategory,
     filter,
@@ -30,6 +30,7 @@ export const CoursesTable = ({ affectedCourseId }: CoursesTableProps) => {
   const targetPaginationList = isSourceByCategory
     ? paginationCategory.state.paginatedList
     : processedCourses;
+
   if (affectedCourseId) {
     targetPagination.controls.skipNextPageReset();
   }
@@ -59,7 +60,7 @@ export const CoursesTable = ({ affectedCourseId }: CoursesTableProps) => {
     if (isLoading) {
       return <CourseTableSkeleton />;
     }
-    if (pagination.status.isEmpty) {
+    if (isEmpty) {
       return (
         <TableEmptyState
           colSpan={8}
@@ -81,7 +82,7 @@ export const CoursesTable = ({ affectedCourseId }: CoursesTableProps) => {
 
   return (
     <div className="scrollbar table-wrapper-min-height overflow-x-auto rounded-container border border-border-subtle bg-bg-default shadow-surface select-none">
-      <table className="min-w-310 table-fixed border-collapse text-left">
+      <table className="w-full table-fixed border-collapse text-left">
         <thead>
           <tr className="bg-bg-subtle text-xs font-medium tracking-wider text-text-subtle uppercase">
             <th className="w-25 py-8 pl-8">Mã</th>
