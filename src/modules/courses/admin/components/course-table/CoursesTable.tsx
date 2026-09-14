@@ -35,6 +35,8 @@ export const CoursesTable = ({ affectedCourseId }: CoursesTableProps) => {
     targetPagination.controls.skipNextPageReset();
   }
 
+  console.log(targetPaginationList);
+
   const moveToMoviePage = useCallback(
     (maKhoaHoc: string) => {
       const courseIndex = allCourses?.findIndex((course) => {

@@ -28,7 +28,7 @@ export const CourseTableRow = ({
     <tr
       ref={courseItemRef}
       className={cn(
-        "group border-t border-border-muted text-xs transition-colors duration-150 ease-in-out hover:bg-bg-subtle lg:text-sm",
+        "group border-t border-border-muted text-xs wrap-break-word transition-colors duration-150 ease-in-out hover:bg-bg-subtle lg:text-sm",
         {
           "animate-success-row": isRecentlyAffected,
           "bg-bg-danger/50 text-text-on-feedback":
@@ -37,13 +37,13 @@ export const CourseTableRow = ({
       )}
     >
       <td className="py-5 pl-8 text-xs">{course.maKhoaHoc}</td>
-      <td className="pl-8">
+      <td className="pl-8 wrap-break-word">
         <span className="block font-medium">{course.tenKhoaHoc}</span>
       </td>
-      <td className="pl-8">
+      <td className="pl-8 wrap-break-word">
         <span>{course.danhMucKhoaHoc.tenDanhMucKhoaHoc}</span>
       </td>
-      <td className="pl-8">
+      <td className="pl-8 wrap-break-word">
         <span>{course.nguoiTao.hoTen}</span>
       </td>
       <td className="pl-8">

@@ -35,10 +35,11 @@ export function useUser() {
   const isEmpty = !isPendingByPaginated && paginatedUserData.items.length === 0;
 
   const {
-    config: { syncPaginationMeta },
+    config: { syncPaginationMeta, setResetDeps },
   } = pagination;
 
   useEffect(() => {
+    setResetDeps([isLocalPagination]);
     syncPaginationMeta({
       totalPages: paginatedUserData.totalPages,
       totalItems: paginatedUserData.totalCount,
@@ -47,6 +48,8 @@ export function useUser() {
     syncPaginationMeta,
     paginatedUserData.totalPages,
     paginatedUserData.totalCount,
+    setResetDeps,
+    isLocalPagination,
   ]);
 
   const targetCourses = isLocalPagination
@@ -74,12 +77,7 @@ export function useUser() {
       onSearchByUserName,
       handleClearSearch,
     },
-    pagination: {
-      ...pagination,
-      status: {
-        isEmpty,
-      },
-    },
+    pagination,
   };
 }
 

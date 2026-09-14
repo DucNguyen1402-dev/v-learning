@@ -43,7 +43,7 @@ export const UserRow = ({ user, isRecentlyAffected }: UserRowProps) => {
     <tr
       ref={rowRef}
       className={cn(
-        "group border-t border-border-muted text-xs transition-colors duration-150 ease-in-out hover:bg-bg-subtle lg:text-sm",
+        "group border-t border-border-muted text-xs wrap-break-word transition-colors duration-150 ease-in-out hover:bg-bg-subtle lg:text-sm",
         {
           "animate-success-row": isRecentlyAffected,
           "bg-bg-danger/50 text-text-on-feedback":
@@ -54,11 +54,11 @@ export const UserRow = ({ user, isRecentlyAffected }: UserRowProps) => {
       <td className="py-4 pl-8 font-medium">{user.taiKhoan}</td>
 
       <td className="pl-4">
-        <span className="block">{user.hoTen}</span>
+        <span className="block wrap-break-word">{user.hoTen}</span>
       </td>
 
       <td className="pl-4">
-        <span>{user.email}</span>
+        <span className="block wrap-break-word">{user.email}</span>
       </td>
 
       <td className="pl-4">

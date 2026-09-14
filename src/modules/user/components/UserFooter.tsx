@@ -1,3 +1,5 @@
+import { useLayoutEffect } from "react";
+
 import { Pagination } from "@shared/table";
 
 import { useUserContext } from "../contexts";
@@ -11,6 +13,18 @@ export const UserFooter = () => {
   const targetRef = isLocalPagination
     ? localPagination.refs.scrollToTarget
     : pagination.refs.scrollToTarget;
+
+  const {
+    controls: { scrollToTarget },
+    flags: { hasPaginationChanged },
+  } = targetPagination;
+
+  useLayoutEffect(() => {
+    if (status.isLoading || !hasPaginationChanged()) return;
+
+    scrollToTarget();
+  }, [hasPaginationChanged, scrollToTarget, status.isLoading]);
+
   return (
     <div className="flex flex-col gap-8 lg:gap-5" ref={targetRef}>
       <div className="flex items-center justify-center px-4 text-sm lg:justify-between">
@@ -18,11 +32,12 @@ export const UserFooter = () => {
           displayStart={targetPagination.state.displayStart}
           displayEnd={targetPagination.state.displayEnd}
           totalItems={targetPagination.state.totalItems}
+          isLoading={status.isLoading}
         />
         <Pagination.components.Control
           state={targetPagination.state}
           actions={targetPagination.actions}
-          status={status}
+          isLoading={status.isLoading}
         />
       </div>
 
@@ -33,6 +48,7 @@ export const UserFooter = () => {
           hideEntity
           shouldCompactOptions
           disabled={status.isLoading}
+          isLoading={status.isLoading}
         />
       </div>
     </div>

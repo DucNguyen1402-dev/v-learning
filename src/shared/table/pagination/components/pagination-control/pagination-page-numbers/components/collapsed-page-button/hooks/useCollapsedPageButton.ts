@@ -80,6 +80,9 @@ export const useCollapsedPageButtons = ({
     stopResizeDynamicWindowRef,
     setDynamicWindowSize,
     isDynamicWindowExpanded,
+    currentSlide,
+    baseWindowSize,
+    lastSlide,
   });
 
   return {

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useLayoutEffect } from "react";
 type UseWindowListEffectProps = {
   leadingPages: number[];
   trailingPages: number[];
@@ -15,7 +15,7 @@ export const useWindowListEffect = ({
   setSlideTo,
   lastSlide,
 }: UseWindowListEffectProps) => {
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (leadingPages.includes(currentPage)) {
       setSlideTo(1);
       return;

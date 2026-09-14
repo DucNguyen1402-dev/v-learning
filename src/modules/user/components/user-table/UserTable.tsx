@@ -59,7 +59,7 @@ export const UserTable = ({ affectedUserAccount }: UserTableProps) => {
 
   const renderTableContent = () => {
     if (isLoading) {
-      return <UserTableSkeleton colSpan={6} />;
+      return <UserTableSkeleton />;
     }
     if (isEmpty) {
       return (

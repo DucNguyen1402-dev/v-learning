@@ -3,6 +3,7 @@ import {
   type RefObject,
   type SetStateAction,
   useEffect,
+  useLayoutEffect,
 } from "react";
 
 type UseDynamicWindowEffectProps = {
@@ -12,6 +13,9 @@ type UseDynamicWindowEffectProps = {
   stopResizeDynamicWindowRef: RefObject<boolean>;
   setDynamicWindowSize: Dispatch<SetStateAction<number>>;
   isDynamicWindowExpanded: boolean;
+  currentSlide: number;
+  baseWindowSize: number;
+  lastSlide: number;
 };
 export const useDynamicWindowEffect = ({
   leadingPages,
@@ -20,8 +24,11 @@ export const useDynamicWindowEffect = ({
   stopResizeDynamicWindowRef,
   setDynamicWindowSize,
   isDynamicWindowExpanded,
+  currentSlide,
+  baseWindowSize,
+  lastSlide,
 }: UseDynamicWindowEffectProps) => {
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (
       leadingPages.includes(currentPage) ||
       trailingPages.includes(currentPage)
@@ -36,6 +43,12 @@ export const useDynamicWindowEffect = ({
     setDynamicWindowSize,
     stopResizeDynamicWindowRef,
   ]);
+
+  useLayoutEffect(() => {
+    if (currentSlide > 1 && currentSlide < lastSlide) {
+      setDynamicWindowSize(baseWindowSize);
+    }
+  }, [baseWindowSize, currentSlide, lastSlide, setDynamicWindowSize]);
 
   useEffect(() => {
     if (isDynamicWindowExpanded) {

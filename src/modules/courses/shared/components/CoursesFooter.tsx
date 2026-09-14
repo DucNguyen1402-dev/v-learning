@@ -15,7 +15,6 @@ export const CoursesFooter = () => {
   } = targetPagination;
 
   useLayoutEffect(() => {
-    console.log("hasPaginationChanged:", hasPaginationChanged());
     if (status.isLoading || !hasPaginationChanged()) return;
 
     scrollToTarget();
@@ -31,6 +30,7 @@ export const CoursesFooter = () => {
           displayStart={targetPagination.state.displayStart}
           displayEnd={targetPagination.state.displayEnd}
           totalItems={targetPagination.state.totalItems}
+          isLoading={status.isLoading}
         />
         <Pagination.components.Control
           state={targetPagination.state}
@@ -46,6 +46,7 @@ export const CoursesFooter = () => {
           hideEntity
           shouldCompactOptions
           disabled={status.isLoading}
+          isLoading={status.isLoading}
         />
       </div>
     </div>
