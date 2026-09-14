@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef } from "react";
 
 import {
   EMPTY_PAGINATED_COURSE,
@@ -26,17 +26,6 @@ export const useCourses = ({ shouldEnrichData = true }: UseCoursesProps) => {
   const { category, onChangeCategory } = useCoursesFilterByCategory();
 
   const isPaginatedSource = category === null;
-  const prevIsPaginatedSource = useRef(isPaginatedSource);
-  const [enabledResetPage, setEnabledResetPage] = useState(false);
-
-  useLayoutEffect(() => {
-    if (prevIsPaginatedSource.current !== isPaginatedSource) {
-      setEnabledResetPage(true);
-      prevIsPaginatedSource.current = isPaginatedSource;
-    } else {
-      setEnabledResetPage(false);
-    }
-  }, [isPaginatedSource, enabledResetPage]);
 
   const pagination = Pagination.hooks.usePagination();
 
@@ -51,25 +40,25 @@ export const useCourses = ({ shouldEnrichData = true }: UseCoursesProps) => {
     category,
   });
 
-  const isActiveSourceReady = !isFetchingByPaginated;
+  const { updateMeta, setEnabledResetPage } = pagination;
 
-  const { updateMeta, syncEnabledResetPage, syncEnabledScrollToTarget } =
-    pagination;
+  const prevIsPaginatedSource = useRef(isPaginatedSource);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    if (prevIsPaginatedSource.current !== isPaginatedSource) {
+      setEnabledResetPage();
+    }
     updateMeta({
       totalPage: courses.totalPages,
     });
-    syncEnabledResetPage(enabledResetPage);
-    syncEnabledScrollToTarget(isActiveSourceReady);
   }, [
     updateMeta,
     courses.totalPages,
-    syncEnabledResetPage,
-    enabledResetPage,
-    syncEnabledScrollToTarget,
-    isActiveSourceReady,
+    setEnabledResetPage,
+    isPaginatedSource,
+    isFetchingByPaginated,
   ]);
+
   const {
     data: coursesByCategory = EMPTY_PAGINATED_COURSE_BY_CATEGORY,
     isPending: isPendingByCategory,
@@ -110,7 +99,6 @@ export const useCourses = ({ shouldEnrichData = true }: UseCoursesProps) => {
     pagination: {
       status: {
         isEmpty,
-        enabledResetPage,
       },
       refs: {
         ...pagination.ref,
@@ -121,6 +109,9 @@ export const useCourses = ({ shouldEnrichData = true }: UseCoursesProps) => {
       },
       actions: {
         ...pagination.actions,
+      },
+      meta: {
+        setScrollToTarget: pagination.setScrollToTarget,
       },
     },
   };

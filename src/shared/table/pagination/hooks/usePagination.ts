@@ -1,13 +1,10 @@
-import { useCallback, useRef, useState } from "react";
-
-import { isArrayShallowEqual } from "@shared/utils";
+import { useCallback, useState } from "react";
 
 import { usePaginationEffect, usePaginationState } from "../contexts";
 import { usePaginationDerived } from "./usePaginationDerived";
 
 type PaginationMeta = {
   totalPage: number;
-  resetDeps: readonly unknown[];
 };
 
 type PaginationMetaOptions = Partial<PaginationMeta>;
@@ -16,31 +13,17 @@ export const usePagination = (initialOptions?: {
 }) => {
   const [meta, setMeta] = useState<PaginationMeta>({
     totalPage: 0,
-    resetDeps: [],
   });
 
-  const enabledResetPage = useRef(false);
-
-  const syncEnabledResetPage = (value: boolean) => {
-    enabledResetPage.current = value;
-  };
-
   const updateMeta = useCallback(
-    ({
-      totalPage: nextTotalPage = 0,
-      resetDeps: nextResetDeps = [],
-    }: PaginationMetaOptions) => {
+    ({ totalPage: nextTotalPage = 0 }: PaginationMetaOptions) => {
       setMeta((prev) => {
-        if (
-          prev.totalPage === nextTotalPage &&
-          isArrayShallowEqual(prev.resetDeps, nextResetDeps)
-        ) {
+        if (prev.totalPage === nextTotalPage) {
           return prev;
         }
 
         return {
           totalPage: nextTotalPage,
-          resetDeps: nextResetDeps,
         };
       });
     },
@@ -70,15 +53,17 @@ export const usePagination = (initialOptions?: {
     totalPages: meta.totalPage,
   });
 
-  const { scrollToTargetRef, skipNextPageReset, syncEnabledScrollToTarget } =
-    usePaginationEffect({
-      currentPage,
-      totalPages: meta.totalPage,
-      pageSize,
-      resetPaginationPage,
-      // eslint-disable-next-line react-hooks/refs
-      enabledResetPage: enabledResetPage.current,
-    });
+  const {
+    scrollToTargetRef,
+    skipNextPageReset,
+    setScrollToTarget,
+    setEnabledResetPage,
+    setResetDeps,
+  } = usePaginationEffect({
+    currentPage,
+    totalPages: meta.totalPage,
+    resetPaginationPage,
+  });
 
   return {
     ref: {
@@ -103,7 +88,8 @@ export const usePagination = (initialOptions?: {
       skipNextPageReset,
     },
     updateMeta,
-    syncEnabledResetPage,
-    syncEnabledScrollToTarget,
+    setEnabledResetPage,
+    setResetDeps,
+    setScrollToTarget,
   };
 };

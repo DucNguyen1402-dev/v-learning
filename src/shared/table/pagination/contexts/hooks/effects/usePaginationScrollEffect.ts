@@ -1,38 +1,31 @@
-import { type RefObject, useCallback, useLayoutEffect, useRef } from "react";
+import {
+  type RefObject,
+  useCallback,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
 
 type UsePaginationScrollEffectProps = {
-  currentPage: number;
-  pageSize: number;
   hasJustResetPageRef: RefObject<boolean>;
 };
 
 export function usePaginationScrollEffect({
-  currentPage,
-  pageSize,
   hasJustResetPageRef,
 }: UsePaginationScrollEffectProps) {
   const scrollToTargetRef = useRef<HTMLDivElement | null>(null);
 
-  const prevPageSize = useRef(pageSize);
-  const prevCurrentPage = useRef(currentPage);
-  const enabledScrollToTarget = useRef(false);
-  const syncEnabledScrollToTarget = useCallback((value: boolean) => {
-    enabledScrollToTarget.current = value;
+  const [scrollEnabled, setScrollEnabled] = useState(false);
+
+  const setScrollToTarget = useCallback(() => {
+    setScrollEnabled(true);
   }, []);
 
   useLayoutEffect(() => {
-    if (!scrollToTargetRef.current || !enabledScrollToTarget.current) {
+    if (!scrollToTargetRef.current || !scrollEnabled) {
       return;
     }
-    enabledScrollToTarget.current = false;
-    const pageSizeChanged = prevPageSize.current !== pageSize;
-
-    const currentPageChanged = prevCurrentPage.current !== currentPage;
-
-    if (!pageSizeChanged && !currentPageChanged) return;
-
-    prevPageSize.current = pageSize;
-    prevCurrentPage.current = currentPage;
+    setScrollEnabled(false);
 
     if (hasJustResetPageRef.current) {
       hasJustResetPageRef.current = false;
@@ -42,13 +35,7 @@ export function usePaginationScrollEffect({
     const rect = scrollToTargetRef.current.getBoundingClientRect();
     const targetTop = window.scrollY + rect.top - window.innerHeight / 2;
     window.scrollTo({ top: targetTop, behavior: "instant" });
-  }, [
-    pageSize,
-    currentPage,
-    enabledScrollToTarget,
-    hasJustResetPageRef,
-    scrollToTargetRef,
-  ]);
+  }, [hasJustResetPageRef, scrollToTargetRef, scrollEnabled]);
 
-  return { scrollToTargetRef, syncEnabledScrollToTarget };
+  return { scrollToTargetRef, setScrollToTarget };
 }

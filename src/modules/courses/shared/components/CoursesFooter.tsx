@@ -1,3 +1,5 @@
+import { useLayoutEffect } from "react";
+
 import { Pagination } from "@shared/table";
 
 import { useCoursesContext } from "../contexts";
@@ -7,6 +9,17 @@ export const CoursesFooter = () => {
   const categoryPagination = Pagination.use();
 
   const targetPagination = isSourceByCategory ? categoryPagination : pagination;
+  const {
+    meta: { setScrollToTarget },
+  } = pagination;
+
+  useLayoutEffect(() => {
+    const shouldSrollToTarget = true;
+    if (shouldSrollToTarget) {
+      setScrollToTarget();
+    }
+  }, [setScrollToTarget]);
+
   const targetRef = isSourceByCategory
     ? categoryPagination.refs.scrollToTarget
     : pagination.refs.scrollToTarget;
