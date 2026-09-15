@@ -29,7 +29,7 @@ export function usePaginationEffect({
   });
 
   const { skipNextPageReset, setResetDeps } = usePaginationResetOnDepsEffect({
-    resetPagination: resetPagination.all,
+    resetPagination,
     resetDeps,
   });
 

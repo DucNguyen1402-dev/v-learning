@@ -12,13 +12,20 @@ export const CoursesFooter = () => {
   const {
     controls: { scrollToTarget },
     flags: { hasPaginationChanged },
+    state: { pageSize, currentPage },
   } = targetPagination;
 
   useLayoutEffect(() => {
     if (status.isLoading || !hasPaginationChanged()) return;
-
+    //[ERROR-DEBUG]
     scrollToTarget();
-  }, [hasPaginationChanged, scrollToTarget, status.isLoading]);
+  }, [
+    hasPaginationChanged,
+    scrollToTarget,
+    status.isLoading,
+    currentPage,
+    pageSize,
+  ]);
 
   const targetRef = isSourceByCategory
     ? categoryPagination.refs.scrollToTarget

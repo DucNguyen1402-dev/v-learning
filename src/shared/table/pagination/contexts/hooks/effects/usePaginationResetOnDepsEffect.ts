@@ -11,7 +11,7 @@ import { isArrayShallowEqual } from "@shared/utils";
 import type { UsePaginationStateResult } from "../usePaginationState";
 
 type UsePaginationResetOnDepsEffectProps = {
-  resetPagination: UsePaginationStateResult["resetPagination"]["all"];
+  resetPagination: UsePaginationStateResult["resetPagination"];
   resetDeps?: readonly unknown[];
 };
 

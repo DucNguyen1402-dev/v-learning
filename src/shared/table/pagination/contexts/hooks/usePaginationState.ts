@@ -1,4 +1,4 @@
-import { useCallback, useLayoutEffect, useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 
 type UsePaginationStateProps = {
   initialPageSize?: number;
@@ -16,69 +16,58 @@ export function usePaginationState({
   });
 
   const prevPagination = useRef(pagination);
-  // Notifies that the next change in pagination is due to a reset, so the effect should ignore it when recording changes
-  const isResetPendingRef = useRef(false);
-  const [resetTick, setResetTick] = useState(0);
-
-  const requestReset = useCallback(() => {
-    setResetTick((prev) => prev + 1);
-    isResetPendingRef.current = true;
-  }, []);
 
   const paginationChangedRef = useRef(false);
   const resetPaginationChanged = useCallback(() => {
     paginationChangedRef.current = false;
   }, []);
 
-  useLayoutEffect(() => {
-    if (isResetPendingRef.current) {
-      isResetPendingRef.current = false;
-      prevPagination.current = pagination;
-      return;
-    }
-
-    const hasChanged =
-      prevPagination.current.page !== pagination.page ||
-      prevPagination.current.pageSize !== pagination.pageSize;
-
-    if (!hasChanged) return;
-    prevPagination.current = pagination;
-
-    paginationChangedRef.current = true;
-  }, [pagination, resetTick]);
-
   const setSize = useCallback((value: number) => {
-    setPagination((prev) => ({ ...prev, pageSize: value, page: 1 }));
+    setPagination((prev) => {
+      if (prev.pageSize === value) return prev;
+      paginationChangedRef.current = true;
+      prevPagination.current = { page: 1, pageSize: value };
+      return { pageSize: value, page: 1 };
+    });
   }, []);
 
   const setPage = useCallback((value: number) => {
-    setPagination((prev) => ({ ...prev, page: value }));
+    setPagination((prev) => {
+      if (prev.page === value) return prev;
+      return { ...prev, page: value };
+    });
   }, []);
 
   const onPrevClick = useCallback(() => {
-    setPagination((prev) => ({ ...prev, page: prev.page - 1 }));
+    setPagination((prev) => {
+      paginationChangedRef.current = true;
+      prevPagination.current = { ...prev, page: prev.page - 1 };
+      return { ...prev, page: prev.page - 1 };
+    });
   }, []);
 
   const onNextClick = useCallback(() => {
-    setPagination((prev) => ({ ...prev, page: prev.page + 1 }));
+    setPagination((prev) => {
+      paginationChangedRef.current = true;
+      prevPagination.current = { ...prev, page: prev.page + 1 };
+      return { ...prev, page: prev.page + 1 };
+    });
   }, []);
 
   const onPageClick = useCallback((page: number) => {
-    setPagination((prev) => ({ ...prev, page }));
+    setPagination((prev) => {
+      paginationChangedRef.current = true;
+      prevPagination.current = { ...prev, page };
+      return { ...prev, page };
+    });
   }, []);
 
-  const resetPaginationPage = useCallback(() => {
-    setPagination((prev) => ({ ...prev, page: 1 }));
-    requestReset();
-  }, [requestReset]);
-
   const resetPagination = useCallback(() => {
-    setPagination({
-      page: 1,
-      pageSize: initialPageSize,
+    setPagination((prev) => {
+      if (prev.page === 1 && prev.pageSize === initialPageSize) return prev;
+      return { pageSize: initialPageSize, page: 1 };
     });
-    requestReset();
-  }, [requestReset, initialPageSize]);
+  }, [initialPageSize]);
 
   return {
     currentPage: pagination.page,
@@ -91,10 +80,7 @@ export function usePaginationState({
     onPageClick,
     hasPaginationChanged: useCallback(() => paginationChangedRef.current, []),
     resetPaginationChanged,
-    resetPagination: {
-      all: resetPagination,
-      page: resetPaginationPage,
-    },
+    resetPagination,
   };
 }
 

@@ -39,7 +39,7 @@ export const CoursesPage = () => {
   return (
     <Pagination.Provider
       items={localPaginationSource}
-      // resetDeps={[isSourceByCategory]}
+      resetDeps={[localPaginationSource]}
     >
       <div className="min-h-screen pt-20 pb-20">
         <div className="mx-auto flex w-full flex-col gap-16">
