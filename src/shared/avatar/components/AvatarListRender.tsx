@@ -45,6 +45,8 @@ export const AvatarListRender = ({
               src={avatar.value}
               alt="avatar"
               className="avatar-option--image"
+              loading="lazy"
+              decoding="async"
             />
             {avatar.value === currentAvatar.value && <AvatarButtonSelected />}
           </Button>
