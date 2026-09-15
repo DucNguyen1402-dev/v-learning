@@ -1,3 +1,5 @@
+import { useEffect, useMemo, useState } from "react";
+
 import { TinyButtonSkeleton } from "@shared/ui";
 import { createArray } from "@shared/utils";
 
@@ -18,14 +20,41 @@ export const CollapsedPageButtons = ({
   pageNumbers,
   isLoading,
 }: CollapsedPageButtonsProps) => {
-  const { count: edgeCount, windowSize: baseWindowSize } = getEdgeCountConfig(
-    window.innerWidth,
-  );
+  const [{ count: edgeCount, windowSize: baseWindowSize }, setEdgeConfig] =
+    useState(() =>
+      getEdgeCountConfig(
+        typeof window !== "undefined" ? window.innerWidth : 1024,
+      ),
+    );
 
-  const { leadingPages, middlePages, trailingPages } = getPageNumberGroups({
-    pageNumbers,
-    edgeCount,
-  });
+  useEffect(() => {
+    const handleResize = () => {
+      const nextConfig = getEdgeCountConfig(window.innerWidth);
+      setEdgeConfig((prev) => {
+        if (
+          prev.count === nextConfig.count &&
+          prev.windowSize === nextConfig.windowSize
+        ) {
+          return prev;
+        }
+        return nextConfig;
+      });
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  const { leadingPages, middlePages, trailingPages } = useMemo(
+    () =>
+      getPageNumberGroups({
+        pageNumbers,
+        edgeCount,
+      }),
+    [pageNumbers, edgeCount],
+  );
 
   const {
     windowSlideList,

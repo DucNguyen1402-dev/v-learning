@@ -4,21 +4,13 @@ import {
   PaginationSelect,
 } from "./components";
 import { PaginationProvider, usePaginationContext } from "./contexts";
-import {
-  usePaginationActions,
-  usePaginationDerived,
-  usePaginationEffect,
-  usePaginationState,
-} from "./hooks";
+import { usePagination } from "./hooks";
 
 export const Pagination = {
   Provider: PaginationProvider,
   use: usePaginationContext,
   hooks: {
-    useEffect: usePaginationEffect,
-    useState: usePaginationState,
-    useActions: usePaginationActions,
-    useDerived: usePaginationDerived,
+    usePagination,
   },
   components: {
     Control: PaginationControl,

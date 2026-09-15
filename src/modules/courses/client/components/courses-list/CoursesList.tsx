@@ -11,7 +11,7 @@ import type { CourseCardForm } from "@/modules/courses/shared/types";
 export function CoursesList() {
   const {
     pagination,
-    status: { isLoading },
+    status: { isLoading, isEmpty },
     filter: { tenKhoaHoc, handleClearSearch },
     processedCourses,
     isSourceByCategory,
@@ -26,7 +26,7 @@ export function CoursesList() {
     ? categoryPagination.state.pageSize
     : pagination.state.pageSize;
 
-  if (pagination.status.isEmpty) {
+  if (isEmpty) {
     return (
       <EmptyCoursesState
         tenKhoaHoc={tenKhoaHoc}
@@ -41,7 +41,7 @@ export function CoursesList() {
         ? createArray(skeletonCount).map((_, index) => (
             <CoursesListSkeleton key={index} />
           ))
-        : coursesToRender?.map((course) => {
+        : coursesToRender.map((course) => {
             return (
               <CourseCard
                 key={course.maKhoaHoc}

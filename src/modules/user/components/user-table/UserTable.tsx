@@ -32,7 +32,7 @@ export const UserTable = ({ affectedUserAccount }: UserTableProps) => {
   const targetPagination = isLocalPagination ? localPagination : pagination;
 
   if (affectedUserAccount) {
-    targetPagination.actions.preventNextResetPage();
+    targetPagination.controls.skipNextPageReset();
   }
 
   const moveToUserPage = useCallback(
@@ -59,7 +59,7 @@ export const UserTable = ({ affectedUserAccount }: UserTableProps) => {
 
   const renderTableContent = () => {
     if (isLoading) {
-      return <UserTableSkeleton colSpan={6} />;
+      return <UserTableSkeleton />;
     }
     if (isEmpty) {
       return (

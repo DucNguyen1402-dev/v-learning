@@ -19,11 +19,12 @@ export const EnrollmentTableFooter = ({
           displayStart={state.displayStart}
           displayEnd={state.displayEnd}
           totalItems={state.totalItems}
+          isLoading={isLoading}
         />
         <Pagination.components.Control
           state={state}
           actions={actions}
-          status={{ isLoading }}
+          isLoading={isLoading}
         />
       </div>
 
@@ -34,6 +35,7 @@ export const EnrollmentTableFooter = ({
           hideEntity
           shouldCompactOptions
           disabled={isLoading}
+          isLoading={isLoading}
         />
       </div>
     </div>

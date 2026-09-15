@@ -7,6 +7,8 @@ import { Pagination } from "@shared/table";
 import { CourseTableRow } from "./course-table-row";
 import { CourseTableSkeleton } from "./CourseTableSkeleton";
 
+import type { CourseCardForm } from "@/modules/courses/shared/types";
+
 type CoursesTableProps = {
   affectedCourseId?: string;
 };
@@ -15,18 +17,22 @@ export const CoursesTable = ({ affectedCourseId }: CoursesTableProps) => {
   const {
     processedCourses,
     allCourses,
-    status: { isLoading },
+    status: { isLoading, isEmpty },
     pagination,
     isSourceByCategory,
+    filter,
   } = useCoursesContext();
   const hasMoveToPage = useRef(false);
 
-  const paginationCategory = Pagination.use();
+  const paginationCategory = Pagination.use<CourseCardForm>();
 
   const targetPagination = isSourceByCategory ? paginationCategory : pagination;
+  const targetPaginationList = isSourceByCategory
+    ? paginationCategory.state.paginatedList
+    : processedCourses;
 
   if (affectedCourseId) {
-    targetPagination.actions.preventNextResetPage();
+    targetPagination.controls.skipNextPageReset();
   }
 
   const moveToMoviePage = useCallback(
@@ -54,19 +60,18 @@ export const CoursesTable = ({ affectedCourseId }: CoursesTableProps) => {
     if (isLoading) {
       return <CourseTableSkeleton />;
     }
-    const isEmpty = !processedCourses || processedCourses.length === 0;
     if (isEmpty) {
       return (
         <TableEmptyState
           colSpan={8}
           title="Không tìm thấy khóa học!"
           description="Hãy thử lại với từ khóa khác."
-          actionHandler={() => {}}
+          actionHandler={filter.handleClearSearch}
         />
       );
     }
 
-    return processedCourses.map((course) => (
+    return targetPaginationList.map((course) => (
       <CourseTableRow
         key={course.maKhoaHoc}
         course={course}
@@ -76,8 +81,8 @@ export const CoursesTable = ({ affectedCourseId }: CoursesTableProps) => {
   };
 
   return (
-    <div className="scrollbar table-wrapper-min-height overflow-x-auto rounded-container border border-border-subtle bg-bg-default shadow-surface select-none">
-      <table className="min-w-310 table-fixed border-collapse text-left">
+    <div className="scrollbar table-wrapper-min-height overflow-x-auto rounded-container border-t border-border-subtle bg-bg-default shadow-surface select-none">
+      <table className="w-full table-fixed border-collapse text-left">
         <thead>
           <tr className="bg-bg-subtle text-xs font-medium tracking-wider text-text-subtle uppercase">
             <th className="w-25 py-8 pl-8">Mã</th>

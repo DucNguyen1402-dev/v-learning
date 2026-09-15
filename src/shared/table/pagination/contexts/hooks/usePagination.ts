@@ -1,71 +1,33 @@
 import { useMemo } from "react";
 
-import { usePaginationActions } from "./usePaginationActions";
+import { usePaginationEffect } from "./effects";
 import { usePaginationDerived } from "./usePaginationDerived";
-import { usePaginationEffect } from "./usePaginationEffect";
 import { usePaginationState } from "./usePaginationState";
 
 type UsePaginationProps<T> = {
-  pageSize?: number;
+  initialPageSize?: number;
   items: readonly T[];
-  enabled?: boolean;
+  enabledResetPage?: boolean;
   resetDeps?: readonly unknown[];
-  entityName?: string;
 };
 
-export type PaginationResult<T> = {
-  refs: {
-    scrollToTarget: React.RefObject<HTMLDivElement | null>;
-  };
-  actions: {
-    onPrevClick: () => void;
-    onNextClick: () => void;
-    onPageClick: (page: number) => void;
-    setSize: (size: number) => void;
-    setPage: (page: number) => void;
-    preventNextResetPage: () => void;
-  };
-  state: {
-    entityName?: string;
-    currentPage: number;
-    totalItems: number;
-    isPrevDisabled: boolean;
-    isNextDisabled: boolean;
-    pageNumbers: number[];
-    displayStart: number;
-    displayEnd: number;
-    paginatedList: readonly T[];
-    pageSize: number;
-  };
-};
 export const usePagination = <T>({
-  pageSize,
+  initialPageSize,
   items,
-  enabled,
   resetDeps,
-  entityName,
 }: UsePaginationProps<T>) => {
   const {
-    pagination,
-    setPagination,
-    skipNextPageResetRef,
-    setSkipNextPageResetRef,
-    isFirstRender,
-    scrollToTargetRef,
-  } = usePaginationState({ pageSize });
-
-  const {
-    preventNextResetPage,
+    currentPage,
+    pageSize,
+    resetPagination,
     onPrevClick,
     onNextClick,
     onPageClick,
     setSize,
     setPage,
-  } = usePaginationActions({
-    setPagination,
-    pagination,
-    setSkipNextPageResetRef,
-  });
+    hasPaginationChanged,
+    resetPaginationChanged,
+  } = usePaginationState({ initialPageSize });
 
   const {
     paginatedList,
@@ -76,24 +38,31 @@ export const usePagination = <T>({
     isPrevDisabled,
     isNextDisabled,
     totalPages,
-  } = usePaginationDerived({ pagination, items });
+  } = usePaginationDerived({ currentPage, pageSize, items });
 
-  usePaginationEffect({
-    skipNextPageResetRef,
-    setSkipNextPageResetRef,
-    enabled,
-    resetDeps,
-    setPagination,
-    currentPage: pagination.page,
-    totalPages,
-    pageSize: pagination.pageSize,
-    isFirstRender,
-    scrollToTargetRef,
-    scrollTriggerDeps: [paginatedList],
-  });
+  const { scrollToTargetRef, skipNextPageReset, setResetDeps, scrollToTarget } =
+    usePaginationEffect({
+      resetPagination,
+      currentPage,
+      totalPages,
+      hasPaginationChanged,
+      resetDeps,
+      resetPaginationChanged,
+      setPage,
+    });
 
   return useMemo(
     () => ({
+      controls: {
+        scrollToTarget,
+        skipNextPageReset,
+      },
+      config: {
+        setResetDeps,
+      },
+      flags: {
+        hasPaginationChanged,
+      },
       refs: {
         scrollToTarget: scrollToTargetRef,
       },
@@ -103,11 +72,11 @@ export const usePagination = <T>({
         onPageClick,
         setSize,
         setPage,
-        preventNextResetPage,
       },
       state: {
-        entityName,
-        currentPage: pagination.page,
+        currentPage,
+        pageSize,
+        totalPages,
         totalItems,
         isPrevDisabled,
         isNextDisabled,
@@ -115,27 +84,31 @@ export const usePagination = <T>({
         displayStart,
         displayEnd,
         paginatedList,
-        pageSize: pagination.pageSize,
       },
     }),
     [
-      displayEnd,
-      displayStart,
-      entityName,
-      isNextDisabled,
-      isPrevDisabled,
+      scrollToTarget,
+      setResetDeps,
+      scrollToTargetRef,
+      onPrevClick,
       onNextClick,
       onPageClick,
-      onPrevClick,
-      pageNumbers,
-      paginatedList,
-      pagination.page,
-      pagination.pageSize,
-      preventNextResetPage,
-      scrollToTargetRef,
-      setPage,
       setSize,
+      setPage,
+      skipNextPageReset,
+      currentPage,
+      pageSize,
+      totalPages,
       totalItems,
+      isPrevDisabled,
+      isNextDisabled,
+      pageNumbers,
+      displayStart,
+      displayEnd,
+      paginatedList,
+      hasPaginationChanged,
     ],
   );
 };
+
+export type PaginationResult<T> = ReturnType<typeof usePagination<T>>;

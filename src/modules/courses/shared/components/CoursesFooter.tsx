@@ -1,3 +1,5 @@
+import { useLayoutEffect } from "react";
+
 import { Pagination } from "@shared/table";
 
 import { useCoursesContext } from "../contexts";
@@ -7,6 +9,24 @@ export const CoursesFooter = () => {
   const categoryPagination = Pagination.use();
 
   const targetPagination = isSourceByCategory ? categoryPagination : pagination;
+  const {
+    controls: { scrollToTarget },
+    flags: { hasPaginationChanged },
+    state: { pageSize, currentPage },
+  } = targetPagination;
+
+  useLayoutEffect(() => {
+    if (status.isLoading || !hasPaginationChanged()) return;
+    //[ERROR-DEBUG]
+    scrollToTarget();
+  }, [
+    hasPaginationChanged,
+    scrollToTarget,
+    status.isLoading,
+    currentPage,
+    pageSize,
+  ]);
+
   const targetRef = isSourceByCategory
     ? categoryPagination.refs.scrollToTarget
     : pagination.refs.scrollToTarget;
@@ -17,11 +37,12 @@ export const CoursesFooter = () => {
           displayStart={targetPagination.state.displayStart}
           displayEnd={targetPagination.state.displayEnd}
           totalItems={targetPagination.state.totalItems}
+          isLoading={status.isLoading}
         />
         <Pagination.components.Control
           state={targetPagination.state}
           actions={targetPagination.actions}
-          status={status}
+          isLoading={status.isLoading}
         />
       </div>
 
@@ -32,6 +53,7 @@ export const CoursesFooter = () => {
           hideEntity
           shouldCompactOptions
           disabled={status.isLoading}
+          isLoading={status.isLoading}
         />
       </div>
     </div>

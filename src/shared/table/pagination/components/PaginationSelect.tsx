@@ -1,4 +1,5 @@
 import { Select } from "@shared/fields";
+import { Skeleton, SKELETON_HEIGHTS } from "@shared/ui";
 
 import { pageSizeOptions } from "../config";
 
@@ -10,6 +11,7 @@ type PaginationSelectProps = {
   options?: { label: string; value: number | string }[];
   shouldCompactOptions?: boolean;
   disabled?: boolean;
+  isLoading?: boolean;
 };
 
 export const PaginationSelect = ({
@@ -18,6 +20,7 @@ export const PaginationSelect = ({
   onChange,
   shouldCompactOptions = false,
   disabled,
+  isLoading = false,
 }: PaginationSelectProps) => {
   const onChangeHandler = (value: number | string | null) => {
     onChange(Number(value));
@@ -29,14 +32,21 @@ export const PaginationSelect = ({
     : isDesktop
       ? pageSizeOptions.desktop
       : pageSizeOptions.compact;
+
+  const containerClassName = shouldCompactOptions
+    ? "pagination-select-container-compact"
+    : "pagination-select-container";
+
+  if (isLoading) {
+    return (
+      <div className={containerClassName}>
+        <Skeleton height={SKELETON_HEIGHTS.XL} fullWidth />
+      </div>
+    );
+  }
+
   return (
-    <div
-      className={
-        shouldCompactOptions
-          ? "pagination-select-container-compact"
-          : "pagination-select-container"
-      }
-    >
+    <div className={containerClassName}>
       <Select.Root>
         <Select.Trigger
           entity={hideEntity ? undefined : "trang"}

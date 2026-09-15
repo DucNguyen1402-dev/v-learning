@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 import {
   EMPTY_PAGINATED_COURSE,
   EMPTY_PAGINATED_COURSE_BY_CATEGORY,
@@ -17,14 +19,6 @@ type UseCoursesProps = {
 };
 export const useCourses = ({ shouldEnrichData = true }: UseCoursesProps) => {
   const { data: allCourses } = useCourseQuery();
-  const {
-    pagination,
-    setPagination,
-    isFirstRender,
-    scrollToTargetRef,
-    skipNextPageResetRef,
-    setSkipNextPageResetRef,
-  } = Pagination.hooks.useState();
 
   const { onSearchByCoursesName, tenKhoaHoc, handleClearSearch } =
     useCoursesSearchByName();
@@ -33,18 +27,36 @@ export const useCourses = ({ shouldEnrichData = true }: UseCoursesProps) => {
 
   const isPaginatedSource = category === null;
 
+  const pagination = Pagination.hooks.usePagination();
+
   const {
     data: courses = EMPTY_PAGINATED_COURSE,
     isPending: isPendingByPaginated,
     isFetching: isFetchingByPaginated,
   } = usePaginatedCoursesQuery({
-    page: pagination.page,
-    pageSize: pagination.pageSize,
+    page: pagination.state.currentPage,
+    pageSize: pagination.state.pageSize,
     tenKhoaHoc: tenKhoaHoc,
     category,
   });
 
-  const isEmpty = !isPendingByPaginated && courses.items.length === 0;
+  const {
+    config: { setResetDeps, syncPaginationMeta },
+  } = pagination;
+
+  useEffect(() => {
+    setResetDeps([isPaginatedSource]);
+    syncPaginationMeta({
+      totalPages: courses.totalPages,
+      totalItems: courses.totalCount,
+    });
+  }, [
+    courses.totalPages,
+    courses.totalCount,
+    isPaginatedSource,
+    syncPaginationMeta,
+    setResetDeps,
+  ]);
 
   const {
     data: coursesByCategory = EMPTY_PAGINATED_COURSE_BY_CATEGORY,
@@ -54,59 +66,19 @@ export const useCourses = ({ shouldEnrichData = true }: UseCoursesProps) => {
     category,
   });
 
-  const {
-    onPrevClick,
-    onNextClick,
-    onPageClick,
-    setSize,
-    setPage,
-    preventNextResetPage,
-  } = Pagination.hooks.useActions({
-    pagination,
-    setPagination,
-  });
+  const isEmpty =
+    (!isPendingByPaginated && courses.items.length === 0) ||
+    (!isPendingByCategory && coursesByCategory.length === 0);
 
-  const {
-    displayStart,
-    displayEnd,
-    pageNumbers,
-    isPrevDisabled,
-    isNextDisabled,
-  } = Pagination.hooks.useDerived({
-    currentPage: pagination.page,
-    pageSize: pagination.pageSize,
-    totalPages: courses.totalPages,
-  });
+  const isLoading = isPaginatedSource
+    ? isPendingByPaginated || isFetchingByPaginated
+    : isPendingByCategory || isFetchingByCategory;
 
   const targetCourses = isPaginatedSource ? courses.items : coursesByCategory;
 
   const processedCourses = shouldEnrichData
     ? enrichCoursesWithMockData(targetCourses)
     : targetCourses;
-
-  const isFetchingActiveSource = isPaginatedSource
-    ? isFetchingByPaginated
-    : isFetchingByCategory;
-
-  const isActiveSourceReady = !isFetchingActiveSource;
-
-  Pagination.hooks.useEffect({
-    setPagination,
-    currentPage: pagination.page,
-    totalPages: courses.totalPages,
-    resetDeps: [tenKhoaHoc],
-    pageSize: pagination.pageSize,
-    isFirstRender,
-    scrollToTargetRef,
-    skipNextPageResetRef,
-    setSkipNextPageResetRef,
-    scrollTriggerDeps: [isActiveSourceReady],
-  });
-  // Dùng trạng thái fetching làm trigger bổ sung để scroll effect chạy lại, kể cả khi dữ liệu đến từ cache.
-
-  const isLoading = isPaginatedSource
-    ? isPendingByPaginated || isFetchingByPaginated
-    : isPendingByCategory || isFetchingByCategory;
 
   return {
     processedCourses,
@@ -122,33 +94,9 @@ export const useCourses = ({ shouldEnrichData = true }: UseCoursesProps) => {
     },
     status: {
       isLoading: isLoading,
+      isEmpty,
     },
-    pagination: {
-      status: {
-        isEmpty,
-      },
-      refs: {
-        scrollToTarget: scrollToTargetRef,
-      },
-      state: {
-        currentPage: pagination.page,
-        pageSize: pagination.pageSize,
-        displayStart,
-        displayEnd,
-        pageNumbers,
-        isPrevDisabled,
-        isNextDisabled,
-        totalItems: courses.totalCount,
-      },
-      actions: {
-        onPrevClick,
-        onNextClick,
-        onPageClick,
-        setSize,
-        setPage,
-        preventNextResetPage,
-      },
-    },
+    pagination: pagination,
   };
 };
 
