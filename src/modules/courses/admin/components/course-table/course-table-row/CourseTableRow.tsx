@@ -30,7 +30,7 @@ export const CourseTableRow = ({
       className={cn(
         "group border-t border-border-muted text-xs wrap-break-word transition-colors duration-150 ease-in-out hover:bg-bg-subtle lg:text-sm",
         {
-          "animate-success-row": isRecentlyAffected,
+          "animate-success-row": !!isRecentlyAffected,
           "bg-bg-danger/50 text-text-on-feedback":
             targetCourseDeletion === course.maKhoaHoc,
         },
@@ -128,7 +128,7 @@ export const CourseTableRow = ({
                 onClick={() => onDeleteClick(course.maKhoaHoc)}
                 size={BUTTON_SIZES.NONE}
               >
-                <div className="rounded-control p-1.5 transition-colors duration-150 ease-in-out hover:bg-bg-danger/10 hover:text-text-danger">
+                <div className="rounded-control p-1.5 ease-in-out hover:bg-bg-danger/10 hover:text-text-danger">
                   <Trash className="size-4" />
                 </div>
               </Button>

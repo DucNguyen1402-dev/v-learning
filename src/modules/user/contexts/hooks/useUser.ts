@@ -55,7 +55,6 @@ export function useUser() {
   const targetCourses = isLocalPagination
     ? filteredUsers
     : paginatedUserData.items;
-
   const { profile } = CurrentUser.use();
 
   const processedUsers = targetCourses.filter(
