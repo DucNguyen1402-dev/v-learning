@@ -8,13 +8,15 @@ import {
 
 import { isArrayShallowEqual } from "@shared/utils";
 
+import type { UsePaginationStateResult } from "../usePaginationState";
+
 type UsePaginationResetOnDepsEffectProps = {
-  resetPaginationPage: (newPage?: number) => void;
+  resetPagination: UsePaginationStateResult["resetPagination"]["all"];
   resetDeps?: readonly unknown[];
 };
 
 export function usePaginationResetOnDepsEffect({
-  resetPaginationPage,
+  resetPagination,
   resetDeps: propResetDeps,
 }: UsePaginationResetOnDepsEffectProps) {
   type Meta = {
@@ -65,8 +67,8 @@ export function usePaginationResetOnDepsEffect({
       return;
     }
 
-    resetPaginationPage();
-  }, [meta.resetDeps, resetPaginationPage, skipNextPageResetRef]);
+    resetPagination();
+  }, [meta.resetDeps, resetPagination, skipNextPageResetRef]);
 
   return {
     skipNextPageReset,

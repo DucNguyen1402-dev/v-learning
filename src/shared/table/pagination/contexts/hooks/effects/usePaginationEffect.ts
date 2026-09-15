@@ -1,24 +1,27 @@
+import type { UsePaginationStateResult } from "../usePaginationState";
 import { usePaginationBoundaryEffect } from "./usePaginationBoundaryEffect";
 import { usePaginationResetOnDepsEffect } from "./usePaginationResetOnDepsEffect";
 import { usePaginationScrollEffect } from "./usePaginationScrollEffect";
 
 type UsePaginationEffectProps = {
-  resetPaginationPage: (newPage?: number) => void;
+  resetPagination: UsePaginationStateResult["resetPagination"];
   totalPages: number;
   currentPage: number;
   hasPaginationChanged: () => boolean;
   resetPaginationChanged: () => void;
   enabledResetPage?: boolean;
   resetDeps?: readonly unknown[];
+  setPage: (value: number) => void;
 };
 
 export function usePaginationEffect({
-  resetPaginationPage,
+  resetPagination,
   currentPage,
   totalPages,
   hasPaginationChanged,
   resetPaginationChanged,
   resetDeps,
+  setPage,
 }: UsePaginationEffectProps) {
   const { scrollToTarget, scrollToTargetRef } = usePaginationScrollEffect({
     resetPaginationChanged,
@@ -26,14 +29,14 @@ export function usePaginationEffect({
   });
 
   const { skipNextPageReset, setResetDeps } = usePaginationResetOnDepsEffect({
-    resetPaginationPage,
+    resetPagination: resetPagination.all,
     resetDeps,
   });
 
   usePaginationBoundaryEffect({
     currentPage,
     totalPages,
-    resetPaginationPage,
+    setPage,
   });
 
   return {

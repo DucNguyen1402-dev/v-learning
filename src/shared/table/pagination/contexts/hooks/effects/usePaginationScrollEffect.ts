@@ -1,13 +1,4 @@
 import { useCallback, useLayoutEffect, useRef, useState } from "react";
-// Keep this comment as a reference for the issue-investigation workflow.
-// When tracing an issue across multiple files, mark the root-cause file and key findings
-// so you can return to the original context after exploring other parts of the flow.
-// just Control + Shift + F to search "DEBUG TRACE" to find the root cause in the scroll flow.
-// ============================================================
-// DEBUG TRACE: ROOT CAUSE — SCROLL FLOW
-// If scroll-to-target fails, this file contains a known
-// root-cause point related to page reset.
-// ============================================================
 
 type UsePaginationScrollEffectProps = {
   hasPaginationChanged: () => boolean;
@@ -20,12 +11,12 @@ export function usePaginationScrollEffect({
 }: UsePaginationScrollEffectProps) {
   const scrollToTargetRef = useRef<HTMLDivElement | null>(null);
 
-  const [scrollRequestId, setScrollRequestId] = useState(0);
+  const [scrollRequestTick, setScrollRequestTick] = useState(0);
   const scrollRequestRef = useRef(false);
 
   const scrollToTarget = useCallback(() => {
     scrollRequestRef.current = true;
-    setScrollRequestId((id) => id + 1);
+    setScrollRequestTick((id) => id + 1);
   }, []);
 
   useLayoutEffect(() => {
@@ -47,7 +38,7 @@ export function usePaginationScrollEffect({
   }, [
     scrollToTargetRef,
     scrollRequestRef,
-    scrollRequestId,
+    scrollRequestTick,
     hasPaginationChanged,
     resetPaginationChanged,
   ]);

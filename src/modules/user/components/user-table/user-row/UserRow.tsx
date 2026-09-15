@@ -73,34 +73,43 @@ export const UserRow = ({ user, isRecentlyAffected }: UserRowProps) => {
 
       <td>
         <div className="flex-center gap-3">
-          <Tooltip content="Xem khóa học">
-            <Navigation.components.ForwardWithParam
-              builderRouteKey={Navigation.admin.builderKeys.USER_COURSE}
-              param={user.taiKhoan}
-            >
-              <div className="rounded p-1.5 transition-colors duration-150 ease-in-out hover:bg-bg-brand/10 hover:text-text-brand">
-                <BookOpen className="size-4" />
-              </div>
-            </Navigation.components.ForwardWithParam>
-          </Tooltip>
-          <Tooltip content="Chỉnh sửa người dùng">
-            <Navigation.components.ForwardWithParam
-              builderRouteKey={Navigation.admin.builderKeys.EDIT_USER}
-              param={user.taiKhoan}
-            >
-              <div className="rounded p-1.5 transition-colors duration-150 ease-in-out hover:bg-bg-brand/10 hover:text-text-brand">
-                <SquarePen className="size-4" />
-              </div>
-            </Navigation.components.ForwardWithParam>
-          </Tooltip>
+          <Tooltip
+            content="Xem khóa học"
+            trigger={
+              <Navigation.components.ForwardWithParam
+                builderRouteKey={Navigation.admin.builderKeys.USER_COURSE}
+                param={user.taiKhoan}
+              >
+                <div className="rounded p-1.5 transition-colors duration-150 ease-in-out hover:bg-bg-brand/10 hover:text-text-brand">
+                  <BookOpen className="size-4" />
+                </div>
+              </Navigation.components.ForwardWithParam>
+            }
+          />
+          <Tooltip
+            content="Chỉnh sửa người dùng"
+            trigger={
+              <Navigation.components.ForwardWithParam
+                builderRouteKey={Navigation.admin.builderKeys.EDIT_USER}
+                param={user.taiKhoan}
+              >
+                <div className="rounded p-1.5 transition-colors duration-150 ease-in-out hover:bg-bg-brand/10 hover:text-text-brand">
+                  <SquarePen className="size-4" />
+                </div>
+              </Navigation.components.ForwardWithParam>
+            }
+          />
 
-          <Tooltip content="Xóa người dùng">
-            <Button onClick={onDeleteClick} size={BUTTON_SIZES.NONE}>
-              <div className="rounded p-1.5 transition-colors duration-150 ease-in-out hover:bg-bg-danger/10 hover:text-text-danger">
-                <Trash className="size-4" />
-              </div>
-            </Button>
-          </Tooltip>
+          <Tooltip
+            content="Xóa người dùng"
+            trigger={
+              <Button onClick={onDeleteClick} size={BUTTON_SIZES.NONE}>
+                <div className="rounded p-1.5 transition-colors duration-150 ease-in-out hover:bg-bg-danger/10 hover:text-text-danger">
+                  <Trash className="size-4" />
+                </div>
+              </Button>
+            }
+          />
         </div>
       </td>
     </tr>

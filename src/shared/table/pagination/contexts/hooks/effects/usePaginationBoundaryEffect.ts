@@ -3,18 +3,18 @@ import { useEffect } from "react";
 type UsePaginationBoundaryEffectProps = {
   currentPage: number;
   totalPages: number;
-  resetPaginationPage: (newPage?: number) => void;
+  setPage: (value: number) => void;
 };
 
 export function usePaginationBoundaryEffect({
   currentPage,
   totalPages,
-  resetPaginationPage,
+  setPage,
 }: UsePaginationBoundaryEffectProps) {
   useEffect(() => {
     if (totalPages === 0) return;
     if (currentPage > totalPages) {
-      resetPaginationPage(totalPages);
+      setPage(totalPages);
     }
-  }, [currentPage, resetPaginationPage, totalPages]);
+  }, [currentPage, setPage, totalPages]);
 }

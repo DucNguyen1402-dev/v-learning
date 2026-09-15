@@ -81,7 +81,7 @@ export const CoursesTable = ({ affectedCourseId }: CoursesTableProps) => {
   };
 
   return (
-    <div className="scrollbar table-wrapper-min-height overflow-x-auto rounded-container border border-border-subtle bg-bg-default shadow-surface select-none">
+    <div className="scrollbar table-wrapper-min-height overflow-x-auto rounded-container border-t border-border-subtle bg-bg-default shadow-surface select-none">
       <table className="w-full table-fixed border-collapse text-left">
         <thead>
           <tr className="bg-bg-subtle text-xs font-medium tracking-wider text-text-subtle uppercase">

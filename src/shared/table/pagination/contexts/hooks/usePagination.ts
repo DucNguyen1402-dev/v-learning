@@ -19,7 +19,7 @@ export const usePagination = <T>({
   const {
     currentPage,
     pageSize,
-    resetPaginationPage,
+    resetPagination,
     onPrevClick,
     onNextClick,
     onPageClick,
@@ -42,12 +42,13 @@ export const usePagination = <T>({
 
   const { scrollToTargetRef, skipNextPageReset, setResetDeps, scrollToTarget } =
     usePaginationEffect({
-      resetPaginationPage,
+      resetPagination,
       currentPage,
       totalPages,
       hasPaginationChanged,
       resetDeps,
       resetPaginationChanged,
+      setPage,
     });
 
   return useMemo(

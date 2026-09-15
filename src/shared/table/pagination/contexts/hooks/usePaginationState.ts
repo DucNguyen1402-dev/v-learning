@@ -16,22 +16,36 @@ export function usePaginationState({
   });
 
   const prevPagination = useRef(pagination);
+  // Notifies that the next change in pagination is due to a reset, so the effect should ignore it when recording changes
+  const isResetPendingRef = useRef(false);
+  const [resetTick, setResetTick] = useState(0);
 
-  const hasPaginationChanged = useRef(false);
+  const requestReset = useCallback(() => {
+    setResetTick((prev) => prev + 1);
+    isResetPendingRef.current = true;
+  }, []);
+
+  const paginationChangedRef = useRef(false);
   const resetPaginationChanged = useCallback(() => {
-    hasPaginationChanged.current = false;
+    paginationChangedRef.current = false;
   }, []);
 
   useLayoutEffect(() => {
+    if (isResetPendingRef.current) {
+      isResetPendingRef.current = false;
+      prevPagination.current = pagination;
+      return;
+    }
+
     const hasChanged =
       prevPagination.current.page !== pagination.page ||
       prevPagination.current.pageSize !== pagination.pageSize;
 
     if (!hasChanged) return;
-
-    hasPaginationChanged.current = true;
     prevPagination.current = pagination;
-  }, [pagination]);
+
+    paginationChangedRef.current = true;
+  }, [pagination, resetTick]);
 
   const setSize = useCallback((value: number) => {
     setPagination((prev) => ({ ...prev, pageSize: value, page: 1 }));
@@ -53,9 +67,18 @@ export function usePaginationState({
     setPagination((prev) => ({ ...prev, page }));
   }, []);
 
-  const resetPaginationPage = useCallback((newPage: number = 1) => {
-    setPagination((prev) => ({ ...prev, page: newPage }));
-  }, []);
+  const resetPaginationPage = useCallback(() => {
+    setPagination((prev) => ({ ...prev, page: 1 }));
+    requestReset();
+  }, [requestReset]);
+
+  const resetPagination = useCallback(() => {
+    setPagination({
+      page: 1,
+      pageSize: initialPageSize,
+    });
+    requestReset();
+  }, [requestReset, initialPageSize]);
 
   return {
     currentPage: pagination.page,
@@ -66,8 +89,13 @@ export function usePaginationState({
     onPrevClick,
     onNextClick,
     onPageClick,
-    hasPaginationChanged: useCallback(() => hasPaginationChanged.current, []),
-    resetPaginationPage,
+    hasPaginationChanged: useCallback(() => paginationChangedRef.current, []),
     resetPaginationChanged,
+    resetPagination: {
+      all: resetPagination,
+      page: resetPaginationPage,
+    },
   };
 }
+
+export type UsePaginationStateResult = ReturnType<typeof usePaginationState>;

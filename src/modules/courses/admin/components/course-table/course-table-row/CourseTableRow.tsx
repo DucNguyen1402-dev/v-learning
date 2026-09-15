@@ -66,15 +66,20 @@ export const CourseTableRow = ({
               shouldBlockAction ? "pointer-events-none opacity-50" : "flex"
             }
           >
-            <Tooltip content="Quản lý học viên ghi danh">
-              <Navigation.components.ForwardWithParam
-                builderRouteKey={Navigation.admin.builderKeys.COURSE_ENROLLMENT}
-                param={course.maKhoaHoc}
-                className="rounded-control p-1.5 transition-colors duration-150 ease-in-out hover:bg-bg-brand/10 hover:text-text-brand"
-              >
-                <BookSearch className="size-4" />
-              </Navigation.components.ForwardWithParam>
-            </Tooltip>
+            <Tooltip
+              content="Quản lý học viên ghi danh"
+              trigger={
+                <Navigation.components.ForwardWithParam
+                  builderRouteKey={
+                    Navigation.admin.builderKeys.COURSE_ENROLLMENT
+                  }
+                  param={course.maKhoaHoc}
+                  className="rounded-control p-1.5 transition-colors duration-150 ease-in-out hover:bg-bg-brand/10 hover:text-text-brand"
+                >
+                  <BookSearch className="size-4" />
+                </Navigation.components.ForwardWithParam>
+              }
+            />
           </div>
 
           <div
@@ -82,15 +87,18 @@ export const CourseTableRow = ({
               shouldBlockAction ? "pointer-events-none opacity-50" : "flex"
             }
           >
-            <Tooltip content="Chỉnh sửa khóa học">
-              <Navigation.components.ForwardWithParam
-                builderRouteKey={Navigation.admin.builderKeys.EDIT_COURSE}
-                param={course.maKhoaHoc}
-                className="rounded-control p-1.5 transition-colors duration-150 ease-in-out hover:bg-bg-brand/10 hover:text-text-brand"
-              >
-                <SquarePen className="size-4" />
-              </Navigation.components.ForwardWithParam>
-            </Tooltip>
+            <Tooltip
+              content="Chỉnh sửa khóa học"
+              trigger={
+                <Navigation.components.ForwardWithParam
+                  builderRouteKey={Navigation.admin.builderKeys.EDIT_COURSE}
+                  param={course.maKhoaHoc}
+                  className="rounded-control p-1.5 transition-colors duration-150 ease-in-out hover:bg-bg-brand/10 hover:text-text-brand"
+                >
+                  <SquarePen className="size-4" />
+                </Navigation.components.ForwardWithParam>
+              }
+            />
           </div>
 
           <div
@@ -98,28 +106,34 @@ export const CourseTableRow = ({
               shouldBlockAction ? "pointer-events-none opacity-50" : "flex"
             }
           >
-            <Tooltip content="Ghi danh học viên">
-              <Navigation.components.ForwardWithParam
-                builderRouteKey={Navigation.admin.builderKeys.ENROLL_USER}
-                param={course.maKhoaHoc}
+            <Tooltip
+              content="Ghi danh học viên"
+              trigger={
+                <Navigation.components.ForwardWithParam
+                  builderRouteKey={Navigation.admin.builderKeys.ENROLL_USER}
+                  param={course.maKhoaHoc}
 
-                className="rounded-control p-1.5 transition-colors duration-150 ease-in-out hover:bg-bg-brand/10 hover:text-text-brand"
-              >
-                <ClipboardPenLine className="size-4" />
-              </Navigation.components.ForwardWithParam>
-            </Tooltip>
+                  className="rounded-control p-1.5 transition-colors duration-150 ease-in-out hover:bg-bg-brand/10 hover:text-text-brand"
+                >
+                  <ClipboardPenLine className="size-4" />
+                </Navigation.components.ForwardWithParam>
+              }
+            />
           </div>
 
-          <Tooltip content="Xóa khóa học">
-            <Button
-              onClick={() => onDeleteClick(course.maKhoaHoc)}
-              size={BUTTON_SIZES.NONE}
-            >
-              <div className="rounded-control p-1.5 transition-colors duration-150 ease-in-out hover:bg-bg-danger/10 hover:text-text-danger">
-                <Trash className="size-4" />
-              </div>
-            </Button>
-          </Tooltip>
+          <Tooltip
+            content="Xóa khóa học"
+            trigger={
+              <Button
+                onClick={() => onDeleteClick(course.maKhoaHoc)}
+                size={BUTTON_SIZES.NONE}
+              >
+                <div className="rounded-control p-1.5 transition-colors duration-150 ease-in-out hover:bg-bg-danger/10 hover:text-text-danger">
+                  <Trash className="size-4" />
+                </div>
+              </Button>
+            }
+          />
         </div>
       </td>
     </tr>

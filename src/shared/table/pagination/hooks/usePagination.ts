@@ -45,7 +45,7 @@ export const usePagination = (initialOptions?: {
   const {
     currentPage,
     pageSize,
-    resetPaginationPage,
+    resetPagination,
     hasPaginationChanged,
     onPrevClick,
     onNextClick,
@@ -72,9 +72,10 @@ export const usePagination = (initialOptions?: {
     usePaginationEffect({
       currentPage,
       totalPages: meta.totalPages,
-      resetPaginationPage,
+      resetPagination,
       hasPaginationChanged,
       resetPaginationChanged,
+      setPage,
     });
 
   return {
