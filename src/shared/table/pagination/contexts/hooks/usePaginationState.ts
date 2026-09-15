@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useLayoutEffect, useRef, useState } from "react";
 
 type UsePaginationStateProps = {
   initialPageSize?: number;
@@ -22,7 +22,7 @@ export function usePaginationState({
     hasPaginationChanged.current = false;
   }, []);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const hasChanged =
       prevPagination.current.page !== pagination.page ||
       prevPagination.current.pageSize !== pagination.pageSize;

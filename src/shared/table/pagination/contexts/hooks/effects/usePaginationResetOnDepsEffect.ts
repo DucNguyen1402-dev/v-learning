@@ -1,4 +1,10 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
 
 import { isArrayShallowEqual } from "@shared/utils";
 
@@ -23,15 +29,6 @@ export function usePaginationResetOnDepsEffect({
     skipNextPageResetRef.current = true;
   }, []);
 
-  const hasJustResetPageRef = useRef(false);
-  const getHasJustResetPage = useCallback(
-    () => hasJustResetPageRef.current,
-    [],
-  );
-  const clearPageJustReset = useCallback(() => {
-    hasJustResetPageRef.current = false;
-  }, []);
-
   const setResetDeps = useCallback((resetDeps: readonly unknown[]) => {
     setMeta((prev) => {
       if (isArrayShallowEqual(prev.resetDeps, resetDeps)) {
@@ -52,15 +49,15 @@ export function usePaginationResetOnDepsEffect({
   }, [propResetDeps, setResetDeps]);
 
   const prevResetDepsRef = useRef<readonly unknown[]>(meta.resetDeps);
-  useEffect(() => {
+  useLayoutEffect(() => {
     // check if the reset dependencies have changed
     const isDepsChanged = !isArrayShallowEqual(
       prevResetDepsRef.current,
       meta.resetDeps,
     );
-    prevResetDepsRef.current = meta.resetDeps;
 
     if (!isDepsChanged) return;
+    prevResetDepsRef.current = meta.resetDeps;
 
     // skip the next page reset if flagged
     if (skipNextPageResetRef.current) {
@@ -69,18 +66,10 @@ export function usePaginationResetOnDepsEffect({
     }
 
     resetPaginationPage();
-    hasJustResetPageRef.current = true;
-  }, [
-    meta.resetDeps,
-    resetPaginationPage,
-    skipNextPageResetRef,
-    hasJustResetPageRef,
-  ]);
+  }, [meta.resetDeps, resetPaginationPage, skipNextPageResetRef]);
 
   return {
     skipNextPageReset,
     setResetDeps,
-    getHasJustResetPage,
-    clearPageJustReset,
   };
 }

@@ -16,7 +16,7 @@ export const PaginationProvider = <T,>({
   enabledResetPage = true,
   initialPageSize = 10,
   items,
-  resetDeps = [],
+  resetDeps,
 }: PaginationProviderProps<T>) => {
   const value = usePagination<T>({
     initialPageSize,

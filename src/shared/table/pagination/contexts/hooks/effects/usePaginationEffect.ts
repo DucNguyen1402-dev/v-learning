@@ -20,21 +20,14 @@ export function usePaginationEffect({
   resetPaginationChanged,
   resetDeps,
 }: UsePaginationEffectProps) {
-  const {
-    skipNextPageReset,
-    setResetDeps,
-    getHasJustResetPage,
-    clearPageJustReset,
-  } = usePaginationResetOnDepsEffect({
-    resetPaginationPage,
-    resetDeps,
-  });
-
   const { scrollToTarget, scrollToTargetRef } = usePaginationScrollEffect({
-    getHasJustResetPage,
-    clearPageJustReset,
     resetPaginationChanged,
     hasPaginationChanged,
+  });
+
+  const { skipNextPageReset, setResetDeps } = usePaginationResetOnDepsEffect({
+    resetPaginationPage,
+    resetDeps,
   });
 
   usePaginationBoundaryEffect({

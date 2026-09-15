@@ -1,15 +1,20 @@
 import { useCallback, useLayoutEffect, useRef, useState } from "react";
+// Keep this comment as a reference for the issue-investigation workflow.
+// When tracing an issue across multiple files, mark the root-cause file and key findings
+// so you can return to the original context after exploring other parts of the flow.
+// just Control + Shift + F to search "DEBUG TRACE" to find the root cause in the scroll flow.
+// ============================================================
+// DEBUG TRACE: ROOT CAUSE — SCROLL FLOW
+// If scroll-to-target fails, this file contains a known
+// root-cause point related to page reset.
+// ============================================================
 
 type UsePaginationScrollEffectProps = {
-  clearPageJustReset: () => void;
   hasPaginationChanged: () => boolean;
   resetPaginationChanged: () => void;
-  getHasJustResetPage: () => boolean;
 };
 
 export function usePaginationScrollEffect({
-  getHasJustResetPage,
-  clearPageJustReset,
   hasPaginationChanged,
   resetPaginationChanged,
 }: UsePaginationScrollEffectProps) {
@@ -33,12 +38,6 @@ export function usePaginationScrollEffect({
     // has a scroll request
     if (!scrollRequestRef.current) return;
 
-    // if the page has just been reset, do not perform scrolling
-    if (getHasJustResetPage()) {
-      clearPageJustReset();
-      return;
-    }
-
     resetPaginationChanged();
     scrollRequestRef.current = false;
 
@@ -46,13 +45,11 @@ export function usePaginationScrollEffect({
     const targetTop = window.scrollY + rect.top - window.innerHeight / 2;
     window.scrollTo({ top: Math.max(targetTop, 0), behavior: "instant" });
   }, [
-    getHasJustResetPage,
     scrollToTargetRef,
     scrollRequestRef,
     scrollRequestId,
     hasPaginationChanged,
     resetPaginationChanged,
-    clearPageJustReset,
   ]);
 
   return { scrollToTargetRef, scrollToTarget };

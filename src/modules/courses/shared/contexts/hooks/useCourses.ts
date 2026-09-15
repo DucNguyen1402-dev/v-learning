@@ -1,4 +1,4 @@
-import { useLayoutEffect } from "react";
+import { useEffect } from "react";
 
 import {
   EMPTY_PAGINATED_COURSE,
@@ -44,7 +44,7 @@ export const useCourses = ({ shouldEnrichData = true }: UseCoursesProps) => {
     config: { setResetDeps, syncPaginationMeta },
   } = pagination;
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     setResetDeps([isPaginatedSource]);
     syncPaginationMeta({
       totalPages: courses.totalPages,
@@ -54,7 +54,6 @@ export const useCourses = ({ shouldEnrichData = true }: UseCoursesProps) => {
     courses.totalPages,
     courses.totalCount,
     isPaginatedSource,
-    isFetchingByPaginated,
     syncPaginationMeta,
     setResetDeps,
   ]);
