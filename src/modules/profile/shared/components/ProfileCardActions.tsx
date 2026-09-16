@@ -14,7 +14,7 @@ export const ProfileCardActions = () => {
 
       <Navigation.components.Forward
         routeKey={Navigation[currentArea].keys.PASSWORD_CHANGE}
-        className="button-base button-secondary ghost px-4 py-1.5"
+        className="button-base button-secondary ghost w-full py-1.5"
       >
         Đổi mật khẩu
       </Navigation.components.Forward>

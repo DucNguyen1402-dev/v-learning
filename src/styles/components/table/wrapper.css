@@ -1,5 +1,6 @@
 @layer components {
   .table-wrapper-min-height {
-    min-height: 640px;
+
+    @apply min-h-150 lg:min-h-160;
   }
 }

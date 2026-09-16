@@ -42,9 +42,13 @@ export const EnrollmentUserTableRow = ({
         isEnrolling ? "bg-bg-brand/40 text-text-on-feedback" : "",
       )}
     >
-      <td className="py-3 pl-8 text-left">{stt}</td>
-      <td className="pl-4 text-left text-sm">{user.taiKhoan}</td>
-      <td className="pl-4 text-left text-sm">{user.hoTen}</td>
+      <td className="py-3 pl-8 text-left text-[13px] md:text-sm">{stt}</td>
+      <td className="pl-4 text-left text-[13px] wrap-break-word md:text-sm">
+        {user.taiKhoan}
+      </td>
+      <td className="pl-4 text-left text-[13px] wrap-break-word md:text-sm">
+        {user.hoTen}
+      </td>
       <td className="pl-4 text-center">
         <div
           className={`inline-block rounded-full px-3 py-1 text-xs font-medium ${isEnrolled ? "bg-bg-enrolled text-text-enrolled group-hover:bg-bg-enrolled-hover" : "bg-bg-enrollment-pending text-text-enrollment-pending group-hover:bg-bg-enrollment-pending-hover"}`}
@@ -64,7 +68,9 @@ export const EnrollmentUserTableRow = ({
                 onClick={onConfirmEnrollUserClick}
                 loading={isEnrollUserPending}
               >
-                <span className="py-1.5 text-xs">Xác nhận</span>
+                <span className="py-1 text-xs md:py-1.5 md:text-sm">
+                  Xác nhận
+                </span>
               </Button>
             )}
 
@@ -77,7 +83,9 @@ export const EnrollmentUserTableRow = ({
                 onClick={onCancelCourseClick}
                 loading={isCancelPersonalCourseLoading}
               >
-                <span className="py-1.5 text-xs">Hủy đăng ký</span>
+                <span className="py-1 text-xs md:py-1.5 md:text-sm">
+                  Hủy đăng ký
+                </span>
               </Button>
             )}
           </div>

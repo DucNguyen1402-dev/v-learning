@@ -33,9 +33,11 @@ export const EnrollUserTableRow = ({
         isEnrolling ? "bg-bg-brand/40 text-text-on-feedback" : "",
       )}
     >
-      <td className="py-3 pl-8 text-left">{stt}</td>
-      <td className="pl-4 text-left text-sm">{user.taiKhoan}</td>
-      <td className="pl-4 text-left text-sm">{user.hoTen}</td>
+      <td className="py-3 pl-8 text-left text-sm">{stt}</td>
+      <td className="pl-4 text-left text-sm wrap-break-word">
+        {user.taiKhoan}
+      </td>
+      <td className="pl-4 text-left text-sm wrap-break-word">{user.hoTen}</td>
 
       <td>
         <div className="flex justify-center">

@@ -6,7 +6,7 @@ export const CourseDetail = () => {
   const { scrollRef } = Navigation.hooks.useScrollOnRouteChange();
 
   return (
-    <div className="min-h-screen p-2 lg:p-8">
+    <div className="min-h-screen p-2 pt-6 lg:p-8">
       <div
         ref={scrollRef}
         className="grid scroll-target grid-cols-1 gap-2 md:grid-cols-12 lg:grid-cols-3 lg:gap-4"

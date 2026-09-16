@@ -3,6 +3,7 @@ import { useEffect, useRef } from "react";
 import { Navigation } from "@shared/navigation";
 import { Toast } from "@shared/overlays";
 import { useTemporaryState } from "@shared/state";
+import { cn } from "@shared/utils";
 
 import { ProfileCard } from "../components";
 import type { ProfileLocationPayload } from "../types";
@@ -25,8 +26,17 @@ export const ProfileOverviewPage = () => {
     consumePayload();
   }, [payload, showToast, consumePayload]);
 
+  const currentArea = Navigation.hooks.useCurrentArea();
+
   return (
-    <div className="flex min-h-screen items-start justify-center gap-6 py-8 md:px-4">
+    <div
+      className={cn(
+        "flex justify-center gap-6 py-8 md:px-4",
+        currentArea === "admin"
+          ? "min-h-[calc(100dvh-4rem)] items-center"
+          : "items-start",
+      )}
+    >
       <ProfileCard />
     </div>
   );

@@ -32,7 +32,7 @@ export const UserCoursesTable = () => {
     });
   };
   return (
-    <table className="w-full table-fixed border-collapse">
+    <table className="w-full min-w-125 table-fixed border-collapse">
       <thead>
         <tr className="bg-bg-subtle text-xs font-medium tracking-wider text-text-subtle uppercase">
           <th className="w-20 py-5 pl-8 text-left">STT</th>

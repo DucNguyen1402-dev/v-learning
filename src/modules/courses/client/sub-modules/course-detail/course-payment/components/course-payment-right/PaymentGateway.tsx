@@ -7,15 +7,23 @@ export const PaymentGateway = ({ paymentMethod = "qr" }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   const { selectedMethod: selectedPaymentMethod } = useCoursePaymentContext();
+  const isMobile = window.innerWidth < 768;
+  const qrCodeWidth = isMobile ? 120 : 160;
 
   useEffect(() => {
     if (!canvasRef.current) return;
 
-    QRCode.toCanvas(canvasRef.current, "https://google.com", {
-      width: 160,
-      margin: 2,
+    window.addEventListener("resize", () => {
+      const isMobile = window.innerWidth < 768;
+      const qrCodeWidth = isMobile ? 120 : 160;
+      if (canvasRef.current) {
+        QRCode.toCanvas(canvasRef.current, "https://google.com", {
+          width: qrCodeWidth,
+          margin: 2,
+        });
+      }
     });
-  }, [selectedPaymentMethod]);
+  }, [qrCodeWidth, selectedPaymentMethod]);
 
   return selectedPaymentMethod === "qr" ? (
     <div className="flex flex-col gap-3 rounded-overlay border border-dashed border-border-subtle bg-bg-subtle p-4 text-center">
@@ -23,7 +31,9 @@ export const PaymentGateway = ({ paymentMethod = "qr" }) => {
         Thông tin thanh toán chỉ mang tính demo.
       </p>
 
-      <div className="mx-auto flex w-40 items-center justify-center rounded-lg border bg-white p-2 shadow-sm">
+      <div
+        className={`w-[${qrCodeWidth}px] mx-auto flex items-center justify-center rounded-lg border bg-white p-2 shadow-sm`}
+      >
         <div className="flex h-full w-full items-center justify-center rounded bg-slate-900 text-center text-xs text-white">
           <canvas ref={canvasRef}></canvas>
         </div>

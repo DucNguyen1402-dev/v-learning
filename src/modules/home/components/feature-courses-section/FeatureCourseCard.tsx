@@ -25,7 +25,7 @@ export const FeatureCourseCard = ({
       builderRouteKey={Navigation.client.builderKeys.COURSES_DETAIL}
       param={maKhoahoc}
     >
-      <article className="group relative flex cursor-pointer flex-col justify-between rounded-container border border-border-default bg-bg-default p-6 transition-transform duration-300 select-none hover:-translate-y-2 hover:border-border-brand hover:shadow-surface-hover">
+      <article className="group relative flex cursor-pointer flex-col justify-between rounded-container border border-border-default bg-bg-default p-4 transition-transform duration-300 select-none hover:-translate-y-2 hover:border-border-brand hover:shadow-surface-hover md:p-6">
         <div className="absolute top-3 right-3 flex items-center gap-1 rounded-pill bg-bg-overlay px-2 py-0.5 text-[10px] text-text-on-overlay">
           <span>{danhGia}</span>
           <Star className="size-3.5 fill-current text-text-rating" />

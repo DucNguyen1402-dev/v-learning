@@ -18,7 +18,7 @@ export const CourseByCategoryPage = () => {
       items={coursesByCategory}
       resetDeps={[coursesByCategory]}
     >
-      <div className="flex min-h-screen flex-col gap-10">
+      <div className="flex min-h-screen flex-col gap-10 px-2 pt-4">
         <CoursesHeader maDanhMuc={maDanhMuc!} />
 
         <CoursesList isLoading={isPending} />

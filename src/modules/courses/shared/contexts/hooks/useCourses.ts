@@ -88,7 +88,7 @@ export const useCourses = ({ shouldEnrichData = true }: UseCoursesProps) => {
       tenKhoaHoc,
       onSearchByCoursesName,
       category,
-      shouldHideSearch: category !== null,
+      shouldDisableSearch: category !== null,
       onChangeCategory,
       handleClearSearch,
     },

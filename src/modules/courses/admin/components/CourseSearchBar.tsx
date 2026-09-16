@@ -7,17 +7,17 @@ import { Search, SearchX } from "lucide-react";
 // - To search, the category filter must be set to "Tất cả".
 export const CourseSearchBar = () => {
   const {
-    filter: { tenKhoaHoc, onSearchByCoursesName, shouldHideSearch },
+    filter: { tenKhoaHoc, onSearchByCoursesName, shouldDisableSearch },
   } = useCoursesContext();
 
-  const Icon = shouldHideSearch ? SearchX : Search;
-  const placeholder = shouldHideSearch
+  const Icon = shouldDisableSearch ? SearchX : Search;
+  const placeholder = shouldDisableSearch
     ? "Chọn tất cả danh mục để tìm kiếm"
     : "Tìm kiếm khóa học...";
   return (
     <div
       className={
-        shouldHideSearch ? "pointer-events-none opacity-80 select-none" : ""
+        shouldDisableSearch ? "pointer-events-none opacity-80 select-none" : ""
       }
     >
       <Input.Root>

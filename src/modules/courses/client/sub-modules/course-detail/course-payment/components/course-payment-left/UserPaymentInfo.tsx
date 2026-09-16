@@ -12,7 +12,7 @@ export const UserPaymentInfo = () => {
 
   const isMobile = window.innerWidth < 768;
   return (
-    <div className="flex flex-col gap-6 rounded-container border-border-subtle bg-bg-default p-6 py-8 shadow-surface">
+    <div className="flex flex-col gap-6 rounded-container border-border-subtle bg-bg-default p-5 py-8 shadow-surface md:p-6">
       <h2 className="text-lg font-semibold">
         1. Thông tin tài khoản {isMobile ? "" : "của bạn"}
       </h2>

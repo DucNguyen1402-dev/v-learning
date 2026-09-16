@@ -42,7 +42,7 @@ export const Header = () => {
             </div>
           ) : (
             <div
-              className={`flex items-center justify-center gap-4 lg:gap-8 ${shouldHideLoginButton ? "w-32" : ""}`}
+              className={`flex items-center justify-center gap-4 lg:gap-8 ${shouldHideLoginButton ? "w-20 md:w-32" : ""}`}
             >
               <ThemeModeButton />
               {!shouldHideLoginButton && (

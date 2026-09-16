@@ -9,39 +9,44 @@ import {
 } from "@shared/ui";
 import { cn } from "@shared/utils";
 import { capitalize } from "@shared/utils";
-import { Search } from "lucide-react";
+import { Search, SearchX } from "lucide-react";
 
 export const CoursesToolbar = () => {
   const {
     filter: {
       tenKhoaHoc,
       onSearchByCoursesName,
-      shouldHideSearch,
+      shouldDisableSearch,
       category,
       onChangeCategory,
     },
   } = useCoursesContext();
 
+  const Icon = shouldDisableSearch ? SearchX : Search;
+  const placeholder = shouldDisableSearch
+    ? "Chọn tất cả danh mục để tìm kiếm"
+    : "Tìm kiếm khóa học...";
+
   return (
     <div
       className={cn(
         "flex flex-col gap-8 transition-all duration-300",
-        shouldHideSearch && "lg:gap-0",
+        shouldDisableSearch && "lg:gap-0",
       )}
     >
       <div
         className={cn(
           "relative max-w-100 transition-all duration-200 select-none lg:min-w-100",
-          shouldHideSearch && "scale-90 opacity-0",
+          shouldDisableSearch && "pointer-events-none select-none",
         )}
       >
         <Input.Root>
           <Input.LeftAddon>
-            <Search className="size-4 text-text-subtle" />
+            <Icon className="size-4 text-text-subtle" />
           </Input.LeftAddon>
           <Input.Field
             hasLeftAddon
-            placeholder="Tìm kiếm khóa học..."
+            placeholder={placeholder}
             value={tenKhoaHoc || ""}
             onChange={(e) => onSearchByCoursesName(e.target.value)}
           />

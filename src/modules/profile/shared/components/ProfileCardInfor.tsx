@@ -13,10 +13,12 @@ export const ProfileCardInfor = () => {
       {informations.map((info) => (
         <div
           key={info.label}
-          className="flex items-center justify-between border-t border-border-subtle pt-3 text-text-subtle"
+          className="flex items-start justify-between gap-4 border-t border-border-subtle pt-3 text-text-subtle"
         >
-          <span>{info.label}</span>
-          <span className="font-semibold">{info.value}</span>
+          <span className="shrink-0">{info.label}</span>
+          <span className="min-w-0 text-right font-semibold break-all">
+            {info.value}
+          </span>
         </div>
       ))}
     </div>

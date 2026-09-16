@@ -30,11 +30,11 @@ export const CourseCard = ({ course }: CourseCardProps) => {
           {course.tenKhoaHoc}
         </h2>
 
-        <p className="line-clamp-2 flex-1 text-sm text-text-subtle">
+        <p className="line-clamp-2 flex-1 text-[13px] text-text-subtle md:text-sm">
           {course.moTa}
         </p>
 
-        <div className="mt-2 flex flex-wrap gap-6 text-sm text-text-subtle">
+        <div className="mt-2 flex flex-wrap gap-6 text-[13px] text-text-subtle md:text-sm">
           <div className="flex items-center gap-1">
             <Eye className="size-4" />
             <span>{course.luotXem}</span>
@@ -45,7 +45,7 @@ export const CourseCard = ({ course }: CourseCardProps) => {
           </div>
         </div>
 
-        <div className="flex items-center justify-between gap-1 border-t border-border-subtle pt-4 text-sm">
+        <div className="flex items-center justify-between gap-1 border-t border-border-subtle pt-4 text-[13px] md:text-sm">
           <div className="flex items-center gap-2 text-text-subtle">
             <GraduationCap className="size-5" />
             <p>Giảng viên</p>
@@ -56,7 +56,7 @@ export const CourseCard = ({ course }: CourseCardProps) => {
           <Navigation.components.ForwardWithParam
             builderRouteKey={Navigation.client.builderKeys.COURSES_DETAIL}
             param={course.maKhoaHoc}
-            className="button-base button-primary solid w-full py-2 text-sm"
+            className="button-base button-primary solid w-full py-2 text-[13px] md:text-sm"
           >
             Xem chi tiết
           </Navigation.components.ForwardWithParam>

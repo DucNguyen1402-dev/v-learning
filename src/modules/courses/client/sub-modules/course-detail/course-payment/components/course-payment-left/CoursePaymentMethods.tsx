@@ -16,7 +16,7 @@ export const CoursePaymentMethods = () => {
   const { selectedMethod, onPaymentMethodChange } = useCoursePaymentContext();
 
   return (
-    <div className="flex h-full flex-col gap-6 rounded-container border-border-subtle bg-bg-default p-6 py-8 shadow-surface">
+    <div className="flex h-full flex-col gap-6 rounded-container border-border-subtle bg-bg-default p-5 py-8 shadow-surface md:p-6">
       <h2 className="text-lg font-semibold">2. Chọn phương thức thanh toán</h2>
 
       <div className="flex flex-col gap-4">
