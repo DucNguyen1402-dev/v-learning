@@ -29,6 +29,7 @@
     @apply flex-center size-5 rounded-pill;
     background-color: var(--color-bg-selected);
   }
+
   .avatar-option-selected-icon {
     @apply size-3;
     color: var(--color-fg-on-selected);
@@ -37,6 +38,7 @@
   .avatar-button-pagination-control {
     @apply absolute inset-y-0 flex-center px-2;
   }
+
   .avatar-button-pagination-control-left {
     @apply left-1;
   }

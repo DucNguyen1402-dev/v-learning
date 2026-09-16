@@ -37,6 +37,9 @@ export const PersonalCoursePage = () => {
   return isEmpty ? (
     <EmptyCourseState />
   ) : (
-    <PersonalCourseList courses={courses} />
+    <div className="flex flex-col gap-8 p-2 md:p-4 lg:p-6">
+      <h1 className="text-2xl font-bold">Danh sách khóa học cá nhân</h1>
+      <PersonalCourseList courses={courses} />
+    </div>
   );
 };

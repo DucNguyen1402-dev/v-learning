@@ -9,68 +9,50 @@
   }
 
   .toast-success {
-    background-color: color-mix(
-      in srgb,
-      var(--color-bg-success) 30%,
-      var(--color-bg-default) 70%
-    );
+    background-color: color-mix(in srgb,
+        var(--color-bg-success) 30%,
+        var(--color-bg-default) 70%);
     border-color: var(--color-border-success);
 
     .dark & {
-      background-color: color-mix(
-        in srgb,
-        var(--color-bg-success) 40%,
-        var(--color-bg-default) 60%
-      );
-      border-color: color-mix(
-        in srgb,
-        var(--color-bg-success) 70%,
-        var(--color-bg-default) 30%
-      );
+      background-color: color-mix(in srgb,
+          var(--color-bg-success) 40%,
+          var(--color-bg-default) 60%);
+      border-color: color-mix(in srgb,
+          var(--color-bg-success) 70%,
+          var(--color-bg-default) 30%);
     }
   }
 
   .toast-error {
-    background-color: color-mix(
-      in srgb,
-      var(--color-bg-error) 30%,
-      var(--color-bg-default) 70%
-    );
+    background-color: color-mix(in srgb,
+        var(--color-bg-error) 30%,
+        var(--color-bg-default) 70%);
     border-color: var(--color-border-error);
 
     .dark & {
-      background-color: color-mix(
-        in srgb,
-        var(--color-bg-error) 40%,
-        var(--color-bg-default) 60%
-      );
-      border-color: color-mix(
-        in srgb,
-        var(--color-bg-error) 70%,
-        var(--color-bg-default) 30%
-      );
+      background-color: color-mix(in srgb,
+          var(--color-bg-error) 40%,
+          var(--color-bg-default) 60%);
+      border-color: color-mix(in srgb,
+          var(--color-bg-error) 70%,
+          var(--color-bg-default) 30%);
     }
   }
 
   .toast-warning {
-    background-color: color-mix(
-      in srgb,
-      var(--color-bg-warning) 30%,
-      var(--color-bg-default) 70%
-    );
+    background-color: color-mix(in srgb,
+        var(--color-bg-warning) 30%,
+        var(--color-bg-default) 70%);
     border-color: var(--color-border-warning);
 
     .dark & {
-      background-color: color-mix(
-        in srgb,
-        var(--color-bg-warning) 40%,
-        var(--color-bg-default) 60%
-      );
-      border-color: color-mix(
-        in srgb,
-        var(--color-bg-warning) 70%,
-        var(--color-bg-default) 30%
-      );
+      background-color: color-mix(in srgb,
+          var(--color-bg-warning) 40%,
+          var(--color-bg-default) 60%);
+      border-color: color-mix(in srgb,
+          var(--color-bg-warning) 70%,
+          var(--color-bg-default) 30%);
     }
   }
 
@@ -87,18 +69,23 @@
   }
 
   .toast-size-sm {
-    @apply max-w-96 min-w-72 gap-2.5 border-l-4 px-4 py-3;
+    @apply max-w-[calc(100vw-2rem)] md:max-w-96 md:min-w-72 gap-2.5 border-l-4 px-4 py-3;
   }
 
   .toast-size-md {
-    @apply max-w-100 min-w-80 gap-3 border-l-6 px-5 py-4;
+    @apply max-w-[calc(100vw-2rem)] md:max-w-100 md:min-w-80 gap-3 border-l-6 px-5 py-4;
   }
 
   .toast-size-lg {
-    @apply max-w-120 min-w-96 gap-4 border-l-8 px-6 py-5;
+    @apply max-w-[calc(100vw-2rem)] md:max-w-120 md:min-w-96 gap-4 border-l-8 px-6 py-5;
   }
 
-  .toast-view {
+  .toast-view-client {
     @apply pointer-events-none fixed inset-0 z-toast flex w-full max-w-md items-start justify-center px-4 pt-10 md:max-w-full;
   }
+
+  .toast-view-admin {
+    @apply pointer-events-none fixed inset-y-0 right-0 z-toast flex items-start justify-center px-4 pt-10;
+  }
+
 }

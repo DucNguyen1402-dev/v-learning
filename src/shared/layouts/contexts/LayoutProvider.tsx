@@ -13,11 +13,12 @@ export const LayoutProvider = ({ children }: LayoutProviderProps) => {
   const location = useLocation();
 
   const historyRoute = getRouteHistory({ location });
+  const shouldShowBackButton = historyRoute.length > 0;
   const value = useMemo(
     () => ({
-      shouldShowBackButton: historyRoute.length > 0,
+      shouldShowBackButton,
     }),
-    [historyRoute.length],
+    [shouldShowBackButton],
   );
 
   return (

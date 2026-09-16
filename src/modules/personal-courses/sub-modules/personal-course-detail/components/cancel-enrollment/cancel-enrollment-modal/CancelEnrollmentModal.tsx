@@ -28,7 +28,7 @@ export const CancelEnrollmentModal = () => {
   };
 
   return (
-    <div className="relative w-full max-w-md overflow-hidden rounded-overlay bg-bg-elevated p-6 pt-12 shadow-surface">
+    <div className="relative max-w-[calc(100vw-2rem)] overflow-hidden rounded-overlay bg-bg-elevated p-6 pt-12 shadow-surface md:max-w-md">
       <div className="absolute top-4 right-4">
         <Button
           onClick={onModalCancel}
