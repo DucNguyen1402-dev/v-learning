@@ -1,7 +1,6 @@
 import { Navigate, Route } from "react-router-dom";
 
 import { AdminMainLayout } from "@layouts/admin";
-import { AdminProvider } from "@providers/AdminProvider";
 
 import { AdminRouteGuard } from "./AdminRouteGuard";
 import { adminRoutes } from "./adminRoutes";
@@ -10,9 +9,7 @@ export const adminRouteTree = (
     path="/admin"
     element={
       <AdminRouteGuard>
-        <AdminProvider>
-          <AdminMainLayout />
-        </AdminProvider>
+        <AdminMainLayout />
       </AdminRouteGuard>
     }
   >

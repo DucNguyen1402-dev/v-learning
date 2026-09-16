@@ -1,4 +1,4 @@
-import { Layout } from "@layouts/admin";
+import { Layout } from "@shared/layouts";
 import { Navigation } from "@shared/navigation";
 import { AnimatePresence, motion } from "motion/react";
 

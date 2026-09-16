@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useCallback, useMemo, useState } from "react";
 import type { ReactNode } from "react";
 import { useLocation } from "react-router-dom";
 
@@ -12,13 +12,21 @@ type LayoutProviderProps = {
 export const LayoutProvider = ({ children }: LayoutProviderProps) => {
   const location = useLocation();
 
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
+  const toggleSidebar = useCallback(() => {
+    setIsSidebarOpen((prev) => !prev);
+  }, []);
+
   const historyRoute = getRouteHistory({ location });
   const shouldShowBackButton = historyRoute.length > 0;
   const value = useMemo(
     () => ({
       shouldShowBackButton,
+      isSidebarOpen,
+      toggleSidebar,
     }),
-    [shouldShowBackButton],
+    [shouldShowBackButton, isSidebarOpen, toggleSidebar],
   );
 
   return (

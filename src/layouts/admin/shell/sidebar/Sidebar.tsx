@@ -1,4 +1,4 @@
-import { useLayoutContext } from "@layouts/admin/contexts";
+import { Layout } from "@shared/layouts";
 import { Separator } from "@shared/ui";
 import { cn } from "@shared/utils";
 
@@ -14,7 +14,7 @@ export const Sidebar = () => {
     isSidebarOpen,
 
     toggleSidebar,
-  } = useLayoutContext();
+  } = Layout.use();
 
   return (
     <aside

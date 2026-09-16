@@ -5,11 +5,10 @@ import { GlobalUI } from "@shared/overlays";
 
 import { BackButton } from "../shared/components";
 import { SIDEBAR_COLLAPSED_OFFSET, SIDEBAR_CONTENT_OFFSET } from "./constants";
-import { useLayoutContext } from "./contexts";
 import { Sidebar, SidebarMobile } from "./shell";
 
 export const AdminMainLayout = () => {
-  const { isSidebarOpen } = useLayoutContext();
+  const { isSidebarOpen } = Layout.use();
   const { shouldShowBackButton } = Layout.use();
   return (
     <>
