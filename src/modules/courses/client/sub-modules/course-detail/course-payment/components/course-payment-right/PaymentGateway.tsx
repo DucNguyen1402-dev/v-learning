@@ -13,6 +13,10 @@ export const PaymentGateway = ({ paymentMethod = "qr" }) => {
   useEffect(() => {
     if (!canvasRef.current) return;
 
+    QRCode.toCanvas(canvasRef.current, "https://google.com", {
+      width: qrCodeWidth,
+      margin: 2,
+    });
     window.addEventListener("resize", () => {
       const isMobile = window.innerWidth < 768;
       const qrCodeWidth = isMobile ? 120 : 160;
