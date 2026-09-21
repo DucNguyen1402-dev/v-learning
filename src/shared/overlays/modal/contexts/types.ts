@@ -9,7 +9,7 @@ export type ModalState = {
   onCancel: (() => void) | null;
 };
 
-export type ModalConfig = Omit<ModalState, "isOpen" | "subtitle" | "onCancel"> &
+export type ModalConfig = Pick<ModalState, "type" | "title" | "onConfirm"> &
   Partial<Pick<ModalState, "subtitle" | "onCancel">>;
 
 export type ModalContextValues = {
