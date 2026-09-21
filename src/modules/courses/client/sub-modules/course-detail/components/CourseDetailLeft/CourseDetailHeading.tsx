@@ -1,10 +1,11 @@
+type CourseDetailHeadingProps = Readonly<{
+  readonly tenKhoaHoc: string;
+  readonly tenDanhMucKhoaHoc: string;
+}>;
 export const CourseDetailHeading = ({
   tenKhoaHoc,
   tenDanhMucKhoaHoc,
-}: {
-  tenKhoaHoc: string;
-  tenDanhMucKhoaHoc: string;
-}) => {
+}: CourseDetailHeadingProps) => {
   return (
     <div className="flex flex-col gap-3">
       <h1 className="text-2xl font-bold">{tenKhoaHoc}</h1>

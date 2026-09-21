@@ -2,7 +2,10 @@ import type { EnrichedPersonalCourse } from "@modules/personal-courses/mocks";
 import { Navigation } from "@shared/navigation";
 import { ArrowRight, Star } from "lucide-react";
 
-export const CourseCard = ({ course }: { course: EnrichedPersonalCourse }) => {
+type CourseCardProps = Readonly<{
+  course: Readonly<EnrichedPersonalCourse>;
+}>;
+export const CourseCard = ({ course }: CourseCardProps) => {
   return (
     <article className="group overflow-hidden rounded-container border-border-default bg-bg-default shadow-surface transition-all duration-300 select-none hover:-translate-y-1 hover:shadow-surface-hover">
       <div className="relative overflow-hidden">

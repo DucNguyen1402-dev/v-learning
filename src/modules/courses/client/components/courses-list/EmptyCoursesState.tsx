@@ -3,7 +3,7 @@ import { Button, BUTTON_APPEARANCES, BUTTON_INTENTS } from "@shared/ui";
 import { SearchX } from "lucide-react";
 
 type EmptyCoursesStateProps = {
-  tenKhoaHoc: string;
+  readonly tenKhoaHoc: string;
   onClearFilter: () => void;
 };
 export const EmptyCoursesState = ({

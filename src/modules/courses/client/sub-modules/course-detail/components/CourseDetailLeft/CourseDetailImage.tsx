@@ -2,7 +2,11 @@ import { Skeleton } from "@shared/ui";
 
 import { useCourseDetailContext } from "../../contexts";
 
-export const CourseDetailImage = ({ image }: { image: string }) => {
+type CourseDetailImageProps = Readonly<{
+  image: string;
+}>;
+
+export const CourseDetailImage = ({ image }: CourseDetailImageProps) => {
   const { isPending } = useCourseDetailContext();
 
   return (

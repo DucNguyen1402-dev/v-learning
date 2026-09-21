@@ -1,12 +1,13 @@
 import { Users } from "lucide-react";
 
+type RemainingSeatsProps = Readonly<{
+  remainingSeats: number;
+  totalSeats: number;
+}>;
 export const RemainingSeats = ({
   remainingSeats,
   totalSeats,
-}: {
-  remainingSeats: number;
-  totalSeats: number;
-}) => {
+}: RemainingSeatsProps) => {
   const seatsPercent = Math.round(
     ((totalSeats - remainingSeats) / totalSeats) * 100,
   );

@@ -7,12 +7,12 @@ import { cn } from "@shared/utils";
 import { BookOpen, SquarePen, Trash } from "lucide-react";
 
 import { useUserTableRow } from "./hooks";
-type UserRowProps = {
-  user: PaginatedUser | User;
+type UserRowProps = Readonly<{
+  user: Readonly<PaginatedUser | User>;
   isRecentlyAffected: boolean;
-};
+}>;
 
-const getUserRole = (user: PaginatedUser | User) => {
+const getUserRole = (user: Readonly<PaginatedUser | User>) => {
   if ("tenLoaiNguoiDung" in user) {
     return user.tenLoaiNguoiDung;
   }
@@ -22,7 +22,7 @@ const getUserRole = (user: PaginatedUser | User) => {
   return "unknown";
 };
 
-const getUserPhone = (user: PaginatedUser | User) => {
+const getUserPhone = (user: Readonly<PaginatedUser | User>) => {
   if ("soDT" in user) {
     return user.soDT;
   }

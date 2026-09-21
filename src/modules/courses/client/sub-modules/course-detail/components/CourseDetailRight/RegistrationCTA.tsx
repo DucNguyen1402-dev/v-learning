@@ -1,7 +1,11 @@
 import { Navigation } from "@shared/navigation";
 import { ArrowRight } from "lucide-react";
 
-export const RegistrationCTA = ({ maKhoaHoc }: { maKhoaHoc: string }) => {
+export const RegistrationCTA = ({
+  maKhoaHoc,
+}: {
+  readonly maKhoaHoc: string;
+}) => {
   return (
     <Navigation.components.ForwardWithParam
       builderRouteKey={Navigation.client.builderKeys.COURSES_DETAIL_PAYMENT}

@@ -4,7 +4,7 @@ import { Eye, GraduationCap, Users } from "lucide-react";
 import type { CourseCardForm } from "@/modules/courses/shared/types";
 
 interface CourseCardProps {
-  course: CourseCardForm;
+  course: Readonly<CourseCardForm>;
 }
 export const CourseCard = ({ course }: CourseCardProps) => {
   const image =

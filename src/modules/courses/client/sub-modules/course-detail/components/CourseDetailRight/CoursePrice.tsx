@@ -1,7 +1,7 @@
-interface CoursePriceProps {
+type CoursePriceProps = Readonly<{
   originalPrice: number;
   discountedPrice: number;
-}
+}>;
 
 export const CoursePrice = ({
   originalPrice,

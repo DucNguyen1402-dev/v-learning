@@ -3,10 +3,10 @@ import { GraduationCap } from "lucide-react";
 
 import type { CourseCardForm } from "@/modules/courses/shared/types";
 
-interface CourseCardProps {
-  course: CourseCardForm;
+type CourseCardProps = Readonly<{
+  course: Readonly<CourseCardForm>;
   shouldHideCategory: boolean;
-}
+}>;
 export const CourseCard = ({ course, shouldHideCategory }: CourseCardProps) => {
   const image =
     "thumbnail" in course

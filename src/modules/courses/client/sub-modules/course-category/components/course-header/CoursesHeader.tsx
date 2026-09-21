@@ -6,7 +6,11 @@ import { COURSE_CATEGORY_META } from "./config";
 
 import type { Category } from "@/modules/courses/shared/types";
 
-export const CoursesHeader = ({ maDanhMuc }: { maDanhMuc: Category }) => {
+export const CoursesHeader = ({
+  maDanhMuc,
+}: {
+  readonly maDanhMuc: Category;
+}) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [maDanhMucId, setMaDanhMucId] = useState(maDanhMuc);
 
