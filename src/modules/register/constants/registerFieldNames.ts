@@ -7,5 +7,6 @@ export const REGISTER_FIELD_NAMES = {
   EMAIL: "email",
   SO_DT: "soDT",
   MA_NHOM: "maNhom",
-} as const as RegisterFieldNames;
+} as const satisfies RegisterFieldNames;
+
 export const REGISTER_FIELD_NAME_VALUES = Object.values(REGISTER_FIELD_NAMES);

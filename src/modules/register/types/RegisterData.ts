@@ -3,7 +3,8 @@ export type RegisterData = {
   matKhau: string;
   hoTen: string;
   email: string;
-  soDT?: string;
+  soDT: string;
   maNhom: string;
 };
+export type RegisterPayload = RegisterData;
 export type RegisterFieldNames = Record<string, keyof RegisterData>;

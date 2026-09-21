@@ -1,15 +1,6 @@
 import { api } from "@shared/api";
 
-import type { RegisterData } from "../../types";
+import type { RegisterPayload } from "../../types";
 
-type RegisterResponse = {
-  taiKhoan: string;
-  matKhau: string;
-  hoTen: string;
-  soDT?: string;
-  maNhom: string;
-  email: string;
-};
-
-export const register = (payload: RegisterData): Promise<RegisterResponse> =>
-  api.post("/QuanLyNguoiDung/DangKy", payload).then((res) => res.data);
+export const register = (payload: RegisterPayload) =>
+  api.post("/QuanLyNguoiDung/DangKy", payload);
