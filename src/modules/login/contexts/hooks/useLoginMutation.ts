@@ -2,6 +2,7 @@ import type { LoginData } from "@modules/login/types";
 import { CurrentUser } from "@shared/current-user";
 import { Session } from "@shared/session";
 import { useMutation } from "@tanstack/react-query";
+import { useQueryClient } from "@tanstack/react-query";
 
 import { login } from "./api";
 
@@ -12,6 +13,7 @@ type LoginMutationVariables = {
 
 export const useLoginMutation = () => {
   const { refreshCurrentUser } = CurrentUser.use();
+  const queryClient = useQueryClient();
   const mutation = useMutation({
     mutationFn: ({ payload }: LoginMutationVariables) => login(payload),
     onSuccess: (data, variable) => {
@@ -30,6 +32,7 @@ export const useLoginMutation = () => {
       });
 
       refreshCurrentUser();
+      queryClient.invalidateQueries({ queryKey: ["currentUser"] });
     },
   });
 
