@@ -1,8 +1,10 @@
 import type { Category } from "@/modules/courses/shared/types";
-export const COURSE_CATEGORY_META: Record<
-  Category,
-  { title: string; description: string }
-> = {
+
+type CourseCategoryMeta = {
+  title: string;
+  description: string;
+};
+export const COURSE_CATEGORY_META: Record<Category, CourseCategoryMeta> = {
   FrontEnd: {
     title: "Khóa học Front End",
     description:

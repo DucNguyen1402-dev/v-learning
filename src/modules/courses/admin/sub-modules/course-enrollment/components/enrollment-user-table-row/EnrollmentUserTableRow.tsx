@@ -6,7 +6,10 @@ import {
 } from "@shared/ui";
 import { cn } from "@shared/utils";
 
-import { USER_ENROLLMENT_STATUS } from "../../constants";
+import {
+  USER_ENROLLMENT_STATUS,
+  userEnrollmentStatusLabels,
+} from "../../constants";
 import { useCourseEnrollmentContext } from "../../contexts";
 import type { EnrollmentUser } from "../../types";
 import { useEnrollmentUserTableRow } from "./hook";
@@ -53,7 +56,7 @@ export const EnrollmentUserTableRow = ({
         <div
           className={`inline-block rounded-full px-3 py-1 text-xs font-medium ${isEnrolled ? "bg-bg-enrolled text-text-enrolled group-hover:bg-bg-enrolled-hover" : "bg-bg-enrollment-pending text-text-enrollment-pending group-hover:bg-bg-enrollment-pending-hover"}`}
         >
-          {user.trangThai}
+          {userEnrollmentStatusLabels[user.trangThai]}
         </div>
       </td>
       <td>
@@ -68,7 +71,7 @@ export const EnrollmentUserTableRow = ({
                 onClick={onConfirmEnrollUserClick}
                 loading={isEnrollUserPending}
               >
-                <span className="py-1 text-xs md:py-1.5 md:text-sm">
+                <span className="py-1 text-xs md:py-1.5 md:text-[13px]">
                   Xác nhận
                 </span>
               </Button>
@@ -83,7 +86,7 @@ export const EnrollmentUserTableRow = ({
                 onClick={onCancelCourseClick}
                 loading={isCancelPersonalCourseLoading}
               >
-                <span className="py-1 text-xs md:py-1.5 md:text-sm">
+                <span className="py-1 text-xs md:py-1.5 md:text-[13px]">
                   Hủy đăng ký
                 </span>
               </Button>

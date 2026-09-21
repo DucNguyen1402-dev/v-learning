@@ -1,11 +1,12 @@
 import type { RegisterOptions } from "react-hook-form";
 
-import type { RegisterData } from "@modules/register/types";
+import type { RegisterData } from "../types";
 
-export const registerValidationRules: Record<
-  keyof RegisterData,
-  RegisterOptions<RegisterData, keyof RegisterData>
-> = {
+type RegisterValidationRules = {
+  [K in keyof RegisterData]: RegisterOptions<RegisterData, K>;
+};
+
+export const registerValidationRules = {
   taiKhoan: {
     required: "Vui lòng nhập tài khoản",
     minLength: {
@@ -73,4 +74,4 @@ export const registerValidationRules: Record<
   maNhom: {
     required: "Vui lòng chọn mã nhóm",
   },
-} as const;
+} as const satisfies RegisterValidationRules;

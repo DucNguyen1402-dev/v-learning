@@ -1,4 +1,4 @@
-export type EnrollmentStatus = "Đã đăng ký" | "Chờ xác nhận";
+export type EnrollmentStatus = "registered" | "pending";
 
 export type EnrollmentUser = {
   taiKhoan: string;
