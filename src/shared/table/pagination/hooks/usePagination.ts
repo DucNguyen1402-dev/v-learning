@@ -8,7 +8,6 @@ type PaginationMeta = {
   totalItems: number;
 };
 
-type PaginationMetaOptions = Partial<PaginationMeta>;
 export const usePagination = (initialOptions?: {
   initialPageSize?: number;
 }) => {
@@ -21,7 +20,7 @@ export const usePagination = (initialOptions?: {
     ({
       totalPages: nextTotalPages,
       totalItems: nextTotalItems,
-    }: PaginationMetaOptions) => {
+    }: Partial<PaginationMeta>) => {
       setMeta((prev) => {
         const resolvedTotalPages = nextTotalPages ?? prev.totalPages;
         const resolvedTotalItems = nextTotalItems ?? prev.totalItems;

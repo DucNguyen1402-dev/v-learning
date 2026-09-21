@@ -22,7 +22,8 @@ export const UserPage = () => {
   const [displayState] = useTemporaryState(
     Navigation.hooks.usePayload<UserLocationPayload>(),
   );
-  const consumePayload = Navigation.hooks.useConsumePayload();
+  const consumePayload =
+    Navigation.hooks.useConsumePayload<UserLocationPayload>();
   const hasShownToast = useRef(false);
   useEffect(() => {
     if (!displayState?.toastState || hasShownToast.current) return;

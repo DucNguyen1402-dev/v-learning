@@ -26,14 +26,15 @@ export const LoginPage = () => {
 
   const payload = Navigation.hooks.usePayload<LoginLocationPayload>();
   const [toast] = useTemporaryState(payload?.toastState);
-  const consumePayload = Navigation.hooks.useConsumePayload();
+  const consumePayload =
+    Navigation.hooks.useConsumePayload<LoginLocationPayload>();
 
   useEffect(() => {
     if (!toast || hasShownToast.current) return;
     showToast(toast);
     hasShownToast.current = true;
     //3. Consume the location state to prevent showing the toast again on re-render
-    consumePayload("toast");
+    consumePayload("toastState");
   }, [toast, showToast, consumePayload]);
 
   /* =====================Internal State ===================== */

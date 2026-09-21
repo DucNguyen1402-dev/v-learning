@@ -17,7 +17,8 @@ export const PersonalCoursePage = () => {
   const [payload] = useTemporaryState(
     Navigation.hooks.usePayload<personalCoursePayload>(),
   );
-  const consumePayload = Navigation.hooks.useConsumePayload();
+  const consumePayload =
+    Navigation.hooks.useConsumePayload<personalCoursePayload>();
   const hasShownToast = useRef(false);
 
   useEffect(() => {

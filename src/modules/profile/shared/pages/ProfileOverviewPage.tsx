@@ -15,7 +15,8 @@ export const ProfileOverviewPage = () => {
   const [payload] = useTemporaryState(
     Navigation.hooks.usePayload<ProfileLocationPayload>(),
   );
-  const consumePayload = Navigation.hooks.useConsumePayload();
+  const consumePayload =
+    Navigation.hooks.useConsumePayload<ProfileLocationPayload>();
   const hasShownToast = useRef(false);
 
   useEffect(() => {

@@ -20,7 +20,8 @@ export const HomePage = () => {
   const [payload] = useTemporaryState(
     Navigation.hooks.usePayload<HomeLocationPayload>(),
   );
-  const consumePayload = Navigation.hooks.useConsumePayload();
+  const consumePayload =
+    Navigation.hooks.useConsumePayload<HomeLocationPayload>();
   const hasShownToast = useRef(false);
   useEffect(() => {
     if (!payload?.toastState || hasShownToast.current) return;

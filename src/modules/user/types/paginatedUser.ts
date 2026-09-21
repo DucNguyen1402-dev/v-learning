@@ -1,11 +1,11 @@
 export type PaginatedUser = {
-  taiKhoan: string;
+  readonly taiKhoan: string;
   hoTen: string;
   email: string;
   soDT: string;
-  tenLoaiNguoiDung: string;
-  maLoaiNguoiDung: string;
-  maNhom: string | null;
+  readonly tenLoaiNguoiDung: string;
+  readonly maLoaiNguoiDung: string;
+  readonly maNhom: string | null;
 };
 
 export type PaginatedUserResponse = {

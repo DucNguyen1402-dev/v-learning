@@ -22,7 +22,8 @@ export const CoursesPage = () => {
   const [displayState] = useTemporaryState(
     Navigation.hooks.usePayload<CourseLocationPayload>(),
   );
-  const consumePayload = Navigation.hooks.useConsumePayload();
+  const consumePayload =
+    Navigation.hooks.useConsumePayload<CourseLocationPayload>();
   const hasShownToast = useRef(false);
   useEffect(() => {
     if (!displayState?.toastState || hasShownToast.current) return;

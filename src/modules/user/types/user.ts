@@ -1,13 +1,13 @@
 import type { UserRole } from "./userRole";
 export type User = {
-  taiKhoan: string;
+  readonly taiKhoan: string;
   hoTen: string;
   email: string;
   soDt: string;
-  maLoaiNguoiDung: UserRole;
+  readonly maLoaiNguoiDung: UserRole;
 };
 
-export type UserPayload = {
+export type UserPayload = Readonly<{
   taiKhoan: string;
   matKhau: string;
   hoTen: string;
@@ -15,4 +15,4 @@ export type UserPayload = {
   maLoaiNguoiDung: string;
   email: string;
   maNhom: string;
-};
+}>;
