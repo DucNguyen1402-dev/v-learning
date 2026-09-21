@@ -1,7 +1,7 @@
 import { Navigation } from "@shared/navigation";
 import { Separator } from "@shared/ui";
 import { Star } from "lucide-react";
-type FeatureCourseCardProps = {
+type FeatureCourseCardProps = Readonly<{
   tenKhoaHoc: string;
   maKhoahoc: string;
   tenDanhMucKhoaHoc: string;
@@ -9,7 +9,7 @@ type FeatureCourseCardProps = {
   danhGia: number;
   luotXem: number;
   thumbnail: string;
-};
+}>;
 
 export const FeatureCourseCard = ({
   tenKhoaHoc,

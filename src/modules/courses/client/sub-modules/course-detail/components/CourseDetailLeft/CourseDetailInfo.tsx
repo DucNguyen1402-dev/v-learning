@@ -2,17 +2,18 @@ import { useMemo } from "react";
 
 import { Eye, SquareUser, Star, UsersRound } from "lucide-react";
 
+type CourseDetailInfoProps = Readonly<{
+  tenGiangVien: string;
+  soLuongHocVien: number;
+  luotXem: number;
+  danhGia: number;
+}>;
 export const CourseDetailInfo = ({
   tenGiangVien,
   soLuongHocVien,
   luotXem,
   danhGia,
-}: {
-  tenGiangVien: string;
-  soLuongHocVien: number;
-  luotXem: number;
-  danhGia: number;
-}) => {
+}: CourseDetailInfoProps) => {
   const infoItems = useMemo(
     () => [
       {

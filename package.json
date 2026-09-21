@@ -9,7 +9,11 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "preview": "vite preview",
+<<<<<<< HEAD
     "check:circles": "npx madge --circular --extensions ts,tsx --ts-config tsconfig.json src"
+=======
+    "check:circular-deps": "npx madge --circular --extensions ts,tsx --ts-config tsconfig.json src"
+>>>>>>> 0c609ec84de056f9517e0fa99b5c8801a2eaf558
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.3",

@@ -1,4 +1,8 @@
-export const CourseDetailDescription = ({ moTa }: { moTa: string }) => {
+export const CourseDetailDescription = ({
+  moTa,
+}: {
+  readonly moTa: string;
+}) => {
   return (
     <div className="flex flex-col gap-4">
       <h3 className="border-b border-border-subtle pb-3 text-lg font-semibold select-none">

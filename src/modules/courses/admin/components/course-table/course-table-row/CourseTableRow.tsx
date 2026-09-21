@@ -7,10 +7,10 @@ import { BookSearch, ClipboardPenLine, SquarePen, Trash } from "lucide-react";
 
 import { useCourseTableRow } from "./hooks";
 
-type CourseItemProps = {
-  course: Course;
+type CourseItemProps = Readonly<{
+  course: Readonly<Course>;
   isRecentlyAffected?: boolean;
-};
+}>;
 export const CourseTableRow = ({
   course,
   isRecentlyAffected,
