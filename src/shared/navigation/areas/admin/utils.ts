@@ -14,7 +14,7 @@ export const findRouteKey = (path: string) =>
 export const isRouteActive = (path: string, key: AdminRouteKey) =>
   ADMIN_ROUTE_PATHS[key] === path;
 
-export const isAdminRouteKey = (key: AppRouteKey) =>
+export const isAdminRouteKey = (key: AppRouteKey): key is AdminRouteKey =>
   Object.values(ADMIN_ROUTE_KEYS).includes(key as AdminRouteKey);
 
 export const isAdminRouteBuilderKey = (

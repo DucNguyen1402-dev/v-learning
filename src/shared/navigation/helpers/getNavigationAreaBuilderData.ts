@@ -7,26 +7,29 @@ type NavigationAreaBuilderMeta = {
   builderRouteKey: AppRouteBuilderKey;
   pathname?: string;
 };
+
 export const getNavigationAreaBuilderMeta = ({
   builderRouteKey,
   pathname,
 }: NavigationAreaBuilderMeta) => {
-  const area = isAdminRouteBuilderKey(builderRouteKey)
-    ? NavigationAreas.admin
-    : isClientRouteBuilderKey(builderRouteKey)
-      ? NavigationAreas.client
-      : null;
-
-  if (!area) {
-    throw new Error(`Invalid route key: ${builderRouteKey}`);
+  if (isAdminRouteBuilderKey(builderRouteKey)) {
+    return {
+      navigationArea: NavigationAreas.admin,
+      pathBuilder: NavigationAreas.admin.pathBuilders[builderRouteKey],
+      currentBuilderRouteKey: pathname
+        ? NavigationAreas.admin.findKey(pathname)
+        : undefined,
+    };
   }
-  const builder = area.pathBuilders as Record<
-    AppRouteBuilderKey,
-    (param: string) => string
-  >;
-  return {
-    navigationArea: area,
-    pathBuilder: builder[builderRouteKey as keyof typeof builder],
-    currentBuilderRouteKey: pathname ? area.findKey(pathname) : undefined,
-  };
+
+  if (isClientRouteBuilderKey(builderRouteKey)) {
+    return {
+      navigationArea: NavigationAreas.client,
+      pathBuilder: NavigationAreas.client.pathBuilders[builderRouteKey],
+      currentBuilderRouteKey: pathname
+        ? NavigationAreas.client.findKey(pathname)
+        : undefined,
+    };
+  }
+  throw new Error(`Invalid route key: ${builderRouteKey}`);
 };

@@ -1,5 +1,1 @@
-export type {
-  RegisterData,
-  RegisterFieldNames,
-  RegisterPayload,
-} from "./RegisterData";
+export type { RegisterData, RegisterPayload } from "./RegisterData";

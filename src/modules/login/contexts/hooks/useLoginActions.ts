@@ -1,14 +1,12 @@
 import { useState } from "react";
 import type { SubmitHandler, UseFormHandleSubmit } from "react-hook-form";
 
-import { LoginFieldNamesValues } from "@modules/login/constants";
 import type { LoginData } from "@modules/login/types";
 import { CurrentUser } from "@shared/current-user";
 import { getErrorMessage } from "@shared/error";
 import { execution } from "@shared/execution";
 import { Navigation } from "@shared/navigation";
 import { Toast } from "@shared/overlays";
-import { createPayload } from "@shared/utils";
 
 import { useLoginMutation } from "./useLoginMutation";
 
@@ -28,9 +26,8 @@ export const useLoginActions = ({
 
   const onValid: SubmitHandler<LoginData> = async (data) => {
     setIsLoggingIn(true);
-    const payload = createPayload(data, LoginFieldNamesValues);
 
-    const loginTask = () => login({ payload, remember });
+    const loginTask = () => login({ payload: data, remember });
 
     try {
       await execution.runAsyncTask(loginTask);

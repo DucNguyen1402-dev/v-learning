@@ -7,4 +7,3 @@ export type RegisterData = {
   maNhom: string;
 };
 export type RegisterPayload = RegisterData;
-export type RegisterFieldNames = Record<string, keyof RegisterData>;

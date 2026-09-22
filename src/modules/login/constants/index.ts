@@ -1,1 +1,1 @@
-export { LOGIN_FIELD_NAMES, LoginFieldNamesValues } from "./loginFieldNames";
+export { LOGIN_FIELD_NAMES } from "./loginFieldNames";

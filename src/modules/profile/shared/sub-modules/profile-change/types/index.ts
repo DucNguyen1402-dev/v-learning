@@ -1,4 +1,1 @@
-export type {
-  ProfileChangeFormFieldNames,
-  ProfileChangeFormValues,
-} from "./ProfileChangeFormValues";
+export type { ProfileChangeFormValues } from "./ProfileChangeFormValues";

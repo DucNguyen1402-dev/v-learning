@@ -15,7 +15,7 @@ export const findRouteKey = (path: string) =>
 export const isRouteActive = (path: string, key: ClientRouteKey) =>
   key !== null && CLIENT_ROUTE_PATHS[key] === path;
 
-export const isClientRouteKey = (key: AppRouteKey) =>
+export const isClientRouteKey = (key: AppRouteKey): key is ClientRouteKey =>
   Object.values(CLIENT_ROUTE_KEYS).includes(key as ClientRouteKey);
 
 export const isClientRouteBuilderKey = (

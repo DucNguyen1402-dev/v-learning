@@ -5,9 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "eslint .",
+    "build": "npm run typecheck && vite build",
+    "lint": "eslint . && npm run typecheck",
     "lint:fix": "eslint . --fix",
+    "typecheck": "tsc -b --pretty false",
     "preview": "vite preview",
     "check:circles": "npx madge --circular --extensions ts,tsx --ts-config tsconfig.json src"
   },

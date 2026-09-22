@@ -11,19 +11,25 @@ export const getNavigationAreaMeta = ({
   routeKey,
   pathname,
 }: NavigationAreaMeta) => {
-  const area = isAdminRouteKey(routeKey)
-    ? NavigationAreas.admin
-    : isClientRouteKey(routeKey)
-      ? NavigationAreas.client
-      : null;
-
-  if (!area) {
-    throw new Error(`Invalid route key: ${routeKey}`);
+  if (isAdminRouteKey(routeKey)) {
+    return {
+      navigationArea: NavigationAreas.admin,
+      path: NavigationAreas.admin.paths[routeKey],
+      currentRouteKey: pathname
+        ? NavigationAreas.admin.findKey(pathname)
+        : undefined,
+    };
   }
 
-  return {
-    navigationArea: area,
-    path: area.paths[routeKey as keyof typeof area.paths],
-    currentRouteKey: pathname ? area.findKey(pathname) : undefined,
-  };
+  if (isClientRouteKey(routeKey)) {
+    return {
+      navigationArea: NavigationAreas.client,
+      path: NavigationAreas.client.paths[routeKey],
+      currentRouteKey: pathname
+        ? NavigationAreas.client.findKey(pathname)
+        : undefined,
+    };
+  }
+
+  throw new Error(`Invalid route key: ${routeKey}`);
 };

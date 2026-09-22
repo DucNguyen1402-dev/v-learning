@@ -11,4 +11,4 @@ export const loginFields = [
     label: "MẬT KHẨU",
     type: "password",
   },
-];
+] as const;
