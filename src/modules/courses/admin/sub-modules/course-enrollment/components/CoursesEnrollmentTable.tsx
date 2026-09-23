@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef } from "react";
 
 import {
   EnrollmentEmptyState,
@@ -12,16 +12,18 @@ import { useCourseEnrollmentContext } from "../contexts";
 import type { EnrollmentUser } from "../types";
 import { EnrollmentUserTableRow } from "./enrollment-user-table-row";
 
-export const CoursesEnrollmentTable = () => {
-  const [affectedUserAccount, setAffectedUserAccount] = useState("");
-  const attachUserAccount = (taiKhoan: string) => {
-    setAffectedUserAccount(taiKhoan);
-  };
+type CoursesEnrollmentTableProps = {
+  affectedUserAccount: string | null;
+};
+
+export const CoursesEnrollmentTable = ({
+  affectedUserAccount,
+}: CoursesEnrollmentTableProps) => {
+  const previousAffectedUserAccount = useRef<string | null>(null);
   const {
     allEnrollmentUsers,
     status: { isUserEmpty, isLoading, isFilteredUserEmpty },
   } = useCourseEnrollmentContext();
-  const hasMoveToPage = useRef(false);
 
   const pagination = Pagination.use<EnrollmentUser>();
 
@@ -35,20 +37,32 @@ export const CoursesEnrollmentTable = () => {
         return user.taiKhoan === taiKhoan;
       });
 
-      if (courseIndex === -1 || courseIndex === undefined) return;
+      if (courseIndex === -1 || courseIndex === undefined) return false;
 
       const userPage = Math.floor(courseIndex / pagination.state.pageSize) + 1;
 
       pagination.actions.setPage(userPage);
+      return true;
     },
     [pagination, allEnrollmentUsers],
   );
 
   useEffect(() => {
-    if (!affectedUserAccount || isLoading || hasMoveToPage.current) return;
+    if (!affectedUserAccount) {
+      previousAffectedUserAccount.current = null;
+      return;
+    }
 
-    moveToUserPage(affectedUserAccount);
-    hasMoveToPage.current = true;
+    if (
+      isLoading ||
+      previousAffectedUserAccount.current === affectedUserAccount
+    ) {
+      return;
+    }
+
+    if (moveToUserPage(affectedUserAccount)) {
+      previousAffectedUserAccount.current = affectedUserAccount;
+    }
   }, [affectedUserAccount, isLoading, moveToUserPage]);
 
   const createTableContent = () => {
@@ -83,7 +97,6 @@ export const CoursesEnrollmentTable = () => {
           stt={index + 1 + pagination.state.pageOffset}
           user={user}
           isEnrolled={isEnrolled}
-          attachUserAccount={attachUserAccount}
           isAffectedUser={affectedUserAccount === user.taiKhoan}
         />
       );

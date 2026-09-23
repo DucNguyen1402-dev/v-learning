@@ -19,13 +19,11 @@ type EnrollmentUserTableRowProps = {
   user: EnrollmentUser;
   isEnrolled: boolean;
   isAffectedUser: boolean;
-  attachUserAccount: (taiKhoan: string) => void;
 };
 export const EnrollmentUserTableRow = ({
   stt,
   user,
   isEnrolled,
-  attachUserAccount,
   isAffectedUser,
 }: EnrollmentUserTableRowProps) => {
   const { maKhoaHoc } = useCourseEnrollmentContext();
@@ -39,7 +37,6 @@ export const EnrollmentUserTableRow = ({
   } = useEnrollmentUserTableRow({
     maKhoaHoc,
     taiKhoan: user.taiKhoan,
-    attachUserAccount,
   });
 
   return (

@@ -48,8 +48,24 @@ export const useNavigateWithState = () => {
     [navigate],
   );
 
+  type RefreshCurrentParams = {
+    payload?: unknown;
+  };
+  const refreshCurrent = useCallback(
+    ({ payload }: RefreshCurrentParams) => {
+      navigate(".", {
+        state: {
+          payload: payload ?? null,
+          history: routeHistory,
+        },
+      });
+    },
+    [navigate, routeHistory],
+  );
+
   return {
     go,
     back,
+    refreshCurrent,
   };
 };

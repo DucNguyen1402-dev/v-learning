@@ -3,16 +3,15 @@ import { useState } from "react";
 import { useEnrollUserMutation } from "@modules/courses/admin/shared/hooks";
 import { useCancelPersonalCourseMutation } from "@modules/courses/shared/hooks";
 import { getErrorMessage } from "@shared/error";
+import { Navigation } from "@shared/navigation";
 import { Modal, Toast } from "@shared/overlays";
 type UseEnrollmentUserTableRowParams = {
   maKhoaHoc: string;
   taiKhoan: string;
-  attachUserAccount: (taiKhoan: string) => void;
 };
 export const useEnrollmentUserTableRow = ({
   maKhoaHoc,
   taiKhoan,
-  attachUserAccount,
 }: UseEnrollmentUserTableRowParams) => {
   const modal = Modal.use();
   const toast = Toast.use();
@@ -22,6 +21,7 @@ export const useEnrollmentUserTableRow = ({
     isEnrolling: false,
   });
 
+  const { refreshCurrent } = Navigation.hooks.useNavigateWithState();
   const { mutateAsync: enrollUserMutation, isPending: isEnrollUserPending } =
     useEnrollUserMutation(["enrolledUsers", "pendingEnrollmentUsers"]);
   const {
@@ -38,8 +38,12 @@ export const useEnrollmentUserTableRow = ({
     };
     try {
       await enrollUserMutation(payload);
-      toast.show(Toast.config.success.enrollUser(taiKhoan));
-      attachUserAccount(taiKhoan);
+      refreshCurrent({
+        payload: {
+          toastState: Toast.config.success.enrollUser(taiKhoan),
+          affectedUserAccount: taiKhoan,
+        },
+      });
     } catch (error) {
       toast.show(Toast.config.error(getErrorMessage({ error })));
     } finally {
@@ -63,7 +67,12 @@ export const useEnrollmentUserTableRow = ({
     };
     try {
       await cancelPersonalCourseMutation(payload);
-      toast.show(Toast.config.success.cancelUserEnrollment());
+
+      refreshCurrent({
+        payload: {
+          toastState: Toast.config.success.cancelUserEnrollment(),
+        },
+      });
     } catch (error) {
       toast.show(Toast.config.error(getErrorMessage({ error })));
     } finally {

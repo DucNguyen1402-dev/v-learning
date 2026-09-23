@@ -1,11 +1,42 @@
+import { useEffect, useRef } from "react";
+
 import { Navigation } from "@shared/navigation";
+import { Toast } from "@shared/overlays";
 import { Pagination } from "@shared/table";
 
 import { EnrollUserTable } from "../components";
 import { useEnrollUserContext } from "../context";
+import type { EnrollUserLocationPayload } from "./type";
+
+const PAYLOAD_DISPLAY_DURATION = 2500;
 
 export const EnrollUserPage = () => {
   const { scrollRef } = Navigation.hooks.useScrollOnRouteChange();
+  const { show: showToast } = Toast.use();
+  const payload = Navigation.hooks.usePayload<EnrollUserLocationPayload>();
+  const consumePayload =
+    Navigation.hooks.useConsumePayload<EnrollUserLocationPayload>();
+  const hasShownToast = useRef(false);
+
+  useEffect(() => {
+    if (!payload?.toastState) {
+      hasShownToast.current = false;
+      return;
+    }
+
+    if (!hasShownToast.current) {
+      showToast(payload.toastState);
+      hasShownToast.current = true;
+    }
+
+    const timeoutId = window.setTimeout(
+      consumePayload,
+      PAYLOAD_DISPLAY_DURATION,
+    );
+
+    return () => window.clearTimeout(timeoutId);
+  }, [consumePayload, payload, showToast]);
+
   const { courseDetail, unenrolledUsers } = useEnrollUserContext();
 
   return (

@@ -1,4 +1,7 @@
+import { useEffect, useRef } from "react";
+
 import { Navigation } from "@shared/navigation";
+import { Toast } from "@shared/overlays";
 import { Pagination } from "@shared/table";
 
 import {
@@ -6,9 +9,39 @@ import {
   CoursesEnrollmentTable,
 } from "../components";
 import { useCourseEnrollmentContext } from "../contexts";
+import type { CourseEnrollmentLocationPayload } from "./type";
+
+const PAYLOAD_DISPLAY_DURATION = 2500;
 
 export const CourseEnrollmentPage = () => {
   const { scrollRef } = Navigation.hooks.useScrollOnRouteChange();
+
+  const { show: showToast } = Toast.use();
+  const payload =
+    Navigation.hooks.usePayload<CourseEnrollmentLocationPayload>();
+
+  const consumePayload =
+    Navigation.hooks.useConsumePayload<CourseEnrollmentLocationPayload>();
+  const hasShownToast = useRef(false);
+  useEffect(() => {
+    if (!payload?.toastState) {
+      hasShownToast.current = false;
+      return;
+    }
+
+    if (!hasShownToast.current) {
+      showToast(payload.toastState);
+      hasShownToast.current = true;
+    }
+
+    const timeoutId = window.setTimeout(
+      consumePayload,
+      PAYLOAD_DISPLAY_DURATION,
+    );
+
+    return () => window.clearTimeout(timeoutId);
+  }, [consumePayload, payload, showToast]);
+
   const { enrollmentUsers, maKhoaHoc, tenKhoaHoc } =
     useCourseEnrollmentContext();
 
@@ -36,7 +69,9 @@ export const CourseEnrollmentPage = () => {
           items={enrollmentUsers}
           resetDeps={[enrollmentUsers]}
         >
-          <CoursesEnrollmentTable />
+          <CoursesEnrollmentTable
+            affectedUserAccount={payload?.affectedUserAccount ?? null}
+          />
         </Pagination.Provider>
       </div>
     </div>
