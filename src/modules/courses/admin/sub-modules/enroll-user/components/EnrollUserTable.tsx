@@ -1,3 +1,5 @@
+import { useLayoutEffect, useRef } from "react";
+
 import {
   EnrollmentEmptyState,
   EnrollmentSkeleton,
@@ -10,7 +12,11 @@ import type { UnenrolledUser } from "../types";
 import { EnrollUserTableRow } from "./enroll-user-table-row";
 import { SearchUnenrolledUserBar } from "./SearchUnenrolledUserBar";
 
-export const EnrollUserTable = () => {
+type EnrollUserTableProps = {
+  previousPage: number | null;
+};
+export const EnrollUserTable = ({ previousPage }: EnrollUserTableProps) => {
+  const previousPageRef = useRef<number | null>(null);
   const {
     status: { isLoading },
     courseDetail,
@@ -19,7 +25,19 @@ export const EnrollUserTable = () => {
 
   const {
     state: { paginatedList, pageSize, pageOffset },
+    actions: { setPage: moveToPage },
+    controls: { skipNextPageReset },
   } = Pagination.use<UnenrolledUser>();
+
+  useLayoutEffect(() => {
+    if (isLoading) return;
+
+    if (previousPage && previousPage !== previousPageRef.current) {
+      previousPageRef.current = previousPage;
+      skipNextPageReset();
+      moveToPage(previousPage);
+    }
+  }, [previousPage, isLoading, moveToPage, skipNextPageReset]);
 
   const createTableContent = () => {
     if (isLoading) {
@@ -35,7 +53,7 @@ export const EnrollUserTable = () => {
       );
     }
 
-    return paginatedList?.map((user, index) => {
+    return paginatedList.map((user, index) => {
       return (
         <EnrollUserTableRow
           key={index}
@@ -50,7 +68,7 @@ export const EnrollUserTable = () => {
     <div className="flex w-full flex-col gap-10 md:max-w-200">
       <div className="flex w-full flex-col gap-4 self-center select-none md:max-w-150">
         <SearchUnenrolledUserBar />
-        <div className="min-h-120 overflow-x-auto rounded-container border border-border-subtle bg-bg-default shadow-surface">
+        <div className="min-h-130 overflow-x-auto rounded-container border border-border-subtle bg-bg-default shadow-surface">
           <table className="w-full min-w-140 table-fixed border-collapse">
             <thead>
               <tr className="bg-bg-subtle text-xs font-medium tracking-wider text-text-subtle uppercase">

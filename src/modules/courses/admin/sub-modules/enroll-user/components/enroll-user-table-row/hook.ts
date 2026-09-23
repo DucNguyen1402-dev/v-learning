@@ -34,11 +34,11 @@ export const useEnrollUserTableRow = ({
       taiKhoan,
     };
     try {
-      pagination.controls.skipNextPageReset();
       await enrollUserMutation(payload);
       refreshCurrent({
         payload: {
           toastState: Toast.config.success.enrollUser(taiKhoan),
+          previousPage: pagination.state.currentPage,
         },
       });
     } catch (error) {

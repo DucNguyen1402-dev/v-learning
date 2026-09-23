@@ -34,6 +34,7 @@ export const useCourseEnrollment = (maKhoaHoc: string) => {
   ];
 
   const isUserEmpty = enrollmentUsers.length === 0;
+
   const { keyword, handleSearch, filteredUsers } = useEnrollmentUserSearch({
     unenrolledUsers: enrollmentUsers,
   });

@@ -8,7 +8,7 @@ import { EnrollUserTable } from "../components";
 import { useEnrollUserContext } from "../context";
 import type { EnrollUserLocationPayload } from "./type";
 
-const PAYLOAD_DISPLAY_DURATION = 2500;
+const PAYLOAD_DISPLAY_DURATION = 5000;
 
 export const EnrollUserPage = () => {
   const { scrollRef } = Navigation.hooks.useScrollOnRouteChange();
@@ -64,7 +64,7 @@ export const EnrollUserPage = () => {
             items={unenrolledUsers}
             resetDeps={[unenrolledUsers]}
           >
-            <EnrollUserTable />
+            <EnrollUserTable previousPage={payload?.previousPage ?? null} />
           </Pagination.Provider>
         </div>
       </div>
