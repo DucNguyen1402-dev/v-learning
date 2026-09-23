@@ -31,6 +31,7 @@ export const useCourseRegister = ({ maKhoaHoc }: { maKhoaHoc: string }) => {
         routeKey: Navigation.client.keys.PERSONAL_COURSES,
         payload: {
           toastState: Toast.config.success.register(ENTITIES.COURSE),
+          affectedCourseId: maKhoaHoc,
         },
       });
     } catch (error) {

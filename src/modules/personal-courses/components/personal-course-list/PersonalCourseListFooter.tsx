@@ -1,15 +1,14 @@
 import { useLayoutEffect } from "react";
 
 import { Pagination } from "@shared/table";
-type CoursesFooterProps = {
-  isLoading: boolean;
-};
-export const CoursesFooter = ({ isLoading }: CoursesFooterProps) => {
+
+export const PersonalCourseListFooter = () => {
+  const isLoading = false;
   const {
-    actions,
     state,
-    refs: { scrollToTarget: scrollToTargetRef },
+    actions,
     controls: { scrollToTarget },
+    refs: { scrollToTarget: targetRef },
     flags: { hasPaginationChanged },
   } = Pagination.use();
 
@@ -20,7 +19,7 @@ export const CoursesFooter = ({ isLoading }: CoursesFooterProps) => {
   }, [hasPaginationChanged, scrollToTarget, state.currentPage, state.pageSize]);
 
   return (
-    <div className="flex flex-col gap-8 lg:gap-5" ref={scrollToTargetRef}>
+    <div className="flex flex-col gap-8 lg:gap-5" ref={targetRef}>
       <div className="flex items-center justify-center px-4 text-sm lg:justify-between">
         <Pagination.components.Info
           displayStart={state.displayStart}

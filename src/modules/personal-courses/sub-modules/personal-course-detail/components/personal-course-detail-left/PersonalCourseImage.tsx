@@ -6,7 +6,7 @@ export const PersonalCourseImage = ({
   tenKhoaHoc: string;
 }) => {
   return (
-    <div className="w-full overflow-hidden rounded-overlay shadow-surface">
+    <div className="h-full w-full overflow-hidden rounded-overlay shadow-surface">
       <img
         src={image}
         alt={tenKhoaHoc}

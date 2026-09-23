@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 
 type UseScrollOnRouteChangeProps = {
@@ -8,13 +8,13 @@ type UseScrollOnRouteChangeProps = {
 };
 export const useScrollOnRouteChange = ({
   enabled = true,
-  behavior = "auto",
+  behavior = "instant",
   block = "start",
 }: UseScrollOnRouteChangeProps = {}) => {
   const { pathname } = useLocation();
   const ref = useRef<HTMLDivElement | null>(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!enabled) return;
     if (!ref?.current) return;
     ref.current.scrollIntoView({

@@ -19,4 +19,5 @@
     *  Feedback dimensions
     *================================================== */
   --color-ring-error: var(--color-red-600);
+  --color-ring-highlight: var(--color-yellow-500);
 }

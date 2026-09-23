@@ -5,6 +5,8 @@
     background-color: var(--color-bg-elevated);
   }
 
+
+
   .modal-header-container {
     @apply flex flex-col gap-3;
   }

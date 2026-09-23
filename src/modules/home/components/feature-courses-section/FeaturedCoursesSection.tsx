@@ -3,11 +3,13 @@ import { Navigation } from "@shared/navigation";
 import { ArrowRight } from "lucide-react";
 
 import { FeatureCourseCard } from "./FeatureCourseCard";
+import { FeatureCourseCardSkeleton } from "./FeatureCourseCardSkeleton";
+
 export const FeaturedCoursesSection = () => {
-  const { highestRatingCourses } = useFeatureCourses();
+  const { highestRatingCourses, isLoading } = useFeatureCourses();
 
   return (
-    <section className="mx-auto px-2 py-20 select-none lg:px-6">
+    <section className="mx-auto w-full px-2 py-20 select-none lg:px-6">
       <div className="mb-12 flex flex-col justify-between md:flex-row md:items-end">
         <div className="flex flex-col gap-3">
           <h2 className="text-2xl font-bold tracking-tight lg:text-3xl">
@@ -28,18 +30,22 @@ export const FeaturedCoursesSection = () => {
       </div>
 
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {highestRatingCourses?.map((course) => (
-          <FeatureCourseCard
-            key={course.maKhoaHoc}
-            tenKhoaHoc={course.tenKhoaHoc}
-            maKhoahoc={course.maKhoaHoc}
-            tenDanhMucKhoaHoc={course.danhMucKhoaHoc.tenDanhMucKhoaHoc}
-            soLuongHocVien={course.soLuongHocVien}
-            danhGia={course.danhGia}
-            luotXem={course.luotXem}
-            thumbnail={course.thumbnail}
-          />
-        ))}
+        {isLoading
+          ? Array.from({ length: 9 }, (_, index) => (
+              <FeatureCourseCardSkeleton key={index} />
+            ))
+          : highestRatingCourses?.map((course) => (
+              <FeatureCourseCard
+                key={course.maKhoaHoc}
+                tenKhoaHoc={course.tenKhoaHoc}
+                maKhoahoc={course.maKhoaHoc}
+                tenDanhMucKhoaHoc={course.danhMucKhoaHoc.tenDanhMucKhoaHoc}
+                soLuongHocVien={course.soLuongHocVien}
+                danhGia={course.danhGia}
+                luotXem={course.luotXem}
+                thumbnail={course.thumbnail}
+              />
+            ))}
       </div>
     </section>
   );

@@ -7,3 +7,33 @@
         transform: translateX(500%);
     }
 }
+
+@keyframes course-card-ring-highlight {
+    from {
+        box-shadow: 0 0 0 2px --alpha(var(--color-ring-highlight) / 50%);
+    }
+
+    to {
+        box-shadow: 0 0 0 2px var(--color-ring-highlight);
+    }
+}
+
+@keyframes course-card-lift {
+
+    0%,
+    100% {
+        transform: translateY(0);
+
+    }
+
+    50% {
+        transform: translateY(-6px);
+
+    }
+}
+
+
+
+.course-card-highlight-animated {
+    animation: course-card-lift 2s ease-in-out infinite, course-card-ring-highlight 2s linear infinite;
+}

@@ -28,15 +28,10 @@ export const CoursesToolbar = () => {
     : "Tìm kiếm khóa học...";
 
   return (
-    <div
-      className={cn(
-        "flex flex-col gap-8 transition-all duration-300",
-        shouldDisableSearch && "lg:gap-0",
-      )}
-    >
+    <div className="flex flex-col gap-8">
       <div
         className={cn(
-          "relative max-w-100 transition-all duration-200 select-none lg:min-w-100",
+          "relative max-w-100 select-none lg:min-w-100",
           shouldDisableSearch && "pointer-events-none select-none",
         )}
       >

@@ -1,3 +1,4 @@
+export { courseStatusLabel } from "./courseStatusLabel";
 export { enrichCoursesWithMockData } from "./enrichCoursesWithMockData";
 export { mockCourses } from "./mockCourses";
 export type {

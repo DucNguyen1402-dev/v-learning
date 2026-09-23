@@ -1,5 +1,7 @@
 import type { PersonalCourse } from "../types";
 
+export type CourseStatus = "not_started" | "in_progress" | "completed";
+
 export type MockCourse = {
   tenDanhMucKhoaHoc: string;
   tenKhoaHoc: string;
@@ -11,6 +13,7 @@ export type MockCourse = {
   tenGiangVien: string;
   danhGia: number;
   descriptionImage: string;
+  status: CourseStatus;
   baiHoc: {
     tongSoBaiHoc: number;
     daHoanThanh: number;

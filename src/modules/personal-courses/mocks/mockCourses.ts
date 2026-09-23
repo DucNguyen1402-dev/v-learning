@@ -26,6 +26,7 @@ export const mockCourses: MockCourse[] = [
     tenGiangVien: "TS. Nguyễn Minh Anh",
     descriptionImage: backendDescriptionImage,
     danhGia: 4.5,
+    status: "in_progress",
     baiHoc: {
       tongSoBaiHoc: 20,
       daHoanThanh: 10,
@@ -83,6 +84,7 @@ export const mockCourses: MockCourse[] = [
     tenGiangVien: "ThS. Trần Quốc Bảo",
     danhGia: 4.7,
     descriptionImage: frontendDescriptionImage,
+    status: "in_progress",
     baiHoc: {
       tongSoBaiHoc: 25,
       daHoanThanh: 15,
@@ -152,10 +154,11 @@ export const mockCourses: MockCourse[] = [
     tenGiangVien: "ThS. Lê Thị Thanh Hương",
     danhGia: 4.6,
     descriptionImage: mobileDescriptionImage,
+    status: "not_started",
     baiHoc: {
       tongSoBaiHoc: 18,
-      daHoanThanh: 8,
-      chuaHoanThanh: 10,
+      daHoanThanh: 0,
+      chuaHoanThanh: 18,
     },
     ngayDangKy: "15/01/2026",
     danhSachBaiHoc: [
@@ -221,10 +224,11 @@ export const mockCourses: MockCourse[] = [
     tenGiangVien: "ThS. Phạm Thị Ngọc Lan",
     danhGia: 4.8,
     descriptionImage: designDescriptionImage,
+    status: "completed",
     baiHoc: {
       tongSoBaiHoc: 22,
-      daHoanThanh: 12,
-      chuaHoanThanh: 10,
+      daHoanThanh: 22,
+      chuaHoanThanh: 0,
     },
     ngayDangKy: "15/01/2026",
 
@@ -297,6 +301,7 @@ export const mockCourses: MockCourse[] = [
     tenGiangVien: "TS. Nguyễn Văn Hùng",
     danhGia: 4.9,
     descriptionImage: mindsetDescriptionImage,
+    status: "in_progress",
     baiHoc: {
       tongSoBaiHoc: 30,
       daHoanThanh: 20,
@@ -371,6 +376,7 @@ export const mockCourses: MockCourse[] = [
     tenGiangVien: "ThS. Trần Minh Tuấn",
     danhGia: 4.9,
     descriptionImage: fullstackDescriptionImage,
+    status: "in_progress",
     baiHoc: {
       tongSoBaiHoc: 40,
       daHoanThanh: 25,

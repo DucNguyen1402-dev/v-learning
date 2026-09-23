@@ -19,19 +19,19 @@ export const CoursesPage = () => {
   Navigation.hooks.useScrollToTopOnRouteChange();
 
   const { show: showToast } = Toast.use();
-  const [displayState] = useTemporaryState(
+  const [payload] = useTemporaryState(
     Navigation.hooks.usePayload<CourseLocationPayload>(),
   );
   const consumePayload =
     Navigation.hooks.useConsumePayload<CourseLocationPayload>();
   const hasShownToast = useRef(false);
   useEffect(() => {
-    if (!displayState?.toastState || hasShownToast.current) return;
-    showToast(displayState.toastState);
+    if (!payload?.toastState || hasShownToast.current) return;
+    showToast(payload.toastState);
     hasShownToast.current = true;
 
     consumePayload();
-  }, [displayState?.toastState, showToast, consumePayload]);
+  }, [payload?.toastState, showToast, consumePayload]);
 
   const { processedCourses, isSourceByCategory } = useCoursesContext();
 
@@ -54,7 +54,7 @@ export const CoursesPage = () => {
 
             <AddCourseButton />
           </div>
-          <CoursesTable affectedCourseId={displayState?.maKhoaHoc} />
+          <CoursesTable affectedCourseId={payload?.maKhoaHoc} />
           <CoursesFooter />
         </div>
       </div>
