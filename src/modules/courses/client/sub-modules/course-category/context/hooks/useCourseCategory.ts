@@ -1,6 +1,6 @@
 import { useCoursesQueryByCategory } from "@modules/courses/shared/hooks";
+import { enrichCoursesWithMockData } from "@modules/courses/shared/mocks";
 import type { Category } from "@modules/courses/shared/types";
-import { enrichCoursesWithMockData } from "@modules/courses/shared/utils";
 
 type UseCourseCategoryParams = {
   category: Category;

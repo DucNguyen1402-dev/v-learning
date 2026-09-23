@@ -18,11 +18,15 @@ type EnrollmentUserTableRowProps = {
   stt: number;
   user: EnrollmentUser;
   isEnrolled: boolean;
+  isAffectedUser: boolean;
+  attachUserAccount: (taiKhoan: string) => void;
 };
 export const EnrollmentUserTableRow = ({
   stt,
   user,
   isEnrolled,
+  attachUserAccount,
+  isAffectedUser,
 }: EnrollmentUserTableRowProps) => {
   const { maKhoaHoc } = useCourseEnrollmentContext();
   const {
@@ -35,6 +39,7 @@ export const EnrollmentUserTableRow = ({
   } = useEnrollmentUserTableRow({
     maKhoaHoc,
     taiKhoan: user.taiKhoan,
+    attachUserAccount,
   });
 
   return (
@@ -43,6 +48,7 @@ export const EnrollmentUserTableRow = ({
         "group border-t border-border-subtle transition-colors duration-200 hover:bg-bg-subtle",
         isCanceling ? "bg-bg-danger/40 text-text-on-feedback" : "",
         isEnrolling ? "bg-bg-brand/40 text-text-on-feedback" : "",
+        isAffectedUser ? "animate-success-row" : "",
       )}
     >
       <td className="py-3 pl-8 text-left text-[13px] md:text-sm">{stt}</td>

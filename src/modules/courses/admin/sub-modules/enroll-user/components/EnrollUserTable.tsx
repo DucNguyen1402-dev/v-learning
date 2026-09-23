@@ -18,7 +18,7 @@ export const EnrollUserTable = () => {
   } = useEnrollUserContext();
 
   const {
-    state: { paginatedList, pageSize },
+    state: { paginatedList, pageSize, pageOffset },
   } = Pagination.use<UnenrolledUser>();
 
   const createTableContent = () => {
@@ -39,7 +39,7 @@ export const EnrollUserTable = () => {
       return (
         <EnrollUserTableRow
           key={index}
-          stt={index + 1}
+          stt={index + 1 + pageOffset}
           user={user}
           maKhoaHoc={courseDetail.maKhoaHoc}
         />

@@ -7,10 +7,12 @@ import { Modal, Toast } from "@shared/overlays";
 type UseEnrollmentUserTableRowParams = {
   maKhoaHoc: string;
   taiKhoan: string;
+  attachUserAccount: (taiKhoan: string) => void;
 };
 export const useEnrollmentUserTableRow = ({
   maKhoaHoc,
   taiKhoan,
+  attachUserAccount,
 }: UseEnrollmentUserTableRowParams) => {
   const modal = Modal.use();
   const toast = Toast.use();
@@ -37,6 +39,7 @@ export const useEnrollmentUserTableRow = ({
     try {
       await enrollUserMutation(payload);
       toast.show(Toast.config.success.enrollUser(taiKhoan));
+      attachUserAccount(taiKhoan);
     } catch (error) {
       toast.show(Toast.config.error(getErrorMessage({ error })));
     } finally {

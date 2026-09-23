@@ -11,7 +11,7 @@ import {
   useCoursesSearchByName,
   usePaginatedCoursesQuery,
 } from "@modules/courses/shared/hooks";
-import { enrichCoursesWithMockData } from "@modules/courses/shared/utils";
+import { enrichCoursesWithMockData } from "@modules/courses/shared/mocks";
 import { Pagination } from "@shared/table";
 
 type UseCoursesProps = {

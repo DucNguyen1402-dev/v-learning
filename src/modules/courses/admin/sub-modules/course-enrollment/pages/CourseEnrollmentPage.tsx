@@ -1,7 +1,10 @@
 import { Navigation } from "@shared/navigation";
 import { Pagination } from "@shared/table";
 
-import { CoursesEnrollmentTable } from "../components";
+import {
+  CourseEnrollmentUserSearchBar,
+  CoursesEnrollmentTable,
+} from "../components";
 import { useCourseEnrollmentContext } from "../contexts";
 
 export const CourseEnrollmentPage = () => {
@@ -25,7 +28,10 @@ export const CourseEnrollmentPage = () => {
           </span>
         </div>
       </div>
-      <div className="mt-6 flex justify-center">
+      <div className="mt-6 flex flex-col items-center justify-center gap-4">
+        <div className="w-full md:max-w-165">
+          <CourseEnrollmentUserSearchBar />
+        </div>
         <Pagination.Provider
           items={enrollmentUsers}
           resetDeps={[enrollmentUsers]}
