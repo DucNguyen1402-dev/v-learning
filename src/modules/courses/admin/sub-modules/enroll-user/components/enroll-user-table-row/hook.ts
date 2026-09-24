@@ -2,7 +2,11 @@ import { useState } from "react";
 
 import { useEnrollUserMutation } from "@modules/courses/admin/shared/hooks";
 import { getErrorMessage } from "@shared/error";
+import { Navigation } from "@shared/navigation";
 import { Modal, Toast } from "@shared/overlays";
+import { Pagination } from "@shared/table";
+
+import type { UnenrolledUser } from "../../types";
 type UseEnrollmentUserTableRowParams = {
   maKhoaHoc: string;
   taiKhoan: string;
@@ -13,6 +17,8 @@ export const useEnrollUserTableRow = ({
 }: UseEnrollmentUserTableRowParams) => {
   const modal = Modal.use();
   const toast = Toast.use();
+  const { refreshCurrent } = Navigation.hooks.useNavigateWithState();
+  const pagination = Pagination.use<UnenrolledUser>();
 
   const [rowState, setRowState] = useState({
     isCanceling: false,
@@ -29,7 +35,12 @@ export const useEnrollUserTableRow = ({
     };
     try {
       await enrollUserMutation(payload);
-      toast.show(Toast.config.success.enrollUser(taiKhoan));
+      refreshCurrent({
+        payload: {
+          toastState: Toast.config.success.enrollUser(taiKhoan),
+          previousPage: pagination.state.currentPage,
+        },
+      });
     } catch (error) {
       toast.show(Toast.config.error(getErrorMessage({ error })));
     } finally {

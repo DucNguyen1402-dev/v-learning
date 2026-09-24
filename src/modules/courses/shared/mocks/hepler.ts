@@ -1,7 +1,7 @@
 import { findOrThrow } from "@shared/utils";
 
-import { mockCourses } from "../mocks";
 import type { Course, EnrichedCourse } from "../types";
+import { mockCourses } from "./mockCourses";
 
 export const enrichCoursesWithMockData = (
   courses: Course[],
@@ -21,10 +21,8 @@ export const enrichCoursesWithMockData = (
       ...rest
     } = matchedCourse;
 
-    const enrichedCourse = {
+    return {
       ...course,
       ...rest,
     };
-
-    return enrichedCourse;
   });

@@ -21,10 +21,12 @@ export const useUserFilterByRole = ({ allUsers }: UseUserFilterByRoleProps) => {
   );
 
   const onChangeRole = (newRole: UserRole | null) => setRole(newRole);
+  const resetRole = () => setRole(null);
 
   return {
     role,
     onChangeRole,
+    resetRole,
     filteredUsers,
   };
 };

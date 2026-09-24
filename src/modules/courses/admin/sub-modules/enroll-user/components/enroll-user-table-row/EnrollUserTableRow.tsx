@@ -7,7 +7,7 @@ import {
 import { cn } from "@shared/utils";
 
 import type { UnenrolledUser } from "../../types";
-import { useEnrollUserTableRow } from "./hooks";
+import { useEnrollUserTableRow } from "./hook";
 
 type EnrollmentUserTableRowProps = {
   stt: number;
@@ -29,7 +29,7 @@ export const EnrollUserTableRow = ({
   return (
     <tr
       className={cn(
-        "group border-b border-border-subtle transition-colors duration-200 hover:bg-bg-subtle",
+        "group border-t border-border-subtle transition-colors duration-200 hover:bg-bg-subtle",
         isEnrolling ? "bg-bg-brand/40 text-text-on-feedback" : "",
       )}
     >

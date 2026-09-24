@@ -1,3 +1,5 @@
+import { useMemo } from "react";
+
 import { COURSE_ENROLLMENT_STATUS } from "../../constants";
 import type { UserCourse } from "../../types";
 import { useEnrolledCoursesQuery } from "./useEnrolledCoursesQuery";
@@ -10,17 +12,20 @@ export const useUserCourses = (taiKhoan: string) => {
     isPending: isPendingPendingEnrollment,
   } = usePendingEnrollmentCoursesQuery(taiKhoan);
 
-  const userCourses: UserCourse[] = [
-    ...(enrolledCourses?.map((course) => ({
-      ...course,
-      trangThai: COURSE_ENROLLMENT_STATUS.ENROLLED,
-    })) ?? []),
+  const userCourses: UserCourse[] = useMemo(
+    () => [
+      ...(enrolledCourses?.map((course) => ({
+        ...course,
+        trangThai: COURSE_ENROLLMENT_STATUS.ENROLLED,
+      })) ?? []),
 
-    ...(pendingEnrollmentCourses?.map((course) => ({
-      ...course,
-      trangThai: COURSE_ENROLLMENT_STATUS.PENDING,
-    })) ?? []),
-  ];
+      ...(pendingEnrollmentCourses?.map((course) => ({
+        ...course,
+        trangThai: COURSE_ENROLLMENT_STATUS.PENDING,
+      })) ?? []),
+    ],
+    [enrolledCourses, pendingEnrollmentCourses],
+  );
 
   const isCourseEmpty = userCourses.length === 0;
   return {

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 
 import { usePaginatedUserQuery, useUsersQuery } from "@modules/user/hooks";
 import { Pagination } from "@shared/table";
@@ -11,11 +11,17 @@ import { CurrentUser } from "@/shared/current-user";
 export function useUser() {
   const { data: allUsers } = useUsersQuery();
 
-  const { role, onChangeRole, filteredUsers } = useUserFilterByRole({
+  const { role, onChangeRole, filteredUsers, resetRole } = useUserFilterByRole({
     allUsers,
   });
-  const { keyword, onSearchByUserName, handleClearSearch } =
+  const { keyword, onSearchByUserName, handleClearSearch, resetSearch } =
     useUserSearchByName();
+
+  const refreshFilters = useCallback(() => {
+    console.log("Refreshing filters");
+    resetRole();
+    resetSearch();
+  }, [resetRole, resetSearch]);
 
   const isLocalPagination = role !== null;
   const pagination = Pagination.hooks.usePagination();
@@ -75,6 +81,7 @@ export function useUser() {
       onChangeRole,
       onSearchByUserName,
       handleClearSearch,
+      refreshFilters,
     },
     pagination,
   };

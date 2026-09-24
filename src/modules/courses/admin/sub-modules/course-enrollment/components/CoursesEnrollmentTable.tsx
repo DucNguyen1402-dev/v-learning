@@ -1,3 +1,5 @@
+import { useCallback, useEffect, useRef } from "react";
+
 import {
   EnrollmentEmptyState,
   EnrollmentSkeleton,
@@ -10,14 +12,58 @@ import { useCourseEnrollmentContext } from "../contexts";
 import type { EnrollmentUser } from "../types";
 import { EnrollmentUserTableRow } from "./enrollment-user-table-row";
 
-export const CoursesEnrollmentTable = () => {
+type CoursesEnrollmentTableProps = {
+  affectedUserAccount: string | null;
+};
+
+export const CoursesEnrollmentTable = ({
+  affectedUserAccount,
+}: CoursesEnrollmentTableProps) => {
+  const previousAffectedUserAccount = useRef<string | null>(null);
   const {
-    status: { isUserEmpty, isLoading },
+    allEnrollmentUsers,
+    status: { isUserEmpty, isLoading, isFilteredUserEmpty },
   } = useCourseEnrollmentContext();
 
-  const {
-    state: { paginatedList },
-  } = Pagination.use<EnrollmentUser>();
+  const pagination = Pagination.use<EnrollmentUser>();
+
+  if (affectedUserAccount) {
+    pagination.controls.skipNextPageReset();
+  }
+
+  const moveToUserPage = useCallback(
+    (taiKhoan: string) => {
+      const courseIndex = allEnrollmentUsers.findIndex((user) => {
+        return user.taiKhoan === taiKhoan;
+      });
+
+      if (courseIndex === -1 || courseIndex === undefined) return false;
+
+      const userPage = Math.floor(courseIndex / pagination.state.pageSize) + 1;
+
+      pagination.actions.setPage(userPage);
+      return true;
+    },
+    [pagination, allEnrollmentUsers],
+  );
+
+  useEffect(() => {
+    if (!affectedUserAccount) {
+      previousAffectedUserAccount.current = null;
+      return;
+    }
+
+    if (
+      isLoading ||
+      previousAffectedUserAccount.current === affectedUserAccount
+    ) {
+      return;
+    }
+
+    if (moveToUserPage(affectedUserAccount)) {
+      previousAffectedUserAccount.current = affectedUserAccount;
+    }
+  }, [affectedUserAccount, isLoading, moveToUserPage]);
 
   const createTableContent = () => {
     if (isLoading) {
@@ -32,16 +78,26 @@ export const CoursesEnrollmentTable = () => {
         />
       );
     }
+    if (isFilteredUserEmpty) {
+      return (
+        <EnrollmentEmptyState
+          title="Không có học viên phù hợp."
+          subtitle="Không tìm thấy học viên nào phù hợp với từ khóa tìm kiếm."
+          colSpan={5}
+        />
+      );
+    }
 
-    return paginatedList?.map((user, index) => {
+    return pagination.state.paginatedList?.map((user, index) => {
       const isEnrolled = user.trangThai === USER_ENROLLMENT_STATUS.ENROLLED;
 
       return (
         <EnrollmentUserTableRow
-          key={index}
-          stt={index + 1}
+          key={user.taiKhoan}
+          stt={index + 1 + pagination.state.pageOffset}
           user={user}
           isEnrolled={isEnrolled}
+          isAffectedUser={affectedUserAccount === user.taiKhoan}
         />
       );
     });

@@ -31,10 +31,6 @@ export const UserTable = ({ affectedUserAccount }: UserTableProps) => {
 
   const targetPagination = isLocalPagination ? localPagination : pagination;
 
-  if (affectedUserAccount) {
-    targetPagination.controls.skipNextPageReset();
-  }
-
   const moveToUserPage = useCallback(
     (taiKhoan: string) => {
       const userIndex = allUsers?.findIndex((user) => {
@@ -53,9 +49,16 @@ export const UserTable = ({ affectedUserAccount }: UserTableProps) => {
 
   useEffect(() => {
     if (!affectedUserAccount || isLoading || hasMoveToPage.current) return;
+    targetPagination.controls.skipNextPageReset();
+
     moveToUserPage(affectedUserAccount);
     hasMoveToPage.current = true;
-  }, [affectedUserAccount, isLoading, moveToUserPage]);
+  }, [
+    affectedUserAccount,
+    isLoading,
+    moveToUserPage,
+    targetPagination.controls,
+  ]);
 
   const renderTableContent = () => {
     if (isLoading) {

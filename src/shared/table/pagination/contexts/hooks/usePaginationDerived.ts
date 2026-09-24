@@ -23,6 +23,7 @@ export const usePaginationDerived = <T>({
 
     const totalPages = Math.max(1, Math.ceil(totalItems / pageSize));
     const pageNumbers = createArray(totalPages, (_, index) => index + 1);
+    const pageOffset = (currentPage - 1) * pageSize;
 
     return {
       paginatedList,
@@ -33,5 +34,6 @@ export const usePaginationDerived = <T>({
       isPrevDisabled: currentPage === 1,
       isNextDisabled: currentPage >= totalPages,
       totalPages,
+      pageOffset,
     };
   }, [currentPage, pageSize, items]);

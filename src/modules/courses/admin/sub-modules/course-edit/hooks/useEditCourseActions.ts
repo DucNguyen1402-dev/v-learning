@@ -83,6 +83,11 @@ export function useEditCourseActions({
   const handleSubmitEvent = () => void handleSubmit(onValid)();
 
   const handleSubmitNewCourse = async (data: CourseFormData) => {
+    if (!isDirty) {
+      toaster.show(Toast.config.error("Không có thay đổi nào để lưu."));
+      return;
+    }
+
     const payload = createCoursePayload({ data, courseSourse: editCourse });
     const hasUpdatedImage = !!payload.hinhAnh;
 
@@ -110,6 +115,7 @@ export function useEditCourseActions({
         payload: {
           toastState: Toast.config.success.update(ENTITIES.COURSE),
           maKhoaHoc: payload.maKhoaHoc,
+          shouldResetFilters: true,
         },
       });
     } catch (error) {

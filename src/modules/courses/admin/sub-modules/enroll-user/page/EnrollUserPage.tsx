@@ -1,12 +1,61 @@
+import { useEffect, useRef } from "react";
+
 import { Navigation } from "@shared/navigation";
+import { Toast } from "@shared/overlays";
 import { Pagination } from "@shared/table";
 
 import { EnrollUserTable } from "../components";
 import { useEnrollUserContext } from "../context";
+import type { EnrollUserLocationPayload } from "./type";
+
+const FALLBACK_CONSUME_DURATION = 20000;
 
 export const EnrollUserPage = () => {
   const { scrollRef } = Navigation.hooks.useScrollOnRouteChange();
-  const { courseDetail, unenrolledUsers } = useEnrollUserContext();
+  const { show: showToast } = Toast.use();
+  const payload = Navigation.hooks.usePayload<EnrollUserLocationPayload>();
+  const consumePayload =
+    Navigation.hooks.useConsumePayload<EnrollUserLocationPayload>();
+  const hasShownToast = useRef(false);
+  const wasLoadingRef = useRef(false);
+
+  const {
+    courseDetail,
+    unenrolledUsers,
+    status: { isLoading },
+  } = useEnrollUserContext();
+
+  useEffect(() => {
+    if (!payload?.toastState) {
+      hasShownToast.current = false;
+      wasLoadingRef.current = false;
+      return;
+    }
+
+    if (!hasShownToast.current) {
+      showToast(payload.toastState);
+      hasShownToast.current = true;
+    }
+
+    if (isLoading) {
+      // remember that the refetch actually started before trusting the next "not loading" read
+      wasLoadingRef.current = true;
+      return;
+    }
+
+    if (wasLoadingRef.current) {
+      consumePayload();
+      return;
+    }
+
+    // safety net in case isLoading never flips true (e.g. race with the query's fetching flag)
+    const timeoutId = window.setTimeout(
+      consumePayload,
+      FALLBACK_CONSUME_DURATION,
+    );
+
+    return () => window.clearTimeout(timeoutId);
+  }, [consumePayload, payload, showToast, isLoading]);
 
   return (
     <div className="min-h-screen pt-5">
@@ -33,7 +82,7 @@ export const EnrollUserPage = () => {
             items={unenrolledUsers}
             resetDeps={[unenrolledUsers]}
           >
-            <EnrollUserTable />
+            <EnrollUserTable previousPage={payload?.previousPage ?? null} />
           </Pagination.Provider>
         </div>
       </div>

@@ -6,4 +6,5 @@ export const useUserInforQuery = (taiKhoan: string) =>
   useQuery({
     queryKey: ["userInfo", taiKhoan],
     queryFn: () => findUser(taiKhoan),
+    refetchOnWindowFocus: false,
   });

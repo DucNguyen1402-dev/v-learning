@@ -38,6 +38,7 @@ export const usePagination = <T>({
     isPrevDisabled,
     isNextDisabled,
     totalPages,
+    pageOffset,
   } = usePaginationDerived({ currentPage, pageSize, items });
 
   const { scrollToTargetRef, skipNextPageReset, setResetDeps, scrollToTarget } =
@@ -84,18 +85,20 @@ export const usePagination = <T>({
         displayStart,
         displayEnd,
         paginatedList,
+        pageOffset,
       },
     }),
     [
       scrollToTarget,
+      skipNextPageReset,
       setResetDeps,
+      hasPaginationChanged,
       scrollToTargetRef,
       onPrevClick,
       onNextClick,
       onPageClick,
       setSize,
       setPage,
-      skipNextPageReset,
       currentPage,
       pageSize,
       totalPages,
@@ -106,7 +109,7 @@ export const usePagination = <T>({
       displayStart,
       displayEnd,
       paginatedList,
-      hasPaginationChanged,
+      pageOffset,
     ],
   );
 };

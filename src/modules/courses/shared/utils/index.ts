@@ -1,1 +1,0 @@
-export { enrichCoursesWithMockData } from "./enrichCoursesWithMockData";

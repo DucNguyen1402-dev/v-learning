@@ -85,6 +85,7 @@ export function useAddCourseActions() {
         payload: {
           toastState: Toast.config.success.add(ENTITIES.COURSE),
           maKhoaHoc: payload.maKhoaHoc,
+          shouldResetFilters: true,
         },
       });
     } catch (error) {

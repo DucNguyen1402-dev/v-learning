@@ -5,7 +5,7 @@ import { Pagination } from "@shared/table";
 type CoursesEnrollmentTableFooterProps = {
   isLoading: boolean;
 };
-export const EnrollmentTableFooter = ({
+export const UserCourseTableFooter = ({
   isLoading,
 }: CoursesEnrollmentTableFooterProps) => {
   const {
@@ -21,6 +21,7 @@ export const EnrollmentTableFooter = ({
 
     scrollToTargetControl();
   }, [hasPaginationChanged, scrollToTarget, isLoading, scrollToTargetControl]);
+
   return (
     <div className="flex flex-col gap-8 lg:gap-5" ref={scrollToTarget}>
       <div className="flex items-center justify-center px-4 text-sm lg:justify-between">

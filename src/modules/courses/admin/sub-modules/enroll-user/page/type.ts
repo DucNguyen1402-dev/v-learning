@@ -1,6 +1,6 @@
 import type { ToastShowOptions } from "@shared/overlays/toast";
-export type CourseLocationPayload = {
+
+export type EnrollUserLocationPayload = {
   toastState: ToastShowOptions;
-  maKhoaHoc: string;
-  shouldResetFilters?: boolean;
+  previousPage?: number;
 };
