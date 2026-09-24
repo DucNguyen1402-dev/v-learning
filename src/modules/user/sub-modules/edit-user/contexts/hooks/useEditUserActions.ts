@@ -61,6 +61,7 @@ export const useEditUserActions = ({
         payload: {
           toastState: Toast.config.success.update(ENTITIES.USER),
           taiKhoan: data.taiKhoan,
+          shouldRefreshFilters: true,
         },
       });
     } catch (error) {

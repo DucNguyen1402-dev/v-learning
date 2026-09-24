@@ -8,7 +8,7 @@ import { EnrollUserTable } from "../components";
 import { useEnrollUserContext } from "../context";
 import type { EnrollUserLocationPayload } from "./type";
 
-const PAYLOAD_DISPLAY_DURATION = 5000;
+const FALLBACK_CONSUME_DURATION = 20000;
 
 export const EnrollUserPage = () => {
   const { scrollRef } = Navigation.hooks.useScrollOnRouteChange();
@@ -17,10 +17,18 @@ export const EnrollUserPage = () => {
   const consumePayload =
     Navigation.hooks.useConsumePayload<EnrollUserLocationPayload>();
   const hasShownToast = useRef(false);
+  const wasLoadingRef = useRef(false);
+
+  const {
+    courseDetail,
+    unenrolledUsers,
+    status: { isLoading },
+  } = useEnrollUserContext();
 
   useEffect(() => {
     if (!payload?.toastState) {
       hasShownToast.current = false;
+      wasLoadingRef.current = false;
       return;
     }
 
@@ -29,15 +37,25 @@ export const EnrollUserPage = () => {
       hasShownToast.current = true;
     }
 
+    if (isLoading) {
+      // remember that the refetch actually started before trusting the next "not loading" read
+      wasLoadingRef.current = true;
+      return;
+    }
+
+    if (wasLoadingRef.current) {
+      consumePayload();
+      return;
+    }
+
+    // safety net in case isLoading never flips true (e.g. race with the query's fetching flag)
     const timeoutId = window.setTimeout(
       consumePayload,
-      PAYLOAD_DISPLAY_DURATION,
+      FALLBACK_CONSUME_DURATION,
     );
 
     return () => window.clearTimeout(timeoutId);
-  }, [consumePayload, payload, showToast]);
-
-  const { courseDetail, unenrolledUsers } = useEnrollUserContext();
+  }, [consumePayload, payload, showToast, isLoading]);
 
   return (
     <div className="min-h-screen pt-5">

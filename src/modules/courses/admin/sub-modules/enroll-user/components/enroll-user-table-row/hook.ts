@@ -6,7 +6,7 @@ import { Navigation } from "@shared/navigation";
 import { Modal, Toast } from "@shared/overlays";
 import { Pagination } from "@shared/table";
 
-import type { UnenrolledUser } from "../../../types";
+import type { UnenrolledUser } from "../../types";
 type UseEnrollmentUserTableRowParams = {
   maKhoaHoc: string;
   taiKhoan: string;

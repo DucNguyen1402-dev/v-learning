@@ -9,10 +9,11 @@ export const useUserSearchByName = () => {
   const handleClearSearch = () => {
     setKeyword("");
   };
-
+  const resetSearch = () => setKeyword("");
   return {
     onSearchByUserName,
     handleClearSearch,
+    resetSearch,
     keyword,
   };
 };

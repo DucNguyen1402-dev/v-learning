@@ -49,6 +49,7 @@ export function useAddUserActions() {
         payload: {
           toastState: Toast.config.success.add(ENTITIES.USER),
           taiKhoan: data.taiKhoan,
+          shouldRefreshFilters: true,
         },
       });
     } catch (error) {

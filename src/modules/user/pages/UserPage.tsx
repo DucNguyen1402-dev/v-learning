@@ -19,22 +19,33 @@ export const UserPage = () => {
   Navigation.hooks.useScrollToTopOnRouteChange();
 
   const { show: showToast } = Toast.use();
-  const [displayState] = useTemporaryState(
+  const [payload] = useTemporaryState(
     Navigation.hooks.usePayload<UserLocationPayload>(),
   );
   const consumePayload =
     Navigation.hooks.useConsumePayload<UserLocationPayload>();
   const hasShownToast = useRef(false);
+
   useEffect(() => {
-    if (!displayState?.toastState || hasShownToast.current) return;
-    showToast(displayState.toastState);
+    if (!payload?.toastState || hasShownToast.current) return;
+    showToast(payload.toastState);
     hasShownToast.current = true;
     consumePayload();
-  }, [displayState?.toastState, showToast, consumePayload]);
+  }, [
+    payload?.toastState,
+    showToast,
+    consumePayload,
+    payload?.shouldRefreshFilters,
+  ]);
 
-  const { processedUsers, isLocalPagination } = useUserContext();
-
+  const {
+    processedUsers,
+    isLocalPagination,
+    filter: { refreshFilters },
+  } = useUserContext();
   const paginationItems = isLocalPagination ? processedUsers : [];
+
+  if (payload?.shouldRefreshFilters) refreshFilters();
 
   return (
     <Pagination.Provider items={paginationItems} resetDeps={[paginationItems]}>
@@ -50,7 +61,7 @@ export const UserPage = () => {
 
             <AddUserButton />
           </div>
-          <UserTable affectedUserAccount={displayState?.taiKhoan} />
+          <UserTable affectedUserAccount={payload?.taiKhoan} />
           <UserFooter />
         </div>
       </div>

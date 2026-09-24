@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef } from "react";
+import { useLayoutEffect } from "react";
 
 import {
   EnrollmentEmptyState,
@@ -16,7 +16,6 @@ type EnrollUserTableProps = {
   previousPage: number | null;
 };
 export const EnrollUserTable = ({ previousPage }: EnrollUserTableProps) => {
-  const previousPageRef = useRef<number | null>(null);
   const {
     status: { isLoading },
     courseDetail,
@@ -31,9 +30,7 @@ export const EnrollUserTable = ({ previousPage }: EnrollUserTableProps) => {
 
   useLayoutEffect(() => {
     if (isLoading) return;
-
-    if (previousPage && previousPage !== previousPageRef.current) {
-      previousPageRef.current = previousPage;
+    if (previousPage) {
       skipNextPageReset();
       moveToPage(previousPage);
     }
