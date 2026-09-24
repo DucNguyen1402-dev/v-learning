@@ -5,7 +5,6 @@ import { Select } from "@shared/fields";
 
 export const CourseCategoryFilter = () => {
   const { filter } = useCoursesContext();
-
   return (
     <div className="w-full max-w-50">
       <Select.Root>

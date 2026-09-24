@@ -42,6 +42,10 @@ export const SelectContent = <T,>({
       const label = getOptionLabel(options, value);
       setOption({ label: label ?? "", value });
     }
+
+    if (value === null) {
+      setOption({ label: "Tất cả", value: null });
+    }
   }, [value, setOption, options]);
   return isOpen ? (
     <div className="select-dropdown-menu-container" ref={selectRef}>
