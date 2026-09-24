@@ -1,13 +1,19 @@
 import { Navigation } from "@shared/navigation";
+import { cn } from "@shared/utils";
 import { PencilLine } from "lucide-react";
 
 import { ProfileForm } from "../components";
 export const ProfileChangePage = () => {
   const { scrollRef } = Navigation.hooks.useScrollOnRouteChange();
   const currentArea = Navigation.hooks.useCurrentArea();
+  const isMobile = window.innerWidth < 640;
   return (
     <div
-      className={`flex min-h-screen flex-col items-center gap-8 pt-5 md:px-4 ${currentArea === "admin" ? "justify-center" : "justify-start"}`}
+      className={cn(`flex flex-col items-center gap-8 pt-5 md:px-4`, {
+        "justify-center": currentArea === "admin",
+        "justify-start": currentArea !== "admin",
+        "min-h-[calc(100dvh-16rem)]": !isMobile && currentArea === "admin",
+      })}
     >
       <div
         className="flex scroll-target items-start justify-center gap-1 select-none md:items-center md:gap-2"

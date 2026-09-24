@@ -34,7 +34,7 @@ export const ProfileOverviewPage = () => {
       className={cn(
         "flex justify-center gap-6 py-8 md:px-4",
         currentArea === "admin"
-          ? "min-h-[calc(100dvh-4rem)] items-center"
+          ? "min-h-[calc(100dvh-10rem)] items-center"
           : "items-start",
       )}
     >

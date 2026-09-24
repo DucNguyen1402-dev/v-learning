@@ -1,14 +1,19 @@
 import { Navigation } from "@shared/navigation";
+import { cn } from "@shared/utils";
 
 import { PasswordChangeForm, PasswordChangeHeader } from "../components";
 
 export const PasswordChangePage = () => {
   const { scrollRef } = Navigation.hooks.useScrollOnRouteChange();
   const currentArea = Navigation.hooks.useCurrentArea();
-
+  const isMobile = window.innerWidth < 640;
   return (
     <div
-      className={`flex min-h-screen justify-center py-6 ${currentArea === "admin" ? "items-center" : "items-start"}`}
+      className={cn(`flex justify-center py-6`, {
+        "items-center": currentArea === "admin",
+        "items-start": currentArea !== "admin",
+        "min-h-[calc(100dvh-10rem)]": !isMobile && currentArea === "admin",
+      })}
     >
       <div
         ref={scrollRef}

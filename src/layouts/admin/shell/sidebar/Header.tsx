@@ -1,12 +1,20 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 import { UserAvatar } from "@layouts/shared/components";
+import { LogoutButton } from "@layouts/shared/components";
 import { EducationLogo } from "@shared/logo";
+import { Navigation } from "@shared/navigation";
 
 import { sidebarNavLinks } from "./config";
+import { isRouteShowLogoutButton } from "./ui";
 
 import { cn } from "@/shared/utils/style";
-export const SidebarMobile = () => {
+export const Header = () => {
+  const { pathname } = useLocation();
+  const routeKey = Navigation.admin.findKey(pathname);
+
+  const shouldShowLogoutButton = routeKey && isRouteShowLogoutButton(routeKey);
+
   return (
     <aside>
       <div className="group/outer flex h-20 items-center justify-between px-2 md:px-4">
@@ -27,7 +35,11 @@ export const SidebarMobile = () => {
           ))}
         </div>
         <div>
-          <UserAvatar enabledProfileLink={true} />
+          {shouldShowLogoutButton ? (
+            <LogoutButton />
+          ) : (
+            <UserAvatar enabledProfileLink={true} />
+          )}
         </div>
       </div>
     </aside>

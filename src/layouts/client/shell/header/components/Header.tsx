@@ -1,6 +1,10 @@
 import { useLocation } from "react-router-dom";
 
-import { ProfileDropdown, UserAvatar } from "@layouts/shared/components";
+import {
+  LogoutButton,
+  ProfileDropdown,
+  UserAvatar,
+} from "@layouts/shared/components";
 import { CurrentUser } from "@shared/current-user";
 import { Navigation } from "@shared/navigation";
 
@@ -8,7 +12,6 @@ import { isRouteHideLoginButton, isRouteShowLogoutButton } from "../ui";
 import { HeaderLogo } from "./HeaderLogo";
 import { HeaderNav } from "./HeaderNav";
 import { LoginButton } from "./LoginButton";
-import { LogoutButton } from "./LogoutButton";
 import { ThemeModeButton } from "./ThemeModeButton";
 import { UserAccount } from "./UserAccount";
 
