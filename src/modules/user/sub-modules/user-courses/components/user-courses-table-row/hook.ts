@@ -42,7 +42,7 @@ export const useCancelEnrolledCourse = ({
   const onCancelCourseClick = () => {
     setIsCanceling(true);
     modal.open({
-      ...Modal.config.cancelCourseEnrollment(tenKhoaHoc),
+      ...Modal.config.cancelCourseEnrollment(tenKhoaHoc, taiKhoan),
       onConfirm: cancelCourse,
       onCancel: () => setIsCanceling(false),
     });

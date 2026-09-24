@@ -23,7 +23,7 @@ export const AddUserForm = () => {
       onSubmit={handleSubmitEvent}
       className="w-full rounded-container border border-border-subtle bg-bg-default p-6 shadow-surface"
     >
-      <div className="flex flex-col gap-6">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         {userFormFields.map((field) => (
           <Field.Root key={field.name}>
             <Field.Label target={field.name} text={field.label} />

@@ -1,3 +1,3 @@
 export * from "./navigation";
-export * from "./route";
+export * from "./routes";
 export * from "./sub-modules";

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
 
 import { CoursesFooter } from "@modules/courses/shared/components";
 import { useCoursesContext } from "@modules/courses/shared/contexts";
@@ -22,9 +22,11 @@ export const CoursesPage = () => {
   const [payload] = useTemporaryState(
     Navigation.hooks.usePayload<CourseLocationPayload>(),
   );
+
   const consumePayload =
     Navigation.hooks.useConsumePayload<CourseLocationPayload>();
   const hasShownToast = useRef(false);
+  const hasResetFilters = useRef(false);
   useEffect(() => {
     if (!payload?.toastState || hasShownToast.current) return;
     showToast(payload.toastState);
@@ -33,7 +35,18 @@ export const CoursesPage = () => {
     consumePayload();
   }, [payload?.toastState, showToast, consumePayload]);
 
-  const { processedCourses, isSourceByCategory } = useCoursesContext();
+  const {
+    processedCourses,
+    isSourceByCategory,
+    filter: { resetFilters },
+  } = useCoursesContext();
+
+  useLayoutEffect(() => {
+    if (payload?.shouldResetFilters && !hasResetFilters.current) {
+      resetFilters();
+      hasResetFilters.current = true;
+    }
+  }, [payload?.shouldResetFilters, resetFilters]);
 
   const localPaginationSource = isSourceByCategory ? processedCourses : [];
 

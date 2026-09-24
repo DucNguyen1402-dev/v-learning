@@ -3,8 +3,8 @@ import { createArray } from "@shared/utils";
 
 export const UpdateUserFormSkeleton = () => {
   return (
-    <div className="w-full rounded-container border border-border-subtle bg-bg-default p-6 shadow-surface">
-      <div className="flex w-full flex-col gap-8">
+    <div className="m w-full max-w-md rounded-container border border-border-subtle bg-bg-default p-6 shadow-surface">
+      <div className="flex w-full flex-col gap-12">
         {createArray(4).map((_, index) => (
           <div className="flex flex-col gap-3">
             <Skeleton
@@ -17,7 +17,7 @@ export const UpdateUserFormSkeleton = () => {
         ))}
       </div>
 
-      <div className="mt-20 flex items-center justify-end gap-3">
+      <div className="mt-25 flex items-center justify-end gap-3">
         <Skeleton height={SKELETON_HEIGHTS.LG} width={SKELETON_WIDTHS.SM} />
         <Skeleton height={SKELETON_HEIGHTS.LG} width={SKELETON_WIDTHS.MD} />
       </div>

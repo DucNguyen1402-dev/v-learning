@@ -9,10 +9,14 @@ export const useCoursesSearchByName = () => {
   const handleClearSearch = () => {
     setTenKhoaHoc("");
   };
+  const resetSearch = () => {
+    setTenKhoaHoc("");
+  };
 
   return {
     onSearchByCoursesName,
     handleClearSearch,
+    resetSearch,
     tenKhoaHoc,
   };
 };

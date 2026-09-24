@@ -99,7 +99,6 @@ export function useEditCourseActions({
       ? createCourseImagePayload(data)
       : undefined;
 
-    console.log("payload:", payload);
     const submitNewCourseTask = () =>
       mutateAsync({ ...payload, taiKhoanNguoiTao: profile.current.taiKhoan });
 
@@ -116,6 +115,7 @@ export function useEditCourseActions({
         payload: {
           toastState: Toast.config.success.update(ENTITIES.COURSE),
           maKhoaHoc: payload.maKhoaHoc,
+          shouldResetFilters: true,
         },
       });
     } catch (error) {

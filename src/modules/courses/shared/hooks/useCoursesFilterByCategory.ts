@@ -7,8 +7,11 @@ export const useCoursesFilterByCategory = () => {
   const onChangeCategory = (newCategory: Category | null) =>
     setCategory(newCategory);
 
+  const resetCategory = () => setCategory(null);
+
   return {
     category,
     onChangeCategory,
+    resetCategory,
   };
 };

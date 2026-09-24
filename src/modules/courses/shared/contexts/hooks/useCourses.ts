@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 
 import {
   EMPTY_PAGINATED_COURSE,
@@ -20,10 +20,16 @@ type UseCoursesProps = {
 export const useCourses = ({ shouldEnrichData = true }: UseCoursesProps) => {
   const { data: allCourses } = useCourseQuery();
 
-  const { onSearchByCoursesName, tenKhoaHoc, handleClearSearch } =
+  const { onSearchByCoursesName, tenKhoaHoc, handleClearSearch, resetSearch } =
     useCoursesSearchByName();
 
-  const { category, onChangeCategory } = useCoursesFilterByCategory();
+  const { category, onChangeCategory, resetCategory } =
+    useCoursesFilterByCategory();
+
+  const resetFilters = useCallback(() => {
+    resetSearch();
+    resetCategory();
+  }, [resetSearch, resetCategory]);
 
   const isPaginatedSource = category === null;
 
@@ -91,6 +97,7 @@ export const useCourses = ({ shouldEnrichData = true }: UseCoursesProps) => {
       shouldDisableSearch: category !== null,
       onChangeCategory,
       handleClearSearch,
+      resetFilters,
     },
     status: {
       isLoading: isLoading,

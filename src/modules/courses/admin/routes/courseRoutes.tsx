@@ -13,15 +13,15 @@ import {
 } from "../sub-modules";
 
 export const courseRoutes = (
-  <Route path={COURSES_ROUTE_SEGMENT} element={<CourseMainLayout />}>
-    <Route
-      index
-      element={
-        <CoursesProvider shouldEnrichData={false}>
-          <CoursesPage />
-        </CoursesProvider>
-      }
-    />
+  <Route
+    path={COURSES_ROUTE_SEGMENT}
+    element={
+      <CoursesProvider shouldEnrichData={false}>
+        <CourseMainLayout />
+      </CoursesProvider>
+    }
+  >
+    <Route index element={<CoursesPage />} />
 
     {courseAddRoute}
     {courseEditRoute}

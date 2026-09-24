@@ -1,14 +1,18 @@
+import { Pagination } from "@shared/table";
+
 import { COURSE_ENROLLMENT_STATUS } from "../constants";
 import { useUserCoursesContext } from "../contexts";
+import type { UserCourse } from "../types";
 import { EmptyCourseState } from "./EmptyCourseState";
 import { UserCoursesTableRow } from "./user-courses-table-row";
 import { UserCoursesSkeleton } from "./UserCoursesSkeleton";
 
 export const UserCoursesTable = () => {
   const {
-    userCourses,
     status: { isCourseEmpty, isLoading },
   } = useUserCoursesContext();
+
+  const pagination = Pagination.use<UserCourse>();
 
   const createTableContent = () => {
     if (isLoading) {
@@ -18,13 +22,13 @@ export const UserCoursesTable = () => {
       return <EmptyCourseState />;
     }
 
-    return userCourses?.map((course, index) => {
+    return pagination.state.paginatedList.map((course, index) => {
       const isEnrolled = course.trangThai === COURSE_ENROLLMENT_STATUS.ENROLLED;
 
       return (
         <UserCoursesTableRow
           key={index}
-          stt={index + 1}
+          stt={index + 1 + pagination.state.pageOffset}
           course={course}
           isEnrolled={isEnrolled}
         />
