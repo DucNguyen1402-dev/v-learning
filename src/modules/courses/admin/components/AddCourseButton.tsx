@@ -6,7 +6,7 @@ export const AddCourseButton = () => {
       routeKey={Navigation.admin.keys.ADD_COURSE}
       className="button-base button-primary solid px-4 py-2 text-sm"
     >
-      Thêm khóa học mới
+      Thêm khóa học
     </Navigation.components.Forward>
   );
 };

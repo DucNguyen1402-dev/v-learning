@@ -16,8 +16,8 @@ export const UserTable = ({ affectedUserAccount }: UserTableProps) => {
   const {
     processedUsers,
     isLocalPagination,
-    status: { isLoading, isEmpty },
-    filter: { handleClearSearch },
+    status: { isLoading, isEmpty, areAllUsersReady },
+    filter: { handleClearSearch, areFiltersAtDefault },
     pagination,
     allUsers,
   } = useUserContext();
@@ -39,24 +39,34 @@ export const UserTable = ({ affectedUserAccount }: UserTableProps) => {
 
       if (userIndex === -1 || userIndex === undefined) return;
 
-      const userPage =
-        Math.floor(userIndex / targetPagination.state.pageSize) + 1;
-
-      targetPagination.actions.setPage(userPage);
+      return Math.floor(userIndex / targetPagination.state.pageSize) + 1;
     },
     [targetPagination, allUsers],
   );
 
   useEffect(() => {
-    if (!affectedUserAccount || isLoading || hasMoveToPage.current) return;
-    targetPagination.controls.skipNextPageReset();
+    if (
+      !affectedUserAccount ||
+      isLoading ||
+      !areAllUsersReady ||
+      !areFiltersAtDefault ||
+      hasMoveToPage.current
+    )
+      return;
+    const userPage = moveToUserPage(affectedUserAccount);
+    if (userPage === undefined) return;
 
-    moveToUserPage(affectedUserAccount);
+    targetPagination.controls.skipNextPageReset();
+    targetPagination.actions.setPage(userPage);
     hasMoveToPage.current = true;
   }, [
     affectedUserAccount,
+    allUsers,
+    areAllUsersReady,
+    areFiltersAtDefault,
     isLoading,
     moveToUserPage,
+    targetPagination.actions,
     targetPagination.controls,
   ]);
 

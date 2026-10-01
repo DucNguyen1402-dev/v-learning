@@ -9,13 +9,19 @@ import { useUserSearchByName } from "./useUserSearchByName";
 import { CurrentUser } from "@/shared/current-user";
 
 export function useUser() {
-  const { data: allUsers } = useUsersQuery();
+  const {
+    data: allUsers,
+    isFetching: isFetchingAllUsers,
+    isSuccess: hasLoadedAllUsers,
+  } = useUsersQuery();
 
   const { role, onChangeRole, filteredUsers, resetRole } = useUserFilterByRole({
     allUsers,
   });
   const { keyword, onSearchByUserName, handleClearSearch, resetSearch } =
     useUserSearchByName();
+  const areFiltersAtDefault = role === null && keyword === "";
+  const areAllUsersReady = hasLoadedAllUsers && !isFetchingAllUsers;
 
   const refreshFilters = useCallback(() => {
     console.log("Refreshing filters");
@@ -74,6 +80,7 @@ export function useUser() {
     status: {
       isLoading,
       isEmpty,
+      areAllUsersReady,
     },
     filter: {
       role,
@@ -82,6 +89,7 @@ export function useUser() {
       onSearchByUserName,
       handleClearSearch,
       refreshFilters,
+      areFiltersAtDefault,
     },
     pagination,
   };

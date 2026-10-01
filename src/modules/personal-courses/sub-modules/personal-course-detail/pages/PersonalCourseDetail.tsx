@@ -21,7 +21,7 @@ export const PersonalCourseDetail = () => {
     (course) => course.maKhoaHoc === maKhoaHoc,
   )!;
   return (
-    <div className="min-h-screen p-2 lg:p-8">
+    <div className="p-2">
       <CancelEnrollmentButton />
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
         <PersonalCourseDetailLeft targetCourse={targetCourse} />

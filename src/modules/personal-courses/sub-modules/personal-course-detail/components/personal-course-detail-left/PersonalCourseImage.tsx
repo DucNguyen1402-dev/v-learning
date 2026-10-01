@@ -1,3 +1,7 @@
+import { useState } from "react";
+
+import { Skeleton } from "@shared/ui";
+
 export const PersonalCourseImage = ({
   image,
   tenKhoaHoc,
@@ -5,13 +9,23 @@ export const PersonalCourseImage = ({
   image: string;
   tenKhoaHoc: string;
 }) => {
+  const [loadedImage, setLoadedImage] = useState<string | null>(null);
+  const isImageLoaded = loadedImage === image;
+
   return (
-    <div className="h-full w-full overflow-hidden rounded-overlay shadow-surface">
+    <div className="relative aspect-video w-full overflow-hidden rounded-overlay shadow-surface lg:aspect-auto lg:h-full">
       <img
         src={image}
         alt={tenKhoaHoc}
-        className="h-full w-full object-cover"
+        onLoad={() => setLoadedImage(image)}
+        onError={() => setLoadedImage(image)}
+        className="object-fit absolute inset-0 h-full w-full"
       />
+      {!isImageLoaded && (
+        <div className="absolute inset-0">
+          <Skeleton fullWidth size={{ height: "100%" }} radius="none" />
+        </div>
+      )}
     </div>
   );
 };

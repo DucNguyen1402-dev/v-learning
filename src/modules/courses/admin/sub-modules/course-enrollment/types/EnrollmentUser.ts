@@ -1,4 +1,4 @@
-export type EnrollmentStatus = "registered" | "pending";
+export type EnrollmentStatus = "enrolled" | "pending";
 
 export type EnrollmentUser = {
   taiKhoan: string;

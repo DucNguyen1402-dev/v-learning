@@ -26,6 +26,8 @@ export const useCourses = ({ shouldEnrichData = true }: UseCoursesProps) => {
   const { category, onChangeCategory, resetCategory } =
     useCoursesFilterByCategory();
 
+  const areFiltersAtDefault = tenKhoaHoc === "" && category === null;
+
   const resetFilters = useCallback(() => {
     resetSearch();
     resetCategory();
@@ -98,6 +100,7 @@ export const useCourses = ({ shouldEnrichData = true }: UseCoursesProps) => {
       onChangeCategory,
       handleClearSearch,
       resetFilters,
+      areFiltersAtDefault,
     },
     status: {
       isLoading: isLoading,

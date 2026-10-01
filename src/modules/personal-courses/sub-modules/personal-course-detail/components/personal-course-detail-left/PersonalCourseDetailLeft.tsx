@@ -16,19 +16,21 @@ export const PersonalCourseDetailLeft = ({
         tenKhoaHoc={targetCourse.tenKhoaHoc}
         tenDanhMucKhoaHoc={targetCourse.tenDanhMucKhoaHoc}
       />
-      <div className="flex flex-col gap-3 lg:flex-row">
-        <div className="flex-1">
+      <div className="grid grid-cols-1 gap-3 lg:grid-cols-6">
+        <div className="col-span-4">
           <PersonalCourseImage
             image={targetCourse.descriptionImage}
             tenKhoaHoc={targetCourse.tenKhoaHoc}
           />
         </div>
-        <PersonalCourseInfo
-          tenGiangVien={targetCourse.tenGiangVien}
-          soLuongHocVien={targetCourse.soLuongHocVien}
-          luotXem={targetCourse.luotXem}
-          danhGia={targetCourse.danhGia}
-        />
+        <div className="col-span-2">
+          <PersonalCourseInfo
+            tenGiangVien={targetCourse.tenGiangVien}
+            soLuongHocVien={targetCourse.soLuongHocVien}
+            luotXem={targetCourse.luotXem}
+            danhGia={targetCourse.danhGia}
+          />
+        </div>
       </div>
       <div className="mt-6">
         <PersonalCourseDescription moTa={targetCourse.moTa} />

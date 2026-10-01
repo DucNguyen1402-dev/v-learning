@@ -35,7 +35,7 @@ export const PersonalCourseInfo = ({
   ];
 
   return (
-    <div className="flex flex-row flex-wrap justify-between gap-6 rounded-overlay border-border-subtle bg-bg-subtle px-8 py-5 select-none lg:flex-col">
+    <div className="flex flex-row flex-wrap justify-between gap-6 rounded-overlay border-border-subtle bg-bg-subtle px-4 py-5 select-none lg:flex-col">
       {infoItems.map((item, index) => (
         <div key={index} className="flex flex-col gap-3">
           <div className="flex items-center gap-1">

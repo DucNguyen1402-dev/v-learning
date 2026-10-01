@@ -1,4 +1,4 @@
-export type EnrollmentStatus = "đã đăng ký" | "chờ xác nhận";
+export type EnrollmentStatus = "đã ghi danh" | "chờ xác nhận";
 
 export type UserCourse = {
   maKhoaHoc: string;

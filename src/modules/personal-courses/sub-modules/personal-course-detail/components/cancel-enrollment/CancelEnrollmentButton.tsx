@@ -16,7 +16,7 @@ export const CancelEnrollmentButton = () => {
   const { onCancelEnrollmentClick } = usePersonalCourseDetailContext();
 
   return (
-    <div className="mb-6 flex flex-col items-end justify-end gap-2 overflow-hidden">
+    <div className="mb-5 flex flex-col items-end justify-end gap-2 overflow-hidden">
       <Button
         size={BUTTON_SIZES.NONE}
         onClick={() => setIsSettingOpen(!isSettingOpen)}
@@ -33,7 +33,7 @@ export const CancelEnrollmentButton = () => {
           intent={BUTTON_INTENTS.DESTRUCTIVE}
           onClick={onCancelEnrollmentClick}
         >
-          <span className="text-xs">Hủy ghi danh khóa học</span>
+          <span className="text-xs">Hủy Đăng ký</span>
         </Button>
       </div>
     </div>

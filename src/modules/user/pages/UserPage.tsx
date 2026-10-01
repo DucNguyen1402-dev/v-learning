@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
 
 import { Navigation } from "@shared/navigation";
 import { Toast } from "@shared/overlays";
@@ -25,6 +25,7 @@ export const UserPage = () => {
   const consumePayload =
     Navigation.hooks.useConsumePayload<UserLocationPayload>();
   const hasShownToast = useRef(false);
+  const hasRefreshedFilters = useRef(false);
 
   useEffect(() => {
     if (!payload?.toastState || hasShownToast.current) return;
@@ -45,7 +46,16 @@ export const UserPage = () => {
   } = useUserContext();
   const paginationItems = isLocalPagination ? processedUsers : [];
 
-  if (payload?.shouldRefreshFilters) refreshFilters();
+  useLayoutEffect(() => {
+    if (!payload?.shouldRefreshFilters) {
+      hasRefreshedFilters.current = false;
+      return;
+    }
+    if (hasRefreshedFilters.current) return;
+
+    refreshFilters();
+    hasRefreshedFilters.current = true;
+  }, [payload?.shouldRefreshFilters, refreshFilters]);
 
   return (
     <Pagination.Provider items={paginationItems} resetDeps={[paginationItems]}>

@@ -90,7 +90,7 @@ export const EnrollmentUserTableRow = ({
                 loading={isCancelPersonalCourseLoading}
               >
                 <span className="py-1 text-xs md:py-1.5 md:text-[13px]">
-                  Hủy đăng ký
+                  Hủy ghi danh
                 </span>
               </Button>
             )}

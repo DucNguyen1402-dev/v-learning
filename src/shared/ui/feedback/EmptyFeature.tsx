@@ -14,7 +14,7 @@ export const EmptyFeature = ({
   shouldHideAction,
 }: EmptyFeatureProps) => {
   return (
-    <section className="flex min-h-[calc(100vh-16rem)] w-full flex-col items-center justify-center px-4 py-16 text-center select-none">
+    <section className="flex w-full flex-col items-center justify-center px-4 py-16 text-center select-none">
       <div className="mx-auto flex max-w-xl flex-col items-center">
         {/* Decorative Visual */}
         <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-2xl bg-bg-muted/80 text-text-subtle shadow-inner">

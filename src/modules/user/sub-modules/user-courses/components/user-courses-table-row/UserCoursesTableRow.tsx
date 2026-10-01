@@ -49,7 +49,7 @@ export const UserCoursesTableRow = ({
           onClick={onCancelCourseClick}
           loading={isCancelPersonalCourseLoading}
         >
-          <span className="px-2 py-1.5 text-xs">Hủy đăng ký</span>
+          <span className="px-2 py-1.5 text-xs">Hủy ghi danh</span>
         </Button>
       </td>
     </tr>

@@ -31,10 +31,6 @@ export const CoursesTable = ({ affectedCourseId }: CoursesTableProps) => {
     ? paginationCategory.state.paginatedList
     : processedCourses;
 
-  if (affectedCourseId) {
-    targetPagination.controls.skipNextPageReset();
-  }
-
   const moveToMoviePage = useCallback(
     (maKhoaHoc: string) => {
       const courseIndex = allCourses?.findIndex((course) => {
@@ -46,15 +42,29 @@ export const CoursesTable = ({ affectedCourseId }: CoursesTableProps) => {
         Math.floor(courseIndex / targetPagination.state.pageSize) + 1;
 
       targetPagination.actions.setPage(coursePage);
+      hasMoveToPage.current = true;
     },
     [targetPagination, allCourses],
   );
 
   useEffect(() => {
-    if (!affectedCourseId || isLoading || hasMoveToPage.current) return;
+    if (
+      !affectedCourseId ||
+      isLoading ||
+      !filter.areFiltersAtDefault ||
+      hasMoveToPage.current
+    )
+      return;
+    targetPagination.controls.skipNextPageReset();
     moveToMoviePage(affectedCourseId);
-    hasMoveToPage.current = true;
-  }, [affectedCourseId, isLoading, moveToMoviePage]);
+  }, [
+    affectedCourseId,
+    allCourses,
+    filter.areFiltersAtDefault,
+    isLoading,
+    moveToMoviePage,
+    targetPagination.controls,
+  ]);
 
   const renderTableContent = () => {
     if (isLoading) {
