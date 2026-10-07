@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useLayoutEffect, useRef } from "react";
 
 import { useCoursesContext } from "@modules/courses/shared/contexts";
 import { TableEmptyState } from "@shared/table";
@@ -47,7 +47,7 @@ export const CoursesTable = ({ affectedCourseId }: CoursesTableProps) => {
     [targetPagination, allCourses],
   );
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (
       !affectedCourseId ||
       isLoading ||

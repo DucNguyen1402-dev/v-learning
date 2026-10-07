@@ -24,7 +24,6 @@ export function useUser() {
   const areAllUsersReady = hasLoadedAllUsers && !isFetchingAllUsers;
 
   const refreshFilters = useCallback(() => {
-    console.log("Refreshing filters");
     resetRole();
     resetSearch();
   }, [resetRole, resetSearch]);

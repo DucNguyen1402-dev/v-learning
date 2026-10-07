@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useLayoutEffect, useRef } from "react";
 
 import { useUserContext } from "@modules/user/contexts";
 import type { User } from "@modules/user/types";
@@ -44,7 +44,7 @@ export const UserTable = ({ affectedUserAccount }: UserTableProps) => {
     [targetPagination, allUsers],
   );
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (
       !affectedUserAccount ||
       isLoading ||
