@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./src/*"],
+      "@assets/*": ["./src/assets/*"],
+      "@modules/*": ["./src/modules/*"],
+      "@routes": ["./src/routes/index.ts"],
+      "@routes/*": ["./src/routes/*"],
+      "@providers": ["./src/providers/index.ts"],
+      "@providers/*": ["./src/providers/*"],
+      "@shared/*": ["./src/shared/*"],
+      "@layouts/*": ["./src/layouts/*"],
+      "@styles": ["./src/styles/index.css"],
+      "@styles/*": ["./src/styles/*"]
+    }
+  }
+}
