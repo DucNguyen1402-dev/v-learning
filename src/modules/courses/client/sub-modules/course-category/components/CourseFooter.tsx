@@ -1,4 +1,4 @@
-import { useLayoutEffect } from "react";
+import { useEffect } from "react";
 
 import { Pagination } from "@shared/table";
 type CoursesFooterProps = {
@@ -13,7 +13,7 @@ export const CoursesFooter = ({ isLoading }: CoursesFooterProps) => {
     flags: { hasPaginationChanged },
   } = Pagination.use();
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (!hasPaginationChanged()) return;
 
     scrollToTarget();

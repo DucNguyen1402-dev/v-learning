@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 
 import { Navigation } from "@shared/navigation";
 import { Toast } from "@shared/overlays";
@@ -46,7 +46,7 @@ export const UserPage = () => {
   } = useUserContext();
   const paginationItems = isLocalPagination ? processedUsers : [];
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (!payload?.shouldRefreshFilters) {
       hasRefreshedFilters.current = false;
       return;

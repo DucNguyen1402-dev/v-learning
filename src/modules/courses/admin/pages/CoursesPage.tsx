@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 
 import { CoursesFooter } from "@modules/courses/shared/components";
 import { useCoursesContext } from "@modules/courses/shared/contexts";
@@ -41,7 +41,7 @@ export const CoursesPage = () => {
     filter: { resetFilters },
   } = useCoursesContext();
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (payload?.shouldResetFilters && !hasResetFilters.current) {
       resetFilters();
       hasResetFilters.current = true;

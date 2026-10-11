@@ -1,4 +1,4 @@
-import { useLayoutEffect } from "react";
+import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 type UseScrollToTopOnRouteChangeProps = {
@@ -12,7 +12,7 @@ export const useScrollToTopOnRouteChange = ({
 }: UseScrollToTopOnRouteChangeProps = {}) => {
   const { pathname } = useLocation();
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (!enabled) return;
 
     window.scrollTo({

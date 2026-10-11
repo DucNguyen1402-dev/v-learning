@@ -1,4 +1,4 @@
-import { useLayoutEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Navigation } from "@shared/navigation";
 import { Skeleton, SKELETON_HEIGHTS } from "@shared/ui";
@@ -22,7 +22,7 @@ export const UpdateUserPage = () => {
     status: { isLoading },
   } = useEditUserContext();
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (isLoading) {
       // eslint-disable-next-line react-hooks/set-state-in-effect
       setLoading(true);

@@ -1,4 +1,4 @@
-import { useLayoutEffect } from "react";
+import { useEffect } from "react";
 
 import {
   EnrollmentEmptyState,
@@ -28,7 +28,7 @@ export const EnrollUserTable = ({ previousPage }: EnrollUserTableProps) => {
     controls: { skipNextPageReset },
   } = Pagination.use<UnenrolledUser>();
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (isLoading) return;
     if (previousPage) {
       skipNextPageReset();

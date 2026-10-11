@@ -1,4 +1,4 @@
-import { useLayoutEffect } from "react";
+import { useEffect } from "react";
 
 import { Pagination } from "@shared/table";
 
@@ -16,7 +16,7 @@ export const EnrollmentTableFooter = ({
     controls: { scrollToTarget: scrollToTargetControl },
   } = Pagination.use();
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (isLoading || !hasPaginationChanged()) return;
 
     scrollToTargetControl();

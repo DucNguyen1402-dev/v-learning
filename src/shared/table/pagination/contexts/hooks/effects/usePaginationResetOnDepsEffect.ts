@@ -1,7 +1,6 @@
 import {
   useCallback,
   useEffect,
-  useLayoutEffect,
   useRef,
   useState,
 } from "react";
@@ -51,7 +50,8 @@ export function usePaginationResetOnDepsEffect({
   }, [propResetDeps, setResetDeps]);
 
   const prevResetDepsRef = useRef<readonly unknown[]>(meta.resetDeps);
-  useLayoutEffect(() => {
+
+  useEffect(() => {
     // check if the reset dependencies have changed
     const isDepsChanged = !isArrayShallowEqual(
       prevResetDepsRef.current,
