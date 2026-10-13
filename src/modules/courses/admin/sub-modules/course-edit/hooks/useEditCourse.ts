@@ -33,6 +33,7 @@ export const useEditCourse = () => {
     useEditCourseActions({
       isDirty,
       handleSubmit,
+      courseId: maKhoaHoc,
       editCourse,
     });
   return {

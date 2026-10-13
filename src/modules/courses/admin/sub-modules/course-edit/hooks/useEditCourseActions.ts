@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import {
   createCourseImagePayload,
@@ -20,6 +20,7 @@ import { useUpdateCourseMutation } from "./useUpdateCourseMutation";
 type UseEditCourseActionsProps = {
   isDirty: boolean;
   handleSubmit: UseEditCourseFormReturn["handleSubmit"];
+  courseId: string;
 
   editCourse: Course;
 };
@@ -27,15 +28,19 @@ type UseEditCourseActionsProps = {
 export function useEditCourseActions({
   isDirty,
   handleSubmit,
+  courseId,
   editCourse,
 }: UseEditCourseActionsProps) {
-  const [imgPreview, setImgPreview] = useState<string>("");
+  const [selectedImgPreview, setSelectedImgPreview] = useState<{
+    courseId: string;
+    src: string;
+  } | null>(null);
+  const imgPreview =
+    selectedImgPreview?.courseId === courseId
+      ? selectedImgPreview.src
+      : editCourse.hinhAnh ?? "";
 
-  useEffect(() => {
-    if (!editCourse.hinhAnh) return;
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setImgPreview(editCourse.hinhAnh);
-  }, [editCourse.hinhAnh]);
+
   const { go, back } = Navigation.hooks.useNavigateWithState();
   const { loader } = Loading.use();
   const toaster = Toast.use();
@@ -50,10 +55,14 @@ export function useEditCourseActions({
     if (!file) return;
 
     const reader = new FileReader();
+    const previewCourseId = courseId;
 
     reader.onload = ({ target }) => {
       if (typeof target?.result === "string") {
-        setImgPreview(target.result);
+        setSelectedImgPreview({
+          courseId: previewCourseId,
+          src: target.result,
+        });
       }
     };
 
